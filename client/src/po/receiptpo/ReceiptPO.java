@@ -1,4 +1,4 @@
-package po;
+package po.receiptpo;
 
 import java.io.Serializable;
 import java.util.Date;
