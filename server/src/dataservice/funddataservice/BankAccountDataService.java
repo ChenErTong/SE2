@@ -2,39 +2,39 @@ package dataservice.funddataservice;
 import java.util.ArrayList;
 
 import po.BankPO;
-import po.FindTypeAccount;
+import state.FindTypeAccount;
 import state.ResultMessage;
 
 /**
- * Ìá¹©ÒøĞĞÕË»§Êı¾İµÄ¼¯ÌåÔØÈë¡¢±£´æºÍÔöÉ¾¸Ä²é·şÎñ
+ * æä¾›é“¶è¡Œè´¦æˆ·æ•°æ®çš„é›†ä½“è½½å…¥ã€ä¿å­˜å’Œå¢åˆ æ”¹æŸ¥æœåŠ¡
  * @author zsq
  * @version Oct 22,2015
  */
 	public interface BankAccountDataService {
 	/**
-	 * ÏòĞòÁĞ»¯ÎÄ¼şÖĞÔö¼ÓÒ»¸öBankAccoutPO
+	 * å‘åºåˆ—åŒ–æ–‡ä»¶ä¸­å¢åŠ ä¸€ä¸ªBankAccoutPO
 	 * @param po
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ç»“æœ
 	 */
 	public ResultMessage insert(BankPO po);
 	/**
-	 * ¸ù¾İIDÉ¾³ıĞòÁĞ»¯ÎÄ¼şÖĞµÄÒ»¸öBankAccoutPO
+	 * æ ¹æ®IDåˆ é™¤åºåˆ—åŒ–æ–‡ä»¶ä¸­çš„ä¸€ä¸ªBankAccoutPO
 	 * @param ID
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ç»“æœ
 	 */
 	public ResultMessage delete(String ID);
 	/**
-	 * ¸üĞÂBankPO
+	 * æ›´æ–°BankPO
 	 * @param PO
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ç»“æœ
 	 */
 	public ResultMessage update(BankPO PO);
 	
 	
 	/**
-	 * ÒÔkeywords²é¿´ÕË»§ĞÅÏ¢£¬typeÊÇ²éÕÒµÄ·½Ê½£¬ÎªNULLÔò±íÊ¾½øĞĞÄ£ºı²éÑ¯
+	 * ä»¥keywordsæŸ¥çœ‹è´¦æˆ·ä¿¡æ¯ï¼Œtypeæ˜¯æŸ¥æ‰¾çš„æ–¹å¼ï¼Œä¸ºNULLåˆ™è¡¨ç¤ºè¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 	 * @param keywords
-	 * @return ÕË»§³Ö¾Ã»¯¶ÔÏó
+	 * @return è´¦æˆ·æŒä¹…åŒ–å¯¹è±¡
 	 */
 	public ArrayList<BankPO> find(String keywords,FindTypeAccount bankAccoutType);
 }

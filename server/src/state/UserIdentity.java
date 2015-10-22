@@ -1,18 +1,18 @@
 package state;
 
 /**
- * 用户的身份：快递员、营业厅业务员、中转中心业务员、中转中心库存管理人员、财务人员、总经理、管理员
+ * �û������ݣ����Ա��Ӫҵ��ҵ��Ա����ת����ҵ��Ա����ת���Ŀ�������Ա��������Ա���ܾ���������Ա
  * @author zsq
  *@version Oct 22,2015
  */
 public enum UserIdentity {
-	COURIER("快递员"),
-	GENERAL_MANAGER("总经理"),
-	INVENTORY_MANAGER("库存管理人员"),
-	FINANCE_MANAGER("财务人员"),
-	BRANCH_COUNTERMAN("营业厅业务员"),
-	TRANSFER_CONTERMAN("中转中心业务员"),
-	ADMIN("管理员");
+	COURIER("���Ա"),
+	GENERAL_MANAGER("�ܾ���"),
+	INVENTORY_MANAGER("��������Ա"),
+	FINANCE_MANAGER("������Ա"),
+	BRANCH_COUNTERMAN("Ӫҵ��ҵ��Ա"),
+	TRANSFER_CONTERMAN("��ת����ҵ��Ա"),
+	ADMIN("����Ա");
 	
 	public final String value;
 
@@ -20,3 +20,4 @@ public enum UserIdentity {
 		this.value = value;
 	}
 }
+

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import businesslogicservice.BLService;
 import state.ResultMessage;
 import vo.BankAccoutVO;
-import po.FindTypeAccount;
+import state.FindTypeAccount;
 
 /**
  * 负责实现公司账户界面所需要的服务
