@@ -129,7 +129,4 @@ public class MainPanel extends JPanel{
 	public void add(){
 		System.out.println("add Something!");
 	}
-	public void search(){
-		System.out.println("search");
-	}
 }
