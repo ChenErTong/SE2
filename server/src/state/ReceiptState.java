@@ -1,4 +1,4 @@
-package po;
+package state;
 /**
  * 需要进行审批的单据的状态
  * @author zsq

@@ -1,4 +1,4 @@
-package po;
+package state;
 /**
  * 需要通过总经理审批的单据类型
  * @author zsq

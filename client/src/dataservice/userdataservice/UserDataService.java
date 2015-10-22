@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import dataservice.DataService;
 import po.PersistentObject;
 import po.UserPO;
-import po.UserIdentity;
 import state.ResultMessage;
+import state.UserIdentity;
 
 /**
  *提供系统用户集体载入、增删改查的服务
@@ -56,7 +56,6 @@ public interface  UserDataService<UserPO extends PersistentObject>extends DataSe
 	public UserIdentity login(LoginInfo loginInfo);
 	
 	/**
-	 * 
 	 * @param oldPassword，旧密码
 	 * @param newPassword，新密码
 	 * @return 处理信息

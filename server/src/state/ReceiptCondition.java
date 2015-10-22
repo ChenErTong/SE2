@@ -1,4 +1,4 @@
-package po;
+package state;
 /**
  * 单据的状态,有草稿状态、提交状态、审批后状态
  * @author zsq

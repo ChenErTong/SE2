@@ -1,9 +1,10 @@
 package businesslogicservice.userblservice;
 
 import java.util.ArrayList;
+
 import dataservice.userdataservice.LoginInfo;
 import state.ResultMessage;
-import po.UserIdentity;
+import state.UserIdentity;
 import vo.UserVO;
 
 /**

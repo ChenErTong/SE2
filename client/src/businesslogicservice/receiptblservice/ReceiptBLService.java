@@ -2,8 +2,8 @@ package businesslogicservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import po.ReceiptState;
-import po.ReceiptType;
+import state.ReceiptState;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.ReceiptVO;
 import vo.ValueObject;
