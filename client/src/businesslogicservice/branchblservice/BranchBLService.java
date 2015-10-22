@@ -1,5 +1,7 @@
 package businesslogicservice.branchblservice;
 
-public class BranchBLService {
+import businesslogicservice.BLService;
+
+public interface BranchBLService extends BLService{
 
 }

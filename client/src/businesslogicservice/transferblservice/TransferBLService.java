@@ -1,5 +1,7 @@
 package businesslogicservice.transferblservice;
 
-public class TransferBLService {
+import businesslogicservice.BLService;
+
+public interface TransferBLService extends BLService{
 
 }
