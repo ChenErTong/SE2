@@ -1,4 +1,4 @@
-package po;
+package state;
 /**
  * 单据的状态
  * @author zsq

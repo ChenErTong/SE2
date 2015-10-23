@@ -2,6 +2,8 @@ package po;
 
 import java.util.ArrayList;
 
+import state.UserIdentity;
+
 /**
  * 用户持久化对象
  * @author zsq
