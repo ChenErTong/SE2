@@ -1,4 +1,4 @@
-package vo.receiptvo;
+package vo.receiptpo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,10 +15,17 @@ public class ReceiptVO extends ValueObject{
 	/**serializableUID*/
 	private static final long serialVersionUID = 1L;
 	
+	/**单据编号，不同的单据具有不同的编号格式**/
+	protected String ID;
+	/**创建时间，由系统自动生成*/
+	protected String date;
+	
 	public ReceiptVO(String id){
 		super(id);
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
+	
+
 }

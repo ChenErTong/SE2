@@ -2,6 +2,8 @@ package po;
 
 import java.util.ArrayList;
 
+import po.accountpo.AccountPO;
+
 /**
  * 营业厅单一可持续化对象
  * @author czw

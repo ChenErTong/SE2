@@ -2,12 +2,12 @@ package businesslogicservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.BLService;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.receiptvo.*;
 import vo.ValueObject;
+import vo.receiptpo.ReceiptVO;
+import businesslogicservice.BLService;
 
 /**
  * 实现审批单据界面所需要的服务

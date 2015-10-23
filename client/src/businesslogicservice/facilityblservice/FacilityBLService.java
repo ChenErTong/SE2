@@ -1,9 +1,10 @@
 package businesslogicservice.facilityblservice;
 
-import businesslogicservice.BLService;
 import state.ResultMessage;
-import vo.AccountVO;
 import vo.FacilityVO;
+import vo.accountvo.AccountVO;
+import vo.accountvo.DriverVO;
+import businesslogicservice.BLService;
 
 /**
  * 实现营业厅运输工具管理界面所需要的服务
@@ -54,7 +55,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addDriver(AccountVO driver);
+	public ResultMessage addDriver(DriverVO driver);
 	
 	/**
 	 * 删除车辆
@@ -63,7 +64,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage deleteDriver (AccountVO driver);
+	public ResultMessage deleteDriver (DriverVO driver);
 	
 	/**
 	 * 修改车辆信息
@@ -72,7 +73,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage modifyDriver (AccountVO driver);
+	public ResultMessage modifyDriver (DriverVO driver);
 
 	/**
 	 * 根据车辆编号查找车辆信息
@@ -81,5 +82,5 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public AccountVO findDriver (String driverId);
+	public DriverVO findDriver (String driverId);
 }
