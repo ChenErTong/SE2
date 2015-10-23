@@ -6,7 +6,7 @@ import businesslogicservice.BLService;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.ReceiptVO;
+import vo.receiptvo.*;
 import vo.ValueObject;
 
 /**

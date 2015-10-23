@@ -2,7 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
-import po.receiptpo.TruckDeliveryList;
+import po.receiptpo.TruckDeliveryListPO;
 
 public class FacilityPO extends PersistentObject{
 	/**
@@ -13,9 +13,9 @@ public class FacilityPO extends PersistentObject{
 	/**
 	 * 运输历史
 	 */
-	private ArrayList<TruckDeliveryList> deliverHistory;
+	private ArrayList<TruckDeliveryListPO> deliverHistory;
 
-	public FacilityPO(String id, String date, String managerId, ArrayList<TruckDeliveryList> deliverHistory) {
+	public FacilityPO(String id, String date, String managerId, ArrayList<TruckDeliveryListPO> deliverHistory) {
 		super(id, date);
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
@@ -25,7 +25,7 @@ public class FacilityPO extends PersistentObject{
 		return managerId;
 	}
 
-	public ArrayList<TruckDeliveryList> getDeliverHistory() {
+	public ArrayList<TruckDeliveryListPO> getDeliverHistory() {
 		return deliverHistory;
 	}
 }

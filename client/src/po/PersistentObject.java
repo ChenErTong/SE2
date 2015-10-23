@@ -17,12 +17,12 @@ public class PersistentObject implements Serializable{
 	/**时间*/
 	protected String date;
 	
-	public PersistentObject(String id) {
+	protected PersistentObject(String id) {
 		super();
 		this.id = id;
 	}
 	
-	public PersistentObject(String id, String date) {
+	protected PersistentObject(String id, String date) {
 		super();
 		this.id = id;
 		this.date = date;

@@ -3,10 +3,10 @@ package businesslogicservice.branchblservice;
 import java.util.ArrayList;
 
 import po.CommodityPO;
-import po.receiptpo.BranchDeliveryList;
-import po.receiptpo.BranchList;
-import po.receiptpo.BranchReceiptList;
-import po.receiptpo.TruckDeliveryList;
+import po.receiptpo.BranchDeliveryListPO;
+import po.receiptpo.BranchListPO;
+import po.receiptpo.BranchReceiptListPO;
+import po.receiptpo.TruckDeliveryListPO;
 import state.ResultMessage;
 import vo.AccountVO;
 import vo.CommodityVO;
@@ -67,7 +67,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public BranchReceiptList branchReceipt(CommodityVO comoditiies, ArrayList<BranchList> branchReceiptList);
+	public BranchReceiptListPO branchReceipt(CommodityVO comoditiies, ArrayList<BranchListPO> branchReceiptList);
 	
 	/**
 	 * 生成营业厅装车单
@@ -77,7 +77,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public BranchDeliveryList branchDeliver(ArrayList<BranchList>branchReceiptList,AccountVO account);
+	public BranchDeliveryListPO branchDeliver(ArrayList<BranchListPO>branchReceiptList,AccountVO account);
 	
 	/**
 	 * 提交单据给总经理进行审批
@@ -86,7 +86,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage submit(BranchList branchList);
+	public ResultMessage submit(BranchListPO branchList);
 	
 	/**
 	 * 保存单据
@@ -95,7 +95,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage save(BranchList branchList);
+	public ResultMessage save(BranchListPO branchList);
 	
 	/**
 	 * 自动计算运费
@@ -106,5 +106,5 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TruckDeliveryList truckDeliver(ArrayList<TruckDeliveryList> truckDeliveryList, FacilityVO facility);
+	public TruckDeliveryListPO truckDeliver(ArrayList<TruckDeliveryListPO> truckDeliveryList, FacilityVO facility);
 }

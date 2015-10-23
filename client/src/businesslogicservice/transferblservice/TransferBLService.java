@@ -1,7 +1,7 @@
 package businesslogicservice.transferblservice;
 
 import java.util.ArrayList;
-import po.receiptpo.TransferList;
+import po.receiptpo.TransferListPO;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryVO;
@@ -48,7 +48,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TransferList planeTransfer(ArrayList<TransferList> planeTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
+	public TransferListPO planeTransfer(ArrayList<TransferListPO> planeTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
 	
 	/**
 	 * 自动计算运费
@@ -60,7 +60,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TransferList truckTransfer(ArrayList<TransferList> truckTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
+	public TransferListPO truckTransfer(ArrayList<TransferListPO> truckTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
 
 	/**
 	 * 自动计算运费
@@ -72,7 +72,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TransferList trainTransfer(ArrayList<TransferList> trainTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
+	public TransferListPO trainTransfer(ArrayList<TransferListPO> trainTransferList, String []orderNumber, OrderVO order, InventoryVO inventory);
 	
 	/**
 	 * 提交单据给总经理进行审批
@@ -81,7 +81,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage submit(TransferList transferList);
+	public ResultMessage submit(TransferListPO transferList);
 	
 	/**
 	 * 保存单据
@@ -90,7 +90,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage save(TransferList transferList);
+	public ResultMessage save(TransferListPO transferList);
 	
 	/**
 	 * 生成中转中心到达单
@@ -101,5 +101,5 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TransferList receiptList(ArrayList<CommodityVO>commodities, ArrayList<TransferList> transferListNumber);
+	public TransferListPO receiptList(ArrayList<CommodityVO>commodities, ArrayList<TransferListPO> transferListNumber);
 }
