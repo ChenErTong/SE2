@@ -1,12 +1,13 @@
 package businesslogicservice.transferblservice;
 
 import java.util.ArrayList;
+
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptpo.TransferArrivalListVO;
-import vo.receiptpo.TransferOrderVO;
+import vo.receiptpvo.TransferArrivalListVO;
+import vo.receiptpvo.TransferOrderVO;
 import businesslogicservice.BLService;
 
 /**

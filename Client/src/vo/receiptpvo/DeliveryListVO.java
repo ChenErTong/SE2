@@ -1,4 +1,4 @@
-package vo.receiptpo;
+package vo.receiptpvo;
 
 /**
  * 派件单：订单订单号、派送员

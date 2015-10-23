@@ -1,4 +1,4 @@
-package vo.receiptpo;
+package vo.receiptpvo;
 
 /**
  * 营业厅到达单：中转单编号、出发地、货物到达状态、订单订单号

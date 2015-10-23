@@ -1,53 +1,50 @@
 package businesslogicservice.inventoryblservice;
 
-import po.InventoryPO;
 import po.receiptpo.ReceiptPO;
-import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryExportReceiptVO;
 import vo.InventoryImportReceiptVO;
-import vo.InventoryVO;
 import vo.InventoryViewVO;
-import vo.receiptpo.ReceiptVO;
+import vo.receiptpvo.ReceiptVO;
 
 public interface InventoryBLService {
-	/**绯荤粺鏄剧ず姝ゆ椂闂存鍐呯殑鍑哄叆搴撴暟閲忋�侀噾棰濄�佸簱瀛樹綅缃�**/
+	/**缁崵绮洪弰鍓с仛濮濄倖妞傞梻瀛橆唽閸愬懐娈戦崙鍝勫弳鎼存挻鏆熼柌蹇嬶拷渚�鍣炬０婵勶拷浣哥氨鐎涙ü缍呯純锟�**/
 	public InventoryViewVO viewInventory(String beginDate, String endDate);
 	
-	/**鏄剧ず鎴嚦鐩樼偣鏃堕棿鐨勫簱瀛樺揩鐓�**/
+	/**閺勫墽銇氶幋顏囧殾閻╂鍋ｉ弮鍫曟？閻ㄥ嫬绨辩�涙ê鎻╅悡锟�**/
 	public InventoryCheckVO checkRecord( );
 	
-	/*鍏ュ簱*/
-	/**寰楀埌璇ュ叆搴撳崟鐨勭紪鍙�**/
+	/*閸忋儱绨�*/
+	/**瀵版鍩岀拠銉ュ弳鎼存挸宕熼惃鍕椽閸欙拷**/
 	public String getImportID ();
 	
-	/**閫夋嫨杩涜鍏ュ簱鐨勮揣鐗╂坊鍔犱俊鎭埌杩涜揣鍗�**/
+	/**闁瀚ㄦ潻娑滎攽閸忋儱绨遍惃鍕彛閻椻晜鍧婇崝鐘变繆閹垰鍩屾潻娑滄彛閸楋拷**/
 	public void addCommodities(ReceiptVO receipt);
 	
-	/**閫夋嫨骞舵坊鍔犵浉搴旂殑鏁版嵁锛堣鍗曟墭杩愮紪鍙枫�佸叆搴撴棩鏈熴�佺洰鐨勫湴銆佸尯鍙枫�佹帓鍙枫�佹灦鍙枫�佷綅鍙凤級鍒拌繘璐у崟涓敓鎴愯繘璐у崟PO**/
+	/**闁瀚ㄩ獮鑸靛潑閸旂姷娴夋惔鏃傛畱閺佺増宓侀敍鍫ｎ吂閸楁洘澧潻鎰椽閸欐灚锟戒礁鍙嗘惔鎾存）閺堢喆锟戒胶娲伴惃鍕勾閵嗕礁灏崣鏋拷浣瑰笓閸欐灚锟戒焦鐏﹂崣鏋拷浣风秴閸欏嚖绱氶崚鎷岀箻鐠愌冨礋娑擃厾鏁撻幋鎰箻鐠愌冨礋PO**/
 	public ReceiptPO   buildImport();
 	
-	/**鍗曟嵁琚彁浜ゅ彂閫佺粰缁忕悊杩涜瀹℃壒**/
+	/**閸楁洘宓佺悮顐ｅ絹娴溿倕褰傞柅浣虹舶缂佸繒鎮婃潻娑滎攽鐎光剝澹�**/
 	public InventoryImportReceiptVO submitImport();
 	
-	/*鍑哄簱*/
-	/**寰楀埌璇ュ嚭搴撳崟鐨勭紪鍙�**/
+	/*閸戝搫绨�*/
+	/**瀵版鍩岀拠銉ュ毉鎼存挸宕熼惃鍕椽閸欙拷**/
 	public String getExportID ();
 	
-	/**閫夋嫨杩涜鍑哄簱鐨勮揣鐗╂坊鍔犱俊鎭埌鍑哄簱鍗�**/
+	/**闁瀚ㄦ潻娑滎攽閸戝搫绨遍惃鍕彛閻椻晜鍧婇崝鐘变繆閹垰鍩岄崙鍝勭氨閸楋拷**/
 	public void minusCommodities(ReceiptVO receipt);
 	
-	/**閫夋嫨骞舵坊鍔犵浉搴旂殑鏁版嵁锛堣鍗曟墭杩愮紪鍙枫�佸嚭搴撴棩鏈熴�佺洰鐨勫湴銆佽杩愬舰寮忋�佷腑杞崟缂栧彿锛夊埌鍑哄簱鍗曚腑鐢熸垚鍑哄簱鍗昉O**/
+	/**闁瀚ㄩ獮鑸靛潑閸旂姷娴夋惔鏃傛畱閺佺増宓侀敍鍫ｎ吂閸楁洘澧潻鎰椽閸欐灚锟戒礁鍤惔鎾存）閺堢喆锟戒胶娲伴惃鍕勾閵嗕浇顥婃潻鎰埌瀵繈锟戒椒鑵戞潪顒�宕熺紓鏍у娇閿涘鍩岄崙鍝勭氨閸楁洑鑵戦悽鐔稿灇閸戝搫绨遍崡鏄塐**/
 	public ReceiptPO buildExport();
 	
-	/**鍗曟嵁琚彁浜ゅ彂閫佺粰缁忕悊杩涜瀹�**/
+	/**閸楁洘宓佺悮顐ｅ絹娴溿倕褰傞柅浣虹舶缂佸繒鎮婃潻娑滎攽鐎癸拷**/
 	public InventoryExportReceiptVO submitExport();
 	
-	/*璋冩暣*/
-	/**寰楀埌璇ヨ皟鏁村崟鐨勭紪鍙�**/
+	/*鐠嬪啯鏆�*/
+	/**瀵版鍩岀拠銉ㄧ殶閺佹潙宕熼惃鍕椽閸欙拷**/
 	public String getAdjustID ();
 	
-	/**杈撳叆琚皟鏁磋揣鐗╃殑璁㈠崟鎵樿繍缂栧彿銆佸師鍏堝尯鍙枫�佹帓鍙枫�佹灦鍙枫�佷綅鍙峰強璋冩暣鍚庣殑鍖哄彿銆佹帓鍙枫�佹灦鍙枫�佷綅鍙�**/
+	/**鏉堟挸鍙嗙悮顐ョ殶閺佺鎻ｉ悧鈺冩畱鐠併垹宕熼幍妯跨箥缂傛牕褰块妴浣稿斧閸忓牆灏崣鏋拷浣瑰笓閸欐灚锟戒焦鐏﹂崣鏋拷浣风秴閸欏嘲寮风拫鍐╂殻閸氬海娈戦崠鍝勫娇閵嗕焦甯撻崣鏋拷浣圭仸閸欐灚锟戒椒缍呴崣锟�**/
 	public ReceiptPO adjust( );
 
 }

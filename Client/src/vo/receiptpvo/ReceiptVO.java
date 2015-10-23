@@ -1,10 +1,8 @@
-package vo.receiptpo;
+package vo.receiptpvo;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import po.PersistentObject;
 import vo.ValueObject;
 /**
  * 所有单据的父类，包括编号、创建时间

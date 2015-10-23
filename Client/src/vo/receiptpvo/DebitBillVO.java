@@ -1,4 +1,4 @@
-package vo.receiptpo;
+package vo.receiptpvo;
 
 /**
  * 收款单：收款金额
