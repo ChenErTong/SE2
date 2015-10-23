@@ -1,5 +1,5 @@
 package vo;
 
-public class InventoryVO{
+public class InventoryVO {
 
 }

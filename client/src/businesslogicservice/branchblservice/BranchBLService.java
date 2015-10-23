@@ -1,7 +1,8 @@
 package businesslogicservice.branchblservice;
 
-import java.util.ArrayList;
+public class BranchBLService {
 
+<<<<<<< Updated upstream
 import po.CommodityPO;
 import po.receiptpo.BranchDeliveryListPO;
 import po.receiptpo.BranchListPO;
@@ -108,3 +109,6 @@ public interface BranchBLService extends BLService{
 	 */
 	public TruckDeliveryListPO truckDeliver(ArrayList<TruckDeliveryListPO> truckDeliveryList, FacilityVO facility);
 }
+=======
+}
+>>>>>>> Stashed changes

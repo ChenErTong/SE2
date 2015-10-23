@@ -2,7 +2,6 @@ package businesslogicservice.userblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.BLService;
 import dataservice.userdataservice.LoginInfo;
 import state.ResultMessage;
 import state.UserIdentity;
@@ -13,7 +12,7 @@ import vo.UserVO;
  * @author zsq
  * @version Oct 22,2015
  */
-public interface UserBLService extends BLService{
+public interface UserBLService {
 	/**
 	 * @return 全部的系统用户
 	 * @author zsq

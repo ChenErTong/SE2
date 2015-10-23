@@ -1,5 +1,6 @@
 package businesslogicservice.transferblservice;
 
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 import po.receiptpo.TransferListPO;
 import state.ResultMessage;
@@ -103,3 +104,8 @@ public interface TransferBLService extends BLService{
 	 */
 	public TransferListPO receiptList(ArrayList<CommodityVO>commodities, ArrayList<TransferListPO> transferListNumber);
 }
+=======
+public class TransferBLService {
+
+}
+>>>>>>> Stashed changes
