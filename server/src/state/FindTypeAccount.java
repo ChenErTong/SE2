@@ -1,4 +1,4 @@
-package po;
+package state;
 /**
  * 进行银行账户查询时的查找方式（类型）
  * @author zsq
