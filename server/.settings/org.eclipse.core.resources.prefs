@@ -1,12 +1,16 @@
 eclipse.preferences.version=1
+encoding//src/dataservice/OrganizationDataService.java=UTF-8
+encoding//src/dataservice/basedataservice/BaseDataService.java=UTF-8
 encoding//src/dataservice/funddataservice/BankAccountDataService.java=UTF-8
 encoding//src/dataservice/funddataservice/DebitAndPayBillDataService.java=UTF-8
 encoding//src/dataservice/receiptdataservice/ReceiptDataService.java=UTF-8
 encoding//src/po/BankPO.java=UTF-8
+encoding//src/po/BasePO.java=UTF-8
 encoding//src/po/PersistentObject.java=UTF-8
 encoding//src/po/ReceiptPO.java=UTF-8
 encoding//src/po/UserPO.java=UTF-8
 encoding//src/state/FindTypeAccount.java=UTF-8
+encoding//src/state/FindTypeBase.java=UTF-8
 encoding//src/state/PayBillItem.java=UTF-8
 encoding//src/state/ReceiptState.java=UTF-8
 encoding//src/state/UserIdentity.java=UTF-8
