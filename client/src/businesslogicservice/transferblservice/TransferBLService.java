@@ -1,7 +1,6 @@
 package businesslogicservice.transferblservice;
 
 import java.util.ArrayList;
-
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
