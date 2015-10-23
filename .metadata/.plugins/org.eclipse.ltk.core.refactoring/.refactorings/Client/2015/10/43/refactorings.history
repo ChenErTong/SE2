@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;vo.BussinessStateVO&apos; to &apos;BussinessConditionVO&apos;&#x0A;- Original project: &apos;Client&apos;&#x0A;- Original element: &apos;vo.BussinessStateVO&apos;&#x0A;- Renamed element: &apos;vo.BussinessConditionVO&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BussinessStateVO&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;vo{BussinessStateVO.java[BussinessStateVO" matchStrategy="1" name="BussinessConditionVO" qualified="false" references="true" similarDeclarations="false" stamp="1445602211220" textual="false" version="1.0"/>
+</session>
