@@ -1,14 +1,14 @@
 package po;
 /**
- * ÐèÒª½øÐÐÉóÅúµÄµ¥¾ÝµÄ×´Ì¬
+ * å•æ®çš„çŠ¶æ€
  * @author zsq
  * @version Oct 22,2015
  */
 public enum ReceiptState {
-	APPROVALING("ÕýÔÚÉóÅú"),
-	SUCCESS("ÉóÅú³É¹¦"),
-	FAILURE("ÉóÅúÊ§°Ü"),
-	DRAFT("²Ý¸å×´Ì¬");
+	APPROVALING("æ­£åœ¨å®¡æ‰¹"),
+	SUCCESS("é€šè¿‡å®¡æ‰¹"),
+	FAILURE("æœªé€šè¿‡å®¡æ‰¹"),
+	DRAFT("è‰ç¨¿çŠ¶æ€×´Ì¬");
 	
 	public final String value;
 	

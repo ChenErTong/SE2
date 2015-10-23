@@ -3,7 +3,7 @@ package po;
 import java.io.Serializable;
 
 /**
- *ËùÓĞPOÀàµÄ¸¸Àà£¬°üÀ¨´´½¨Ê±¼ä¡¢±àºÅ
+ *æ‰€æœ‰POç±»çš„çˆ¶ç±»ï¼ŒåŒ…æ‹¬åˆ›å»ºæ—¶é—´ã€ç¼–å·
  * @author zsq
  * @version Oct 22,2015
  *
@@ -12,8 +12,8 @@ public class PersistentObject implements Serializable{
 
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
-	/**µ¥¾İ±àºÅ£¬¸ñÊ½¸ù¾İ²»Í¬µ¥×Ó¾ßÓĞ²»Í¬µÄ¸ñÊ½*/
+	/**å•æ®ç¼–å·ï¼Œæ ¼å¼æ ¹æ®ä¸åŒå•å­å…·æœ‰ä¸åŒçš„æ ¼å¼*/
 	protected String ID;
-	/**Ê±¼ä*/
+	/**æ—¶é—´*/
 	protected String date;
 }

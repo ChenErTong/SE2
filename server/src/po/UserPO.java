@@ -3,26 +3,26 @@ package po;
 import java.util.ArrayList;
 
 /**
- * ÓÃ»§³Ö¾Ã»¯¶ÔÏó
+ * ç”¨æˆ·æŒä¹…åŒ–å¯¹è±¡
  * @author zsq
  * @version Oct 22,2015
  */
 public class UserPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
-	/**ÓÃ»§ÃûÕËºÅ*/
+	/**ç”¨æˆ·å*/
 	private String username;
-	/**ÓÃ»§ÕæÊµĞÕÃû*/
+	/**ç”¨æˆ·çœŸå®å§“å*/
 	private String name;
 
-	/**ÃÜÂë*/
+	/**å¯†ç */
 	private String password;
-	/**ÓÃ»§Éí·İÈ¨ÏŞ*/
+	/**ç”¨æˆ·èº«ä»½*/
 	private UserIdentity iden;
-	/**²Ù×÷¼ÇÂ¼*/
+	/**ç”¨æˆ·æ“ä½œ*/
 	private ArrayList operationRecords;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 * @param ID
 	 * @param username
 	 * @param name

@@ -1,12 +1,11 @@
 package po;
 /**
- * 需要通过总经理审批的单据类型
+ * 需要进行审批的单据的类型
  * @author zsq
  * @version Oct 22,2015
- *
  */
 public enum ReceiptType {
-	CONFIRM("签收确认单", "QSQRD"),
+	CONFIRM("收件确认单", "SJQRD"),
 	ORDER("寄件订单", "JJDD"),
 	BRANCH_TRUCK("装车单", "ZCD"),
 	BRANCH_ARRIVAL("营业厅到达单", "YYTDDD"),
