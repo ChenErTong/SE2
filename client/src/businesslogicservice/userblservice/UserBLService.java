@@ -7,53 +7,52 @@ import po.UserIdentity;
 import vo.UserVO;
 
 /**
- * ÊµÏÖÓÃ»§¹ÜÀí½çÃæËùĞèÒªµÄ·şÎñ
+ * è´Ÿè´£å®ç°ç”¨æˆ·ç®¡ç†ç•Œé¢æ‰€éœ€è¦çš„æœåŠ¡
  * @author zsq
  * @version Oct 22,2015
- *
  */
 public interface UserBLService {
 	/**
-	 * @return È«²¿µÄÏµÍ³ÓÃ»§
+	 * @return å…¨éƒ¨çš„ç³»ç»Ÿç”¨æˆ·
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
 	public ArrayList<UserVO> show();
 	/**
-	 * ½çÃæ´´½¨ĞÂÓÃ»§Ê±µÃµ½Ò»¸öĞÂµÄÓÃ»§ID
-	 * @return ĞÂÓÃ»§µÄID
+	 * ç•Œé¢è¿›è¡Œæ–°å»ºç”¨æˆ·æ“ä½œæ˜¯å¾—åˆ°ä¸€ä¸ªå¯ç”¨çš„ID
+	 * @return 
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
 	public String getID();
 	/**
-	 * Ìí¼ÓÒ»Î»ĞÂÓÃ»§
+	 * æ·»åŠ ä¸€ä½ç”¨æˆ·
 	 * @param vo UserVO
-	 * @return ´¦ÀíĞÅÏ¢
+	 * @return å¤„ç†ä¿¡æ¯
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage addUser(UserVO vo);
 	/**
-	 * É¾³ıÒ»Î»ÓÃ»§
+	 * åˆ é™¤ä¸€ä½ç”¨æˆ·
 	 * @param username
-	 * @return ´¦ÀíĞÅÏ¢
+	 * @return å¤„ç†ä¿¡æ¯
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
 	public ResultMessage deleteUser(String username);
 	/**
-	 * ¸üĞÂÒ»Î»ÓÃ»§µÄĞÅÏ¢
+	 * æ›´æ–°ä¸€ä½ç”¨æˆ·ä¿¡æ¯
 	 * @param vo UserVo
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ç»“æœ
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage updateUser(UserVO vo);
 	/**
-	 * ÑéÖ¤ÓÃ»§µÇÂ¼ÏµÍ³
+	 * éªŒè¯ç”¨æˆ·ç™»å½•
 	 * @param loginInfo
-	 * @return ·µ»ØµÇÂ¼ÓÃ»§µÄÉí·İ£¬µÇÂ¼Ê§°ÜÔò·µ»ØNULL
+	 * @return è¿”å›ç™»å½•çš„ç”¨æˆ·èº«ä»½ï¼Œç™»å½•å¤±è´¥æ—¶è¿”å›NULL
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */

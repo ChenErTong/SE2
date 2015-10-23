@@ -9,49 +9,57 @@ import po.UserIdentity;
 import state.ResultMessage;
 
 /**
- *Ìá¹©ÏµÍ³ÓÃ»§µÄµÇÂ¼¡¢¼¯Ìåµ¼Èë¡¢±£´æÒÔ¼°ÔöÉ¾¸Ä²éµÄ·şÎñ
+ *æä¾›ç³»ç»Ÿç”¨æˆ·é›†ä½“è½½å…¥ã€å¢åˆ æ”¹æŸ¥çš„æœåŠ¡
  *@author zsq
  *@version Oct 22,2015 
  */
 public interface  UserDataService<UserPO extends PersistentObject>extends DataService<UserPO> {
 
 	/**
-	 * ÏòĞòÁĞ»¯ÎÄ¼şÖĞÔö¼ÓÒ»¸öUserPO
+	 * å¢åŠ ä¸€åç³»ç»Ÿç”¨æˆ·
 	 * @param po
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ä¿¡æ¯
+	 * @author zsq
+	 * @version Oct 22,2015 
 	 */
 	public ResultMessage insert(UserPO po);
 	/**
-	 * ¸ù¾İIDÉ¾³ıĞòÁĞ»¯ÎÄ¼şÖĞµÄÒ»¸öUserPO
+	 * åˆ é™¤ä¸€åç³»ç»Ÿç”¨æˆ·
 	 * @param ID
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ä¿¡æ¯
+	 * @author zsq
+	 * @version Oct 22,2015 
 	 */
 	public ResultMessage delete(String ID);
 	/**
-	 * ¸üĞÂUserPO
+	 * æ›´æ–°UserPO
 	 * @param PO
-	 * @return ´¦Àí½á¹û
+	 * @return å¤„ç†ä¿¡æ¯
+	 * @author zsq
+	 * @version Oct 22,2015 
 	 */
 	public ResultMessage update(UserPO PO);
 	/**
-	 * ÏÔÊ¾ËùÓĞµÄUserPO
-	 * @return ·µ»ØËùÓĞµÄUserPO¼¯ºÏ
+	 *æ˜¾ç¤ºUserPO
+	 * @return è¿”å›æ‰€æœ‰çš„UserPOçš„é›†åˆ
+	 * @author zsq
+	 * @version
 	 */
 	public ArrayList<UserPO> find();
 	/**
-	 * ÑéÖ¤ÓÃ»§µÄµÇÂ¼
+	 * éªŒè¯ç”¨æˆ·ç™»å½•
 	 * @param loginInfo
-	 * @return ·µ»ØµÇÂ¼µÄÓÃ»§Éí·İ ,µÇÂ¼Ê§°ÜÊ±·µ»ØNULL
+	 * @return è¿”å›ç™»å½•çš„ç”¨æˆ·çš„èº«ä»½ï¼Œç™»å½•å¤±è´¥æ—¶è¿”å›NULL
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
 	public UserIdentity login(LoginInfo loginInfo);
 	
 	/**
-	 * ¹ÜÀíÔ±ĞŞ¸Ä×ÔÉíÃÜÂë
-	 * @param oldPassword£¬¾ÉÃÜÂë
-	 * @param newPassword£¬ĞÂÃÜÂë
-	 * @return
+	 * 
+	 * @param oldPasswordï¼Œæ—§å¯†ç 
+	 * @param newPasswordï¼Œæ–°å¯†ç 
+	 * @return å¤„ç†ä¿¡æ¯
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
