@@ -1,4 +1,4 @@
-package bussinesslogicservice.recordblservice;
+package businesslogicservice.recordblservice;
 
 import state.ResultMessage;
 

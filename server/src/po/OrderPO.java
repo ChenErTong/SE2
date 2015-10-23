@@ -1,5 +1,5 @@
 package po;
 
-public class OrderPO extends PersistentObject{
-	
+public class OrderPO {
+
 }

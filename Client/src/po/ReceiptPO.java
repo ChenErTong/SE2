@@ -19,8 +19,8 @@ public class ReceiptPO extends PersistentObject{
 	/**创建时间，由系统自动生成*/
 	protected String date;
 	
-	public ReceiptPO(String id){
-		super(id);
+	public ReceiptPO(String ID){
+		this.ID = ID;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());

@@ -1,14 +1,12 @@
 package vo;
 /**
- * 值锟斤拷锟斤拷
+ * 值对象
  * @author zsq
  * @version Oct 22,2015
  */
 public class ValueObject {
-	protected String id;
-	protected String date;
+	public String ID;
+	public String date;
 	
-	protected ValueObject(String id){
-		this.id = id;
-	}
+
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.receiptvo.*;
+import vo.ReceiptVO;
 import vo.ValueObject;
 
 /**
