@@ -21,11 +21,9 @@ public class BankPO extends PersistentObject{
 	private double money;
 	/**账户属性*/
 	private String level;
-	/**账户创建时间,系统自动计算得到*/
-	private String date;
 	
-	public BankPO(String ID,String name,double money,String level){
-		//super(ID);
+	public BankPO(String id,String name,double money,String level){
+		super(id);
 		this.name = name;
 		this.money = money;
 		this.level = level;
@@ -66,10 +64,6 @@ public class BankPO extends PersistentObject{
 	 */
 	@Override
 	public String toString(){
-		return this.ID+"|"+this.name+"|"+this.money;
+		return this.id+"|"+this.name+"|"+this.money;
 	}
-
-	
-
-	
 }
