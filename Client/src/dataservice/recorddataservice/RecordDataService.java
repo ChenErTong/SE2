@@ -2,7 +2,7 @@ package dataservice.recorddataservice;
 
 import java.util.ArrayList;
 
-import po.ReceiptPO;
+import po.receiptpo.ReceiptPO;
 
 public interface RecordDataService {
 	/**返回1. 收款单2.付款单**/

@@ -32,7 +32,7 @@ public class UserPO extends PersistentObject{
 	 * @param iden
 	 */
 	public UserPO(String ID,String username,String name,String password,UserIdentity iden){
-		//super(ID);
+		super(ID);
 		this.username = username;
 		this.name = name;
 		this.password = password;

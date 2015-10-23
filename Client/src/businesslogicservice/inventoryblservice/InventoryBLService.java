@@ -1,14 +1,14 @@
 package businesslogicservice.inventoryblservice;
 
 import po.InventoryPO;
-import po.ReceiptPO;
+import po.receiptpo.ReceiptPO;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryExportReceiptVO;
 import vo.InventoryImportReceiptVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
-import vo.ReceiptVO;
+import vo.receiptpo.ReceiptVO;
 
 public interface InventoryBLService {
 	/**系统显示此时间段内的出入库数量、金额、库存位置**/

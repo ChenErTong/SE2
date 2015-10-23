@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.ReceiptVO;
 import vo.ValueObject;
+import vo.receiptpo.ReceiptVO;
+import businesslogicservice.BLService;
 
 /**
  * 实现审批单据界面所需要的服务
