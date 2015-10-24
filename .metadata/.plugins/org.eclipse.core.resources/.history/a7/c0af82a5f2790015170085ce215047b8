@@ -1,0 +1,15 @@
+package vo.receiptpo;
+
+public class InventoryExportReceiptVO {
+	/**目的地**/
+	public String destination;
+	/**装运形式**/
+	public String Transfer;
+	public InventoryExportReceiptVO(String destination, String transfer) {
+		super();
+		this.destination = destination;
+		Transfer = transfer;
+	}
+	
+
+}

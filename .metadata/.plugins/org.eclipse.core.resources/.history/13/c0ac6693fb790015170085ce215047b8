@@ -1,0 +1,10 @@
+package vo.receiptvo;
+
+public class AdjustReceiptVO  extends ReceiptVO{
+
+	public AdjustReceiptVO(String id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
+}

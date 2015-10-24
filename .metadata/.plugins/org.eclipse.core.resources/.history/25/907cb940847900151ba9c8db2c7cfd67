@@ -1,0 +1,14 @@
+package po;
+
+<<<<<<< HEAD
+public class InventoryPO {
+
+}
+=======
+
+public class InventoryPO extends PersistentObject {
+	public InventoryPO(String id, String date) {
+		super(id, date);
+	}
+}
+>>>>>>> origin/master
