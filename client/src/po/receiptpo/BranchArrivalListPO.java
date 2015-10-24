@@ -7,6 +7,11 @@ package po.receiptpo;
  */
 public class BranchArrivalListPO extends ReceiptPO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BranchArrivalListPO(String ID) {
 		super(ID);
 		// TODO Auto-generated constructor stub

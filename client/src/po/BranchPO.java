@@ -11,6 +11,11 @@ import po.accountpo.AccountPO;
  */
 public class BranchPO extends PersistentObject{	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * 营业厅地址
 	 */
 	private String address;

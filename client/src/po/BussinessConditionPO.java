@@ -1,10 +1,5 @@
 package po;
 
-import java.util.ArrayList;
-
-import vo.receiptvo.DebitBillVO;
-import vo.receiptvo.PaymentBillVO;
-
 public class BussinessConditionPO {
 
 	/**
