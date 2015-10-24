@@ -3,7 +3,10 @@ package po.accountpo;
 import po.PersistentObject;
 
 public class AccountPO extends PersistentObject{
-
+	  /** @author lxl
+		 *  @version Oct 23,2015
+		 *      **/
+		
 	/**员工账户的的持久化对象
      * AccontPO: 公司职员的PO类
      * 包括员工编号、职务权限、姓名、出生日期、身份证号、手机号、

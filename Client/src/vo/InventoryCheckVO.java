@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import vo.receiptvo.InventoryImportReceiptVO;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 /**
  * 库存盘点盘点时，系统显示当天的库存快照
  * 包括当天各区快递的信息（快递编号、入库日期、目的地、区号、排号、架号、位号）

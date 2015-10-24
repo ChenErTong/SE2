@@ -2,9 +2,11 @@ package po.receiptpo;
 
 public class AdjustReceiptPO extends ReceiptPO{
 	
-	/**
-	 * 
-	 */
+	  /** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
+	 
 	private static final long serialVersionUID = 1L;
 	public AdjustReceiptPO(String ID, String exA, String exB, String exC, String exD, String aftA, String aftB,
 			String aftC, String aftD) {

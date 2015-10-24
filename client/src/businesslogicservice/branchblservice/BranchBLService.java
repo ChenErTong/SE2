@@ -1,21 +1,14 @@
 package businesslogicservice.branchblservice;
 
 import java.util.ArrayList;
-
 import businesslogicservice.BLService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
-<<<<<<< Updated upstream
-import vo.receiptpvo.BranchArrivalListVO;
-import vo.receiptpvo.DeliveryListVO;
-import vo.receiptpvo.LoadingListVO;
-=======
 import vo.receiptvo.BranchArrivalListVO;
 import vo.receiptvo.DeliveryListVO;
 import vo.receiptvo.LoadingListVO;
->>>>>>> Stashed changes
 
 /**
  * 瀹炵幇钀ヤ笟鍘呰繍杈撶鐞嗙晫闈㈡墍闇�瑕佺殑鏈嶅姟

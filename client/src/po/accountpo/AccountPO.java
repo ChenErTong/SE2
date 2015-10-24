@@ -1,7 +1,10 @@
 package po.accountpo;
 
 import po.PersistentObject;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public class AccountPO extends PersistentObject{
 
 	/**员工账户的的持久化对象

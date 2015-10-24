@@ -2,7 +2,10 @@ package vo;
 
 public class InventoryViewVO {
 
-	
+	  /** @author lxl
+		 *  @version Oct 23,2015
+		 *      **/
+		
 	/** 出库数量 **/
 	public int exportNumber;
 	/** 入库数量）**/

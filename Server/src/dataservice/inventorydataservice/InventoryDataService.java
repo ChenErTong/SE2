@@ -7,7 +7,10 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public interface InventoryDataService {
 	
 	/**初始化持久数据**/

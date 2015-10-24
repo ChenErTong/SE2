@@ -1,6 +1,9 @@
 package dataservice.openingstockdataservice;
 
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 import po.OpeningStockPO;
 import state.ResultMessage;
 

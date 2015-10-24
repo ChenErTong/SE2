@@ -3,7 +3,10 @@ package dataservice.recorddataservice;
 import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public interface RecordDataService {
 	/**返回1. 收款单2.付款单**/
 	public ArrayList<ReceiptPO> getBusinessProcess(String item);

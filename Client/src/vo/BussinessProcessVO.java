@@ -3,7 +3,10 @@ import java.util.ArrayList;
 
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public class BussinessProcessVO {
 	/**
 	 * 经营历程表

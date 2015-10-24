@@ -1,9 +1,10 @@
 package po.receiptpo;
 
 public class InventoryImportReceiptPO extends  ReceiptPO  {
-	 /**
-	 * 
-	 */
+	  /** @author lxl
+		 *  @version Oct 23,2015
+		 *      **/
+		
 	private static final long serialVersionUID = 1L;
 	public InventoryImportReceiptPO(String ID, String destination, int a, int b, int c, int d) {
 		super(ID);

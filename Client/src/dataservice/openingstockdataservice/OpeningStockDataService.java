@@ -2,7 +2,10 @@ package dataservice.openingstockdataservice;
 
 import po.OpeningStockPO;
 import state.ResultMessage;
-
+/** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public interface OpeningStockDataService {
 	/**增加一条po数据**/
 	public ResultMessage add(OpeningStockPO po);

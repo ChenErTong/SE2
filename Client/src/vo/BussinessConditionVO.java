@@ -2,7 +2,10 @@ package vo;
 
 public class BussinessConditionVO {
 	
-
+	  /** @author lxl
+		 *  @version Oct 23,2015
+		 *      **/
+		
 	/**
 	 * 经营情况表
 	 * 统计显示一段时间内的经营收支状况和利润。
