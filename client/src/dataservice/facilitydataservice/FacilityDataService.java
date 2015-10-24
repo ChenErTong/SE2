@@ -1,7 +1,7 @@
 package dataservice.facilitydataservice;
 
 import dataservice.DataService;
-import po.AccountPO;
+import po.accountpo.AccountPO;
 import po.FacilityPO;
 import po.PersistentObject;
 import state.ResultMessage;
