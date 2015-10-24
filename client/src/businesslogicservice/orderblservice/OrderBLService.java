@@ -3,9 +3,6 @@ package businesslogicservice.orderblservice;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
-import po.CommodityPO;
-import po.OrderPO;
-import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;

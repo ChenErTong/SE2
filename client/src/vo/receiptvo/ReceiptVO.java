@@ -1,10 +1,8 @@
 package vo.receiptvo;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import po.PersistentObject;
 import vo.ValueObject;
 /**
  * 所有单据的父类，包括编号、创建时间
@@ -12,8 +10,6 @@ import vo.ValueObject;
  */
 public class ReceiptVO extends ValueObject{
 
-	/**serializableUID*/
-	private static final long serialVersionUID = 1L;
 	
 	/**单据编号，不同的单据具有不同的编号格式**/
 	protected String ID;

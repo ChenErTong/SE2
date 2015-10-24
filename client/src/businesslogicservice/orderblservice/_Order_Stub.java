@@ -18,6 +18,7 @@ public class _Order_Stub implements OrderBLService {
 
 	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
+		@SuppressWarnings("unused")
 		OrderPO orderPO = new OrderPO(
 				order.getOrderIdString(), order.getOrderIdString(),
 				order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
