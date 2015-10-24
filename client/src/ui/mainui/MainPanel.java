@@ -10,8 +10,14 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import javax.security.auth.login.ConfigurationSpi;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import businesslogicservice.orderblservice._Order_Stub;
+import state.ConfirmState;
+import state.ResultMessage;
+import vo.OrderVO;
 
 public class MainPanel extends JPanel{
 
@@ -126,10 +132,35 @@ public class MainPanel extends JPanel{
 			}
 		}
 	}
-	public void add(){
-		System.out.println("add Something!");
+	public void _Order_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		ConfirmState confirmState = order_Stub.confirmOperation();
+		System.out.println(confirmState);
 	}
-	public void search(){
-		System.out.println("search Something!");
+	public void _Order_Driver_addOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.addOrder(new ArrayList<>(), 
+				new OrderVO( "00001",
+				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
+				"Nanjing156-Nanjing188" , 
+				"2015-10-24", "2015-10-26", 6.767));
 	}
+	public void _Order_Driver_inquireOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaoli");
+	}
+	public void _Order_Driver_costAndTime(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		OrderVO orderVO=order_Stub.inquireOrder("00000", "xiaoli");
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.costAndTime(orderVO);
+	}
+	
 }

@@ -1,7 +1,7 @@
 package dataservice.inventorydataservice;
 
 import java.util.ArrayList;
-import po.InventoryPO;
+
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
