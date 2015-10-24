@@ -1,5 +1,7 @@
 package state;
 
-public class ResultMessage {
-
+public enum ResultMessage {
+	SUCCESS,
+	FAIL,
+	WAIT;
 }
