@@ -1,0 +1,6 @@
+package vo.receiptpo;
+
+public class InventoryImportReceiptVO {
+	
+
+}

@@ -1,5 +1,8 @@
-/*package vo;
+package vo;
 import java.util.ArrayList;
+
+import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.PaymentBillVO;
 
 public class BussinessProcessVO {
 	/**
@@ -8,14 +11,21 @@ public class BussinessProcessVO {
 	 * 入款单和出款单
 	 * 筛选条件为：时间区间
 	 * 显示出符合条件的单据后，可以对单据进行查看操作，但是不可修改和删除。
-	 * @author Zing
-	 * @version 2014年11月2日下午3:45:41
-	 */
-/*	public class BusinessProVO {
-		
-		
-		}
+	*/
 
+		
+		public ArrayList<DebitBillVO> incomeReceipt;
+		public BussinessProcessVO(ArrayList<DebitBillVO> incomeReceipt, ArrayList<PaymentBillVO> expenReceipt) {
+		super();
+		this.incomeReceipt = incomeReceipt;
+		this.expenReceipt = expenReceipt;
 	}
-
-}*/
+		public ArrayList<PaymentBillVO> expenReceipt;
+		
+		
+		
+		
+	
+}
+		
+		

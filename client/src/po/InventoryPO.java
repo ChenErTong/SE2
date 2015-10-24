@@ -2,7 +2,28 @@ package po;
 
 
 public class InventoryPO extends PersistentObject {
-	public InventoryPO(String id, String date) {
-		super(id, date);
+	/**serialVersionUID*/
+	private static final long serialVersionUID = 1L;
+	
+	public InventoryPO(String id, String lLocation, int size) {
+		super(id);
+		this.lLocation = lLocation;
+		this.size = size;
 	}
+	public String lLocation;
+	public String getlLocation() {
+		return lLocation;
+	}
+	public void setlLocation(String lLocation) {
+		this.lLocation = lLocation;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public int size;
+	
+	
 }

@@ -3,9 +3,9 @@ package vo;
 public class InventoryViewVO {
 
 	
-	/** 出库数量 */
+	/** 出库数量 **/
 	public int exportNumber;
-	/** 入库数量） */
+	/** 入库数量）**/
 	public int importNumber;
 	/**区**/
 	public int A;

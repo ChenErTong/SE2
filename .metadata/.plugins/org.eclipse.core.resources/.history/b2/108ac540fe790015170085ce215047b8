@@ -1,0 +1,5 @@
+package dataservice.recorddataservice;
+
+public interface RecordDataService {
+
+}

@@ -6,8 +6,13 @@ import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
+<<<<<<< Updated upstream
 import vo.receiptpvo.TransferArrivalListVO;
 import vo.receiptpvo.TransferOrderVO;
+=======
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
+>>>>>>> Stashed changes
 import businesslogicservice.BLService;
 
 /**
