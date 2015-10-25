@@ -19,6 +19,7 @@ import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
 import vo.OrderVO;
+import vo.accountvo.DriverVO;
 
 public class MainPanel extends JPanel{
 
@@ -71,7 +72,6 @@ public class MainPanel extends JPanel{
 				methodName=line.split(",")[1];
 				buttonString.add(buttonText);
 				allMethodNames.add(methodName);
-				System.out.println(line);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -199,6 +199,46 @@ public class MainPanel extends JPanel{
 		_Facility_Stub facility_Stub = new _Facility_Stub();
 		@SuppressWarnings("unused")
 		FacilityVO facilityVO = facility_Stub.findFacility("Y001:2015-09-22:00008");
+	}
+	
+	public void _Facility_Driver_addDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.addDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_deleteDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.deleteDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_modifyDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.modifyDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_findDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		@SuppressWarnings("unused")
+		DriverVO driverVO =  facility_Stub.findDriver("DY001:2014-6-4:00008");
 	}
 	
 }
