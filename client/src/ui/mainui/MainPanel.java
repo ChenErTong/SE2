@@ -159,16 +159,27 @@ public class MainPanel extends JPanel{
 				"Nanjing156-Nanjing188" , 
 				"2015-10-24", "2015-10-26", 6.767));
 	}
+	public void _Order_Driver_updateOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.updateOrder(new ArrayList<>(), 
+				new OrderVO( "00001",
+				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
+				"Nanjing156-Nanjing188" , 
+				"2015-10-24", "2015-10-26", 6.767));
+	}
 	public void _Order_Driver_inquireOrder(){
 		System.out.println("--------------------------------------------------");
 		_Order_Stub order_Stub = new _Order_Stub();
 		@SuppressWarnings("unused")
-		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaoli");
+		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaowang");
 	}
 	public void _Order_Driver_costAndTime(){
 		System.out.println("--------------------------------------------------");
 		_Order_Stub order_Stub = new _Order_Stub();
-		OrderVO orderVO=order_Stub.inquireOrder("00000", "xiaoli");
+		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaowang");
 		@SuppressWarnings("unused")
 		ResultMessage rMessage = order_Stub.costAndTime(orderVO);
 	}
