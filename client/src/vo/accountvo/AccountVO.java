@@ -35,4 +35,76 @@ public class AccountVO {
 		this.ReceiptNum = receiptNum;
 	}
 
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public String getDuty() {
+		return Duty;
+	}
+
+	public void setDuty(String duty) {
+		Duty = duty;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public String getBirthDay() {
+		return BirthDay;
+	}
+
+	public void setBirthDay(String birthDay) {
+		BirthDay = birthDay;
+	}
+
+	public String getIDCard() {
+		return IDCard;
+	}
+
+	public void setIDCard(String iDCard) {
+		IDCard = iDCard;
+	}
+
+	public String getPhone() {
+		return Phone;
+	}
+
+	public void setPhone(String phone) {
+		Phone = phone;
+	}
+
+	public double getSalary() {
+		return Salary;
+	}
+
+	public void setSalary(double salary) {
+		Salary = salary;
+	}
+
+	public String getWorkTime() {
+		return WorkTime;
+	}
+
+	public void setWorkTime(String workTime) {
+		WorkTime = workTime;
+	}
+
+	public int getReceiptNum() {
+		return ReceiptNum;
+	}
+
+	public void setReceiptNum(int receiptNum) {
+		ReceiptNum = receiptNum;
+	}
+
 }

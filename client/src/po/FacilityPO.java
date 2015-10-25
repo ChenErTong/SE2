@@ -3,7 +3,14 @@ package po;
 import java.util.ArrayList;
 
 import po.receiptpo.LoadingListPO;
-
+/**
+ * 运输工具的PO类，
+ * 包括编号、监管员编号、
+ * 运输历史、购入时间，
+ * 编号格式为营业厅编号+日期(20150921)+五位数字编码(00000)
+ * @author Ann
+ *
+ */
 public class FacilityPO extends PersistentObject{
 	/**
 	 * 
