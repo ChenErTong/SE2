@@ -13,9 +13,11 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import businesslogicservice.facilityblservice._Facility_Stub;
 import businesslogicservice.orderblservice._Order_Stub;
 import state.ConfirmState;
 import state.ResultMessage;
+import vo.FacilityVO;
 import vo.OrderVO;
 
 public class MainPanel extends JPanel{
@@ -160,6 +162,43 @@ public class MainPanel extends JPanel{
 		OrderVO orderVO=order_Stub.inquireOrder("00000", "xiaoli");
 		@SuppressWarnings("unused")
 		ResultMessage rMessage = order_Stub.costAndTime(orderVO);
+	}
+	public void _Facility_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		ConfirmState confirmState = facility_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+
+	public void _Facility_Driver_addFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.addFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_deleteFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.deleteFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_modifyFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.modifyFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_findFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		@SuppressWarnings("unused")
+		FacilityVO facilityVO = facility_Stub.findFacility("Y001:2015-09-22:00008");
 	}
 	
 }
