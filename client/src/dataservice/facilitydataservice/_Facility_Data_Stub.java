@@ -16,26 +16,26 @@ public class _Facility_Data_Stub implements FacilityDataService<FacilityPO> {
 
 	@Override
 	public ResultMessage addFacility(FacilityPO facility) {
-		System.out.println("You have added a facility!");
+		System.out.println("You have added a car!");
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage deleteFacility(FacilityPO facility) {
-		System.out.println("You have deleted a facility!");
+		System.out.println("You have deleted a car!");
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityPO facility) {
-		System.out.println("You have modified a facility!");
+		System.out.println("You have modified a car!");
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public AccountPO findDriver(String id) {
 		return new DriverPO("DY001:2014-6-4:00008", "Old driver", 
-				"YunNan", "1990-10-24", "731050199010247391", 
+				"YunNan", "1990-10-24", "842160199010246291", 
 				"16868688686", 1500.0, "2years", 100);
 	}
 

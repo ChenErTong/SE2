@@ -1,7 +1,7 @@
 package businesslogicservice.facilityblservice;
 
-import java.util.ArrayList;
-
+import dataservice.facilitydataservice.FacilityDataService;
+import dataservice.facilitydataservice._Facility_Data_Stub;
 import po.FacilityPO;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
@@ -10,7 +10,7 @@ import vo.FacilityVO;
 import vo.accountvo.DriverVO;
 
 public class _Facility_Stub implements FacilityBLService {
-
+	FacilityDataService<FacilityPO> data_Stub = new _Facility_Data_Stub();
 	@Override
 	public ConfirmState confirmOperation() {
 		System.out.println("You have confirmed!");
@@ -19,60 +19,70 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
-		@SuppressWarnings("unused")
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
-		System.out.println("You have added a car!");
+		data_Stub.addFacility(facilityPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
-		System.out.println("You have deleted a car!");
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
+		data_Stub.deleteFacility(facilityPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
-		System.out.println("You have modified a car!");
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
+		data_Stub.modifyFacility(facilityPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public FacilityVO findFacility(String facilityId) {
+		FacilityPO facilityPO = data_Stub.findFacility(facilityId);
 		System.out.println("You have found a car!");
-		return new FacilityVO("123456", new ArrayList<>(), facilityId, "2015-10-23");
+		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
 	}
 
 	@Override
 	public ResultMessage addDriver(DriverVO driver) {
-		@SuppressWarnings("unused")
 		DriverPO driverPO = new DriverPO(
 				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
 				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
 				driver.getReceiptNum());
-		System.out.println("You have added a driver!");
+		data_Stub.addDriver(driverPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage deleteDriver(DriverVO driver) {
-		System.out.println("You have deleted a driver!");
+		DriverPO driverPO = new DriverPO(
+				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
+				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
+				driver.getReceiptNum());
+		data_Stub.deleteDriver(driverPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage modifyDriver(DriverVO driver) {
-		System.out.println("You have modifed a driver!");
+		DriverPO driverPO = new DriverPO(
+				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
+				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
+				driver.getReceiptNum());
+		data_Stub.modifyDriver(driverPO);
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public DriverVO findDriver(String driverId) {
+		DriverPO driverPO = (DriverPO) data_Stub.findDriver(driverId);
 		System.out.println("You have find a driver!");
 		return new DriverVO(
-				driverId, "Old driver", 
-				"YunNan", "1990-10-24", "731050199010247391", 
-				"16868688686", 1500.0, "2years", 100);
+				driverId,driverPO.getDuty(), 
+				driverPO.getName(), driverPO.getBirthDay(),driverPO.getIDCard(), 
+				driverPO.getPhone(), driverPO.getSalary(), driverPO.getWorkTime(), driverPO.getReceiptNum());
 	}
 
 }
