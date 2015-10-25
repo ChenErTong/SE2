@@ -13,7 +13,7 @@ import vo.receiptvo.TransferArrivalListVO;
 public class _Inventory_Stub implements InventoryBLService{
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
-		InventoryViewVO ivVO = new InventoryViewVO(0, 0, 0, 0, 0, 0);
+		InventoryViewVO ivVO = new InventoryViewVO(100, 50, 5, 3, 5, 3);
 		System.out.println("Succeed in showing the condition of the inventory!");
 		return ivVO;
 	}
