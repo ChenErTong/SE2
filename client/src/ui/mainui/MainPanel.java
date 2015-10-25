@@ -17,6 +17,12 @@ import businesslogicservice.branchblservice._Branch_Stub;
 import businesslogicservice.facilityblservice._Facility_Stub;
 import businesslogicservice.orderblservice._Order_Stub;
 import businesslogicservice.transferblservice._Transfer_Stub;
+import dataservice.branchdataservice._Branch_Data_Stub;
+import dataservice.transferdataservice._Transfer_Data_Stub;
+import po.BranchPO;
+import po.FacilityPO;
+import po.TransferPO;
+import po.accountpo.AccountPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -302,6 +308,26 @@ public class MainPanel extends JPanel{
 		@SuppressWarnings("unused")
 		LoadingListVO loadingListVO = branch_Stub.truckDeliver("Branch001", "Nanjing Gulou", "B001:2015-09-21", "Lao Wang", new ArrayList<>());
 	}
+	public void _Branch_Driver_insert(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		BranchPO branchPO = new BranchPO("Br001", "Nanjing", "2015-6-7", new ArrayList<AccountPO>(), new ArrayList<FacilityPO>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = branch_Data_Stub.insert(branchPO);
+	}
+	public void _Branch_Driver_find(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		@SuppressWarnings("unused")
+		BranchPO branchPO = branch_Data_Stub.find("Br001");
+	}
+	public void _Branch_Driver_update(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		BranchPO branchPO = new BranchPO("Br002", "Nanjing", "2015-6-8", new ArrayList<AccountPO>(), new ArrayList<FacilityPO>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = branch_Data_Stub.update(branchPO);
+	}
 	public void _Transfer_Driver_confirmOperation(){
 		System.out.println("--------------------------------------------------");
 		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
@@ -332,11 +358,31 @@ public class MainPanel extends JPanel{
 		@SuppressWarnings("unused")
 		TransferOrderVO transferOrderVO = transfer_Stub.trainTransfer("G9703", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
 	}
-	public void _Transfer_Driver_receiptList(){
+	public void _TransferTransfer_Driver_receiptList(){
 		System.out.println("--------------------------------------------------");
 		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
 		@SuppressWarnings("unused")
 		TransferArrivalListVO transferArrivalListVO = transfer_Stub.receiptList("ZZ001", "Nanjing", CommodityState.Success, new ArrayList<>());
+	}
+	public void _Transfer_Driver_insert(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		TransferPO transferPO = new TransferPO("Tr001", "2015-6-7", "Nanjing", new ArrayList<>(), new ArrayList<>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = transfer_Data_Stub.insert(transferPO);
+	}
+	public void _Transfer_Driver_find(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		@SuppressWarnings("unused")
+		TransferPO transferPO = transfer_Data_Stub.find("Tr001");
+	}
+	public void _Transfer_Driver_update(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		TransferPO transferPO = new TransferPO("Tr001", "2015-6-7", "Nanjing", new ArrayList<>(), new ArrayList<>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = transfer_Data_Stub.update(transferPO);
 	}
 	
 }

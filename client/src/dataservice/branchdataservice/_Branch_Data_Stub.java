@@ -16,7 +16,7 @@ public class _Branch_Data_Stub implements BranchDataService {
 	@Override
 	public BranchPO find(String id) {
 		BranchPO branchPO = new BranchPO(id, "Nanjing", "2015-2-3", new ArrayList<>(), new ArrayList<>());
-		System.out.println("You have find a branch!");
+		System.out.println("You have found a branch!");
 		return branchPO;
 	}
 
