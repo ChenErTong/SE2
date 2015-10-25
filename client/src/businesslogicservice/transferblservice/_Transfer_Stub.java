@@ -41,6 +41,7 @@ public class _Transfer_Stub implements TransferBLService {
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
 		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a plane transfer");
 		return transferOrderVO;
 	}
 
@@ -48,6 +49,7 @@ public class _Transfer_Stub implements TransferBLService {
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
 		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a truck transfer");
 		return transferOrderVO;
 	}
 
@@ -55,6 +57,7 @@ public class _Transfer_Stub implements TransferBLService {
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
 		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a train transfer");
 		return transferOrderVO;
 	}
 

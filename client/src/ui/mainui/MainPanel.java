@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import businesslogicservice.branchblservice._Branch_Stub;
 import businesslogicservice.facilityblservice._Facility_Stub;
 import businesslogicservice.orderblservice._Order_Stub;
+import businesslogicservice.transferblservice._Transfer_Stub;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -26,6 +27,8 @@ import vo.accountvo.DriverVO;
 import vo.receiptvo.BranchArrivalListVO;
 import vo.receiptvo.DeliveryListVO;
 import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
 
 public class MainPanel extends JPanel{
 
@@ -288,6 +291,41 @@ public class MainPanel extends JPanel{
 		@SuppressWarnings("unused")
 		LoadingListVO loadingListVO = branch_Stub.truckDeliver("Branch001", "Nanjing Gulou", "B001:2015-09-21", "Lao Wang", new ArrayList<>());
 	}
-	
+	public void _Transfer_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		ConfirmState confirmState = transfer_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+	public void _Transfer_Driver_getAllCommodities(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<CommodityVO> commodityVOs = transfer_Stub.getAllCommodities();
+	}
+	public void _Transfer_Driver_planeTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.planeTransfer("CZ1903", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _Transfer_Driver_truckTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.truckTransfer("B001:2015-09-21", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _Transfer_Driver_trainTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.trainTransfer("G9703", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _Transfer_Driver_receiptList(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferArrivalListVO transferArrivalListVO = transfer_Stub.receiptList("ZZ001", "Nanjing", CommodityState.Success, new ArrayList<>());
+	}
 	
 }
