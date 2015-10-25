@@ -2,6 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
+import state.UserAuthority;
 import state.UserIdentity;
 
 /**
@@ -23,6 +24,8 @@ public class UserPO extends PersistentObject{
 	private UserIdentity iden;
 	/**用户操作*/
 	private ArrayList operationRecords;
+	/**用户权限*/
+	private UserAuthority  authority;
 	/**
 	 * 构造函数
 	 * @param ID
