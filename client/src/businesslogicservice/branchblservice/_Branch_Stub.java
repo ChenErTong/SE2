@@ -22,8 +22,8 @@ public class _Branch_Stub implements BranchBLService {
 
 	@Override
 	public ArrayList<CommodityVO> getAllCommodities() {
-		System.out.println("You get all orderPOs");
 		ArrayList<OrderPO> orderPOs = new ArrayList<>();
+		System.out.println("You get all orderPOs");
 		ArrayList<CommodityVO> allCommodityVOs = new ArrayList<>();
 		System.out.println("Get commodities from orderPOs");
 		for(int i=0;i<orderPOs.size();i++){
@@ -39,8 +39,8 @@ public class _Branch_Stub implements BranchBLService {
 
 	@Override
 	public ArrayList<String> getAllOrderNumber() {
-		System.out.println("You get all orderPOs");
 		ArrayList<OrderPO> orderPOs = new ArrayList<>();
+		System.out.println("You get all orderPOs");
 		ArrayList<String> allOrderNumber = new ArrayList<>();
 		System.out.println("Get order number from orderPOs");
 		for(int i=0;i<orderPOs.size();i++){
@@ -53,33 +53,51 @@ public class _Branch_Stub implements BranchBLService {
 	@Override
 	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		// TODO Auto-generated method stub
-		return null;
+		BranchArrivalListVO branchArrivalListVO = new BranchArrivalListVO(transferListID, transferListID, departure, state, orders);
+		System.out.println("You have got a serial of commodities");
+		ReceiptPO receiptPO = new ReceiptPO(transferListID);
+		System.out.println("You have fielded a receipt");
+		ResultMessage resultMessage = this.submit(receiptPO);
+		if(resultMessage==ResultMessage.SUCCESS){
+			System.out.println("The receipt has passed!");
+			this.save(receiptPO);
+			System.out.println("You have saved the receipt!");
+		}else{
+			System.out.println("The receipt has not passed!");
+		}
+		return branchArrivalListVO;
 	}
 
 	@Override
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) {
-		// TODO Auto-generated method stub
-		return null;
+		DeliveryListVO deliveryListVO = new DeliveryListVO(null, orders, courierName);
+		System.out.println("You have fielded a delivery receipt!");
+		return deliveryListVO;
 	}
 
 	@Override
 	public ResultMessage submit(ReceiptPO receipt) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("You have submit a receipt");
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage save(ReceiptPO receipt) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("You have saved a receipt");
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders) {
-		// TODO Auto-generated method stub
-		return null;
+		@SuppressWarnings("unused")
+		double fare=6.767;
+		System.out.println("You have calcuated the fare of delivery!");
+		LoadingListVO loadingListVO = new LoadingListVO(branchID, branchID, destination, facilityID, courierName, orders);
+		System.out.println("You have fielded the loadingListReceipt!");
+		//TODO
+		System.out.println("You have updated the infos of branch's facilities!");
+		return loadingListVO;
 	}
 
 }
