@@ -13,13 +13,19 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import businesslogicservice.branchblservice._Branch_Stub;
 import businesslogicservice.facilityblservice._Facility_Stub;
 import businesslogicservice.orderblservice._Order_Stub;
+import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.FacilityVO;
 import vo.OrderVO;
 import vo.accountvo.DriverVO;
+import vo.receiptvo.BranchArrivalListVO;
+import vo.receiptvo.DeliveryListVO;
+import vo.receiptvo.LoadingListVO;
 
 public class MainPanel extends JPanel{
 
@@ -240,5 +246,48 @@ public class MainPanel extends JPanel{
 		@SuppressWarnings("unused")
 		DriverVO driverVO =  facility_Stub.findDriver("DY001:2014-6-4:00008");
 	}
+	
+	public void _Branch_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		ConfirmState confirmState = branch_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+	
+	public void _Branch_Driver_getAllCommodities(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<CommodityVO> commodityVOs = branch_Stub.getAllCommodities();
+	}
+	
+	public void _Branch_Driver_getAllOrderNumber(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<String> allOrderNumber = branch_Stub.getAllOrderNumber();
+	}
+	
+	public void _Branch_Driver_getBranchArrivalList(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		BranchArrivalListVO branchArrivalListVO = branch_Stub.getBranchArrivalList("ZZ001", "Nanjing Xianlin", CommodityState.Success	, new ArrayList<>());
+	}
+	
+	public void _Branch_Driver_getDeliveryList(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		DeliveryListVO deliveryListVO = branch_Stub.getDeliveryList(new ArrayList<>(), "Lao Wang");
+	}
+	
+	public void _Branch_Driver_truckDeliver(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		LoadingListVO loadingListVO = branch_Stub.truckDeliver("Branch001", "Nanjing Gulou", "B001:2015-09-21", "Lao Wang", new ArrayList<>());
+	}
+	
 	
 }

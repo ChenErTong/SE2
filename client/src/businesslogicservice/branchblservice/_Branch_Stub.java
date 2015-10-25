@@ -61,7 +61,6 @@ public class _Branch_Stub implements BranchBLService {
 		if(resultMessage==ResultMessage.SUCCESS){
 			System.out.println("The receipt has passed!");
 			this.save(receiptPO);
-			System.out.println("You have saved the receipt!");
 		}else{
 			System.out.println("The receipt has not passed!");
 		}
