@@ -1,12 +1,7 @@
 package businesslogicservice.accountblservice;
 
 import java.util.ArrayList;
-
-import po.FindTypeAccount;
 import vo.accountvo.AccountVO;
-import vo.BankAccoutVO;
-
-
 
 public interface AccountBLService {
 	/**
