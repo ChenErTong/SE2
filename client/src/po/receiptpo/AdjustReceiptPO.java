@@ -8,8 +8,8 @@ public class AdjustReceiptPO extends ReceiptPO{
 	
 	 
 	private static final long serialVersionUID = 1L;
-	public AdjustReceiptPO(String ID, String exA, String exB, String exC, String exD, String aftA, String aftB,
-			String aftC, String aftD) {
+	public AdjustReceiptPO(String ID, int exA, int exB, int exC, int exD, int aftA, int aftB,
+			int aftC, int aftD) {
 		super(ID);
 		this.exA = exA;
 		this.exB = exB;
@@ -20,13 +20,13 @@ public class AdjustReceiptPO extends ReceiptPO{
 		this.aftC = aftC;
 		this.aftD = aftD;
 	}
-	public String exA;
-	public String exB;
-	public String exC;
-	public String exD;
+	public int exA;
+	public int exB;
+	public int exC;
+	public int exD;
 	
-	public String aftA;
-	public String aftB;
-	public String aftC;
-	public String aftD;
+	public int aftA;
+	public int aftB;
+	public int aftC;
+	public int aftD;
 }

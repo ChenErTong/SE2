@@ -21,7 +21,23 @@ public class InventoryImportReceiptVO extends ReceiptVO{
 		this.d = d;
 	}
 
-	
+	public String getDestination() {
+		return destination;
+	}
 
+	public int getA() {
+		return a;
+	}
 
+	public int getB() {
+		return b;
+	}
+
+	public int getC() {
+		return c;
+	}
+
+	public int getD() {
+		return d;
+	}
 }

@@ -11,74 +11,73 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Succeed in initing the inventory data.");
 	}
 
 	@Override
 	public String getImportID() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in getting the import receipt id.");
+		return "0123456789";
 	}
 
 	@Override
 	public String getExportID() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in getting the export receipt id.");
+		return "0123456789";
 	}
 
 	@Override
 	public String getAdjustID() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in getting the adjusting receipt id.");
+		return "0123456789";
 	}
 
 
 	@Override
 	public int getASize() {
-		System.out.println("Succeed in gettting the size of row.");
+		System.out.println("Succeed in getting the size of row.");
 		return 100;
 	}
 
 	@Override
 	public int getBSize() {
-		System.out.println("Succeed in gettting the size of block.");
+		System.out.println("Succeed in getting the size of block.");
 		return 100;
 	}
 
 	@Override
 	public int getCSize() {
-		System.out.println("Succeed in gettting the size of frame.");
+		System.out.println("Succeed in getting the size of frame.");
 		return 100;
 	}
 
 	@Override
 	public int getDSize() {
-		System.out.println("Succeed in gettting the size of position.");
+		System.out.println("Succeed in getting the size of position.");
 		return 100;
 	}
 
 	@Override
 	public int getANum() {
-		System.out.println("Succeed in gettting the capacity of row.");
+		System.out.println("Succeed in getting the capacity of row.");
 		return 50;
 	}
 
 	@Override
 	public int getBNum() {
-		System.out.println("Succeed in gettting the capacity of block.");
+		System.out.println("Succeed in getting the capacity of block.");
 		return 50;
 	}
 
 	@Override
 	public int getCNum() {
-		System.out.println("Succeed in gettting the capacity of frame.");
+		System.out.println("Succeed in getting the capacity of frame.");
 		return 50;
 	}
 
 	@Override
 	public int getDNum() {
-		System.out.println("Succeed in gettting the capacity of position.");
+		System.out.println("Succeed in getting the capacity of position.");
 		return 50;
 	}
 
@@ -103,7 +102,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust() {
 		ArrayList<AdjustReceiptPO> arPOs = new ArrayList<AdjustReceiptPO>();
-		AdjustReceiptPO arPO = new AdjustReceiptPO(null, null, null, null, null, null, null, null, null);
+		AdjustReceiptPO arPO = new AdjustReceiptPO("1234567890", 1, 1, 1, 1, 2, 2, 2, 2);
 		arPOs.add(arPO);
 		System.out.println("Succeed in showing the adjusting receipts.");
 		return arPOs;
