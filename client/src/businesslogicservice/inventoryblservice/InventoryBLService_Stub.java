@@ -2,11 +2,9 @@ package businesslogicservice.inventoryblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.inventoryblservice.InventoryBLService;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
-import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
@@ -87,12 +85,12 @@ public class InventoryBLService_Stub implements InventoryBLService{
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		// TODO Auto-generated method stub
-		return new InventoryViewVO(exportNumber,  importNumber, InventoryCondition);
+		return new InventoryViewVO(exportNumber,  importNumber,  a,  b,  c,  d);
 	}
     @Override
 	public InventoryCheckVO checkRecord() {
 		// TODO Auto-generated method stub
-		return new InventoryCheckVO(receipts, date,lotNum);
+		return new InventoryCheckVO(receipts, adjustID);
 	}
 	
 
