@@ -2,8 +2,6 @@ package po;
 
 import java.util.ArrayList;
 
-import vo.CommodityVO;
-
 /**
  * 订单的PO类，
  * 包括订单号、收件人（寄件人）姓名、收件人（寄件人）住址、
@@ -39,7 +37,8 @@ public class OrderPO extends PersistentObject{
 	private String recipientTel;
 	private String recipientCo;
 	//货物集合信息
-	private ArrayList<CommodityVO> commodityVO;
+	//TODO 暂时去掉红叉
+	private ArrayList<CommodityPO> commodityPO;
 	//订单运送途径地点
 	private String midAddres;
 	//派件时间、收件时间
@@ -49,7 +48,7 @@ public class OrderPO extends PersistentObject{
 	private double money;
 	public OrderPO(String id, String orderIdString, String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityVO> commodityVO, String midAddres, String sendTime, String recipientTime, double money) {
+			ArrayList<CommodityPO> commodityPO, String midAddres, String sendTime, String recipientTime, double money) {
 		super(id);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
@@ -60,7 +59,7 @@ public class OrderPO extends PersistentObject{
 		this.recipientAddress = recipientAddress;
 		this.recipientTel = recipientTel;
 		this.recipientCo = recipientCo;
-		this.commodityVO = commodityVO;
+		this.commodityPO = commodityPO;
 		this.midAddres = midAddres;
 		this.sendTime = sendTime;
 		this.recipientTime = recipientTime;
@@ -120,11 +119,11 @@ public class OrderPO extends PersistentObject{
 	public void setRecipientCo(String recipientCo) {
 		this.recipientCo = recipientCo;
 	}
-	public ArrayList<CommodityVO> getCommodityVO() {
-		return commodityVO;
+	public ArrayList<CommodityPO> getCommodityPO() {
+		return commodityPO;
 	}
-	public void setCommodityVO(ArrayList<CommodityVO> commodityVO) {
-		this.commodityVO = commodityVO;
+	public void setCommodityPO(ArrayList<CommodityPO> commodityPO) {
+		this.commodityPO = commodityPO;
 	}
 	public String getMidAddres() {
 		return midAddres;

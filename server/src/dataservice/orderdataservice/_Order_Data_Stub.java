@@ -2,9 +2,9 @@ package dataservice.orderdataservice;
 
 import java.util.ArrayList;
 
+import po.CommodityPO;
 import po.OrderPO;
 import state.ResultMessage;
-import vo.CommodityVO;
 
 public class _Order_Data_Stub implements OrderDataService<OrderPO> {
 
@@ -16,7 +16,7 @@ public class _Order_Data_Stub implements OrderDataService<OrderPO> {
 		OrderPO orderPO = new OrderPO(ordernumber,ordernumber,
 				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
 				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
-				new ArrayList<CommodityVO>(),
+				new ArrayList<CommodityPO>(),
 				"Nanjing156-Nanjing188" , 
 				"2015-10-24", "2015-10-26",6.767);
 		return orderPO;
