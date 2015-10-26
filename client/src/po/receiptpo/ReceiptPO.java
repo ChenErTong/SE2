@@ -1,7 +1,8 @@
 package po.receiptpo;
 
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import po.PersistentObject;
 /**
@@ -20,25 +21,10 @@ public class ReceiptPO extends PersistentObject{
 	
 	public ReceiptPO(String ID){
 		super(ID);
+		this.ID = ID;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
 	}
 	
 

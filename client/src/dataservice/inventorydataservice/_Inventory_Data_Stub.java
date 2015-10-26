@@ -26,7 +26,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return "0123456789";
 	}
 
-	@Override
+
 	public String getAdjustID() {
 		System.out.println("Succeed in getting the adjusting receipt id.");
 		return "0123456789";
@@ -34,51 +34,49 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 
 
 	@Override
-	public int getASize() {
+	public String getASize() {
 		System.out.println("Succeed in getting the size of row.");
-		return 100;
+		return "100";
 	}
-
-	@Override
-	public int getBSize() {
+	public String getBSize() {
 		System.out.println("Succeed in getting the size of block.");
-		return 100;
+		return "100";
 	}
 
-	@Override
-	public int getCSize() {
+
+	public String getCSize() {
 		System.out.println("Succeed in getting the size of frame.");
-		return 100;
+		return "100";
 	}
 
 	@Override
-	public int getDSize() {
+	public String getDSize() {
 		System.out.println("Succeed in getting the size of position.");
-		return 100;
+		return "100";
 	}
 
 	@Override
-	public int getANum() {
+	public String getANum() {
 		System.out.println("Succeed in getting the capacity of row.");
-		return 50;
+		return "50";
 	}
 
 	@Override
-	public int getBNum() {
+	public String getBNum() {
 		System.out.println("Succeed in getting the capacity of block.");
-		return 50;
+		return "50";
 	}
 
 	@Override
-	public int getCNum() {
+	public String getCNum() {
 		System.out.println("Succeed in getting the capacity of frame.");
-		return 50;
+		return "50";
 	}
 
 	@Override
-	public int getDNum() {
+	public String getDNum() {
 		System.out.println("Succeed in getting the capacity of position.");
-		return 50;
+		return "50";
 	}
 
 	@Override
@@ -127,26 +125,34 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 	@Override
-	public int getA() {
+	public String getA() {
 		System.out.println("Succeed in getting the block number.");
-		return 1;
+		return "1";
 	}
 
 	@Override
-	public int getB() {
+	public String getB() {
 		System.out.println("Succeed in getting the row number.");
-		return 1;
+		return "1";
 	}
 
 	@Override
-	public int getC() {
+	public String getC() {
 		System.out.println("Succeed in getting the frame number.");
-		return 1;
+		return "1";
 	}
 
 	@Override
-	public int getD() {
+	public String getD() {
 		System.out.println("Succeed in getting the position number.");
-		return 1;
+		return "1";
 	}
+
+	@Override
+	public String getAlarmID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

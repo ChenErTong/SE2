@@ -26,12 +26,17 @@ public class InventoryCheckVO {
 	/** 批号 */
 	public String lotNum;
 	
-	public InventoryCheckVO(ArrayList<InventoryImportReceiptVO> receipts, String lotNum) {
+	public InventoryCheckVO(ArrayList<InventoryImportReceiptVO> receipts, String date, String lotNum) {
 		super();
 		this.receipts = receipts;
+	    this.date = date;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
-		this.date = sdf.format(new Date());
+		date = sdf.format(new Date());
 	}
-}
+
+	
+	}
+
+

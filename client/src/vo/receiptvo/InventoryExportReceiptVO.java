@@ -10,4 +10,6 @@ public class InventoryExportReceiptVO extends ReceiptVO {
 		this.destination = destination;
 		Transfer = transfer;
 	}
+	
+
 }

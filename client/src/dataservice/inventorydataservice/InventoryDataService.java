@@ -1,9 +1,7 @@
 package dataservice.inventorydataservice;
 
 import java.util.ArrayList;
-
-import dataservice.DataService;
-import po.PersistentObject;
+import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -12,7 +10,7 @@ import state.ResultMessage;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public interface InventoryDataService <InventoryPO extends PersistentObject>extends DataService<InventoryPO>{
+public interface InventoryDataService {
 	/**初始化持久数据**/
 	public void init();
 	/**得到入库单ID**/
@@ -20,33 +18,33 @@ public interface InventoryDataService <InventoryPO extends PersistentObject>exte
 	/**得到出库单ID**/
 	public String getExportID ();
 	/**得到调整单ID**/
-	public String getAdjustID ();
+	public String getAlarmID ();
 	/**得到区号**/
-	public int getA();
+	public String getA();
 	/**得到排号**/
-	public int getB();
+	public String getB();
 	/**得到架号**/
-	public int getC();
+	public String getC();
 	/**得到位号**/
-	public int getD();
+	public String getD();
 	
 	/**得到区容量**/
-	public int getASize();
+	public String getASize();
 	/**得到排号容量**/
-	public int getBSize();
+	public String getBSize();
 	/**得到架号容量**/
-	public int getCSize();
+	public String getCSize();
 	/**得到位号容量**/
-	public int getDSize();
+	public String getDSize();
 	
 	/**得到区此时容量**/
-	public int getANum();
+	public String getANum();
 	/**得到排此时容量**/
-	public int getBNum();
+	public String getBNum();
 	/**得到架此时容量**/
-	public int getCNum();
+	public String getCNum();
 	/**得到位此时容量**/
-	public int getDNum();
+	public String getDNum();
 	
 	
 	/**返回所有入库单据的数据**/
