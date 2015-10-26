@@ -28,116 +28,126 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 	@Override
-	public String getAlarmID() {
+	public String getAdjustID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public String getA() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getASize() {
+		System.out.println("Succeed in gettting the size of row.");
+		return 100;
 	}
 
 	@Override
-	public String getB() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getBSize() {
+		System.out.println("Succeed in gettting the size of block.");
+		return 100;
 	}
 
 	@Override
-	public String getC() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getCSize() {
+		System.out.println("Succeed in gettting the size of frame.");
+		return 100;
 	}
 
 	@Override
-	public String getD() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getDSize() {
+		System.out.println("Succeed in gettting the size of position.");
+		return 100;
 	}
 
 	@Override
-	public String getASize() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getANum() {
+		System.out.println("Succeed in gettting the capacity of row.");
+		return 50;
 	}
 
 	@Override
-	public String getBSize() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getBNum() {
+		System.out.println("Succeed in gettting the capacity of block.");
+		return 50;
 	}
 
 	@Override
-	public String getCSize() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getCNum() {
+		System.out.println("Succeed in gettting the capacity of frame.");
+		return 50;
 	}
 
 	@Override
-	public String getDSize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getANum() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getBNum() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getCNum() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getDNum() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getDNum() {
+		System.out.println("Succeed in gettting the capacity of position.");
+		return 50;
 	}
 
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<InventoryImportReceiptPO> iirPOs = new ArrayList<InventoryImportReceiptPO>();
+		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0159100143", "Nanjing", 1, 1, 1, 1);
+		iirPOs.add(iirPO);
+		System.out.println("Succeed in showing the import receipts.");
+		return iirPOs;
 	}
 
 	@Override
 	public ArrayList<InventoryExportReceiptPO> showExport() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<InventoryExportReceiptPO> ierPOs = new ArrayList<InventoryExportReceiptPO>();
+		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("0159100143", "Shanghai", "plane");
+		ierPOs.add(ierPO);
+		System.out.println("Succeed in showing the export receipts.");
+		return ierPOs;
 	}
 
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<AdjustReceiptPO> arPOs = new ArrayList<AdjustReceiptPO>();
+		AdjustReceiptPO arPO = new AdjustReceiptPO(null, null, null, null, null, null, null, null, null);
+		arPOs.add(arPO);
+		System.out.println("Succeed in showing the adjusting receipts.");
+		return arPOs;
 	}
 
 	@Override
 	public ResultMessage insertImport(InventoryImportReceiptPO po) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in inserting the import receipts.");
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage insertExport(InventoryExportReceiptPO po) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in inserting the export receipts.");
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage insertAdjust(AdjustReceiptPO po) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Succeed in inserting the adjusting receipts.");
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public int getA() {
+		System.out.println("Succeed in getting the block number.");
+		return 1;
+	}
+
+	@Override
+	public int getB() {
+		System.out.println("Succeed in getting the row number.");
+		return 1;
+	}
+
+	@Override
+	public int getC() {
+		System.out.println("Succeed in getting the frame number.");
+		return 1;
+	}
+
+	@Override
+	public int getD() {
+		System.out.println("Succeed in getting the position number.");
+		return 1;
 	}
 }
