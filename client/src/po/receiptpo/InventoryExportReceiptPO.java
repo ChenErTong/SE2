@@ -12,10 +12,26 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public String destination;
 	/**装运形式**/
 	public String Transfer;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/master
 	public InventoryExportReceiptPO(String ID, String destination, String transfer) {
 		super(ID);
 		this.destination = destination;
 		Transfer = transfer;
 	}
+<<<<<<< HEAD
 	
 }
+=======
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getTransfer() {
+		return Transfer;
+	}
+}
+>>>>>>> origin/master

@@ -1,9 +1,12 @@
 package po.receiptpo;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import state.CommodityState;
 
+=======
+>>>>>>> origin/master
 /**
  * 营业厅到达单：中转单编号、出发地、货物到达状态、订单订单号
  * @author czw
@@ -11,6 +14,7 @@ import state.CommodityState;
  */
 public class BranchArrivalListPO extends ReceiptPO {
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 */
@@ -56,6 +60,11 @@ public class BranchArrivalListPO extends ReceiptPO {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+=======
+	public BranchArrivalListPO(String ID) {
+		super(ID);
+		// TODO Auto-generated constructor stub
+>>>>>>> origin/master
 	}
 
 }

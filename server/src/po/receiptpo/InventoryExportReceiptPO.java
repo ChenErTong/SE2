@@ -1,12 +1,19 @@
 package po.receiptpo;
 
 public class InventoryExportReceiptPO extends ReceiptPO{
+<<<<<<< HEAD
 	
 	   /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
 	
 	
+=======
+	  /** @author lxl
+		 *  @version Oct 23,2015
+		 *      **/
+		
+>>>>>>> origin/master
 	private static final long serialVersionUID = 1L;
 	/**目的地**/
 	public String destination;

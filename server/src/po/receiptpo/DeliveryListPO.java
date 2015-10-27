@@ -7,11 +7,14 @@ package po.receiptpo;
  */
 public class DeliveryListPO extends ReceiptPO{
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+=======
+>>>>>>> origin/master
 	public DeliveryListPO(String ID) {
 		super(ID);
 	}

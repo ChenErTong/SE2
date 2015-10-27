@@ -1,0 +1,5 @@
+package vo.receiptpo;
+
+public class AdjustReceiptVO  extends ReceiptVO{
+
+}

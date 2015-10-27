@@ -1,5 +1,6 @@
 package po;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import vo.receiptvo.DebitBillVO;
@@ -8,6 +9,10 @@ import vo.receiptvo.PaymentBillVO;
 public class BussinessConditionPO {
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
+=======
+public class BussinessConditionPO {
+
+>>>>>>> origin/master
 	/**
 	 * 经营情况表
 	 * 统计显示一段时间内的经营收支状况和利润。

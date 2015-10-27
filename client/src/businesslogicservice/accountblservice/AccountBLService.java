@@ -1,12 +1,17 @@
 package businesslogicservice.accountblservice;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import vo.accountvo.AccountVO;
 
 
 
 
+=======
+import vo.accountvo.AccountVO;
+
+>>>>>>> origin/master
 public interface AccountBLService {
 	/**
 	 * 负责实现总经理需要查看公司各类员工的帐户信息所需要的服务
@@ -15,7 +20,12 @@ public interface AccountBLService {
 	/**
 	 * 账户查询（账户指的是此家公司各类员工的账户信息）
 	 * 账号的属性有：员工编号、职务权限、姓名、出生日期、身份证号、手机号、工资情况、任职时间、每日订单完成数目。
+<<<<<<< HEAD
 	 * 
+=======
+	 *  @author lxl
+ *      @version Oct 23,2015
+>>>>>>> origin/master
 	 
 	 */
 	/**

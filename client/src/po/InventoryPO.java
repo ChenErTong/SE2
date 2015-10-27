@@ -42,4 +42,7 @@ public class InventoryPO extends PersistentObject {
 	
 	
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master

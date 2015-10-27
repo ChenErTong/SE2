@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> origin/master
 /**
  * 中转中心单一可持续化对象
  * @author czw

@@ -26,7 +26,11 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return "0123456789";
 	}
 
+<<<<<<< HEAD
 
+=======
+	@Override
+>>>>>>> origin/master
 	public String getAdjustID() {
 		System.out.println("Succeed in getting the adjusting receipt id.");
 		return "0123456789";
@@ -34,6 +38,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 
 
 	@Override
+<<<<<<< HEAD
 	public String getASize() {
 		System.out.println("Succeed in getting the size of row.");
 		return "100";
@@ -77,6 +82,53 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	public String getDNum() {
 		System.out.println("Succeed in getting the capacity of position.");
 		return "50";
+=======
+	public int getASize() {
+		System.out.println("Succeed in getting the size of row.");
+		return 100;
+	}
+
+	@Override
+	public int getBSize() {
+		System.out.println("Succeed in getting the size of block.");
+		return 100;
+	}
+
+	@Override
+	public int getCSize() {
+		System.out.println("Succeed in getting the size of frame.");
+		return 100;
+	}
+
+	@Override
+	public int getDSize() {
+		System.out.println("Succeed in getting the size of position.");
+		return 100;
+	}
+
+	@Override
+	public int getANum() {
+		System.out.println("Succeed in getting the capacity of row.");
+		return 50;
+	}
+
+	@Override
+	public int getBNum() {
+		System.out.println("Succeed in getting the capacity of block.");
+		return 50;
+	}
+
+	@Override
+	public int getCNum() {
+		System.out.println("Succeed in getting the capacity of frame.");
+		return 50;
+	}
+
+	@Override
+	public int getDNum() {
+		System.out.println("Succeed in getting the capacity of position.");
+		return 50;
+>>>>>>> origin/master
 	}
 
 	@Override
@@ -125,6 +177,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public String getA() {
 		System.out.println("Succeed in getting the block number.");
 		return "1";
@@ -155,4 +208,28 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 	
+=======
+	public int getA() {
+		System.out.println("Succeed in getting the block number.");
+		return 1;
+	}
+
+	@Override
+	public int getB() {
+		System.out.println("Succeed in getting the row number.");
+		return 1;
+	}
+
+	@Override
+	public int getC() {
+		System.out.println("Succeed in getting the frame number.");
+		return 1;
+	}
+
+	@Override
+	public int getD() {
+		System.out.println("Succeed in getting the position number.");
+		return 1;
+	}
+>>>>>>> origin/master
 }

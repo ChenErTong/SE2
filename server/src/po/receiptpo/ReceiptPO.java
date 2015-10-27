@@ -20,8 +20,12 @@ public class ReceiptPO extends PersistentObject{
 	protected String date;
 	
 	public ReceiptPO(String ID){
+<<<<<<< HEAD:client/src/po/ReceiptPO.java
 		super(ID);
 		this.ID = ID;
+=======
+		super();
+>>>>>>> origin/master:server/src/po/receiptpo/ReceiptPO.java
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());

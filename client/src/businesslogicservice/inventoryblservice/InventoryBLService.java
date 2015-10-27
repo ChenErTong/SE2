@@ -1,5 +1,6 @@
 package businesslogicservice.inventoryblservice;
 
+<<<<<<< HEAD
 import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -13,6 +14,16 @@ import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
+=======
+import po.receiptpo.AdjustReceiptPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
+import state.ResultMessage;
+import vo.InventoryCheckVO;
+import vo.InventoryViewVO;
+import vo.receiptvo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+>>>>>>> origin/master
 import vo.receiptvo.TransferArrivalListVO;
 
 public interface InventoryBLService {
@@ -34,7 +45,11 @@ public interface InventoryBLService {
 	public ResultMessage addCommodities(TransferArrivalListVO receipt);
 	
 	/**选择并添加相应的数据（订单托运编号、入库日期、目的地、区号、排号、架号、位号）到进货单中生成进货单PO**/
+<<<<<<< HEAD
 	public InventoryImportReceiptPO   buildImport();
+=======
+	public InventoryImportReceiptPO buildImport();
+>>>>>>> origin/master
 	
 	/**单据被提交发送给经理进行审批**/
 	public  ResultMessage submitImport(InventoryImportReceiptVO importReceipt);
@@ -58,5 +73,9 @@ public interface InventoryBLService {
 	
 	/**输入被调整货物的订单托运编号、原先区号、排号、架号、位号及调整后的区号、排号、架号、位号**/
 	public AdjustReceiptPO adjust( );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> origin/master
