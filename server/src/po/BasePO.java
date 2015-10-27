@@ -11,6 +11,10 @@ import state.SalaryPolicy;
  */
 public class BasePO extends PersistentObject{
 
+	public BasePO(String iD, String date) {
+		super(iD, date);
+		// TODO Auto-generated constructor stub
+	}
 	/** serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	/**城市距离，ArrayList里存放的类型应该能代表两个不同的城市*/

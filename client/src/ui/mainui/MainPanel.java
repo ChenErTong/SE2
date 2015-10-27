@@ -13,6 +13,29 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import businesslogicservice.branchblservice._Branch_Stub;
+import businesslogicservice.facilityblservice._Facility_Stub;
+import businesslogicservice.orderblservice._Order_Stub;
+import businesslogicservice.transferblservice._Transfer_Stub;
+import dataservice.branchdataservice._Branch_Data_Stub;
+import dataservice.transferdataservice._Transfer_Data_Stub;
+import po.BranchPO;
+import po.FacilityPO;
+import po.TransferPO;
+import po.accountpo.AccountPO;
+import state.CommodityState;
+import state.ConfirmState;
+import state.ResultMessage;
+import vo.CommodityVO;
+import vo.FacilityVO;
+import vo.OrderVO;
+import vo.accountvo.DriverVO;
+import vo.receiptvo.BranchArrivalListVO;
+import vo.receiptvo.DeliveryListVO;
+import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
+
 public class MainPanel extends JPanel{
 
 	/**
@@ -64,7 +87,6 @@ public class MainPanel extends JPanel{
 				methodName=line.split(",")[1];
 				buttonString.add(buttonText);
 				allMethodNames.add(methodName);
-				System.out.println(line);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -126,7 +148,241 @@ public class MainPanel extends JPanel{
 			}
 		}
 	}
-	public void add(){
-		System.out.println("add Something!");
+	public void _Order_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		ConfirmState confirmState = order_Stub.confirmOperation();
+		System.out.println(confirmState);
 	}
+	public void _Order_Driver_addOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.addOrder(new ArrayList<>(), 
+				new OrderVO( "00001",
+				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
+				"Nanjing156-Nanjing188" , 
+				"2015-10-24", "2015-10-26", 6.767));
+	}
+	public void _Order_Driver_updateOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.updateOrder(new ArrayList<>(), 
+				new OrderVO( "00001",
+				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
+				"Nanjing156-Nanjing188" , 
+				"2015-10-24", "2015-10-26", 6.767));
+	}
+	public void _Order_Driver_inquireOrder(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		@SuppressWarnings("unused")
+		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaowang");
+	}
+	public void _Order_Driver_costAndTime(){
+		System.out.println("--------------------------------------------------");
+		_Order_Stub order_Stub = new _Order_Stub();
+		OrderVO orderVO=order_Stub.inquireOrder("00001", "xiaowang");
+		@SuppressWarnings("unused")
+		ResultMessage rMessage = order_Stub.costAndTime(orderVO);
+	}
+	public void _Facility_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		ConfirmState confirmState = facility_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+
+	public void _Facility_Driver_addFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.addFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_deleteFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.deleteFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_modifyFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		FacilityVO facilityVO = new FacilityVO("123233", new ArrayList<>(), "Y001:2015-09-22:00008", "2015-09-22");
+		ResultMessage resultMessage = facility_Stub.modifyFacility(facilityVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_findFacility() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		@SuppressWarnings("unused")
+		FacilityVO facilityVO = facility_Stub.findFacility("Y001:2015-09-22:00008");
+	}
+	
+	public void _Facility_Driver_addDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.addDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_deleteDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.deleteDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_modifyDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		DriverVO driverVO = new DriverVO(
+				"DY001:2014-6-4:00008", "Old driver", 
+				"YunNan", "1990-10-24", "731050199010247391", 
+				"16868688686", 1500.0, "2years", 100);
+		ResultMessage resultMessage = facility_Stub.modifyDriver(driverVO);
+		System.out.println(resultMessage);
+	}
+	
+	public void _Facility_Driver_findDriver() {
+		System.out.println("--------------------------------------------------");
+		_Facility_Stub facility_Stub = new _Facility_Stub();
+		@SuppressWarnings("unused")
+		DriverVO driverVO =  facility_Stub.findDriver("DY001:2014-6-4:00008");
+	}
+	
+	public void _Branch_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		ConfirmState confirmState = branch_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+	
+	public void _Branch_Driver_getAllCommodities(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<CommodityVO> commodityVOs = branch_Stub.getAllCommodities();
+	}
+	
+	public void _Branch_Driver_getAllOrderNumber(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<String> allOrderNumber = branch_Stub.getAllOrderNumber();
+	}
+	
+	public void _Branch_Driver_getBranchArrivalList(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		BranchArrivalListVO branchArrivalListVO = branch_Stub.getBranchArrivalList("ZZ001", "Nanjing Xianlin", CommodityState.Success	, new ArrayList<>());
+	}
+	
+	public void _Branch_Driver_getDeliveryList(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		DeliveryListVO deliveryListVO = branch_Stub.getDeliveryList(new ArrayList<>(), "Lao Wang");
+	}
+	
+	public void _Branch_Driver_truckDeliver(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Stub branch_Stub = new _Branch_Stub();
+		@SuppressWarnings("unused")
+		LoadingListVO loadingListVO = branch_Stub.truckDeliver("Branch001", "Nanjing Gulou", "B001:2015-09-21", "Lao Wang", new ArrayList<>());
+	}
+	public void _Branch_Driver_insert(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		BranchPO branchPO = new BranchPO("Br001", "Nanjing", "2015-6-7", new ArrayList<AccountPO>(), new ArrayList<FacilityPO>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = branch_Data_Stub.insert(branchPO);
+	}
+	public void _Branch_Driver_find(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		@SuppressWarnings("unused")
+		BranchPO branchPO = branch_Data_Stub.find("Br001");
+	}
+	public void _Branch_Driver_update(){
+		System.out.println("--------------------------------------------------");
+		_Branch_Data_Stub branch_Data_Stub = new _Branch_Data_Stub();
+		BranchPO branchPO = new BranchPO("Br002", "Nanjing", "2015-6-8", new ArrayList<AccountPO>(), new ArrayList<FacilityPO>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = branch_Data_Stub.update(branchPO);
+	}
+	public void _Transfer_Driver_confirmOperation(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		ConfirmState confirmState = transfer_Stub.confirmOperation();
+		System.out.println(confirmState);
+	}
+	public void _Transfer_Driver_getAllCommodities(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		ArrayList<CommodityVO> commodityVOs = transfer_Stub.getAllCommodities();
+	}
+	public void _Transfer_Driver_planeTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.planeTransfer("CZ1903", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _Transfer_Driver_truckTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.truckTransfer("B001:2015-09-21", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _Transfer_Driver_trainTransfer(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferOrderVO transferOrderVO = transfer_Stub.trainTransfer("G9703", "Nanjing", "Beijing", "LaoLi", new ArrayList<>());
+	}
+	public void _TransferTransfer_Driver_receiptList(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Stub transfer_Stub = new _Transfer_Stub();
+		@SuppressWarnings("unused")
+		TransferArrivalListVO transferArrivalListVO = transfer_Stub.receiptList("ZZ001", "Nanjing", CommodityState.Success, new ArrayList<>());
+	}
+	public void _Transfer_Driver_insert(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		TransferPO transferPO = new TransferPO("Tr001", "2015-6-7", "Nanjing", new ArrayList<>(), new ArrayList<>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = transfer_Data_Stub.insert(transferPO);
+	}
+	public void _Transfer_Driver_find(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		@SuppressWarnings("unused")
+		TransferPO transferPO = transfer_Data_Stub.find("Tr001");
+	}
+	public void _Transfer_Driver_update(){
+		System.out.println("--------------------------------------------------");
+		_Transfer_Data_Stub transfer_Data_Stub = new _Transfer_Data_Stub();
+		TransferPO transferPO = new TransferPO("Tr001", "2015-6-7", "Nanjing", new ArrayList<>(), new ArrayList<>());
+		@SuppressWarnings("unused")
+		ResultMessage resultMessage = transfer_Data_Stub.update(transferPO);
+	}
+	
 }

@@ -25,7 +25,7 @@ public class BankPO extends PersistentObject{
 	private String date;
 	
 	public BankPO(String ID,String name,double money,String level){
-		//super(ID);
+		super(ID);
 		this.name = name;
 		this.money = money;
 		this.level = level;

@@ -30,16 +30,17 @@ public class UserPO extends PersistentObject{
 	 * 构造函数
 	 * @param ID
 	 * @param username
-	 * @param name
+	 * @param iden
 	 * @param password
 	 * @param iden
 	 */
-	public UserPO(String ID,String username,String name,String password,UserIdentity iden){
-		//super(ID);
+	public UserPO(String ID,String username,String name,UserIdentity iden,String password,UserAuthority authority){
+		super(ID);
 		this.username = username;
-		this.name = name;
-		this.password = password;
+		this.name  = name;
 		this.iden = iden;
+		this.password = password;
+		this.authority = authority;
 		
 	}
 
@@ -58,6 +59,17 @@ public class UserPO extends PersistentObject{
 	public UserIdentity getIden() {
 		return this.iden;
 	}
+
+	public UserAuthority getAuthority() {
+		return authority;
+	}
+
+	
+	public ArrayList getOperationRecords() {
+		return operationRecords;
+	}
+
+	
 
 	
 }

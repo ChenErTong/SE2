@@ -20,6 +20,7 @@ public class ReceiptPO extends PersistentObject{
 	protected String date;
 	
 	public ReceiptPO(String ID){
+		super(ID);
 		this.ID = ID;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");

@@ -2,29 +2,28 @@ package businesslogicservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.BLService;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.ReceiptVO;
-import vo.ValueObject;
+
+import vo.receiptpvo.ReceiptVO;
 
 /**
  * 实现审批单据界面所需要的服务
  * @author zsq
  * @version Oct 22,2015
  */
-public interface ReceiptBLService extends BLService{
+public interface ReceiptBLService {
 	
 	/**
 	 * 修改单据内容
-	 * @param vo
+	 * @param receiptVO
 	 * @param receiptType，单据类型
 	 * @author zsq
 	 * @version Oct 22,2015
 	 * @return 处理信息
 	 */
-	public ResultMessage updateReceipt(ValueObject vo,ReceiptType receiptType);
+	public ResultMessage updateReceipt(ReceiptVO receiptVO,ReceiptType receiptType);
 	
 	/**
 	 * 通过单据审批
@@ -34,7 +33,7 @@ public interface ReceiptBLService extends BLService{
 	 * @param receiptTypes，单据类型
 	 * @return 处理信息
 	 */
-	public ResultMessage passReceipt(ArrayList<ValueObject> VOs,ArrayList<ReceiptType> receiptTypes);
+	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
 	
 	/**
 	 * 不通过单据审批
@@ -44,7 +43,7 @@ public interface ReceiptBLService extends BLService{
 	 * @param receiptTypes，单据类型
 	 * @return
 	 */
-	public ResultMessage dontPassReceipt(ArrayList<ValueObject>VOs,ArrayList<ReceiptType>receiptTypes);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
 	
 	/**
 	 * 查看单据内容，根据单据的状态进行区分：等待审核的单据、通过审核的单据、未通过审核的单据
@@ -53,5 +52,5 @@ public interface ReceiptBLService extends BLService{
 	 * @param receiptStates，单据状态
 	 * @return 处理信息
 	 */
-	public  ReceiptVO showReceipt(ArrayList<ReceiptState>receiptStates);
+	public  ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates);
 }

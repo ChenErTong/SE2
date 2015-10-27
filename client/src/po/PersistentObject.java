@@ -16,4 +16,14 @@ public class PersistentObject implements Serializable{
 	protected String ID;
 	/**时间*/
 	protected String date;
+	
+	protected PersistentObject(String id){
+		this.ID = id;
+	}
+
+	public PersistentObject(String iD, String date) {
+		super();
+		ID = iD;
+		this.date = date;
+	}
 }

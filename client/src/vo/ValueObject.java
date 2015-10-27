@@ -1,12 +1,17 @@
 package vo;
 /**
- * 值对象
+ * 值锟斤拷锟斤拷
  * @author zsq
  * @version Oct 22,2015
  */
 public class ValueObject {
 	public String ID;
 	public String date;
+	public ValueObject(String iD) {
+		super();
+		ID = iD;
+	}
 	
+
 
 }

@@ -24,6 +24,7 @@ public class ExpensePO extends PersistentObject{
 	private String date;
 	
 	public ExpensePO(String ID,String workshop,double money,String address){
+		super(ID);
 		this.ID = ID;
 		this.workshop = workshop;
 		this.money = money;

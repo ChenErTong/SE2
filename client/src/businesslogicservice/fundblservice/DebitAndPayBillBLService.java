@@ -54,7 +54,7 @@ public interface DebitAndPayBillBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public void addDebitAndPayBill(String operatorID , String operatorName );
+	public ResultMessage addDebitAndPayBill(String operatorID , String operatorName );
 
 	/**
 	 * 提交单据进行审批

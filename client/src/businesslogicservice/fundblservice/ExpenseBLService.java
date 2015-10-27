@@ -2,7 +2,7 @@ package businesslogicservice.fundblservice;
 
 import java.util.ArrayList;
 
-import po.ExpenseVO;
+import vo.ExpenseVO;
 import state.ResultMessage;
 
 import businesslogicservice.BLService;

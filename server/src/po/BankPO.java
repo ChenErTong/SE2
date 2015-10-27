@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ÒøÐÐÕË»§µÄ³Ö¾Ã»¯¶ÔÏó
- * ÕË»§ÊôÐÔÓÐ£ºÃû³ÆºÍÓà¶î¡¢´´½¨Ê±¼ä¡¢ÕË»§ÊôÐÔ¡£Óà¶îÊÇ²»¿ÉÒÔÐÞ¸ÄµÄ£¬´ËÊý¾ÝÏîÈ¡¾öÓÚÊÕ¿îµ¥ºÍ¸¶¿îµ¥
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ä³Ö¾Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½î¡¢ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä¡¢ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ÄµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Õ¿îµ¥ï¿½Í¸ï¿½ï¿½îµ¥
  * @author zsq
  * @version Oct 22,2015
  */
@@ -15,21 +15,21 @@ public class BankPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	
-	/**ÕË»§Ãû³Æ*/
+	/**ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	private String name;
-	/**ÕË»§Óà¶î*/
+	/**ï¿½Ë»ï¿½ï¿½ï¿½ï¿½*/
 	private double money;
-	/**ÕË»§ÊôÐÔ*/
+	/**ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	private String level;
-	/**ÕË»§´´½¨Ê±¼ä,ÏµÍ³×Ô¶¯¼ÆËãµÃµ½*/
+	/**ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½,ÏµÍ³ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½*/
 	private String date;
 	
 	public BankPO(String ID,String name,double money,String level){
-		//super(ID);
+		super(ID);
 		this.name = name;
 		this.money = money;
 		this.level = level;
-		/**×Ô¶¯Éú³ÉÈÕÆÚ*/
+		/**ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
@@ -61,7 +61,7 @@ public class BankPO extends PersistentObject{
 	}
 	
 	/**
-	 * Ä£ºý²éÑ¯
+	 * Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

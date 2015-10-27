@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import po.receiptpo.ReceiptPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -16,6 +17,8 @@ import state.ReceiptType;
 public class DebitAndPayBillPO extends ReceiptPO{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
+	/**id*/
+	private String ID;
 	/**收款或付款金额*/
 	private double money;
 	/**收款快递员的用户ID*/
@@ -53,6 +56,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
  */
 	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
 		super(ID);
+		this.ID = ID;
 		this.money = money;
 		this.courierID = courierID;
 		this.state = ReceiptState.APPROVALING;
@@ -80,6 +84,8 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankPO>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
 		super(ID);
+		
+		this.ID = ID;
 		this.money = money;
 		this.payerName = payerName;
 		this.bankAccouts = bankAccouts;
@@ -165,6 +171,12 @@ public class DebitAndPayBillPO extends ReceiptPO{
 
 	public void setSalaryMonth(String salaryMonth) {
 		this.salaryMonth = salaryMonth;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 
 

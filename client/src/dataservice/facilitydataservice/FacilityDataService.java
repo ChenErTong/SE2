@@ -1,7 +1,7 @@
 package dataservice.facilitydataservice;
 
 import dataservice.DataService;
-import po.AccountPO;
+import po.accountpo.AccountPO;
 import po.FacilityPO;
 import po.PersistentObject;
 import state.ResultMessage;
@@ -34,8 +34,6 @@ public interface FacilityDataService <FacilityPO extends PersistentObject>extend
 	
 	public ResultMessage modifyFacility(FacilityPO facility);
 	
-	public FacilityPO getFacility();
-	
 	public AccountPO findDriver(String id);
 	
 	public ResultMessage addDriver(AccountPO driver);
@@ -44,5 +42,4 @@ public interface FacilityDataService <FacilityPO extends PersistentObject>extend
 	
 	public ResultMessage modifyDriver(AccountPO driver);
 	
-	public AccountPO getDriver();
 }

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * »ú¹¹ÀàµÄ¸¸Àà£¬¶¨ÒåËÄ¸ö»ù±¾ÊôÐÔ£º»ú¹¹±àºÅ£¬³ÉÁ¢Ê±¼ä£¬Ô±¹¤ÊýÁ¿£¬»ú¹¹µØÖ·
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
  * @author zsq
  * @version Oct 22,2015
  */
@@ -12,20 +12,21 @@ public class OrganizationPO extends PersistentObject{
 
 	/** serialVersionUID*/
 	private static final long serialVersionUID = 1L;
-	/**»ú¹¹±àºÅ*/
+	/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	protected String organizationID;
-	/**³ÉÁ¢Ê±¼ä£¬ÏµÍ³×Ô¶¯Éú³É*/
+	/**ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ÏµÍ³ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	protected String date;
-	/**Ô±¹¤ÊýÁ¿*/
+	/**Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	protected double number;
-	/**»ú¹¹µØÖ·*/
+	/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
 	protected String address;
 	
 	public OrganizationPO(String organizationID,String address,double number){
+		super(organizationID);
 		this.organizationID = organizationID;
 		this.address = address;
 		this.number = number;
-		/**×Ô¶¯Éú³ÉÈÕÆÚ*/
+		/**ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
 	}
