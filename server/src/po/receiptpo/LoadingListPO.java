@@ -7,14 +7,11 @@ package po.receiptpo;
  */
 public class LoadingListPO extends ReceiptPO{
 
-<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-=======
->>>>>>> origin/master
 	public LoadingListPO(String ID) {
 		super(ID);
 		// TODO Auto-generated constructor stub

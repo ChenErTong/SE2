@@ -1,10 +1,7 @@
 package businesslogicservice.branchblservice;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 import businesslogicservice.BLService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -89,8 +86,4 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 23,2015
 	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master

@@ -30,7 +30,6 @@ public class CommodityPO {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-<<<<<<< HEAD
 
 	public double getVolumn() {
 		return volumn;
@@ -44,21 +43,6 @@ public class CommodityPO {
 		return commodityState;
 	}
 
-=======
-
-	public double getVolumn() {
-		return volumn;
-	}
-
-	public void setVolumn(double volumn) {
-		this.volumn = volumn;
-	}
-
-	public CommodityState getCommodityState() {
-		return commodityState;
-	}
-
->>>>>>> origin/master
 	public void setCommodityState(CommodityState commodityState) {
 		this.commodityState = commodityState;
 	}

@@ -4,7 +4,6 @@ package vo;
 	 *      **/
 	
 public class InventoryVO {
-<<<<<<< HEAD
 	
 	private int num;
 	public String lLocation;
@@ -39,7 +38,4 @@ public class InventoryVO {
 	}
 	
 	
-=======
-
->>>>>>> origin/master
 }

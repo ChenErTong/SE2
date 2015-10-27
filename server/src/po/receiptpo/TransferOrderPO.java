@@ -1,10 +1,7 @@
 package po.receiptpo;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
-=======
->>>>>>> origin/master
 /**
  * 中转单：航班（火车）（汽车车次）编号、出发地、目的地、监装员、托运订单订单号
  * @author czw
@@ -12,7 +9,6 @@ import java.util.ArrayList;
  */
 public class TransferOrderPO extends ReceiptPO {
 
-<<<<<<< HEAD
 	/**
 	 * 
 	 */
@@ -63,11 +59,6 @@ public class TransferOrderPO extends ReceiptPO {
 	}
 	public void setOrders(ArrayList<String> orders) {
 		this.orders = orders;
-=======
-	public TransferOrderPO(String ID) {
-		super(ID);
-		// TODO Auto-generated constructor stub
->>>>>>> origin/master
 	}
 
 }

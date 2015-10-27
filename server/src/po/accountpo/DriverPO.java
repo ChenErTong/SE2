@@ -11,16 +11,8 @@ public class DriverPO extends AccountPO{
 			String workTime, int receiptNum) {
 		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		// TODO Auto-generated constructor stub
-<<<<<<< HEAD
 	}
 
 	
 
 }
-=======
-	}}
-
-	
-
-
->>>>>>> origin/master

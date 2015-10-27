@@ -11,12 +11,7 @@ public class ValueObject {
 		super();
 		ID = iD;
 	}
-<<<<<<< HEAD
 	
 
 
-=======
-	
-	
->>>>>>> origin/master
 }

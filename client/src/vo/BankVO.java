@@ -1,6 +1,5 @@
 package vo;
 
-<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class BankVO{
@@ -52,8 +51,3 @@ public class BankVO{
 		return this.ID+"|"+this.name+"|"+this.money;
 	}
 }
-=======
-public class BankVO {
-
-}
->>>>>>> origin/master

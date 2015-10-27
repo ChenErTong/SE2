@@ -26,17 +26,4 @@ public class PersistentObject implements Serializable{
 		ID = iD;
 		this.date = date;
 	}
-<<<<<<< HEAD
-=======
-
-	public String getID() {
-		return ID;
-	}
-
-	public String getDate() {
-		return date;
-	}
-	
-	
->>>>>>> origin/master
 }

@@ -2,19 +2,10 @@ package po.accountpo;
 
 import po.PersistentObject;
 
-<<<<<<< HEAD
 
 
 public class AccountPO extends PersistentObject{
 	 /**员工账户的的持久化对象
-=======
-public class AccountPO extends PersistentObject{
-	  /** @author lxl
-		 *  @version Oct 23,2015
-		 *      **/
-		
-	/**员工账户的的持久化对象
->>>>>>> origin/master
      * AccontPO: 公司职员的PO类
      * 包括员工编号、职务权限、姓名、出生日期、身份证号、手机号、
      * 工资情况、任职时间、每日订单完成情况**/
@@ -23,7 +14,6 @@ public class AccountPO extends PersistentObject{
 	private static final long serialVersionUID = 1L;
 	
 	/**员工编号**/
-<<<<<<< HEAD
 	private String ID;
 	/**职务权限**/ 
 	private String Duty;
@@ -41,34 +31,11 @@ public class AccountPO extends PersistentObject{
 	private String WorkTime;
 	/**每日订单完成**/
 	private int ReceiptNum;
-=======
-	protected String ID;
-	/**职务权限**/ 
-	protected String Duty;
-	/**姓名**/
-	protected String Name;
-	/**出生日期**/ 
-	protected String BirthDay;
-	/**身份证号**/
-	protected String IDCard;
-	/**手机号**/ 
-	protected String Phone;
-	/**工资情况**/
-	protected double Salary;
-	/**任职时间**/
-	protected String WorkTime;
-	/**每日订单完成**/
-	protected int ReceiptNum;
->>>>>>> origin/master
 	
 	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, double salary,
 			String workTime, int receiptNum) {
 		
-<<<<<<< HEAD
 		super(ID);
-=======
-		super();
->>>>>>> origin/master
 		this.Duty = duty;
 		this.Name = name;
 		this.BirthDay = birthDay;
@@ -151,10 +118,5 @@ public class AccountPO extends PersistentObject{
 		ReceiptNum = receiptNum;
 	}
 
-<<<<<<< HEAD
 	 }
 
-=======
-
-}
->>>>>>> origin/master

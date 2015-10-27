@@ -2,9 +2,10 @@ package businesslogicservice.fundblservice;
 
 import java.util.ArrayList;
 
+import businesslogicservice.BLService;
 import state.ResultMessage;
 import vo.BankAccoutVO;
-import po.FindTypeAccount;
+import state.FindTypeAccount;
 
 /**
  * 负责实现公司账户界面所需要的服务
@@ -17,7 +18,7 @@ import po.FindTypeAccount;
  * 账户的增删改查包括增加账户、删除账户、修改账户属性和查询账户。
  * 账号的查询可以通过输入关键字进行模糊查找。仅限最高权限可进行这些操作。
  */
-public interface BankAccoutBLService {
+public interface BankAccoutBLService extends BLService{
 	/**
 	 * 提出创建/新增银行账户时返回账户ID
 	 * @return ID

@@ -10,11 +10,7 @@ import vo.BussinessProcessVO;
 public interface RecordBLService {
 /**统计经营情况表成本收益表**/
 	/**符合条件的所有入款单和收款单**/
-<<<<<<< HEAD
 	public  BussinessProcessVO bussinessProcess(String begin, String end);
-=======
-	public  BussinessProcessVO bussinessState(String begin, String end);
->>>>>>> origin/master
 	/**成本收益表数据**/
 	public  BussinessConditionVO bussinessCondition(String end);
 	/**计算得到的收入**/

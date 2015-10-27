@@ -5,14 +5,8 @@ import java.util.ArrayList;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-<<<<<<< HEAD
 
 import vo.receiptpvo.ReceiptVO;
-=======
-import vo.ValueObject;
-import vo.receiptvo.ReceiptVO;
-import businesslogicservice.BLService;
->>>>>>> origin/master
 
 /**
  * 实现审批单据界面所需要的服务
@@ -39,11 +33,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return 处理信息
 	 */
-<<<<<<< HEAD
 	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
-=======
-	public ResultMessage passReceipt(ArrayList<ValueObject>VOs,ArrayList<ReceiptType>receiptTypes);
->>>>>>> origin/master
 	
 	/**
 	 * 不通过单据审批

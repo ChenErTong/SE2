@@ -2,10 +2,6 @@ package businesslogicservice.orderblservice;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-=======
-import businesslogicservice.BLService;
->>>>>>> origin/master
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;

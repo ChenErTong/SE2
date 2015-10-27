@@ -7,14 +7,11 @@ package po.receiptpo;
  */
 public class DebitBillPO extends ReceiptPO {
 	
-<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-=======
->>>>>>> origin/master
 	public DebitBillPO(String id) {
 		super(id);
 		// TODO Auto-generated constructor stub

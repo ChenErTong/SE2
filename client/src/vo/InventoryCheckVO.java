@@ -26,7 +26,6 @@ public class InventoryCheckVO {
 	/** 批号 */
 	public String lotNum;
 	
-<<<<<<< HEAD
 	public InventoryCheckVO(ArrayList<InventoryImportReceiptVO> receipts, String date, String lotNum) {
 		super();
 		this.receipts = receipts;
@@ -41,14 +40,3 @@ public class InventoryCheckVO {
 	}
 
 
-=======
-	public InventoryCheckVO(ArrayList<InventoryImportReceiptVO> receipts, String lotNum) {
-		super();
-		this.receipts = receipts;
-		this.lotNum = lotNum;
-		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
-		this.date = sdf.format(new Date());
-	}
-}
->>>>>>> origin/master
