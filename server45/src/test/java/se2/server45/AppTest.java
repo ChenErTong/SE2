@@ -1,4 +1,4 @@
-package client45.client45;
+package se2.server45;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

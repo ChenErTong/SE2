@@ -1,4 +1,4 @@
-package client45.client45;
+package se2.client45;
 
 /**
  * Hello world!
