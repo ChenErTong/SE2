@@ -1,6 +1,7 @@
 package transfer;
 
+import businesslogic.transfer.Transfer;
 
-public class MockTransfer{
+public class MockTransfer extends Transfer{
 
 }

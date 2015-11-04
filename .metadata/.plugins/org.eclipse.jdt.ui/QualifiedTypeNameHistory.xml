@@ -13,10 +13,14 @@
 <fullyQualifiedTypeName name="state.ConfirmState"/>
 <fullyQualifiedTypeName name="vo.CommodityVO"/>
 <fullyQualifiedTypeName name="state.CommodityState"/>
-<fullyQualifiedTypeName name="transfer.MockTransfer"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="po.receiptpo.TransferOrderPO"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="businusslogic.transfer.Transfer"/>
+<fullyQualifiedTypeName name="transfer.MockTransfer"/>
+<fullyQualifiedTypeName name="ui.MainFrame"/>
+<fullyQualifiedTypeName name="vo.TransferVO"/>
+<fullyQualifiedTypeName name="vo.receiptvo.TransferOrderVO"/>
+<fullyQualifiedTypeName name="businesslogic.transfer.Transfer"/>
 </qualifiedTypeNameHistroy>

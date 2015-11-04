@@ -1,5 +1,0 @@
-package transfer;
-
-public class MockTransfer extends Transfer{
-
-}

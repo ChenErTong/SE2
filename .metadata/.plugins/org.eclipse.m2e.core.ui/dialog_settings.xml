@@ -57,12 +57,14 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="se2.client45"/>
 			<item value="se2.demo"/>
 		</list>
 		<list key="groupId">
 			<item value="se2"/>
 		</list>
 		<list key="artifactId">
+			<item value="client45"/>
 			<item value="demo"/>
 		</list>
 		<list key="projectNameTemplate">

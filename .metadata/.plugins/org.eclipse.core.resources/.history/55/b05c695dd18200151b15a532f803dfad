@@ -1,7 +1,0 @@
-package transfer;
-
-import businesslogicservice.transferblservice.TransferBLService;
-
-public class MockTransfer implements TransferBLService {
-
-}
