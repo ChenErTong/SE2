@@ -1,0 +1,30 @@
+package transfer;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import po.receiptpo.TransferOrderPO;
+import state.ResultMessage;
+import vo.receiptvo.TransferOrderVO;
+
+public class TestPlaneTransfer {
+
+	@Test
+	public void testPlaneTransfer() {
+		MockTransfer transfer = new MockTransfer();
+		ArrayList<String> orders = new ArrayList<String>();
+		orders.add("123456");
+		orders.add("123457");
+		transfer.planeTransfer("Y001:2015-09-22:00008", "南京", "北京", "老王", orders);
+		TransferOrderPO transferOrderPO = new TransferOrderPO("Y001:2015-09-22:00008", "Y001:2015-09-22:00008", "南京", "北京", "老王", orders);
+		ResultMessage resultMessage = transfer.submit(transferOrderPO);
+		if (resultMessage==ResultMessage.SUCCESS) {
+			System.out.println("The receipt has passed!");
+			transfer.save(transferOrderPO);
+		}else{
+			System.out.println("The receipt has not passed!");
+		}
+	}
+
+}

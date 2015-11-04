@@ -1,0 +1,76 @@
+package client45;
+
+import java.util.ArrayList;
+
+import businesslogicservice.transferblservice.TransferBLService;
+import po.receiptpo.ReceiptPO;
+import state.CommodityState;
+import state.ConfirmState;
+import state.ResultMessage;
+import vo.CommodityVO;
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
+
+public class MockTransfer implements TransferBLService {
+
+	@Override
+	public ConfirmState confirmOperation() {
+		ConfirmState state = ConfirmState.CONFIRM;
+		return state;
+	}
+
+	@Override
+	public ArrayList<CommodityVO> getAllCommodities() {
+		ArrayList<CommodityVO> commodities = new ArrayList<>();
+		CommodityVO commo1 = new CommodityVO("Book", 123, 153, CommodityState.Success);
+		CommodityVO commo2 = new CommodityVO("Book", 188, 13, CommodityState.Success);
+		commodities.add(commo1);
+		commodities.add(commo2);
+		return commodities;
+	}
+
+	@Override
+	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a plane transfer");
+		return transferOrderVO;
+	}
+
+	@Override
+	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a truck transfer");
+		return transferOrderVO;
+	}
+
+	@Override
+	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		System.out.println("You have added a train transfer");
+		return transferOrderVO;
+	}
+
+	@Override
+	public ResultMessage submit(ReceiptPO receipt) {
+		System.out.println("You have submit a receipt");
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage save(ReceiptPO receipt) {
+		System.out.println("You have saved a receipt");
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public TransferArrivalListVO receiptList(String transferID, String departure, CommodityState state,
+			ArrayList<String> orders) {
+		TransferArrivalListVO transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, state, orders);
+		System.out.println("You have fielded a receipt");
+		return transferArrivalListVO;
+	}
+
+}

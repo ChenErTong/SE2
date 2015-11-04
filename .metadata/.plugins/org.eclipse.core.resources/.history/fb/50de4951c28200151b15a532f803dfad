@@ -1,0 +1,15 @@
+package transfer;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestPlaneTransfer {
+
+	@Test
+	public void test() {
+		MockTransfer transfer = new MockTransfer();
+		transfer.planeTransfer(facilityID, departure, destination, courierName, orders)
+	}
+
+}
