@@ -44,6 +44,25 @@
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
+<libraryInfo home="G:\Java8\Java" version="1.8.0_25">
+<bootpath>
+<entry path="G:\Java8\Java\jre\lib\resources.jar"/>
+<entry path="G:\Java8\Java\jre\lib\rt.jar"/>
+<entry path="G:\Java8\Java\jre\lib\sunrsasign.jar"/>
+<entry path="G:\Java8\Java\jre\lib\jsse.jar"/>
+<entry path="G:\Java8\Java\jre\lib\jce.jar"/>
+<entry path="G:\Java8\Java\jre\lib\charsets.jar"/>
+<entry path="G:\Java8\Java\jre\lib\jfr.jar"/>
+<entry path="G:\Java8\Java\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="G:\Java8\Java\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="G:\Java8\Java\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
 <libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home" version="1.8.0_40">
 <bootpath>
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/jre/lib/resources.jar"/>
