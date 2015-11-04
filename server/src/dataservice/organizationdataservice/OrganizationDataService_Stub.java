@@ -14,8 +14,8 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 	
 	public OrganizationDataService_Stub(){
 		organizationPOs = new ArrayList<OrganizationPO>();
-		organizationPO_1 = new OrganizationPO("123","¾ÅÏçºÓ163ºÅ",120);
-		organizationPO_2 = new OrganizationPO("456","¹ÄÂ¥",150);
+		organizationPO_1 = new OrganizationPO("123","FUCK",120);
+		organizationPO_2 = new OrganizationPO("456","LUANMA",150);
 		
 		organizationPOs.add(organizationPO_1);
 		organizationPOs.add(organizationPO_2);
