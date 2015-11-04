@@ -1,0 +1,17 @@
+package transfer;
+
+import java.util.ArrayList;
+
+import businesslogicservice.transferblservice.TransferBLService;
+import businusslogic.transfer.Transfer;
+import po.receiptpo.ReceiptPO;
+import state.CommodityState;
+import state.ConfirmState;
+import state.ResultMessage;
+import vo.CommodityVO;
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
+
+public class MockTransfer extends Transfer {
+
+}

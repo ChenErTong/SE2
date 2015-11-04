@@ -1,0 +1,7 @@
+package transfer;
+
+import businusslogic.transfer.Transfer;
+
+public class MockTransfer extends Transfer {
+
+}

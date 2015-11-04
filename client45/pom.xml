@@ -14,37 +14,24 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
-  
-  
-  
-  <!-- 添加这一段-->
-	<build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+ <build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5</version>
+				<version>2.0.2</version>
 				<configuration>
-					<!-- 设置版本号，可以支持泛型和多重try catch语句 -->
 					<source>1.8</source>
 					<target>1.8</target>
-					
 				</configuration>
 			</plugin>
-			
-			
 		</plugins>
 	</build>
-  
-  
 </project>
-
-

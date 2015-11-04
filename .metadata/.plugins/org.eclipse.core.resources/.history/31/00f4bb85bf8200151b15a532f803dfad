@@ -1,0 +1,16 @@
+package transfer;
+
+public class Snippet {
+	TransferArrivalListVO transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, state, orders);
+			TransferArrivalListPO transferArrivalListPO = new TransferArrivalListPO(transferID, transferID, departure, state, orders);
+			System.out.println("You have fielded a receipt");
+			ResultMessage resultMessage = this.submit(transferArrivalListPO);
+			if(resultMessage==ResultMessage.SUCCESS){
+				System.out.println("The receipt has passed!");
+				this.save(transferArrivalListPO);
+			}else{
+				System.out.println("The receipt has not passed!");
+			}
+			return transferArrivalListVO;
+}
+
