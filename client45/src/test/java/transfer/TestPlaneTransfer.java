@@ -8,7 +8,7 @@ public class TestPlaneTransfer {
 
 	@Test
 	public void testPlaneTransfer() {
-		MockTransfer transfer = new MockTransfer();
+//		MockTransfer transfer = new MockTransfer();
 		ArrayList<String> orders = new ArrayList<String>();
 		orders.add("123456");
 		orders.add("123457");

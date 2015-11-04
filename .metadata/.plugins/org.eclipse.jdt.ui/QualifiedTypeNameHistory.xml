@@ -9,6 +9,14 @@
 <fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.AdjustReceiptPO"/>
-<fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="dataservice.funddataservice.ExpenseDataService"/>
+<fullyQualifiedTypeName name="state.ConfirmState"/>
+<fullyQualifiedTypeName name="vo.CommodityVO"/>
+<fullyQualifiedTypeName name="state.CommodityState"/>
+<fullyQualifiedTypeName name="transfer.MockTransfer"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="po.receiptpo.TransferOrderPO"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
+<fullyQualifiedTypeName name="businusslogic.transfer.Transfer"/>
 </qualifiedTypeNameHistroy>

@@ -12,7 +12,7 @@ import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;
 
 public class Transfer implements TransferBLService {
-
+	
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub
