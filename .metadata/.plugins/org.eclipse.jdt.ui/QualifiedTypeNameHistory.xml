@@ -9,4 +9,6 @@
 <fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.AdjustReceiptPO"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
+<fullyQualifiedTypeName name="dataservice.funddataservice.ExpenseDataService"/>
 </qualifiedTypeNameHistroy>
