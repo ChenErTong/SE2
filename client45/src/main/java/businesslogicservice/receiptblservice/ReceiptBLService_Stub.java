@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-
-import vo.receiptpvo.ReceiptVO;
+import vo.receiptvo.ReceiptVO;
 
 /**
  * 审批单据服务逻辑接口的Stub

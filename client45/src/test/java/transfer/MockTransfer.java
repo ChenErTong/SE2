@@ -2,7 +2,7 @@ package transfer;
 
 import java.util.ArrayList;
 
-import businesslogic.transfer.Transfer;
+import businesslogic.transferbl.Transfer;
 import state.CommodityState;
 import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;

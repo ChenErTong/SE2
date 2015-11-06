@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import state.ReceiptState;
 import state.ReceiptType;
-import vo.receiptpvo.ReceiptVO;
+import vo.receiptvo.ReceiptVO;
 
 
 public class ReceiptBLService_Driver {

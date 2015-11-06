@@ -1,6 +1,6 @@
 package fund;
 
-import businesslogic.fund.Bank;
+import businesslogic.fundbl.Bank;
 
 public class MockBank extends Bank {
 	private String ID;

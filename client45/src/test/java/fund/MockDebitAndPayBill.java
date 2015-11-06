@@ -3,7 +3,7 @@ package fund;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import businesslogic.fund.DebitAndPayBill;
+import businesslogic.fundbl.DebitAndPayBill;
 import state.ReceiptType;
 import vo.DebitAndPayBillVO;
 

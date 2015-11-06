@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.organizationbl.Organization;
 import state.ResultMessage;
 import vo.OrganizationVO;
-import businesslogic.organization.Organization;
 
 public class MockOrganization extends Organization{
 	protected String organizationID;

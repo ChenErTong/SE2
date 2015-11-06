@@ -1,4 +1,4 @@
-package businesslogic.fund;
+package businesslogic.fundbl;
 
 import java.util.ArrayList;
 
