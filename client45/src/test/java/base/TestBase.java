@@ -1,12 +1,12 @@
 package base;
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 
 public class TestBase {
 	@Test
-	public void test() {
+	public void testBase() {
 		MockBase mockBase = new MockBase();
+		System.out.println("hello maven");
+		mockBase.hello();
 	}
 }

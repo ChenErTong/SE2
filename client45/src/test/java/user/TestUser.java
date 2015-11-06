@@ -1,13 +1,12 @@
 package user;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 
 public class TestUser {
 	@Test
-	public void test() {
+	public void testUser() {
+		System.out.println("123");
 		MockUser mockUser = new MockUser(null, null, null, null, null, null);
 	}
 }
