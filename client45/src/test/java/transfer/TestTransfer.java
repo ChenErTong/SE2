@@ -26,6 +26,8 @@ public class TestTransfer {
 		mockTransfer.receiptArrive("ZZ001", "Nanjing", CommodityState.Success, orders);
 		TransferArrivalListVO transferArrivalListVO = mockTransfer.getTransferArrivalListVO();
 		assertEquals(orders, transferArrivalListVO.getOrders());
+		
+		
 	}
 
 }

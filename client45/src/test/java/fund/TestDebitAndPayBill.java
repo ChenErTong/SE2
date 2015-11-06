@@ -28,6 +28,11 @@ public class TestDebitAndPayBill {
 		
 		HashMap<String, String> allAccounts=  mockDebitAndPayBill.getAllBankAccounts();
 		assertEquals(accounts, allAccounts);
+		
+		
+		MockBank mockBank = new MockBank("ACC980");
+		String bankID = mockBank.getID();
+		assertEquals(bankID, "ACC980");
 	}
 
 }
