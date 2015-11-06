@@ -8,7 +8,8 @@ import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
 public class DebitAndPayBill implements DebitAndPayBillBLService{
-
+	
+	
 	@Override
 	public String getPayID() {
 		// TODO Auto-generated method stub
