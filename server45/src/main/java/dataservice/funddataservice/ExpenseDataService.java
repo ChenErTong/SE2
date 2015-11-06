@@ -2,7 +2,7 @@ package dataservice.funddataservice;
 
 import java.util.ArrayList;
 
-
+import dataservice.DataService;
 import po.ExpensePO;
 import state.ResultMessage;
 
@@ -11,7 +11,9 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 23,2015
  */
-public interface ExpenseDataService {
+public interface ExpenseDataService extends DataService {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "ExpenseData";
 	/**
 	 * 向序列化文件中增加一个ExpensePO
 	 * @param po

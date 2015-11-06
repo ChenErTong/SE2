@@ -2,7 +2,7 @@ package dataservice.funddataservice;
 
 import java.util.ArrayList;
 
-
+import dataservice.DataService;
 import po.DebitAndPayBillPO;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -12,7 +12,9 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 22,2015
  */
-public interface DebitAndPayBillDataService {
+public interface DebitAndPayBillDataService extends DataService {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "DebitAndPayBillData";
 	/**
 	 * 向序列化文件中增加一个DebitAndPayBillPO
 	 * @param po

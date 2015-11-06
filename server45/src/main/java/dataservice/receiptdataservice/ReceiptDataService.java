@@ -12,6 +12,8 @@ import dataservice.DataService;
  * @param <ReceiptPO>
  */
 public interface ReceiptDataService<ReceiptPO extends PersistentObject>extends DataService<ReceiptPO> {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "ReceiptData";
 	/**
 	 * 进行一条单据信息的修改或者一条单据的审批
 	 * @param PO

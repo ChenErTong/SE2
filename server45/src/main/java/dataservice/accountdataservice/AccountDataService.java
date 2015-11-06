@@ -2,12 +2,13 @@ package dataservice.accountdataservice;
 
 
 
-import java.util.ArrayList;
+import dataservice.DataService;
 
-import po.InventoryPO;
-import state.ResultMessage;
-
-public interface AccountDataService {
+public interface AccountDataService extends DataService {
+	
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "AccountData";
+	
 	public void init();
 	
 }

@@ -12,6 +12,8 @@ import state.ResultMessage;
  *@version Oct 22,2015 
  */
 public interface FacilityDataService <FacilityPO extends PersistentObject>extends DataService<FacilityPO>{
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "FacilityData";
 	/**
 	 * 根据车辆编号查找车辆
 	 * @param id 车辆编号

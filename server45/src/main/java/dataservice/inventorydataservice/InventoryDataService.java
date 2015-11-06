@@ -2,6 +2,7 @@ package dataservice.inventorydataservice;
 
 import java.util.ArrayList;
 
+import dataservice.DataService;
 import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -11,7 +12,9 @@ import state.ResultMessage;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public interface InventoryDataService {
+public interface InventoryDataService  extends DataService{
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "InventoryData";
 	
 	public void init();
 	public String getImportID ();

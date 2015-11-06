@@ -2,7 +2,7 @@ package dataservice.basedataservice;
 
 import java.util.ArrayList;
 
-
+import dataservice.DataService;
 import po.BasePO;
 
 import state.FindTypeBase;
@@ -13,7 +13,9 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 22,2015
  */
-public interface BaseDataService {
+public interface BaseDataService  extends DataService{
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "BaseData";
 	/**
 	 * 向序列化文件中增加一个BasePO
 	 * @param po

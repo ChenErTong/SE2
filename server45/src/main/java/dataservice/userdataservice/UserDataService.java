@@ -13,7 +13,9 @@ import state.UserIdentity;
  *@version Oct 22,2015 
  */
 public interface  UserDataService<UserPO extends PersistentObject>extends DataService<UserPO> {
-
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "UserData";
+	
 	/**
 	 * @param po
 	 */
