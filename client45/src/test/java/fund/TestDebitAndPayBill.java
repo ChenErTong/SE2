@@ -30,9 +30,7 @@ public class TestDebitAndPayBill {
 		assertEquals(accounts, allAccounts);
 		
 		
-		MockBank mockBank = new MockBank("ACC980");
-		String bankID = mockBank.getID();
-		assertEquals(bankID, "ACC980");
+		
 	}
 
 }
