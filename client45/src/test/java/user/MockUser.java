@@ -34,18 +34,18 @@ public class MockUser extends User {
 	}
 	
 	public String getID() {
-		return null;
+		return "123";
 	}
 	
 	public ResultMessage addUser(UserVO vo) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage deleteUser(String username) {
-		return null;
+		return ResultMessage.FAIL;
 	}
 	
 	public ResultMessage updateUser(UserVO vo) {
-		return null;
+		return ResultMessage.WAIT;
 	}
 }

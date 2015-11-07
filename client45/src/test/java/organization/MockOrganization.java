@@ -28,22 +28,22 @@ public class MockOrganization extends Organization{
 	}
 	
 	public ArrayList<OrganizationVO> show() {
-		return null;
+		return new ArrayList<OrganizationVO>();
 	}
 	
 	public String getID() {
-		return null;
+		return "123";
 	}
 
 	public ResultMessage addOrganization(OrganizationVO vo) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage deleteOrganization(String organizationID) {
-		return null;
+		return ResultMessage.FAIL;
 	}
 	
 	public ResultMessage updateOrganization(OrganizationVO vo) {
-		return null;
+		return ResultMessage.WAIT;
 	}
 }
