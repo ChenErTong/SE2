@@ -17,7 +17,7 @@ public class MockOrganization extends Organization{
 
 	protected String address;
 	
-	public MockOrganization(String organizationID,String address,double number){
+	/*public MockOrganization(String organizationID,String address,double number){
 
 		this.organizationID = organizationID;
 		this.address = address;
@@ -25,10 +25,10 @@ public class MockOrganization extends Organization{
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
-	}
+	}*/
 	
-	public ArrayList<OrganizationVO> show() {
-		return new ArrayList<OrganizationVO>();
+	public ArrayList<OrganizationVO> show(ArrayList<OrganizationVO> vos) {
+		return vos;
 	}
 	
 	public String getID() {

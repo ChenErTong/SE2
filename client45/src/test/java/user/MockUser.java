@@ -14,10 +14,10 @@ public class MockUser extends User {
 	String password;
 	String name;
 	UserIdentity iden;
-	ArrayList operationRecords;
+	ArrayList<String> operationRecords;
 	UserAuthority  authority;
 	
-	public MockUser(String username,String password,String ID,String name,UserIdentity iden,UserAuthority authority){
+/*	public MockUser(String username,String password,String ID,String name,UserIdentity iden,UserAuthority authority){
 		this.username = username;
 		this.password = password;
 		this.ID = ID;
@@ -25,16 +25,16 @@ public class MockUser extends User {
 		this.name = name;
 		this.authority = authority;
 
-	}
+	}*/
 	
 	
-	public ArrayList<UserVO> show(){
+	public ArrayList<String> show(){
 		return operationRecords;
 		
 	}
 	
 	public String getID() {
-		return "123";
+		return ID;
 	}
 	
 	public ResultMessage addUser(UserVO vo) {

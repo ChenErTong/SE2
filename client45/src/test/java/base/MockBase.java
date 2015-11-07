@@ -6,7 +6,7 @@ import state.FindTypeBase;
 import state.ResultMessage;
 import state.SalaryPolicy;
 import vo.BaseVO;
-import businesslogic.base.Base;
+import businesslogic.basebl.Base;
 
 public class MockBase extends Base {
 	private ArrayList<Double> distances;
