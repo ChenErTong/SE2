@@ -7,6 +7,7 @@ import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
+
 import vo.CommodityVO;
 import vo.receiptvo.BranchArrivalListVO;
 import vo.receiptvo.DeliveryListVO;

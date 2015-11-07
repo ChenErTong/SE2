@@ -32,7 +32,7 @@ public class OrganizationiBLService_Stub implements OrganizationBLService{
 	}
 
 	@Override
-	public ResultMessage updateUser(OrganizationVO vo) {
+	public ResultMessage updateOrganization(OrganizationVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -14,5 +14,5 @@ public enum ReceiptState {
 	
 	ReceiptState(String value){
 		this.value = value;
-	}
+		}
 }

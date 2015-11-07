@@ -48,5 +48,5 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage updateUser(OrganizationVO vo);
+	public ResultMessage updateOrganization(OrganizationVO vo);
 }
