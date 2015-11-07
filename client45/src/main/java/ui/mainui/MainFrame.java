@@ -6,12 +6,13 @@ public class MainFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public MainFrame(){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1024, 668);
-		setUndecorated(true);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(1280, 720);
+		this.setUndecorated(true);
+		this.setLocationRelativeTo(null);
+		this.setContentPane(new MainPanel());
+		this.setVisible(true);
+		this.setResizable(false);
 		new HyalineValue().start(); // 透明渐变启动界面
 	}
 	/**
