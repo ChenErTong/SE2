@@ -1,5 +1,7 @@
 package dataservice;
 
-public interface DataService<T> {
+import java.rmi.Remote;
+
+public interface DataService<T> extends Remote{
 
 }
