@@ -23,7 +23,7 @@ import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.UserBLService;
 import state.UserIdentity;
 import ui.commonui.annocement.AnnocementFrame;
-
+import ui.mainui.MainFrame;
 import ui.specialui.admin.Frame_Admin;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import ui.specialui.courier.Frame_Courier;
@@ -32,11 +32,7 @@ import ui.specialui.inventory.Frame_Inventory;
 import ui.specialui.manager.FrameManager;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 
-public class Frame_Login extends JFrame implements ActionListener{
-
-	/**
-	 * 
-	 */
+public class Frame_Login extends MainFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	boolean flag = false;
@@ -47,7 +43,7 @@ public class Frame_Login extends JFrame implements ActionListener{
 	JLabel label_field1,label_field2;
 	JLabel loginBackground2,loginBackground;
 	
-	private static  String userName,userID;
+	private static String userName,userID;
 	private static UserIdentity userIden;
 	
 	public Frame_Login(){
@@ -188,5 +184,4 @@ public class Frame_Login extends JFrame implements ActionListener{
 			}
 		}
 	}
-
 }
