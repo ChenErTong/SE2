@@ -1,5 +1,6 @@
 package dataservice.userdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
@@ -19,29 +20,29 @@ public interface  UserDataService<UserPO extends PersistentObject>extends DataSe
 	/**
 	 * @param po
 	 */
-	public ResultMessage insert(UserPO po);
+	public ResultMessage insert(UserPO po) throws RemoteException;
 	/**
 	 * @param ID
 	 */
-	public ResultMessage delete(String ID);
+	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * @param PO
 	 */
-	public ResultMessage update(UserPO PO);
+	public ResultMessage update(UserPO PO) throws RemoteException;
 	/**
 	 */
-	public ArrayList<UserPO> find();
+	public ArrayList<UserPO> find() throws RemoteException;
 	/**
 	 * @param loginInfo
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public UserIdentity login(LoginInfo loginInfo);
+	public UserIdentity login(LoginInfo loginInfo) throws RemoteException;
 	
 	/**
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage updateAdmin(String oldPassword,String newPassword);
+	public ResultMessage updateAdmin(String oldPassword,String newPassword) throws RemoteException;
 }

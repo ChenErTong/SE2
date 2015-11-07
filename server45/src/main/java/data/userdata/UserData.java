@@ -1,14 +1,25 @@
 package data.userdata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import data.Data;
 import dataservice.userdataservice.LoginInfo;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 import state.ResultMessage;
 import state.UserIdentity;
 
-public class UserData implements UserDataService<UserPO> {
+public class UserData extends Data implements UserDataService<UserPO> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ResultMessage insert(UserPO po) {

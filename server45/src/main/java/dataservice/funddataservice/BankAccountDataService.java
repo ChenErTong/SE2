@@ -1,5 +1,6 @@
 package dataservice.funddataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
@@ -22,7 +23,7 @@ public interface BankAccountDataService extends DataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(BankPO po);
+	public ResultMessage insert(BankPO po) throws RemoteException;
 
 	/**
 	 * 根据ID删除序列化文件中的一个BankAccoutPO
@@ -30,7 +31,7 @@ public interface BankAccountDataService extends DataService {
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID);
+	public ResultMessage delete(String ID) throws RemoteException;
 
 	/**
 	 * 更新BankPO
@@ -38,7 +39,7 @@ public interface BankAccountDataService extends DataService {
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(BankPO PO);
+	public ResultMessage update(BankPO PO) throws RemoteException;
 
 	/**
 	 * 以keywords查看账户信息，type是查找的方式，为NULL则表示进行模糊查询
@@ -46,5 +47,5 @@ public interface BankAccountDataService extends DataService {
 	 * @param keywords
 	 * @return 账户持久化对象
 	 */
-	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType);
+	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType) throws RemoteException;
 }

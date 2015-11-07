@@ -111,5 +111,7 @@ public class RMIManage {
 		// }
 		// System.out.println(hostAddr);
 		// System.out.println(hostName);
+		RMIManage rmiManage = new RMIManage();
+		rmiManage.startServer();
 	}
 }

@@ -1,10 +1,22 @@
 package data.openingstockdata;
 
+import java.rmi.RemoteException;
+
+import data.Data;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.OpeningStockPO;
 import state.ResultMessage;
 
-public class OpeningStockData implements OpeningStockDataService {
+public class OpeningStockData extends Data implements OpeningStockDataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public OpeningStockData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ResultMessage add(OpeningStockPO po) {

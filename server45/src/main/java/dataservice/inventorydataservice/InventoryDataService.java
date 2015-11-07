@@ -1,5 +1,6 @@
 package dataservice.inventorydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
@@ -16,32 +17,32 @@ public interface InventoryDataService  extends DataService{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "InventoryData";
 	
-	public void init();
-	public String getImportID ();
-	public String getExportID ();
-	public String getAlarmID ();
-	public String getA();
-	public String getB();
-	public String getC();
-	public String getD();
+	public void init() throws RemoteException;
+	public String getImportID () throws RemoteException;
+	public String getExportID () throws RemoteException;
+	public String getAlarmID () throws RemoteException;
+	public String getA() throws RemoteException;
+	public String getB() throws RemoteException;
+	public String getC() throws RemoteException;
+	public String getD() throws RemoteException;
 	
-	public String getASize();
-	public String getBSize();
-	public String getCSize();
-	public String getDSize();
+	public String getASize() throws RemoteException;
+	public String getBSize() throws RemoteException;
+	public String getCSize() throws RemoteException;
+	public String getDSize() throws RemoteException;
 	
-	public String getANum();
-	public String getBNum();
-	public String getCNum();
-	public String getDNum();
+	public String getANum() throws RemoteException;
+	public String getBNum() throws RemoteException;
+	public String getCNum() throws RemoteException;
+	public String getDNum() throws RemoteException;
 	
 	
-	public ArrayList<InventoryImportReceiptPO> showImport();
-	public ArrayList<InventoryExportReceiptPO> showExport();
-	public ArrayList<AdjustReceiptPO> showAdjust();
+	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException;
+	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException;
+	public ArrayList<AdjustReceiptPO> showAdjust() throws RemoteException;
 	
-	public ResultMessage insertImport(InventoryImportReceiptPO po);
-	public ResultMessage insertExport(InventoryExportReceiptPO po);
-	public ResultMessage insertAdjust(AdjustReceiptPO po);
+	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException;
+	public ResultMessage insertExport(InventoryExportReceiptPO po) throws RemoteException;
+	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException;
 
 }

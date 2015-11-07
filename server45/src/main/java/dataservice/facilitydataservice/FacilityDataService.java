@@ -1,5 +1,7 @@
 package dataservice.facilitydataservice;
 
+import java.rmi.RemoteException;
+
 import dataservice.DataService;
 import po.accountpo.AccountPO;
 import po.FacilityPO;
@@ -21,7 +23,7 @@ public interface FacilityDataService <FacilityPO extends PersistentObject>extend
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-	public FacilityPO findFacility(String id);
+	public FacilityPO findFacility(String id) throws RemoteException;
 	
 	/**
 	 * 添加车辆
@@ -30,18 +32,18 @@ public interface FacilityDataService <FacilityPO extends PersistentObject>extend
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-	public ResultMessage addFacility(FacilityPO facility);
+	public ResultMessage addFacility(FacilityPO facility) throws RemoteException;
 	
-	public ResultMessage deleteFacility(FacilityPO facility);
+	public ResultMessage deleteFacility(FacilityPO facility) throws RemoteException;
 	
-	public ResultMessage modifyFacility(FacilityPO facility);
+	public ResultMessage modifyFacility(FacilityPO facility) throws RemoteException;
 	
-	public AccountPO findDriver(String id);
+	public AccountPO findDriver(String id) throws RemoteException;
 	
-	public ResultMessage addDriver(AccountPO driver);
+	public ResultMessage addDriver(AccountPO driver) throws RemoteException;
 	
-	public ResultMessage deleteDriver(AccountPO driver);
+	public ResultMessage deleteDriver(AccountPO driver) throws RemoteException;
 	
-	public ResultMessage modifyDriver(AccountPO driver);
+	public ResultMessage modifyDriver(AccountPO driver) throws RemoteException;
 	
 }

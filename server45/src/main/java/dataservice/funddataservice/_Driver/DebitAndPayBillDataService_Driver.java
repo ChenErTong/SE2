@@ -1,5 +1,6 @@
 package dataservice.funddataservice._Driver;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.DebitAndPayBillPO;
@@ -10,7 +11,7 @@ import dataservice.funddataservice._stub.DebitAndPayBillDataService_Stub;
 public class DebitAndPayBillDataService_Driver {
 	private ArrayList orderNumbers;
 	private DebitAndPayBillPO po = new DebitAndPayBillPO("123", 500, "courierID",ReceiptType.EXPENSE,orderNumbers);
-	public void drive(DebitAndPayBillDataService DPBillDataService){
+	public void drive(DebitAndPayBillDataService DPBillDataService) throws RemoteException{
 		DPBillDataService.getExpenseID();
 		DPBillDataService.getID(ReceiptType.EXPENSE);
 		DPBillDataService.getPayID();
@@ -22,7 +23,7 @@ public class DebitAndPayBillDataService_Driver {
 		
 	}
 	
-	public static void main(String args[]){
+	public static void main(String args[]) throws RemoteException{
 		DebitAndPayBillDataService_Driver driver = new DebitAndPayBillDataService_Driver();
 		DebitAndPayBillDataService stub = new DebitAndPayBillDataService_Stub();
 		driver.drive(stub);

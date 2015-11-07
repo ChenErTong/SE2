@@ -1,12 +1,23 @@
 package data.recorddata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import data.Data;
 import dataservice.recorddataservice.RecordDataService;
 import po.BussinessConditionPO;
 import po.BussinessProcessPO;
 
-public class RecordData implements RecordDataService {
+public class RecordData extends Data implements RecordDataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public RecordData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate, String enddate) {

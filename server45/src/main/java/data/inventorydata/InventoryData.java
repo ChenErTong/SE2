@@ -1,14 +1,25 @@
 package data.inventorydata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import data.Data;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 
-public class InventoryData implements InventoryDataService {
+public class InventoryData extends Data implements InventoryDataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InventoryData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void init() {

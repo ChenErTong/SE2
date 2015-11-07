@@ -1,12 +1,23 @@
 package data.organizationdata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import data.Data;
 import dataservice.organizationdataservice.OrganizationDataService;
 import po.OrganizationPO;
 import state.ResultMessage;
 
-public class OrganizationData implements OrganizationDataService<OrganizationPO> {
+public class OrganizationData extends Data implements OrganizationDataService<OrganizationPO> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public OrganizationData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ResultMessage insert(OrganizationPO po) {

@@ -1,11 +1,23 @@
 package data.facilitydata;
 
+import java.rmi.RemoteException;
+
+import data.Data;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 
-public class FacilityData implements FacilityDataService<FacilityPO> {
+public class FacilityData extends Data implements FacilityDataService<FacilityPO> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public FacilityData() throws RemoteException {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public FacilityPO findFacility(String id) {

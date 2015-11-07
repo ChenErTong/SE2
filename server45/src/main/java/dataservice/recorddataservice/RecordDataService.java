@@ -1,5 +1,6 @@
 package dataservice.recorddataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
@@ -15,7 +16,7 @@ public interface RecordDataService extends DataService {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "RecordData";
 
-	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate, String enddate);
+	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate, String enddate) throws RemoteException;
 
-	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate);
+	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) throws RemoteException;
 }
