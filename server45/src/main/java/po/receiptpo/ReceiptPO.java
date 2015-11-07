@@ -1,8 +1,7 @@
 package po.receiptpo;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import po.PersistentObject;
 /**
