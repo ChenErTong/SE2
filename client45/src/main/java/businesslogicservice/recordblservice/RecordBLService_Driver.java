@@ -22,11 +22,11 @@ public class RecordBLService_Driver {
 		String end = "20151028";
 		BussinessProcessVO bpvo=new BussinessProcessVO(incomeReceipt, expenReceipt);
 	
-		BussinessConditionVO bcvo=new BussinessConditionVO(begin, end, totalIncome, totalExpen,profit);
+		BussinessConditionVO bcvo=new BussinessConditionVO( end, totalIncome, totalExpen,profit);
 		
 		
 		bpvo=recordBLService.bussinessProcess(begin, end);
-		System.out.println(begin+"到"+end+"所有收款入款单据");
+		System.out.println(end+"所有收款入款单据");
 		bcvo=recordBLService.bussinessCondition(end);
 		System.out.println(end+"前所有收入情况");
 		totalIncome=recordBLService.income(end);

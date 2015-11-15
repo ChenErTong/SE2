@@ -12,8 +12,7 @@ public class BussinessConditionVO {
 	 * 3. 利润
 	
 	 */
-		/** 起始时间 */
-		public String begin;
+		
 		/** 结束时间 */
 		public String end;
 		/**收入**/
@@ -22,14 +21,39 @@ public class BussinessConditionVO {
 		public double totalExpen;
 		/** 利润 */
 		public double profit;
-		public BussinessConditionVO(String begin, String end, double totalIncome, double totalExpen, double profit) {
+		public BussinessConditionVO( String end, double totalIncome, double totalExpen, double profit) {
 			super();
-			this.begin = begin;
+			
 			this.end = end;
 			this.totalIncome = totalIncome;
 			this.totalExpen = totalExpen;
 			this.profit = profit;
 		}
+		public String getEnd() {
+			return end;
+		}
+		public void setEnd(String end) {
+			this.end = end;
+		}
+		public double getTotalIncome() {
+			return totalIncome;
+		}
+		public void setTotalIncome(double totalIncome) {
+			this.totalIncome = totalIncome;
+		}
+		public double getTotalExpen() {
+			return totalExpen;
+		}
+		public void setTotalExpen(double totalExpen) {
+			this.totalExpen = totalExpen;
+		}
+		public double getProfit() {
+			return profit;
+		}
+		public void setProfit(double profit) {
+			this.profit = profit;
+		}
+		
 		
 }
 		
