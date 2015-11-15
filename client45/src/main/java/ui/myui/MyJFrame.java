@@ -3,6 +3,7 @@ package ui.myui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import ui.image.CommonImage;
@@ -21,15 +22,15 @@ public class MyJFrame extends JFrame{
 	
 	public MyJFrame(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
 		this.setSize(1280, 720);
 		this.setUndecorated(true);
 		this.setLocationRelativeTo(null);
-		this.setContentPane(new MyJPanel());
 		this.setVisible(true);
 		this.setResizable(false);
 		
 		this.minimizeButton = new MyJButton(1195, 15, 30, 30);
-		this.minimizeButton.setMyIcon(CommonImage.MINIMUMIZE_BUTTON);
+		this.minimizeButton.setMyIcon(CommonImage.TEST_MINIMUMIZE_BUTTON);
 		this.minimizeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
@@ -37,8 +38,8 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.minimizeButton);
 		
-		this.closeButton = new MyJButton(1230, 15, 30, 30);
-		this.closeButton.setMyIcon(CommonImage.CLOSE_BUTTON);
+		this.closeButton = new MyJButton(1235, 15, 30, 30);
+		this.closeButton.setMyIcon(CommonImage.TEST_CLOSE_BUTTON);
 		this.closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -48,6 +49,12 @@ public class MyJFrame extends JFrame{
 		
 		new HyalineValue().start(); // 透明渐变启动界面
 	}
+	
+	protected void setBackground(ImageIcon image){
+		MyBackground background = new MyBackground(image);
+		this.add(background);
+	}
+	
 	/**
 	 * 透明度渐变启动界面
 	 */

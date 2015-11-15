@@ -38,40 +38,40 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	private static UserIdentity userIden;
 	
 	public Frame_Login(){
-		MyColor color = new MyColor();
+//		MyColor color = new MyColor();
 		
-		//账号输入框	
-		userNameField = new MyJTextField(421, 414, 200, 40);
-		userNameField.setFont(new Font("Arail",Font.BOLD,20));
-		userNameField.setForeground(Color.WHITE);
-//		userNameField.setOpaque(false);
-		userNameField.setBorder(BorderFactory.createEmptyBorder());
-		userNameField.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0){
-//				label_field1.setVisible(true);
-			}
-			public void mouseExited(MouseEvent arg0){
-//				label_field1.setVisible(false);
-			}
-		});
-	
-		this.add(userNameField);
-		
-		//密码输入框
-		passwordField = new MyJTextField(421, 464, 200, 40);
-		passwordField.setFont(new Font("Arail",Font.PLAIN,20));
-		passwordField.setForeground(Color.WHITE);
-//		passwordField.setOpaque(false);
-		passwordField.setBorder(BorderFactory.createEmptyBorder());
-		passwordField.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0){
-//				label_field2.setVisible(true);
-			}
-			public void mouseExited(MouseEvent arg0){
-//				label_field2.setVisible(true);
-			}
-		});
-		this.add(passwordField);
+//		//账号输入框	
+//		userNameField = new MyJTextField(421, 414, 200, 40);
+//		userNameField.setFont(new Font("Arail",Font.BOLD,20));
+//		userNameField.setForeground(Color.WHITE);
+////		userNameField.setOpaque(false);
+//		userNameField.setBorder(BorderFactory.createEmptyBorder());
+//		userNameField.addMouseListener(new MouseAdapter(){
+//			public void mouseEntered(MouseEvent arg0){
+////				label_field1.setVisible(true);
+//			}
+//			public void mouseExited(MouseEvent arg0){
+////				label_field1.setVisible(false);
+//			}
+//		});
+//	
+//		this.add(userNameField);
+//		
+//		//密码输入框
+//		passwordField = new MyJTextField(421, 464, 200, 40);
+//		passwordField.setFont(new Font("Arail",Font.PLAIN,20));
+//		passwordField.setForeground(Color.WHITE);
+////		passwordField.setOpaque(false);
+//		passwordField.setBorder(BorderFactory.createEmptyBorder());
+//		passwordField.addMouseListener(new MouseAdapter(){
+//			public void mouseEntered(MouseEvent arg0){
+////				label_field2.setVisible(true);
+//			}
+//			public void mouseExited(MouseEvent arg0){
+////				label_field2.setVisible(true);
+//			}
+//		});
+//		this.add(passwordField);
 		
 		//确认键
 		button_Enter = new MyJButton(421, 510, 60, 30);

@@ -21,9 +21,7 @@ public class MyJButton extends JButton{
 	 * @param height 高度
 	 */
 	public MyJButton(int x, int y, int width, int height){
-		this.setFont(new Font("宋体",Font.PLAIN,30));
-		this.setSize(width, height);
-		this.setLocation(x, y);
+		this.setBounds(x, y, width, height);
 		this.setBorder(null);
 		this.setContentAreaFilled(false);
 		this.setVisible(true);

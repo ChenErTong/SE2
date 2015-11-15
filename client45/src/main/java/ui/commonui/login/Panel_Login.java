@@ -9,4 +9,7 @@ import ui.myui.MyJPanel;
 public class Panel_Login extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 
+	public Panel_Login(int x, int y, int width, int height) {
+		super(x, y, width, height);
+	}
 }
