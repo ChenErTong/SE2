@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+
+import ui.image.CommonImage;
 /**
  * Frame的总类，定义位置，大小，启动动画
  * @author czw
@@ -26,7 +28,8 @@ public class MyJFrame extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);
 		
-		this.minimizeButton = new MyJButton(1200, 15, 20, 20);
+		this.minimizeButton = new MyJButton(1195, 15, 30, 30);
+		this.minimizeButton.setMyIcon(CommonImage.MINIMUMIZE_BUTTON);
 		this.minimizeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
@@ -34,7 +37,8 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.minimizeButton);
 		
-		this.closeButton = new MyJButton(1240, 15, 20, 20);
+		this.closeButton = new MyJButton(1230, 15, 30, 30);
+		this.closeButton.setMyIcon(CommonImage.CLOSE_BUTTON);
 		this.closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);

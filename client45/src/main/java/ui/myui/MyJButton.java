@@ -2,7 +2,9 @@ package ui.myui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 /**
  * 按钮总类
@@ -19,20 +21,16 @@ public class MyJButton extends JButton{
 	 * @param height 高度
 	 */
 	public MyJButton(int x, int y, int width, int height){
-		Color foreColor = Color.WHITE;
-		Color backColor = MyColor.getColor();
-		this.setFont(new Font("Arail",Font.PLAIN,20));
+		this.setFont(new Font("宋体",Font.PLAIN,30));
 		this.setSize(width, height);
 		this.setLocation(x, y);
-		this.setBackground(backColor);
-		this.setForeground(foreColor);
+		this.setBorder(null);
+		this.setContentAreaFilled(false);
 		this.setVisible(true);
 	}
-	/**
-	 * 设置内容
-	 * @param str 按钮内容
-	 */
-	public void setText(String str){
-		this.setText(str);
+	public void setMyIcon(ImageIcon icon){
+		@SuppressWarnings("static-access")
+		Image image = icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), icon.getImage().SCALE_DEFAULT);
+		this.setIcon(new ImageIcon(image));
 	}
 }
