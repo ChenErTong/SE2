@@ -14,6 +14,10 @@ import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.TransferArrivalListVO;
 
 public class InventoryBLService_Stub implements InventoryBLService{
+	public String ID = null;
+	public  String destination = null;
+	public  String transferID = null;
+	public String commoditiesID = null;
 	/** 出库数量 **/
 	public int exportNumber;
 	/** 入库数量）**/
@@ -85,12 +89,12 @@ public class InventoryBLService_Stub implements InventoryBLService{
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		// TODO Auto-generated method stub
-		return new InventoryViewVO(exportNumber,  importNumber,  a,  b,  c,  d);
+		return new InventoryViewVO(a, a, a);
 	}
     @Override
 	public InventoryCheckVO checkRecord() {
 		// TODO Auto-generated method stub
-		return new InventoryCheckVO(receipts, adjustID);
+		return new InventoryCheckVO(null, ID);
 	}
 	
 
@@ -109,7 +113,7 @@ public class InventoryBLService_Stub implements InventoryBLService{
 	@Override
 	public InventoryImportReceiptPO buildImport() {
 		// TODO Auto-generated method stub
-		return new InventoryImportReceiptPO(importID,  importDestination, a,  b,  c,  d);
+		return new InventoryImportReceiptPO(  destination,  commoditiesID,  a,  b, c,  d);
 	}
 
 	@Override
@@ -134,7 +138,7 @@ public class InventoryBLService_Stub implements InventoryBLService{
 	@Override
 	public InventoryExportReceiptPO buildExport() {
 		// TODO Auto-generated method stub
-		return new InventoryExportReceiptPO(importID, exportDestination, transfer);
+		return new InventoryExportReceiptPO(destination, transfer,transferID);
 	}
 
 	@Override

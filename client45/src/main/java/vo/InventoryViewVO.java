@@ -10,23 +10,45 @@ public class InventoryViewVO {
 	public int exportNumber;
 	/** 入库数量）**/
 	public int importNumber;
-	/**区**/
-	public int A;
-	/**排**/
-	public int B;
-	/**架**/
-	public int C;
-	/**位**/
-	public int D;
+	/**库存数量**/
+	public int num;
 	
-	public InventoryViewVO(int exportNumber, int importNumber, int a, int b, int c, int d) {
+	
+	public InventoryViewVO(int exportNumber, int importNumber, int num) {
 		super();
 		this.exportNumber = exportNumber;
 		this.importNumber = importNumber;
-		A = a;
-		B = b;
-		C = c;
-		D = d;
+		this.num=num;
+	}
+
+
+	public int getExportNumber() {
+		return exportNumber;
+	}
+
+
+	public void setExportNumber(int exportNumber) {
+		this.exportNumber = exportNumber;
+	}
+
+
+	public int getImportNumber() {
+		return importNumber;
+	}
+
+
+	public void setImportNumber(int importNumber) {
+		this.importNumber = importNumber;
+	}
+
+
+	public int getNum() {
+		return num;
+	}
+
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 	
 	

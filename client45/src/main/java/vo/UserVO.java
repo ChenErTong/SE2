@@ -9,14 +9,14 @@ public class UserVO {
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	/**用户名*/
-	public String username;
+	private String username;
 	/**用户真实姓名*/
-	public String name;
+	private String name;
 
 	/**密码*/
 	private String password;
 	/**用户身份*/
-	public UserIdentity iden;
+	private UserIdentity iden;
 	/**用户操作*/
 	private ArrayList operationRecords;
 	/**用户权限*/
