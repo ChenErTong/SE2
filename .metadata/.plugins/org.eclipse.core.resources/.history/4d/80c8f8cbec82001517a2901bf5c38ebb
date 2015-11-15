@@ -1,7 +1,0 @@
-package transfer;
-
-import src.main.java.vo.TransferVO;
-
-public class MockTransfer extends TransferVO {
-
-}

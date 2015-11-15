@@ -10,6 +10,7 @@ import businesslogicservice.fundblservice.BankAccoutBLService;
 
 public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 
+	@Override
 	public ConfirmState confirmOperation() {
 		System.out.println("Please confirm your operation!");
 		return ConfirmState.CONFIRM;
@@ -49,12 +50,6 @@ public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 	public ArrayList<BankAccoutVO> find(String keywords, FindTypeAccount type) {
 		System.out.println("Find the bankAccount according to the keywords");
 		return new ArrayList<BankAccoutVO>(){};
-	}
-
-	@Override
-	public ArrayList<BankAccoutVO> find(String keywords, po.FindTypeAccount type) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

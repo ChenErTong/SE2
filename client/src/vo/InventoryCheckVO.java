@@ -20,15 +20,15 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class InventoryCheckVO {
 
 	/** 商品列表 */
-	public ArrayList<InventoryImportReceiptVO> receipts;
+	public ArrayList<vo.InventoryImportReceiptVO> receipts;
 	/** 批次 */
 	public String date;
 	/** 批号 */
 	public String lotNum;
 	
-	public InventoryCheckVO(ArrayList<InventoryImportReceiptVO> receipts, String lotNum) {
+	public InventoryCheckVO(ArrayList<vo.InventoryImportReceiptVO> iirv, String lotNum) {
 		super();
-		this.receipts = receipts;
+		this.receipts = iirv;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");

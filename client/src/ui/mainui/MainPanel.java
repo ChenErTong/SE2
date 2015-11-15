@@ -455,14 +455,14 @@ public class MainPanel extends JPanel{
 		System.out.println("--------------------------------------------------");
 		_Inventory_Data_Stub inventory_Data_Stub = new _Inventory_Data_Stub();
 		@SuppressWarnings("unused")
-		ResultMessage resultMessage = inventory_Data_Stub.insertImport(new InventoryImportReceiptPO("0123456789", "Shanghai", 1, 1, 1, 1));
+		ResultMessage resultMessage = inventory_Data_Stub.insertImport(new InventoryImportReceiptPO("0123456789","Shanghai","0123456789",1,1,1,1));
 	}
 	
 	public void _Inventory_Driver_insertExport(){
 		System.out.println("--------------------------------------------------");
 		_Inventory_Data_Stub inventory_Data_Stub = new _Inventory_Data_Stub();
 		@SuppressWarnings("unused")
-		ResultMessage resultMessage = inventory_Data_Stub.insertExport(new InventoryExportReceiptPO("1234567890", "Nanjing", "plane"));
+		ResultMessage resultMessage = inventory_Data_Stub.insertExport(new InventoryExportReceiptPO("1234567890","Nanjing","plane","0123456789","0123456789", 1, 1, 1, 1));
 	}
 	
 	public void _Inventory_Driver_insertAdjust(){

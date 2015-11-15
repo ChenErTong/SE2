@@ -1,7 +1,0 @@
-package transfer;
-
-import vo.TransferVO;
-
-public class MockTransfer extends TransferVO {
-
-}

@@ -29,4 +29,53 @@ public class AdjustReceiptPO extends ReceiptPO{
 	public int aftB;
 	public int aftC;
 	public int aftD;
+	public int getExA() {
+		return exA;
+	}
+	public void setExA(int exA) {
+		this.exA = exA;
+	}
+	public int getExB() {
+		return exB;
+	}
+	public void setExB(int exB) {
+		this.exB = exB;
+	}
+	public int getExC() {
+		return exC;
+	}
+	public void setExC(int exC) {
+		this.exC = exC;
+	}
+	public int getExD() {
+		return exD;
+	}
+	public void setExD(int exD) {
+		this.exD = exD;
+	}
+	public int getAftA() {
+		return aftA;
+	}
+	public void setAftA(int aftA) {
+		this.aftA = aftA;
+	}
+	public int getAftB() {
+		return aftB;
+	}
+	public void setAftB(int aftB) {
+		this.aftB = aftB;
+	}
+	public int getAftC() {
+		return aftC;
+	}
+	public void setAftC(int aftC) {
+		this.aftC = aftC;
+	}
+	public int getAftD() {
+		return aftD;
+	}
+	public void setAftD(int aftD) {
+		this.aftD = aftD;
+	}
+	
 }

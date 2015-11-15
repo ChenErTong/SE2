@@ -48,8 +48,8 @@ public interface DebitAndPayBillBLService {
 	
 	/**
 	 * 建立新的收款单（付款单），单据类型在前面的getID方法已经得到
-	 * @param operatorID 付款人ID/收款人ID【可以下拉列表进行】
-	 * @param operatorName 收款人姓名/付款人姓名
+	 * @param operatorID 付款人ID/收款快递员ID【可以下拉列表进行】
+	 * @param operatorName 收款快递员姓名/付款人姓名
 	 * TODO 这个方法不知道要加几个参数orz
 	 * @author zsq
 	 * @version Oct 22,2015
