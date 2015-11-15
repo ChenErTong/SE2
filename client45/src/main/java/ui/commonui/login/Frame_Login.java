@@ -2,29 +2,27 @@ package ui.commonui.login;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-
 import state.UserIdentity;
-import ui.mainui.MainFrame;
+import ui.myui.MyJFrame;
 import ui.myui.MyColor;
 import ui.myui.MyJButton;
 import ui.myui.MyJTextField;
-
-public class Frame_Login extends MainFrame implements ActionListener{
+/**
+ * 登陆界面
+ * @author czw
+ * @time 2015年11月15日下午4:11:44
+ */
+public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	boolean flag = false;
@@ -76,7 +74,7 @@ public class Frame_Login extends MainFrame implements ActionListener{
 		this.add(passwordField);
 		
 		//确认键
-		button_Enter = new MyJButton("登陆", 421, 510, 60, 30);
+		button_Enter = new MyJButton(421, 510, 60, 30);
 		button_Enter.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0){
 //				loginBackground.setVisible(false);
@@ -99,7 +97,7 @@ public class Frame_Login extends MainFrame implements ActionListener{
 		this.add(button_Enter);
 		
 		//确认键
-		button_Exit = new MyJButton("退出", 491, 510, 60, 30);
+		button_Exit = new MyJButton(491, 510, 60, 30);
 		button_Exit.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0){
 //				loginBackground.setVisible(false);
