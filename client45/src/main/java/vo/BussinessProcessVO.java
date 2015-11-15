@@ -18,26 +18,12 @@ public class BussinessProcessVO {
 
 		
 		public ArrayList<DebitBillVO> incomeReceipt;
-		public ArrayList<PaymentBillVO> expenReceipt;
 		public BussinessProcessVO(ArrayList<DebitBillVO> incomeReceipt, ArrayList<PaymentBillVO> expenReceipt) {
 		super();
 		this.incomeReceipt = incomeReceipt;
 		this.expenReceipt = expenReceipt;
-		
-		
 	}
-		public ArrayList<DebitBillVO> getIncomeReceipt() {
-			return incomeReceipt;
-		}
-		public void setIncomeReceipt(ArrayList<DebitBillVO> incomeReceipt) {
-			this.incomeReceipt = incomeReceipt;
-		}
-		public ArrayList<PaymentBillVO> getExpenReceipt() {
-			return expenReceipt;
-		}
-		public void setExpenReceipt(ArrayList<PaymentBillVO> expenReceipt) {
-			this.expenReceipt = expenReceipt;
-		}
+		public ArrayList<PaymentBillVO> expenReceipt;
 		
 		
 		

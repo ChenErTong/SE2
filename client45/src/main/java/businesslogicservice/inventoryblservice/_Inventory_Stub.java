@@ -19,7 +19,7 @@ public class _Inventory_Stub implements InventoryBLService{
 	InventoryDataService<InventoryPO> data_stub = new _Inventory_Data_Stub();
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
-		InventoryViewVO ivVO = new InventoryViewVO(data_stub.showExport().size(), data_stub.showImport().size(), data_stub.getANum());
+		InventoryViewVO ivVO = new InventoryViewVO(data_stub.showExport().size(), data_stub.showImport().size(), data_stub.getANum(), data_stub.getBNum(), data_stub.getCNum(), data_stub.getDNum());
 		System.out.println("Succeed in showing the condition of the inventory!");
 		return ivVO;
 	}
@@ -29,7 +29,7 @@ public class _Inventory_Stub implements InventoryBLService{
 		InventoryImportReceiptVO iirVO = new InventoryImportReceiptVO("1234567890", "Nanjing", 1, 1, 1, 1);
 		ArrayList<InventoryImportReceiptVO> iirVOs = new ArrayList<InventoryImportReceiptVO>();
 		iirVOs.add(iirVO);
-		InventoryCheckVO icVO = new InventoryCheckVO(null, null);
+		InventoryCheckVO icVO = new InventoryCheckVO(iirVOs, "AA01");
 		System.out.println("Succeed in showing the shortcut of the inventory!");
 		return icVO;
 	}
@@ -48,7 +48,7 @@ public class _Inventory_Stub implements InventoryBLService{
 
 	@Override
 	public InventoryImportReceiptPO buildImport() {
-		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789","Shanghai","0123456789",1,1,1,1);
+		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0159100143", "Nanjing", 1, 1, 1, 1);
 		System.out.println("Succeed in producing the import receipt!");
 		return iirPO;
 	}
@@ -73,7 +73,7 @@ public class _Inventory_Stub implements InventoryBLService{
 
 	@Override
 	public InventoryExportReceiptPO buildExport() {
-		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890","Nanjing","plane","0123456789","0123456789", 1, 1, 1, 1);
+		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("0159100143", "Shanghai", "plane");
 		System.out.println("Succeed in producing the export receipt!");
 		return ierPO;
 	}

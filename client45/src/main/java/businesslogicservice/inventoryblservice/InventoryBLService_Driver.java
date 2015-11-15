@@ -2,12 +2,6 @@ package businesslogicservice.inventoryblservice;
 
 import java.util.ArrayList;
 
-
-import businesslogicservice.inventoryblservice.InventoryBLService;
-import businesslogicservice.accountblservice.AccountBLService_Driver;
-import businesslogicservice.accountblservice.AccountBLService_Stub;
-import businesslogicservice.inventoryblservice.InventoryBLService_Stub;
-import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;

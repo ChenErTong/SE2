@@ -1,18 +1,13 @@
 package businesslogicservice.inventoryblservice;
 
-import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
-import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
-import vo.CommodityVO;
 import vo.InventoryCheckVO;
-import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.TransferArrivalListVO;
 
 public interface InventoryBLService {

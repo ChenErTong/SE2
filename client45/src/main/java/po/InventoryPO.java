@@ -1,38 +1,45 @@
 package po;
 
-import java.io.Serializable;
-
 /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public class InventoryPO extends PersistentObject{
-
-	/**
-	 * 
-	 */
+public class InventoryPO extends PersistentObject {
+	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
+	private int num;
+	public String lLocation;
+	public int size;
 	
-	OrderPO order;
-	String comLocation;
-	
-	
-	
-	public InventoryPO(String id, OrderPO order, String comLocation) {
-		super(id);
-		this.order = order;
-		this.comLocation = comLocation;
+	public int getNum() {
+		return num;
 	}
 
-	public OrderPO getOrder(){
-		return order;
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public InventoryPO(String id, String lLocation, int size,int num) {
+		super(id);
+		this.lLocation = lLocation;
+		this.size = size;
+		this.num= num;
 	}
 	
-	public String getComLocation(){
-		return comLocation;
+	public String getlLocation() {
+		return lLocation;
+	}
+	public void setlLocation(String lLocation) {
+		this.lLocation = lLocation;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
 	}
 	
-	public void modifyComLocation(String newComLocation){
-		comLocation = newComLocation;
-	}
+	
+	
 }
+
