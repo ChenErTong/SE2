@@ -1,5 +1,10 @@
 package ui;
 
+import javax.swing.UIManager;
+
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+
 import ui.commonui.login.Frame_Login;
 import ui.specialui.admin.Frame_Admin;
 import ui.specialui.courier.Frame_Courier;
@@ -10,6 +15,15 @@ import ui.specialui.sender.Frame_Sender;
 public class mainForUITest {
 
 	public static void main(String[] args) {
+		try {
+			UIManager.put("RootPane.setupButtonVisible",false);
+			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		//Frame_Login loginFrame = new Frame_Login();
 		//loginFrame.setVisible(true);
 		
