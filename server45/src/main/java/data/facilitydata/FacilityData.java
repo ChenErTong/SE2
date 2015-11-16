@@ -18,7 +18,7 @@ public class FacilityData extends Data implements FacilityDataService {
 	private static final long serialVersionUID = 1L;
 	private SerSaveAndLoad<PersistentObject> poList;
 	public FacilityData() throws RemoteException {
-		poList=new SerSaveAndLoad<PersistentObject>(NAME);
+		poList=new SerSaveAndLoad<PersistentObject>("data/"+NAME+".ser");
 	}
 
 	@Override
