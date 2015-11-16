@@ -2,6 +2,8 @@ package data.facilitydata;
 
 import java.rmi.RemoteException;
 
+import javax.jws.soap.SOAPBinding;
+
 import data.Data;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
@@ -23,12 +25,16 @@ public class FacilityData extends Data implements FacilityDataService {
 
 	@Override
 	public FacilityPO findFacility(String id)throws RemoteException {
-		return (FacilityPO) poList.get(0);
+		for (int i = 0; i < poList.size(); i++) {
+			PersistentObject po = poList.get(i);
+			if(po.getID().equals(id))
+				return (FacilityPO)po;
+		}
+		return null;
 	}
 
 	@Override
 	public ResultMessage addFacility(FacilityPO facility)throws RemoteException {
-		System.out.println("ADD");
 		if(poList.add(facility))
 			return ResultMessage.SUCCESS;
 		return ResultMessage.FAIL;
@@ -36,14 +42,26 @@ public class FacilityData extends Data implements FacilityDataService {
 
 	@Override
 	public ResultMessage deleteFacility(FacilityPO facility)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (int i = 0; i < poList.size(); i++) {
+			PersistentObject po = poList.get(i);
+			if(po.getID().equals(facility.getID())){
+				poList.remove(i);
+				return ResultMessage.SUCCESS;
+			}
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityPO facility)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		for (int i = 0; i < poList.size(); i++) {
+			PersistentObject po = poList.get(i);
+			if(po.getID().equals(facility.getID())){
+				poList.set(i, facility);
+				return ResultMessage.SUCCESS;
+			}
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
