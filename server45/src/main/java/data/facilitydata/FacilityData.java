@@ -1,12 +1,15 @@
 package data.facilitydata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import data.Data;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
+import po.PersistentObject;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
+import util.SerSaveAndLoad;
 
 public class FacilityData extends Data implements FacilityDataService<FacilityPO> {
 
@@ -14,21 +17,21 @@ public class FacilityData extends Data implements FacilityDataService<FacilityPO
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private SerSaveAndLoad<PersistentObject> poList;
 	public FacilityData() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		poList=new SerSaveAndLoad<PersistentObject>(NAME);
 	}
 
 	@Override
 	public FacilityPO findFacility(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (FacilityPO) poList.get(0);
 	}
 
 	@Override
 	public ResultMessage addFacility(FacilityPO facility) {
-		// TODO Auto-generated method stub
-		return null;
+		if(poList.add(facility))
+			return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
 
 	@Override

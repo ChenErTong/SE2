@@ -16,6 +16,56 @@ public class SerSaveAndLoad<E> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<E> poList;
 	private String fileName;
+	
+	public ArrayList<E> getInList() {
+		return this.poList;
+	}
+
+	public boolean add(E e) {
+		boolean b = poList.add(e);
+		save();
+		return b;
+	}
+
+	public void add(int index, E element) {
+		poList.add(index, element);
+		save();
+	}
+
+	public E get(int index) {
+		return poList.get(index);
+	}
+
+	public void clear() {
+		poList.clear();
+		save();
+	}
+
+	public E remove(int index) {
+		E e = poList.remove(index);
+		save();
+		return e;
+	}
+
+	public boolean remove(Object o) {
+		boolean b = poList.remove(o);
+		save();
+		return b;
+	}
+
+	public E set(int index, E element) {
+		E e = poList.set(index, element);
+		save();
+		return e;
+	}
+
+	public int size() {
+		return poList.size();
+	}
+
+	public boolean isEmpty() {
+		return poList.isEmpty();
+	}
 	@SuppressWarnings("unchecked")
 	private void load(){
 		/* 没有该文件夹就创建 */
