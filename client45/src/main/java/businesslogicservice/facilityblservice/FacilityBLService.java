@@ -5,6 +5,7 @@ import vo.FacilityVO;
 import vo.accountvo.AccountVO;
 import vo.accountvo.DriverVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
@@ -21,6 +22,7 @@ public interface FacilityBLService extends BLService{
 	 * @return 处理结果
 	 * @author czw 
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
 	public ResultMessage addFacility(FacilityVO facility);
 	

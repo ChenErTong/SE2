@@ -1,17 +1,24 @@
 package po;
 
-
-
 import java.util.ArrayList;
 
 import po.receiptpo.LoadingListPO;
 
 public class FacilityPO extends PersistentObject{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3096881770967373957L;
+
+	/**
+	 * 管理员编号
 	 */
 	private String managerId;
 	
+	private String date;
+	
 	/**
+	 * 运输历史
 	 */
 	private ArrayList<LoadingListPO> deliverHistory;
 
@@ -28,4 +35,10 @@ public class FacilityPO extends PersistentObject{
 	public ArrayList<LoadingListPO> getDeliverHistory() {
 		return deliverHistory;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+
 }

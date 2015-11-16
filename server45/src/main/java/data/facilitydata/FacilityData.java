@@ -1,7 +1,6 @@
 package data.facilitydata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import data.Data;
 import dataservice.facilitydataservice.FacilityDataService;
@@ -11,7 +10,7 @@ import po.accountpo.AccountPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class FacilityData extends Data implements FacilityDataService<FacilityPO> {
+public class FacilityData extends Data implements FacilityDataService {
 
 	/**
 	 * 
@@ -23,51 +22,53 @@ public class FacilityData extends Data implements FacilityDataService<FacilityPO
 	}
 
 	@Override
-	public FacilityPO findFacility(String id) {
+	public FacilityPO findFacility(String id)throws RemoteException {
 		return (FacilityPO) poList.get(0);
 	}
 
 	@Override
-	public ResultMessage addFacility(FacilityPO facility) {
+	public ResultMessage addFacility(FacilityPO facility)throws RemoteException {
+		System.out.println("ADD");
 		if(poList.add(facility))
 			return ResultMessage.SUCCESS;
 		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage deleteFacility(FacilityPO facility) {
+	public ResultMessage deleteFacility(FacilityPO facility)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage modifyFacility(FacilityPO facility) {
+	public ResultMessage modifyFacility(FacilityPO facility)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AccountPO findDriver(String id) {
+	public AccountPO findDriver(String id)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addDriver(AccountPO driver) {
+	public ResultMessage addDriver(AccountPO driver)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage deleteDriver(AccountPO driver) {
+	public ResultMessage deleteDriver(AccountPO driver)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage modifyDriver(AccountPO driver) {
+	public ResultMessage modifyDriver(AccountPO driver)throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

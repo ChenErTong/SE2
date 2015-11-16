@@ -1,5 +1,7 @@
 package businesslogicservice.facilityblservice;
 
+import java.rmi.RemoteException;
+
 import dataservice.facilitydataservice.FacilityDataService;
 import dataservice.facilitydataservice._Facility_Data_Stub;
 import po.FacilityPO;
@@ -10,7 +12,7 @@ import vo.FacilityVO;
 import vo.accountvo.DriverVO;
 
 public class _Facility_Stub implements FacilityBLService {
-	FacilityDataService<FacilityPO> data_Stub = new _Facility_Data_Stub();
+	FacilityDataService data_Stub = new _Facility_Data_Stub();
 	@Override
 	public ConfirmState confirmOperation() {
 		System.out.println("You have confirmed!");
@@ -20,27 +22,48 @@ public class _Facility_Stub implements FacilityBLService {
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
-		data_Stub.addFacility(facilityPO);
+		try {
+			data_Stub.addFacility(facilityPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
-		data_Stub.deleteFacility(facilityPO);
+		try {
+			data_Stub.deleteFacility(facilityPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
-		data_Stub.modifyFacility(facilityPO);
+		try {
+			data_Stub.modifyFacility(facilityPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public FacilityVO findFacility(String facilityId) {
-		FacilityPO facilityPO = data_Stub.findFacility(facilityId);
+		FacilityPO facilityPO = null;
+		try {
+			facilityPO = data_Stub.findFacility(facilityId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("You have found a car!");
 		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
 	}
@@ -51,7 +74,12 @@ public class _Facility_Stub implements FacilityBLService {
 				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
 				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
 				driver.getReceiptNum());
-		data_Stub.addDriver(driverPO);
+		try {
+			data_Stub.addDriver(driverPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
@@ -61,7 +89,12 @@ public class _Facility_Stub implements FacilityBLService {
 				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
 				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
 				driver.getReceiptNum());
-		data_Stub.deleteDriver(driverPO);
+		try {
+			data_Stub.deleteDriver(driverPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
@@ -71,13 +104,24 @@ public class _Facility_Stub implements FacilityBLService {
 				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
 				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
 				driver.getReceiptNum());
-		data_Stub.modifyDriver(driverPO);
+		try {
+			data_Stub.modifyDriver(driverPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public DriverVO findDriver(String driverId) {
-		DriverPO driverPO = (DriverPO) data_Stub.findDriver(driverId);
+		DriverPO driverPO = null;
+		try {
+			driverPO = (DriverPO) data_Stub.findDriver(driverId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("You have find a driver!");
 		return new DriverVO(
 				driverId,driverPO.getDuty(), 

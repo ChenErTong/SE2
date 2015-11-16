@@ -1,5 +1,6 @@
 package dataservice.facilitydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.FacilityPO;
@@ -7,7 +8,7 @@ import po.accountpo.AccountPO;
 import po.accountpo.DriverPO;
 import state.ResultMessage;
 
-public class _Facility_Data_Stub implements FacilityDataService<FacilityPO> {
+public class _Facility_Data_Stub implements FacilityDataService {
 
 	@Override
 	public FacilityPO findFacility(String id) {
@@ -56,5 +57,6 @@ public class _Facility_Data_Stub implements FacilityDataService<FacilityPO> {
 		System.out.println("You have modified a driver!");
 		return ResultMessage.SUCCESS;
 	}
+
 
 }

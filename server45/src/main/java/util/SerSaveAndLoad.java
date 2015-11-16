@@ -14,7 +14,7 @@ public class SerSaveAndLoad<E> implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<E> poList;
+	private ArrayList<E> poList = new ArrayList<E>();
 	private String fileName;
 	
 	public ArrayList<E> getInList() {

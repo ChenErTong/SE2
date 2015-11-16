@@ -1,5 +1,7 @@
 package businesslogic.facility;
 
+import java.rmi.RemoteException;
+
 import businesslogicservice.facilityblservice.FacilityBLService;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -15,7 +17,7 @@ public class Facility implements FacilityBLService {
 	}
 
 	@Override
-	public ResultMessage addFacility(FacilityVO facility) {
+	public ResultMessage addFacility(FacilityVO facility){
 		// TODO Auto-generated method stub
 		return null;
 	}

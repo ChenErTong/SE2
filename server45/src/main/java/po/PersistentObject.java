@@ -8,9 +8,14 @@ import java.io.Serializable;
  * @version Oct 22,2015
  *
  */
+
 public class PersistentObject implements Serializable{
 
-	/**serialVersionUID*/
+	
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	/**单据编号，格式根据不同单子具有不同的格式*/
 	protected String ID;
@@ -26,6 +31,4 @@ public class PersistentObject implements Serializable{
 		ID = iD;
 		this.date = date;
 	}
-	
-	
 }

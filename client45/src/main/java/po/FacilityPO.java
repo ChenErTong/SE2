@@ -6,6 +6,11 @@ import po.receiptpo.LoadingListPO;
 
 public class FacilityPO extends PersistentObject{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3096881770967373957L;
+
+	/**
 	 * 管理员编号
 	 */
 	private String managerId;
