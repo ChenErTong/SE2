@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
-import po.PersistentObject;
+import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -13,7 +13,7 @@ import state.ResultMessage;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public interface InventoryDataService <InventoryPO extends PersistentObject>extends DataService<InventoryPO>{
+public interface InventoryDataService extends DataService<InventoryPO>{
 	/**初始化持久数据**/
 	public void init() throws RemoteException;
 	/**得到入库单ID**/

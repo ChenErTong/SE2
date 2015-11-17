@@ -1,5 +1,6 @@
 package businesslogicservice.orderblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.orderdataservice.OrderDataService;
@@ -27,7 +28,11 @@ public class _Order_Stub implements OrderBLService {
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());
 		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
-		orderDataService.insert(orderPO);
+		try {
+			orderDataService.insert(orderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
@@ -35,7 +40,12 @@ public class _Order_Stub implements OrderBLService {
 	public OrderVO inquireOrder(String orderNumber, String senderName) {
 		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
 		System.out.println("Inquire an order!");
-		OrderPO orderPO = orderDataService.find(orderNumber);
+		OrderPO orderPO = null;
+		try {
+			orderPO = orderDataService.find(orderNumber);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		if(orderPO!=null&&orderPO.getSenderName()==senderName){
 			System.out.println("Found!");
 			return new OrderVO(orderPO.getSendTime(),orderPO.getRecipientTime(),orderPO.getMoney());
@@ -53,7 +63,11 @@ public class _Order_Stub implements OrderBLService {
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());
 		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
-		orderDataService.update(orderPO);
+		try {
+			orderDataService.update(orderPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 	@Override
