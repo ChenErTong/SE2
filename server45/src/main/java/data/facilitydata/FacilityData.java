@@ -16,51 +16,26 @@ public class FacilityData extends Data implements FacilityDataService {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private SerSaveAndLoad<PersistentObject> poList;
+	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public FacilityData() throws RemoteException {
 		poList=new SerSaveAndLoad<PersistentObject>("data/"+NAME+".ser");
 	}
 
 	@Override
 	public FacilityPO findFacility(String id)throws RemoteException {
-		for (int i = 0; i < poList.size(); i++) {
-			PersistentObject po = poList.get(i);
-			if(po.getID().equals(id))
-				return (FacilityPO)po;
-		}
-		return null;
-	}
+		return (FacilityPO)super.find(id);}
 
 	@Override
 	public ResultMessage addFacility(FacilityPO facility)throws RemoteException {
-		if(poList.add(facility))
-			return ResultMessage.SUCCESS;
-		return ResultMessage.FAIL;
-	}
+		return super.add(facility);	}
 
 	@Override
 	public ResultMessage deleteFacility(FacilityPO facility)throws RemoteException {
-		for (int i = 0; i < poList.size(); i++) {
-			PersistentObject po = poList.get(i);
-			if(po.getID().equals(facility.getID())){
-				poList.remove(i);
-				return ResultMessage.SUCCESS;
-			}
-		}
-		return ResultMessage.FAIL;
-	}
+		return super.delete(facility);	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityPO facility)throws RemoteException {
-		for (int i = 0; i < poList.size(); i++) {
-			PersistentObject po = poList.get(i);
-			if(po.getID().equals(facility.getID())){
-				poList.set(i, facility);
-				return ResultMessage.SUCCESS;
-			}
-		}
-		return ResultMessage.FAIL;
-	}
+		return super.modify(facility);}
 
 	@Override
 	public AccountPO findDriver(String id)throws RemoteException {
