@@ -30,10 +30,10 @@ public class Data  extends UnicastRemoteObject{
 			return ResultMessage.SUCCESS;
 		return ResultMessage.FAIL;
 	}
-	public ResultMessage delete(PersistentObject po) throws RemoteException{
+	public ResultMessage delete(String id) throws RemoteException{
 		for (int i = 0; i < poList.size(); i++) {
 			PersistentObject poFind = poList.get(i);
-			if(poFind.getID().equals(po.getID())){
+			if(poFind.getID().equals(id)){
 				poList.remove(i);
 				return ResultMessage.SUCCESS;
 			}

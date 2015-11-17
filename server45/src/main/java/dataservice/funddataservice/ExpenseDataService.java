@@ -12,7 +12,7 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 23,2015
  */
-public interface ExpenseDataService extends DataService {
+public interface ExpenseDataService extends DataService<ExpensePO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "ExpenseData";
 	/**

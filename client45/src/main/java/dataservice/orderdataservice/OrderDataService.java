@@ -1,5 +1,7 @@
 package dataservice.orderdataservice;
 
+import java.rmi.RemoteException;
+
 import dataservice.DataService;
 import po.OrderPO;
 import po.PersistentObject;
@@ -18,7 +20,7 @@ public interface OrderDataService <OrderPO extends PersistentObject>extends Data
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-	public OrderPO find(String ordernumber);
+	public OrderPO find(String ordernumber) throws RemoteException;
 	
 	/**
 	 * 新增订单
@@ -27,7 +29,7 @@ public interface OrderDataService <OrderPO extends PersistentObject>extends Data
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-	public ResultMessage insert(OrderPO order);
+	public ResultMessage insert(OrderPO order) throws RemoteException;
 	
 	/**
 	 * 修改订单
@@ -36,5 +38,5 @@ public interface OrderDataService <OrderPO extends PersistentObject>extends Data
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-	public ResultMessage update(OrderPO order);
+	public ResultMessage update(OrderPO order) throws RemoteException;
 }

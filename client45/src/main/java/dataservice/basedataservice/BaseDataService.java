@@ -1,5 +1,6 @@
 package dataservice.basedataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 
@@ -19,23 +20,23 @@ public interface BaseDataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(BasePO po);
+	public ResultMessage insert(BasePO po) throws RemoteException;
 	/**
 	 * 根据ID删除序列化文件中的一个BasePO
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID);
+	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新BasePO
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(BasePO PO);
+	public ResultMessage update(BasePO PO) throws RemoteException;
 	/**
 	 * type是查找的类型，另一个参数是ACCOUNT对象
 	 * @param baseType
 	 * @return 账户持久化对象
 	 */
-	public ArrayList<BasePO> find(FindTypeBase baseType);
+	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException;
 }

@@ -1,5 +1,6 @@
 package dataservice.inventorydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
@@ -14,52 +15,52 @@ import state.ResultMessage;
 	
 public interface InventoryDataService <InventoryPO extends PersistentObject>extends DataService<InventoryPO>{
 	/**初始化持久数据**/
-	public void init();
+	public void init() throws RemoteException;
 	/**得到入库单ID**/
-	public String getImportID ();
+	public String getImportID () throws RemoteException;
 	/**得到出库单ID**/
-	public String getExportID ();
+	public String getExportID () throws RemoteException;
 	/**得到调整单ID**/
-	public String getAdjustID ();
+	public String getAdjustID () throws RemoteException;
 	/**得到区号**/
-	public int getA();
+	public int getA() throws RemoteException;
 	/**得到排号**/
-	public int getB();
+	public int getB() throws RemoteException;
 	/**得到架号**/
-	public int getC();
+	public int getC() throws RemoteException;
 	/**得到位号**/
-	public int getD();
+	public int getD() throws RemoteException;
 	
 	/**得到区容量**/
-	public int getASize();
+	public int getASize() throws RemoteException;
 	/**得到排号容量**/
-	public int getBSize();
+	public int getBSize() throws RemoteException;
 	/**得到架号容量**/
-	public int getCSize();
+	public int getCSize() throws RemoteException;
 	/**得到位号容量**/
-	public int getDSize();
+	public int getDSize() throws RemoteException;
 	
 	/**得到区此时容量**/
-	public int getANum();
+	public int getANum() throws RemoteException;
 	/**得到排此时容量**/
-	public int getBNum();
+	public int getBNum() throws RemoteException;
 	/**得到架此时容量**/
-	public int getCNum();
+	public int getCNum() throws RemoteException;
 	/**得到位此时容量**/
-	public int getDNum();
+	public int getDNum() throws RemoteException;
 	
 	
 	/**返回所有入库单据的数据**/
-	public ArrayList<InventoryImportReceiptPO> showImport();
+	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException;
 	/**返回所有出库单据的数据**/
-	public ArrayList<InventoryExportReceiptPO> showExport();
+	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException;
 	/**返回所有调整单据的数据**/
-	public ArrayList<AdjustReceiptPO> showAdjust();
+	public ArrayList<AdjustReceiptPO> showAdjust() throws RemoteException;
 	
 	/**增加一条po数据即生成入库单据**/
-	public ResultMessage insertImport(InventoryImportReceiptPO po);
+	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException;
 	/**增加一条po数据即生成出库单据**/
-	public ResultMessage insertExport(InventoryExportReceiptPO po);
+	public ResultMessage insertExport(InventoryExportReceiptPO po) throws RemoteException;
 	/**增加一条po数据即生成调整单据**/
-	public ResultMessage insertAdjust(AdjustReceiptPO po);
+	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException;
 }

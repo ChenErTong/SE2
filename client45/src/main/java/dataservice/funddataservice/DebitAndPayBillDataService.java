@@ -1,5 +1,6 @@
 package dataservice.funddataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 
@@ -18,19 +19,19 @@ public interface DebitAndPayBillDataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(DebitAndPayBillPO po);
+	public ResultMessage insert(DebitAndPayBillPO po) throws RemoteException;
 	/**
 	 * 根据ID删除序列化文件中的一个DebitAndPayBillPO
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID);
+	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新DebitAndPayBillPO
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(DebitAndPayBillPO PO);
+	public ResultMessage update(DebitAndPayBillPO PO) throws RemoteException;
 	/**
 	 * 根据单据类型生成编号
 	 * @param type 收款单或者付款单
@@ -38,21 +39,21 @@ public interface DebitAndPayBillDataService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public String getID(ReceiptType type) ;
+	public String getID(ReceiptType type)  throws RemoteException;
 
 	/**
 	 * @return 获得新的收款单ID
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public String getExpenseID() ;
+	public String getExpenseID() throws RemoteException ;
 
 	/**
 	 * @return 获得新的付款单ID
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public String getPayID() ;
+	public String getPayID()  throws RemoteException;
 
 	/**
 	 * 按照单据类型返回单据【收款单或者付款单】
@@ -61,6 +62,6 @@ public interface DebitAndPayBillDataService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type);
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
 
 }

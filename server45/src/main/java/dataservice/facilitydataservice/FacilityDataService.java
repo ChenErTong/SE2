@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import dataservice.DataService;
 import po.FacilityPO;
+import po.PersistentObject;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 
@@ -13,7 +14,7 @@ import state.ResultMessage;
  * @author czw
  * @version Oct 22,2015
  */
-public interface FacilityDataService extends DataService<FacilityPO> {
+public interface FacilityDataService extends DataService<PersistentObject> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "FacilityData";
 
@@ -39,7 +40,7 @@ public interface FacilityDataService extends DataService<FacilityPO> {
 	 */
 	public ResultMessage addFacility(FacilityPO facility) throws RemoteException;
 
-	public ResultMessage deleteFacility(FacilityPO facility) throws RemoteException;
+	public ResultMessage deleteFacility(String id) throws RemoteException;
 
 	public ResultMessage modifyFacility(FacilityPO facility) throws RemoteException;
 
@@ -47,7 +48,7 @@ public interface FacilityDataService extends DataService<FacilityPO> {
 
 	public ResultMessage addDriver(AccountPO driver) throws RemoteException;
 
-	public ResultMessage deleteDriver(AccountPO driver) throws RemoteException;
+	public ResultMessage deleteDriver(String id) throws RemoteException;
 
 	public ResultMessage modifyDriver(AccountPO driver) throws RemoteException;
 }

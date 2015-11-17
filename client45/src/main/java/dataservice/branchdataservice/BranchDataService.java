@@ -1,5 +1,7 @@
 package dataservice.branchdataservice;
 
+import java.rmi.RemoteException;
+
 import po.BranchPO;
 import state.ResultMessage;
 /**
@@ -8,7 +10,7 @@ import state.ResultMessage;
  *
  */
 public interface BranchDataService {
-	public ResultMessage insert(BranchPO po);
-	public BranchPO find(String id);
-	public ResultMessage update(BranchPO po);
+	public ResultMessage insert(BranchPO po) throws RemoteException;
+	public BranchPO find(String id) throws RemoteException;
+	public ResultMessage update(BranchPO po) throws RemoteException;
 }

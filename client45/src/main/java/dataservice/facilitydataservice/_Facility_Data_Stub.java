@@ -21,7 +21,7 @@ public class _Facility_Data_Stub implements FacilityDataService {
 	}
 
 	@Override
-	public ResultMessage deleteFacility(FacilityPO facility) {
+	public ResultMessage deleteFacility(String id) {
 		System.out.println("You have deleted a car!");
 		return ResultMessage.SUCCESS;
 	}
@@ -46,7 +46,7 @@ public class _Facility_Data_Stub implements FacilityDataService {
 	}
 
 	@Override
-	public ResultMessage deleteDriver(AccountPO driver) {
+	public ResultMessage deleteDriver(String id) {
 		System.out.println("You have deleted a driver!");
 		return ResultMessage.SUCCESS;
 	}

@@ -25,7 +25,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			data_Stub.addFacility(facilityPO);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -33,11 +32,9 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(),facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
 		try {
-			data_Stub.deleteFacility(facilityPO);
+			data_Stub.deleteFacility(facility.getFacilityIdString());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -49,7 +46,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			data_Stub.modifyFacility(facilityPO);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -61,7 +57,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			facilityPO = data_Stub.findFacility(facilityId);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("You have found a car!");
@@ -77,7 +72,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			data_Stub.addDriver(driverPO);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -85,14 +79,9 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage deleteDriver(DriverVO driver) {
-		DriverPO driverPO = new DriverPO(
-				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
-				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
-				driver.getReceiptNum());
 		try {
-			data_Stub.deleteDriver(driverPO);
+			data_Stub.deleteDriver(driver.getID());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -107,7 +96,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			data_Stub.modifyDriver(driverPO);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -119,7 +107,6 @@ public class _Facility_Stub implements FacilityBLService {
 		try {
 			driverPO = (DriverPO) data_Stub.findDriver(driverId);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("You have find a driver!");

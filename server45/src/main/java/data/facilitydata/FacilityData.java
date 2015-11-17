@@ -34,8 +34,8 @@ public class FacilityData extends Data implements FacilityDataService {
 		return super.add(facility);	}
 
 	@Override
-	public ResultMessage deleteFacility(FacilityPO facility)throws RemoteException {
-		return super.delete(facility);	}
+	public ResultMessage deleteFacility(String id)throws RemoteException {
+		return super.delete(id);	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityPO facility)throws RemoteException {
@@ -50,8 +50,8 @@ public class FacilityData extends Data implements FacilityDataService {
 		return super.add(driver);}
 
 	@Override
-	public ResultMessage deleteDriver(AccountPO driver)throws RemoteException {
-		return super.delete(driver);}
+	public ResultMessage deleteDriver(String id)throws RemoteException {
+		return super.delete(id);}
 
 	@Override
 	public ResultMessage modifyDriver(AccountPO driver)throws RemoteException {

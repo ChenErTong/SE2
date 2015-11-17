@@ -1,5 +1,6 @@
 package dataservice.receiptdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.PersistentObject;
@@ -17,11 +18,11 @@ public interface ReceiptDataService<ReceiptPO extends PersistentObject>extends D
 	 * @param PO
 	 * @return 
 	 */
-	public ResultMessage update(ReceiptPO PO);
+	public ResultMessage update(ReceiptPO PO) throws RemoteException;
 	/**
 	 * 进行一条单据信息的查看
 	 * @param PO
 	 * @return 
 	 */
-	public ArrayList<ReceiptPO> find();
+	public ArrayList<ReceiptPO> find() throws RemoteException;
 }

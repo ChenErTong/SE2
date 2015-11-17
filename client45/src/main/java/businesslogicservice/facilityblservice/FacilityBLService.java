@@ -1,14 +1,11 @@
 package businesslogicservice.facilityblservice;
 
-import state.ResultMessage;
-import vo.FacilityVO;
-import vo.accountvo.AccountVO;
-import vo.accountvo.DriverVO;
-
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import businesslogicservice.BLService;
+import state.ResultMessage;
+import vo.FacilityVO;
+import vo.accountvo.DriverVO;
 
 /**
  * 实现营业厅运输工具管理界面所需要的服务
