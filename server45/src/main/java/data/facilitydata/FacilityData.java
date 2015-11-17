@@ -9,7 +9,11 @@ import po.PersistentObject;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
-
+/**
+ * 
+ * @author Ann
+ * 2015-11-17 21:37:04
+ */
 public class FacilityData extends Data implements FacilityDataService {
 
 	/**
@@ -39,27 +43,19 @@ public class FacilityData extends Data implements FacilityDataService {
 
 	@Override
 	public AccountPO findDriver(String id)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return (AccountPO)super.find(id);}
 
 	@Override
 	public ResultMessage addDriver(AccountPO driver)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return super.add(driver);}
 
 	@Override
 	public ResultMessage deleteDriver(AccountPO driver)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return super.delete(driver);}
 
 	@Override
 	public ResultMessage modifyDriver(AccountPO driver)throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return super.modify(driver);}
 
 
 }

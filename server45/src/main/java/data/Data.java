@@ -3,7 +3,6 @@ package data;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import po.FacilityPO;
 import po.PersistentObject;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
