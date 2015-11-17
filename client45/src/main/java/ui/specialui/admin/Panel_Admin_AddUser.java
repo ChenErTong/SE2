@@ -70,15 +70,13 @@ public class Panel_Admin_AddUser extends MyJPanel{
 		this.add(userAuthority);
 		
 		MyJTextField userId = new MyJTextField(490,90,140,30);
-		userId.setFont(new Font("Arail",Font.BOLD,20));
 		this.add(userId);
-		
+
 		MyJTextField passwordField = new MyJTextField(750,90,140,30);
-		passwordField.setFont(new Font("Arail",Font.BOLD,20));
 		this.add(passwordField);
 		
 		MyJTextField userNameField = new MyJTextField(490, 150, 140, 30);
-		userNameField.setFont(new Font("Arail",Font.BOLD,20));
+
 		this.add(userNameField);
 		
 		MyComboBox userIdentityBox = new MyComboBox(750,150,150,30,18,identity);

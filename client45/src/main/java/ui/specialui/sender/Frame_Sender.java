@@ -38,11 +38,9 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 		
 //		订单号输入框	
 		orderNumberField = new MyJTextField(421, 414, 200, 40);
-		orderNumberField.setFont(new Font("Arail",Font.BOLD,20));
 		this.add(orderNumberField);
 		
 		senderNameField = new MyJTextField(421, 464, 200, 40);
-		senderNameField.setFont(new Font("Arail",Font.BOLD,20));
 		this.add(senderNameField);
 		
 		//确认键

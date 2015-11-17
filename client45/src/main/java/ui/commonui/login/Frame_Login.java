@@ -49,7 +49,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		
 //		账号输入框	
 		userNameField = new MyJTextField(421, 414, 200, 40);
-		userNameField.setFont(new Font("Arail",Font.BOLD,20));
 //		userNameField.setForeground(Color.WHITE);
 ////		userNameField.setOpaque(false);
 //		userNameField.setBorder(BorderFactory.createEmptyBorder());
@@ -66,7 +65,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 //		
 //		//密码输入框
 		passwordField = new MyJTextField(421, 464, 200, 40);
-		passwordField.setFont(new Font("Arail",Font.PLAIN,20));
 //		passwordField.setForeground(Color.WHITE);
 ////		passwordField.setOpaque(false);
 //		passwordField.setBorder(BorderFactory.createEmptyBorder());
