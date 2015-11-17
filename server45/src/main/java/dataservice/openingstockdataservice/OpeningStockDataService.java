@@ -11,6 +11,6 @@ public interface OpeningStockDataService extends DataService {
 	public static final String NAME = "OpeningStockData";
 	public ResultMessage add(OpeningStockPO po) throws RemoteException;
 	public void init() throws RemoteException;
-	public OpeningStockPO find(String id) throws RemoteException;
+	public OpeningStockPO findOpeningStock(String id) throws RemoteException;
 }
 

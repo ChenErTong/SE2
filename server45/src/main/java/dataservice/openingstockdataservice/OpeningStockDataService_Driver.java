@@ -13,7 +13,7 @@ public class OpeningStockDataService_Driver {
 	public void drive(OpeningStockDataService service) throws RemoteException{
 		service.init();
 		service.add(po);
-		service.find(po.getID());
+		service.findOpeningStock(po.getID());
 		
 	}
 	public static void main(String args[]) throws RemoteException{

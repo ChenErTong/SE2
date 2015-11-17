@@ -22,7 +22,7 @@ public class OpeningStockDataService_Stub implements OpeningStockDataService{
 	}
 
 	@Override
-	public OpeningStockPO find(String id) {
+	public OpeningStockPO findOpeningStock(String id) {
 		System.out.println("Find the openingstockpo accroding to the id succeed!");
 		return openingStockPO;
 	}

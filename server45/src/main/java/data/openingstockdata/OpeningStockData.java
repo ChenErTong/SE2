@@ -31,7 +31,7 @@ public class OpeningStockData extends Data implements OpeningStockDataService {
 	}
 
 	@Override
-	public OpeningStockPO find(String id) {
+	public OpeningStockPO findOpeningStock(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
