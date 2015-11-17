@@ -1,34 +1,27 @@
 package ui.myui;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 /**
- * 按钮总类
+ * 文字按钮类
  * @author czw
- * @time 2015年11月15日下午4:12:14
+ * @time 2015年11月16日下午10:59:42
  */
-public class MyJButton extends JButton{
+public class MyJButton extends JButton {
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 按钮构造器
 	 * @param x 横坐标
 	 * @param y 纵坐标
 	 * @param width 宽度
 	 * @param height 高度
+	 * @param text 文本
+	 * @param fontSize 字体大小
 	 */
-	public MyJButton(int x, int y, int width, int height){
+	public MyJButton(int x, int y, int width, int height, String text, int fontSize){
+		this.setFont(new MyFont(fontSize));
 		this.setBounds(x, y, width, height);
-		this.setBorder(null);
-		this.setContentAreaFilled(false);
+		this.setForeground(new Color(230, 110, 10));
+		this.setText(text);
 		this.setVisible(true);
-	}
-	public void setMyIcon(ImageIcon icon){
-		@SuppressWarnings("static-access")
-		Image image = icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), icon.getImage().SCALE_DEFAULT);
-		this.setIcon(new ImageIcon(image));
 	}
 }

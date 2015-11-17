@@ -1,7 +1,5 @@
 package businesslogic.facility;
 
-import java.rmi.RemoteException;
-
 import businesslogicservice.facilityblservice.FacilityBLService;
 import state.ConfirmState;
 import state.ResultMessage;

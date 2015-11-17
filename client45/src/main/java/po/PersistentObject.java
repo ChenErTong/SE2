@@ -31,4 +31,20 @@ public class PersistentObject implements Serializable{
 		ID = iD;
 		this.date = date;
 	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

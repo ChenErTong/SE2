@@ -14,7 +14,7 @@ import javax.swing.KeyStroke;
 
 
 import ui.image.CommonImage;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJTextField;
 
@@ -24,8 +24,8 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	
 	MyJTextField orderNumberField;
 	MyJTextField senderNameField;
-	MyJButton button_Search;
-	MyJButton button_Exit;
+	MyButton button_Search;
+	MyButton button_Exit;
 	JLabel label_field1,label_field2;
 	
 	Panel_Sender_Total totalPanel = new Panel_Sender_Total(this);
@@ -46,7 +46,7 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 		this.add(senderNameField);
 		
 		//确认键
-		button_Search = new MyJButton(421, 510, 60, 30);
+		button_Search = new MyButton(421, 510, 60, 30);
 		button_Search.addMouseListener(new MouseAdapter(){
 		public void mouseEntered(MouseEvent arg0){
 //						loginBackground.setVisible(false);
@@ -69,7 +69,7 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 				this.add(button_Search);
 				
 				//确认键
-				button_Exit = new MyJButton(491, 510, 60, 30);
+				button_Exit = new MyButton(491, 510, 60, 30);
 				button_Exit.addMouseListener(new MouseAdapter(){
 					public void mouseEntered(MouseEvent arg0){
 //						loginBackground.setVisible(false);

@@ -1,34 +1,30 @@
 package ui.specialui.courier;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import ui.myui.MyJLabel;
+import ui.myui.MyTranslucentPanel;
 
-import ui.image.CommonImage;
-import ui.myui.MyJPanel;
-
-public class Panel_Courier_OrderInput extends MyJPanel{
+public class Panel_Courier_OrderInput extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	public Panel_Courier_OrderInput(Frame_Courier frame) {
 		super(60, 40, 550, 640);
-		this.setOpaque(true);
-		
+		this.initComponent(frame);
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
+	private void initComponent(Frame_Courier frame){
+		MyJLabel title = new MyJLabel(220, 15, 110, 50, "订单输入", 24, true);
+		this.add(title);
 		
-//		g.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, observer)
-		BufferedImage image = new BufferedImage(550, 640, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = image.createGraphics();
-		 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
-		g2d.drawImage(CommonImage.TEST_HALFOPAQUE, 0, 0, null);
-	   
-	    g2d.dispose();
-	    
-	    g.drawImage(image, 0, 0, null);
-//	    System.out.println("111");
+		MyJLabel senderInfo = new MyJLabel(110, 60, 110, 30, "寄件人信息", 18, true);
+		this.add(senderInfo);
+		
+		MyJLabel receiverInfo = new MyJLabel(330, 60, 110, 30, "收件人信息", 18, true);
+		this.add(receiverInfo);
+		
+		MyJLabel senderName = new MyJLabel(50, 100, 40, 20, "姓名", 15, true);
+		this.add(senderName);
+		
+		MyJLabel senderAddress = new MyJLabel(50, 140, 40, 20, "住址", 15, true);
+		this.add(senderAddress);
 	}
 }

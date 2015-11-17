@@ -47,8 +47,8 @@ public class SerSaveAndLoad<E> implements Serializable {
 		return e;
 	}
 
-	public boolean remove(Object o) {
-		boolean b = poList.remove(o);
+	public boolean remove(E element) {
+		boolean b = poList.remove(element);
 		save();
 		return b;
 	}

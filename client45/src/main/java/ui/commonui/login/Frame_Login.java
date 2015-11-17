@@ -15,7 +15,7 @@ import javax.swing.KeyStroke;
 import state.UserIdentity;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJTextField;
 import ui.specialui.admin.Panel_Admin_Total;
 /**
@@ -31,8 +31,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	
 	MyJTextField userNameField;
 	MyJTextField passwordField;
-	MyJButton button_Enter;
-	MyJButton button_Exit;
+	MyButton button_Enter;
+	MyButton button_Exit;
 	JLabel label_field1,label_field2;
 	JLabel loginBackground2,loginBackground;
 	
@@ -83,7 +83,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		
 		
 		//确认键
-		button_Enter = new MyJButton(421, 510, 60, 30);
+		button_Enter = new MyButton(421, 510, 60, 30);
 		button_Enter.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0){
 //				loginBackground.setVisible(false);
@@ -106,7 +106,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		this.add(button_Enter);
 		
 		//确认键
-		button_Exit = new MyJButton(491, 510, 60, 30);
+		button_Exit = new MyButton(491, 510, 60, 30);
 		button_Exit.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0){
 //				loginBackground.setVisible(false);
