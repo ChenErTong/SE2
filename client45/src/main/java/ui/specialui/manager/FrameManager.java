@@ -68,6 +68,7 @@ private static final long serialVersionUID = 1L;
 			
 			
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
+			//TODO
 			totalPanel.setVisible(false);
 			viewBusinessPerformance = new Panel_Manager_ViewBusinessPerformance(this);
 			this.add(viewBusinessPerformance);
