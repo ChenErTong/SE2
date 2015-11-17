@@ -12,6 +12,6 @@ public interface OpeningStockDataService {
 	/**初始化持久数据**/
 	public void init();
 	/**返回OpeningStockPO持久数据**/
-	public OpeningStockPO find(String id);
+	public OpeningStockPO findOpeningStock(String id);
 }
 
