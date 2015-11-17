@@ -2,8 +2,6 @@ package data.facilitydata;
 
 import java.rmi.RemoteException;
 
-import javax.jws.soap.SOAPBinding;
-
 import data.Data;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
