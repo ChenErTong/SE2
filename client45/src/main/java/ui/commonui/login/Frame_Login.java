@@ -1,5 +1,6 @@
 package ui.commonui.login;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -10,16 +11,19 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.KeyStroke;
-import state.UserIdentity;
-import ui.myui.MyJFrame;
 
+import state.UserIdentity;
+import ui.image.CommonImage;
+import ui.myui.MyJFrame;
 import ui.myui.MyJButton;
 import ui.myui.MyJTextField;
+import ui.specialui.admin.Panel_Admin_Total;
 /**
  * 登陆界面
  * @author czw
  * @time 2015年11月15日下午4:11:44
  */
+
 public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
@@ -35,12 +39,17 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	private static String userName,userID;
 	private static UserIdentity userIden;
 	
+	Panel_Login totalPanel = new Panel_Login(this);
 	public Frame_Login(){
 //		MyColor color = new MyColor();
+		totalPanel = new Panel_Login(this);
+		this.add(totalPanel);
 		
-//		//账号输入框	
-//		userNameField = new MyJTextField(421, 414, 200, 40);
-//		userNameField.setFont(new Font("Arail",Font.BOLD,20));
+		this.setBackground(CommonImage.TEST_BACKGROUND);
+		
+//		账号输入框	
+		userNameField = new MyJTextField(421, 414, 200, 40);
+		userNameField.setFont(new Font("Arail",Font.BOLD,20));
 //		userNameField.setForeground(Color.WHITE);
 ////		userNameField.setOpaque(false);
 //		userNameField.setBorder(BorderFactory.createEmptyBorder());
@@ -53,11 +62,11 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 //			}
 //		});
 //	
-//		this.add(userNameField);
+		this.add(userNameField);
 //		
 //		//密码输入框
-//		passwordField = new MyJTextField(421, 464, 200, 40);
-//		passwordField.setFont(new Font("Arail",Font.PLAIN,20));
+		passwordField = new MyJTextField(421, 464, 200, 40);
+		passwordField.setFont(new Font("Arail",Font.PLAIN,20));
 //		passwordField.setForeground(Color.WHITE);
 ////		passwordField.setOpaque(false);
 //		passwordField.setBorder(BorderFactory.createEmptyBorder());
@@ -69,7 +78,9 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 ////				label_field2.setVisible(true);
 //			}
 //		});
-//		this.add(passwordField);
+		this.add(passwordField);
+		
+		
 		
 		//确认键
 		button_Enter = new MyJButton(421, 510, 60, 30);

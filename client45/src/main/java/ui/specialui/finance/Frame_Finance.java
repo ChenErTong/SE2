@@ -62,7 +62,9 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.add(viewIncomeStatement);
 			this.getLayeredPane().add(viewIncomeStatement,new Integer(Integer.MAX_VALUE));
 		
-	}
+		}else if(e.getActionCommand().equals("Withdraw")){
+			//TODO
+		}
 
 }
 }

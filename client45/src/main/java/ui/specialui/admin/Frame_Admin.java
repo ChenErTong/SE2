@@ -42,6 +42,8 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 			//TODO
 		}else if(e.getActionCommand().equals("Backout")){
 			//TODO
+		}else if(e.getActionCommand().equals("Withdraw")){
+			//TODO
 		}
 	}
 	

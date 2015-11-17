@@ -60,6 +60,12 @@ public class Panel_Manager_Total extends MyJPanel {
 		ViewIncomeStatement.addActionListener(frameManager);
 		this.add(ViewIncomeStatement);
 		ViewIncomeStatement.setVisible(true);
+		
+		JButton Withdraw = new JButton("注销登录");
+		Withdraw.setBounds(1120,55,150,40);
+		Withdraw.setActionCommand("Withdraw");
+		Withdraw.addActionListener(frameManager);
+		this.add(Withdraw);
 	}
 
 }

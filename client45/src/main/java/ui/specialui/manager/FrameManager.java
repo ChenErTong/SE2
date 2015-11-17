@@ -72,6 +72,8 @@ private static final long serialVersionUID = 1L;
 			viewBusinessPerformance = new Panel_Manager_ViewBusinessPerformance(this);
 			this.add(viewBusinessPerformance);
 			this.getLayeredPane().add(viewBusinessPerformance,new Integer(Integer.MAX_VALUE));
+		}else if(e.getActionCommand().equals("Withdraw")){
+			//TODO
 		}
 	}
 

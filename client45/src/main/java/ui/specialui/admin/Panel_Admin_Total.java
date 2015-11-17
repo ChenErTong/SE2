@@ -55,6 +55,12 @@ public class Panel_Admin_Total extends MyJPanel{
 		Backout.setActionCommand("Backout");
 		Backout.addActionListener(frame_Admin);
 		this.add(Backout);
+		
+		JButton Withdraw = new JButton("注销登录");
+		Withdraw.setBounds(1120,55,150,40);
+		Withdraw.setActionCommand("Withdraw");
+		Withdraw.addActionListener(frame_Admin);
+		this.add(Withdraw);
 	}
 
 	/**
