@@ -2,12 +2,12 @@ package data.branchdata;
 
 import java.rmi.RemoteException;
 
-import data.Data;
+import data.ManageData;
 import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
 import state.ResultMessage;
 
-public class BranchData extends Data implements BranchDataService {
+public class BranchData extends ManageData implements BranchDataService {
 
 	/**
 	 * 

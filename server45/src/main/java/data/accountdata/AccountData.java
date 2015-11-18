@@ -2,10 +2,10 @@ package data.accountdata;
 
 import java.rmi.RemoteException;
 
-import data.Data;
+import data.ManageData;
 import dataservice.accountdataservice.AccountDataService;
 
-public class AccountData extends Data implements AccountDataService{
+public class AccountData extends ManageData implements AccountDataService{
 
 	/**
 	 * 

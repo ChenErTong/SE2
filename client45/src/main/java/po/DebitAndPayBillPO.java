@@ -28,7 +28,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	/**付款人*/
 	private String payerName;
 	/**付款账户*/
-	private ArrayList<BankPO> bankAccouts; 
+	private ArrayList<BankAccountPO> bankAccouts; 
 	/**条目*/
 	private PayBillItem items;
 	/**备注*/
@@ -77,7 +77,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankPO>bankAccouts,ReceiptType type,
+	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
 		super(ID);
 		this.money = money;
@@ -119,11 +119,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.payerName = payerName;
 	}
 
-	public ArrayList<BankPO> getBankAccouts() {
+	public ArrayList<BankAccountPO> getBankAccouts() {
 		return bankAccouts;
 	}
 
-	public void setBankAccouts(ArrayList<BankPO> bankAccouts) {
+	public void setBankAccouts(ArrayList<BankAccountPO> bankAccouts) {
 		this.bankAccouts = bankAccouts;
 	}
 

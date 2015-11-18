@@ -3,12 +3,12 @@ package data.receiptdata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
 
-public class ReceiptData extends Data implements ReceiptDataService<ReceiptPO> {
+public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService<ReceiptPO> {
 
 	/**
 	 * 

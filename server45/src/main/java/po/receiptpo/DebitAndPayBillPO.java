@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import po.BankPO;
+import po.BankAccountPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -22,7 +22,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	//TODO
 	private ArrayList orderNumbers;
 	private String payerName;
-	private ArrayList<BankPO> bankAccouts; 
+	private ArrayList<BankAccountPO> bankAccouts; 
 	private PayBillItem items;
 	private String rentYear;
 	private String salaryMonth;
@@ -49,7 +49,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankPO>bankAccouts,ReceiptType type,
+	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
 		super(ID);
 		this.money = money;
@@ -90,11 +90,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.payerName = payerName;
 	}
 
-	public ArrayList<BankPO> getBankAccouts() {
+	public ArrayList<BankAccountPO> getBankAccouts() {
 		return bankAccouts;
 	}
 
-	public void setBankAccouts(ArrayList<BankPO> bankAccouts) {
+	public void setBankAccouts(ArrayList<BankAccountPO> bankAccouts) {
 		this.bankAccouts = bankAccouts;
 	}
 

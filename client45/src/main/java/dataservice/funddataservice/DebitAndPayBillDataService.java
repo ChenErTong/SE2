@@ -14,6 +14,8 @@ import state.ResultMessage;
  * @version Oct 22,2015
  */
 public interface DebitAndPayBillDataService {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "DebitAndPayBillData";
 	/**
 	 * 向序列化文件中增加一个DebitAndPayBillPO
 	 * @param po

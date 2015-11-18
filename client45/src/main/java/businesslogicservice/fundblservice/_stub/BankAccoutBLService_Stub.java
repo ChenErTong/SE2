@@ -2,11 +2,11 @@ package businesslogicservice.fundblservice._stub;
 
 import java.util.ArrayList;
 
+import businesslogicservice.fundblservice.BankAccoutBLService;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
-import vo.BankAccoutVO;
-import businesslogicservice.fundblservice.BankAccoutBLService;
+import vo.BankAccountVO;
 
 public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 
@@ -23,13 +23,13 @@ public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 	}
 
 	@Override
-	public ArrayList<BankAccoutVO> show() {
+	public ArrayList<BankAccountVO> show() {
 		System.out.println("Show all the bankAccount!");
-		return new ArrayList<BankAccoutVO>(){};
+		return new ArrayList<BankAccountVO>(){};
 	}
 
 	@Override
-	public ResultMessage add(BankAccoutVO vo) {
+	public ResultMessage add(BankAccountVO vo) {
 		System.out.println("Add a new BankAccount!");
 		return ResultMessage.SUCCESS;
 	}
@@ -41,15 +41,15 @@ public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 	}
 
 	@Override
-	public ResultMessage update(BankAccoutVO vo) {
+	public ResultMessage update(BankAccountVO vo) {
 		System.out.println("Modify the information of a bankAccount");
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ArrayList<BankAccoutVO> find(String keywords, FindTypeAccount type) {
+	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
 		System.out.println("Find the bankAccount according to the keywords");
-		return new ArrayList<BankAccoutVO>(){};
+		return new ArrayList<BankAccountVO>(){};
 	}
 
 }

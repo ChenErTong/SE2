@@ -6,9 +6,9 @@ import businesslogicservice.fundblservice.BankAccoutBLService;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
-import vo.BankAccoutVO;
+import vo.BankAccountVO;
 
-public class Bank implements BankAccoutBLService{
+public class BankAccount implements BankAccoutBLService{
 
 	@Override
 	public ConfirmState confirmOperation() {
@@ -23,13 +23,13 @@ public class Bank implements BankAccoutBLService{
 	}
 
 	@Override
-	public ArrayList<BankAccoutVO> show() {
+	public ArrayList<BankAccountVO> show() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage add(BankAccoutVO vo) {
+	public ResultMessage add(BankAccountVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -41,13 +41,13 @@ public class Bank implements BankAccoutBLService{
 	}
 
 	@Override
-	public ResultMessage update(BankAccoutVO vo) {
+	public ResultMessage update(BankAccountVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<BankAccoutVO> find(String keywords, FindTypeAccount type) {
+	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
 		// TODO Auto-generated method stub
 		return null;
 	}

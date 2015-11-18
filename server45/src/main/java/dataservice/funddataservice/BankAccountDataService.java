@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
-import po.BankPO;
+import po.BankAccountPO;
 import state.FindTypeAccount;
 import state.ResultMessage;
 
@@ -14,7 +14,7 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 22,2015
  */
-public interface BankAccountDataService extends DataService {
+public interface BankAccountDataService extends DataService<BankAccountPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "BankAccountData";
 	/**
@@ -23,7 +23,7 @@ public interface BankAccountDataService extends DataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(BankPO po) throws RemoteException;
+	public ResultMessage insert(BankAccountPO po) throws RemoteException;
 
 	/**
 	 * 根据ID删除序列化文件中的一个BankAccoutPO
@@ -39,7 +39,7 @@ public interface BankAccountDataService extends DataService {
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(BankPO PO) throws RemoteException;
+	public ResultMessage update(BankAccountPO PO) throws RemoteException;
 
 	/**
 	 * 以keywords查看账户信息，type是查找的方式，为NULL则表示进行模糊查询
@@ -47,5 +47,5 @@ public interface BankAccountDataService extends DataService {
 	 * @param keywords
 	 * @return 账户持久化对象
 	 */
-	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType) throws RemoteException;
+	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType) throws RemoteException;
 }

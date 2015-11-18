@@ -3,13 +3,13 @@ package data.funddata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.DebitAndPayBillPO;
 import state.ReceiptType;
 import state.ResultMessage;
 
-public class DebitAndPayBillData extends Data implements DebitAndPayBillDataService {
+public class DebitAndPayBillData extends ManageData implements DebitAndPayBillDataService {
 
 	/**
 	 * 

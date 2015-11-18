@@ -3,12 +3,12 @@ package data.funddata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import state.ResultMessage;
 
-public class ExpenseData extends Data implements ExpenseDataService {
+public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataService {
 
 	/**
 	 * 

@@ -3,9 +3,9 @@ package businesslogicservice.fundblservice;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
-import state.ResultMessage;
-import vo.BankAccoutVO;
 import state.FindTypeAccount;
+import state.ResultMessage;
+import vo.BankAccountVO;
 
 /**
  * 负责实现公司账户界面所需要的服务
@@ -30,13 +30,13 @@ public interface BankAccoutBLService extends BLService{
 	 * 显示当前公司的全部银行账户
 	 * @return 全部银行账户的ArrayList
 	 */
-	public ArrayList<BankAccoutVO> show();
+	public ArrayList<BankAccountVO> show();
 	/**
 	 * 添加银行账户
 	 * @param vo BankAccoutVO
 	 * @return  处理结果
 	 */
-	public ResultMessage add(BankAccoutVO vo);
+	public ResultMessage add(BankAccountVO vo);
 	/**
 	 * 根据账户ID删除账户
 	 * @param ID
@@ -48,7 +48,7 @@ public interface BankAccoutBLService extends BLService{
 	 * @param vo BankAccoutVO
 	 * @return 处理信息
 	 */
-	public ResultMessage update(BankAccoutVO vo);
+	public ResultMessage update(BankAccountVO vo);
 	/**
 	 * 进行关键字模糊查询
 	 * @param keywords
@@ -58,5 +58,5 @@ public interface BankAccoutBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @param <FindTypeAccout>
 	 */
-	public ArrayList<BankAccoutVO> find(String keywords,FindTypeAccount type);
+	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type);
 }

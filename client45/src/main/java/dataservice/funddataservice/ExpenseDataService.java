@@ -13,6 +13,8 @@ import state.ResultMessage;
  * @version Oct 23,2015
  */
 public interface ExpenseDataService extends DataService<ExpensePO> {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "ExpenseData";
 	/**
 	 * 向序列化文件中增加一个ExpensePO
 	 * @param po

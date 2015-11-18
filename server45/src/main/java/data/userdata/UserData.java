@@ -3,14 +3,14 @@ package data.userdata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.userdataservice.LoginInfo;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 import state.ResultMessage;
 import state.UserIdentity;
 
-public class UserData extends Data implements UserDataService<UserPO> {
+public class UserData extends ManageData<UserPO> implements UserDataService<UserPO> {
 
 	/**
 	 * 

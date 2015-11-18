@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
 import state.ResultMessage;
-import vo.BankVO;
+import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
@@ -18,13 +18,13 @@ public class OpeningStockBLService_Stub implements OpeningStockBLService{
 	ArrayList<AccountVO> accounts; 
 	ArrayList<FacilityVO> facilities;
 	ArrayList<InventoryVO> inventories;
-	ArrayList<BankVO> banks;
+	ArrayList<BankAccountVO> banks;
 	ResultMessage resultadd;
 	ResultMessage resultfind;
 	int id;
     public OpeningStockBLService_Stub(ArrayList<TransferVO> commoditiesl, ArrayList<BranchVO> brabches,
 			ArrayList<AccountVO> accounts, ArrayList<FacilityVO> facilities, ArrayList<InventoryVO> inventories,
-			ArrayList<BankVO> banks, ResultMessage resultadd, ResultMessage resultfind, int id) {
+			ArrayList<BankAccountVO> banks, ResultMessage resultadd, ResultMessage resultfind, int id) {
 		super();
 		this.commoditiesl = commoditiesl;
 		this.brabches = brabches;
@@ -42,7 +42,7 @@ public class OpeningStockBLService_Stub implements OpeningStockBLService{
 	@Override
 	public ResultMessage add(ArrayList<TransferVO> commodities, ArrayList<BranchVO> brabches,
 			ArrayList<AccountVO> accounts, ArrayList<FacilityVO> facilities, ArrayList<InventoryVO> inventories,
-			ArrayList<BankVO> banks) {
+			ArrayList<BankAccountVO> banks) {
 		
 		// TODO Auto-generated method stub
 		return resultadd;

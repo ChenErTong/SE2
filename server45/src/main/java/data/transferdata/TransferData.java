@@ -2,12 +2,12 @@ package data.transferdata;
 
 import java.rmi.RemoteException;
 
-import data.Data;
+import data.ManageData;
 import dataservice.transferdataservice.TransferDataService;
 import po.TransferPO;
 import state.ResultMessage;
 
-public class TransferData extends Data implements TransferDataService {
+public class TransferData extends ManageData implements TransferDataService {
 
 	/**
 	 * 

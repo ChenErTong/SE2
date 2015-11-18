@@ -7,7 +7,7 @@ import businesslogicservice.openingstockblservice.OpeningStockBLService_Stub;
 import businesslogicservice.inventoryblservice.InventoryBLService_Driver;
 import businesslogicservice.inventoryblservice.InventoryBLService_Stub;
 import state.ResultMessage;
-import vo.BankVO;
+import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
@@ -21,7 +21,7 @@ public class OpeningStockBLService_Driver {
 		ArrayList<AccountVO> accounts=new ArrayList<AccountVO>();
 		ArrayList<FacilityVO> facilities=new ArrayList<FacilityVO>();
 		ArrayList<InventoryVO> inventories=new ArrayList<InventoryVO>();
-		ArrayList<BankVO> banks=new ArrayList<BankVO>();
+		ArrayList<BankAccountVO> banks=new ArrayList<BankAccountVO>();
 		int id = 10086;
 		
 		
@@ -39,7 +39,7 @@ public class OpeningStockBLService_Driver {
 			ArrayList<AccountVO> accounts = null; 
 			ArrayList<FacilityVO> facilities = null;
 			ArrayList<InventoryVO> inventories = null;
-			ArrayList<BankVO> banks = null;
+			ArrayList<BankAccountVO> banks = null;
 			ResultMessage resultadd = null;
 			ResultMessage resultfind = null;
 			int id = 10086;

@@ -2,7 +2,7 @@ package data.facilitydata;
 
 import java.rmi.RemoteException;
 
-import data.Data;
+import data.ManageData;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import po.PersistentObject;
@@ -14,7 +14,7 @@ import util.SerSaveAndLoad;
  * @author Ann
  * 2015-11-17 21:37:04
  */
-public class FacilityData extends Data implements FacilityDataService {
+public class FacilityData extends ManageData<PersistentObject> implements FacilityDataService {
 
 	/**
 	 * 

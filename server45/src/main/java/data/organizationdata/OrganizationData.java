@@ -3,12 +3,12 @@ package data.organizationdata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.organizationdataservice.OrganizationDataService;
 import po.OrganizationPO;
 import state.ResultMessage;
 
-public class OrganizationData extends Data implements OrganizationDataService<OrganizationPO> {
+public class OrganizationData extends ManageData<OrganizationPO> implements OrganizationDataService<OrganizationPO> {
 
 	/**
 	 * 

@@ -3,12 +3,12 @@ package data.recorddata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.recorddataservice.RecordDataService;
 import po.BussinessConditionPO;
 import po.BussinessProcessPO;
 
-public class RecordData extends Data implements RecordDataService {
+public class RecordData extends ManageData implements RecordDataService {
 
 	/**
 	 * 

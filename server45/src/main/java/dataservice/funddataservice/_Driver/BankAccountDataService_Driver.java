@@ -1,6 +1,6 @@
 package dataservice.funddataservice._Driver;
 
-import po.BankPO;
+import po.BankAccountPO;
 import state.FindTypeAccount;
 
 import java.rmi.RemoteException;
@@ -9,7 +9,7 @@ import dataservice.funddataservice.BankAccountDataService;
 import dataservice.funddataservice._stub.BankAccountDataService_Stub;
 	
 public class BankAccountDataService_Driver {
-	private BankPO po = new BankPO("123","zsq",147,"high");
+	private BankAccountPO po = new BankAccountPO("123","zsq",147,"high");
 	public void drive(BankAccountDataService baDataService) throws RemoteException{
 	
 	baDataService.find("ID", FindTypeAccount.ID);

@@ -2,7 +2,7 @@ package vo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-public class BankVO{
+public class BankAccountVO{
 	
 	private String ID;
 	/**账户名称*/
@@ -14,7 +14,7 @@ public class BankVO{
 	/**账户创建时间,系统自动计算得到*/
 	private String date;
 	
-	public BankVO(String ID,String name,double money,String level){
+	public BankAccountVO(String ID,String name,double money,String level){
 		//super(ID);
 		this.name = name;
 		this.money = money;

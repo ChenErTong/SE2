@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestBank {
+public class TestBankAccount {
 
 	@Test
 	public void test() {
-		MockBank mockBank = new MockBank("ACC980");
+		MockBankAccount mockBank = new MockBankAccount("ACC980");
 		String bankID = mockBank.getID();
 		assertEquals(bankID, "ACC980");
 	}

@@ -3,13 +3,13 @@ package data.funddata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.funddataservice.BankAccountDataService;
-import po.BankPO;
+import po.BankAccountPO;
 import state.FindTypeAccount;
 import state.ResultMessage;
 
-public class BankAccountData extends Data implements BankAccountDataService {
+public class BankAccountData extends ManageData<BankAccountPO> implements BankAccountDataService {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class BankAccountData extends Data implements BankAccountDataService {
 	}
 
 	@Override
-	public ResultMessage insert(BankPO po) throws RemoteException {
+	public ResultMessage insert(BankAccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -33,13 +33,13 @@ public class BankAccountData extends Data implements BankAccountDataService {
 	}
 
 	@Override
-	public ResultMessage update(BankPO PO) throws RemoteException {
+	public ResultMessage update(BankAccountPO PO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
+	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

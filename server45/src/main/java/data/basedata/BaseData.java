@@ -3,13 +3,13 @@ package data.basedata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.FindTypeBase;
 import state.ResultMessage;
 
-public class BaseData extends Data implements BaseDataService{
+public class BaseData extends ManageData implements BaseDataService{
 
 	/**
 	 * 

@@ -3,14 +3,14 @@ package data.inventorydata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.Data;
+import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 
-public class InventoryData extends Data implements InventoryDataService {
+public class InventoryData extends ManageData implements InventoryDataService {
 
 	/**
 	 * 

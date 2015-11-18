@@ -3,7 +3,7 @@ package businesslogicservice.openingstockblservice;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.BankVO;
+import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
@@ -18,7 +18,7 @@ public interface OpeningStockBLService {
 	ArrayList< AccountVO>clients1,
 	ArrayList< FacilityVO > clients2,
 	ArrayList< InventoryVO > clients3,
-	ArrayList< BankVO > accounts);
+	ArrayList< BankAccountVO > accounts);
 	/**查找到该期初账目**/
 	public ResultMessage find (int id);
 }

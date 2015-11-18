@@ -10,7 +10,7 @@ import java.util.Date;
  * @version Oct 22,2015
  */
 
-public class BankPO extends PersistentObject{
+public class BankAccountPO extends PersistentObject{
 
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class BankPO extends PersistentObject{
 	/**账户创建时间,系统自动计算得到*/
 	private String date;
 	
-	public BankPO(String ID,String name,double money,String level){
+	public BankAccountPO(String ID,String name,double money,String level){
 		super(ID);
 		this.name = name;
 		this.money = money;

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import po.BankPO;
+import po.BankAccountPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -22,7 +22,7 @@ public class DebitAndPayBillVO {
 	/**付款人*/
 	private String payerName;
 	/**付款账户*/
-	private ArrayList<BankPO> bankAccouts; 
+	private ArrayList<BankAccountPO> bankAccouts; 
 	/**条目*/
 	private PayBillItem items;
 	/**备注*/
@@ -72,7 +72,7 @@ public class DebitAndPayBillVO {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public DebitAndPayBillVO(String ID,double money,String payerName,ArrayList<BankPO>bankAccouts,ReceiptType type,
+	public DebitAndPayBillVO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
 		this.ID = ID;
 		this.money = money;
@@ -104,7 +104,7 @@ public class DebitAndPayBillVO {
 		return payerName;
 	}
 	
-	public ArrayList<BankPO> getBankAccouts() {
+	public ArrayList<BankAccountPO> getBankAccouts() {
 		return bankAccouts;
 	}
 	

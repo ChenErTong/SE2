@@ -2,12 +2,12 @@ package data.openingstockdata;
 
 import java.rmi.RemoteException;
 
-import data.Data;
+import data.ManageData;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.OpeningStockPO;
 import state.ResultMessage;
 
-public class OpeningStockData extends Data implements OpeningStockDataService {
+public class OpeningStockData extends ManageData implements OpeningStockDataService {
 
 	/**
 	 * 
