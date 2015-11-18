@@ -19,19 +19,19 @@ public class OpeningStockData extends Data implements OpeningStockDataService {
 	}
 
 	@Override
-	public ResultMessage add(OpeningStockPO po) {
+	public ResultMessage add(OpeningStockPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public OpeningStockPO findOpeningStock(String id) {
+	public OpeningStockPO findOpeningStock(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

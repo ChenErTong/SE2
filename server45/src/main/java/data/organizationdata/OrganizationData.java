@@ -20,25 +20,25 @@ public class OrganizationData extends Data implements OrganizationDataService<Or
 	}
 
 	@Override
-	public ResultMessage insert(OrganizationPO po) {
+	public ResultMessage insert(OrganizationPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(OrganizationPO po) {
+	public ResultMessage update(OrganizationPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<OrganizationPO> show() {
+	public ArrayList<OrganizationPO> show() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

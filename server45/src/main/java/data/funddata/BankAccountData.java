@@ -21,25 +21,25 @@ public class BankAccountData extends Data implements BankAccountDataService {
 	}
 
 	@Override
-	public ResultMessage insert(BankPO po) {
+	public ResultMessage insert(BankPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(BankPO PO) {
+	public ResultMessage update(BankPO PO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType) {
+	public ArrayList<BankPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

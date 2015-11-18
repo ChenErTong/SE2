@@ -21,43 +21,43 @@ public class DebitAndPayBillData extends Data implements DebitAndPayBillDataServ
 	}
 
 	@Override
-	public ResultMessage insert(DebitAndPayBillPO po) {
+	public ResultMessage insert(DebitAndPayBillPO po)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(DebitAndPayBillPO PO) {
+	public ResultMessage update(DebitAndPayBillPO PO)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getID(ReceiptType type) {
+	public String getID(ReceiptType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getExpenseID() {
+	public String getExpenseID()  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getPayID() {
+	public String getPayID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) {
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

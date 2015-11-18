@@ -21,25 +21,24 @@ public class BaseData extends Data implements BaseDataService{
 	}
 
 	@Override
-	public ResultMessage insert(BasePO po) {
+	public ResultMessage insert(BasePO po) throws RemoteException {
+		return super.add(po);
+	}
+
+	@Override
+	public ResultMessage delete(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage update(BasePO PO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(BasePO PO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<BasePO> find(FindTypeBase baseType) {
+	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

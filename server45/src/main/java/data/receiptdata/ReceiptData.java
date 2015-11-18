@@ -20,13 +20,13 @@ public class ReceiptData extends Data implements ReceiptDataService<ReceiptPO> {
 	}
 
 	@Override
-	public ResultMessage update(ReceiptPO PO) {
+	public ResultMessage update(ReceiptPO PO) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ReceiptPO> find() {
+	public ArrayList<ReceiptPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

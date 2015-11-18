@@ -17,7 +17,7 @@ public class AccountData extends Data implements AccountDataService{
 	}
 
 	@Override
-	public void init() {
+	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 	}

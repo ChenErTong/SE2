@@ -20,25 +20,25 @@ public class ExpenseData extends Data implements ExpenseDataService {
 	}
 
 	@Override
-	public ResultMessage insert(ExpensePO po) {
+	public ResultMessage insert(ExpensePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(ExpensePO PO) {
+	public ResultMessage update(ExpensePO PO)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ExpensePO> show(String ID) {
+	public ArrayList<ExpensePO> show(String ID)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

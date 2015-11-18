@@ -19,19 +19,19 @@ public class BranchData extends Data implements BranchDataService {
 	}
 
 	@Override
-	public ResultMessage insert(BranchPO po) {
+	public ResultMessage insert(BranchPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BranchPO find(String id) {
+	public BranchPO find(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(BranchPO po) {
+	public ResultMessage update(BranchPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

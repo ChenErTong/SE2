@@ -22,37 +22,37 @@ public class UserData extends Data implements UserDataService<UserPO> {
 	}
 
 	@Override
-	public ResultMessage insert(UserPO po) {
+	public ResultMessage insert(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage delete(String ID) {
+	public ResultMessage delete(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(UserPO PO) {
+	public ResultMessage update(UserPO PO) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<UserPO> find() {
+	public ArrayList<UserPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserIdentity login(LoginInfo loginInfo) {
+	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage updateAdmin(String oldPassword, String newPassword) {
+	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

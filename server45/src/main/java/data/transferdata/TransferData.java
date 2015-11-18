@@ -19,19 +19,19 @@ public class TransferData extends Data implements TransferDataService {
 	}
 
 	@Override
-	public ResultMessage insert(TransferPO po) {
+	public ResultMessage insert(TransferPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public TransferPO find(String id) {
+	public TransferPO find(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage update(TransferPO po) {
+	public ResultMessage update(TransferPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

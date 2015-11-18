@@ -20,13 +20,13 @@ public class RecordData extends Data implements RecordDataService {
 	}
 
 	@Override
-	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate, String enddate) {
+	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate, String enddate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) {
+	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
