@@ -14,7 +14,7 @@ public enum UserIdentity {
 	TRANSFER_CONTERMAN("中转中心业务员"),
 	ADMIN("管理员");
 	
-	public final String value;
+	public  final String value;
 
 	UserIdentity(String value) {
 		this.value = value;

@@ -10,8 +10,8 @@ import javax.swing.table.JTableHeader;
 /**
  * 表格类
  * @author zsq
- * @time 2015/11/18 20:04
- * copy version 待修改
+ * @time 2015/11/17 20:04
+ * 待修改
  */
 public class MyTable extends JTable{
 
@@ -23,7 +23,7 @@ public class MyTable extends JTable{
 			
 		Object[][] cellData = null;
 		
-		Color foreColor = Color.WHITE;
+		Color foreColor = Color.BLACK;
 		Color backColor = MyColor.getColor();
 		
 		DefaultTableModel model = new DefaultTableModel(cellData, headers) {

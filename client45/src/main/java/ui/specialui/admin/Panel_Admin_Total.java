@@ -2,10 +2,17 @@ package ui.specialui.admin;
 
 import javax.swing.JButton;
 
+import ui.myui.MyComboBox;
+import ui.myui.MyEmptyTextArea;
+import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyTable;
 
 
 public class Panel_Admin_Total extends MyJPanel{
+	
+	String [] headers = {"所有用户列表"};
+	String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 
 	public Panel_Admin_Total(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -66,6 +73,22 @@ public class Panel_Admin_Total extends MyJPanel{
 		Withdraw.setActionCommand("Withdraw");
 		Withdraw.addActionListener(frame_Admin);
 		this.add(Withdraw);
+		
+		MyEmptyTextArea userDetails = new MyEmptyTextArea(660,100,600,540);
+		this.add(userDetails);
+		
+		
+		//TODO-表格谜之加不上去
+		MyTable userTable = new MyTable(headers);
+		this.add(userTable);
+		
+
+		MyJLabel userIdentity = new MyJLabel(20,70,120,30, "请选择用户类别",14,true);
+		this.add(userIdentity);
+		
+		
+		MyComboBox userList = new MyComboBox(140,70,150,30,14,identity);
+		this.add(userList);
 	}
 
 	/**
