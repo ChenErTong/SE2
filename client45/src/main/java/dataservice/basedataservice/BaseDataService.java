@@ -15,6 +15,8 @@ import state.ResultMessage;
  * @version Oct 22,2015
  */
 public interface BaseDataService {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "BaseData";
 	/**
 	 * 向序列化文件中增加一个BasePO
 	 * @param po

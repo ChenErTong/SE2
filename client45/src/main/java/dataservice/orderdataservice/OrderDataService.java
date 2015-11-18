@@ -13,6 +13,8 @@ import state.ResultMessage;
  *@version Oct 22,2015 
  */
 public interface OrderDataService <OrderPO extends PersistentObject>extends DataService<OrderPO>{
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "OrderData";
 	/**
 	 * 根据订单号查找订单
 	 * @param ordernumber 订单号

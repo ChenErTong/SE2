@@ -1,18 +1,34 @@
 package businesslogic.fundbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
+import dataservice.funddataservice.BankAccountDataService;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
-public class DebitAndPayBill implements DebitAndPayBillBLService{
+public class DebitAndPayBill implements DebitAndPayBillBLService {
 	private DebitAndPayBillDataService debitAndPayBillData;
+
 	public DebitAndPayBill() {
-		// TODO Auto-generated constructor stub
+		try {
+			debitAndPayBillData = (DebitAndPayBillDataService) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + DebitAndPayBillDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
+
 	@Override
 	public String getPayID() {
 		// TODO Auto-generated method stub

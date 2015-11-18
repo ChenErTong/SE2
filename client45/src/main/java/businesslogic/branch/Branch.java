@@ -1,8 +1,13 @@
 package businesslogic.branch;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.branchblservice.BranchBLService;
+import dataservice.basedataservice.BaseDataService;
 import dataservice.branchdataservice.BranchDataService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -15,9 +20,20 @@ import vo.receiptvo.LoadingListVO;
 
 public class Branch implements BranchBLService {
 	private BranchDataService branchData;
+
 	public Branch() {
-		// TODO Auto-generated constructor stub
+		try {
+			branchData = (BranchDataService) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + BranchDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
+
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

@@ -1,8 +1,13 @@
 package businesslogic.transferbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.transferblservice.TransferBLService;
+import dataservice.receiptdataservice.ReceiptDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -14,9 +19,20 @@ import vo.receiptvo.TransferOrderVO;
 
 public class Transfer implements TransferBLService {
 	private TransferDataService transferOData;
+
 	public Transfer() {
-		// TODO Auto-generated constructor stub
+		try {
+			transferOData = (TransferDataService) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + TransferDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
+
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

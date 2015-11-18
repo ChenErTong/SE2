@@ -1,8 +1,13 @@
 package businesslogic.fundbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.BankAccoutBLService;
+import dataservice.facilitydataservice.FacilityDataService;
 import dataservice.funddataservice.BankAccountDataService;
 import state.ConfirmState;
 import state.FindTypeAccount;
@@ -11,9 +16,15 @@ import vo.BankAccountVO;
 
 public class BankAccount implements BankAccoutBLService {
 	private BankAccountDataService bankAccountData;
-	public BankAccount() {
-		// TODO Auto-generated constructor stub
-	}
+	public BankAccount() {try {
+			bankAccountData = (BankAccountDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+BankAccountDataService.NAME);
+	} catch (MalformedURLException e) {
+		e.printStackTrace();
+	} catch (RemoteException e) {
+		e.printStackTrace();
+	} catch (NotBoundException e) {
+		e.printStackTrace();
+	}}
 
 	@Override
 	public ConfirmState confirmOperation() {

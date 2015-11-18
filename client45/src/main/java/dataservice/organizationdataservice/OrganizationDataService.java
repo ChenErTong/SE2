@@ -13,6 +13,8 @@ import state.ResultMessage;
  * @version Oct 23,2015
  */
 public interface OrganizationDataService<OrganizationPO extends PersistentObject>extends DataService<OrganizationPO> {
+	/** 接口的名称，RMI绑定时候的名称 */
+	public static final String NAME = "OrganizationData";
 	/**
 	 * 向序列化文件中添加一个OrganizationPO
 	 * @param po
