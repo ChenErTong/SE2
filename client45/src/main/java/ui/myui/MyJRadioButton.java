@@ -1,7 +1,6 @@
 package ui.myui;
 
 import java.awt.Color;
-
 import javax.swing.JRadioButton;
 
 public class MyJRadioButton extends JRadioButton {

@@ -27,141 +27,59 @@ import javax.swing.event.MouseInputAdapter;
  * @author czw
  * @time 2015年11月16日下午9:54:34
  */
-public class MyNotification extends JDialog {
+public class MyNotification extends JDialog implements Runnable{
 	private static final long serialVersionUID = 1L;
-	public static final boolean noAutoClose = true;
-	private Dimension size = new Dimension(200, 120);
+	private Dimension size = new Dimension(300,100);
 
-	// the option window that won't auto close constructor
 	@SuppressWarnings("restriction")
-	public MyNotification(boolean doNotAutoClose, JFrame parentJFrame, String message) {
-		super(parentJFrame, true);
+	public MyNotification(JFrame frame, String text, Color color) {
+		super(frame);
 		this.setUndecorated(true);
-		this.setSize(size);
-
-		// due to the unexpected condition happened in the underground panel,
-		// so move the move listeners into the dialog
-		MouseInputAdaptert mouseLisener = new MouseInputAdaptert();
-		this.addMouseListener(mouseLisener);
-		this.addMouseMotionListener(mouseLisener);
-
-		// set the location
-		if (parentJFrame != null) {
-			this.setLocation(
-					parentJFrame.getLocationOnScreen().x + (parentJFrame.getSize().width / 2) - size.width / 2,
-					parentJFrame.getLocationOnScreen().y + (parentJFrame.getSize().height / 2) - size.height / 2);
-		} else {
-			this.setLocation(500, 300);
-		}
+		setSize(size);
+		
+		this.setLocation((int)frame.getLocationOnScreen().getX() + 900, (int)frame.getLocationOnScreen().getY() + 620);
 
 		// the underground panel
 		UndergroundPanel mainPanel = new UndergroundPanel();
 		mainPanel.setLayout(null);
 
-		// the close button and confirm button
-		JButton closeButton = new JButton(new ImageIcon("Images/close1.jpg"));
-		closeButton.setRolloverIcon(new ImageIcon("Images/close2.jpg"));
-		closeButton.setPressedIcon(new ImageIcon("Images/close3.jpg"));
-		closeButton.setFocusable(false);
-		closeButton.setBorderPainted(false);
-		closeButton.setBounds(this.getBounds().width - 51, 7, 36, 18);
-		CloseButtonListener CBListener = new CloseButtonListener();
-		closeButton.addActionListener(CBListener);
-		mainPanel.add(closeButton);
-
-		JButton confirmButton = new JButton("确定");
-		confirmButton.setLocation(size.width / 2 - 50, size.height - 50);
-		confirmButton.setFocusable(true);
-		confirmButton.requestFocus();
-		confirmButton.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					close();
-				}
-			}
-		});
-		// confirmButton.setMnemonic(KeyEvent.VK_ENTER);
-		confirmButton.addActionListener(CBListener);
-		mainPanel.add(confirmButton);
-
-		// The message label.
-		// Handle the string according to the length to show the complete message.
-		if (message.length() > 10) {
-			String message1 = message, message2;
-			message1 = message.substring(0, 9);
-			message2 = message.substring(9, message.length());
+		// the message label
+		if (text.length() > 10) {
+			String message1 = text, message2;
+			message1 = text.substring(0, 9);
+			message2 = text.substring(9, text.length());
 			// show the two message labels
 			JLabel messageLabel1 = new JLabel(message1);
-			messageLabel1.setForeground(Color.black);
-			messageLabel1.setFont(new Font("楷体", Font.BOLD, 18));
+			messageLabel1.setForeground(color);
+			messageLabel1.setFont(new MyFont(18, true));
 			messageLabel1.setBounds(
 					size.width / 2 - messageLabel1.getPreferredSize().width	/ 2, 
-					size.height / 2 - messageLabel1.getPreferredSize().height / 2 - 25, 
+					size.height / 2 - messageLabel1.getPreferredSize().height / 2 - 16, 
 					messageLabel1.getPreferredSize().width,
 					messageLabel1.getPreferredSize().height);
 			mainPanel.add(messageLabel1, BorderLayout.CENTER);
 
 			JLabel messageLabel2 = new JLabel(message2);
-			messageLabel2.setForeground(Color.black);
-			messageLabel2.setFont(new Font("楷体", Font.BOLD, 18));
+			messageLabel2.setForeground(color);
+			messageLabel2.setFont(new MyFont(18, true));
 			messageLabel2.setBounds(
 					size.width / 2 - messageLabel2.getPreferredSize().width	/ 2,
-					size.height / 2	- messageLabel2.getPreferredSize().height / 2 + 4,
+					size.height / 2	- messageLabel2.getPreferredSize().height / 2 + 16,
 					messageLabel2.getPreferredSize().width,
 					messageLabel2.getPreferredSize().height);
 			mainPanel.add(messageLabel2, BorderLayout.CENTER);
 		} else {
-			JLabel messageLabel = new JLabel(message);
-			messageLabel.setForeground(Color.black);
-			messageLabel.setFont(new Font("楷体", Font.BOLD, 18));
+			JLabel messageLabel = new JLabel(text);
+			messageLabel.setForeground(color);
+			messageLabel.setFont(new MyFont(18, true));
 			messageLabel.setBounds(
 					size.width / 2 - messageLabel.getPreferredSize().width / 2,
-					size.height / 2 - messageLabel.getPreferredSize().height / 2 - 12,
+					size.height / 2 - messageLabel.getPreferredSize().height / 2 - 2,
 					messageLabel.getPreferredSize().width,
 					messageLabel.getPreferredSize().height);
 			mainPanel.add(messageLabel, BorderLayout.CENTER);
 		}
-
-		this.getContentPane().add(mainPanel);
-
-		// set the window transparent
-		com.sun.awt.AWTUtilities.setWindowOpaque(this, false);
-
-		setVisible(true);
-	}
-
-	// the auto closing option window constructor
-	public MyNotification(JFrame parentJFrame, String message) {
-		super(parentJFrame);
-		this.setUndecorated(true);
-		setSize(size);
-		if (parentJFrame != null) {
-			this.setLocation(
-					parentJFrame.getLocationOnScreen().x + (parentJFrame.getSize().width / 2) - size.width / 2,
-					parentJFrame.getLocationOnScreen().y + (parentJFrame.getSize().height / 2) - size.height / 2);
-		} else {
-			this.setLocation(500, 300);
-		}
-		// the underground panel
-		UndergroundPanel mainPanel = new UndergroundPanel();
-
-		// the message label
-		JLabel messageLabel = new JLabel(message);
-		// messageLabel.setMaximumSize(new Dimension(220,170));
-		messageLabel.setForeground(Color.black);
-		messageLabel.setFont(new Font("楷体", Font.BOLD, 18));
-		messageLabel.setBounds(
-				size.width / 2 - messageLabel.getPreferredSize().width / 2,
-				size.height / 2 - messageLabel.getPreferredSize().height / 2 - 6,
-				messageLabel.getPreferredSize().width,
-				messageLabel.getPreferredSize().height);
-
-		mainPanel.setLayout(null);
-
-		mainPanel.add(messageLabel, BorderLayout.CENTER);
-
-		setLayout(new BorderLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		add(mainPanel);
 
 		// set the window transparent
 		com.sun.awt.AWTUtilities.setWindowOpaque(this, false);
@@ -172,29 +90,34 @@ public class MyNotification extends JDialog {
 		setVisible(true);
 		while (translucent < 1) {
 			com.sun.awt.AWTUtilities.setWindowOpacity(this, translucent);
-			translucent += 0.04f;
+			translucent += 0.03f;
 		}
 		
-		// stop some time for letting user get the message
-		try {
-			Thread.sleep(1300);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		close();
+		Thread t = new Thread(this);
+		t.start();
 	}
 
 	// close the window
+	@SuppressWarnings("restriction")
 	public void close() {
 		// 渐隐效果
 		float translucent = 1.0f;
 		while (translucent > 0) {
 			com.sun.awt.AWTUtilities.setWindowOpacity(this, translucent);
-			translucent -= 0.04f;
+			translucent -= 0.03f;
 		}
 		dispose();
 	}
 
+	public void run() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		close();
+	}
+	
 	private class UndergroundPanel extends JPanel {
 
 		private static final long serialVersionUID = 1L;
@@ -218,50 +141,20 @@ public class MyNotification extends JDialog {
 			g2.fillRoundRect(7, 7, width - 14, height - 14, 20, 20);
 
 			// draw the border lines
-			g2.setColor(new Color(2, 10, 170));
+			g2.setColor(Color.WHITE);
 			g2.drawRoundRect(6, 6, width - 14, height - 14, 20, 20);
-			g2.setColor(new Color(77, 82, 170, 200));
+			g2.setColor(new Color(240, 155, 75, 200));
 			g2.drawRoundRect(5, 5, width - 12, height - 12, 21, 21);
-			g2.setColor(new Color(77, 82, 170, 160));
+			g2.setColor(new Color(240, 155, 75, 160));
 			g2.drawRoundRect(4, 4, width - 10, height - 10, 22, 22);
-			g2.setColor(new Color(77, 82, 170, 120));
+			g2.setColor(new Color(240, 155, 75, 120));
 			g2.drawRoundRect(3, 3, width - 8, height - 8, 23, 23);
-			g2.setColor(new Color(77, 82, 170, 80));
+			g2.setColor(new Color(240, 155, 75, 80));
 			g2.drawRoundRect(2, 2, width - 6, height - 6, 24, 24);
-			g2.setColor(new Color(77, 82, 170, 40));
+			g2.setColor(new Color(240, 155, 75, 40));
 			g2.drawRoundRect(1, 1, width - 4, height - 4, 25, 25);
-			g2.setColor(new Color(77, 82, 170, 10));
+			g2.setColor(new Color(240, 155, 75, 10));
 			g2.drawRoundRect(0, 0, width - 2, height - 2, 26, 26);
 		}
-	}
-
-	private class CloseButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			close();
-		}
-	}
-
-	// listen and implement the moving of the dialog
-	private class MouseInputAdaptert extends MouseInputAdapter {
-		private Point oldCursorPosition;
-
-		public void mouseDragged(MouseEvent e) {
-			Point tempScreen = e.getLocationOnScreen();
-			// change the position of the frame
-			MyNotification.this.setLocation(
-					MyNotification.this.getLocationOnScreen().x + tempScreen.x - oldCursorPosition.x,
-					MyNotification.this.getLocationOnScreen().y + tempScreen.y - oldCursorPosition.y);
-			oldCursorPosition = tempScreen;
-		}
-
-		public void mousePressed(MouseEvent e) {
-			// record the last cursor position
-			oldCursorPosition = e.getLocationOnScreen();
-		}
-	}
-
-	public static void main(String[] args) {
-		new MyNotification(MyNotification.noAutoClose, null, "ddddddddd");
-		new MyNotification(null, "ddddddddd");
 	}
 }

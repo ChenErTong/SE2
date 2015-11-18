@@ -8,34 +8,46 @@ import ui.myui.MyTranslucentPanel;
 public class ReceiverInfoInput extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
+	private MyJTextField NameField;
+	private MyJTextField PhoneField;
+	private MyJTextField AddressField;
+	private MyJTextField OfficeField;
+	
 	public ReceiverInfoInput() {
 		super(60, 360, 550, 250);
 		this.initComponent();
 	}
 	
 	private void initComponent(){		
-		MyJLabel Info = new MyJLabel(215, 30, 120, 40, "收件人信息", 22, true);
-		this.add(Info);
+		this.add(new MyJLabel(215, 30, 120, 40, "收件人信息", 22, true));
+		this.add(new MyJLabel(50, 102, 40, 20, "姓名", 15, true));
+		this.add(new MyJLabel(270, 102, 40, 20, "手机", 15, true));
+		this.add(new MyJLabel(50, 145, 40, 20, "住址", 15, true));
+		this.add(new MyJLabel(50, 186, 40, 20, "单位", 15, true));
 		
-		MyJLabel Name = new MyJLabel(50, 102, 40, 20, "姓名", 15, true);
-		this.add(Name);
-		MyJTextField NameField = new MyJTextField(100, 100, 130, 30);
+		NameField = new MyJTextField(100, 100, 130, 30);
 		this.add(NameField);
 		
-		MyJLabel Phone = new MyJLabel(270, 102, 40, 20, "手机", 15, true);
-		this.add(Phone);
-		MyJTextField PhoneField = new MyJTextField(320, 100, 130, 30);
+		PhoneField = new MyJTextField(320, 100, 130, 30);
 		PhoneField.setDocument(new NumberLenghtLimited(11));
 		this.add(PhoneField);
 		
-		MyJLabel Address = new MyJLabel(50, 145, 40, 20, "住址", 15, true);
-		this.add(Address);
-		MyJTextField AddressField = new MyJTextField(100, 142, 350, 30);
+		AddressField = new MyJTextField(100, 142, 350, 30);
 		this.add(AddressField);
 		
-		MyJLabel Office = new MyJLabel(50, 186, 40, 20, "单位", 15, true);
-		this.add(Office);
-		MyJTextField OfficeField = new MyJTextField(100, 183, 350, 30);
+		OfficeField = new MyJTextField(100, 183, 350, 30);
 		this.add(OfficeField);		
+	}
+
+	public String[] getReceiverInfo() {
+		String[] info = new String[4];
+		info[0] = NameField.getText();
+		info[1] = PhoneField.getText();
+		info[2] = AddressField.getText();
+		info[3] = OfficeField.getText();
+		for (String string : info) {
+			if(string.equals("")) return null;
+		}
+		return info;
 	}
 }
