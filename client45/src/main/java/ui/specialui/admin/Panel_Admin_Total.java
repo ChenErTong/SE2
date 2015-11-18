@@ -16,7 +16,12 @@ public class Panel_Admin_Total extends MyJPanel{
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		this.initComponent(frame_Admin);
 		
+	
+	}
+	
+	private void initComponent(Frame_Admin frame_Admin){
 		JButton AddUser = new JButton("添加用户");
 		AddUser.setBounds(50, 650, 150, 40);
 		AddUser.setActionCommand("AddUser");
