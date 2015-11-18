@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 
 import data.ManageData;
 import dataservice.openingstockdataservice.OpeningStockDataService;
+import po.DebitAndPayBillPO;
 import po.OpeningStockPO;
 import state.ResultMessage;
+import util.SerSaveAndLoad;
 
 public class OpeningStockData extends ManageData implements OpeningStockDataService {
 
@@ -13,9 +15,9 @@ public class OpeningStockData extends ManageData implements OpeningStockDataServ
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public OpeningStockData() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		poList=new SerSaveAndLoad<OpeningStockPO>("data/"+NAME+".ser");
 	}
 
 	@Override

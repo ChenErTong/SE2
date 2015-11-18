@@ -3,6 +3,7 @@ package businesslogic.transferbl;
 import java.util.ArrayList;
 
 import businesslogicservice.transferblservice.TransferBLService;
+import dataservice.transferdataservice.TransferDataService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -12,7 +13,10 @@ import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;
 
 public class Transfer implements TransferBLService {
-	
+	private TransferDataService transferOData;
+	public Transfer() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

@@ -1,5 +1,10 @@
 package businesslogic.userbl;
 
-public class User {
+import dataservice.userdataservice.UserDataService;
 
+public class User {
+	private UserDataService userData;
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 }

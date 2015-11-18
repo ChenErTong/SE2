@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
+import dataservice.funddataservice.DebitAndPayBillDataService;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
 public class DebitAndPayBill implements DebitAndPayBillBLService{
-	
-	
+	private DebitAndPayBillDataService debitAndPayBillData;
+	public DebitAndPayBill() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String getPayID() {
 		// TODO Auto-generated method stub

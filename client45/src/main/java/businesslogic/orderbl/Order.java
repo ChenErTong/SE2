@@ -2,14 +2,18 @@ package businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import businesslogicservice.orderblservice.OrderBLService;
+import dataservice.orderdataservice.OrderDataService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import businesslogicservice.orderblservice.OrderBLService;
 
 public class Order implements OrderBLService{
-
+	private OrderDataService orderData;
+	public Order() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

@@ -3,6 +3,7 @@ package businesslogic.branch;
 import java.util.ArrayList;
 
 import businesslogicservice.branchblservice.BranchBLService;
+import dataservice.branchdataservice.BranchDataService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -13,7 +14,10 @@ import vo.receiptvo.DeliveryListVO;
 import vo.receiptvo.LoadingListVO;
 
 public class Branch implements BranchBLService {
-
+	private BranchDataService branchData;
+	public Branch() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

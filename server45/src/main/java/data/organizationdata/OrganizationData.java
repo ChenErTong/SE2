@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.organizationdataservice.OrganizationDataService;
+import po.OpeningStockPO;
 import po.OrganizationPO;
 import state.ResultMessage;
+import util.SerSaveAndLoad;
 
 public class OrganizationData extends ManageData<OrganizationPO> implements OrganizationDataService<OrganizationPO> {
 
@@ -16,7 +18,7 @@ public class OrganizationData extends ManageData<OrganizationPO> implements Orga
 	private static final long serialVersionUID = 1L;
 
 	public OrganizationData() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		poList=new SerSaveAndLoad<OrganizationPO>("data/"+NAME+".ser");
 	}
 
 	@Override

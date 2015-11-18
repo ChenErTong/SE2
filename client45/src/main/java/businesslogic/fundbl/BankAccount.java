@@ -3,12 +3,17 @@ package businesslogic.fundbl;
 import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.BankAccoutBLService;
+import dataservice.funddataservice.BankAccountDataService;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
 
-public class BankAccount implements BankAccoutBLService{
+public class BankAccount implements BankAccoutBLService {
+	private BankAccountDataService bankAccountData;
+	public BankAccount() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ConfirmState confirmOperation() {

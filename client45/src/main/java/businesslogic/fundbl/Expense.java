@@ -19,7 +19,6 @@ public class Expense implements ExpenseBLService{
 	public Expense() {
 		try {
 			expenseData = (ExpenseDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+ExpenseDataService.NAME);
-			System.out.println("链接成功！");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

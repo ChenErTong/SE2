@@ -15,6 +15,11 @@ import po.accountpo.AccountPO;
  */
 public class TransferPO extends PersistentObject{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * 中转中心地址
 	 */
 	private String address;

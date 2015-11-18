@@ -1,5 +1,6 @@
 package dataservice.transferdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.InventoryPO;
@@ -10,7 +11,7 @@ import state.ResultMessage;
 public class _Transfer_Data_Stub implements TransferDataService {
 
 	@Override
-	public ResultMessage insert(TransferPO po) {
+	public ResultMessage add(TransferPO po) {
 		System.out.println("You have inserted a transfer");
 		return ResultMessage.SUCCESS;
 	}
@@ -23,9 +24,15 @@ public class _Transfer_Data_Stub implements TransferDataService {
 	}
 
 	@Override
-	public ResultMessage update(TransferPO po) {
+	public ResultMessage modify(TransferPO po) {
 		System.out.println("You have updated a transfer");
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
