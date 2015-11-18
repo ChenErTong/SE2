@@ -1,8 +1,10 @@
 package dataservice.facilitydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.FacilityPO;
+import po.PersistentObject;
 import po.accountpo.AccountPO;
 import po.accountpo.DriverPO;
 import state.ResultMessage;
@@ -55,6 +57,30 @@ public class _Facility_Data_Stub implements FacilityDataService {
 	public ResultMessage modifyDriver(AccountPO driver) {
 		System.out.println("You have modified a driver!");
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public PersistentObject find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage add(PersistentObject po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modify(PersistentObject po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

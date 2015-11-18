@@ -2,7 +2,7 @@ package dataservice.facilitydataservice;
 
 import java.rmi.RemoteException;
 
-import dataservice.DataService;
+import dataservice.ManageDataService;
 import po.FacilityPO;
 import po.PersistentObject;
 import po.accountpo.AccountPO;
@@ -14,7 +14,7 @@ import state.ResultMessage;
  * @author czw
  * @version Oct 22,2015
  */
-public interface FacilityDataService extends DataService<PersistentObject> {
+public interface FacilityDataService extends ManageDataService<PersistentObject> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "FacilityData";
 

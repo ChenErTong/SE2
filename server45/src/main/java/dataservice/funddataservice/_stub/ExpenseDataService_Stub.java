@@ -1,5 +1,6 @@
 package dataservice.funddataservice._stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.ExpensePO;
@@ -22,7 +23,7 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 	}
 
 	@Override
-	public ResultMessage insert(ExpensePO po) {
+	public ResultMessage add(ExpensePO po) {
 		System.out.println("Insert a expensePO succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -34,7 +35,7 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 	}
 
 	@Override
-	public ResultMessage update(ExpensePO PO) {
+	public ResultMessage modify(ExpensePO PO) {
 		System.out.println("Modify a expensePO succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -44,5 +45,12 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 		System.out.println("Show all the expensePO");
 		return new ArrayList<ExpensePO>();
 	}
+
+	@Override
+	public ExpensePO find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

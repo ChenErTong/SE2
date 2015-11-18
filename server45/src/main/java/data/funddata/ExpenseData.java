@@ -7,6 +7,7 @@ import data.ManageData;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import state.ResultMessage;
+import util.SerSaveAndLoad;
 
 public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataService {
 
@@ -14,13 +15,13 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	public ExpenseData() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		poList=new SerSaveAndLoad<ExpensePO>("data/"+NAME+".ser");
 	}
+	
 
 	@Override
-	public ResultMessage insert(ExpensePO po) throws RemoteException {
+	public ResultMessage add(ExpensePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -32,7 +33,7 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	}
 
 	@Override
-	public ResultMessage update(ExpensePO PO)  throws RemoteException{
+	public ResultMessage modify(ExpensePO PO)  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

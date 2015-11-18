@@ -3,7 +3,7 @@ package dataservice.funddataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.DataService;
+import dataservice.ManageDataService;
 import po.ExpensePO;
 import state.ResultMessage;
 
@@ -12,7 +12,7 @@ import state.ResultMessage;
  * @author zsq
  * @version Oct 23,2015
  */
-public interface ExpenseDataService extends DataService<ExpensePO> {
+public interface ExpenseDataService extends ManageDataService<ExpensePO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "ExpenseData";
 	/**
@@ -20,19 +20,19 @@ public interface ExpenseDataService extends DataService<ExpensePO> {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(ExpensePO po) throws RemoteException;
+//	public ResultMessage insert(ExpensePO po) throws RemoteException;
 	/**
 	 * 根据ID删除序列化文件中的一个ExpensePO
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID) throws RemoteException;
+//	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新ExpensePO
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(ExpensePO PO) throws RemoteException;
+//	public ResultMessage update(ExpensePO PO) throws RemoteException;
 	/**
 	 * 查看ExpensePO
 	 * @param ID

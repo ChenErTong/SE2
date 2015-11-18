@@ -11,9 +11,9 @@ public class ExpenseDataService_Driver {
 	private ExpensePO po = new ExpensePO("123","NJWU",6800,"MB");
 	public void drive(ExpenseDataService expenseDataService) throws RemoteException{
 		expenseDataService.show(po.getID());
-		expenseDataService.insert(po);
+		expenseDataService.add(po);
 		expenseDataService.delete(po.getID());
-		expenseDataService.update(po);
+		expenseDataService.modify(po);
 	
 	}
 	public static void main(String args[]) throws RemoteException{
