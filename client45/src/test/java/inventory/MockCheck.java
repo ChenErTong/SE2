@@ -3,7 +3,7 @@ package inventory;
 import java.util.ArrayList;
 
 import vo.InventoryCheckVO;
-import vo.InventoryImportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
 
 public class MockCheck {
 	

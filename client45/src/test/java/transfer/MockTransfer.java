@@ -21,7 +21,7 @@ public class MockTransfer extends Transfer {
 	}
 
 	public void receiptArrive(String transferID, String departure, CommodityState state, ArrayList<String> orders) {
-		transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, state, orders);
+		transferArrivalListVO = new TransferArrivalListVO(transferID, transferID,departure, state, orders);
 		System.out.println("You have fielded a receipt");
 	}
 
