@@ -8,6 +8,7 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	private static final long serialVersionUID = 1L;
 	/**目的地**/
 	public String destination;
+	public String depture;
 	/**装运形式**/
 	public String Transfer;
 	public String TransferID;
@@ -17,17 +18,26 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public int c;
 	public int d;
 	
-	public InventoryExportReceiptPO(String ID, String destination, String transfer, String transferID,
+	public InventoryExportReceiptPO(String ID, String destination, String depture,String transfer, String transferID,
 			String commoditiesID, int a, int b, int c, int d) {
 		super(ID);
 		this.destination = destination;
 		Transfer = transfer;
 		TransferID = transferID;
 		CommoditiesID = commoditiesID;
+		this.depture=depture;
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
+	}
+
+	public String getDepture() {
+		return depture;
+	}
+
+	public void setDepture(String depture) {
+		this.depture = depture;
 	}
 
 	public String getDestination() {

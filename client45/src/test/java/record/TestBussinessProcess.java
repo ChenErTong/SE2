@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import businesslogic.BusinessProcessList;
+import businesslogic.record.BusinessProcessList;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import data.ManageData;
 import dataservice.accountdataservice.AccountDataService;
+import po.PersistentObject;
 
 public class AccountData extends ManageData implements AccountDataService{
 
@@ -17,8 +18,13 @@ public class AccountData extends ManageData implements AccountDataService{
 	}
 
 	@Override
+<<<<<<< Updated upstream
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
+=======
+	public void init() {
+		
+>>>>>>> Stashed changes
 		
 	}
 

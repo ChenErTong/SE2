@@ -9,6 +9,7 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
+import vo.InventoryVO;
       /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
@@ -24,6 +25,9 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	public String getExportID () throws RemoteException;
 	/**得到调整单ID**/
 	public String getAdjustID () throws RemoteException;
+	public String getTransfer()throws RemoteException;
+	public String getTransferID()throws RemoteException;
+	public InventoryVO getInventoryVO()throws RemoteException;
 	/**得到区号**/
 	public int getA() throws RemoteException;
 	/**得到排号**/
@@ -52,12 +56,19 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	public int getDNum() throws RemoteException;
 	
 	
+	
 	/**返回所有入库单据的数据**/
-	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException;
+	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
 	/**返回所有出库单据的数据**/
-	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException;
+	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException;
 	/**返回所有调整单据的数据**/
-	public ArrayList<AdjustReceiptPO> showAdjust() throws RemoteException;
+	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException;
+	
+	/** 出库数量 **/
+	public int  getexportNumber(String beginDate, String endDate)throws RemoteException;
+	/** 入库数量）**/
+	public int getimportNumber(String beginDate, String endDate)throws RemoteException;
+	public int getNum(String beginDate, String endDate)throws RemoteException;
 	
 	/**增加一条po数据即生成入库单据**/
 	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException;

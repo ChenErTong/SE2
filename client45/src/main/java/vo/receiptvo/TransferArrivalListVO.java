@@ -12,19 +12,29 @@ import state.CommodityState;
 public class TransferArrivalListVO extends ReceiptVO {
 	
 	private String transferCenterID;
+	private String destination;
 	private String departure;
 	private CommodityState state;
 	private ArrayList<String> orders;
 	public TransferArrivalListVO(String id) {
 		super(id);
 	}
-	public TransferArrivalListVO(String id, String transferCenterID, String departure, CommodityState state,
-			ArrayList<String> orders) {
+	
+	public TransferArrivalListVO(String id, String transferCenterID, String destination, String departure,
+			CommodityState state, ArrayList<String> orders) {
 		super(id);
 		this.transferCenterID = transferCenterID;
+		this.destination = destination;
 		this.departure = departure;
 		this.state = state;
 		this.orders = orders;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 	public String getTransferCenterID() {
 		return transferCenterID;

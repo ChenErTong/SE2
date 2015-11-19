@@ -31,6 +31,22 @@
 		<list key="issueManagementUrl">
 		</list>
 	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/Users/LIUXUANLIN/Desktop/SE2/NJULily"/>
+			<item value="/Users/LIUXUANLIN/Desktop/SE2/NJULilyServer"/>
+			<item value="/Users/LIUXUANLIN/Desktop/SE2/client45"/>
+			<item value="/Users/LIUXUANLIN/Desktop/SE2/server45"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
 	<section name="MavenProjectWizardArchetypePage">
 		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
@@ -44,6 +60,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/Users/LIUXUANLIN/Desktop/SE2/client45"/>
 			<item value="E:\program\Git\SE2\"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -61,9 +78,11 @@
 			<item value="se2.demo"/>
 		</list>
 		<list key="groupId">
+			<item value="1"/>
 			<item value="se2"/>
 		</list>
 		<list key="artifactId">
+			<item value="1"/>
 			<item value="client45"/>
 			<item value="demo"/>
 		</list>
