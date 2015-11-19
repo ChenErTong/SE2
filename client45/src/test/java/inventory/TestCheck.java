@@ -1,6 +1,6 @@
 package inventory;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import vo.InventoryCheckVO;
-import vo.receiptvo.InventoryImportReceiptVO;
+import vo.InventoryImportReceiptVO;
 
 
 

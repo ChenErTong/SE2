@@ -1,6 +1,5 @@
 package businesslogicservice.inventoryblservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.AdjustReceiptPO;
@@ -159,52 +158,6 @@ public class InventoryBLService_Stub implements InventoryBLService{
 	public AdjustReceiptPO adjust() {
 		// TODO Auto-generated method stub
 		return new AdjustReceiptPO(adjustID,  exA,  exB,  exC,  exD,  aftA,  aftB, aftC,  aftD);
-	}
-
-
-
-
-	@Override
-	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	@Override
-	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt, InventoryVO vo)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	@Override
-	public String getTransfer() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	@Override
-	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-	@Override
-	public AdjustReceiptPO adjust(InventoryVO before, InventoryVO now) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }
