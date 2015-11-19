@@ -1,6 +1,6 @@
 package record;
 
-import businesslogic.BusinessProcessList;
+import businesslogic.record.BusinessProcessList;
 
 public class MockBussinessProcess extends BusinessProcessList{
 	

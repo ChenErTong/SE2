@@ -46,7 +46,8 @@ public class MockInventoryExport {
 		String CommoditiesID="nanjing520";
 		String Transfer="car";
 		String TransferID= "TransID";
-		InventoryExportReceiptPO ier=new InventoryExportReceiptPO(ID, destination, Transfer, TransferID, CommoditiesID, a, b, c, d);
+		String depture = null;
+		InventoryExportReceiptPO ier=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, CommoditiesID, a, b, c, d);
 	    return ier;
 		
 	}

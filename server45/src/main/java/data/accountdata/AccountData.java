@@ -17,10 +17,7 @@ public class AccountData extends ManageData<AccountPO> implements AccountDataSer
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

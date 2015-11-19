@@ -1,0 +1,110 @@
+package businesslogic.Inventory;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import businesslogicservice.inventoryblservice.InventoryBLService;
+import dataservice.basedataservice.BaseDataService;
+import dataservice.inventorydataservice.InventoryDataService;
+import po.receiptpo.AdjustReceiptPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
+import state.ResultMessage;
+import vo.InventoryCheckVO;
+import vo.InventoryViewVO;
+import vo.receiptvo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+import vo.receiptvo.TransferArrivalListVO;
+
+public class inventory implements InventoryBLService {
+	private BaseDataService baseData;
+	public Inventory() {
+		try {
+			baseData = (BaseDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+BaseDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public ArrayList<InventoryViewVO> viewInventory(String beginDate, String endDate) {
+		ArrayList<InventoryViewVO>  viewVOs=new ArrayList<InventoryViewVO> ();
+		
+		
+		return null;
+		
+	}
+
+	@Override
+	public InventoryCheckVO checkRecord() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getImportID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addCommodities(TransferArrivalListVO receipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryImportReceiptPO buildImport() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getExportID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage minusCommodities(TransferArrivalListVO receipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryExportReceiptPO buildExport() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAdjustID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AdjustReceiptPO adjust() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

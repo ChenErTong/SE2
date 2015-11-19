@@ -1,5 +1,6 @@
 package dataservice.inventorydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.AdjustReceiptPO;
@@ -152,6 +153,24 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	public String getAlarmID() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getImportNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getExportNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

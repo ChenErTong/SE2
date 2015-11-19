@@ -156,4 +156,22 @@ public class InventoryData extends ManageData implements InventoryDataService {
 		return null;
 	}
 
+	@Override
+	public int getImportNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getExportNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

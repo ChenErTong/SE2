@@ -36,6 +36,9 @@ public interface InventoryDataService  extends DataService{
 	public String getCNum() throws RemoteException;
 	public String getDNum() throws RemoteException;
 	
+	public int getImportNum()throws RemoteException;
+	public int getExportNum()throws RemoteException;
+	public int getNum()throws RemoteException;
 	
 	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException;
 	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException;

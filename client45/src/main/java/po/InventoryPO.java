@@ -6,33 +6,51 @@ import java.io.Serializable;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public class InventoryPO extends PersistentObject{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class InventoryPO extends PersistentObject  {
+	/** serialVersionUID */
+	private static final long serialVersionUID = -2898348688803208513L;
 	
-	OrderPO order;
-	String comLocation;
+	public int a;
+	public int b;
+	public int c;
+	public int d;
 	
 	
-	
-	public InventoryPO(String id, OrderPO order, String comLocation) {
+	public InventoryPO(String id, int a, int b, int c, int d) {
 		super(id);
-		this.order = order;
-		this.comLocation = comLocation;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
 	}
-
-	public OrderPO getOrder(){
-		return order;
+	public int getA() {
+		return a;
+	}
+	public void setA(int a) {
+		this.a = a;
+	}
+	public int getB() {
+		return b;
+	}
+	public void setB(int b) {
+		this.b = b;
+	}
+	public int getC() {
+		return c;
+	}
+	public void setC(int c) {
+		this.c = c;
+	}
+	public int getD() {
+		return d;
+	}
+	public void setD(int d) {
+		this.d = d;
 	}
 	
-	public String getComLocation(){
-		return comLocation;
-	}
 	
-	public void modifyComLocation(String newComLocation){
-		comLocation = newComLocation;
-	}
+	
+	
+	
 }

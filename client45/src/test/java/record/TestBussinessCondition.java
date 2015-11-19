@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 
 import org.junit.Test;
 
-import businesslogic.BussinessConditionList;
+import businesslogic.record.BussinessConditionList;
 import vo.BussinessConditionVO;
 
 public class TestBussinessCondition {

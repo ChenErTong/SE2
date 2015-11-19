@@ -34,8 +34,9 @@ public class MockInventoryImport {
 		int d=iv.getD();
 		String ID="1";
 		String destination="nanjing";
+		String depture = null;
 		String CommoditiesID="nanjing520";
-		InventoryImportReceiptPO iir=new InventoryImportReceiptPO(ID,destination,CommoditiesID,a,b,c,d);
+		InventoryImportReceiptPO iir=new InventoryImportReceiptPO(ID,destination,depture,CommoditiesID,a,b,c,d);
 	    return iir;
 		
 	}
