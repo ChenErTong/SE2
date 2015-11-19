@@ -43,7 +43,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 			this.add(modify);
 			this.getLayeredPane().add(modify,new Integer(Integer.MAX_VALUE));
 			
-			System.out.println("succeed!");
+		//	System.out.println("succeed!");
 			
 		}else if(e.getActionCommand().equals("ViewUserInfomation")){
 			//TODO

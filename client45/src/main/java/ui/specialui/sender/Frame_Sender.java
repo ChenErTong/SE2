@@ -1,50 +1,38 @@
 package ui.specialui.sender;
 
-import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.KeyStroke;
-
-
 import ui.image.CommonImage;
-import ui.myui.MyButton;
 import ui.myui.MyJFrame;
-import ui.myui.MyJTextField;
-
+/**
+ * 订单物流信息查询界面
+ * @author zsq
+ * @time 2015/11/18 19:31
+ */
 public class Frame_Sender extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	MyJTextField orderNumberField;
-	MyJTextField senderNameField;
-	MyButton button_Search;
-	MyButton button_Exit;
-	JLabel label_field1,label_field2;
 	
-	Panel_Sender_Total totalPanel = new Panel_Sender_Total(this);
+	
+	private Panel_Sender_Total totalPanel ;
+	private Panel_Sender_CommodityInfo commodityPanel ;
+	private Panel_Sender_logisticInfo logisticPanel;
 	public Frame_Sender(){
-//		MyColor color = new MyColor();
-		totalPanel = new Panel_Sender_Total(this);
-		this.add(totalPanel);
+
+	totalPanel = new Panel_Sender_Total();
+	commodityPanel = new Panel_Sender_CommodityInfo();
+	logisticPanel = new Panel_Sender_logisticInfo();
+	this.add(totalPanel);
+	this.add(commodityPanel);
+	this.add(logisticPanel);
+	this.setBackground(CommonImage.TEST_BACKGROUND);
 		
-		this.setBackground(CommonImage.TEST_BACKGROUND);
-		
-//		订单号输入框	
-		orderNumberField = new MyJTextField(421, 414, 200, 40);
-		this.add(orderNumberField);
-		
-		senderNameField = new MyJTextField(421, 464, 200, 40);
-		this.add(senderNameField);
+
 		
 		//确认键
-		button_Search = new MyButton(421, 510, 60, 30);
+		/*button_Search = new MyButton(421, 510, 60, 30);
 		button_Search.addMouseListener(new MouseAdapter(){
 		public void mouseEntered(MouseEvent arg0){
 //						loginBackground.setVisible(false);
@@ -89,6 +77,9 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 				button_Search.addActionListener(this);
 				this.add(button_Exit);
 			}
+	*/
+		
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

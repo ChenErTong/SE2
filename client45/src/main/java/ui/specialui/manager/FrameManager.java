@@ -2,24 +2,30 @@ package ui.specialui.manager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
-
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
+import ui.specialui.manager.HandleOrganization.Panel_Manager_AddOrganization;
+import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
+import ui.specialui.manager.HandleOrganization.Panel_Manager_ModifyOrganizationInfo;
+import ui.specialui.manager.HandleReceipt.Panel_Manager_HandleReceipt;
+import ui.specialui.manager.HandleReceipt.Panel_Manager_ModifyReceiptInfo;
 
 
 public class FrameManager extends MyJFrame implements ActionListener{
 private static final long serialVersionUID = 1L;
 	
-	Panel_Manager_Total totalPanel;
-	Panel_Manager_HandleReceipt handleReceipt;
-	Panel_Manager_HandleOrganization handleOrganization;
-	Panel_Manager_AdjustBase adjustBase;
-	Panel_Manager_AdjustSalaryPolicy adjustSalaryPolicy;
-	Panel_Manager_ViewUser viewUser;
-	Panel_Manager_ViewIncomeStatement viewIncomeStatement;
-	Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
+	private Panel_Manager_Total totalPanel;
+	private Panel_Manager_HandleReceipt handleReceipt;
+	private Panel_Manager_HandleOrganization handleOrganization;
+	private Panel_Manager_AdjustBase adjustBase;
+	private Panel_Manager_AdjustSalaryPolicy adjustSalaryPolicy;
+	private Panel_Manager_ViewUser viewUser;
+	private Panel_Manager_ViewIncomeStatement viewIncomeStatement;
+	private Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
+	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
+	private Panel_Manager_ModifyOrganizationInfo modifyOrganizationInfo;
+	private Panel_Manager_AddOrganization addOrganization;
+	
 	public FrameManager(){
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
@@ -43,7 +49,7 @@ private static final long serialVersionUID = 1L;
 		}else if(e.getActionCommand().equals("AdjustBase")){
 			//TODO
 			totalPanel.setVisible(false);
-			adjustBase = new Panel_Manager_AdjustBase(this);
+			adjustBase = new Panel_Manager_AdjustBase();
 			this.add(adjustBase);
 			this.getLayeredPane().add(adjustBase,new Integer(Integer.MAX_VALUE));
 			
@@ -66,7 +72,6 @@ private static final long serialVersionUID = 1L;
 			this.add(viewIncomeStatement);
 			this.getLayeredPane().add(viewIncomeStatement,new Integer(Integer.MAX_VALUE));
 			
-			
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			//TODO
 			totalPanel.setVisible(false);
@@ -75,6 +80,22 @@ private static final long serialVersionUID = 1L;
 			this.getLayeredPane().add(viewBusinessPerformance,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
 			//TODO
+		}else if(e.getActionCommand().equals("ModifyReceiptInfo")){
+			handleReceipt.setVisible(false);
+			modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
+			this.add(modifyReceiptInfo);
+			this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
+		}else if(e.getActionCommand().equals("ModifyOrganizationInfo")){
+			handleOrganization.setVisible(false);
+			modifyOrganizationInfo = new Panel_Manager_ModifyOrganizationInfo();
+			this.add(modifyOrganizationInfo);
+			this.getLayeredPane().add(modifyOrganizationInfo,new Integer(Integer.MAX_VALUE));
+		}else if(e.getActionCommand().equals("AddOrganization")){
+			handleOrganization.setVisible(false);
+			addOrganization = new Panel_Manager_AddOrganization();
+			this.add(addOrganization);
+			this.getLayeredPane().add(addOrganization,new Integer(Integer.MAX_VALUE));
+			
 		}
 	}
 
