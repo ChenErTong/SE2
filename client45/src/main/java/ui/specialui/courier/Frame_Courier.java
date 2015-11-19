@@ -3,12 +3,14 @@ package ui.specialui.courier;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
 import ui.specialui.courier.orderInput.OrderInput;
 import ui.specialui.courier.receiveInput.ReceiveInput;
+import ui.specialui.courier.timeAndCostManager.TimeAndCostManager;
 
 /**
  * 快递员界面
@@ -49,6 +51,9 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("TimeCostManager")){
 			totalPanel.setVisible(false);
+			subPanel = new TimeAndCostManager(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("produceOrder")){
 			if(this.produceOrder()){
 				subPanel.setVisible(false);
@@ -60,6 +65,13 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 			if(this.produceReceiveList()){
 				subPanel.refresh();
 				// TODO 跳转至订单单据界面
+			}
+		}else if(e.getActionCommand().equals("calculateTimeCost")){
+			if(this.calculateTimeCost()){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+				// TODO 跳转至预计时间与费用界面
 			}
 		}
 	}
@@ -89,6 +101,20 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 		case 0: new MyNotification(this, "成功生成收件单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成收件信息填写", Color.RED); break;
 		}	
+		return false;
+	}
+	/**
+	 * 计算预估时间与费用
+	 * @return 是否成功
+	 */
+	private boolean calculateTimeCost() {
+		switch(((TimeAndCostManager) subPanel).produceData()){
+		case 0: new MyNotification(this, "计算完成", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成寄件人信息填写", Color.RED); break;
+		case 2: new MyNotification(this, "请完成收件人信息填写", Color.RED); break;
+		case 3: new MyNotification(this, "请完成货运信息填写", Color.RED); break;
+		case 4: new MyNotification(this, "请完成货物信息填写", Color.RED); break;
+		}
 		return false;
 	}
 }
