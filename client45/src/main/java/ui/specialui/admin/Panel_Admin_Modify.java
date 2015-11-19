@@ -1,13 +1,9 @@
 package ui.specialui.admin;
 
 import java.awt.AlphaComposite;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import java.awt.image.BufferedImage;
-
-
 
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
@@ -17,23 +13,19 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 
-
-public class Panel_Admin_AddUser extends MyJPanel {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Panel_Admin_Modify extends MyJPanel{
 	String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 	String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
 	String[] provinces ={"江苏省","海南省"};
 
-	public Panel_Admin_AddUser(int x, int y, int width, int height) {
+	public Panel_Admin_Modify(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Panel_Admin_AddUser(Frame_Admin frame_Admin) {
+	private static final long serialVersionUID = 1L;
+
+	public Panel_Admin_Modify(Frame_Admin frame_Admin) {
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -56,12 +48,12 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	    g.drawImage(image, 365, 40, null);
 	  
 	}
-	
-	private void initComponent(Frame_Admin frame_Admin){
-		MyJLabel title = new MyJLabel(580, 40, 170, 50, "新增用户信息", 24, true);
+
+	private void initComponent(Frame_Admin frame_Admin) {
+		MyJLabel title = new MyJLabel(580, 40, 170, 50, "修改用户信息", 24, true);
 		this.add(title);
 		
-		MyJLabel userID = new MyJLabel(400, 92, 100, 30, "新用户编号", 18, true);
+		MyJLabel userID = new MyJLabel(400, 92, 90, 30, "用户编号", 18, true);
 		this.add(userID);
 		
 		MyJLabel password = new MyJLabel(660,92,90,30,"用户密码",18,true);
@@ -92,19 +84,19 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		MyJLabel city = new MyJLabel(660,400,25,30,"市",18,true);
 		this.add(city);
 		
-		MyJTextField userId = new MyJTextField(500,92,140,30);
+		MyJTextField userId = new MyJTextField(490,92,140,30);
 		this.add(userId);
 
 		MyJTextField passwordField = new MyJTextField(750,92,140,30);
 		this.add(passwordField);
 		
-		MyJTextField userNameField = new MyJTextField(500, 180, 140, 30);
+		MyJTextField userNameField = new MyJTextField(490, 180, 140, 30);
 		this.add(userNameField);
 		
 		MyJTextField phoneField = new MyJTextField(750,180,140,30);
 		this.add(phoneField);
 		
-		MyComboBox userIdentityBox = new MyComboBox(500,270,150,30,18,identity);
+		MyComboBox userIdentityBox = new MyComboBox(490,270,150,30,18,identity);
 		this.add(userIdentityBox);
 		
 		MyComboBox userAuthorityBox = new MyComboBox(750,270,150,30,18,authority);
@@ -121,21 +113,17 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		MyEmptyTextArea addressDetails = new MyEmptyTextArea(490,468,410,100);
 		this.add(addressDetails);
 		
-		MyJButton add = new MyJButton(475,600,100,30,"确认添加",18);
-		add.setActionCommand("Add");
+		MyJButton add = new MyJButton(475,600,100,30,"确认修改",18);
+		add.setActionCommand("Modify");
 		add.addActionListener(frame_Admin);
 		this.add(add);
 		add.setVisible(true);
 		
-		MyJButton cancel = new MyJButton(720,600,100,30,"取消添加",18);
+		MyJButton cancel = new MyJButton(720,600,100,30,"取消修改",18);
 		cancel.setActionCommand("cancel");
 		cancel.addActionListener(frame_Admin);
 		this.add(cancel);
 		cancel.setVisible(true);
+		
 	}
-
-	
-
-	
-
 }

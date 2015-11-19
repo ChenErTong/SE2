@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 import ui.myui.MyComboBox;
-import ui.myui.MyEmptyTextArea;
+
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -58,9 +58,10 @@ public class Panel_Admin_Total extends MyJPanel{
 		DeleteUser.setVisible(true);
 		
 		MyJButton ModifyUserInfomation = new MyJButton(500,650,150,40,"修改用户信息",14);
-		ModifyUserInfomation.setActionCommand("ModifyUserInfomation");
+		ModifyUserInfomation.setActionCommand("ModifyUserInformation");
 		ModifyUserInfomation.addActionListener(frame_Admin);
 		this.add(ModifyUserInfomation);
+		ModifyUserInfomation.setVisible(true);
 		
 		MyJButton SaveChanges = new MyJButton(650, 650, 150, 40,"保存更改",14);
 		SaveChanges.setActionCommand("SaveChanges");
@@ -89,7 +90,7 @@ public class Panel_Admin_Total extends MyJPanel{
 		MyComboBox userList = new MyComboBox(155,100,150,30,14,identity);
 		this.add(userList);
 		//the table
-				String[] headers = {"员工编号", "员工姓名", "员工职务", "联系方式", "用户名称", "用户密码"};
+				String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
 				MyTable	table = new MyTable(headers);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);

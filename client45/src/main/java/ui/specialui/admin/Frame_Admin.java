@@ -15,6 +15,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 
 	Panel_Admin_Total totalPanel;
 	Panel_Admin_AddUser addUser;
+	Panel_Admin_Modify modify;
 	
 	public Frame_Admin(){
 		totalPanel = new Panel_Admin_Total(this);
@@ -31,12 +32,19 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 			this.add(addUser);
 			this.getLayeredPane().add(addUser,new Integer(Integer.MAX_VALUE));
 			
+			
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			//TODO
 			//totalPanel.setVisible(false);
 		}else if(e.getActionCommand().equals("ModifyUserInformation")){
 			//TODO
-			//totalPanel.setVisible(false);
+			totalPanel.setVisible(false);
+			modify = new Panel_Admin_Modify(this);
+			this.add(modify);
+			this.getLayeredPane().add(modify,new Integer(Integer.MAX_VALUE));
+			
+			System.out.println("succeed!");
+			
 		}else if(e.getActionCommand().equals("ViewUserInfomation")){
 			//TODO
 		}else if(e.getActionCommand().equals("SaveChanges")){
