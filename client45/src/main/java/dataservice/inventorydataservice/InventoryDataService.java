@@ -76,4 +76,5 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	public ResultMessage insertExport(InventoryExportReceiptPO po) throws RemoteException;
 	/**增加一条po数据即生成调整单据**/
 	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException;
+	
 }

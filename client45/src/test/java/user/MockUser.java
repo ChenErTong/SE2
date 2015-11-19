@@ -14,7 +14,7 @@ public class MockUser extends User {
 	String password;
 	String name;
 	UserIdentity iden;
-	ArrayList<String> operationRecords;
+	ArrayList<UserVO> operationRecords;
 	UserAuthority  authority;
 	
 /*	public MockUser(String username,String password,String ID,String name,UserIdentity iden,UserAuthority authority){
@@ -28,7 +28,7 @@ public class MockUser extends User {
 	}*/
 	
 	
-	public ArrayList<String> show(){
+	public ArrayList<UserVO> show(){
 		return operationRecords;
 		
 	}

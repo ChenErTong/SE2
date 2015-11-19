@@ -1,11 +1,13 @@
 package dataservice.inventorydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
+import vo.InventoryVO;
 
 public class _Inventory_Data_Stub implements InventoryDataService{
 
@@ -82,25 +84,25 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 	@Override
-	public ArrayList<InventoryImportReceiptPO> showImport() {
+	public ArrayList<InventoryImportReceiptPO> showImport(String enddate){
 		ArrayList<InventoryImportReceiptPO> iirPOs = new ArrayList<InventoryImportReceiptPO>();
-		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789","Shanghai","0123456789",1,1,1,1);
+		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789","Shanghai","nanjing","0123456789",1,1,1,1);
 		iirPOs.add(iirPO);
 		System.out.println("Succeed in showing the import receipts.");
 		return iirPOs;
 	}
 
 	@Override
-	public ArrayList<InventoryExportReceiptPO> showExport() {
+	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) {
 		ArrayList<InventoryExportReceiptPO> ierPOs = new ArrayList<InventoryExportReceiptPO>();
-		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890","Nanjing","plane","0123456789","0123456789", 1, 1, 1, 1);
+		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890","Nanjing","shanghai","plane","0123456789","0123456789", 1, 1, 1, 1);
 		ierPOs.add(ierPO);
 		System.out.println("Succeed in showing the export receipts.");
 		return ierPOs;
 	}
 
 	@Override
-	public ArrayList<AdjustReceiptPO> showAdjust() {
+	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) {
 		ArrayList<AdjustReceiptPO> arPOs = new ArrayList<AdjustReceiptPO>();
 		AdjustReceiptPO arPO = new AdjustReceiptPO("1234567890", 1, 1, 1, 1, 2, 2, 2, 2);
 		arPOs.add(arPO);
@@ -148,5 +150,43 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	public int getD() {
 		System.out.println("Succeed in getting the position number.");
 		return 1;
+	}
+
+	@Override
+	public String getTransfer() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTransferID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryVO getInventoryVO() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	@Override
+	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNum(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

@@ -1,5 +1,6 @@
 package businesslogicservice.inventoryblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.AdjustReceiptPO;
@@ -82,82 +83,64 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		this.aftC = aftC;
 		this.aftD = aftD;
 	}
-
-	
-
-	
 	@Override
-	public InventoryViewVO viewInventory(String beginDate, String endDate) {
+	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		// TODO Auto-generated method stub
-		return new InventoryViewVO(a, a, a);
+		return null;
 	}
-    @Override
-	public InventoryCheckVO checkRecord() {
-		// TODO Auto-generated method stub
-		return new InventoryCheckVO(null, ID);
-	}
-	
-
 	@Override
-	public String getImportID() {
+	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		// TODO Auto-generated method stub
-		return importID;
+		return null;
 	}
-
 	@Override
-	public ResultMessage addCommodities(TransferArrivalListVO receipt) {
+	public String getImportID() throws RemoteException {
 		// TODO Auto-generated method stub
-		return resultadd;
+		return null;
 	}
-
 	@Override
-	public InventoryImportReceiptPO buildImport() {
+	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt, InventoryVO vo)
+			throws RemoteException {
 		// TODO Auto-generated method stub
-		return new InventoryImportReceiptPO( ID, destination,  commoditiesID,  a,  b, c,  d);
+		return null;
 	}
-
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
 		// TODO Auto-generated method stub
-		return resultimport;
+		return null;
 	}
-
 	@Override
-	public String getExportID() {
+	public String getExportID() throws RemoteException {
 		// TODO Auto-generated method stub
-		return exportID;
+		return null;
 	}
-
 	@Override
-	public ResultMessage minusCommodities(TransferArrivalListVO receipt) {
-		return resultminus;
+	public String getTransfer() throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-
 	@Override
-	public InventoryExportReceiptPO buildExport() {
+	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
 		// TODO Auto-generated method stub
-		return new InventoryExportReceiptPO(ID, destination, transfer,transferID,
-				 commoditiesID, a, b, c, d);
+		return null;
 	}
-
 	@Override
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
 		// TODO Auto-generated method stub
-		return resultexport;
+		return null;
+	}
+	@Override
+	public String getAdjustID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public AdjustReceiptPO adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public String getAdjustID() {
-		// TODO Auto-generated method stub
-		return adjustID;
-	}
-
-	@Override
-	public AdjustReceiptPO adjust() {
-		// TODO Auto-generated method stub
-		return new AdjustReceiptPO(adjustID,  exA,  exB,  exC,  exD,  aftA,  aftB, aftC,  aftD);
-	}
 	
-}
+
+	
+	}

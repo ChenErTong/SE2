@@ -15,7 +15,7 @@ import vo.InventoryImportReceiptVO;
 public class TestCheck {
 	@Test
 	public void testCheck ()throws RemoteException{
-		ArrayList<InventoryImportReceiptVO> iirv=new ArrayList<InventoryImportReceiptVO>();
+		ArrayList<vo.receiptvo.InventoryImportReceiptVO> iirv=new ArrayList<vo.receiptvo.InventoryImportReceiptVO>();
 		InventoryCheckVO icv=new InventoryCheckVO(iirv,"010");
 		MockCheck test=new MockCheck();
 		test.getLotNum();

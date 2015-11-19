@@ -8,7 +8,7 @@ import vo.InventoryImportReceiptVO;
 public class MockCheck {
 	
 	public String LotNum="010";
-    ArrayList<InventoryImportReceiptVO> iirv=new ArrayList<InventoryImportReceiptVO>();
+    ArrayList<vo.receiptvo.InventoryImportReceiptVO> iirv=new ArrayList<vo.receiptvo.InventoryImportReceiptVO>();
     ArrayList<InventoryCheckVO> ic=new  ArrayList<InventoryCheckVO>();
 
 	public String getLotNum(){
