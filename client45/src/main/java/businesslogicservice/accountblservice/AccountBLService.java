@@ -1,6 +1,9 @@
 package businesslogicservice.accountblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import vo.accountvo.AccountVO;
 
@@ -21,11 +24,12 @@ public interface AccountBLService {
 	/**
 	 * 显示当前公司的全部员工账户
 	 * @return 全部员工账户的ArrayList
+	 * @throws RemoteException 
 	 */
-	public ArrayList<AccountVO> show();
+	public ArrayList<AccountVO> show() throws RemoteException;
 	/**
 	 * 进行一条信息的查看
 	 */
-	
+	public Account
 }
 

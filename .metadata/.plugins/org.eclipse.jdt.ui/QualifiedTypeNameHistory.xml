@@ -25,12 +25,15 @@
 <fullyQualifiedTypeName name="vo.InventoryCheckVO"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
-<fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
 <fullyQualifiedTypeName name="businesslogic.receiptbl.Receipt"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryImportReceiptVO"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="businesslogic.inventory.Inventory"/>
 <fullyQualifiedTypeName name="vo.InventoryVO"/>
+<fullyQualifiedTypeName name="businesslogicservice.accountblservice.AccountBLService"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
+<fullyQualifiedTypeName name="dataservice.accountdataservice.AccountDataService"/>
+<fullyQualifiedTypeName name="vo.accountvo.AccountVO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

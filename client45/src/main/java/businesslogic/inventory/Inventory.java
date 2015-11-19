@@ -78,7 +78,8 @@ public class Inventory implements InventoryBLService {
 		  int c=vo.getC();
 	 	  int d=vo.getD();
 		  InventoryImportReceiptPO po=new InventoryImportReceiptPO(ID,destination,depture,commodities,a,b,c,d);
-		return po;
+		  inventoryData.insertImport(po);
+		  return po;
 		 
 	}
 
@@ -112,8 +113,9 @@ public class Inventory implements InventoryBLService {
 		String TransferID=inventoryData.getTransferID();
 		String destination=receipt.getDestination();
 		String Commodities=receipt.getTransferCenterID();
-		InventoryExportReceiptPO ier=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
-	    return ier;
+		InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
+		inventoryData.insertExport(po);
+		return po;
 			
 		
 	}
@@ -142,6 +144,7 @@ public class Inventory implements InventoryBLService {
 		int afD = now.getD();
 		String ID=inventoryData.getImportID();
 		AdjustReceiptPO po=new AdjustReceiptPO(ID,exA,exB, exC,exD, afA,afB, afC,afD);
+		inventoryData.insertAdjust(po);
 		return po;
 	
 	}
