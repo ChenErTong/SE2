@@ -12,7 +12,7 @@ import javax.swing.JDialog;
 /**
  * 确定是否进行此操作的窗体
  * @author zsq
- *
+ * 
  */
 public class ConfirmOperationFrame extends JDialog implements ActionListener{
 

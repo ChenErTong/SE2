@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
+import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
 
 public class Frame_Admin extends MyJFrame implements ActionListener{
 

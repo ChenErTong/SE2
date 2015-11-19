@@ -17,7 +17,7 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyButton;
 import ui.myui.MyJTextField;
-import ui.specialui.admin.Panel_Admin_Total;
+import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
 /**
  * 登陆界面
  * @author czw

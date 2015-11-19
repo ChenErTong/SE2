@@ -29,4 +29,8 @@ public class MyTranslucentPanel extends MyJPanel {
 	    g.drawImage(image, 0, 0, null);
 	    super.paintComponents(g);
 	}
+	
+	
+	
+	
 }

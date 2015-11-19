@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.myui.MyColor;
+import ui.myui.MyJButton;
+
 public class ConfirmOperationPanel extends JPanel implements ActionListener{
 
 	/**
@@ -23,7 +26,7 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 		int height = 150;
 		
 		Color foreColor = Color.WHITE;
-		Color backColor = Color.CYAN;
+		Color backColor = MyColor.getColor();
 		
 		this.setBounds((1280-width)/2,(720-height)/2,width,height);
 		
@@ -56,6 +59,7 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 			switch(flag){
 			//TODO-在不同的几面进行不同的操作时根据flag调用
 			}
+		ConfirmOperationFrame.button_close.doClick();
 		}
 	}
 	public void setFlag(String flag){

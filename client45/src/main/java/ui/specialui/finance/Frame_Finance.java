@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.specialui.admin.Panel_Admin_AddUser;
-import ui.specialui.admin.Panel_Admin_Total;
+import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
 
 public class Frame_Finance  extends MyJFrame implements ActionListener{
 
