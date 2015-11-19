@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.DebitAndPayBillPO;
-import po.PersistentObject;
 import state.ReceiptType;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class DebitAndPayBillData extends ManageData implements DebitAndPayBillDataService {
+public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implements DebitAndPayBillDataService {
 
 	/**
 	 * 
@@ -21,25 +19,7 @@ public class DebitAndPayBillData extends ManageData implements DebitAndPayBillDa
 	public DebitAndPayBillData() throws RemoteException {
 		poList=new SerSaveAndLoad<DebitAndPayBillPO>("data/"+NAME+".ser");
 	}
-
-	@Override
-	public ResultMessage insert(DebitAndPayBillPO po)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage delete(String ID)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage update(DebitAndPayBillPO PO)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public String getID(ReceiptType type) throws RemoteException {
 		// TODO Auto-generated method stub

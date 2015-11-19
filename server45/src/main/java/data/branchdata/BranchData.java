@@ -4,12 +4,10 @@ import java.rmi.RemoteException;
 
 import data.ManageData;
 import dataservice.branchdataservice.BranchDataService;
-import po.BasePO;
 import po.BranchPO;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class BranchData extends ManageData implements BranchDataService {
+public class BranchData extends ManageData<BranchPO> implements BranchDataService {
 
 	/**
 	 * 
@@ -19,23 +17,4 @@ public class BranchData extends ManageData implements BranchDataService {
 	public BranchData() throws RemoteException {
 		poList=new SerSaveAndLoad<BranchPO>("data/"+NAME+".ser");
 	}
-
-	@Override
-	public ResultMessage insert(BranchPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BranchPO find(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage update(BranchPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

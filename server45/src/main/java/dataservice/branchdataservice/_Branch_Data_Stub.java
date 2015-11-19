@@ -1,5 +1,6 @@
 package dataservice.branchdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.BranchPO;
@@ -8,7 +9,7 @@ import state.ResultMessage;
 public class _Branch_Data_Stub implements BranchDataService {
 
 	@Override
-	public ResultMessage insert(BranchPO po) {
+	public ResultMessage add(BranchPO po) {
 		System.out.println("You have inserted a branch!");
 		return ResultMessage.SUCCESS;
 	}
@@ -21,9 +22,15 @@ public class _Branch_Data_Stub implements BranchDataService {
 	}
 
 	@Override
-	public ResultMessage update(BranchPO po) {
+	public ResultMessage modify(BranchPO po) {
 		System.out.println("You have updated a branch!");
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

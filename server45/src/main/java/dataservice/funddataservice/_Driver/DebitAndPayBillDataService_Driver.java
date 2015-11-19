@@ -15,10 +15,10 @@ public class DebitAndPayBillDataService_Driver {
 		DPBillDataService.getExpenseID();
 		DPBillDataService.getID(ReceiptType.EXPENSE);
 		DPBillDataService.getPayID();
-		DPBillDataService.insert(po);
+		DPBillDataService.add(po);
 		DPBillDataService.delete(po.getID());
 		DPBillDataService.show(ReceiptType.EXPENSE);
-		DPBillDataService.update(po);
+		DPBillDataService.modify(po);
 	
 		
 	}

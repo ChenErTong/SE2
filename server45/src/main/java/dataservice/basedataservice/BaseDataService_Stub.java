@@ -1,5 +1,6 @@
 package dataservice.basedataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.BasePO;
@@ -21,7 +22,7 @@ public class BaseDataService_Stub implements BaseDataService{
 		basePOs.add(basePO_2);
 	}
 	@Override
-	public ResultMessage insert(BasePO po) {
+	public ResultMessage add(BasePO po) {
 		System.out.println("Insert a new base succeed!");
 		
 		return ResultMessage.SUCCESS;
@@ -34,7 +35,7 @@ public class BaseDataService_Stub implements BaseDataService{
 	}
 
 	@Override
-	public ResultMessage update(BasePO PO) {
+	public ResultMessage modify(BasePO PO) {
 		System.out.println("Modify a base succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -42,7 +43,11 @@ public class BaseDataService_Stub implements BaseDataService{
 	@Override
 	public ArrayList<BasePO> find(FindTypeBase baseType) {
 		System.out.println("Find all bases according to de baseType");
-		return new ArrayList<BasePO>(){};
+		return new ArrayList<BasePO>();
+	}
+	@Override
+	public BasePO find(String id) throws RemoteException {
+		return null;
 	}
 
 }

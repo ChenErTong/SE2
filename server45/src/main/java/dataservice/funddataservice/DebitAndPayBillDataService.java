@@ -3,17 +3,16 @@ package dataservice.funddataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.DataService;
+import dataservice.ManageDataService;
 import po.DebitAndPayBillPO;
 import state.ReceiptType;
-import state.ResultMessage;
 
 /**
  * 收款单、付款单的集体载入、保存、查看和修改操作
  * @author zsq
  * @version Oct 22,2015
  */
-public interface DebitAndPayBillDataService extends DataService {
+public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPayBillPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "DebitAndPayBillData";
 	/**
@@ -21,19 +20,19 @@ public interface DebitAndPayBillDataService extends DataService {
 	 * @param po
 	 * @return 处理结果
 	 */
-	public ResultMessage insert(DebitAndPayBillPO po) throws RemoteException;
+//	public ResultMessage insert(DebitAndPayBillPO po) throws RemoteException;
 	/**
 	 * 根据ID删除序列化文件中的一个DebitAndPayBillPO
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID) throws RemoteException;
+//	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新DebitAndPayBillPO
 	 * @param PO
 	 * @return 处理结果
 	 */
-	public ResultMessage update(DebitAndPayBillPO PO) throws RemoteException;
+//	public ResultMessage update(DebitAndPayBillPO PO) throws RemoteException;
 	/**
 	 * 根据单据类型生成编号
 	 * @param type 收款单或者付款单

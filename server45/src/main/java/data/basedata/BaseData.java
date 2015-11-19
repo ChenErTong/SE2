@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
-import po.TransferPO;
 import state.FindTypeBase;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class BaseData extends ManageData implements BaseDataService{
+public class BaseData extends ManageData<BasePO> implements BaseDataService{
 
 	/**
 	 * 
@@ -21,27 +19,7 @@ public class BaseData extends ManageData implements BaseDataService{
 	public BaseData() throws RemoteException {
 		poList=new SerSaveAndLoad<BasePO>("data/"+NAME+".ser");
 	}
-
-	@Override
-	public ResultMessage insert(BasePO po) throws RemoteException {
-		return super.add(po);
-	}
-
-	@Override
-	public ResultMessage delete(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage update(BasePO PO) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

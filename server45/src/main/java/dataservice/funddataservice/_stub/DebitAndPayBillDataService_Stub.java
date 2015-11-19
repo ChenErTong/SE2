@@ -1,13 +1,12 @@
 package dataservice.funddataservice._stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.DebitAndPayBillPO;
-import state.ReceiptCondition;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import dataservice.funddataservice.DebitAndPayBillDataService;
 
 public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataService{
 	private ArrayList<DebitAndPayBillPO> debitAndPayBillPOs;
@@ -23,7 +22,7 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 		debitAndPayBillPOs.add(debitAndPayBillPO_2);
 	}
 	@Override
-	public ResultMessage insert(DebitAndPayBillPO po) {
+	public ResultMessage add(DebitAndPayBillPO po) {
 		System.out.println("Insert a debitbill or paybill succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -35,7 +34,7 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 	}
 
 	@Override
-	public ResultMessage update(DebitAndPayBillPO PO) {
+	public ResultMessage modify(DebitAndPayBillPO PO) {
 		System.out.println("Update the message succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -62,6 +61,11 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) {
 		System.out.println("Show all the debitbills or paybills succeed!");
 		return new ArrayList<DebitAndPayBillPO>();
+	}
+	@Override
+	public DebitAndPayBillPO find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

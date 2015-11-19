@@ -4,12 +4,11 @@ import java.rmi.RemoteException;
 
 import data.ManageData;
 import dataservice.openingstockdataservice.OpeningStockDataService;
-import po.DebitAndPayBillPO;
 import po.OpeningStockPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class OpeningStockData extends ManageData implements OpeningStockDataService {
+public class OpeningStockData extends ManageData<OpeningStockPO> implements OpeningStockDataService {
 
 	/**
 	 * 

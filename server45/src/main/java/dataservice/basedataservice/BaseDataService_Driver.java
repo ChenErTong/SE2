@@ -11,9 +11,8 @@ public class BaseDataService_Driver {
 	public void drive(BaseDataService baseDataService) throws RemoteException{
 		baseDataService.find(FindTypeBase.PRICE);
 		baseDataService.delete("123");
-		baseDataService.insert(po);
-		baseDataService.update(po);
-		
+		baseDataService.add(po);
+		baseDataService.modify(po);
 	}
 	
 	public static void main (String args[]) throws RemoteException{
