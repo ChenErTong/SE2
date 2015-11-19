@@ -21,7 +21,7 @@ public class OrderInput extends MyJPanel{
 		ReceiverInfoInput receiver = new ReceiverInfoInput();
 		this.add(receiver);
 		
-		CommodityInfoInput commodities = new CommodityInfoInput(frame);
+		CommodityInfoInput commodities = new CommodityInfoInput();
 		this.add(commodities);
 		
 		MyJButton confirm = new MyJButton(560, 640, 110, 40, "生成订单", 18);
