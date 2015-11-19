@@ -10,6 +10,7 @@ import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
+import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -21,7 +22,7 @@ public class _Inventory_Stub implements InventoryBLService{
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		InventoryViewVO ivVO = null;
 		try {
-			ivVO = new InventoryViewVO(data_stub.showExport().size(), data_stub.showImport().size(), data_stub.getANum());
+			ivVO = new InventoryViewVO(data_stub.showExport(endDate).size(), data_stub.showImport(endDate).size(), data_stub.getANum());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -30,7 +31,7 @@ public class _Inventory_Stub implements InventoryBLService{
 	}
 
 	@Override
-	public InventoryCheckVO checkRecord() {
+	public InventoryCheckVO checkRecord(String enddate) {
 		InventoryImportReceiptVO iirVO = new InventoryImportReceiptVO("1234567890", "Nanjing", 1, 1, 1, 1);
 		ArrayList<InventoryImportReceiptVO> iirVOs = new ArrayList<InventoryImportReceiptVO>();
 		iirVOs.add(iirVO);
@@ -50,25 +51,7 @@ public class _Inventory_Stub implements InventoryBLService{
 		return null;
 	}
 
-	@Override
-	public ResultMessage addCommodities(TransferArrivalListVO receipt) {
-		System.out.println("Succeed in adding the commodities to the import receipt!");
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public InventoryImportReceiptPO buildImport() {
-		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789","Shanghai","0123456789",1,1,1,1);
-		System.out.println("Succeed in producing the import receipt!");
-		return iirPO;
-	}
-
-	@Override
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
-		System.out.println("Succeed in submitting the import receipt to the top manager!");
-		return ResultMessage.SUCCESS;
-	}
-
+	
 	@Override
 	public String getExportID() {
 		System.out.println("Succeed in getting the export receipt id!");
@@ -78,19 +61,6 @@ public class _Inventory_Stub implements InventoryBLService{
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	@Override
-	public ResultMessage minusCommodities(TransferArrivalListVO receipt) {
-		System.out.println("Succeed in adding the commodities to the export receipt!");
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public InventoryExportReceiptPO buildExport() {
-		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890","Nanjing","plane","0123456789","0123456789", 1, 1, 1, 1);
-		System.out.println("Succeed in producing the export receipt!");
-		return ierPO;
 	}
 
 	@Override
@@ -111,14 +81,41 @@ public class _Inventory_Stub implements InventoryBLService{
 	}
 
 	@Override
-	public AdjustReceiptPO adjust() {
-		AdjustReceiptPO arPO = null;
-		try {
-			arPO = data_stub.showAdjust().get(0);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Succeed in producing the adjusting receipt!");
-		return arPO;
+	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt, InventoryVO vo)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTransfer() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AdjustReceiptPO adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
+	
+	
 }
+
+	

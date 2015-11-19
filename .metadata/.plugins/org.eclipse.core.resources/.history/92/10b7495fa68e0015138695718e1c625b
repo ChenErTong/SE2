@@ -79,7 +79,7 @@ public class Transfer implements TransferBLService {
 	}
 
 	@Override
-	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state,
+	public TransferArrivalListVO receiptList(String transferID, String departure, CommodityState state,
 			ArrayList<String> orders) {
 		// TODO Auto-generated method stub
 		return null;
