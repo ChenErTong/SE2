@@ -1,6 +1,6 @@
 package ui.specialui.courier.orderInput;
 
-import ui.NumberLenghtLimited;
+import ui.NumberLenghLimited;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -29,7 +29,7 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 		this.add(NameField);
 		
 		PhoneField = new MyJTextField(320, 100, 130, 30);
-		PhoneField.setDocument(new NumberLenghtLimited(11));
+		PhoneField.setDocument(new NumberLenghLimited(11));
 		this.add(PhoneField);
 		
 		AddressField = new MyJTextField(100, 142, 350, 30);

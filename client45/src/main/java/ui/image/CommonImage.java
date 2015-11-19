@@ -13,6 +13,10 @@ public class CommonImage extends Images{
 	 */
 	public static final ImageIcon TEST_MINIMUMIZE_BUTTON = createImageIcon("image/minimum_button.png");
 	/**
+	 * 最小化按钮图标
+	 */
+	public static final ImageIcon TEST_RETURN_BUTTON = createImageIcon("image/return_button.png");
+	/**
 	 * TODO
 	 * 测试背景图片
 	 */

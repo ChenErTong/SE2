@@ -8,11 +8,11 @@ import javax.swing.text.*;
  * @author czw
  * @time 2015年11月17日下午11:03:19
  */
-public class NumberLenghtLimited extends PlainDocument {
+public class NumberLenghLimited extends PlainDocument {
 	private static final long serialVersionUID = 1L;
 	private int limit;
 
-	public NumberLenghtLimited(int limit) {
+	public NumberLenghLimited(int limit) {
 		super();
 		this.limit = limit;
 	}

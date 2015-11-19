@@ -19,8 +19,7 @@ public class OrderInput extends MyJPanel{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
-		MyJLabel title = new MyJLabel(550, 30, 150, 45, "订单输入", 30, true);
-		this.add(title);
+		this.add(new MyJLabel(550, 30, 150, 45, "订单输入", 30, true));
 		
 		sender = new SenderInfoInput();
 		this.add(sender);
@@ -40,24 +39,24 @@ public class OrderInput extends MyJPanel{
 	 * 生成订单
 	 * @return 
 	 */
-	public int produceOrder() {
+	public int produceData() {
 		String[] senderInfo;
 		if((senderInfo = sender.getSenderInfo()) == null){
-			return 0;
+			return 1;
 		}
 		String[] receiverInfo;
 		if((receiverInfo = receiver.getReceiverInfo()) == null){
-			return 1;
+			return 2;
 		}
 		String[] commodityInfo;
 		if((commodityInfo = commodities.getCommodityInfo()) == null){
-			return 2;
+			return 3;
 		}
 		String[] commodityList;
 		if((commodityList = commodities.getCommodityList()) == null){
-			return 3;
+			return 4;
 		}
 		boolean isCompareWight = commodities.isCompareWight();
-		return 4;
+		return 0;
 	}
 }

@@ -16,7 +16,6 @@ public class MyJTextField extends JTextField{
 	 * @param y 纵坐标
 	 * @param width 宽度
 	 * @param height 高度
-	 * @param fontSize 字体大小
 	 */
 	public MyJTextField(int x, int y, int width, int height){
 		this(x, y, width, height, null);

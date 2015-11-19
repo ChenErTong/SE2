@@ -19,6 +19,8 @@ public class MyJFrame extends JFrame{
 	protected MyButton closeButton;
 	//最小化按钮
 	protected MyButton minimizeButton;
+	//返回按钮
+	protected MyButton returnButton;
 	
 	public MyJFrame(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,6 +30,11 @@ public class MyJFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setResizable(false);
+		
+		this.returnButton = new MyButton(1155, 15, 30, 30);
+		this.returnButton.setMyIcon(CommonImage.TEST_RETURN_BUTTON);
+		this.returnButton.setActionCommand("return");
+		this.add(this.returnButton);
 		
 		this.minimizeButton = new MyButton(1195, 15, 30, 30);
 		this.minimizeButton.setMyIcon(CommonImage.TEST_MINIMUMIZE_BUTTON);
@@ -78,5 +85,4 @@ public class MyJFrame extends JFrame{
 			}
 		}
 	}
-	
 }

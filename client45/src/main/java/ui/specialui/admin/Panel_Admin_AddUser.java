@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 
 
-import ui.NumberLenghtLimited;
+import ui.NumberLenghLimited;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -102,7 +102,7 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		this.add(userNameField);
 		
 		MyJTextField phoneField = new MyJTextField(750,180,140,30);
-		phoneField.setDocument(new NumberLenghtLimited(11));
+		phoneField.setDocument(new NumberLenghLimited(11));
 		this.add(phoneField);
 		
 		MyComboBox userIdentityBox = new MyComboBox(500,270,150,30,18,identity);

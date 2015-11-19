@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JScrollPane;
 
-import ui.NumberLenghtLimited;
+import ui.NumberLenghLimited;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -43,15 +43,15 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		this.add(new MyJLabel(290, 250, 80, 20, "货物种类", 15, true));
 		
 		commodityNumField = new MyJTextField(130, 100, 50, 30);
-		commodityNumField.setDocument(new NumberLenghtLimited(3));
+		commodityNumField.setDocument(new NumberLenghLimited(3));
 		this.add(commodityNumField);
 		
 		commodityVolumnField = new MyJTextField(300, 100, 50, 30);
-		commodityVolumnField.setDocument(new NumberLenghtLimited(3));
+		commodityVolumnField.setDocument(new NumberLenghLimited(3));
 		this.add(commodityVolumnField);
 		
 		commodityWeightField = new MyJTextField(460, 100, 50, 30);
-		commodityWeightField.setDocument(new NumberLenghtLimited(4));
+		commodityWeightField.setDocument(new NumberLenghLimited(4));
 		this.add(commodityWeightField);
 		
 		String[] packs = {"纸盒", "塑料", "泡沫", "金属"};

@@ -15,4 +15,18 @@ public class MyJPanel extends JPanel{
 		this.setLayout(null);
 		this.setVisible(true);
 	}
+	/**
+	 * 得到界面数据
+	 * @return
+	 */
+	public int produceData() {
+		return 0;
+	}
+	
+	/**
+	 * 重新刷新界面，全部输入设为默认值
+	 */
+	public void refresh(){
+		
+	}
 }
