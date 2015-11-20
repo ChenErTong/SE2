@@ -11,6 +11,8 @@ import data.funddata.DebitAndPayBillData;
 import data.funddata.ExpenseData;
 import data.inventorydata.InventoryData;
 import data.openingstockdata.OpeningStockData;
+import data.orderdata.OrderData;
+import data.organizationdata.OrganizationData;
 import data.receiptdata.ReceiptData;
 import data.recorddata.RecordData;
 import data.transferdata.TransferData;
@@ -29,6 +31,8 @@ public class DataFactory {
 		case ExpenseData.NAME:			return new ExpenseData();
 		case InventoryData.NAME:			return new InventoryData();
 		case OpeningStockData.NAME:			return new OpeningStockData();
+		case OrderData.NAME:					return new OrderData();
+		case OrganizationData.NAME:			return new OrganizationData();
 		case ReceiptData.NAME:			return new ReceiptData();
 		case RecordData.NAME:			return new RecordData();
 		case TransferData.NAME:			return new TransferData();

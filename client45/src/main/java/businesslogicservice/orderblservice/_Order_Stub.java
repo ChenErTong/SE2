@@ -27,9 +27,9 @@ public class _Order_Stub implements OrderBLService {
 				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());
-		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
+		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
-			orderDataService.insert(orderPO);
+			orderDataService.add(orderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -38,7 +38,7 @@ public class _Order_Stub implements OrderBLService {
 
 	@Override
 	public OrderVO inquireOrder(String orderNumber, String senderName) {
-		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
+		OrderDataService orderDataService = new _Order_Data_Stub();
 		System.out.println("Inquire an order!");
 		OrderPO orderPO = null;
 		try {
@@ -62,9 +62,9 @@ public class _Order_Stub implements OrderBLService {
 				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());
-		OrderDataService<OrderPO> orderDataService = new _Order_Data_Stub();
+		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
-			orderDataService.update(orderPO);
+			orderDataService.modify(orderPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

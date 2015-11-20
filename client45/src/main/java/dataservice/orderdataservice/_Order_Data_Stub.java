@@ -1,12 +1,13 @@
 package dataservice.orderdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrderPO;
 import state.ResultMessage;
 import vo.CommodityVO;
 
-public class _Order_Data_Stub implements OrderDataService<OrderPO> {
+public class _Order_Data_Stub implements OrderDataService {
 
 	@Override
 	public OrderPO find(String ordernumber) {
@@ -27,15 +28,23 @@ public class _Order_Data_Stub implements OrderDataService<OrderPO> {
 	}
 
 	@Override
-	public ResultMessage insert(OrderPO order) {
+	public ResultMessage add(OrderPO order) {
 		System.out.println("You have insert an order!");
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ResultMessage update(OrderPO order) {
+	public ResultMessage modify(OrderPO order) {
 		System.out.println("You have modified an order!");
 		return ResultMessage.SUCCESS;
 	}
+
+
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

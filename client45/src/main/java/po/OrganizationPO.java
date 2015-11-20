@@ -10,8 +10,11 @@ import java.util.Date;
  */
 public class OrganizationPO extends PersistentObject{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2620692444650564758L;
 	/** serialVersionUID*/
-	private static final long serialVersionUID = 1L;
 	/**�������*/
 	protected String organizationID;
 	/**����ʱ�䣬ϵͳ�Զ�����*/
