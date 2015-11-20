@@ -3,8 +3,7 @@ package dataservice.userdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.DataService;
-import po.PersistentObject;
+import dataservice.ManageDataService;
 import po.UserPO;
 import state.ResultMessage;
 import state.UserIdentity;
@@ -13,22 +12,22 @@ import state.UserIdentity;
  *@author zsq
  *@version Oct 22,2015 
  */
-public interface  UserDataService<UserPO extends PersistentObject>extends DataService<UserPO> {
+public interface  UserDataService extends ManageDataService<UserPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "UserData";
 	
 	/**
 	 * @param po
 	 */
-	public ResultMessage insert(UserPO po) throws RemoteException;
+//	public ResultMessage insert(UserPO po) throws RemoteException;
 	/**
 	 * @param ID
 	 */
-	public ResultMessage delete(String ID) throws RemoteException;
+//	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * @param PO
 	 */
-	public ResultMessage update(UserPO PO) throws RemoteException;
+//	public ResultMessage update(UserPO PO) throws RemoteException;
 	/**
 	 */
 	public ArrayList<UserPO> find() throws RemoteException;

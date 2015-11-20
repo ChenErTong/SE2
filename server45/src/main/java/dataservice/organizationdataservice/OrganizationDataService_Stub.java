@@ -1,9 +1,9 @@
 package dataservice.organizationdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrganizationPO;
-import po.PersistentObject;
 import state.ResultMessage;
 
 public class OrganizationDataService_Stub implements OrganizationDataService{
@@ -22,7 +22,7 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 		}
 
 	@Override
-	public ResultMessage insert(PersistentObject po) {
+	public ResultMessage add(OrganizationPO po) {
 		System.out.println("Insert a organization succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -34,7 +34,7 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 	}
 
 	@Override
-	public ResultMessage update(PersistentObject po) {
+	public ResultMessage modify(OrganizationPO po) {
 		System.out.println("Modify the information of an organizationg succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -42,7 +42,13 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 	@Override
 	public ArrayList<OrganizationPO> show() {
 		System.out.println("Show all organizations succeed!");
-		return new ArrayList<OrganizationPO>(){};
+		return new ArrayList<OrganizationPO>();
+	}
+
+	@Override
+	public OrganizationPO find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

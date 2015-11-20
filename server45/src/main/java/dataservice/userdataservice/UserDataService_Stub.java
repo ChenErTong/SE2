@@ -1,8 +1,8 @@
 package dataservice.userdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.PersistentObject;
 import po.UserPO;
 import state.ResultMessage;
 import state.UserAuthority;
@@ -23,7 +23,7 @@ public class UserDataService_Stub implements UserDataService{
 		userPOs.add(userPO_2);
 	}
 	@Override
-	public ResultMessage insert(PersistentObject po) {
+	public ResultMessage add(UserPO po) {
 		System.out.println("Insert a user succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -35,7 +35,7 @@ public class UserDataService_Stub implements UserDataService{
 	}
 
 	@Override
-	public ResultMessage update(PersistentObject PO) {
+	public ResultMessage modify(UserPO PO) {
 		System.out.println("Update the information of a user succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -56,6 +56,11 @@ public class UserDataService_Stub implements UserDataService{
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) {
 		System.out.println("UpdataAdmin succeed!");
 		return ResultMessage.SUCCESS;
+	}
+	@Override
+	public UserPO find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -5,12 +5,11 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.organizationdataservice.OrganizationDataService;
-import po.OpeningStockPO;
 import po.OrganizationPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class OrganizationData extends ManageData<OrganizationPO> implements OrganizationDataService<OrganizationPO> {
+public class OrganizationData extends ManageData<OrganizationPO> implements OrganizationDataService {
 
 	/**
 	 * 
@@ -22,7 +21,7 @@ public class OrganizationData extends ManageData<OrganizationPO> implements Orga
 	}
 
 	@Override
-	public ResultMessage insert(OrganizationPO po) throws RemoteException {
+	public ResultMessage add(OrganizationPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,7 +33,7 @@ public class OrganizationData extends ManageData<OrganizationPO> implements Orga
 	}
 
 	@Override
-	public ResultMessage update(OrganizationPO po) throws RemoteException {
+	public ResultMessage modify(OrganizationPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

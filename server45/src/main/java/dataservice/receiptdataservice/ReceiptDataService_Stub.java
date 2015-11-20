@@ -2,7 +2,6 @@ package dataservice.receiptdataservice;
 
 import java.util.ArrayList;
 
-import po.PersistentObject;
 import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
 
@@ -18,7 +17,7 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		receiptPOs.add(receiptPO_2);
 	}
 	@Override
-	public ResultMessage update(PersistentObject PO) {
+	public ResultMessage update(ReceiptPO PO) {
 		System.out.println("Modify the receipt succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -26,7 +25,7 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 	@Override
 	public ArrayList<ReceiptPO> find() {
 		System.out.println("Find all the receiptPO succeed!");
-		return new ArrayList<ReceiptPO>(){};
+		return new ArrayList<ReceiptPO>();
 	}
 
 }

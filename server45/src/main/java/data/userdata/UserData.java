@@ -11,7 +11,7 @@ import state.ResultMessage;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
 
-public class UserData extends ManageData<UserPO> implements UserDataService<UserPO> {
+public class UserData extends ManageData<UserPO> implements UserDataService {
 
 	/**
 	 * 
@@ -21,25 +21,6 @@ public class UserData extends ManageData<UserPO> implements UserDataService<User
 	public UserData() throws RemoteException {
 		poList=new SerSaveAndLoad<UserPO>("data/"+NAME+".ser");
 	}
-
-	@Override
-	public ResultMessage insert(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage delete(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage update(UserPO PO) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public ArrayList<UserPO> find() throws RemoteException {
 		// TODO Auto-generated method stub

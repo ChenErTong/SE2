@@ -12,8 +12,8 @@ public class UserDataService_Driver {
 	public void drive(UserDataService userDataService) throws RemoteException{
 		userDataService.find();
 		userDataService.login(loginInfo);
-		userDataService.insert(po);
-		userDataService.update(po);
+		userDataService.add(po);
+		userDataService.modify(po);
 		userDataService.delete("id");
 		
 	}

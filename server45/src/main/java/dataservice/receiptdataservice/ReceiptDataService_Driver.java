@@ -6,7 +6,7 @@ import po.receiptpo.ReceiptPO;
 
 public class ReceiptDataService_Driver {
 	private ReceiptPO po = new ReceiptPO("456");
-	public void drive(@SuppressWarnings("rawtypes") ReceiptDataService receiptDataService) throws RemoteException{
+	public void drive(ReceiptDataService receiptDataService) throws RemoteException{
 		receiptDataService.find();
 		receiptDataService.update(po);
 		

@@ -1,14 +1,13 @@
 package data;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
 import dataservice.ManageDataService;
 import po.PersistentObject;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class ManageData<PO extends PersistentObject> extends UnicastRemoteObject implements ManageDataService<PO> {
+public class ManageData<PO extends PersistentObject> extends Data implements ManageDataService<PO> {
 
 	/**
 	 * 

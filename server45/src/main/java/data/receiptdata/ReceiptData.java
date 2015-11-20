@@ -5,12 +5,11 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
-import po.OrganizationPO;
 import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService<ReceiptPO> {
+public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService {
 
 	/**
 	 * 

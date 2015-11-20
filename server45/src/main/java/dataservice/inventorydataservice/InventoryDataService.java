@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
-import po.InventoryPO;
+import po.PersistentObject;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -13,7 +13,7 @@ import state.ResultMessage;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public interface InventoryDataService  extends DataService{
+public interface InventoryDataService  extends DataService<PersistentObject>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "InventoryData";
 	
