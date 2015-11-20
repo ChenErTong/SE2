@@ -54,7 +54,7 @@ public class ReceiveInput extends MyJPanel{
 		this.refresh();
 	}
 	
-	public int produceData(){
+	public int produceReceiveList(){
 		String name = receiveName.getText();
 		String time = receiveDate.getText();
 		if((name.equals(""))||(time.equals(""))){

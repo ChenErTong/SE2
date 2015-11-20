@@ -3,7 +3,6 @@ package ui.specialui.courier.orderInput;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyNotification;
 import ui.specialui.courier.Frame_Courier;
 
 public class OrderInput extends MyJPanel{
@@ -39,7 +38,7 @@ public class OrderInput extends MyJPanel{
 	 * 生成订单
 	 * @return 
 	 */
-	public int produceData() {
+	public int produceOrder() {
 		String[] senderInfo;
 		if((senderInfo = sender.getSenderInfo()) == null){
 			return 1;

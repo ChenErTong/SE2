@@ -35,10 +35,12 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){
-			subPanel.setVisible(false);
-			this.remove(subPanel);
-			subPanel = null;
-			totalPanel.setVisible(true);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+				totalPanel.setVisible(true);
+			}
 		}else if(e.getActionCommand().equals("OrderInput")){
 			totalPanel.setVisible(false);
 			subPanel = new OrderInput(this);
@@ -63,7 +65,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("produceReceiveList")){
 			if(this.produceReceiveList()){
-				subPanel.refresh();
+				((ReceiveInput) subPanel).refresh();
 				// TODO 跳转至订单单据界面
 			}
 		}else if(e.getActionCommand().equals("calculateTimeCost")){
@@ -81,7 +83,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	 * @TODO 与bl层连接
 	 */
 	private boolean produceOrder(){
-		switch(((OrderInput) subPanel).produceData()){
+		switch(((OrderInput) subPanel).produceOrder()){
 		case 0: new MyNotification(this, "成功生成订单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成寄件人信息填写", Color.RED); break;
 		case 2: new MyNotification(this, "请完成收件人信息填写", Color.RED); break;
@@ -97,7 +99,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	 * @TODO 与bl层连接
 	 */
 	private boolean produceReceiveList(){
-		switch(((ReceiveInput) subPanel).produceData()){
+		switch(((ReceiveInput) subPanel).produceReceiveList()){
 		case 0: new MyNotification(this, "成功生成收件单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成收件信息填写", Color.RED); break;
 		}	
@@ -108,7 +110,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	 * @return 是否成功
 	 */
 	private boolean calculateTimeCost() {
-		switch(((TimeAndCostManager) subPanel).produceData()){
+		switch(((TimeAndCostManager) subPanel).calculateTimeAndCost()){
 		case 0: new MyNotification(this, "计算完成", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成寄件人信息填写", Color.RED); break;
 		case 2: new MyNotification(this, "请完成收件人信息填写", Color.RED); break;

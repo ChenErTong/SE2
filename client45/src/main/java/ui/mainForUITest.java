@@ -3,10 +3,9 @@ package ui;
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
-
 import ui.commonui.login.Frame_Login;
 import ui.specialui.admin.Frame_Admin;
+import ui.specialui.branch_conuterman.Frame_Branch;
 import ui.specialui.courier.Frame_Courier;
 import ui.specialui.finance.Frame_Finance;
 import ui.specialui.manager.FrameManager;
@@ -27,13 +26,14 @@ public class mainForUITest {
 //		Frame_Login loginFrame = new Frame_Login();
 //		loginFrame.setVisible(true);
 		
-//		Frame_Courier courierFrame = new Frame_Courier();
-//		courierFrame.setVisible(true);
+		Frame_Courier courierFrame = new Frame_Courier();
+		courierFrame.setVisible(true);
 	
 //		FrameManager managerFrame = new FrameManager();
 //		managerFrame.setVisible(true);
 		
-
+//		Frame_Branch branchFrame = new Frame_Branch();
+//		branchFrame.setVisible(true);
 
 //		Frame_Admin adminFrame = new Frame_Admin();
 //		adminFrame.setVisible(true);
@@ -45,7 +45,5 @@ public class mainForUITest {
 
 //		Frame_Sender senderFrame = new Frame_Sender();
 //		senderFrame.setVisible(true);
-
-		
 	}
 }

@@ -45,7 +45,7 @@ public class TimeAndCostManager extends MyJPanel{
 	 * 计算时间与报价
 	 * @return 
 	 */
-	public int produceData() {
+	public int calculateTimeAndCost() {
 		String[] senderInfo;
 		if((senderInfo = sender.getSenderInfo()) == null){
 			return 1;
