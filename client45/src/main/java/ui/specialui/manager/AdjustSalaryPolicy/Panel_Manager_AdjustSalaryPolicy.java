@@ -34,7 +34,7 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel{
 		MyJLabel employeeTypeLabel= new MyJLabel(50,100,120,30, "选择员工类别",16,true);
 		this.add(employeeTypeLabel);
 		
-		MyJLabel policyTypeLabel = new MyJLabel(325,100,120,30,"选择策略类别",14,true);
+		MyJLabel policyTypeLabel = new MyJLabel(325,100,120,30,"选择策略类别",16,true);
 		this.add(policyTypeLabel);
 		
 		MyComboBox employeeTypeList = new MyComboBox(165,100,150,30,14,employeeType);

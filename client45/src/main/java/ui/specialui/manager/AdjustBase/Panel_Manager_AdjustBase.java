@@ -41,7 +41,7 @@ public class Panel_Manager_AdjustBase extends MyJPanel{
 
 	private void initComponent(FrameManager frameManager) {
 	
-		String [] baseType = {"所有常量","快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};
+		String [] baseType = {"所有常量"};
 	//	String [] policyType = {"所有策略","按月","计次","提成"};
 		
 		MyJLabel baseTypeLabel= new MyJLabel(50,100,120,30, "选择常量类别",16,true);

@@ -3,12 +3,12 @@ package ui.specialui.finance;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
-import ui.specialui.admin.Panel_Admin_AddUser;
-import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
+import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
+import ui.specialui.finance.CostManage.Panel_Finance_CreateDebitReceipt;
+
+
 
 public class Frame_Finance  extends MyJFrame implements ActionListener{
 
@@ -20,7 +20,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	Panel_Finance_OpenningStock openningStockPanel;
 	Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
 	Panel_Finance_ViewIncomeStatement viewIncomeStatement;
-	
+	Panel_Finance_CreateDebitReceipt createDebitReceipt;
 	
 	public Frame_Finance(){
 		totalPanel = new Panel_Finance_Total(this);
@@ -31,7 +31,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("CostManange")){
+		if(e.getActionCommand().equals("CostManage")){
 			totalPanel.setVisible(false);
 			costManagePanel = new Panel_Finance_CostManagement(this);
 			this.add(costManagePanel);
@@ -63,8 +63,13 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(viewIncomeStatement,new Integer(Integer.MAX_VALUE));
 		
 		}else if(e.getActionCommand().equals("Withdraw")){
-			//TODO
+			totalPanel.setVisible(false);
+		}else if(e.getActionCommand().equals("AddDebit")){
+			costManagePanel.setVisible(false);
+			createDebitReceipt = new Panel_Finance_CreateDebitReceipt();
+			this.add(createDebitReceipt);
+			this.getLayeredPane().add(createDebitReceipt,new Integer(Integer.MAX_VALUE));
 		}
 
-}
+	}
 }
