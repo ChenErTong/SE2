@@ -18,33 +18,30 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public int c;
 	public int d;
 	
-	public InventoryExportReceiptPO(String ID, String destination, String depture,String transfer, String transferID,
+	public InventoryExportReceiptPO(String ID, String destination, String depture, String transfer, String transferID,
 			String commoditiesID, int a, int b, int c, int d) {
 		super(ID);
 		this.destination = destination;
+		this.depture = depture;
 		Transfer = transfer;
 		TransferID = transferID;
 		CommoditiesID = commoditiesID;
-		this.depture=depture;
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
 	}
-
-	public String getDepture() {
-		return depture;
-	}
-
-	public void setDepture(String depture) {
-		this.depture = depture;
-	}
-
 	public String getDestination() {
 		return destination;
 	}
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+	public String getDepture() {
+		return depture;
+	}
+	public void setDepture(String depture) {
+		this.depture = depture;
 	}
 	public String getTransfer() {
 		return Transfer;

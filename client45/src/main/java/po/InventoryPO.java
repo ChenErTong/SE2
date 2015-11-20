@@ -15,14 +15,14 @@ public class InventoryPO extends PersistentObject  {
 	public int b;
 	public int c;
 	public int d;
-	
-	
-	public InventoryPO(String id, int a, int b, int c, int d) {
+	public String  EmptyOrFull;
+	public InventoryPO(String id, int a, int b, int c, int d, String emptyOrFull) {
 		super(id);
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
+		EmptyOrFull = emptyOrFull;
 	}
 	public int getA() {
 		return a;
@@ -48,6 +48,14 @@ public class InventoryPO extends PersistentObject  {
 	public void setD(int d) {
 		this.d = d;
 	}
+	public String getEmptyOrFull() {
+		return EmptyOrFull;
+	}
+	public void setEmptyOrFull(String emptyOrFull) {
+		EmptyOrFull = emptyOrFull;
+	}
+	
+	
 	
 	
 	

@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="vo.receiptpo.PaymentBillVO"/>
 <fullyQualifiedTypeName name="vo.receiptvo.TransferArrivalListVO"/>
 <fullyQualifiedTypeName name="po.accountpo.AccountPO"/>
-<fullyQualifiedTypeName name="po.InventoryPO"/>
 <fullyQualifiedTypeName name="po.OpeningStockPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.AdjustReceiptPO"/>
 <fullyQualifiedTypeName name="dataservice.funddataservice.ExpenseDataService"/>
@@ -13,13 +12,11 @@
 <fullyQualifiedTypeName name="state.CommodityState"/>
 <fullyQualifiedTypeName name="transfer.MockTransfer"/>
 <fullyQualifiedTypeName name="po.receiptpo.TransferOrderPO"/>
-<fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="businusslogic.transfer.Transfer"/>
 <fullyQualifiedTypeName name="businesslogicservice.userblservice.UserBLService"/>
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
 <fullyQualifiedTypeName name="businesslogicservice.inventoryblservice.InventoryBLService"/>
 <fullyQualifiedTypeName name="businesslogicservice.recordblservice.RecordBLService"/>
-<fullyQualifiedTypeName name="dataservice.inventorydataservice.InventoryDataService"/>
 <fullyQualifiedTypeName name="dataservice.recorddataservice.RecordDataService"/>
 <fullyQualifiedTypeName name="vo.InventoryViewVO"/>
 <fullyQualifiedTypeName name="vo.InventoryCheckVO"/>
@@ -27,13 +24,21 @@
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
 <fullyQualifiedTypeName name="businesslogic.receiptbl.Receipt"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryImportReceiptVO"/>
-<fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="businesslogic.inventory.Inventory"/>
-<fullyQualifiedTypeName name="vo.InventoryVO"/>
 <fullyQualifiedTypeName name="businesslogicservice.accountblservice.AccountBLService"/>
 <fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
 <fullyQualifiedTypeName name="dataservice.accountdataservice.AccountDataService"/>
 <fullyQualifiedTypeName name="vo.accountvo.AccountVO"/>
+<fullyQualifiedTypeName name="businesslogic.branch.Branch"/>
+<fullyQualifiedTypeName name="dataservice.branchdataservice.BranchDataService"/>
+<fullyQualifiedTypeName name="po.receiptpo.BranchArrivalListPO"/>
+<fullyQualifiedTypeName name="dataservice.transferdataservice.TransferDataService"/>
+<fullyQualifiedTypeName name="po.receiptpo.TransferArrivalListPO"/>
+<fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
+<fullyQualifiedTypeName name="vo.InventoryVO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="dataservice.inventorydataservice.InventoryDataService"/>
+<fullyQualifiedTypeName name="po.InventoryPO"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
 </qualifiedTypeNameHistroy>

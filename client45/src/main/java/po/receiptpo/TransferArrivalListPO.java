@@ -17,18 +17,11 @@ public class TransferArrivalListPO extends ReceiptPO {
 	private static final long serialVersionUID = 1L;
 	private String transferCenterID;
 	private String departure;
+	private String destination;
 	private CommodityState state;
 	private ArrayList<String> orders;
 	public TransferArrivalListPO(String id) {
 		super(id);
-	}
-	public TransferArrivalListPO(String ID, String transferCenterID, String departure, CommodityState state,
-			ArrayList<String> orders) {
-		super(ID);
-		this.transferCenterID = transferCenterID;
-		this.departure = departure;
-		this.state = state;
-		this.orders = orders;
 	}
 	public String getTransferCenterID() {
 		return transferCenterID;
@@ -42,6 +35,12 @@ public class TransferArrivalListPO extends ReceiptPO {
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
 	public CommodityState getState() {
 		return state;
 	}
@@ -54,8 +53,14 @@ public class TransferArrivalListPO extends ReceiptPO {
 	public void setOrders(ArrayList<String> orders) {
 		this.orders = orders;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public TransferArrivalListPO(String ID, String transferCenterID, String departure, String destination,
+			CommodityState state, ArrayList<String> orders) {
+		super(ID);
+		this.transferCenterID = transferCenterID;
+		this.departure = departure;
+		this.destination = destination;
+		this.state = state;
+		this.orders = orders;
 	}
-
+	
 }

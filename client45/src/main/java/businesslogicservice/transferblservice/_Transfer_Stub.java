@@ -77,7 +77,7 @@ public class _Transfer_Stub implements TransferBLService {
 	public TransferArrivalListVO receiptList(String transferID, String departure,String destination, CommodityState state,
 			ArrayList<String> orders) {
 		TransferArrivalListVO transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, destination, state, orders);
-		TransferArrivalListPO transferArrivalListPO = new TransferArrivalListPO(transferID, transferID, departure, state, orders);
+		TransferArrivalListPO transferArrivalListPO = new TransferArrivalListPO(transferID, transferID, departure, destination,state, orders);
 		System.out.println("You have fielded a receipt");
 		ResultMessage resultMessage = this.submit(transferArrivalListPO);
 		if(resultMessage==ResultMessage.SUCCESS){

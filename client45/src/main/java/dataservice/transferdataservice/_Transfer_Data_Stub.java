@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import po.InventoryPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
+import po.receiptpo.TransferArrivalListPO;
 import state.ResultMessage;
 
 public class _Transfer_Data_Stub implements TransferDataService {
@@ -31,6 +32,12 @@ public class _Transfer_Data_Stub implements TransferDataService {
 
 	@Override
 	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TransferArrivalListPO findList(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

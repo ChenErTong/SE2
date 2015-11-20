@@ -99,7 +99,7 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		return null;
 	}
 	@Override
-	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt, InventoryVO vo)
+	public InventoryImportReceiptPO addCommodities(String ID, InventoryVO vo)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
@@ -114,16 +114,8 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public String getTransfer() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 	@Override
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
 		// TODO Auto-generated method stub
@@ -135,7 +127,12 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		return null;
 	}
 	@Override
-	public AdjustReceiptPO adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+	public ResultMessage  adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public InventoryExportReceiptPO minusCommodities(String ImportID, String Transfer) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

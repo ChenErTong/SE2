@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import dataservice.basedataservice.BaseDataService;
 import dataservice.inventorydataservice.InventoryDataService;
+import dataservice.transferdataservice.TransferDataService;
+import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
+import po.receiptpo.TransferArrivalListPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
@@ -22,9 +25,11 @@ import vo.receiptvo.TransferArrivalListVO;
 
 public class Inventory implements InventoryBLService {
 	private InventoryDataService inventoryData;
+	private TransferDataService transferData;
 	public Inventory() {
 		try {
 			inventoryData= (InventoryDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+InventoryDataService.NAME);
+			transferData= (TransferDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -68,7 +73,8 @@ public class Inventory implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt,InventoryVO vo) throws RemoteException {
+	public InventoryImportReceiptPO addCommodities(String ArrivalListID,InventoryVO vo) throws RemoteException {
+		  TransferArrivalListPO receipt=transferData.findList(ArrivalListID);
 		  String ID=inventoryData.getImportID();
 		  String commodities=receipt.getTransferCenterID();
 		  String destination=receipt.getDestination();
@@ -77,8 +83,10 @@ public class Inventory implements InventoryBLService {
 		  int b=vo.getB();
 		  int c=vo.getC();
 	 	  int d=vo.getD();
+	 	  InventoryPO inventorypo=new InventoryPO(inventoryData.getInventoryID(),a,b,c,d,"full");
 		  InventoryImportReceiptPO po=new InventoryImportReceiptPO(ID,destination,depture,commodities,a,b,c,d);
 		  inventoryData.insertImport(po);
+		  inventoryData.insertInventory(inventorypo);
 		  return po;
 		 
 	}
@@ -95,26 +103,23 @@ public class Inventory implements InventoryBLService {
 		String ID=inventoryData.getExportID();
 		return ID;
 	}
+	
 	@Override
-   public String getTransfer() throws RemoteException {
-		String Transfer=inventoryData.getTransfer();
-		return Transfer;
-	}
-	@Override
-	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
-		InventoryVO vo=inventoryData.getInventoryVO();
-		  int a=vo.getA();
-		  int b=vo.getB();
-		  int c=vo.getC();
-	 	  int d=vo.getD();
-		String ID=inventoryData.getExportID();
-		String Transfer=inventoryData.getTransfer();
-		String depture=receipt.getDeparture();
-		String TransferID=inventoryData.getTransferID();
-		String destination=receipt.getDestination();
-		String Commodities=receipt.getTransferCenterID();
-		InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
-		inventoryData.insertExport(po);
+	public InventoryExportReceiptPO minusCommodities(String ImportID,String Transfer) throws RemoteException {
+	    InventoryImportReceiptPO importPo=inventoryData.findImport(ImportID);
+		  int a=importPo.getA();
+		  int b=importPo.getB();
+		  int c=importPo.getC();
+	 	  int d=importPo.getD();
+	 	InventoryPO inventorypo=inventoryData.getInventoryPO(a,b,c,d);
+		 String ID=inventoryData.getExportID();
+		 String depture=importPo.getDepture(); 
+		 String TransferID=inventoryData.getTransferID();
+		 String destination=importPo.getDestination();
+		 String Commodities=importPo.getCommoditiesID();
+		 InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
+		 inventoryData.insertExport(po);
+		 inventoryData.modifyInventory(inventorypo, a, b, c, d,"empty");
 		return po;
 			
 		
@@ -133,7 +138,7 @@ public class Inventory implements InventoryBLService {
 	}
 
 	@Override
-	public AdjustReceiptPO adjust(InventoryVO before,InventoryVO now) throws RemoteException {
+	public ResultMessage adjust(InventoryVO before,InventoryVO now) throws RemoteException {
 		int exA = before.getA();
 		int exB = before.getB();
 		int exC = before.getC();
@@ -144,9 +149,20 @@ public class Inventory implements InventoryBLService {
 		int afD = now.getD();
 		String ID=inventoryData.getImportID();
 		AdjustReceiptPO po=new AdjustReceiptPO(ID,exA,exB, exC,exD, afA,afB, afC,afD);
+		InventoryPO beforePO=VoToPo(before);
+		InventoryPO afterPO=VoToPo(now);
+		inventoryData.modifyInventory(beforePO, exA,exB,exC, exD,"empty");
+		inventoryData.modifyInventory(afterPO, afA, afB,afC,afD, "full");
 		inventoryData.insertAdjust(po);
+		
+		return ResultMessage.SUCCESS;
+	   
+	}
+	public InventoryPO VoToPo(InventoryVO vo) throws RemoteException{
+		InventoryPO po=new InventoryPO(inventoryData.getInventoryID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
 		return po;
-	
+		
+		
 	}
 	
 

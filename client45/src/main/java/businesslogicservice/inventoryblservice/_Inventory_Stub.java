@@ -21,11 +21,7 @@ public class _Inventory_Stub implements InventoryBLService{
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		InventoryViewVO ivVO = null;
-		try {
-			ivVO = new InventoryViewVO(data_stub.showExport(endDate).size(), data_stub.showImport(endDate).size(), data_stub.getANum());
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		
 		System.out.println("Succeed in showing the condition of the inventory!");
 		return ivVO;
 	}
@@ -80,12 +76,7 @@ public class _Inventory_Stub implements InventoryBLService{
 		return null;
 	}
 
-	@Override
-	public InventoryImportReceiptPO addCommodities(TransferArrivalListVO receipt, InventoryVO vo)
-			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
@@ -93,20 +84,22 @@ public class _Inventory_Stub implements InventoryBLService{
 		return null;
 	}
 
+	
+
 	@Override
-	public String getTransfer() throws RemoteException {
+	public ResultMessage adjust(InventoryVO before, InventoryVO now) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InventoryExportReceiptPO minusCommodities(TransferArrivalListVO receipt) throws RemoteException {
+	public InventoryImportReceiptPO addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AdjustReceiptPO adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+	public InventoryExportReceiptPO minusCommodities(String ImportID, String Transfer) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

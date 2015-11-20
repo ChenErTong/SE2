@@ -24,7 +24,7 @@ public class MockInventoryExport {
 		return "nanjing";
 	}
    public InventoryVO minusPlace(){
-	   InventoryVO iv=new InventoryVO(1, 1, 1, 1);
+	   InventoryVO iv=new InventoryVO(1, 1, 1, 1,"full");
 	   return iv;
    }
    public String getTransfer(){ 
@@ -36,7 +36,7 @@ public class MockInventoryExport {
    }
     
 	public InventoryExportReceiptPO buildImport() {
-		InventoryVO iv=new InventoryVO(1, 1, 1, 1);
+		InventoryVO iv=new InventoryVO(1, 1, 1, 1,"full");
 		int a=iv.getA();
 		int b=iv.getB();
 		int c=iv.getC();

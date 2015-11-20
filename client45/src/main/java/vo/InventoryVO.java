@@ -9,11 +9,14 @@ public class InventoryVO {
 	public int b;
 	public int c;
 	public int d;
-	public InventoryVO(int a, int b, int c, int d) {
+	public String EmptyOrFull;
+	public InventoryVO(int a, int b, int c, int d, String emptyOrFull) {
+		super();
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
+		EmptyOrFull = emptyOrFull;
 	}
 	public int getA() {
 		return a;
@@ -39,9 +42,11 @@ public class InventoryVO {
 	public void setD(int d) {
 		this.d = d;
 	}
-	
-	
-	
-	
+	public String getEmptyOrFull() {
+		return EmptyOrFull;
+	}
+	public void setEmptyOrFull(String emptyOrFull) {
+		EmptyOrFull = emptyOrFull;
+	}
 	
 }

@@ -3,6 +3,7 @@ package dataservice.inventorydataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -35,54 +36,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	}
 
 
-	@Override
-	public int getASize() {
-		System.out.println("Succeed in getting the size of row.");
-		return 100;
-	}
-
-	@Override
-	public int getBSize() {
-		System.out.println("Succeed in getting the size of block.");
-		return 100;
-	}
-
-	@Override
-	public int getCSize() {
-		System.out.println("Succeed in getting the size of frame.");
-		return 100;
-	}
-
-	@Override
-	public int getDSize() {
-		System.out.println("Succeed in getting the size of position.");
-		return 100;
-	}
-
-	@Override
-	public int getANum() {
-		System.out.println("Succeed in getting the capacity of row.");
-		return 50;
-	}
-
-	@Override
-	public int getBNum() {
-		System.out.println("Succeed in getting the capacity of block.");
-		return 50;
-	}
-
-	@Override
-	public int getCNum() {
-		System.out.println("Succeed in getting the capacity of frame.");
-		return 50;
-	}
-
-	@Override
-	public int getDNum() {
-		System.out.println("Succeed in getting the capacity of position.");
-		return 50;
-	}
-
+	
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate){
 		ArrayList<InventoryImportReceiptPO> iirPOs = new ArrayList<InventoryImportReceiptPO>();
@@ -128,44 +82,9 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public int getA() {
-		System.out.println("Succeed in getting the block number.");
-		return 1;
-	}
-
-	@Override
-	public int getB() {
-		System.out.println("Succeed in getting the row number.");
-		return 1;
-	}
-
-	@Override
-	public int getC() {
-		System.out.println("Succeed in getting the frame number.");
-		return 1;
-	}
-
-	@Override
-	public int getD() {
-		System.out.println("Succeed in getting the position number.");
-		return 1;
-	}
-
-	@Override
-	public String getTransfer() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public String getTransferID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InventoryVO getInventoryVO() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -188,5 +107,60 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	public int getNum(String beginDate, String endDate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String getInventoryID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryImportReceiptPO findImport(String importID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryExportReceiptPO findExport(String exportID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AdjustReceiptPO findAdjust(String adjustID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryPO getInventoryPO(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage insertInventory(InventoryPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modifyInventory(InventoryPO po, int a, int b, int c, int d, String EmptyOrFull)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
