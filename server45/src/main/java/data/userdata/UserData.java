@@ -27,6 +27,7 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 		return null;
 	}
 
+	
 	@Override
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 		// TODO Auto-generated method stub
