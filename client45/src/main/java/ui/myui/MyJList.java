@@ -12,6 +12,8 @@ public class MyJList extends JList<String>{
 		this.setFont(new MyFont(15));
 		this.setBounds(x, y, width, height);
 		this.setVisibleRowCount(5);
+		MyColor.setColor(4);
+		this.setBackground(MyColor.getColor());
 		this.setForeground(Color.BLACK);
 		this.setVisible(true);
 	}
