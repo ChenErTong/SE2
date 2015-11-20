@@ -67,5 +67,10 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<DebitAndPayBillPO> show(String begin, String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
