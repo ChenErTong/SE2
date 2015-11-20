@@ -6,6 +6,7 @@ import businesslogicservice.recordblservice.RecordBLService;
 import state.ResultMessage;
 import vo.BussinessConditionVO;
 import vo.BussinessProcessVO;
+import vo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
 
@@ -35,9 +36,9 @@ public class RecordBLService_Stub implements RecordBLService{
 	}
 
 	@Override
-	public BussinessProcessVO bussinessProcess(String begin, String end) {
+	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) {
 		// TODO Auto-generated method stub
-		return new BussinessProcessVO(incomeReceipt,expenReceipt);
+		return null;
 	}
 
 	@Override

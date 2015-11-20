@@ -93,79 +93,78 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
-	
-	
 	public double getMoney() {
 		return money;
 	}
-
 	public void setMoney(double money) {
 		this.money = money;
 	}
-
 	public String getCourierID() {
 		return courierID;
 	}
-
 	public void setCourierID(String courierID) {
 		this.courierID = courierID;
 	}
-
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public ArrayList getOrderNumbers() {
+		return orderNumbers;
+	}
+	public void setOrderNumbers(ArrayList orderNumbers) {
+		this.orderNumbers = orderNumbers;
+	}
 	public String getPayerName() {
 		return payerName;
 	}
-
 	public void setPayerName(String payerName) {
 		this.payerName = payerName;
 	}
-
 	public ArrayList<BankAccountPO> getBankAccouts() {
 		return bankAccouts;
 	}
-
 	public void setBankAccouts(ArrayList<BankAccountPO> bankAccouts) {
 		this.bankAccouts = bankAccouts;
 	}
-
 	public PayBillItem getItems() {
 		return items;
 	}
-
 	public void setItems(PayBillItem items) {
 		this.items = items;
 	}
-
-	public ReceiptType getType() {
-		return type;
-	}
-
-	public void setType(ReceiptType type) {
-		this.type = type;
-	}
-
-	public ReceiptState getState() {
-		return state;
-	}
-
-	public void setState(ReceiptState state) {
-		this.state = state;
-	}
-
 	public String getRentYear() {
 		return rentYear;
 	}
-
 	public void setRentYear(String rentYear) {
 		this.rentYear = rentYear;
 	}
-
 	public String getSalaryMonth() {
 		return salaryMonth;
 	}
-
 	public void setSalaryMonth(String salaryMonth) {
 		this.salaryMonth = salaryMonth;
 	}
-
-
+	public ArrayList getTransListNumber() {
+		return transListNumber;
+	}
+	public void setTransListNumber(ArrayList transListNumber) {
+		this.transListNumber = transListNumber;
+	}
+	public ReceiptType getType() {
+		return type;
+	}
+	public void setType(ReceiptType type) {
+		this.type = type;
+	}
+	public ReceiptState getState() {
+		return state;
+	}
+	public void setState(ReceiptState state) {
+		this.state = state;
+	}
+	
+	
 }

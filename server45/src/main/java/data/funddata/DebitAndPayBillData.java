@@ -44,4 +44,10 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return null;
 	}
 
+	@Override
+	public ArrayList<DebitAndPayBillPO> show(String begin, String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
 }

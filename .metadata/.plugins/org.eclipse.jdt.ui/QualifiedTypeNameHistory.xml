@@ -37,8 +37,18 @@
 <fullyQualifiedTypeName name="po.receiptpo.TransferArrivalListPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="vo.InventoryVO"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="dataservice.inventorydataservice.InventoryDataService"/>
 <fullyQualifiedTypeName name="po.InventoryPO"/>
+<fullyQualifiedTypeName name="businesslogic.record.BussinessConditionList"/>
+<fullyQualifiedTypeName name="vo.BussinessConditionVO"/>
+<fullyQualifiedTypeName name="po.BussinessProcessPO"/>
+<fullyQualifiedTypeName name="vo.BussinessProcessVO"/>
+<fullyQualifiedTypeName name="po.receiptpo.DebitBillPO"/>
+<fullyQualifiedTypeName name="vo.receiptvo.DebitBillVO"/>
+<fullyQualifiedTypeName name="po.receiptpo.PaymentBillPO"/>
+<fullyQualifiedTypeName name="dataservice.funddataservice.DebitAndPayBillDataService"/>
+<fullyQualifiedTypeName name="vo.DebitAndPayBillVO"/>
+<fullyQualifiedTypeName name="po.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

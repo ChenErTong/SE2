@@ -65,5 +65,14 @@ public interface DebitAndPayBillDataService {
 	 * @version Oct 22,2015
 	 */
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
+	/**
+	 * 按照时间区间返回单据【收款单或者付款单】
+	 * @param 
+	 * @return
+	 * @author lxl
+	 * @version 11  20 2015
+	 */
+	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
+	
 
 }
