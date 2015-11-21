@@ -29,10 +29,9 @@ public class MyJTable extends JTable{
 		
 		this.setCellEditable();
 		
-		this.setBackground(new Color(40, 42, 66));
+		this.setBackground(new Color(0, 0, 0, 0.3f));
 		this.setForeground(Color.WHITE);
 		this.setFont(new MyFont(14));
-//		this.
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
@@ -43,7 +42,9 @@ public class MyJTable extends JTable{
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 		head.setFont(new MyFont(14));
 		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
+		head.setDefaultRenderer(tcr);
+		head.setResizingAllowed(false);	
+		head.setEnabled(false);
 	}
 
 	/**

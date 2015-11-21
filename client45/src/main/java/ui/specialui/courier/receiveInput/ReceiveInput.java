@@ -1,7 +1,6 @@
 package ui.specialui.courier.receiveInput;
 
 import ui.GetDate;
-import ui.NumberLenghLimited;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -41,7 +40,7 @@ public class ReceiveInput extends MyJPanel{
 		this.add(orderInfo);
 		
 		checkBoard = new MyJTextField(230, 115, 250, 30);
-		checkBoard.setDocument(new NumberLenghLimited(10));
+		checkBoard.setOnlyInteger(10);
 		this.add(checkBoard);
 		
 		receiveName = new MyJTextField(900, 210, 150, 30);

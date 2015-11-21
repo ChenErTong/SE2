@@ -1,18 +1,10 @@
 package ui.specialui.courier.orderInput;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-
-import ui.NumberLenghLimited;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
-import ui.myui.MyJList;
 import ui.myui.MyJRadioButton;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTextField;
@@ -46,15 +38,15 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		this.add(new MyJLabel(290, 250, 80, 20, "货物种类", 15, true));
 		
 		commodityNumField = new MyJTextField(130, 100, 50, 30);
-		commodityNumField.setDocument(new NumberLenghLimited(3));
+		commodityNumField.setOnlyInteger(3);
 		this.add(commodityNumField);
 		
 		commodityVolumnField = new MyJTextField(300, 100, 50, 30);
-		commodityVolumnField.setDocument(new NumberLenghLimited(3));
+		commodityVolumnField.setOnlyInteger(3);
 		this.add(commodityVolumnField);
 		
 		commodityWeightField = new MyJTextField(460, 100, 50, 30);
-		commodityWeightField.setDocument(new NumberLenghLimited(4));
+		commodityWeightField.setOnlyInteger(4);
 		this.add(commodityWeightField);
 		
 		String[] packs = {"纸盒", "塑料", "泡沫", "金属"};
