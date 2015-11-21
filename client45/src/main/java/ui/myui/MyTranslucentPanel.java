@@ -20,7 +20,7 @@ public class MyTranslucentPanel extends MyJPanel {
 	}
 	
 	public void paint(Graphics g){
-		BufferedImage image = new BufferedImage(550, 640, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage image = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = image.createGraphics();
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 		g2d.drawImage(CommonImage.TEST_HALFOPAQUE, 0, 0, null);
