@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import businesslogicservice.facilityblservice.FacilityBLService;
 import dataservice.facilitydataservice.FacilityDataService;
 import dataservice.funddataservice.ExpenseDataService;
+import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
@@ -29,32 +30,51 @@ public class Facility implements FacilityBLService {
 	}
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
 	@Override
-	public ResultMessage addFacility(FacilityVO facility){
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteFacility(FacilityVO facility) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modifyFacility(FacilityVO facility) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage addFacility(FacilityVO facility) {
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
+		try {
+			facilityData.add(facilityPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public FacilityVO findFacility(String facilityId) {
-		// TODO Auto-generated method stub
-		return null;
+		FacilityVO vo=null;
+		FacilityPO facilityPO = null;
+		try {
+			facilityPO = facilityData.find(facilityId);
+			if(facilityPO!=null)
+				vo = new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	@Override
+	public ResultMessage modifyFacility(FacilityVO facility) {
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
+		try {
+			facilityData.modify(facilityPO);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
+	}
+	@Override
+	public ResultMessage deleteFacility(FacilityVO facility) {
+		try {
+			facilityData.delete(facility.getFacilityIdString());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 
