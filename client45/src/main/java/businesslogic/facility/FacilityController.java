@@ -1,5 +1,7 @@
 package businesslogic.facility;
 
+import java.rmi.RemoteException;
+
 import businesslogicservice.facilityblservice.FacilityBLService;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -20,22 +22,42 @@ public class FacilityController implements FacilityBLService {
 
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
-		return facilityBL.addFacility(facility);
+		try {
+			return facilityBL.addFacility(facility);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
-		return facilityBL.deleteFacility(facility);
+		try {
+			return facilityBL.deleteFacility(facility);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
-		return facilityBL.modifyFacility(facility);
+		try {
+			return facilityBL.modifyFacility(facility);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public FacilityVO findFacility(String facilityId) {
-		return facilityBL.findFacility(facilityId);
+		try {
+			return facilityBL.findFacility(facilityId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

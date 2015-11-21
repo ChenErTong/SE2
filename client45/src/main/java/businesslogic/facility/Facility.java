@@ -5,14 +5,12 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import businesslogicservice.facilityblservice.FacilityBLService;
 import dataservice.facilitydataservice.FacilityDataService;
-import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
 
-public class Facility implements FacilityBLService {
+public class Facility{
 	private FacilityDataService facilityData;
 	
 	public Facility() {
@@ -26,51 +24,22 @@ public class Facility implements FacilityBLService {
 			e.printStackTrace();
 		}
 	}
-	@Override
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;
 	}
 
-	@Override
-	public ResultMessage addFacility(FacilityVO facility) {
-		try {
+	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 			return facilityData.add(FacilityTrans.convertVOtoPO(facility));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
-	@Override
-	public FacilityVO findFacility(String facilityId) {
-		FacilityVO vo=null;
-		FacilityPO facilityPO = null;
-		try {
-			facilityPO = facilityData.find(facilityId);
-			if(facilityPO!=null)
-				vo = FacilityTrans.convertPOtoVO(facilityPO);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return vo;
+	public FacilityVO findFacility(String facilityId) throws RemoteException {
+		return FacilityTrans.convertPOtoVO(facilityData.find(facilityId));
 	}
-	@Override
-	public ResultMessage modifyFacility(FacilityVO facility) {
-		try {
+	public ResultMessage modifyFacility(FacilityVO facility)  throws RemoteException{
 			return facilityData.modify(FacilityTrans.convertVOtoPO(facility));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
-	@Override
-	public ResultMessage deleteFacility(FacilityVO facility) {
-		try {
+	public ResultMessage deleteFacility(FacilityVO facility)  throws RemoteException{
 			return facilityData.delete(facility.getFacilityIdString());
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 
