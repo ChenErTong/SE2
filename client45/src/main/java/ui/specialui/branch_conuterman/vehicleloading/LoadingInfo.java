@@ -1,7 +1,6 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
 import ui.GetDate;
-import ui.NumberLenghLimited;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -9,12 +8,13 @@ import ui.myui.MyTranslucentPanel;
 public class LoadingInfo extends MyTranslucentPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private MyJTextField loadingData;
-	private MyJTextField branchId;
-	private MyJTextField facilityId;
-	private MyJTextField facilityNumber;
 	private MyJTextField destination;
 	private MyJTextField supercargo;
+	private MyJTextField facilityId;
+	private MyJTextField facilityNumber;
+	private MyJTextField loadingData;
+	private MyJTextField branchId;
+	
 	public LoadingInfo() {
 		super(250, 150, 340, 370);
 		this.initComponent();
@@ -31,12 +31,12 @@ public class LoadingInfo extends MyTranslucentPanel {
 		
 		this.add(new MyJLabel(60, 142, 100, 25, "汽运编号", 18, true));
 		facilityId = new MyJTextField(150, 140, 130, 30);
-		facilityId.setDocument(new NumberLenghLimited(9));;
+		facilityId.setOnlyInteger(9);
 		this.add(facilityId);
 		
 		this.add(new MyJLabel(60, 192, 100, 25, "车辆代号", 18, true));
 		facilityNumber = new MyJTextField(150, 190, 130, 30);
-		facilityNumber.setDocument(new NumberLenghLimited(9));;
+		facilityNumber.setOnlyInteger(9);
 		this.add(facilityNumber);
 		
 		this.add(new MyJLabel(60, 242, 80, 25, "装车日期", 18, true));
@@ -46,7 +46,21 @@ public class LoadingInfo extends MyTranslucentPanel {
 		
 		this.add(new MyJLabel(42, 292, 100, 25, "营业厅编号", 18, true));
 		branchId = new MyJTextField(150, 290, 130, 30);
-		branchId.setDocument(new NumberLenghLimited(3));;
+		branchId.setOnlyInteger(3);
 		this.add(branchId);
+	}
+	
+	public String[] getInfo(){
+		String[] info = new String[6];
+		info[0] = destination.getText();
+		info[1] = supercargo.getText();
+		info[2] = facilityId.getText();
+		info[3] = facilityNumber.getText();
+		info[4] = loadingData.getText();
+		info[5] = branchId.getText();
+		for (String string : info) {
+			if(string.equals("")) return null;
+		}
+		return info;
 	}
 }

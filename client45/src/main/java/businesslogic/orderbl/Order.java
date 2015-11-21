@@ -32,8 +32,7 @@ public class Order implements OrderBLService {
 
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
 	@Override
