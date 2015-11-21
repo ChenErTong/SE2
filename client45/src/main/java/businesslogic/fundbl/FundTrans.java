@@ -5,6 +5,15 @@ import vo.BankAccountVO;
 
 public class FundTrans {
 	public static BankAccountPO convertVOtoPO(BankAccountVO vo){
-		return new BankAccountPO(vo.getID(), vo.getName(), vo.getMoney(), vo.getLevel());
+		if (vo==null) {
+			return null;
+		}
+		else {
+			String ID = vo.getID();
+			String name  =vo.getName();
+			double money = vo.getMoney();
+			String level = vo.getLevel();
+			return new BankAccountPO(ID, name, money, level);
+		}
 	}
 }
