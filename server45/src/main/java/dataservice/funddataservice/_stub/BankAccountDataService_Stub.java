@@ -1,5 +1,6 @@
 package dataservice.funddataservice._stub; 
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.BankAccountPO;
@@ -22,7 +23,7 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 		bankPOs.add(bankPO_2);
 	}
 	@Override
-	public ResultMessage insert(BankAccountPO po) {
+	public ResultMessage add(BankAccountPO po) {
 		System.out.println("Insert a bankaccount succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -34,7 +35,7 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 	}
 
 	@Override
-	public ResultMessage update(BankAccountPO PO) {
+	public ResultMessage modify(BankAccountPO PO) {
 		System.out.println("Modify the information of a bankaccount succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -44,6 +45,11 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 			FindTypeAccount bankAccoutType) {
 		System.out.println("Find the bankaccount using keywords succeed!");
 		return new ArrayList<BankAccountPO>();
+	}
+	@Override
+	public BankAccountPO find(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

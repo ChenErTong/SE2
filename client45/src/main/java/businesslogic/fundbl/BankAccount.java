@@ -46,20 +46,32 @@ public class BankAccount implements BankAccoutBLService {
 
 	@Override
 	public ResultMessage add(BankAccountVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return bankAccountData.add(FundTrans.convertVOtoPO(vo));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage delete(String ID) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return bankAccountData.delete(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage update(BankAccountVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return bankAccountData.modify(FundTrans.convertVOtoPO(vo));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override

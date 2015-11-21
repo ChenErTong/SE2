@@ -38,7 +38,7 @@ public class Order implements OrderBLService {
 	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
 		try {
-			return orderData.add(OrderPO.convertVOtoPO(commmodities, order));
+			return orderData.add(OrderTrans.convertVOtoPO(commmodities, order));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class Order implements OrderBLService {
 		OrderPO po=null;
 		try {
 			po = orderData.find(orderNumber);
-			OrderVO vo = OrderVO.convertPOtoVO(po);
+			OrderVO vo = OrderTrans.convertPOtoVO(po);
 			System.out.println("找到了响应的PO");
 			if(vo.getSenderName().equals(senderName)){
 				System.out.println("名字正确，返回");

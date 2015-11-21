@@ -182,11 +182,6 @@ public class OrderPO extends PersistentObject {
 		return serialVersionUID;
 	}
 
-	public static OrderPO convertVOtoPO(ArrayList<CommodityVO> commodityVOs, OrderVO vo) {
-		return new OrderPO(vo.getOrderIdString(), vo.getSenderName(), vo.getSenderAddress(),
-				vo.getSenderTel(), vo.getSenderCo(), vo.getRecipientName(), vo.getRecipientAddress(),
-				vo.getRecipientTel(), vo.getRecipientCo(), commodityVOs, vo.getMidAddres(), vo.getSendTime(),
-				vo.getRecipientTime(), vo.getMoney());
-	}
+	
 
 }

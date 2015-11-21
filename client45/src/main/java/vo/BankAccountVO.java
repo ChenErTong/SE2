@@ -50,4 +50,8 @@ public class BankAccountVO{
 	public String toString(){
 		return this.ID+"|"+this.name+"|"+this.money;
 	}
+
+	public String getID() {
+		return ID;
+	}
 }

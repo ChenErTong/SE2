@@ -13,9 +13,9 @@ public class BankAccountDataService_Driver {
 	public void drive(BankAccountDataService baDataService) throws RemoteException{
 	
 	baDataService.find("ID", FindTypeAccount.ID);
-	baDataService.insert(po);
+	baDataService.add(po);
 	baDataService.delete("123");
-	baDataService.update(po);
+	baDataService.modify(po);
 	
 	}
 	public static void main(String args[]) throws RemoteException{

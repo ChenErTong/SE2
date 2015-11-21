@@ -21,23 +21,6 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 		poList=new SerSaveAndLoad<BankAccountPO>("data/"+NAME+".ser");
 	}
 
-	@Override
-	public ResultMessage insert(BankAccountPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage delete(String ID)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage update(BankAccountPO PO) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{

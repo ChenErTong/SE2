@@ -153,11 +153,6 @@ public class OrderVO {
 		this.money = money;
 	}
 
-	public static OrderVO convertPOtoVO(OrderPO po) {
-		return new OrderVO(po.getOrderIdString(), po.getSenderName(), po.getSenderAddress(),
-				po.getSenderTel(), po.getSenderCo(), po.getRecipientName(), po.getRecipientAddress(),
-				po.getRecipientTel(), po.getRecipientCo(), po.getMidAddres(), po.getSendTime(), po.getRecipientTime(),
-				po.getMoney());
-	}
+	
 
 }
