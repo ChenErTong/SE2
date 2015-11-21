@@ -19,4 +19,11 @@ public class OrderTrans {
 				po.getRecipientTel(), po.getRecipientCo(), po.getMidAddres(), po.getSendTime(), po.getRecipientTime(),
 				po.getMoney());
 	}
+	public static ArrayList<OrderVO> convertPOstoVOs(ArrayList<OrderPO> pos){
+		ArrayList<OrderVO> vos = new ArrayList<>(pos.size());
+		for (OrderPO orderPO : pos) {
+			vos.add(convertPOtoVO(orderPO));
+		}
+		return vos;
+	}
 }
