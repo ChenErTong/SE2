@@ -25,10 +25,6 @@ public class mainForUITest {
 	
 //		Frame_Login loginFrame = new Frame_Login();
 //		loginFrame.setVisible(true);
-		
-
-	//Frame_Courier courierFrame = new Frame_Courier();
-	//	courierFrame.setVisible(true);
 
 //		Frame_Courier courierFrame = new Frame_Courier();
 //		courierFrame.setVisible(true);
@@ -37,8 +33,8 @@ public class mainForUITest {
 //		FrameManager managerFrame = new FrameManager();
 //		managerFrame.setVisible(true);
 		
-		Frame_Branch branchFrame = new Frame_Branch();
-		branchFrame.setVisible(true);
+//		Frame_Branch branchFrame = new Frame_Branch();
+//		branchFrame.setVisible(true);
 
 	//	Frame_Admin adminFrame = new Frame_Admin();
 	//	adminFrame.setVisible(true);
