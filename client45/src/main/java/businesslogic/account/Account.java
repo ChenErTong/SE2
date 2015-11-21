@@ -1,7 +1,6 @@
 package businesslogic.account;
 
 import java.net.MalformedURLException;
-
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import dataservice.accountdataservice.AccountDataService;
+import po.accountpo.AccountPO;
 import vo.accountvo.AccountVO;
 
 public class Account implements AccountBLService{
@@ -29,7 +29,7 @@ public class Account implements AccountBLService{
 		return POstoVOs(accountData.show());
 	}
 	
-	public ArrayList<AccountVO> POstoVOs(ArrayList<po.accountpo.AccountPO> POs) {
+	public ArrayList<AccountVO> POstoVOs(ArrayList<AccountPO> POs) {
 		ArrayList<AccountVO> VOs = new ArrayList<AccountVO>();
 		for(po.accountpo.AccountPO po : POs) {
 			AccountVO vo = poToVO(po);

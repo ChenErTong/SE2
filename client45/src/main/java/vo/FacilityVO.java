@@ -25,6 +25,10 @@ public class FacilityVO {
 	 */
 	private String dateString;
 
+	public FacilityVO(String facilityIdString) {
+		this.facilityIdString = facilityIdString;
+	}
+
 	public FacilityVO(String managerId, ArrayList<LoadingListPO> deliverHistory, String facilityIdString,
 			String dateString) {
 		this.managerId = managerId;
