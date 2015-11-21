@@ -1,5 +1,6 @@
 package dataservice.facilitydataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.FacilityPO;
@@ -7,10 +8,6 @@ import state.ResultMessage;
 
 public class _Facility_Data_Stub implements FacilityDataService {
 
-	@Override
-	public FacilityPO find(String id) {
-		return new FacilityPO("Y001:2015-09-22:00008" , "2015-09-22","123233", new ArrayList<>());
-	}
 
 	@Override
 	public ResultMessage add(FacilityPO facility) {
@@ -28,6 +25,12 @@ public class _Facility_Data_Stub implements FacilityDataService {
 	public ResultMessage modify(FacilityPO facility) {
 		System.out.println("You have modified a car!");
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<FacilityPO> find() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	@Override

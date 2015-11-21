@@ -32,8 +32,7 @@ public class User{
 	}
 
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
 	public ArrayList<UserVO> show() {
@@ -46,8 +45,7 @@ public class User{
 		return null;
 	}
 
-	public ResultMessage addUser(UserVO vo) {
-		// TODO Auto-generated method stub
+	public ResultMessage addUser(UserVO vo) throws RemoteException{
 		return null;
 	}
 

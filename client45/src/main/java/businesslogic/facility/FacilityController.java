@@ -1,6 +1,7 @@
 package businesslogic.facility;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.FacilityBLService;
 import state.ConfirmState;
@@ -50,10 +51,11 @@ public class FacilityController implements FacilityBLService {
 		return ResultMessage.FAIL;
 	}
 
+
 	@Override
-	public FacilityVO findFacility(String facilityId) {
+	public ArrayList<FacilityVO> findFacility() {
 		try {
-			return facilityBL.findFacility(facilityId);
+			return facilityBL.findFacility();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

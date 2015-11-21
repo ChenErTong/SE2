@@ -21,7 +21,7 @@ public interface OrderDataService  extends ManageDataService<OrderPO>{
 	 * @author czw
 	 * @version Oct 22,2015 
 	 */
-//	public OrderPO find(String ordernumber) throws RemoteException;
+	public OrderPO find(String ordernumber) throws RemoteException;
 	
 	/**
 	 * 新增订单

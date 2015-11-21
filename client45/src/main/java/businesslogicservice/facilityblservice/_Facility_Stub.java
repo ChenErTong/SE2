@@ -1,6 +1,7 @@
 package businesslogicservice.facilityblservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.facilitydataservice.FacilityDataService;
 import dataservice.facilitydataservice._Facility_Data_Stub;
@@ -50,16 +51,22 @@ public class _Facility_Stub implements FacilityBLService {
 	}
 
 	@Override
-	public FacilityVO findFacility(String facilityId) {
-		FacilityPO facilityPO = null;
-		try {
-			facilityPO = data_Stub.find(facilityId);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		System.out.println("You have found a car!");
-		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+	public ArrayList<FacilityVO> findFacility() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	@Override
+//	public FacilityVO findFacility(String facilityId) {
+//		FacilityPO facilityPO = null;
+//		try {
+//			facilityPO = data_Stub.find(facilityId);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("You have found a car!");
+//		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+//	}
 
 //	@Override
 //	public ResultMessage addDriver(DriverVO driver) {

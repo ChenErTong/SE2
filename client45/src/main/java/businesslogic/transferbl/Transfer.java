@@ -7,7 +7,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.transferblservice.TransferBLService;
+import dataservice.receiptdataservice.ReceiptDataService;
 import dataservice.transferdataservice.TransferDataService;
+import po.PersistentObject;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -17,12 +19,13 @@ import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;
 
 public class Transfer implements TransferBLService {
-	private TransferDataService transferData;
+	private ReceiptDataService<ReceiptPO> receiptData;
 
+	@SuppressWarnings("unchecked")
 	public Transfer() {
 		try {
-			transferData = (TransferDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + TransferDataService.NAME);
+			receiptData = (ReceiptDataService<ReceiptPO>) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

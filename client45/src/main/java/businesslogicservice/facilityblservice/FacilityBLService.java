@@ -1,6 +1,7 @@
 package businesslogicservice.facilityblservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import businesslogicservice.BLService;
 import state.ResultMessage;
@@ -47,6 +48,6 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public FacilityVO findFacility (String facilityId);
+	public ArrayList<FacilityVO> findFacility ();
 	
 }

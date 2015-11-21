@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
@@ -36,10 +37,10 @@ public class Facility {
 		return facilityData.add(facilityPO);
 	}
 
-	public FacilityVO findFacility(String facilityId) throws RemoteException {
-		FacilityPO facilityPO = facilityData.find(facilityId);
-		FacilityVO facilityVO = FacilityTrans.convertPOtoVO(facilityPO);
-		return facilityVO;
+	public ArrayList<FacilityVO> findFacility() throws RemoteException {
+		ArrayList<FacilityPO> facilityPOs = facilityData.find();
+		ArrayList<FacilityVO> facilityVOs = FacilityTrans.convertFacilityPOstoVOs(facilityPOs);
+		return facilityVOs;
 	}
 
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {

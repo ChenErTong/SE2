@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.facilitydataservice.DriverDataService;
 import po.accountpo.DriverPO;
@@ -43,10 +44,12 @@ public class Driver{
 		return DriverData.modify(driverPO);
 	}
 
-	public DriverVO findDriver(String driverId) throws RemoteException {
-		DriverPO driverPO = DriverData.find(driverId);
-		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
-		return driverVO;
+	public ArrayList<DriverVO> findDriver() throws RemoteException {
+		ArrayList<DriverPO> driverPOs = DriverData.find();
+		ArrayList<DriverVO> driverVOs = FacilityTrans.convertDriverPOstoVOs(driverPOs);
+		return driverVOs;
+
 	}
+
 
 }

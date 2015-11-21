@@ -37,7 +37,7 @@ public class MockFacility extends Facility {
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
+	/*@Override
 	public FacilityVO findFacility(String facilityId) {
 		FacilityVO vo=null;
 		FacilityPO facilityPO = null;
@@ -49,7 +49,7 @@ public class MockFacility extends Facility {
 			e.printStackTrace();
 		}
 		return vo;
-	}
+	}*/
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());

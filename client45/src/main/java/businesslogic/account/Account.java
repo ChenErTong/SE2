@@ -26,30 +26,10 @@ public class Account implements AccountBLService{
 	}
 	@Override
 	public ArrayList<AccountVO> show() throws RemoteException {
-		return POstoVOs(accountData.show());
+		return AccountTrans.POstoVOs(accountData.show());
 	}
 	
-	public ArrayList<AccountVO> POstoVOs(ArrayList<AccountPO> POs) {
-		ArrayList<AccountVO> VOs = new ArrayList<AccountVO>();
-		for(po.accountpo.AccountPO po : POs) {
-			AccountVO vo = poToVO(po);
-			VOs.add(vo);
-		}
-		return VOs;
-	}
-	public AccountVO poToVO(po.accountpo.AccountPO po) {
-		String ID=po.getID();
-		String duty=po.getDuty();
-		String name =po.getName();
-		String birthday=po.getBirthDay();
-		String IDCard=po.getIDCard ();
-		 String phone=po.getPhone() ;
-		double salary=po.getSalary();
-		 String workTime=po.getWorkTime();
-		 int receiptNum=po.getReceiptNum() ;
-		AccountVO vo = new AccountVO(ID,duty,  name,  birthday,  IDCard,  phone, salary,workTime, receiptNum);
-		return vo;
-	}
+	
 	
 
 

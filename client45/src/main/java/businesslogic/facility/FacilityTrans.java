@@ -32,6 +32,14 @@ public class FacilityTrans {
 			return new FacilityVO(manageID, deliverHistory, ID, date);
 		}
 	}
+	public static ArrayList<FacilityVO> convertFacilityPOstoVOs(ArrayList<FacilityPO> pos) {
+		ArrayList<FacilityVO> vos = new ArrayList<>(pos.size());
+		for (FacilityPO facilityPO : pos) {
+			FacilityVO vo = convertPOtoVO(facilityPO);
+			vos.add(vo);
+		}
+		return vos;
+	}
 	
 	public static DriverPO convertVOtoPO(DriverVO vo) {
 		if (vo == null)
@@ -65,5 +73,14 @@ public class FacilityTrans {
 			int receiptNum = po.getReceiptNum();
 			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		}
+	}
+	
+	public static ArrayList<DriverVO> convertDriverPOstoVOs(ArrayList<DriverPO> pos) {
+		ArrayList<DriverVO> vos = new ArrayList<>(pos.size());
+		for (DriverPO driverPO : pos) {
+			DriverVO vo = convertPOtoVO(driverPO);
+			vos.add(vo);
+		}
+		return vos;
 	}
 }

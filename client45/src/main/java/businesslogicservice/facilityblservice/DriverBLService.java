@@ -1,7 +1,10 @@
 package businesslogicservice.facilityblservice;
 
+import java.util.ArrayList;
+
 import businesslogicservice.BLService;
 import state.ResultMessage;
+import vo.FacilityVO;
 import vo.accountvo.DriverVO;
 
 public interface DriverBLService  extends BLService{
@@ -40,5 +43,5 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public DriverVO findDriver (String driverId);
+	public ArrayList<DriverVO> findDriver ();
 }

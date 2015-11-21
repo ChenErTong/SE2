@@ -1,6 +1,7 @@
 package businesslogic.facility;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.DriverBLService;
 import state.ConfirmState;
@@ -45,15 +46,17 @@ public class DriverController implements DriverBLService{
 		return ResultMessage.FAIL;
 	}
 
+	
+
 	@Override
-	public DriverVO findDriver(String driverId) {
-		DriverVO vo=null;
+	public ArrayList<DriverVO> findDriver() {
+		ArrayList<DriverVO> vos=null;
 		try {
-			vo = driverBL.findDriver(driverId);
+			vos = driverBL.findDriver();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return vo;
+		return vos;
 	}
 
 }
