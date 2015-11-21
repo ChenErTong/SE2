@@ -1,12 +1,7 @@
 package dataservice.facilitydataservice;
 
-import java.rmi.RemoteException;
-
 import dataservice.ManageDataService;
 import po.FacilityPO;
-import po.PersistentObject;
-import po.accountpo.AccountPO;
-import state.ResultMessage;
 
 /**
  * 提供营业厅运输工具集体载入、增改改查的服务
@@ -14,7 +9,7 @@ import state.ResultMessage;
  * @author czw
  * @version Oct 22,2015
  */
-public interface FacilityDataService extends ManageDataService<PersistentObject> {
+public interface FacilityDataService extends ManageDataService<FacilityPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "FacilityData";
 
@@ -27,7 +22,7 @@ public interface FacilityDataService extends ManageDataService<PersistentObject>
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public FacilityPO findFacility(String id) throws RemoteException;
+//	public FacilityPO findFacility(String id) throws RemoteException;
 
 	/**
 	 * 添加车辆
@@ -38,17 +33,11 @@ public interface FacilityDataService extends ManageDataService<PersistentObject>
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addFacility(FacilityPO facility) throws RemoteException;
+//	public ResultMessage addFacility(FacilityPO facility) throws RemoteException;
 
-	public ResultMessage deleteFacility(String id) throws RemoteException;
+//	public ResultMessage deleteFacility(String id) throws RemoteException;
 
-	public ResultMessage modifyFacility(FacilityPO facility) throws RemoteException;
+//	public ResultMessage modifyFacility(FacilityPO facility) throws RemoteException;
 
-	public AccountPO findDriver(String id) throws RemoteException;
 
-	public ResultMessage addDriver(AccountPO driver) throws RemoteException;
-
-	public ResultMessage deleteDriver(String id) throws RemoteException;
-
-	public ResultMessage modifyDriver(AccountPO driver) throws RemoteException;
 }
