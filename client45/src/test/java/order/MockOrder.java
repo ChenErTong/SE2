@@ -16,7 +16,7 @@ public class MockOrder extends Order {
 	
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
 		this.order = new OrderPO(
-				order.getOrderIdString(), order.getOrderIdString(),
+				order.getOrderIdString(), 
 				order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
 				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
 				commmodities,order.getMidAddres(),

@@ -1,22 +1,16 @@
 package ui.specialui.courier.orderInput;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
 
 import ui.NumberLenghLimited;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
-import ui.myui.MyJList;
 import ui.myui.MyJRadioButton;
 import ui.myui.MyJScrollPane;
-import ui.myui.MyJTextField;
 import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class CommodityInfoInput extends MyTranslucentPanel{

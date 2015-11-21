@@ -43,7 +43,7 @@ public class mainForUITest {
 //		financeFrame.setVisible(true);
 		
 
-//		Frame_Sender senderFrame = new Frame_Sender();
-//		senderFrame.setVisible(true);
+		Frame_Sender senderFrame = new Frame_Sender();
+		senderFrame.setVisible(true);
 	}
 }
