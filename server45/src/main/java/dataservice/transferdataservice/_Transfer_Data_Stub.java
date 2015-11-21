@@ -16,12 +16,12 @@ public class _Transfer_Data_Stub implements TransferDataService {
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
+	/*@Override
 	public TransferPO find(String id) {
 		TransferPO transferPO = new TransferPO(id, "2015-3-4", "Nanjing", new ArrayList<AccountPO>(), new ArrayList<InventoryPO>());
 		System.out.println("You have found a transfer!");
 		return transferPO;
-	}
+	}*/
 
 	@Override
 	public ResultMessage modify(TransferPO po) {
@@ -33,6 +33,12 @@ public class _Transfer_Data_Stub implements TransferDataService {
 	public ResultMessage delete(String id) throws RemoteException {
 		System.out.println("You have deleted a transfer");
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<TransferPO> find() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

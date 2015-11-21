@@ -41,16 +41,11 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 	}
 
 	@Override
-	public ArrayList<ExpensePO> show(String ID) {
+	public ArrayList<ExpensePO> find() {
 		System.out.println("Show all the expensePO");
 		return new ArrayList<ExpensePO>();
 	}
 
-	@Override
-	public ExpensePO find(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

@@ -30,7 +30,7 @@ public interface  UserDataService extends ManageDataService<UserPO> {
 //	public ResultMessage update(UserPO PO) throws RemoteException;
 	/**
 	 */
-	public ArrayList<UserPO> find() throws RemoteException;
+//	public ArrayList<UserPO> find() throws RemoteException;
 	/**
 	 * @param loginInfo
 	 * @author zsq

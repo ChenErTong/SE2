@@ -20,28 +20,5 @@ public class OrganizationData extends ManageData<OrganizationPO> implements Orga
 		poList=new SerSaveAndLoad<OrganizationPO>("data/"+NAME+".ser");
 	}
 
-	@Override
-	public ResultMessage add(OrganizationPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage delete(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modify(OrganizationPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<OrganizationPO> show() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

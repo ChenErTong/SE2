@@ -57,10 +57,5 @@ public class UserDataService_Stub implements UserDataService{
 		System.out.println("UpdataAdmin succeed!");
 		return ResultMessage.SUCCESS;
 	}
-	@Override
-	public UserPO find(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

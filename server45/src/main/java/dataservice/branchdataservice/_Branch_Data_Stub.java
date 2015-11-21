@@ -14,12 +14,12 @@ public class _Branch_Data_Stub implements BranchDataService {
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public BranchPO find(String id) {
-		BranchPO branchPO = new BranchPO(id, "Nanjing", "2015-2-3", new ArrayList<>(), new ArrayList<>());
-		System.out.println("You have found a branch!");
-		return branchPO;
-	}
+//	@Override
+//	public BranchPO find(String id) {
+//		BranchPO branchPO = new BranchPO(id, "Nanjing", "2015-2-3", new ArrayList<>(), new ArrayList<>());
+//		System.out.println("You have found a branch!");
+//		return branchPO;
+//	}
 
 	@Override
 	public ResultMessage modify(BranchPO po) {
@@ -29,6 +29,12 @@ public class _Branch_Data_Stub implements BranchDataService {
 
 	@Override
 	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BranchPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -44,4 +44,9 @@ public class _Order_Data_Stub  implements OrderDataService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<OrderPO> find() throws RemoteException {
+		return null;
+	}
+
 }

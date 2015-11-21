@@ -10,7 +10,7 @@ public class OrganizationDataService_Driver {
 	
 	private OrganizationPO po = new OrganizationPO("123","乱码",125);
 	public void drive(OrganizationDataService orgDataService) throws RemoteException{
-		orgDataService.show();
+		orgDataService.find();
 		orgDataService.add(po);
 		orgDataService.delete(po.getOrganizationID());
 		orgDataService.modify(po);

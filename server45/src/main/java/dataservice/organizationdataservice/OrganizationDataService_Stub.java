@@ -1,6 +1,5 @@
 package dataservice.organizationdataservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrganizationPO;
@@ -40,15 +39,13 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 	}
 
 	@Override
-	public ArrayList<OrganizationPO> show() {
+	public ArrayList<OrganizationPO> find() {
 		System.out.println("Show all organizations succeed!");
 		return new ArrayList<OrganizationPO>();
 	}
 
-	@Override
-	public OrganizationPO find(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+	
 
 }

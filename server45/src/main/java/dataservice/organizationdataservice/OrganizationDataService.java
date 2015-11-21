@@ -39,6 +39,6 @@ public interface OrganizationDataService extends ManageDataService<OrganizationP
 	 * 显示全部po
 	 * @return 返回所有po的集合
 	 */
-	public ArrayList<OrganizationPO> show() throws RemoteException;
+//	public ArrayList<OrganizationPO> show() throws RemoteException;
 
 }

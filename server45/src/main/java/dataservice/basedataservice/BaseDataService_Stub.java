@@ -46,7 +46,8 @@ public class BaseDataService_Stub implements BaseDataService{
 		return new ArrayList<BasePO>();
 	}
 	@Override
-	public BasePO find(String id) throws RemoteException {
+	public ArrayList<BasePO> find() throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

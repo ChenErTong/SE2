@@ -1,6 +1,7 @@
 package data;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.PersistentObject;
@@ -53,5 +54,10 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 			}
 		}
 		return ResultMessage.FAIL;
+	}
+
+	@Override
+	public ArrayList<PO> find() throws RemoteException {
+		return poList.getInList();
 	}
 }

@@ -10,7 +10,7 @@ import dataservice.funddataservice._stub.ExpenseDataService_Stub;
 public class ExpenseDataService_Driver {
 	private ExpensePO po = new ExpensePO("123","NJWU",6800,"MB");
 	public void drive(ExpenseDataService expenseDataService) throws RemoteException{
-		expenseDataService.show(po.getID());
+		expenseDataService.find();
 		expenseDataService.add(po);
 		expenseDataService.delete(po.getID());
 		expenseDataService.modify(po);

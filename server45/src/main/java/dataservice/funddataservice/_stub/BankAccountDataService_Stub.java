@@ -47,9 +47,10 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 		return new ArrayList<BankAccountPO>();
 	}
 	@Override
-	public BankAccountPO find(String id) throws RemoteException {
+	public ArrayList<BankAccountPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }

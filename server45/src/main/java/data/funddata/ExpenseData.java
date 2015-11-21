@@ -40,7 +40,7 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	}
 
 	@Override
-	public ArrayList<ExpensePO> show(String ID)  throws RemoteException{
+	public ArrayList<ExpensePO> find()  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
