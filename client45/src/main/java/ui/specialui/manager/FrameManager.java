@@ -3,8 +3,11 @@ package ui.specialui.manager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
+import ui.myui.MyJPanel;
 import ui.specialui.manager.AdjustBase.Panel_Manager_AddNewBase;
 import ui.specialui.manager.AdjustBase.Panel_Manager_AdjustBase;
 import ui.specialui.manager.AdjustBase.Panel_Manager_ModifyBase;
@@ -38,58 +41,66 @@ private static final long serialVersionUID = 1L;
 	private Panel_Manager_ModifyPolicy modifyPolicy;
 	private Panel_Manager_AddNewBase addNewBase;
 	private Panel_Manager_ModifyBase modifyBase;
+	private MyJPanel subPanel;
 	public FrameManager(){
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
-		
+		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("HandleReceipt")){
+		if(e.getActionCommand().equals("return")){
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+				totalPanel.setVisible(true);
+			}
+		}else if(e.getActionCommand().equals("HandleReceipt")){
 			totalPanel.setVisible(false);
-			handleReceipt = new Panel_Manager_HandleReceipt(this);
-			this.add(handleReceipt);
-			this.getLayeredPane().add(handleReceipt,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_HandleReceipt(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("HandleOrganization")){
 			//TODO
 			totalPanel.setVisible(false);
-			handleOrganization = new Panel_Manager_HandleOrganization(this);
-			this.add(handleOrganization);
-			this.getLayeredPane().add(handleOrganization,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_HandleOrganization(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("AdjustBase")){
 			//TODO
 			totalPanel.setVisible(false);
-			adjustBase = new Panel_Manager_AdjustBase(this);
-			this.add(adjustBase);
-			this.getLayeredPane().add(adjustBase,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_AdjustBase(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			
 		}else if(e.getActionCommand().equals("AdjustSalaryPolicy")){
 			//TODO
 			totalPanel.setVisible(false);
-			adjustSalaryPolicy = new Panel_Manager_AdjustSalaryPolicy(this);
-			this.add(adjustSalaryPolicy);
-			this.getLayeredPane().add(adjustSalaryPolicy,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_AdjustSalaryPolicy(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewUser")){
 			//TODO
 			totalPanel.setVisible(false);
-			viewUser = new Panel_Manager_ViewUser(this);
-			this.add(viewUser);
-			this.getLayeredPane().add(viewUser,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_ViewUser(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
 			//TODO
 			totalPanel.setVisible(false);
-			viewIncomeStatement = new Panel_Manager_ViewIncomeStatement(this);
-			this.add(viewIncomeStatement);
-			this.getLayeredPane().add(viewIncomeStatement,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_ViewIncomeStatement(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			//TODO
 			totalPanel.setVisible(false);
-			viewBusinessPerformance = new Panel_Manager_ViewBusinessPerformance(this);
-			this.add(viewBusinessPerformance);
-			this.getLayeredPane().add(viewBusinessPerformance,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Manager_ViewBusinessPerformance(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
 			//TODO
 		}else if(e.getActionCommand().equals("ModifyReceiptInfo")){
@@ -131,5 +142,6 @@ private static final long serialVersionUID = 1L;
 			this.getLayeredPane().add(modifyBase,new Integer(Integer.MAX_VALUE));
 		}
 	}
+	
 	
 }

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
+import ui.myui.MyJPanel;
 import ui.specialui.finance.BankAccountManage.Panel_Finance_BankAccountManage;
 import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
 import ui.specialui.finance.OpenningStock.Panel_Finance_AddNewStock;
@@ -25,55 +26,62 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_OpenningStock openningStockPanel;
 	private Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
-	
+	private MyJPanel subPanel ;
 	private Panel_Finance_AddNewStock addNewStock;
 	private Panel_Finance_BankAccountManage bankAccountManage;
 	public Frame_Finance(){
 		totalPanel = new Panel_Finance_Total(this);
 		this.add(totalPanel);
-		
+		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("CostManage")){
+		if(e.getActionCommand().equals("return")){
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+				totalPanel.setVisible(true);
+			}
+		}else if(e.getActionCommand().equals("CostManage")){
 			totalPanel.setVisible(false);
-			costManagePanel = new Panel_Finance_CostManagement(this);
-			this.add(costManagePanel);
-			this.getLayeredPane().add(costManagePanel,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_CostManagement(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			
 		}else if(e.getActionCommand().equals("SettlementManage")){
 			//TODO
 			totalPanel.setVisible(false);
-			settleManagePanel = new Panel_Finance_SettlementManage(this);
-			this.add(settleManagePanel);
-			this.getLayeredPane().add(settleManagePanel,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_SettlementManage(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("OpenningStock")){
 			//TODO
 			totalPanel.setVisible(false);
-			openningStockPanel = new Panel_Finance_OpenningStock(this);
-			this.add(openningStockPanel);
-			this.getLayeredPane().add(openningStockPanel,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_OpenningStock(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("BankAccountManage")){
 			//TODO
 			totalPanel.setVisible(false);
-			bankAccountManage = new Panel_Finance_BankAccountManage(this);
-			this.add(bankAccountManage);
-			this.getLayeredPane().add(bankAccountManage,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_BankAccountManage(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			//TODO
 			totalPanel.setVisible(false);
-			viewBusinessPerformance = new Panel_Finance_ViewBusinessPerformance(this);
-			this.add(viewBusinessPerformance);
-			this.getLayeredPane().add(viewBusinessPerformance,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_ViewBusinessPerformance(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
 			//TODO
 			totalPanel.setVisible(false);
-			viewIncomeStatement = new Panel_Finance_ViewIncomeStatement(this);
-			this.add(viewIncomeStatement);
-			this.getLayeredPane().add(viewIncomeStatement,new Integer(Integer.MAX_VALUE));
+			subPanel = new Panel_Finance_ViewIncomeStatement(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		
 		}else if(e.getActionCommand().equals("Withdraw")){
 			totalPanel.setVisible(false);
@@ -86,3 +94,4 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	}
 }
+

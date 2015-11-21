@@ -1,10 +1,13 @@
 package ui.specialui.sender;
 
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
+import ui.myui.MyNotification;
 /**
  * 订单物流信息查询界面
  * @author zsq
@@ -17,76 +20,76 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	
 	
 	private Panel_Sender_Total totalPanel ;
-	private Panel_Sender_CommodityInfo commodityPanel ;
-	private Panel_Sender_logisticInfo logisticPanel;
+	private Panel_Sender_Search searchPanel;
 	public Frame_Sender(){
 
-	totalPanel = new Panel_Sender_Total();
-	commodityPanel = new Panel_Sender_CommodityInfo();
-	logisticPanel = new Panel_Sender_logisticInfo();
-	this.add(totalPanel);
-	this.add(commodityPanel);
-	this.add(logisticPanel);
-	this.setBackground(CommonImage.TEST_BACKGROUND);
-		
-
-		
-		//确认键
-		/*button_Search = new MyButton(421, 510, 60, 30);
-		button_Search.addMouseListener(new MouseAdapter(){
-		public void mouseEntered(MouseEvent arg0){
-//						loginBackground.setVisible(false);
-//						loginBackground2.setVisible(true);
-		}
-		public void mouseExited(MouseEvent arg0){
-//						loginBackground.setVisible(true);
-//						loginBackground2.setVisible(false);
-		}
-	});
-		button_Search.registerKeyboardAction(this, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_IN_FOCUSED_WINDOW);
-		button_Search.addKeyListener(new KeyAdapter(){
-		public void keyPressed(KeyEvent event){
-		if(KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("enter")==0){
-			button_Search.doClick();
-		}
-		}
-		});
-				button_Search.addActionListener(this);
-				this.add(button_Search);
-				
-				//确认键
-				button_Exit = new MyButton(491, 510, 60, 30);
-				button_Exit.addMouseListener(new MouseAdapter(){
-					public void mouseEntered(MouseEvent arg0){
-//						loginBackground.setVisible(false);
-//						loginBackground2.setVisible(true);
-					}
-					public void mouseExited(MouseEvent arg0){
-//						loginBackground.setVisible(true);
-//						loginBackground2.setVisible(false);
-					}
-				});
-				button_Exit.registerKeyboardAction(this, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_IN_FOCUSED_WINDOW);
-				button_Exit.addKeyListener(new KeyAdapter(){
-					public void keyPressed(KeyEvent event){
-						if(KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("enter")==0){
-							button_Search.doClick();
-						}
-					}
-				});
-				button_Search.addActionListener(this);
-				this.add(button_Exit);
-			}
-	*/
-		
+		totalPanel = new Panel_Sender_Total(this);
+		searchPanel = new Panel_Sender_Search(this);
+		this.add(totalPanel);
+		this.add(searchPanel);
+		this.returnButton.addActionListener(this);
+		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getActionCommand().equals("SearchLogisticInfo")){
+			if(this.isSearch()){
+				// 
+			}
+		}
+	}
+	/**
+	 * 进行查询
+	 * @return 是否进行查询
+	 * TODO 调用bl层
+	 */
+	public  boolean isSearch(){
+		switch((search())){
+		case 0: new MyNotification(this, "正在进行查询", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请填写订单号", Color.RED); break;
+		case 2: new MyNotification(this, "请填写寄件人姓名", Color.RED); break;
+		case 3: new MyNotification(this, "订单号与寄件人姓名不匹配！", Color.RED); break;
+		case 4: new MyNotification(this, "", Color.RED); break;
+		}	
+		return false ;
+	}
+		
+	/**
+	 * 进行查询
+	 * @return 
+	 */
+	public int search() {
+		String[] orderNumberInfo = searchPanel.getSenderInfo();
+		String[] senderNameInfo =  searchPanel.getSenderInfo();
+		boolean isLegal = false;
+		if(orderNumberInfo == null){
+			return 1;
+		}
+		if(senderNameInfo == null){
+			return 2;
+		}
+		if(orderNumberInfo.length!=11){
+			return 3;
+		}
+		if(!(isLegal ==isLegal(orderNumberInfo,senderNameInfo))){
+			return 4;
+		}
+		return 0;
 		
 	}
-			
-		
-
+	/**
+	 * 判断寄件人姓名和订单号是否匹配
+	 * @param orderNumberInfo
+	 * @param senderNameInfo
+	 * @return 是否匹配
+	 * TODO 调用BL层
+	 * 
+	 */
+	private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
+		// TODO Auto-generated method stub
+	
+		return false;
+	}
 }
 
