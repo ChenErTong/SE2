@@ -10,7 +10,7 @@ import javax.swing.table.JTableHeader;
 
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
@@ -28,7 +28,7 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
 
 		//the table
 			String[] headers = {};
-			MyTable	table = new MyTable(headers);
+			MyJTable	table = new MyJTable(headers, false);
 			table.setBackground(new Color(40, 42, 66));
 			table.setForeground(Color.WHITE);
 			table.setFont(new MyFont(14));

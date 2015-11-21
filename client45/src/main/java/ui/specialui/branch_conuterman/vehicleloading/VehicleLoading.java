@@ -1,15 +1,17 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
 import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.specialui.branch_conuterman.Frame_Branch;
 
 public class VehicleLoading extends MyJPanel {
@@ -28,7 +30,7 @@ public class VehicleLoading extends MyJPanel {
 		this.add(new MyJLabel(820, 100, 210, 40, "订单编号", 22, true));
 		// the table
 		String[] orderId = this.getOrderId();
-		MyTable table = new MyTable(orderId);
+		MyJTable	table = new MyJTable(orderId, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

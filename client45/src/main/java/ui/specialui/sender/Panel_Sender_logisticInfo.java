@@ -10,7 +10,7 @@ import javax.swing.table.JTableHeader;
 
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 /**
  * 物流信息显示面板
@@ -31,7 +31,7 @@ public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 		
 		//the table
 		String[] headers = {"订单号","日期","起始营业厅","转运方式","接收中转中心","目的地营业厅","派件员"};
-		MyTable	table = new MyTable(headers);
+		MyJTable	table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

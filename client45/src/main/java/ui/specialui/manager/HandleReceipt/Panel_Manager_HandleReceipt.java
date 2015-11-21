@@ -3,6 +3,7 @@ package ui.specialui.manager.HandleReceipt;
 import java.awt.Color;
 
 
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -14,7 +15,8 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJScrollPane;
+import ui.myui.MyJTable;
 import ui.specialui.manager.FrameManager;
 /**
  * 处理单据的总Panel
@@ -50,30 +52,14 @@ public class Panel_Manager_HandleReceipt extends MyJPanel {
 		
 		//the table
 		String[] headers = {};
-		MyTable	table = new MyTable(headers);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-					
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-							  	
-		JScrollPane jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-						
-		jsp.setBounds(35, 140, 590, 495);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
+		MyJTable	table = new MyJTable(headers, false);
+//		table.setBackground(new Color(40, 42, 66));
+//		table.setForeground(Color.WHITE);
+//		table.setFont(new MyFont(14));					  	
+		
+		MyJScrollPane jsp=new MyJScrollPane(35, 140, 590, 495, table);
 		this.add(jsp);
 		
-		 
 		MyJButton ViewReceiptInfo = new MyJButton(85, 650, 150, 40,"查看当前所选单据",14);
 		ViewReceiptInfo.setActionCommand("ViewReceiptInfo");
 		ViewReceiptInfo.addActionListener(frame_Manager);

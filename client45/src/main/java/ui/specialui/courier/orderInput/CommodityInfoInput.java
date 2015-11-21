@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 import ui.NumberLenghLimited;
@@ -13,7 +14,9 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJList;
 import ui.myui.MyJRadioButton;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTextField;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class CommodityInfoInput extends MyTranslucentPanel{
@@ -25,7 +28,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 	private MyJComboBox packKindField;
 	private MyJComboBox deliveryKindField;
 	private MyJRadioButton choseCompareWeight;
-	private DefaultListModel<String> commodities;
+	private MyJTable commodityList;
 	
 	public CommodityInfoInput() {
 		super(620, 100, 550, 510);
@@ -71,24 +74,20 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		MyJTextField commodityKindField = new MyJTextField(360, 250, 150, 30);
 		this.add(commodityKindField);
 				
-		commodities = new DefaultListModel<String>();
-		MyJList commodityList = new MyJList(50, 345, 460, 130);
-		this.add(new JScrollPane(commodityList), BorderLayout.CENTER);
-		this.add(commodityList);
+		commodityList = new MyJTable(new String[]{"名称", "种类"}, false);
+		MyJScrollPane jsp = new MyJScrollPane(50, 340, 460, 135, commodityList);
+		this.add(jsp);
 		
 		MyJButton addCommodity = new MyJButton(50, 300, 110, 20, "添加货物", 15);
 		addCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				String commodityName = commodityNameField.getText();
-				String commodityKind = commodityKindField.getText();
-				if((!commodityName.equals(""))&&(!commodityKind.equals(""))){
-					String commodity = commodityName + "/" + commodityKind;
-					commodities.addElement(commodity);
-					commodityList.setModel(commodities);
+				String[] data = new String[2];
+				data[0] = commodityNameField.getText();
+				data[1] = commodityKindField.getText();
+				if((!data[0].equals(""))&&(!data[1].equals(""))){			
+					commodityList.addRow(data);
 					commodityNameField.setText(null);
 					commodityKindField.setText(null);
-				}else{		
-					
 				}
 			}
 		});
@@ -97,13 +96,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		MyJButton deleteCommodity = new MyJButton(180, 300, 110, 20, "删除选中货物", 15);
 		deleteCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				int[] listNum = commodityList.getSelectedIndices();
-				int j = 0;
-				for (int i : listNum) {
-					commodities.remove(i - j);
-					j ++;
-				}
-				commodityList.setModel(commodities);
+				commodityList.removeRow();
 			}
 		});
 		this.add(deleteCommodity);
@@ -111,8 +104,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		MyJButton clearCommodity = new MyJButton(310, 300, 110, 20, "清空货物", 15);
 		clearCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				commodities.clear();
-				commodityList.setModel(commodities);
+				commodityList.clear();
 			}
 		});
 		this.add(clearCommodity);
@@ -139,15 +131,14 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 	}
 
 	public String[] getCommodityList() {
-		if(commodities.isEmpty()){
+		String[][] data = commodityList.getData();
+		if(data.length == 0){
 			return null;
-		}else{
-			int size = commodities.size();
-			String[] commodityList = new String[size];
-			for(int i = 0; i < size; i++){
-				commodityList[i] = commodities.getElementAt(i);
-			}
-			return commodityList;
 		}
+		String[] commodities = new String[data.length];
+		for(int i = 0; i < data.length; i++){
+			commodities[i] = data[i][0] + " " + data[i][1];
+		}
+		return commodities;
 	}
 }

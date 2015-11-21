@@ -15,7 +15,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.specialui.finance.Frame_Finance;
 
 public class Panel_Finance_OpenningStock extends MyJPanel{
@@ -42,7 +42,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		
 		//the table
 				String[] headers = {"机构","人员","车辆","库存","银行账户","账户余额"};
-				MyTable	table = new MyTable(headers);
+				MyJTable	table = new MyJTable(headers, false);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
 				table.setFont(new MyFont(14));
