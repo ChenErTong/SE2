@@ -5,13 +5,13 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import businesslogicservice.facilityblservice.DriverBLService;
 import dataservice.facilitydataservice.DriverDataService;
+import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
 
-public class Driver implements DriverBLService{
+public class Driver{
 	private DriverDataService DriverData;
 	
 	public Driver() {
@@ -25,29 +25,28 @@ public class Driver implements DriverBLService{
 			e.printStackTrace();
 		}
 	}
-	@Override
 	public ConfirmState confirmOperation() {
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
-	@Override
-	public ResultMessage addDriver(DriverVO driver) {
-		return null;
+	public ResultMessage addDriver(DriverVO driver) throws RemoteException{
+		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
+		return DriverData.add(driverPO);
 	}
 
-	@Override
-	public ResultMessage deleteDriver(DriverVO driver) {
-		return null;
+	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
+		return DriverData.delete(driver.getID());
 	}
 
-	@Override
-	public ResultMessage modifyDriver(DriverVO driver) {
-		return null;
+	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
+		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
+		return DriverData.modify(driverPO);
 	}
 
-	@Override
-	public DriverVO findDriver(String driverId) {
-		return null;
+	public DriverVO findDriver(String driverId) throws RemoteException {
+		DriverPO driverPO = DriverData.find(driverId);
+		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
+		return driverVO;
 	}
 
 }

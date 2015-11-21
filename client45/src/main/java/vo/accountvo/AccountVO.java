@@ -13,6 +13,10 @@ public class AccountVO {
 	public String IDCard;
 	/**手机号**/ 
 	public String Phone;
+	public AccountVO(String iD) {
+		ID = iD;
+	}
+
 	/**工资情况**/
 	public double Salary;
 	/**任职时间**/
