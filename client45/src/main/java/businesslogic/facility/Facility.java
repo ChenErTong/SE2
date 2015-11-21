@@ -7,12 +7,10 @@ import java.rmi.RemoteException;
 
 import businesslogicservice.facilityblservice.FacilityBLService;
 import dataservice.facilitydataservice.FacilityDataService;
-import dataservice.funddataservice.ExpenseDataService;
 import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
-import vo.accountvo.DriverVO;
 
 public class Facility implements FacilityBLService {
 	private FacilityDataService facilityData;
@@ -35,13 +33,12 @@ public class Facility implements FacilityBLService {
 
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
 		try {
-			facilityData.add(facilityPO);
+			return facilityData.add(FacilityTrans.convertVOtoPO(facility));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
 
 	@Override
@@ -51,7 +48,7 @@ public class Facility implements FacilityBLService {
 		try {
 			facilityPO = facilityData.find(facilityId);
 			if(facilityPO!=null)
-				vo = new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+				vo = FacilityTrans.convertPOtoVO(facilityPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -59,22 +56,21 @@ public class Facility implements FacilityBLService {
 	}
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
 		try {
-			facilityData.modify(facilityPO);
+			return facilityData.modify(FacilityTrans.convertVOtoPO(facility));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
 		try {
-			facilityData.delete(facility.getFacilityIdString());
+			return facilityData.delete(facility.getFacilityIdString());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
 
 
