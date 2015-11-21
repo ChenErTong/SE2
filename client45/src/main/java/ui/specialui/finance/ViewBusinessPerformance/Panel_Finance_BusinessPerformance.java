@@ -1,4 +1,4 @@
-package ui.specialui.manager.ViewBusinessPerformance;
+package ui.specialui.finance.ViewBusinessPerformance;
 
 import java.awt.Color;
 
@@ -13,9 +13,9 @@ import ui.myui.MyJLabel;
 import ui.myui.MyTable;
 import ui.myui.MyTranslucentPanel;
 
-public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
+public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel{
 
-	public Panel_Manager_BusinessPerformance() {
+	public Panel_Finance_BusinessPerformance() {
 		super(660,120,550,550);
 		this.initComponent();
 		
@@ -25,7 +25,6 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
 		MyJLabel title = new MyJLabel(195,10,170,40,"经营情况表预览",18,true);
 		this.add(title);
 		
-
 		//the table
 			String[] headers = {};
 			MyTable	table = new MyTable(headers);
@@ -54,5 +53,4 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
 	}
 
 	private static final long serialVersionUID = 1L;
-
 }

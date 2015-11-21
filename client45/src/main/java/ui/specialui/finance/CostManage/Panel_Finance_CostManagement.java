@@ -87,15 +87,11 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 				this.add(ViewDebitInfo);
 				ViewDebitInfo.setVisible(true);
 				
-				MyJButton AddDebitReceipt = new MyJButton(255, 675, 150, 40,"添加收款单",14);
-				AddDebitReceipt.setActionCommand("AddDebit");
-				AddDebitReceipt.addActionListener(frame_Finance);
-				this.add(AddDebitReceipt);
-				AddDebitReceipt.setVisible(true);
 				
-				MyJButton ModifyDebitInfo = new MyJButton(425, 675, 150, 40,"删除收款单",14);
 				
-				ModifyDebitInfo.setActionCommand("ModifyDebitInfo");
+				MyJButton ModifyDebitInfo = new MyJButton(425, 675, 150, 40,"合计收款单",14);
+				
+				ModifyDebitInfo.setActionCommand("CalculateDebitInfo");
 				ModifyDebitInfo.addActionListener(new ActionListener(){
 
 					@Override
@@ -108,7 +104,7 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 				ModifyDebitInfo.setVisible(true);
 				
 				MyJButton DeleteDebit = new MyJButton(705,675,150,40,"修改收款单",14);
-				DeleteDebit.setActionCommand("DeleteDebit");
+				DeleteDebit.setActionCommand("ModifyDebit");
 				DeleteDebit.addActionListener(new ActionListener(){
 
 					@Override

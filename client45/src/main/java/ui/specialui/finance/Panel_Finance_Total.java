@@ -1,7 +1,5 @@
 package ui.specialui.finance;
 
-import javax.swing.JButton;
-
 import ui.myui.MyJButton;
 import ui.myui.MyJPanel;
 
@@ -13,17 +11,23 @@ public class Panel_Finance_Total extends MyJPanel{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
-		MyJButton CostManage = new MyJButton(200, 300, 150, 40,"成本管理",18);
+		MyJButton CostManage = new MyJButton(200, 250, 150, 40,"结算管理",18);
 		CostManage.setActionCommand("CostManage");
 		CostManage.addActionListener(frame_Finance);
 		this.add(CostManage);
 		CostManage.setVisible(true);
 		
-		MyJButton SettlementManage = new MyJButton(200, 350, 150, 40,"结算管理",18);
+		MyJButton SettlementManage = new MyJButton(200,300,150,40,"成本管理",18);
 		SettlementManage.setActionCommand("SettlementManage");
 		SettlementManage.addActionListener(frame_Finance);
 		this.add(SettlementManage);
 		SettlementManage.setVisible(true);
+		
+		MyJButton BankAccountManage = new MyJButton(200,350,150,40,"银行账户管理",18);
+		BankAccountManage.setActionCommand("BankAccountManage");
+		BankAccountManage.addActionListener(frame_Finance);
+		this.add(BankAccountManage);
+		BankAccountManage.setVisible(true);
 		
 		MyJButton OpenningStock = new MyJButton(200, 400, 150, 40,"期初账目管理",18);
 		OpenningStock.setActionCommand("OpenningStock");

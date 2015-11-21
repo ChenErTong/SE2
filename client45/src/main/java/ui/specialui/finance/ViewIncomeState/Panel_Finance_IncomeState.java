@@ -1,4 +1,4 @@
-package ui.specialui.manager.ViewBusinessPerformance;
+package ui.specialui.finance.ViewIncomeState;
 
 import java.awt.Color;
 
@@ -13,19 +13,26 @@ import ui.myui.MyJLabel;
 import ui.myui.MyTable;
 import ui.myui.MyTranslucentPanel;
 
-public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
+public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
 
-	public Panel_Manager_BusinessPerformance() {
+	public Panel_Finance_IncomeState() {
 		super(660,120,550,550);
 		this.initComponent();
 		
 	}
 
 	private void initComponent() {
-		MyJLabel title = new MyJLabel(195,10,170,40,"经营情况表预览",18,true);
+		MyJLabel title = new MyJLabel(195,10,170,40,"成本收益表预览",18,true);
 		this.add(title);
+		MyJLabel totalCost = new MyJLabel(30,50,100,30,"总支出:",14,true);
+		this.add(totalCost);
 		
-
+		MyJLabel totalIncome = new MyJLabel(30,80,100,30,"总收入:",14,true);
+		this.add(totalIncome);
+		
+		MyJLabel balance = new MyJLabel(30,110,100,30,"总利润",14,true);
+		this.add(balance);
+		
 		//the table
 			String[] headers = {};
 			MyTable	table = new MyTable(headers);
@@ -44,7 +51,7 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
 			head.setForeground(Color.BLACK);
 			head.setResizingAllowed(false);
 								
-			jsp.setBounds(20, 50, 510, 490);
+			jsp.setBounds(20, 140, 510, 400);
 			jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 			jsp.setOpaque(false);
 			jsp.setBorder(BorderFactory.createEmptyBorder());
@@ -56,3 +63,4 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 }
+
