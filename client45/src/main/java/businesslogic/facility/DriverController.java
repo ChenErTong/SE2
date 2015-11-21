@@ -1,40 +1,59 @@
 package businesslogic.facility;
 
+import java.rmi.RemoteException;
+
 import businesslogicservice.facilityblservice.DriverBLService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
 
 public class DriverController implements DriverBLService{
-
+	
+	Driver driverBL;
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return driverBL.confirmOperation();
 	}
 
 	@Override
 	public ResultMessage addDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return driverBL.addDriver(driver);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage deleteDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return driverBL.deleteDriver(driver);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage modifyDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return driverBL.modifyDriver(driver);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public DriverVO findDriver(String driverId) {
-		// TODO Auto-generated method stub
-		return null;
+		DriverVO vo=null;
+		try {
+			vo = driverBL.findDriver(driverId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 }
