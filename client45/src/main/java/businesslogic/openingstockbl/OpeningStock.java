@@ -12,7 +12,6 @@ import businesslogic.facilitybl.FacilityTrans;
 import businesslogic.fundbl.FundTrans;
 import businesslogic.transferbl.TransferTrans;
 import dataservice.openingstockdataservice.OpeningStockDataService;
-import dataservice.userdataservice.UserDataService;
 import po.BankAccountPO;
 import po.BranchPO;
 import po.FacilityPO;
@@ -29,11 +28,13 @@ import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
-public class OpeningStock{
+public class OpeningStock {
 	private OpeningStockDataService openingStockData;
+
 	public OpeningStock() {
 		try {
-			openingStockData=(OpeningStockDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OpeningStockDataService.NAME);
+			openingStockData = (OpeningStockDataService) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OpeningStockDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -42,29 +43,28 @@ public class OpeningStock{
 			e.printStackTrace();
 		}
 	}
-	public ResultMessage add(
-			ArrayList<TransferVO> transferVOs, 
-			ArrayList<BranchVO> branchVOs,
-			ArrayList<AccountVO> accountVOs, 
-			ArrayList<FacilityVO> facilityVOs, 
-			ArrayList<InventoryVO> inventoryVOs,
+
+	public ResultMessage add(ArrayList<TransferVO> transferVOs, ArrayList<BranchVO> branchVOs,
+			ArrayList<AccountVO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
 			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
-		
-			ArrayList<TransferPO> transfers = TransferTrans.convertVOstoPOs(transferVOs);
-			ArrayList<BranchPO> branchs = 	BranchTrans.convertVOstoPOs(branchVOs);
-			ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(accountVOs);
-			ArrayList<FacilityPO> facilities = FacilityTrans.convertVOstoPOs(facilityVOs);
-			ArrayList<InventoryPO> inventories=null;
-			ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
-			String ID = openingStockData.getID();
-			String date=null;
-			OpeningStockPO po = new OpeningStockPO(ID, date, transfers,branchs, accounts, facilities, inventories, bankAccounts);
-			return openingStockData.add(po);
+
+		ArrayList<TransferPO> transfers = TransferTrans.convertVOstoPOs(transferVOs);
+		ArrayList<BranchPO> branchs = BranchTrans.convertVOstoPOs(branchVOs);
+		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(accountVOs);
+		ArrayList<FacilityPO> facilities = FacilityTrans.convertVOstoPOs(facilityVOs);
+		ArrayList<InventoryPO> inventories = null;
+		ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
+		String ID = openingStockData.getID();
+		String date = null;
+		OpeningStockPO po = new OpeningStockPO(ID, date, transfers, branchs, accounts, facilities, inventories,
+				bankAccounts);
+		return openingStockData.add(po);
 	}
 
 	public OpeningStockVO find(String id) throws RemoteException {
-		OpeningStockPO po =  openingStockData.findOpeningStock(id);
-		return null;
+		OpeningStockPO po = openingStockData.findOpeningStock(id);
+		OpeningStockVO vo = OpeningStockTrans.convertPOtoVO(po);
+		return vo;
 	}
 
 }

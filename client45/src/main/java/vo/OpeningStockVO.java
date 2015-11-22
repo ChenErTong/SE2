@@ -2,6 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.BankAccountPO;
 import po.BranchPO;
 import po.FacilityPO;
 import po.InventoryPO;
@@ -20,9 +21,11 @@ private ArrayList<TransferPO> transfers;
 	private ArrayList<FacilityPO> facilities;
 
 	private ArrayList<InventoryPO> inventories;
+	
+	private ArrayList<BankAccountPO> bankAccounts;
 
 	public OpeningStockVO(String ID, String date, ArrayList<TransferPO> transfers,ArrayList<BranchPO> branchs,
-			ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities, ArrayList<InventoryPO> inventories) {
+			ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities, ArrayList<InventoryPO> inventories,ArrayList<BankAccountPO> bankAccounts) {
 		this.ID=ID;
 		this.date=date;
 		this.transfers=transfers;
@@ -30,6 +33,7 @@ private ArrayList<TransferPO> transfers;
 		this.accounts = accounts;
 		this.facilities = facilities;
 		this.inventories = inventories;
+		this.bankAccounts=bankAccounts;
 	}
 
 
