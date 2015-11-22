@@ -7,16 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.branch.BranchTrans;
+import businesslogic.transferbl.TransferTrans;
 import dataservice.branchdataservice.BranchDataService;
-import dataservice.organizationdataservice.OrganizationDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.BranchPO;
-import po.FacilityPO;
-import po.OrganizationPO;
 import po.TransferPO;
 import state.ResultMessage;
 import vo.BranchVO;
-import vo.OrganizationVO;
 import vo.TransferVO;
 
 public class Organization {
@@ -55,32 +52,30 @@ public class Organization {
 	}
 
 	public ResultMessage updateBranch(BranchVO vo)throws RemoteException  {
-		// TODO Auto-generated method stub
-		return null;
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchData.modify(po);
 	}
 
 	public ArrayList<TransferVO> showTransfer()throws RemoteException  {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TransferPO> pos = transferData.find();
+		return TransferTrans.convertPOstoVOs(pos);
 	}
 
 	public String getTransferID()throws RemoteException  {
-		// TODO Auto-generated method stub
-		return null;
+		return transferData.getID();
 	}
 
 	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {
-		// TODO Auto-generated method stub
-		return null;
+		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+		return transferData.add(transferPO);
 	}
 
 	public ResultMessage deleteTransfer(String organizationID)throws RemoteException  {
-		// TODO Auto-generated method stub
-		return null;
+		return transferData.delete(organizationID);
 	}
 
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+		return transferData.modify(transferPO);
 	}
 }

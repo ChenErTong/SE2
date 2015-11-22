@@ -17,5 +17,10 @@ public class TransferData extends ManageData<TransferPO> implements TransferData
 	public TransferData() throws RemoteException {
 		poList=new SerSaveAndLoad<TransferPO>("data/"+NAME+".ser");
 	}
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

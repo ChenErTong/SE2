@@ -30,7 +30,7 @@ public class OrganizationTrans {
 			TransferPO transferPO = (TransferPO)po;
 			ArrayList<AccountPO> accounts =transferPO.getAccounts();
 			ArrayList<InventoryPO> inventories = transferPO.getInventories();
-			return new TransferVO(organizationID, address, number, accounts, inventories);
+			return new TransferVO(organizationID, address, date, accounts, inventories);
 		}
 	}
 }

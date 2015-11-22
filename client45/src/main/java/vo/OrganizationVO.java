@@ -34,6 +34,9 @@ public class OrganizationVO {
 	public String getAddress() {
 		return address;
 	}
+	public String getDate() {
+		return date;
+	}
 	
 
 }
