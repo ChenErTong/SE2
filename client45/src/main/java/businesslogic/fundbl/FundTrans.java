@@ -3,10 +3,12 @@ package businesslogic.fundbl;
  * @author LIUXUANLIN
  */
 import po.BankAccountPO;
+import po.ExpensePO;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import vo.BankAccountVO;
 import vo.DebitAndPayBillVO;
+import vo.ExpenseVO;
 
 public class FundTrans {
 	public static BankAccountPO convertVOtoPO(BankAccountVO vo){
@@ -54,6 +56,15 @@ public class FundTrans {
 	   else{
 	   return null;
 	   }
-	   
    }
+	
+	public static BankAccountVO convertPOtoVO(BankAccountPO po){
+    	BankAccountVO vo=new BankAccountVO(po.getID(), po.getName(),po.getMoney(), po.getLevel());
+		return vo;
+    }
+	
+	public static ExpenseVO convertPOtoVO(ExpensePO po){
+	    ExpenseVO vo=new ExpenseVO(po.getID(),po.getWorkshop(),po.getMoney(),po.getAddress());
+    	return vo;
+    }
 }

@@ -8,7 +8,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogicservice.fundblservice.BankAccountBLService;
 import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
 import state.ConfirmState;
@@ -79,13 +78,10 @@ public class BankAccount  {
 		ArrayList<BankAccountPO> P0s=bankAccountData.find(keywords,type);
 		ArrayList<BankAccountVO> V0s=new ArrayList<BankAccountVO>();
 		for(BankAccountPO PO:P0s){
-			BankAccountVO vo=POtoVO(PO);
+			BankAccountVO vo=FundTrans.convertPOtoVO(PO);
 			V0s.add(vo);
 		}
 				return V0s;
 	}
-    public BankAccountVO POtoVO(BankAccountPO po){
-    	BankAccountVO vo=new BankAccountVO(po.getID(), po.getName(),po.getMoney(), po.getLevel());
-		return vo;
-    }
+    
 }

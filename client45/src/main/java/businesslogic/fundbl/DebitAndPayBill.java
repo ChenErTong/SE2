@@ -50,8 +50,6 @@ public class DebitAndPayBill  {
 		DebitAndPayBillPO PO=debitAndPayBillData.find(ID);
 		return  FundTrans.convertPOtoVO(PO);
 	}
-   
-	
 	
 
 	public HashMap<String, String> getAllBankAccounts() {
