@@ -2799,3 +2799,23 @@ org.eclipse.core.runtime.CoreException: Launch configuration NJULilyServerMain r
 2015-11-22 19:10:44,460 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
 2015-11-22 19:10:44,463 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-11-22 19:10:44,463 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources
+2015-11-22 19:12:49,990 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:12:49,990 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
+2015-11-22 19:12:49,994 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:12:49,994 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources
+2015-11-22 19:12:54,601 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:12:54,601 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
+2015-11-22 19:12:54,603 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:12:54,603 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources
+2015-11-22 19:13:22,830 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:13:22,830 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
+2015-11-22 19:13:22,832 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:13:22,832 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources
+2015-11-22 19:13:50,791 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:13:50,791 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
+2015-11-22 19:13:50,792 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:13:50,793 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources
+2015-11-22 19:14:02,932 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:14:02,932 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/main/resources
+2015-11-22 19:14:02,937 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-11-22 19:14:02,937 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/LIUXUANLIN/Desktop/SE2/client45/src/test/resources

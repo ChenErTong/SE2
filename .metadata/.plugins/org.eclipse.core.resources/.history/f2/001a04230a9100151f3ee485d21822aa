@@ -1,7 +1,5 @@
 package businesslogic.fundbl;
-/**
- * @author LIUXUANLIN
- */
+
 import po.BankAccountPO;
 import vo.BankAccountVO;
 

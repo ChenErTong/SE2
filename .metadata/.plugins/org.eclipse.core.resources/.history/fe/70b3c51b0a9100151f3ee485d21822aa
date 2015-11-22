@@ -1,7 +1,5 @@
 package businesslogic.fundbl;
-/**
- * @author LIUXUANLIN
- */
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -15,7 +13,7 @@ import state.ConfirmState;
 import state.ResultMessage;
 import vo.ExpenseVO;
 
-public class Expense {
+public class Expense implements ExpenseBLService{
 
 	private ExpenseDataService expenseData;
 	public Expense() {
@@ -29,19 +27,19 @@ public class Expense {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub
 		return ConfirmState.CONFIRM;
 	}
 
-	
+	@Override
 	public String getID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return expenseData.getID();
 	}
 
-	
+	@Override
 	public ArrayList<ExpenseVO> show() throws RemoteException {
 		ArrayList<ExpensePO> pos=expenseData.show();
 		ArrayList<ExpenseVO> vos=new ArrayList<ExpenseVO>();
@@ -57,7 +55,7 @@ public class Expense {
     	return vo;
  	
     }
-	
+	@Override
 	public ResultMessage add(ExpenseVO vo) {
 		ExpensePO expensePO = new ExpensePO(vo.getID(), vo.getWorkshop(), vo.getMoney(), vo.getAddress());
 		try {
@@ -68,7 +66,7 @@ public class Expense {
 		return ResultMessage.FAIL;
 	}
 
-	
+	@Override
 	public ResultMessage delete(String ID) {
 		try {
 			return expenseData.delete(ID);
@@ -78,7 +76,7 @@ public class Expense {
 		return ResultMessage.FAIL;
 	}
 
-	
+	@Override
 	public ResultMessage update(ExpenseVO vo) {
 		ExpensePO expensePO = new ExpensePO(vo.getID(), vo.getWorkshop(), vo.getMoney(), vo.getAddress());
 		try {
