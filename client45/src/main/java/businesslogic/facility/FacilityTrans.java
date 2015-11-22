@@ -18,8 +18,9 @@ public class FacilityTrans {
 			String manageID = vo.getManagerId();
 			String bottomCode=vo.getBottomCode();
 			String engineNumber  = vo.getEngineCode();
+			String VIN = vo.getVehicleIdentificationNumber();
 			ArrayList<LoadingListPO> deliverHistory = vo.getDeliverHistory();
-			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber);
+			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber,VIN);
 		}
 	}
 
@@ -32,8 +33,9 @@ public class FacilityTrans {
 			String manageID = po.getManagerId();
 			String bottomCode=po.getBottomCode();
 			String engineNumber  = po.getEngineCode();
+			String VIN = po.getVehicleIdentificationNumber();
 			ArrayList<LoadingListPO> deliverHistory = po.getDeliverHistory();
-			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber);
+			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber,VIN);
 		}
 	}
 	public static ArrayList<FacilityVO> convertFacilityPOstoVOs(ArrayList<FacilityPO> pos) {

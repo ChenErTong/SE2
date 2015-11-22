@@ -9,17 +9,17 @@ public class FacilityVO {
 	 * 管理员编号
 	 */
 	private String managerId;
-	
+
 	/**
 	 * 运输历史
 	 */
 	private ArrayList<LoadingListPO> deliverHistory;
-	
+
 	/**
 	 * 车辆编号
 	 */
 	private String facilityIdString;
-	
+
 	/**
 	 * 购入日期
 	 */
@@ -32,7 +32,10 @@ public class FacilityVO {
 	 * 发动机号
 	 */
 	private String engineCode;
-
+	/**
+	 * 车牌号
+	 */
+	private String vehicleIdentificationNumber;
 	public FacilityVO(String facilityIdString) {
 		this.facilityIdString = facilityIdString;
 	}
@@ -77,7 +80,6 @@ public class FacilityVO {
 		this.dateString = dateString;
 	}
 
-
 	public String getBottomCode() {
 		return bottomCode;
 	}
@@ -94,19 +96,24 @@ public class FacilityVO {
 		this.engineCode = engineCode;
 	}
 
+	public String getVehicleIdentificationNumber() {
+		return vehicleIdentificationNumber;
+	}
+
+	public void setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
+		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
+	}
+
 	public FacilityVO(String managerId, ArrayList<LoadingListPO> deliverHistory, String facilityIdString,
-			String dateString, String bottomCode, String engineCode) {
+			String dateString, String bottomCode, String engineCode, String vehicleIdentificationNumber) {
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 		this.facilityIdString = facilityIdString;
 		this.dateString = dateString;
 		this.bottomCode = bottomCode;
 		this.engineCode = engineCode;
+		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
 	}
 	
-	
 
-	
-	
-	
 }
