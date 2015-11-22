@@ -1,4 +1,6 @@
 package businesslogic.fundbl;
+import java.util.ArrayList;
+
 /**
  * @author LIUXUANLIN
  */
@@ -67,4 +69,22 @@ public class FundTrans {
 	    ExpenseVO vo=new ExpenseVO(po.getID(),po.getWorkshop(),po.getMoney(),po.getAddress());
     	return vo;
     }
+	
+	public static ArrayList<BankAccountVO> convertBankAccountPOstoVOs(ArrayList<BankAccountPO> pos){
+		ArrayList<BankAccountVO> vos = new ArrayList<>();
+		for (BankAccountPO bankAccountPO : pos) {
+			BankAccountVO vo = convertPOtoVO(bankAccountPO);
+			vos.add(vo);
+		}
+		return vos;
+	}
+
+	public static ArrayList<DebitAndPayBillVO> convertDebitAndPayBillPOstoVOs(ArrayList<DebitAndPayBillPO> pos) {
+		ArrayList<DebitAndPayBillVO> vos = new ArrayList<>();
+		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
+			DebitAndPayBillVO vo = convertPOtoVO(debitAndPayBillPO);
+			vos.add(vo);
+		}
+		return vos;
+	}
 }
