@@ -27,4 +27,10 @@ public class OpeningStockDataService_Stub implements OpeningStockDataService{
 		return openingStockPO;
 	}
 
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -40,4 +40,13 @@ public class TransferTrans {
 		}
 		return vos;
 	}
+	
+	public static ArrayList<TransferPO> convertVOstoPOs(ArrayList<TransferVO> vos) {
+		ArrayList<TransferPO> pos = new ArrayList<>();
+		for (TransferVO transferVO : vos) {
+			TransferPO po = convertVOtoPO(transferVO);
+			pos.add(po);
+		}
+		return pos;
+	}
 }

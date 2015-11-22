@@ -109,4 +109,13 @@ public class FundTrans {
 		}
 		return vos;
 	}
+	
+	public static ArrayList<BankAccountPO> convertVOstoPOs(ArrayList<BankAccountVO> vos) {
+		ArrayList<BankAccountPO> pos = new ArrayList<>();
+		for (BankAccountVO vo : vos) {
+			BankAccountPO po = convertVOtoPO(vo);
+			pos.add(po);
+		}
+		return pos;
+	}
 }

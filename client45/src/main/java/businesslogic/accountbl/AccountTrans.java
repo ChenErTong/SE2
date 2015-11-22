@@ -29,4 +29,30 @@ public class AccountTrans {
 		AccountVO vo = new AccountVO(ID,duty,  name,  birthday,  IDCard,  phone, salary,workTime, receiptNum);
 		return vo;
 	}
+	
+	public static AccountPO convertVOtoPO(AccountVO vo){
+		if(vo==null)
+			return null;
+		else {
+			String ID = vo.getID();
+			String duty = vo.getDuty();
+			String name  = vo.getName();
+			String birthDay = vo.getBirthDay();
+			String IDCard = vo.getIDCard();
+			String phone = vo.getPhone();
+			double salary =vo.getSalary();
+			String workTime = vo.getWorkTime();
+			int receiptNum = vo.getReceiptNum();
+			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+		}
+	}
+	
+	public static ArrayList<AccountPO> convertVOstoPOs(ArrayList<AccountVO> vos) {
+		ArrayList<AccountPO> pos = new ArrayList<>();
+		for (AccountVO vo : vos) {
+			AccountPO po = convertVOtoPO(vo);
+			pos.add(po);
+		}
+		return pos;
+	}
 }

@@ -38,4 +38,10 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 		return null;
 	}
 
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -6,14 +6,26 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountTrans;
+import businesslogic.branchbl.BranchTrans;
+import businesslogic.facilitybl.FacilityTrans;
+import businesslogic.fundbl.FundTrans;
+import businesslogic.transferbl.TransferTrans;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import dataservice.userdataservice.UserDataService;
+import po.BankAccountPO;
+import po.BranchPO;
+import po.FacilityPO;
+import po.InventoryPO;
+import po.OpeningStockPO;
 import po.TransferPO;
+import po.accountpo.AccountPO;
 import state.ResultMessage;
 import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
+import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
@@ -36,13 +48,22 @@ public class OpeningStock{
 			ArrayList<AccountVO> accountVOs, 
 			ArrayList<FacilityVO> facilityVOs, 
 			ArrayList<InventoryVO> inventoryVOs,
-			ArrayList<BankAccountVO> bankAccountVOs) {
+			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
 		
-		return null;
+			ArrayList<TransferPO> transfers = TransferTrans.convertVOstoPOs(transferVOs);
+			ArrayList<BranchPO> branchs = 	BranchTrans.convertVOstoPOs(branchVOs);
+			ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(accountVOs);
+			ArrayList<FacilityPO> facilities = FacilityTrans.convertVOstoPOs(facilityVOs);
+			ArrayList<InventoryPO> inventories=null;
+			ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
+			String ID = openingStockData.getID();
+			String date=null;
+			OpeningStockPO po = new OpeningStockPO(ID, date, transfers,branchs, accounts, facilities, inventories, bankAccounts);
+			return openingStockData.add(po);
 	}
 
-	public ResultMessage find(int id) {
-		// TODO Auto-generated method stub
+	public OpeningStockVO find(String id) throws RemoteException {
+		OpeningStockPO po =  openingStockData.findOpeningStock(id);
 		return null;
 	}
 

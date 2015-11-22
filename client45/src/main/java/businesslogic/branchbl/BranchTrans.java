@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import po.BranchPO;
 import po.FacilityPO;
+import po.TransferPO;
 import po.accountpo.AccountPO;
 import vo.BranchVO;
+import vo.TransferVO;
 
 public class BranchTrans {
 	public static BranchPO convertVOtoPO(BranchVO vo ){
@@ -39,5 +41,14 @@ public class BranchTrans {
 			vos.add(vo);
 		}
 		return vos;
+	}
+	
+	public static ArrayList<BranchPO> convertVOstoPOs(ArrayList<BranchVO> vos) {
+		ArrayList<BranchPO> pos = new ArrayList<>();
+		for (BranchVO vo : vos) {
+			BranchPO po = convertVOtoPO(vo);
+			pos.add(po);
+		}
+		return pos;
 	}
 }

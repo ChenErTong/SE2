@@ -3,9 +3,11 @@ package businesslogic.facilitybl;
 import java.util.ArrayList;
 
 import po.FacilityPO;
+import po.accountpo.AccountPO;
 import po.accountpo.DriverPO;
 import po.receiptpo.LoadingListPO;
 import vo.FacilityVO;
+import vo.accountvo.AccountVO;
 import vo.accountvo.DriverVO;
 
 public class FacilityTrans {
@@ -88,5 +90,14 @@ public class FacilityTrans {
 			vos.add(vo);
 		}
 		return vos;
+	}
+	
+	public static ArrayList<FacilityPO> convertVOstoPOs(ArrayList<FacilityVO> vos) {
+		ArrayList<FacilityPO> pos = new ArrayList<>();
+		for (FacilityVO vo : vos) {
+			FacilityPO po = convertVOtoPO(vo);
+			pos.add(po);
+		}
+		return pos;
 	}
 }
