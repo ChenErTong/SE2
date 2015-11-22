@@ -9,21 +9,10 @@ import java.util.ArrayList;
 import businesslogicservice.recordblservice.RecordBLService;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import dataservice.recorddataservice.RecordDataService;
-import po.BankAccountPO;
-import po.BussinessProcessPO;
-import po.DebitAndPayBillPO;
-import po.receiptpo.DebitBillPO;
-import po.receiptpo.InventoryImportReceiptPO;
-import po.receiptpo.PaymentBillPO;
-import state.PayBillItem;
+import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
-import state.ResultMessage;
 import vo.BussinessConditionVO;
-import vo.BussinessProcessVO;
 import vo.DebitAndPayBillVO;
-import vo.receiptvo.DebitBillVO;
-import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.PaymentBillVO;
 
 public class Record implements RecordBLService{
 	private RecordDataService recordData;

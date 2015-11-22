@@ -3,8 +3,7 @@ package dataservice.funddataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-
-import po.DebitAndPayBillPO;
+import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import state.ResultMessage;
 

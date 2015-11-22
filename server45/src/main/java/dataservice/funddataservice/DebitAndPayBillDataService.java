@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.ManageDataService;
-import po.DebitAndPayBillPO;
+import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 
 /**

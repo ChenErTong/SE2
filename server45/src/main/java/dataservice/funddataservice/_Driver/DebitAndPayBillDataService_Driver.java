@@ -3,10 +3,10 @@ package dataservice.funddataservice._Driver;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.DebitAndPayBillPO;
-import state.ReceiptType;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import dataservice.funddataservice._stub.DebitAndPayBillDataService_Stub;
+import po.receiptpo.DebitAndPayBillPO;
+import state.ReceiptType;
 
 public class DebitAndPayBillDataService_Driver {
 	private ArrayList orderNumbers;

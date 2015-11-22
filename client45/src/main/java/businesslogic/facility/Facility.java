@@ -16,7 +16,21 @@ public class Facility {
 	private FacilityDataService facilityData;
 
 	public Facility() {
+
 		try {
+			// Registry registry = LocateRegistry.getRegistry("127.0.0.1", 8888,
+			// new RMIClientSocketFactory() {
+			// @Override
+			// public Socket createSocket(String host, int port) throws
+			// IOException {
+			// Socket socket = new Socket();
+			// socket.connect(new InetSocketAddress(host, port), 2000);
+			// return socket;
+			// }
+			// }); // registry最好是全局一个的（一个IP对应一个registry，也可以是多个，这个只是建议）
+			// facilityData = (FacilityDataService)
+			// registry.lookup(FacilityDataService.NAME);
+			// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			facilityData = (FacilityDataService) Naming
 					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + FacilityDataService.NAME);
 		} catch (MalformedURLException e) {
@@ -42,7 +56,7 @@ public class Facility {
 		FacilityVO facilityVO = FacilityTrans.convertPOtoVO(facilityPO);
 		return facilityVO;
 	}
-	
+
 	public ArrayList<FacilityVO> findFacility() throws RemoteException {
 		ArrayList<FacilityPO> facilityPOs = facilityData.find();
 		ArrayList<FacilityVO> facilityVOs = FacilityTrans.convertFacilityPOstoVOs(facilityPOs);

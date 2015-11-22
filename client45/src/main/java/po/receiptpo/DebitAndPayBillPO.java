@@ -14,8 +14,14 @@ import state.ReceiptType;
  * @version Oct 22,2015
  */
 public class DebitAndPayBillPO extends ReceiptPO{
+	
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
 	/**serialVersionUID*/
-	private static final long serialVersionUID = 1L;
 	private double money;
 	private String courierID;
 	private String date;
@@ -81,7 +87,18 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setCourierID(String courierID) {
 		this.courierID = courierID;
 	}
-
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public ArrayList getOrderNumbers() {
+		return orderNumbers;
+	}
+	public void setOrderNumbers(ArrayList orderNumbers) {
+		this.orderNumbers = orderNumbers;
+	}
 	public String getPayerName() {
 		return payerName;
 	}
@@ -105,7 +122,27 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setItems(PayBillItem items) {
 		this.items = items;
 	}
+	public String getRentYear() {
+		return rentYear;
+	}
 
+	public void setRentYear(String rentYear) {
+		this.rentYear = rentYear;
+	}
+
+	public String getSalaryMonth() {
+		return salaryMonth;
+	}
+
+	public void setSalaryMonth(String salaryMonth) {
+		this.salaryMonth = salaryMonth;
+	}
+	public ArrayList getTransListNumber() {
+		return transListNumber;
+	}
+	public void setTransListNumber(ArrayList transListNumber) {
+		this.transListNumber = transListNumber;
+	}
 	public ReceiptType getType() {
 		return type;
 	}
@@ -122,21 +159,9 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.state = state;
 	}
 
-	public String getRentYear() {
-		return rentYear;
-	}
-
-	public void setRentYear(String rentYear) {
-		this.rentYear = rentYear;
-	}
-
-	public String getSalaryMonth() {
-		return salaryMonth;
-	}
-
-	public void setSalaryMonth(String salaryMonth) {
-		this.salaryMonth = salaryMonth;
-	}
+	
+	
+	
 
 
 }

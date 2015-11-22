@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
-import po.DebitAndPayBillPO;
+import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
 

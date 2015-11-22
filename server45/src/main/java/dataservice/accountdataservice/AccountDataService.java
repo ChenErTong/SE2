@@ -3,6 +3,7 @@ package dataservice.accountdataservice;
 
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.DataService;
 import po.accountpo.AccountPO;
@@ -13,5 +14,6 @@ public interface AccountDataService extends DataService<AccountPO> {
 	public static final String NAME = "AccountData";
 	
 	public void init() throws RemoteException;
+	public ArrayList<AccountPO> show() throws RemoteException;
 	
 }

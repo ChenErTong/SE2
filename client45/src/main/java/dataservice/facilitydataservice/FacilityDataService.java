@@ -26,20 +26,7 @@ public interface FacilityDataService extends ManageDataService<FacilityPO> {
 	 */
 	public FacilityPO find(String id) throws RemoteException;
 
-	/**
-	 * 添加车辆
-	 * 
-	 * @param facility
-	 *            车辆持久化对象
-	 * @return 处理结果
-	 * @author czw
-	 * @version Oct 22,2015
-	 */
-//	public ResultMessage addFacility(FacilityPO facility) throws RemoteException;
-
-//	public ResultMessage deleteFacility(String id) throws RemoteException;
-
-//	public ResultMessage modifyFacility(FacilityPO facility) throws RemoteException;
+	
 
 
 }
