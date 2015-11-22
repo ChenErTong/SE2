@@ -37,6 +37,23 @@ public class FundTrans {
 	   else{
 	   return null;
 	   }
+   }
+	
+	public static DebitAndPayBillVO convertPOtoVO(DebitAndPayBillPO PO){
+	    ReceiptType type=PO.getType();
+	    if(type==ReceiptType.EXPENSE){
+	    	//收款单
+	    	DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getCourierID(),PO.getType(),PO.getOrderNumbers());
+	    	 return vo;
+	    }
+	   if(type==ReceiptType.PAY){
+		   //付款单
+		   DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getPayerName(),PO.getBankAccouts(),PO.getType(),PO.getRentYear(),PO.getSalaryMonth(),PO.getItems(),PO.getTransListNumber());
+		   return vo;
+	   }
+	   else{
+	   return null;
+	   }
 	   
    }
 }

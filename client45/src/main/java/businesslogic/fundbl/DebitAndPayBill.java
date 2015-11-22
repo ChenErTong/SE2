@@ -48,27 +48,11 @@ public class DebitAndPayBill  {
 
 	public DebitAndPayBillVO find(String ID) throws RemoteException {
 		DebitAndPayBillPO PO=debitAndPayBillData.find(ID);
-		return  POtoVO(PO);
+		return  FundTrans.convertPOtoVO(PO);
 	}
    
 	
-	public DebitAndPayBillVO POtoVO(DebitAndPayBillPO PO){
-	    ReceiptType type=PO.getType();
-	    if(type==ReceiptType.EXPENSE){
-	    	//收款单
-	    	DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getCourierID(),PO.getType(),PO.getOrderNumbers());
-	    	 return vo;
-	    }
-	   if(type==ReceiptType.PAY){
-		   //付款单
-		   DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getPayerName(),PO.getBankAccouts(),PO.getType(),PO.getRentYear(),PO.getSalaryMonth(),PO.getItems(),PO.getTransListNumber());
-		   return vo;
-	   }
-	   else{
-	   return null;
-	   }
-	   
-   }
+	
 
 	public HashMap<String, String> getAllBankAccounts() {
 		return debitAndPayBillData.getAllBankAccounts();
@@ -125,7 +109,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -136,7 +120,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -147,7 +131,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.APPROVALING);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -158,7 +142,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.APPROVALING);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -169,7 +153,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.SUCCESS);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -180,7 +164,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.SUCCESS);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -191,7 +175,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.FAILURE);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -202,7 +186,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.FAILURE);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -213,7 +197,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.DRAFT);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -224,7 +208,7 @@ public class DebitAndPayBill  {
 		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.DRAFT);
 		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
 		for(DebitAndPayBillPO po:pos){
-			DebitAndPayBillVO vo=POtoVO(po);
+			DebitAndPayBillVO vo=FundTrans.convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
