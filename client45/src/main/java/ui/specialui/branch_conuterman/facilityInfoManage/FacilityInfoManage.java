@@ -172,7 +172,7 @@ public class FacilityInfoManage extends MyJPanel {
 	 * 查找车辆
 	 * @param facilityId 
 	 */
-	private boolean searchFacility(String facilityId) {		
+	private boolean searchFacility(String facilityId) {
 		facility = facilityController.findFacility(facilityId);
 		if(facility == null){
 			return false;

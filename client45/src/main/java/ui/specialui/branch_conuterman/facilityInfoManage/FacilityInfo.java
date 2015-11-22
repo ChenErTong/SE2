@@ -1,6 +1,5 @@
 package ui.specialui.branch_conuterman.facilityInfoManage;
 
-import ui.GetDate;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -45,7 +44,7 @@ public class FacilityInfo extends MyTranslucentPanel{
 	 */
 	public void setUneditable(){
 		for (MyJTextField myJTextField : fields) {
-			myJTextField.setEditable(false);
+			myJTextField.setEnabled(false);
 		}
 	}
 
