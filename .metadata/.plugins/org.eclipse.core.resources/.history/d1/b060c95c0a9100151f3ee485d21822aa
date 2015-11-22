@@ -25,7 +25,7 @@ import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.TransferArrivalListVO;
 
-public class Inventory  {
+public class Inventory implements InventoryBLService {
 	private InventoryDataService inventoryData;
 	private TransferDataService transferData;
 	public Inventory() {
@@ -40,7 +40,7 @@ public class Inventory  {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException  {
 		   ArrayList<InventoryVO> VOs=new ArrayList<InventoryVO>();
 		   ArrayList<InventoryPO> POs=inventoryData.getInventoryPOList(endDate);
@@ -56,7 +56,7 @@ public class Inventory  {
 		InventoryVO vo = new InventoryVO(po.getID(),po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
 		return vo;
 	}
-	
+	@Override
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> POs=inventoryData.showImport(enddate);
 		ArrayList<InventoryImportReceiptVO> VOs = new ArrayList<InventoryImportReceiptVO>();
@@ -75,14 +75,14 @@ public class Inventory  {
 		return vo;
 	}
 	
-	
+	@Override
 	public String getImportID() throws RemoteException {
 		// TODO Auto-generated method stub
 		String ID=inventoryData.getImportID();
 		return ID;
 	}
 
-	
+	@Override
 	public ResultMessage addCommodities(String ArrivalListID,InventoryVO vo) throws RemoteException {
 		  TransferArrivalListPO receipt=transferData.findList(ArrivalListID);
 		  String ID=inventoryData.getImportID();
@@ -102,19 +102,19 @@ public class Inventory  {
 	}
 
 
-	
+	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
-	
+	@Override
 	public String getExportID() throws RemoteException {
 		String ID=inventoryData.getExportID();
 		return ID;
 	}
 	
-	
+	@Override
 	public ResultMessage minusCommodities(String ImportID,String Transfer) throws RemoteException {
 	    InventoryImportReceiptPO importPo=inventoryData.findImport(ImportID);
 		  int a=importPo.getA();
@@ -135,19 +135,19 @@ public class Inventory  {
 		
 	}
 
-	
+	@Override
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
-	
+	@Override
 	public String getAdjustID() throws RemoteException {
 		String ID=inventoryData.getImportID();
 		return ID;
 	}
 
-	
+	@Override
 	public ResultMessage adjust(InventoryVO before,InventoryVO now) throws RemoteException {
 		int exA = before.getA();
 		int exB = before.getB();
