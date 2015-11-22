@@ -1,5 +1,6 @@
 package businesslogicservice.fundblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,15 +18,17 @@ public interface DebitAndPayBillBLService {
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public String getPayID();
+	public String getPayID() throws RemoteException;
 	/**
 	 * 得到收款单的ID
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public String getExpenseID();
+	public String getExpenseID() throws RemoteException;
 
 	/**
 	 * 根据ID精确查找账单
@@ -33,8 +36,9 @@ public interface DebitAndPayBillBLService {
 	 * @return DebitAndPayBillVO
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public DebitAndPayBillVO find(String ID);
+	public DebitAndPayBillVO find(String ID) throws RemoteException;
 
 	
 	/**
