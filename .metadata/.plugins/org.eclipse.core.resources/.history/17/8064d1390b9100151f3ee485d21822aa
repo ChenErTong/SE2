@@ -24,27 +24,15 @@ public class BranchController implements BranchBLService {
 	}
 
 	@Override
-	public ArrayList<CommodityVO> getAllCommodities() {
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			return BranchBL.getAllCommodities();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return BranchBL.getAllCommodities();
 	}
 
 	@Override
-	public ArrayList<String> getAllOrderNumber()  {
+	public ArrayList<String> getAllOrderNumber() throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			return BranchBL.getAllOrderNumber();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return BranchBL.getAllOrderNumber();
 	}
 
 	@Override
@@ -61,27 +49,15 @@ public class BranchController implements BranchBLService {
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptPO receipt) {
+	public ResultMessage submit(ReceiptPO receipt) throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			return BranchBL.submit(receipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return BranchBL.submit(receipt);
 	}
 
 	@Override
-	public ResultMessage save(ReceiptPO receipt)  {
+	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			return BranchBL.save(receipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return BranchBL.save(receipt);
 	}
 
 	@Override
