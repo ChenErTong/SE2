@@ -10,7 +10,7 @@ import javax.swing.table.JTableHeader;
 
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{

@@ -20,7 +20,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.specialui.manager.FrameManager;
 
 public class Panel_Manager_AdjustBase extends MyJPanel{
@@ -58,7 +58,7 @@ public class Panel_Manager_AdjustBase extends MyJPanel{
 		
 		//the table
 		String[] headers = {"常量类别","两地距离","运输单价","详细常量信息"};
-		MyTable	table = new MyTable(headers);
+		MyJTable	table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

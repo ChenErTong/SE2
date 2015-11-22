@@ -14,7 +14,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Finance_BankAccount extends MyTranslucentPanel{
@@ -51,7 +51,7 @@ private void initComponent() {
 	
 	//the table
 	String[] headers = {"账户编号","账户名称","账户余额"};
-	MyTable	table = new MyTable(headers);
+	MyJTable	table = new MyJTable(headers, false);
 	table.setBackground(new Color(40, 42, 66));
 	table.setForeground(Color.WHITE);
 	table.setFont(new MyFont(14));

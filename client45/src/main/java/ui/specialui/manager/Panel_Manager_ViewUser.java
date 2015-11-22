@@ -13,7 +13,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 
 public class Panel_Manager_ViewUser extends MyJPanel{
 
@@ -38,7 +38,7 @@ public class Panel_Manager_ViewUser extends MyJPanel{
 		this.add(userList);
 		//the table
 		String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
-		MyTable	table = new MyTable(headers);
+		MyJTable	table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

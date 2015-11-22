@@ -15,6 +15,7 @@ import data.DataFactory;
 import data.accountdata.AccountData;
 import data.basedata.BaseData;
 import data.branchdata.BranchData;
+import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
 import data.funddata.BankAccountData;
 import data.funddata.DebitAndPayBillData;
@@ -72,7 +73,7 @@ public class RMIManage {
 			Naming.bind(prefix+RecordData.NAME, DataFactory.createDataService(RecordData.NAME));
 			Naming.bind(prefix+TransferData.NAME, DataFactory.createDataService(TransferData.NAME));
 			Naming.bind(prefix+UserData.NAME, DataFactory.createDataService(UserData.NAME));
-			
+			Naming.bind(prefix+DriverData.NAME, DataFactory.createDataService(DriverData.NAME));
 			System.out.println("注册完成！");
 		} catch (RemoteException e) {
 			e.printStackTrace();

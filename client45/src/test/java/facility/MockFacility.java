@@ -30,7 +30,7 @@ public class MockFacility extends Facility {
 	public ResultMessage addFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
 		try {
-			facilityData.addFacility(facilityPO);
+			facilityData.add(facilityPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -42,7 +42,7 @@ public class MockFacility extends Facility {
 		FacilityVO vo=null;
 		FacilityPO facilityPO = null;
 		try {
-			facilityPO = facilityData.findFacility(facilityId);
+			facilityPO = facilityData.find(facilityId);
 			if(facilityPO!=null)
 				vo = new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
 		} catch (RemoteException e) {
@@ -54,7 +54,7 @@ public class MockFacility extends Facility {
 	public ResultMessage modifyFacility(FacilityVO facility) {
 		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(), facility.getManagerId(), facility.getDeliverHistory());
 		try {
-			facilityData.modifyFacility(facilityPO);
+			facilityData.modify(facilityPO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class MockFacility extends Facility {
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
 		try {
-			facilityData.deleteFacility(facility.getFacilityIdString());
+			facilityData.delete(facility.getFacilityIdString());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

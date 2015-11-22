@@ -13,7 +13,8 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJScrollPane;
+import ui.myui.MyJTable;
 import ui.specialui.manager.FrameManager;
 
 public class Panel_Manager_HandleOrganization extends MyJPanel {
@@ -44,29 +45,10 @@ public class Panel_Manager_HandleOrganization extends MyJPanel {
 		
 		//the table
 		String[] headers = {"机构编号","机构类型","机构名称","机构地址","机构人数","联系电话"};
-		MyTable	table = new MyTable(headers);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-					
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-							  	
-		JScrollPane jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-						
-		jsp.setBounds(35, 140, 590, 495);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
+		MyJTable	table = new MyJTable(headers, false);
+
+		MyJScrollPane jsp=new MyJScrollPane(35, 140, 590, 495, table);
 		this.add(jsp);
-		
 		 
 		MyJButton ViewOrganizationInfo = new MyJButton(85, 650, 150, 40,"查看当前所选机构",14);
 		ViewOrganizationInfo.setActionCommand("ViewOrganizationInfo");

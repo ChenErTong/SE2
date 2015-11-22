@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-
-import ui.NumberLenghLimited;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -98,8 +96,9 @@ public class Panel_Admin_Modify extends MyJPanel{
 		userNameField = new MyJTextField(500, 180, 140, 30);
 		this.add(userNameField);
 		
+
 		phoneField = new MyJTextField(750,180,140,30);
-		phoneField.setDocument(new NumberLenghLimited(11));
+		phoneField.setOnlyInteger(11);
 		this.add(phoneField);
 		
 		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};

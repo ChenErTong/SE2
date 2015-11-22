@@ -57,28 +57,5 @@ public class Facility implements FacilityBLService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage addDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modifyDriver(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DriverVO findDriver(String driverId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

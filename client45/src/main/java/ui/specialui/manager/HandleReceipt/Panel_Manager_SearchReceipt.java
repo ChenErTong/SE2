@@ -18,8 +18,8 @@ import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
+import ui.myui.MyJTable;
 
-import ui.myui.MyTable;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
@@ -115,7 +115,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		
 		//the table
 		String[] headers = {"选择","单据编号","单据种类","单据状态"};
-		MyTable	table = new MyTable(headers);
+		MyJTable	table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

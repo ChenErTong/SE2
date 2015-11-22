@@ -12,7 +12,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
-import ui.myui.MyTable;
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 /**
  * 订单货物信息显示面板
@@ -51,8 +51,11 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 		//this.add(deliveryKindField);
 		
 		//the table
+
 				String[] headers = {"订单号","寄件人","快递类型","种类","费用","预计到达时间"};
-				MyTable	table = new MyTable(headers);
+				MyJTable	table = new MyJTable(headers,false);
+
+				
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
 				table.setFont(new MyFont(14));

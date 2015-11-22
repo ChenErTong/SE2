@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-
-import ui.NumberLenghLimited;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -76,7 +74,7 @@ public class Panel_Manager_AddOrganization extends MyJPanel {
 		this.add(numberField);
 		
 		MyJTextField phoneField = new MyJTextField(500,270,140,30);
-		phoneField.setDocument(new NumberLenghLimited(11));
+		phoneField.setOnlyInteger(11);
 		this.add(phoneField);
 		
 		String type[] = {"所有机构","营业厅","中转中心"};

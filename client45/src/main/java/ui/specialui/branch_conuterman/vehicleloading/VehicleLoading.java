@@ -1,21 +1,21 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import ui.myui.MyFont;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyTable;
+import ui.myui.MyJScrollPane;
+import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
 import ui.specialui.branch_conuterman.Frame_Branch;
 
 public class VehicleLoading extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 	private LoadingInfo loadingInfo;
-
+	private MyJTextField deliveryCost;
+	
 	public VehicleLoading(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -25,31 +25,30 @@ public class VehicleLoading extends MyJPanel {
 		loadingInfo = new LoadingInfo();
 		this.add(loadingInfo);
 
-		this.add(new MyJLabel(820, 100, 210, 40, "订单编号", 22, true));
 		// the table
-		String[] orderId = this.getOrderId();
-		MyTable table = new MyTable(orderId);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-
-		JScrollPane jsp = new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-
-		jsp.setBounds(690, 150, 340, 370);
-		jsp.getViewport().setBackground(new Color(0, 0, 0, 0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
-		this.add(jsp);
+		String[] orderId = new String[]{"订单编号"};
+		MyJTable table = new MyJTable(orderId, false);
+		this.add(new MyJScrollPane(690, 150, 340, 370, table));
+		
+		deliveryCost = new MyJTextField(670, 560, 138, 30);
+		deliveryCost.setOnlyDouble();
+		deliveryCost.setText("0.0");
+		this.add(deliveryCost);
+		
+		MyJButton calculateCost = new MyJButton(472, 560, 138, 23, "计算运费/元", 18);
+		calculateCost.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO 计算运费
+				double cost = 0.0;
+				deliveryCost.setText(Double.toString(cost));
+			}
+		});
+		this.add(calculateCost);
+		
+		MyJButton produceLoadingList = new MyJButton(583, 630, 115, 23, "生成装车单", 18);
+		produceLoadingList.setActionCommand("produceLoadingList");
+		produceLoadingList.addActionListener(frame);
+		this.add(produceLoadingList);
 	}
 	/**
 	 * 从bl层得到订单编号
@@ -57,5 +56,13 @@ public class VehicleLoading extends MyJPanel {
 	 */
 	private String[] getOrderId(){
 		return new String[]{};
+	}
+	
+	public int produceLoadingList(){
+		String[] loadingInfo;
+		double cost;
+		if((loadingInfo = this.loadingInfo.getInfo())== null) return 1;	
+		if((cost = Double.parseDouble(deliveryCost.getText())) <= 0) return 2;
+		return 0;
 	}
 }

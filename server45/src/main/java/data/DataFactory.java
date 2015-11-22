@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import data.accountdata.AccountData;
 import data.basedata.BaseData;
 import data.branchdata.BranchData;
+import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
 import data.funddata.BankAccountData;
 import data.funddata.DebitAndPayBillData;
@@ -37,6 +38,7 @@ public class DataFactory {
 		case RecordData.NAME:			return new RecordData();
 		case TransferData.NAME:			return new TransferData();
 		case UserData.NAME:			return new UserData();
+		case DriverData.NAME:		return new DriverData();
 		default:			return null;
 		}
 	}
