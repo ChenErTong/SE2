@@ -10,7 +10,7 @@ import ui.myui.MyTranslucentPanel;
 public class Panel_Manager_ReceiptInfo extends MyTranslucentPanel{
 
 	public Panel_Manager_ReceiptInfo() {
-		super(680, 100, 550, 540);
+		super(700, 100, 550, 540);
 		this.initComponent();
 	}
 	

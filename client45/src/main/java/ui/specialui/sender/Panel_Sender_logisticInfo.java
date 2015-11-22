@@ -20,13 +20,13 @@ import ui.myui.MyTranslucentPanel;
 public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 
 	public Panel_Sender_logisticInfo() {
-		super(650, 105, 550, 605);
+		super(630, 105, 647, 605);
 		this.initComponent();
 	}
 
 	private void initComponent() {
-		// TODO Auto-generated method stubg
-		MyJLabel title = new MyJLabel(195,10,170,40,"订单物流信息",18,true);
+		// TODO Auto-generated method stub
+		MyJLabel title = new MyJLabel(250,10,170,40,"订单物流信息",18,true);
 		this.add(title);
 		
 		//the table
@@ -47,7 +47,7 @@ public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 						
-		jsp.setBounds(10, 50, 530, 540);
+		jsp.setBounds(10, 50, 620, 545);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());

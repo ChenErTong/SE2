@@ -12,7 +12,7 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 	 private MyJTextField orderNumberField;
 	 private MyJTextField senderNameField;
 	public Panel_Sender_Search(Frame_Sender frame_Sender) {
-		super(60, 105,550, 108);
+		super(10, 105,620, 108);
 		// TODO Auto-generated constructor stub
 		this.initComponent(frame_Sender);
 	}

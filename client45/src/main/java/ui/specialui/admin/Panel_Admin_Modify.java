@@ -3,6 +3,8 @@ package ui.specialui.admin;
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import ui.NumberLenghLimited;
@@ -15,15 +17,17 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 
 public class Panel_Admin_Modify extends MyJPanel{
-	String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-	String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
-	String[] provinces ={"江苏省","海南省"};
-
-	public Panel_Admin_Modify(int x, int y, int width, int height) {
-		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
-	}
-
+	
+	
+	private MyJTextField userId;
+	private MyJTextField passwordField;
+	private MyJTextField userNameField;
+	private MyJTextField phoneField;
+	private MyComboBox userIdentityBox;
+	private MyComboBox citiesBox;
+	private MyComboBox provincesBox;
+	private MyComboBox userAuthorityBox;
+	private MyEmptyTextArea addressDetails;
 	private static final long serialVersionUID = 1L;
 
 	public Panel_Admin_Modify(Frame_Admin frame_Admin) {
@@ -85,47 +89,95 @@ public class Panel_Admin_Modify extends MyJPanel{
 		MyJLabel city = new MyJLabel(660,400,25,30,"市",18,true);
 		this.add(city);
 		
-		MyJTextField userId = new MyJTextField(490,92,140,30);
+		userId = new MyJTextField(500,92,140,30);
 		this.add(userId);
 
-		MyJTextField passwordField = new MyJTextField(750,92,140,30);
+		passwordField = new MyJTextField(750,92,140,30);
 		this.add(passwordField);
 		
-		MyJTextField userNameField = new MyJTextField(490, 180, 140, 30);
+		userNameField = new MyJTextField(500, 180, 140, 30);
 		this.add(userNameField);
 		
-		MyJTextField phoneField = new MyJTextField(750,180,140,30);
+		phoneField = new MyJTextField(750,180,140,30);
 		phoneField.setDocument(new NumberLenghLimited(11));
 		this.add(phoneField);
 		
-		MyComboBox userIdentityBox = new MyComboBox(490,270,150,30,18,identity);
+		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
+		userIdentityBox = new MyComboBox(500,270,150,30,18,identity);
 		this.add(userIdentityBox);
 		
-		MyComboBox userAuthorityBox = new MyComboBox(750,270,150,30,18,authority);
+		String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
+		userAuthorityBox = new MyComboBox(750,270,150,30,18,authority);
 		this.add(userAuthorityBox);
 		
 		String[] provinces ={"江苏省","海南省"};
-		MyComboBox provincesBox = new MyComboBox(520,400,120,30,18,provinces);
+		provincesBox = new MyComboBox(520,400,120,30,18,provinces);
 		this.add(provincesBox);
 		
 		String[] cities = {"南京市","海口市"};
-		MyComboBox citiesBox = new MyComboBox(690,400,120,30,18,cities);
+		citiesBox = new MyComboBox(690,400,120,30,18,cities);
 		this.add(citiesBox);
 		
-		MyEmptyTextArea addressDetails = new MyEmptyTextArea(490,468,410,100);
+		addressDetails = new MyEmptyTextArea(490,468,410,100);
 		this.add(addressDetails);
 		
-		MyJButton add = new MyJButton(475,600,100,30,"确认修改",18);
-		add.setActionCommand("Modify");
-		add.addActionListener(frame_Admin);
-		this.add(add);
-		add.setVisible(true);
+		MyJButton modify = new MyJButton(475,600,100,30,"确认修改",18);
+		modify.setActionCommand("ModifyUser");
+		//add.addActionListener(new ActionListener(){
+
+			//@Override
+			//public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			//}
+			
+		//});
+		modify.addActionListener(frame_Admin);
+		this.add(modify);
+		modify.setVisible(true);
 		
 		MyJButton cancel = new MyJButton(720,600,100,30,"取消修改",18);
-		cancel.setActionCommand("cancel");
-		cancel.addActionListener(frame_Admin);
+		cancel.setActionCommand("CancelModify");
+		cancel.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		this.add(cancel);
 		cancel.setVisible(true);
 		
+	}
+	
+	public String[] getUserInfo(){
+		String[] info = new String[9];
+		info[0] = userId.getText();
+		info[1] = passwordField.getText();
+		info[2] = userNameField.getText();
+		info[3] = phoneField.getText();
+		info[4] = (String)userIdentityBox.getSelectedItem();
+		info[5] = (String)userAuthorityBox.getSelectedItem();
+		info[6] = (String)provincesBox.getSelectedItem();
+		info[7] = (String)citiesBox.getSelectedItem();
+		info[8] = addressDetails.getText();
+		for (String string : info) {
+			if(string.equals("")){
+				return null;
+			}
+		}
+		return info;
+		
+	}
+	
+	public int ModifyUser() {
+		String[] userInfo;
+		if(( userInfo= this.getUserInfo()) == null){
+			return 1;
+		}
+
+		return 0;
 	}
 }

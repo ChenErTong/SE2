@@ -26,4 +26,5 @@ public class MyJComboBox extends JComboBox<String> {
 		this.setSelectedItem(items[0]);
 		this.setVisible(true);
 	}
+	
 }

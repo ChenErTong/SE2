@@ -18,7 +18,8 @@ public class MyComboBox extends JComboBox<String>{
 		this.setBounds(x, y, width, height);
 		for(int i = 0; i < str.length; i++)
 			this.addItem(str[i]);
-		
+	
+		this.setSelectedItem(str[0]);
 		Color foreColor = Color.WHITE;
 		Color backColor = MyColor.getColor();
 		
@@ -29,5 +30,22 @@ public class MyComboBox extends JComboBox<String>{
 		
 		
 		
+	}
+	/**
+	 * JComboBox的联动实现
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
+	public MyComboBox(int x,int y,int width,int height){
+		this.setFont(new MyFont(15));
+		this.setBounds(x, y, width, height);
+		this.setForeground(Color.BLACK);
+		//for(int i = 0; i < items.length; i++){
+			//this.addItem(items[i]);
+		//}
+		//this.setSelectedItem(items[0]);
+		this.setVisible(true);
 	}
 }

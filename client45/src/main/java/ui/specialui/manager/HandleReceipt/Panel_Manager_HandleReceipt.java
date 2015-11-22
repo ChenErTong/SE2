@@ -24,8 +24,8 @@ import ui.specialui.manager.FrameManager;
 public class Panel_Manager_HandleReceipt extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 	
-
-
+	private Panel_Manager_SearchReceipt searchPanel;
+	private Panel_Manager_ReceiptInfo receiptInfo;
 	public Panel_Manager_HandleReceipt(FrameManager frame_Manager) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -33,7 +33,12 @@ public class Panel_Manager_HandleReceipt extends MyJPanel {
 	}
 	
 	private void initComponent(FrameManager frame_Manager) {
-		String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
+		searchPanel = new Panel_Manager_SearchReceipt();
+		this.add(searchPanel);
+		
+		receiptInfo = new Panel_Manager_ReceiptInfo();
+		this.add(receiptInfo);
+		/*String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
 		String [] receiptState = {"所有状态","草稿","正在审批","通过审批","未通过审批"};
 		
 		MyJLabel receiptTypeLabel= new MyJLabel(50,100,120,30, "选择单据类别",14,true);
@@ -71,7 +76,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel {
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());
 		jsp.setVisible(true);
-		this.add(jsp);
+		this.add(jsp);*/
 		
 		 
 		MyJButton ViewReceiptInfo = new MyJButton(85, 650, 150, 40,"查看当前所选单据",14);
@@ -109,8 +114,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel {
 		ExportReceipt.addActionListener(frame_Manager);
 		this.add(ExportReceipt);
 		
-		Panel_Manager_ReceiptInfo receiptInfo = new Panel_Manager_ReceiptInfo();
-		this.add(receiptInfo);
+		
 		
 		
 		

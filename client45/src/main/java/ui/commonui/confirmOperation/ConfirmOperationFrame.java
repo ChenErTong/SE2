@@ -35,7 +35,7 @@ public class ConfirmOperationFrame extends JDialog implements ActionListener{
 		button_close.addActionListener(this);
 		this.add(button_close);
 		
-		this.setBackground(new Color(0,0,0,0.6f));
+		//this.setBackground(new Color(0,0,0,0.6f));
 	}
 	@Override
 	public void actionPerformed(ActionEvent events) {

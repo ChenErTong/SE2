@@ -3,12 +3,25 @@ package ui.specialui.admin;
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 
 
 
+
+
+
+
+
+
+
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 import ui.NumberLenghLimited;
+import ui.Config.JComboBoxOfChina;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -24,21 +37,24 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-	String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
-	String[] provinces ={"江苏省","海南省"};
+	
+	
+	private MyJTextField userId;
+	private MyJTextField passwordField;
+	private MyJTextField userNameField;
+	private MyJTextField phoneField;
+	private MyComboBox userIdentityBox;
+	private MyComboBox provincesBox;
+	private MyComboBox citiesBox;
+	private MyComboBox districtsBox;
 
-	public Panel_Admin_AddUser(int x, int y, int width, int height) {
-		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
-	}
-
+	
+	private MyComboBox userAuthorityBox;
+	private MyEmptyTextArea addressDetails;
 	public Panel_Admin_AddUser(Frame_Admin frame_Admin) {
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		
-		
 		this.initComponent(frame_Admin);
 	}
 	
@@ -57,6 +73,7 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	  
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private void initComponent(Frame_Admin frame_Admin){
 		MyJLabel title = new MyJLabel(580, 40, 170, 50, "新增用户信息", 24, true);
 		this.add(title);
@@ -92,51 +109,137 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		MyJLabel city = new MyJLabel(660,400,25,30,"市",18,true);
 		this.add(city);
 		
-		MyJTextField userId = new MyJTextField(500,92,140,30);
+		MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
+		this.add(district);
+		
+		userId = new MyJTextField(500,92,140,30);
 		this.add(userId);
 
-		MyJTextField passwordField = new MyJTextField(750,92,140,30);
+		passwordField = new MyJTextField(750,92,140,30);
 		this.add(passwordField);
 		
-		MyJTextField userNameField = new MyJTextField(500, 180, 140, 30);
+		userNameField = new MyJTextField(500, 180, 140, 30);
 		this.add(userNameField);
 		
-		MyJTextField phoneField = new MyJTextField(750,180,140,30);
+		phoneField = new MyJTextField(750,180,140,30);
 		phoneField.setDocument(new NumberLenghLimited(11));
 		this.add(phoneField);
 		
-		MyComboBox userIdentityBox = new MyComboBox(500,270,150,30,18,identity);
+		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
+		userIdentityBox = new MyComboBox(500,270,150,30,18,identity);
 		this.add(userIdentityBox);
 		
-		MyComboBox userAuthorityBox = new MyComboBox(750,270,150,30,18,authority);
+		String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
+		userAuthorityBox = new MyComboBox(750,270,150,30,18,authority);
 		this.add(userAuthorityBox);
+		  
+		//构建中国各大城市的三级联动下拉框
+	    JComboBoxOfChina box = new JComboBoxOfChina();
+	    
+	 
+	    provincesBox = new MyComboBox(520,400,120,30);
+	    provincesBox = (MyComboBox) box.getCombobox_privince();
+	   // JComboBox combobox_privince = box.getCombobox_privince();
+	    //combobox_privince.setBounds(100, 50, 150, 30);
+	    this.add(provincesBox);
+	    
+	    //构造市级下拉框
+	    citiesBox= new MyComboBox(690,400,120,30);
+	    citiesBox = (MyComboBox)box.getCombobox_city();
+	    this.add(citiesBox);
+	  //   JComboBox combobox_city = box.getCombobox_city();
+	   // combobox_city.setBounds(100, 100, 150, 30);
+	    //this.add(combobox_city);
+	    
+	    //构建区级下拉框
+	    districtsBox = new MyComboBox(690,400,120,30);
+	    districtsBox = (MyComboBox)box.getCombobox_area();
+	    //JComboBox combobox_area = box.getCombobox_area();
+	    //combobox_area.setBounds(100, 150, 150, 30);
+	    //this.add(combobox_area);
+	    
+	   this.setVisible(true);
 		
-		String[] provinces ={"江苏省","海南省"};
-		MyComboBox provincesBox = new MyComboBox(520,400,120,30,18,provinces);
-		this.add(provincesBox);
+	//	String[] provinces ={"江苏省","海南省"};
+		//provincesBox = new MyComboBox(520,400,120,30,18,provinces);
+		//this.add(provincesBox);
 		
-		String[] cities = {"南京市","海口市"};
-		MyComboBox citiesBox = new MyComboBox(690,400,120,30,18,cities);
-		this.add(citiesBox);
+		//String[] cities = {"南京市","海口市"};
+		//citiesBox = new MyComboBox(690,400,120,30,18,cities);
+		//this.add(citiesBox);
 		
-		MyEmptyTextArea addressDetails = new MyEmptyTextArea(490,468,410,100);
-		this.add(addressDetails);
+	//	String[] districts ={};
+		//districtsBox = new MyComboBox(690,400,120,30,18,districts);
+		//this.add(districtsBox);
 		
-		MyJButton add = new MyJButton(475,600,100,30,"确认添加",18);
-		add.setActionCommand("Add");
-		add.addActionListener(frame_Admin);
-		this.add(add);
-		add.setVisible(true);
+	//	addressDetails = new MyEmptyTextArea(490,468,410,100);
+		//this.add(addressDetails);
+		
+		//MyJButton add = new MyJButton(475,600,100,30,"确认添加",18);
+		//add.setActionCommand("Add");
+	//	add.addActionListener(new ActionListener(){
+
+		//	@Override
+			//public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			//}
+			
+		//});
+	//	add.addActionListener(frame_Admin);
+		//this.add(add);
+		//add.setVisible(true);
 		
 		MyJButton cancel = new MyJButton(720,600,100,30,"取消添加",18);
-		cancel.setActionCommand("cancel");
-		cancel.addActionListener(frame_Admin);
+		cancel.setActionCommand("cancelAddUser");
+		cancel.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				userId.setText(null);
+				passwordField.setText(null);
+				userNameField.setText(null);
+				phoneField.setText(null);
+				addressDetails.setText(null);
+			}
+			
+		});
 		this.add(cancel);
 		cancel.setVisible(true);
 	}
 
+	public String[] getUserInfo(){
+		String[] info = new String[10];
+		info[0] = userId.getText();
+		info[1] = passwordField.getText();
+		info[2] = userNameField.getText();
+		info[3] = phoneField.getText();
+		info[4] = (String)userIdentityBox.getSelectedItem();
+		info[5] = (String)userAuthorityBox.getSelectedItem();
+		info[6] = (String)provincesBox.getSelectedItem();
+		info[7] = (String)citiesBox.getSelectedItem();
+		info[8] = (String)districtsBox.getSelectedItem();
+		info[9] = addressDetails.getText();
+		for (String string : info) {
+			if(string.equals("")){
+				return null;
+			}
+		}
+		return info;
+		
+	}
 	
+	/**
+	 * 添加用户
+	 * @return  
+	 */
+	public int addUser() {
+		String[] userInfo;
+		if(( userInfo= this.getUserInfo()) == null){
+			return 1;
+		}
 
-	
-
+		return 0;
+	}
 }

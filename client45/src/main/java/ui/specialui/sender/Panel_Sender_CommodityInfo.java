@@ -23,7 +23,7 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 	//private MyJComboBox packKindField;
 	//private MyJComboBox deliveryKindField;
 	public Panel_Sender_CommodityInfo() {
-		super(60, 220, 550, 490);
+		super(10, 220, 620, 490);
 		this.initComponent();
 	}
 
@@ -31,7 +31,7 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 
 	private void initComponent() {
 		// TODO Auto-generated method stub
-		this.add(new MyJLabel(195,10,170,40,"商品订单信息",18,true));
+		this.add(new MyJLabel(250,10,170,40,"商品订单信息",18,true));
 		//this.add(new MyJLabel(50, 54, 100, 20, "原件数/件:", 15, true));
 		//this.add(new MyJLabel(190, 54, 120, 20, "实际体积/m^3:", 15, true));
 		//this.add(new MyJLabel(360, 54, 120, 20, "实际重量/kg:", 15, true));
@@ -51,7 +51,7 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 		//this.add(deliveryKindField);
 		
 		//the table
-				String[] headers = {"订单号","寄件人姓名","原件数/件","实际体积/m^3","实际重量/kg","包装类型","快递类型","货物名", "货物种类:","运输费用","预计到达时间"};
+				String[] headers = {"订单号","寄件人","快递类型","种类","费用","预计到达时间"};
 				MyTable	table = new MyTable(headers);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
@@ -68,7 +68,7 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 				head.setForeground(Color.BLACK);
 				head.setResizingAllowed(false);
 								
-				jsp.setBounds(10, 50, 530, 430);
+				jsp.setBounds(10, 50, 610, 430);
 				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 				jsp.setOpaque(false);
 				jsp.setBorder(BorderFactory.createEmptyBorder());

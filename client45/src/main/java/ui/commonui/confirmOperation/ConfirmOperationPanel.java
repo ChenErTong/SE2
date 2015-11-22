@@ -58,6 +58,7 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 		if(events.getSource()==button_yes){
 			switch(flag){
 			//TODO-在不同的几面进行不同的操作时根据flag调用
+			case "DeleteUser":
 			}
 		ConfirmOperationFrame.button_close.doClick();
 		}
