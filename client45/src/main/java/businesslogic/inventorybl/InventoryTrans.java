@@ -40,4 +40,13 @@ public class InventoryTrans {
 		}
 		return pos;
 	}
+	
+	public static ArrayList<InventoryImportReceiptVO> convertInventoryImportReceiptPOstoVOs(ArrayList<InventoryImportReceiptPO> pos){
+		ArrayList<InventoryImportReceiptVO> vos=new ArrayList<InventoryImportReceiptVO>();
+		for(InventoryImportReceiptPO po : pos) {
+			InventoryImportReceiptVO vo = InventoryTrans.convertPOtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
+	}
 }
