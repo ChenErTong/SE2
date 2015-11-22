@@ -6,7 +6,11 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.branch_conuterman.Frame_Branch;
-
+/**
+ * 派发货物界面
+ * @author czw
+ * @time 2015年11月22日下午2:20:58
+ */
 public class SendCommodity extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 	

@@ -1,5 +1,6 @@
 package ui.specialui.branch_conuterman.facilityInfoManage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,9 +10,14 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.FacilityVO;
-
+/**
+ * 车辆信息管理界面
+ * @author czw
+ * @time 2015年11月22日下午2:19:50
+ */
 public class FacilityInfoManage extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
@@ -32,8 +38,13 @@ public class FacilityInfoManage extends MyJPanel {
 		facilityId = new MyJTextField(510, 115, 250, 30);
 		facilityId.setOnlyInteger(9);
 		searchFacility = new MyJButton(770, 115, 60, 30, "查询", 20);
-		searchFacility.setActionCommand("searchFacility");
-		searchFacility.addActionListener(frame);
+		searchFacility.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!FacilityInfoManage.this.searchFacility(facilityId.getText())){
+					new MyNotification(frame, "不存在该车辆代号", Color.RED);
+				}	
+			}
+		});
 		
 		this.insertPanel(frame);
 	}
@@ -159,9 +170,10 @@ public class FacilityInfoManage extends MyJPanel {
 	/**
 	 * TODO 从bl层获取数据
 	 * 查找车辆
+	 * @param facilityId 
 	 */
-	public boolean searchFacility() {		
-		facility = facilityController.findFacility(facilityId.getText());
+	private boolean searchFacility(String facilityId) {		
+		facility = facilityController.findFacility(facilityId);
 		if(facility == null){
 			return false;
 		}		
@@ -172,7 +184,7 @@ public class FacilityInfoManage extends MyJPanel {
 		data[3] = facility.getEngineCode();
 		data[4] = facility.getDateString();
 	
-		id = facilityId.getText();
+		id = facilityId;
 		facilityInfo.setData(data);
 		return true;
 	}

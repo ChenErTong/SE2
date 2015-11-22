@@ -12,7 +12,11 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.branch_conuterman.Frame_Branch;
-
+/**
+ * 送达货物信息查看界面
+ * @author czw
+ * @time 2015年11月22日下午2:20:46
+ */
 public class ArrivalCommodityInfoCheck extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 

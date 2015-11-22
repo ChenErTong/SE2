@@ -13,7 +13,6 @@ import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityInfoCheck;
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.SendCommodity;
 import ui.specialui.branch_conuterman.vehicleloading.VehicleLoading;
-import ui.specialui.courier.receiveInput.ReceiveInput;
 
 public class Frame_Branch extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -89,10 +88,10 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 				this.getLayeredPane().remove(subPanel);
 				subPanel = new ArrivalCommodityInfoCheck(this);
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));			}
-		}else if(e.getActionCommand().equals("searchFacility")){
-			//查询车辆
-			if(!((FacilityInfoManage) subPanel).searchFacility()){
-				new MyNotification(this, "不存在该车辆代号", Color.RED);
+		}else if(e.getActionCommand().equals("produceDebitNote")){
+			//建立收款单
+			if(this.produceDebitNote()){
+				((DebitNoteBuild) subPanel).refresh();
 			}
 		}else if(e.getActionCommand().equals("addFacility")){
 			//添加车辆
@@ -110,6 +109,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 				((FacilityInfoManage) subPanel).refresh();
 			}
 		}
+		
 	}
 	
 	/**
@@ -177,10 +177,21 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 	 * @return
 	 */
 	private boolean produceDeliveryList() {
-		System.out.println("delivery");
 		switch(((SendCommodity) subPanel).produceDeliveryList()){
 		case 0: new MyNotification(this, "成功生成派件单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请选择一个快递员", Color.RED); break;
+		}	
+		return false;
+	}
+	
+	/**
+	 * 建立收款单
+	 * @return
+	 */
+	private boolean produceDebitNote() {
+		switch(((DebitNoteBuild) subPanel).produceDebitNote()){
+		case 0: new MyNotification(this, "成功建立收款单", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请输入一个快递员", Color.RED); break;
 		}	
 		return false;
 	}
