@@ -75,13 +75,9 @@ public class BankAccount  {
 
 	
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {
-		ArrayList<BankAccountPO> P0s=bankAccountData.find(keywords,type);
-		ArrayList<BankAccountVO> V0s=new ArrayList<BankAccountVO>();
-		for(BankAccountPO PO:P0s){
-			BankAccountVO vo=FundTrans.convertPOtoVO(PO);
-			V0s.add(vo);
-		}
-				return V0s;
+		ArrayList<BankAccountPO> pos=bankAccountData.find(keywords,type);
+		ArrayList<BankAccountVO> vos=FundTrans.convertBankAccountPOstoVOs(pos);
+			return vos;
 	}
     
 }

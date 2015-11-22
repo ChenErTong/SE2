@@ -30,31 +30,25 @@ public class Expense {
 	}
 	
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
 		return ConfirmState.CONFIRM;
 	}
 
 	
 	public String getID() throws RemoteException {
-		// TODO Auto-generated method stub
 		return expenseData.getID();
 	}
 
 	
 	public ArrayList<ExpenseVO> show() throws RemoteException {
 		ArrayList<ExpensePO> pos=expenseData.show();
-		ArrayList<ExpenseVO> vos=new ArrayList<ExpenseVO>();
-		for(ExpensePO po :pos){
-			ExpenseVO vo=FundTrans.convertPOtoVO(po);
-			vos.add(vo);
-		}
+		ArrayList<ExpenseVO> vos=FundTrans.convertExpensePOstoVOs(pos);
 		return vos;
 	}
 	
     
 	
 	public ResultMessage add(ExpenseVO vo) {
-		ExpensePO expensePO = new ExpensePO(vo.getID(), vo.getWorkshop(), vo.getMoney(), vo.getAddress());
+		ExpensePO expensePO = FundTrans.convertVOtoPO(vo);
 		try {
 			return expenseData.add(expensePO);
 		} catch (RemoteException e) {
@@ -75,7 +69,7 @@ public class Expense {
 
 	
 	public ResultMessage update(ExpenseVO vo) {
-		ExpensePO expensePO = new ExpensePO(vo.getID(), vo.getWorkshop(), vo.getMoney(), vo.getAddress());
+		ExpensePO expensePO = FundTrans.convertVOtoPO(vo);
 		try {
 			return expenseData.modify(expensePO);
 		} catch (RemoteException e) {

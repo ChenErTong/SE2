@@ -26,6 +26,19 @@ public class FundTrans {
 		}
 	}
 	
+	public static ExpensePO convertVOtoPO(ExpenseVO vo){
+		if (vo==null) {
+			return null;
+		}
+		else {
+			String ID = vo.getID();
+			String workshop = vo.getWorkshop();
+			double money = vo.getMoney();
+			String address=vo.getAddress();
+			return new ExpensePO(ID, workshop, money, address);
+		}
+	}
+	
 	public static DebitAndPayBillPO convertVOtoPO(DebitAndPayBillVO VO){
 	    ReceiptType type=VO.getType();
 	    if(type==ReceiptType.EXPENSE){
@@ -83,6 +96,15 @@ public class FundTrans {
 		ArrayList<DebitAndPayBillVO> vos = new ArrayList<>();
 		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
 			DebitAndPayBillVO vo = convertPOtoVO(debitAndPayBillPO);
+			vos.add(vo);
+		}
+		return vos;
+	}
+
+	public static ArrayList<ExpenseVO> convertExpensePOstoVOs(ArrayList<ExpensePO> pos) {
+		ArrayList<ExpenseVO> vos = new ArrayList<>();
+		for (ExpensePO expensePO : pos) {
+			ExpenseVO vo = convertPOtoVO(expensePO);
 			vos.add(vo);
 		}
 		return vos;
