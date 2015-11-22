@@ -1,6 +1,6 @@
 package vo;
 
-import vo.receiptpvo.ReceiptVO;
+import vo.receiptvo.ReceiptVO;
 
 public class InventoryExportReceiptVO extends ReceiptVO {
 	/**目的地**/

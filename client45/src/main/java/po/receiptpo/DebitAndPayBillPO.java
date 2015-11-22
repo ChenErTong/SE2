@@ -18,6 +18,10 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = -5827233260131683793L;
+	/**
+	 * 
+	 */
 	/**
 	 * 
 	 */
