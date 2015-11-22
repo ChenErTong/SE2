@@ -16,7 +16,7 @@ import state.ReceiptType;
 import vo.BussinessConditionVO;
 import vo.DebitAndPayBillVO;
 
-public class Record {
+public class Record implements RecordBLService{
 	private RecordDataService recordData;
 	private  DebitAndPayBillDataService  DebitAndPayBillData;
 	public Record() {
@@ -31,7 +31,7 @@ public class Record {
 			e.printStackTrace();
 		}
 	}
-	
+	@Override
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs=DebitAndPayBillData.showList(begin,end);
 		ArrayList<DebitAndPayBillVO> VOs = null;
@@ -42,7 +42,7 @@ public class Record {
 		return VOs;
 	}
    
-	
+	@Override
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
 		String begin=recordData.getBegin();
 		ArrayList<DebitAndPayBillPO> POs=DebitAndPayBillData.showList(begin,end);
