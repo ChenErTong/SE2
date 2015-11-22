@@ -9,7 +9,7 @@ import po.accountpo.AccountPO;
  * @author czw
  * @version Oct 23, 2015
  */
-public class BranchPO extends PersistentObject{	
+public class BranchPO extends OrganizationPO{	
 	/**
 	 * 
 	 */

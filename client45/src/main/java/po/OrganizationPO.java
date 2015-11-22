@@ -19,16 +19,13 @@ public class OrganizationPO extends PersistentObject{
 	protected String organizationID;
 	/**����ʱ�䣬ϵͳ�Զ�����*/
 	protected String date;
-	/**Ա������*/
-	protected double number;
 	/**������ַ*/
 	protected String address;
 	
-	public OrganizationPO(String organizationID,String address,double number){
+	public OrganizationPO(String organizationID,String address){
 		super(organizationID);
 		this.organizationID = organizationID;
 		this.address = address;
-		this.number = number;
 		/**�Զ���������*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
@@ -38,12 +35,6 @@ public class OrganizationPO extends PersistentObject{
 	}
 	public void setOrganizationID(String organizationID) {
 		this.organizationID = organizationID;
-	}
-	public double getNumber() {
-		return number;
-	}
-	public void setNumber(double number) {
-		this.number = number;
 	}
 	public String getAddress() {
 		return address;
