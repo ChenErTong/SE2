@@ -1,7 +1,5 @@
 package businesslogic.account;
-/**
- * @author LIUXUANLIN
- */
+
 import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
