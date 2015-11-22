@@ -22,7 +22,7 @@ public interface BaseBLService extends BLService{
 	 * @throws RemoteException 
 	 */
 	//TODO-
-	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException;
+	public ArrayList<BaseVO> show(FindTypeBase baseType);
 	/**
 	 * 界面进行新建一个成本常量操作是得到一个可用的ID
 	 * @param baseType 增加的常量类型：薪水策略、距离、单价
@@ -31,7 +31,7 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public String getID(FindTypeBase baseType) throws RemoteException;
+	public String getID(FindTypeBase baseType);
 	/**
 	 * 添加一个常量
 	 * @param vo BaseVO
@@ -40,7 +40,7 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage addBase(BaseVO vo) throws RemoteException;
+	public ResultMessage addBase(BaseVO vo);
 	/**
 	 * 删除一个常量
 	 * @param ID
@@ -49,7 +49,7 @@ public interface BaseBLService extends BLService{
 	 * @throws RemoteException 
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteBase(String ID) throws RemoteException;
+	public ResultMessage deleteBase(String ID);
 	/**
 	 * 更新一条成本常量信息
 	 * @param vo BaseVO
@@ -58,5 +58,5 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage updateBase(BaseVO vo) throws RemoteException;
+	public ResultMessage updateBase(BaseVO vo);
 }

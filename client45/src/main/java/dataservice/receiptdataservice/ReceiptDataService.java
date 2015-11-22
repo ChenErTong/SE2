@@ -1,12 +1,7 @@
 package dataservice.receiptdataservice;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-
-import dataservice.DataService;
 import dataservice.ManageDataService;
 import po.receiptpo.ReceiptPO;
-import state.ResultMessage;
 /**
  * 提供单据信息的查看、单据修改和单据审批的服务
  * @author zsq
