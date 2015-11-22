@@ -39,5 +39,10 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

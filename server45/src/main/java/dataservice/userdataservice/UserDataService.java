@@ -1,7 +1,6 @@
 package dataservice.userdataservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.UserPO;
@@ -44,4 +43,10 @@ public interface  UserDataService extends ManageDataService<UserPO> {
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage updateAdmin(String oldPassword,String newPassword) throws RemoteException;
+	/**
+	 * @author Ann
+	 * @return
+	 * @throws RemoteException
+	 */
+	public String getID() throws RemoteException;
 }
