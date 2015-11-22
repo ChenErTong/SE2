@@ -50,5 +50,24 @@ public class ReceiptPO extends PersistentObject{
 		this.date = date;
 	}
 
+	public ReceiptState getReceiptState() {
+		return receiptState;
+	}
+
+	public void setReceiptState(ReceiptState receiptState) {
+		this.receiptState = receiptState;
+	}
+
+	public ReceiptCondition getReceiptCondition() {
+		return receiptCondition;
+	}
+
+	public void setReceiptCondition(ReceiptCondition receiptCondition) {
+		this.receiptCondition = receiptCondition;
+	}
+	
+
+	
+
 
 }

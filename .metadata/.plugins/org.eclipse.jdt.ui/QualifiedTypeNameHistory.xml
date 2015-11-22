@@ -55,9 +55,9 @@
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="po.OrderPO"/>
-<fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="state.ReceiptType"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
+<fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="state.ReceiptCondition"/>
 </qualifiedTypeNameHistroy>

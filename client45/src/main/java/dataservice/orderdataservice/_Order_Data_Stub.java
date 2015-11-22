@@ -65,14 +65,7 @@ public class _Order_Data_Stub implements OrderDataService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage modify(OrderPO order, String orderIdString, String senderName, String senderAddress,
-			String senderTel, String senderCo, String recipientName, String recipientAddress, String recipientTel,
-			String recipientCo, ArrayList<CommodityVO> commodityVO, String midAddres, String sendTime,
-			String recipientTime, double money, ReceiptState state) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 }

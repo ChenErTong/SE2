@@ -13,6 +13,7 @@ import po.OrderPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
+import state.ReceiptCondition;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -97,15 +98,14 @@ public class Branch{
 		return vo;
 	}
 
-	public ResultMessage submit(ReceiptPO receipt) {
-		
-		return null;
+	public ResultMessage submit(ReceiptPO receipt) throws RemoteException {
+	    receipt.setReceiptCondition(ReceiptCondition.SUBITTED);
+		return receiptData.modify(receipt);
 	}
 
-	public ResultMessage save(ReceiptPO receipt) {
-		//orderData.modify(receipt,receipt.);
-		//orderData.insert(order)
-		return null;
+	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
+		receiptData.add(receipt);
+		return  receiptData.add(receipt);
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
