@@ -6,15 +6,17 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 
-import ui.Config.JComboBoxOfChina;
 
+import ui.Config.JComboBoxOfChina;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
+import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -34,9 +36,9 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	private MyJTextField userNameField;
 	private MyJTextField phoneField;
 	private MyComboBox userIdentityBox;
-	private MyComboBox provincesBox;
-	private MyComboBox citiesBox;
-	private MyComboBox districtsBox;
+	private JComboBox provincesBox;
+	private JComboBox citiesBox;
+	//private JComboBox districtsBox;
 
 	
 	private MyComboBox userAuthorityBox;
@@ -99,8 +101,8 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		MyJLabel city = new MyJLabel(660,400,25,30,"市",18,true);
 		this.add(city);
 		
-		MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
-		this.add(district);
+		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
+		//this.add(district);
 		
 		userId = new MyJTextField(500,92,140,30);
 		this.add(userId);
@@ -131,58 +133,27 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	    JComboBoxOfChina box = new JComboBoxOfChina();
 	    
 	 
-	    provincesBox = new MyComboBox(520,400,120,30);
-	    provincesBox = (MyComboBox) box.getCombobox_privince();
-	   // JComboBox combobox_privince = box.getCombobox_privince();
-	    //combobox_privince.setBounds(100, 50, 150, 30);
+	    provincesBox = box.getCombobox_privince();
+	    provincesBox.setBounds(520,400,120,30);
+	    provincesBox.setFont(new MyFont(14,true));
+	    provincesBox.setVisible(true);
 	    this.add(provincesBox);
 	    
 	    //构造市级下拉框
-	    citiesBox= new MyComboBox(690,400,120,30);
-	    citiesBox = (MyComboBox)box.getCombobox_city();
+	    citiesBox =box.getCombobox_city();
+	    citiesBox.setBounds(690,400,120,30);
+	    citiesBox.setFont(new MyFont(14,true));
+	    citiesBox.setVisible(true);
 	    this.add(citiesBox);
-	  //   JComboBox combobox_city = box.getCombobox_city();
-	   // combobox_city.setBounds(100, 100, 150, 30);
-	    //this.add(combobox_city);
 	    
 	    //构建区级下拉框
-	    districtsBox = new MyComboBox(690,400,120,30);
-	    districtsBox = (MyComboBox)box.getCombobox_area();
 	    //JComboBox combobox_area = box.getCombobox_area();
+	    //districtsBox = box.getCombobox_area();
 	    //combobox_area.setBounds(100, 150, 150, 30);
 	    //this.add(combobox_area);
 	    
 	   this.setVisible(true);
-		
-	//	String[] provinces ={"江苏省","海南省"};
-		//provincesBox = new MyComboBox(520,400,120,30,18,provinces);
-		//this.add(provincesBox);
-		
-		//String[] cities = {"南京市","海口市"};
-		//citiesBox = new MyComboBox(690,400,120,30,18,cities);
-		//this.add(citiesBox);
-		
-	//	String[] districts ={};
-		//districtsBox = new MyComboBox(690,400,120,30,18,districts);
-		//this.add(districtsBox);
-		
-	//	addressDetails = new MyEmptyTextArea(490,468,410,100);
-		//this.add(addressDetails);
-		
-		//MyJButton add = new MyJButton(475,600,100,30,"确认添加",18);
-		//add.setActionCommand("Add");
-	//	add.addActionListener(new ActionListener(){
-
-		//	@Override
-			//public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			//}
-			
-		//});
-	//	add.addActionListener(frame_Admin);
-		//this.add(add);
-		//add.setVisible(true);
+	
 		
 		MyJButton cancel = new MyJButton(720,600,100,30,"取消添加",18);
 		cancel.setActionCommand("cancelAddUser");
@@ -204,7 +175,7 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	}
 
 	public String[] getUserInfo(){
-		String[] info = new String[10];
+		String[] info = new String[9];
 		info[0] = userId.getText();
 		info[1] = passwordField.getText();
 		info[2] = userNameField.getText();
@@ -213,8 +184,8 @@ public class Panel_Admin_AddUser extends MyJPanel {
 		info[5] = (String)userAuthorityBox.getSelectedItem();
 		info[6] = (String)provincesBox.getSelectedItem();
 		info[7] = (String)citiesBox.getSelectedItem();
-		info[8] = (String)districtsBox.getSelectedItem();
-		info[9] = addressDetails.getText();
+	//	info[8] = (String)districtsBox.getSelectedItem();
+		info[8] = addressDetails.getText();
 		for (String string : info) {
 			if(string.equals("")){
 				return null;

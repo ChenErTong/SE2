@@ -28,7 +28,7 @@ public class UiConfig_JComboBox {
 	   * @param districts
 	   * @return
 	   */
-	  public static List<String> getDistricts(String districts) {
+	  /*public static List<String> getDistricts(String districts) {
 	    List<String> list = new ArrayList<String>();
 	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	    try {
@@ -52,7 +52,7 @@ public class UiConfig_JComboBox {
 	      e.printStackTrace();
 	    }
 	    return list;
-	  }
+	  }*/
 	  
 	  /**
 	   * 根据某个省份的名字获取此省份的所有城市
@@ -66,7 +66,7 @@ public class UiConfig_JComboBox {
 	      factory.setIgnoringElementContentWhitespace(true);
 	      
 	      DocumentBuilder db = factory.newDocumentBuilder();
-	      Document xmldoc = db.parse(new File("xml/Cities.xml"));
+	      Document xmldoc = db.parse(new File("uiconfigs/Cities.xml"));
 	      Element root = xmldoc.getDocumentElement();
 	      
 	      NodeList nodes = selectNodes("//City[@Province='"+provinces+"']", root);
@@ -96,7 +96,7 @@ public class UiConfig_JComboBox {
 	      factory.setIgnoringElementContentWhitespace(true);
 	      
 	      DocumentBuilder db = factory.newDocumentBuilder();
-	      Document xmldoc = db.parse(new File("xml/Provinces.xml"));
+	      Document xmldoc = db.parse(new File("uiconfigs/Provinces.xml"));
 	      Element root = xmldoc.getDocumentElement();
 	      
 	      NodeList nodes = selectNodes("/Provinces/Province", root);

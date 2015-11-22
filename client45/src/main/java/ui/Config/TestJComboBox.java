@@ -36,12 +36,12 @@ public class TestJComboBox {
 	    j.add(combobox_city);
 	    
 	    //构建区级下拉框
-	    JLabel label_area = new JLabel("地区：");
-	    label_area.setBounds(50, 150, 50, 30);
-	    JComboBox combobox_area = box.getCombobox_area();
-	    combobox_area.setBounds(100, 150, 150, 30);
-	    j.add(label_area);
-	    j.add(combobox_area);
+	 //   JLabel label_area = new JLabel("地区：");
+	   // label_area.setBounds(50, 150, 50, 30);
+	    //JComboBox combobox_area = box.getCombobox_area();
+	    //combobox_area.setBounds(100, 150, 150, 30);
+	    //j.add(label_area);
+	    //j.add(combobox_area);
 	    
 	    j.setVisible(true);
 	  }
