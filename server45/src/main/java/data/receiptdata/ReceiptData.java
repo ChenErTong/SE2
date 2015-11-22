@@ -1,12 +1,10 @@
 package data.receiptdata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
 public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService {
@@ -19,9 +17,10 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	public ReceiptData() throws RemoteException {
 		poList=new SerSaveAndLoad<ReceiptPO>("data/"+NAME+".ser");
 	}
-
+	
 	@Override
 	public String getID() {
+		//估计单据的getID接口要加不少
 		return null;
 	}
 

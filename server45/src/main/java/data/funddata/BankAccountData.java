@@ -7,7 +7,6 @@ import data.ManageData;
 import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
 import state.FindTypeAccount;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
 public class BankAccountData extends ManageData<BankAccountPO> implements BankAccountDataService {
