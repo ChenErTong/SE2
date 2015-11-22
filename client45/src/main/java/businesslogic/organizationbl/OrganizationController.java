@@ -1,12 +1,14 @@
-package businesslogicservice.organizationblservice;
+package businesslogic.organizationbl;
 
 import java.util.ArrayList;
 
+import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
 import vo.OrganizationVO;
 
-public class OrganizationiBLService_Stub implements OrganizationBLService{
-
+public class OrganizationController implements OrganizationBLService {
+	
+	Organization organization = new Organization();
 	@Override
 	public ArrayList<OrganizationVO> show() {
 		// TODO Auto-generated method stub

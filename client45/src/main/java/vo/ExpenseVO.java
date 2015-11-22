@@ -54,10 +54,6 @@ public class ExpenseVO {
 	}
 
 
-//	@Override
-//	public String toString() {
-//		return ID + ", " + workshop + ", " + money + ", " + address + ", " + date;
-//	}
 	
 	
 
