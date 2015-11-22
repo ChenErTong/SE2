@@ -1,12 +1,10 @@
 package data.funddata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 
 public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataService {
@@ -21,28 +19,5 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	}
 	
 
-	@Override
-	public ResultMessage add(ExpensePO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage delete(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modify(ExpensePO PO)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ExpensePO> find()  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
