@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="vo.receiptvo.TransferArrivalListVO"/>
-<fullyQualifiedTypeName name="po.accountpo.AccountPO"/>
-<fullyQualifiedTypeName name="po.OpeningStockPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.AdjustReceiptPO"/>
 <fullyQualifiedTypeName name="dataservice.funddataservice.ExpenseDataService"/>
 <fullyQualifiedTypeName name="state.ConfirmState"/>
@@ -46,7 +43,6 @@
 <fullyQualifiedTypeName name="vo.InventoryCheckVO"/>
 <fullyQualifiedTypeName name="businesslogic.record.record"/>
 <fullyQualifiedTypeName name="businesslogicservice.recordblservice.RecordBLService"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="vo.BaseVO"/>
 <fullyQualifiedTypeName name="businesslogic.basebl.Base"/>
 <fullyQualifiedTypeName name="po.BasePO"/>
@@ -55,9 +51,13 @@
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="po.OrderPO"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="state.ReceiptType"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="state.ReceiptCondition"/>
+<fullyQualifiedTypeName name="dataservice.receiptdataservice.ReceiptDataService"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="vo.BankAccountVO"/>
+<fullyQualifiedTypeName name="po.BankAccountPO"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>
