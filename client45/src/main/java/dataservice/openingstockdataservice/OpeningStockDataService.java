@@ -4,10 +4,12 @@ import java.rmi.RemoteException;
 
 import po.OpeningStockPO;
 import state.ResultMessage;
-/** @author lxl
-	 *  @version Oct 23,2015
-	 *      **/
-	
+
+/**
+ * @author lxl
+ * @version Oct 23,2015
+ **/
+
 public interface OpeningStockDataService {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "OpeningStockData";
