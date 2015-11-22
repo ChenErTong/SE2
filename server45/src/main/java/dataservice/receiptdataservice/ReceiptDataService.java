@@ -27,4 +27,9 @@ public interface ReceiptDataService extends DataService<ReceiptPO> {
 	 * @return 
 	 */
 	public ArrayList<ReceiptPO> find() throws RemoteException;
+	/**
+	 * 得到
+	 * @return
+	 */
+	public String getID() throws RemoteException;
 }

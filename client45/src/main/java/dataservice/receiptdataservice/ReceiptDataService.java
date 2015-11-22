@@ -27,4 +27,8 @@ public interface ReceiptDataService<ReceiptPO extends PersistentObject>extends D
 	 * @return 
 	 */
 	public ArrayList<ReceiptPO> find() throws RemoteException;
+	/**
+	 * 
+	 */
+	public String getID();
 }

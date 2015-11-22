@@ -2,6 +2,7 @@ package dataservice.branchdataservice;
 
 import java.rmi.RemoteException;
 
+import dataservice.ManageDataService;
 import po.BranchPO;
 import po.receiptpo.BranchArrivalListPO;
 import state.ResultMessage;
@@ -10,11 +11,10 @@ import state.ResultMessage;
  * @author Ann
  *
  */
-public interface BranchDataService {
+public interface BranchDataService extends ManageDataService<BranchPO>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "BranchData";
-	public ResultMessage insert(BranchPO po) throws RemoteException;
-	public BranchPO find(String id) throws RemoteException;
-	public ResultMessage update(BranchPO po) throws RemoteException;
+	public String getID();
+
 	
 }

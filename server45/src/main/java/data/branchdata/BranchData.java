@@ -17,4 +17,8 @@ public class BranchData extends ManageData<BranchPO> implements BranchDataServic
 	public BranchData() throws RemoteException {
 		poList=new SerSaveAndLoad<BranchPO>("data/"+NAME+".ser");
 	}
+	@Override
+	public String getID() {
+		return null;
+	}
 }

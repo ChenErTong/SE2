@@ -32,4 +32,10 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return null;
 	}
 
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

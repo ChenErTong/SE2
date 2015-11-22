@@ -27,5 +27,10 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		System.out.println("Find all the receiptPO succeed!");
 		return new ArrayList<ReceiptPO>();
 	}
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
