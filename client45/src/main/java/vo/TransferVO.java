@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po.InventoryPO;
 import po.accountpo.AccountPO;
+import state.OrganizationType;
 
 public class TransferVO extends OrganizationVO {
 	
@@ -25,7 +26,7 @@ public class TransferVO extends OrganizationVO {
 
 	public TransferVO(String organizationID, String address, int number, ArrayList<AccountPO> accounts,
 			ArrayList<InventoryPO> inventories) {
-		super(organizationID, address, number);
+		super(organizationID, address, number,OrganizationType.TRANSFER);
 		this.accounts = accounts;
 		this.inventories = inventories;
 	}

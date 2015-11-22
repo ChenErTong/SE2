@@ -3,6 +3,7 @@ package dataservice.organizationdataservice;
 import java.util.ArrayList;
 
 import po.OrganizationPO;
+import state.OrganizationType;
 import state.ResultMessage;
 
 public class OrganizationDataService_Stub implements OrganizationDataService{
@@ -13,8 +14,8 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 	
 	public OrganizationDataService_Stub(){
 		organizationPOs = new ArrayList<OrganizationPO>();
-		organizationPO_1 = new OrganizationPO("123","FUCK",120);
-		organizationPO_2 = new OrganizationPO("456","FUCKFUCK",150);
+		organizationPO_1 = new OrganizationPO("123","FUCK",120,OrganizationType.BRANCH);
+		organizationPO_2 = new OrganizationPO("456","FUCKFUCK",150,OrganizationType.TRANSFER);
 		
 		organizationPOs.add(organizationPO_1);
 		organizationPOs.add(organizationPO_2);

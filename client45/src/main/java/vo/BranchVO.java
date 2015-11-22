@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po.FacilityPO;
 import po.accountpo.AccountPO;
+import state.OrganizationType;
 
 public class BranchVO extends OrganizationVO{
 	/**
@@ -31,7 +32,7 @@ public class BranchVO extends OrganizationVO{
 
 	public BranchVO(String id, String date, String address, ArrayList<AccountPO> accounts,
 			ArrayList<FacilityPO> facilities) {
-		super(id, address, accounts.size());
+		super(id, address, accounts.size(),OrganizationType.BRANCH);
 		this.id = id;
 		this.date = date;
 		this.address = address;

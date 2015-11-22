@@ -3,6 +3,8 @@ package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import state.OrganizationType;
+
 /**
  * @author zsq
  * @version Oct 22,2015
@@ -18,8 +20,9 @@ public class OrganizationPO extends PersistentObject{
 	protected String date;
 	protected String address;
 	protected int numberOfPerson;
+	protected OrganizationType organizationType;
 	
-	public OrganizationPO(String organizationID,String address,int numberOfPerson){
+	public OrganizationPO(String organizationID,String address,int numberOfPerson,OrganizationType organizationType){
 		super(organizationID);
 		this.organizationID = organizationID;
 		this.address = address;
