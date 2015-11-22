@@ -15,7 +15,7 @@ import vo.FacilityVO;
  */
 public class FacilityController implements FacilityBLService {
 	
-	Facility facilityBL;
+	Facility facilityBL = new Facility();
 	@Override
 	public ConfirmState confirmOperation() {
 		return facilityBL.confirmOperation();
