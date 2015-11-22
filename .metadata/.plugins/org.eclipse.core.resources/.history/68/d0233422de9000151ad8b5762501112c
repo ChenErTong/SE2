@@ -31,7 +31,8 @@ public class Base implements BaseBLService{
 	}
 	@Override
 	public ConfirmState confirmOperation() {
-		return ConfirmState.CONFIRM;
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException {
