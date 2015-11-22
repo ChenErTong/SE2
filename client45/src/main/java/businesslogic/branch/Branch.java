@@ -11,7 +11,6 @@ import dataservice.branchdataservice.BranchDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.OrderPO;
-import po.PersistentObject;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -24,12 +23,11 @@ import vo.receiptvo.LoadingListVO;
 
 public class Branch{
 	private OrderDataService orderData;
-	private ReceiptDataService<PersistentObject> receiptData;
-	@SuppressWarnings("unchecked")
+	private ReceiptDataService  receiptData;
 	public Branch() {
 		try {
 			orderData = (OrderDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OrderDataService.NAME);
-			receiptData = (ReceiptDataService<PersistentObject>) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + BranchDataService.NAME);
+			receiptData = (ReceiptDataService ) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
