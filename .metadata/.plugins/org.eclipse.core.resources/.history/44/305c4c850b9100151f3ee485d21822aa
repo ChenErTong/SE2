@@ -84,22 +84,23 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		this.aftD = aftD;
 	}
 	@Override
-	public InventoryViewVO viewInventory(String beginDate, String endDate) {
+	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public InventoryCheckVO checkRecord(String enddate) {
+	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public String getImportID() {
+	public String getImportID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public ResultMessage addCommodities(String ID, InventoryVO vo) {
+	public ResultMessage addCommodities(String ID, InventoryVO vo)
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -109,7 +110,7 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		return null;
 	}
 	@Override
-	public String getExportID() {
+	public String getExportID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -121,17 +122,17 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		return null;
 	}
 	@Override
-	public String getAdjustID() {
+	public String getAdjustID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public ResultMessage  adjust(InventoryVO before, InventoryVO now) {
+	public ResultMessage  adjust(InventoryVO before, InventoryVO now) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) {
+	public ResultMessage minusCommodities(String ImportID, String Transfer) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

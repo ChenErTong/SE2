@@ -17,27 +17,51 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class InventoryController implements InventoryBLService {
     Inventory InventoryBL;
 	@Override
-	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
+	public InventoryViewVO viewInventory(String beginDate, String endDate)  {
 		// TODO Auto-generated method stub
-		return InventoryBL.viewInventory(beginDate, endDate);
+		try {
+			return InventoryBL.viewInventory(beginDate, endDate);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
+	public InventoryCheckVO checkRecord(String enddate){
 		// TODO Auto-generated method stub
-		return InventoryBL.checkRecord(enddate);
+		try {
+			return InventoryBL.checkRecord(enddate);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public String getImportID() throws RemoteException {
+	public String getImportID()  {
 		// TODO Auto-generated method stub
-		return InventoryBL.getImportID();
+		try {
+			return InventoryBL.getImportID();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
+	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo)  {
 		// TODO Auto-generated method stub
-		return InventoryBL.addCommodities(ArrivalListID, vo);
+		try {
+			return InventoryBL.addCommodities(ArrivalListID, vo);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -47,15 +71,27 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public String getExportID() throws RemoteException {
+	public String getExportID() {
 		// TODO Auto-generated method stub
-		return InventoryBL.getExportID();
+		try {
+			return InventoryBL.getExportID();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) throws RemoteException {
+	public ResultMessage minusCommodities(String ImportID, String Transfer) {
 		// TODO Auto-generated method stub
-		return InventoryBL.minusCommodities(ImportID, Transfer);
+		try {
+			return InventoryBL.minusCommodities(ImportID, Transfer);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -65,15 +101,27 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public String getAdjustID() throws RemoteException {
+	public String getAdjustID()  {
 		// TODO Auto-generated method stub
-		return InventoryBL.getAdjustID();
+		try {
+			return InventoryBL.getAdjustID();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public ResultMessage adjust(InventoryVO before, InventoryVO now) throws RemoteException {
+	public ResultMessage adjust(InventoryVO before, InventoryVO now) {
 		// TODO Auto-generated method stub
-		return InventoryBL.adjust(before, now);
+		try {
+			return InventoryBL.adjust(before, now);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
