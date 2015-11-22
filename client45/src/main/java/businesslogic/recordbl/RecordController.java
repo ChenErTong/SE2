@@ -13,15 +13,27 @@ public class RecordController implements RecordBLService{
     Record  RecordBL;
 		
 	@Override
-	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
+	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end)  {
 		// TODO Auto-generated method stub
-		return RecordBL.bussinessProcess(begin, end);
+		try {
+			return RecordBL.bussinessProcess(begin, end);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
+	public BussinessConditionVO bussinessCondition(String end){
 		// TODO Auto-generated method stub
-		return RecordBL.bussinessCondition(end);
+		try {
+			return RecordBL.bussinessCondition(end);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	
