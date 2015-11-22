@@ -1,14 +1,9 @@
 package dataservice.orderdataservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.OrderPO;
-import state.ReceiptCondition;
-import state.ReceiptState;
-import state.ResultMessage;
-import vo.CommodityVO;
 
 /**
  *提供订单集体载入、增改查的服务

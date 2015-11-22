@@ -12,12 +12,11 @@ import state.ResultMessage;
 import vo.OrganizationVO;
 
 public class Organization {
-	private OrganizationDataService<OrganizationPO> organizationData;
+	private OrganizationDataService organizationData;
 
-	@SuppressWarnings("unchecked")
 	public Organization() {
 		try {
-			organizationData = (OrganizationDataService<OrganizationPO>) Naming
+			organizationData = (OrganizationDataService) Naming
 					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OrganizationDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -27,9 +26,10 @@ public class Organization {
 			e.printStackTrace();
 		}
 	}
-	
-	public ArrayList<OrganizationVO> show() {
-		// TODO Auto-generated method stub
+
+	public ArrayList<OrganizationVO> show() throws RemoteException{
+		ArrayList<OrganizationPO> organizationPOs=organizationData.find();
+//		ArrayList<OrganizationVO> organizationVOs=
 		return null;
 	}
 

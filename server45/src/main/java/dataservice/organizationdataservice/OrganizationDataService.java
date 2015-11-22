@@ -1,8 +1,5 @@
 package dataservice.organizationdataservice;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-
 import dataservice.ManageDataService;
 import po.OrganizationPO;
 

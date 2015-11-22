@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrderPO;
-import state.ReceiptState;
 import state.ResultMessage;
 import vo.CommodityVO;
 
