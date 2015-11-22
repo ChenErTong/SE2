@@ -2,15 +2,18 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.BranchPO;
 import po.FacilityPO;
 import po.InventoryPO;
-import po.OrganizationPO;
+import po.TransferPO;
 import po.accountpo.AccountPO;
 
 public class OpeningStockVO {
 	private String ID;
 	private String date;
-	private ArrayList<OrganizationPO> organizations;
+private ArrayList<TransferPO> transfers;
+	
+	private ArrayList<BranchPO> branchs;
 
 	private ArrayList<AccountPO> accounts;
 
@@ -18,19 +21,17 @@ public class OpeningStockVO {
 
 	private ArrayList<InventoryPO> inventories;
 
-	public OpeningStockVO(String ID, String date, ArrayList<OrganizationPO> organizations,
+	public OpeningStockVO(String ID, String date, ArrayList<TransferPO> transfers,ArrayList<BranchPO> branchs,
 			ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities, ArrayList<InventoryPO> inventories) {
 		this.ID=ID;
 		this.date=date;
-		this.organizations = organizations;
+		this.transfers=transfers;
+		this.branchs=branchs;
 		this.accounts = accounts;
 		this.facilities = facilities;
 		this.inventories = inventories;
 	}
 
-	public ArrayList<OrganizationPO> getOrganizations() {
-		return organizations;
-	}
 
 	public ArrayList<FacilityPO> getFacilities() {
 		return facilities;
@@ -42,5 +43,21 @@ public class OpeningStockVO {
 
 	public ArrayList<AccountPO> getAccounts() {
 		return accounts;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public ArrayList<TransferPO> getTransfers() {
+		return transfers;
+	}
+
+	public ArrayList<BranchPO> getBranchs() {
+		return branchs;
 	}
 }
