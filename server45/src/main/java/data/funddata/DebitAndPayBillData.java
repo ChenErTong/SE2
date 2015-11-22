@@ -8,6 +8,7 @@ import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implements DebitAndPayBillDataService {
 
@@ -22,20 +23,35 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 	
 	@Override
 	public String getID(ReceiptType type) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(type==ReceiptType.EXPENSE)
+			return getExpenseID();
+		else {
+			return getPayID();
+		}
 	}
 
 	@Override
 	public String getExpenseID()  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
+		String prifix="EXPENSE";
+		int IDNumber=0;
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getType()==ReceiptType.EXPENSE)
+				++IDNumber;
+		}
+		//TODO 硬编码
+		return prifix+Util.transIntToString(IDNumber, 8);
 	}
 
 	@Override
 	public String getPayID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		String prifix="PAY";
+		int IDNumber=0;
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getType()==ReceiptType.PAY)
+				++IDNumber;
+		}
+		//TODO 硬编码
+		return prifix+Util.transIntToString(IDNumber, 8);
 	}
 
 	@Override
