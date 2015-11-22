@@ -1,5 +1,6 @@
 package dataservice.receiptdataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
@@ -17,7 +18,7 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		receiptPOs.add(receiptPO_2);
 	}
 	@Override
-	public ResultMessage update(ReceiptPO PO) {
+	public ResultMessage modify(ReceiptPO PO) {
 		System.out.println("Modify the receipt succeed!");
 		return ResultMessage.SUCCESS;
 	}
@@ -29,6 +30,16 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 	}
 	@Override
 	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage add(ReceiptPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage delete(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

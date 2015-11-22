@@ -3,7 +3,7 @@ package dataservice.receiptdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.DataService;
+import dataservice.ManageDataService;
 import po.receiptpo.ReceiptPO;
 import state.ResultMessage;
 /**
@@ -12,7 +12,7 @@ import state.ResultMessage;
  * @version Oct 22,2015
  * @param <ReceiptPO>
  */
-public interface ReceiptDataService extends DataService<ReceiptPO> {
+public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "ReceiptData";
 	/**
@@ -20,13 +20,13 @@ public interface ReceiptDataService extends DataService<ReceiptPO> {
 	 * @param PO
 	 * @return 
 	 */
-	public ResultMessage update(ReceiptPO PO) throws RemoteException;
+//	public ResultMessage update(ReceiptPO PO) throws RemoteException;
 	/**
 	 * 进行一条单据信息的查看
 	 * @param PO
 	 * @return 
 	 */
-	public ArrayList<ReceiptPO> find() throws RemoteException;
+//	public ArrayList<ReceiptPO> find() throws RemoteException;
 	/**
 	 * 得到
 	 * @return

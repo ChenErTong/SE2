@@ -8,7 +8,7 @@ public class ReceiptDataService_Driver {
 	private ReceiptPO po = new ReceiptPO("456");
 	public void drive(ReceiptDataService receiptDataService) throws RemoteException{
 		receiptDataService.find();
-		receiptDataService.update(po);
+		receiptDataService.modify(po);
 		
 	}
 	public static void main(String args[]) throws RemoteException{

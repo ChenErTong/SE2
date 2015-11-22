@@ -6,7 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.orderdataservice.OrderDataService;
 import dataservice.organizationdataservice.OrganizationDataService;
 import po.OrganizationPO;
 import state.ResultMessage;

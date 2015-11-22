@@ -21,18 +21,6 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	}
 
 	@Override
-	public ResultMessage update(ReceiptPO PO) throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ReceiptPO> find() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getID() {
 		// TODO Auto-generated method stub
 		return null;
