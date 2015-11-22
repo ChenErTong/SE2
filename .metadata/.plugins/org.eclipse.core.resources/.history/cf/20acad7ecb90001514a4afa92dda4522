@@ -56,7 +56,7 @@ public void drive(InventoryBLService inventoryBLBLService) throws RemoteExceptio
 		 System.out.println("自动生成的importID");
 	
 		 TransferArrivalListVO transferReceipt = null;
-		ResultMessage resultAdd=inventoryBLBLService.addCommodities(null, null);
+		InventoryImportReceiptPO resultAdd=inventoryBLBLService.addCommodities(null, null);
 		 System.out.println("添加部分入库信息成功");
 	   
 		

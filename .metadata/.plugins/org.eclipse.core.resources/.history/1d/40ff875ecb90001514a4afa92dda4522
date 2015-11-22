@@ -81,7 +81,7 @@ public class Inventory implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID,InventoryVO vo) throws RemoteException {
+	public InventoryImportReceiptPO addCommodities(String ArrivalListID,InventoryVO vo) throws RemoteException {
 		  TransferArrivalListPO receipt=transferData.findList(ArrivalListID);
 		  String ID=inventoryData.getImportID();
 		  String commodities=receipt.getTransferCenterID();
@@ -95,7 +95,7 @@ public class Inventory implements InventoryBLService {
 		  InventoryImportReceiptPO po=new InventoryImportReceiptPO(ID,destination,depture,commodities,a,b,c,d);
 		  inventoryData.insertImport(po);
 		  inventoryData.insertInventory(inventorypo);
-		  return inventoryData.insertInventory(inventorypo);
+		  return po;
 		 
 	}
 
@@ -113,7 +113,7 @@ public class Inventory implements InventoryBLService {
 	}
 	
 	@Override
-	public ResultMessage minusCommodities(String ImportID,String Transfer) throws RemoteException {
+	public InventoryExportReceiptPO minusCommodities(String ImportID,String Transfer) throws RemoteException {
 	    InventoryImportReceiptPO importPo=inventoryData.findImport(ImportID);
 		  int a=importPo.getA();
 		  int b=importPo.getB();
@@ -128,7 +128,7 @@ public class Inventory implements InventoryBLService {
 		 InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
 		 inventoryData.insertExport(po);
 		 inventoryData.modifyInventory(inventorypo, a, b, c, d,"empty");
-		return inventoryData.insertExport(po);
+		return po;
 			
 		
 	}

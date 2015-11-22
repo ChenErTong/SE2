@@ -93,13 +93,13 @@ public class _Inventory_Stub implements InventoryBLService{
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
+	public InventoryImportReceiptPO addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) throws RemoteException {
+	public InventoryExportReceiptPO minusCommodities(String ImportID, String Transfer) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

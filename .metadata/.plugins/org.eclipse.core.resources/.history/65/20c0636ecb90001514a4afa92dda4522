@@ -33,7 +33,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
+	public InventoryImportReceiptPO addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return InventoryBL.addCommodities(ArrivalListID, vo);
 	}
@@ -51,7 +51,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) throws RemoteException {
+	public InventoryExportReceiptPO minusCommodities(String ImportID, String Transfer) throws RemoteException {
 		// TODO Auto-generated method stub
 		return InventoryBL.minusCommodities(ImportID, Transfer);
 	}
