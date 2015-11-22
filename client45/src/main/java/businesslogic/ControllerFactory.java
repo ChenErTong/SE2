@@ -1,7 +1,7 @@
 package businesslogic;
 
-import businesslogic.facility.DriverController;
-import businesslogic.facility.FacilityController;
+import businesslogic.facilitybl.DriverController;
+import businesslogic.facilitybl.FacilityController;
 import businesslogic.userbl.UserController;
 
 public class ControllerFactory {
