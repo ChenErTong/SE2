@@ -3,11 +3,14 @@ package ui.specialui.branch_conuterman.facilityInfoManage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import businesslogic.ControllerFactory;
+import businesslogic.facility.FacilityController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import vo.FacilityVO;
 
 public class FacilityInfoManage extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -17,10 +20,14 @@ public class FacilityInfoManage extends MyJPanel {
 	private MyJTextField facilityId;
 	private MyJButton searchFacility;
 	private String id;
+	private FacilityController facilityController;
+	private FacilityVO facility;
+	
 	
 	public FacilityInfoManage(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		facilityController = ControllerFactory.getFacilityController();
 		
 		facilityId = new MyJTextField(510, 115, 250, 30);
 		facilityId.setOnlyInteger(9);
@@ -153,60 +160,53 @@ public class FacilityInfoManage extends MyJPanel {
 	 * TODO 从bl层获取数据
 	 * 查找车辆
 	 */
-	@SuppressWarnings("unused")
-	public boolean searchFacility() {
-		String[] data;
-		
-		// TODO
-		data = null;
-		
-		if(data == null){
+	public boolean searchFacility() {		
+		facility = facilityController.findFacility(facilityId.getText());
+		if(facility == null){
 			return false;
-		}
+		}		
+		String[] data = new String[5];
+		data[0] = facility.getFacilityIdString();
+		
+	
 		id = facilityId.getText();
 		facilityInfo.setData(data);
 		return true;
 	}
 
 	public int addFacility() {
-		int result = this.getData();
-		if(result == 0){
-			// TODO
-			// 添加车辆
-		}
-		return result;
+		String[] data = facilityInfo.getData();
+		if(data == null) return 1;
+		
+//		facility = new FacilityVO();
+		facilityController.addFacility(facility);
+		facilityController.confirmOperation();
+		return 0;
 	}
 
 	public int modifyFacility() {
 		if(id == null){
 			return 2;
 		}
-		int result = this.getData();
-		if(result == 0){
-			// TODO
-			// 修改车辆
-		}
-		return result;
+		String[] data = facilityInfo.getData();
+		if(data == null) return 1;
+		
+//		facility.
+//		facilityController.modifyFacility(facility);
+//		facilityController.confirmOperation();
+		return 0;
 	}
 	
 	public int deleteFacility() {
 		if(id == null){
 			return 2;
 		}
-		// TODO
-		// 删除车辆
+		facilityController.deleteFacility(facility);
 		return 0;
 	}
 	
 	public void refresh() {
 		facilityInfo.refresh();
 		facilityId.setText(null);
-	}
-	
-	private int getData(){
-		@SuppressWarnings("unused")
-		String[] data;
-		if((data = facilityInfo.getData()) == null) return 1;
-		return 0;	
 	}
 }

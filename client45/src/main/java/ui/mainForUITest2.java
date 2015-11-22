@@ -5,6 +5,7 @@ import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ui.specialui.admin.Frame_Admin;
+import ui.specialui.branch_conuterman.Frame_Branch;
 
 public class mainForUITest2 {
 	public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class mainForUITest2 {
 //		Frame_Courier courierFrame = new Frame_Courier();
 //		courierFrame.setVisible(true);
 		
-//		Frame_Branch branchFrame = new Frame_Branch();
-//		branchFrame.setVisible(true);
+		Frame_Branch branchFrame = new Frame_Branch();
+		branchFrame.setVisible(true);
 	}
 }
