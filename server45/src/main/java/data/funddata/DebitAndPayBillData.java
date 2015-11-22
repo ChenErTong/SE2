@@ -56,14 +56,40 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(type==ReceiptType.EXPENSE)
+			return showExpense();
+		else {
+			return showPay();
+		}
+	}
+	
+	private ArrayList<DebitAndPayBillPO> showExpense(){
+		ArrayList<DebitAndPayBillPO> expenses = new ArrayList<>();
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getType()==ReceiptType.EXPENSE)
+				expenses.add(po);
+		}
+		return expenses;
+	}
+	
+	private ArrayList<DebitAndPayBillPO> showPay(){
+		ArrayList<DebitAndPayBillPO> pays = new ArrayList<>();
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getType()==ReceiptType.PAY)
+				pays.add(po);
+		}
+		return pays;
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillPO> show(String begin, String end) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		//日期比较可以利用String的字典序
+		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getDate().compareTo(begin)>=0&&po.getDate().compareTo(end)<=0)
+				bills.add(po);
+		}
+		return bills;
 	}
     
 }
