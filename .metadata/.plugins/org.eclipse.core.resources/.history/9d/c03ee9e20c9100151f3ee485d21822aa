@@ -1,0 +1,55 @@
+package businesslogic.fundbl;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import businesslogicservice.fundblservice.BankAccountBLService;
+import state.ConfirmState;
+import state.FindTypeAccount;
+import state.ResultMessage;
+import vo.BankAccountVO;
+
+public class BankAccountController implements BankAccountBLService{
+    BankAccount BankAccountBL;
+	@Override
+	public ConfirmState confirmOperation() {
+		return BankAccountBL.confirmOperation();
+	}
+
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return BankAccountBL.getID();
+	}
+
+	@Override
+	public ArrayList<BankAccountVO> show() {
+		// TODO Auto-generated method stub
+		return BankAccountBL.show();
+	}
+
+	@Override
+	public ResultMessage add(BankAccountVO vo) {
+		// TODO Auto-generated method stub
+		return BankAccountBL.add(vo);
+	}
+
+	@Override
+	public ResultMessage delete(String ID) {
+		// TODO Auto-generated method stub
+		return BankAccountBL.delete(ID);
+	}
+
+	@Override
+	public ResultMessage update(BankAccountVO vo) {
+		// TODO Auto-generated method stub
+		return BankAccountBL.update(vo);
+	}
+
+	@Override
+	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
+		// TODO Auto-generated method stub
+		return BankAccountBL.find(keywords, type);
+	}
+
+}

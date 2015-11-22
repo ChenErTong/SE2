@@ -2,13 +2,13 @@ package businesslogicservice.fundblservice._stub;
 
 import java.util.ArrayList;
 
-import businesslogicservice.fundblservice.BankAccountBLService;
+import businesslogicservice.fundblservice.BankAccoutBLService;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
 
-public class BankAccoutBLService_Stub  implements BankAccountBLService{
+public class BankAccoutBLService_Stub  implements BankAccoutBLService{
 
 	@Override
 	public ConfirmState confirmOperation() {
