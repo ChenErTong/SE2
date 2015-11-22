@@ -67,7 +67,6 @@ public class OrderPO extends ReceiptPO {
 		this.sendTime = sendTime;
 		this.recipientTime = recipientTime;
 		this.money = money;
-		this.state=state;
 	}
 
 	public String getOrderIdString() {

@@ -32,4 +32,6 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	 * 
 	 */
 	public String getID();
+	
+	
 }
