@@ -114,6 +114,14 @@ public class FacilityVO {
 		this.engineCode = engineCode;
 		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
 	}
+
+	@Override
+	public String toString() {
+		return managerId + ", " + deliverHistory + ", " + facilityIdString + ", " + dateString + ", " + bottomCode
+				+ ", " + engineCode + ", " + vehicleIdentificationNumber;
+	}
+	
+	
 	
 
 }
