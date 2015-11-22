@@ -6,18 +6,24 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import dataservice.branchdataservice.BranchDataService;
 import dataservice.organizationdataservice.OrganizationDataService;
+import dataservice.transferdataservice.TransferDataService;
+import po.BranchPO;
+import po.FacilityPO;
 import po.OrganizationPO;
+import po.TransferPO;
 import state.ResultMessage;
 import vo.OrganizationVO;
 
 public class Organization {
-	private OrganizationDataService organizationData;
+	private BranchDataService branchData;
+	private TransferDataService transferData;
 
 	public Organization() {
 		try {
-			organizationData = (OrganizationDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OrganizationDataService.NAME);
+			branchData = (BranchDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + BranchDataService.NAME);
+			transferData = (TransferDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -28,7 +34,9 @@ public class Organization {
 	}
 
 	public ArrayList<OrganizationVO> show() throws RemoteException{
-		ArrayList<OrganizationPO> organizationPOs=organizationData.find();
+		ArrayList<BranchPO> branchPOs = branchData.find();
+		ArrayList<TransferPO> transferPOs = transferData.find();
+//		ArrayList<OrganizationPO> organizationPOs=organizationData.find();
 //		ArrayList<OrganizationVO> organizationVOs=
 		return null;
 	}

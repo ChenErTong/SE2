@@ -15,6 +15,7 @@ public class OrderData extends ManageData<OrderPO> implements OrderDataService {
 	private static final long serialVersionUID = 1L;
 
 	public OrderData() throws RemoteException {
+		//TODO 什么Name待考虑
 		poList=new SerSaveAndLoad<OrderPO>("data/"+NAME+".ser");
 	}
 

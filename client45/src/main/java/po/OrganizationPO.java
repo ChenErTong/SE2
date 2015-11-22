@@ -49,5 +49,14 @@ public class OrganizationPO extends PersistentObject{
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getDate() {
+		return date;
+	}
+	public int getNumberOfPerson() {
+		return numberOfPerson;
+	}
+	public OrganizationType getOrganizationType() {
+		return organizationType;
+	}
 
 }

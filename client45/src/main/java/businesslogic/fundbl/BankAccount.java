@@ -35,14 +35,13 @@ public class BankAccount implements BankAccoutBLService {
 	}
 
 	@Override
-	public String getID() {
+	public String getID(){
 		return bankAccountData.getID();
 		
 	}
 
 	@Override
-	public ArrayList<BankAccountVO> show() {
-		// TODO Auto-generated method stub
+	public ArrayList<BankAccountVO> show(){
 		return bankAccountData.show();
 	}
 

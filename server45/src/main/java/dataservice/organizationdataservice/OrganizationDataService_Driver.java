@@ -11,10 +11,10 @@ public class OrganizationDataService_Driver {
 	
 	private OrganizationPO po = new OrganizationPO("123","乱码",125,OrganizationType.TRANSFER);
 	public void drive(OrganizationDataService orgDataService) throws RemoteException{
-		orgDataService.find();
-		orgDataService.add(po);
-		orgDataService.delete(po.getOrganizationID());
-		orgDataService.modify(po);
+//		orgDataService.find();
+//		orgDataService.add(po);
+//		orgDataService.delete(po.getOrganizationID());
+//		orgDataService.modify(po);
 	}
 	
 	public static void main(String args[]) throws RemoteException{
