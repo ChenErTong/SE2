@@ -2,6 +2,8 @@ package po;
 
 import java.util.ArrayList;
 
+import po.receiptpo.ReceiptPO;
+import state.ReceiptState;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -12,7 +14,7 @@ import vo.OrderVO;
  * @author Ann
  *
  */
-public class OrderPO extends PersistentObject {
+public class OrderPO extends ReceiptPO {
 
 	protected OrderPO(String id) {
 		super(id);
@@ -45,6 +47,7 @@ public class OrderPO extends PersistentObject {
 	private String recipientTime;
 	// 费用
 	private double money;
+	private ReceiptState state;
 
 	public OrderPO(String orderIdString, String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
@@ -64,6 +67,7 @@ public class OrderPO extends PersistentObject {
 		this.sendTime = sendTime;
 		this.recipientTime = recipientTime;
 		this.money = money;
+		this.state=state;
 	}
 
 	public String getOrderIdString() {
@@ -177,9 +181,13 @@ public class OrderPO extends PersistentObject {
 	public void setMoney(double money) {
 		this.money = money;
 	}
+	
+	public  ReceiptState getState() {
+		return state;
+	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public  void setState(ReceiptState state) {
+		this.state = state;
 	}
 
 	

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.OrderPO;
+import state.ReceiptState;
 import state.ResultMessage;
 import vo.CommodityVO;
 
@@ -48,6 +49,27 @@ public class _Order_Data_Stub implements OrderDataService {
 
 	@Override
 	public ArrayList<OrderPO> find() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage insert(OrderPO order) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage update(OrderPO order) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modify(OrderPO order, String orderIdString, String senderName, String senderAddress,
+			String senderTel, String senderCo, String recipientName, String recipientAddress, String recipientTel,
+			String recipientCo, ArrayList<CommodityVO> commodityVO, String midAddres, String sendTime,
+			String recipientTime, double money, ReceiptState state) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

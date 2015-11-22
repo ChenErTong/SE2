@@ -99,12 +99,13 @@ public class Branch{
 	}
 
 	public ResultMessage submit(ReceiptPO receipt) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public ResultMessage save(ReceiptPO receipt) {
-		// TODO Auto-generated method stub
+		//orderData.modify(receipt,receipt.);
+		//orderData.insert(order)
 		return null;
 	}
 

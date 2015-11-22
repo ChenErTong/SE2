@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import po.PersistentObject;
+import state.ReceiptCondition;
+import state.ReceiptState;
 import state.ReceiptType;
 /**
  * 所有单据的父类，包括编号、创建时间
@@ -19,13 +21,17 @@ public class ReceiptPO extends PersistentObject{
 	/**创建时间，由系统自动生成*/
 	protected String date;
 	/**单据状态*/
-	protected ReceiptType receiptType;
+	protected ReceiptState receiptState;
+	
+	protected ReceiptCondition receiptCondition;
 	
 	public ReceiptPO(String ID){
 		super(ID);
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
+		this.receiptState=ReceiptState.DRAFT;
+		this.receiptCondition=ReceiptCondition.DRAFT;
 	}
 
 	public String getID() {
@@ -44,13 +50,5 @@ public class ReceiptPO extends PersistentObject{
 		this.date = date;
 	}
 
-	public ReceiptType getReceiptType() {
-		return receiptType;
-	}
-
-	public void setReceiptType(ReceiptType receiptType) {
-		this.receiptType = receiptType;
-	}
-	
 
 }
