@@ -44,20 +44,20 @@
 <fullyQualifiedTypeName name="java.lang.Void"/>
 <fullyQualifiedTypeName name="vo.ValueObject"/>
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
-<fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="po.OrderPO"/>
-<fullyQualifiedTypeName name="state.ReceiptState"/>
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
-<fullyQualifiedTypeName name="state.ReceiptCondition"/>
 <fullyQualifiedTypeName name="dataservice.receiptdataservice.ReceiptDataService"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="vo.BankAccountVO"/>
-<fullyQualifiedTypeName name="po.BankAccountPO"/>
-<fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="state.ReceiptType"/>
 <fullyQualifiedTypeName name="businesslogic.fundbl.DebitAndPayBill"/>
 <fullyQualifiedTypeName name="vo.DebitAndPayBillVO"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="po.ExpensePO"/>
 <fullyQualifiedTypeName name="vo.ExpenseVO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="state.ReceiptState"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
+<fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
+<fullyQualifiedTypeName name="state.ReceiptCondition"/>
+<fullyQualifiedTypeName name="po.BankAccountPO"/>
 </qualifiedTypeNameHistroy>

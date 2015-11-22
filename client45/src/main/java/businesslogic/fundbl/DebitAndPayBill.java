@@ -7,14 +7,17 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import dataservice.funddataservice.DebitAndPayBillDataService;
+import po.BankAccountPO;
 import po.receiptpo.DebitAndPayBillPO;
+import state.PayBillItem;
+import state.ReceiptCondition;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
-public class DebitAndPayBill implements DebitAndPayBillBLService {
+public class DebitAndPayBill  {
 	private DebitAndPayBillDataService debitAndPayBillData;
 
 	public DebitAndPayBill() {
@@ -29,20 +32,20 @@ public class DebitAndPayBill implements DebitAndPayBillBLService {
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public String getPayID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return  debitAndPayBillData.getPayID();
-	}
-
-	@Override
+	
 	public String getExpenseID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return  debitAndPayBillData.getExpenseID();
 	}
 
-	@Override
+
+	public String getPayID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return  debitAndPayBillData.getPayID();
+	}
+
+	
+
 	public DebitAndPayBillVO find(String ID) throws RemoteException {
 		DebitAndPayBillPO PO=debitAndPayBillData.find(ID);
 		return  POtoVO(PO);
@@ -66,105 +69,183 @@ public class DebitAndPayBill implements DebitAndPayBillBLService {
 	   }
 	   
    }
-	@Override
+
 	public HashMap<String, String> getAllBankAccounts() {
-		return null;
+		return debitAndPayBillData.getAllBankAccounts();
 		
 	}
 
-	@Override
-	public ResultMessage addDebitAndPayBill(String operatorID, String operatorName) {
-		DebitAndPayBillVO vo=new DebitAndPayBillVO(operatorName, 0, operatorName, null, null, operatorName, operatorName, null, null);
-		/**
-		 * String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber
-		 */
-		return null;
-		
+	
+	//建立收款单
+	public ResultMessage addDebitBill(double money,String courierID,ReceiptType type,ArrayList orderNumbers) throws RemoteException {
+		//疑问
+		String ID=null;
+		DebitAndPayBillVO vo=new DebitAndPayBillVO(ID,money, courierID, type, orderNumbers);
+		DebitAndPayBillPO po=VOtoPO(vo);
+		return debitAndPayBillData.insert(po);
+	}
+     
+	
+	
+	//建立付款单
+	public ResultMessage addPayBill(double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber) throws RemoteException {
+		//疑问
+				String ID=null;
+		DebitAndPayBillVO vo=new DebitAndPayBillVO(ID, money,payerName,bankAccouts, type,
+				rentYear, salaryMonth,items, transListNumber);
+		DebitAndPayBillPO po=VOtoPO(vo);
+		return debitAndPayBillData.insert(po);
+	}
+	
+	
+	public DebitAndPayBillPO VOtoPO(DebitAndPayBillVO VO){
+	    ReceiptType type=VO.getType();
+	    if(type==ReceiptType.EXPENSE){
+	    	//收款单
+	    	DebitAndPayBillPO po=new DebitAndPayBillPO(VO.getID(),VO.getMoney(),VO.getCourierID(),VO.getType(),VO.getOrderNumbers());
+	    	 return po;
+	    }
+	   if(type==ReceiptType.PAY){
+		   //付款单
+		   DebitAndPayBillPO po=new DebitAndPayBillPO(VO.getID(),VO.getMoney(),VO.getPayerName(),VO.getBankAccouts(),VO.getType(),VO.getRentYear(),VO.getSalaryMonth(),VO.getItems(),VO.getTransListNumber());
+		   return po;
+	   }
+	   else{
+	   return null;
+	   }
+	   
+   }
+	
+	
+	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException  {
+		po.setReceiptCondition(ReceiptCondition.SUBITTED);
+		return debitAndPayBillData.update(po);
 	}
 
-	@Override
-	public DebitAndPayBillVO submit() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ResultMessage save(DebitAndPayBillPO po) throws RemoteException  {
+		debitAndPayBillData.insert(po);
+		return debitAndPayBillData.insert(po);
 	}
 
-	@Override
-	public DebitAndPayBillVO save() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ResultMessage updateDraft(DebitAndPayBillPO po) throws RemoteException {
+		debitAndPayBillData.update(po);
+		return debitAndPayBillData.update(po);
 	}
 
-	@Override
-	public ResultMessage updateDraft(DebitAndPayBillVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+
+	
+	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ResultMessage submitDraft(String ID) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showPay() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.APPROVALING);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showExpense() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.APPROVALING);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showPayApproving() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.SUCCESS);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseApproving() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.SUCCESS);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showPayPass() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.FAILURE);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showExpensePass() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.FAILURE);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showPayFailure() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.PAY,ReceiptState.DRAFT);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseFailure() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
+		ArrayList<DebitAndPayBillPO> pos=debitAndPayBillData.show(ReceiptType.EXPENSE,ReceiptState.DRAFT);
+		ArrayList<DebitAndPayBillVO> vos=new ArrayList<DebitAndPayBillVO>();
+		for(DebitAndPayBillPO po:pos){
+			DebitAndPayBillVO vo=POtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
-
-	@Override
-	public ArrayList<DebitAndPayBillVO> showPayDraft() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseDraft() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 }

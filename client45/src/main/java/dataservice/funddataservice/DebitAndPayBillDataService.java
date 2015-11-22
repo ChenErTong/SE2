@@ -2,8 +2,10 @@ package dataservice.funddataservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import po.receiptpo.DebitAndPayBillPO;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 
@@ -67,7 +69,6 @@ public interface DebitAndPayBillDataService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
 	/**
 	 * 按照时间区间返回单据【收款单或者付款单】
 	 * @param 
@@ -75,6 +76,9 @@ public interface DebitAndPayBillDataService {
 	 * @author lxl
 	 * @version 11  20 2015
 	 */
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState Type) throws RemoteException;
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
+	public HashMap<String, String> getAllBankAccounts();
 	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
 	
 

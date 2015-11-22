@@ -12,7 +12,7 @@ import businesslogicservice.accountblservice.AccountBLService;
 import dataservice.accountdataservice.AccountDataService;
 import vo.accountvo.AccountVO;
 
-public class Account implements AccountBLService{
+public class Account{
 	private AccountDataService accountData;
 	public Account() {
 		try {
@@ -25,7 +25,7 @@ public class Account implements AccountBLService{
 			e.printStackTrace();
 		}
 	}
-	@Override
+
 	public ArrayList<AccountVO> show() throws RemoteException {
 		return AccountTrans.POstoVOs(accountData.find());
 	}

@@ -48,7 +48,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		super(ID);
 		this.money = money;
 		this.courierID = courierID;
-		this.state = ReceiptState.APPROVALING;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
 		// TODO Auto-generated constructor stub
@@ -69,7 +68,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.salaryMonth = salaryMonth;
 		this.items = items;
 		this.type = type;
-		this.state = ReceiptState.APPROVALING;
 		this.transListNumber = transListNumber;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
@@ -153,14 +151,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 
 	public void setType(ReceiptType type) {
 		this.type = type;
-	}
-
-	public ReceiptState getState() {
-		return state;
-	}
-
-	public void setState(ReceiptState state) {
-		this.state = state;
 	}
 
 	

@@ -1,11 +1,16 @@
 package businesslogicservice.fundblservice._stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import state.PayBillItem;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
+import po.BankAccountPO;
+import po.receiptpo.DebitAndPayBillPO;
 
 public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 
@@ -33,37 +38,8 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 		return new HashMap<String,String>(){};
 	}
 
-	@Override
-	public ResultMessage addDebitAndPayBill(String operatorID, String operatorName) {
-		System.out.println("Add a new debitbill or paybill");
-		return  ResultMessage.SUCCESS;
-		
-		
-	}
+	
 
-	@Override
-	public DebitAndPayBillVO submit() {
-		System.out.println("Submit the bill");
-		return new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
-	}
-
-	@Override
-	public DebitAndPayBillVO save() {
-		System.out.println("Save the bill");
-		return new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
-	}
-
-	@Override
-	public ResultMessage updateDraft(DebitAndPayBillVO vo) {
-		System.out.println("Modify the draft");
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
-	public ResultMessage submitDraft(String ID) {
-		System.out.println("Submit the draft");
-		return ResultMessage.SUCCESS;
-	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPay() {
@@ -125,5 +101,38 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 		return new ArrayList<DebitAndPayBillVO>(){};
 
 }
+
+	@Override
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage addPayBill(double money, String payerName, ArrayList<BankAccountPO> bankAccouts,
+			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList transListNumber)
+					throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage save(DebitAndPayBillPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage updateDraft(DebitAndPayBillPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

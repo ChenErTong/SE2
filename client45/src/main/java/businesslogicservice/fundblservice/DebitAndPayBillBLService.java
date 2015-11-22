@@ -4,6 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import po.BankAccountPO;
+import po.receiptpo.DebitAndPayBillPO;
+import state.PayBillItem;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
@@ -47,7 +51,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 */
 	public HashMap<String, String> getAllBankAccounts();
-
+          
 	
 	
 	/**
@@ -57,22 +61,31 @@ public interface DebitAndPayBillBLService {
 	 * TODO 这个方法不知道要加几个参数orz
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ResultMessage addDebitAndPayBill(String operatorID , String operatorName );
-
-	/**
-	 * 提交单据进行审批
-	 * @return 是否成功
-	 */
-	public DebitAndPayBillVO submit();
+	
+	//建立收款单
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers) throws RemoteException;
+    //建立付款单
+	public ResultMessage addPayBill(double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber) throws RemoteException;
+	
+	
+		/**
+		 * 提交单据进行审批
+		 * @return 是否成功
+		 * @throws RemoteException 
+		 */
+	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException;
 
 	/**
 	 * 保存成草稿状态
 	 * @return 处理结果
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public DebitAndPayBillVO save();
+	public ResultMessage  save(DebitAndPayBillPO po) throws RemoteException;
 	
 	/**
 	 * 修改草稿状态
@@ -80,59 +93,60 @@ public interface DebitAndPayBillBLService {
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ResultMessage updateDraft(DebitAndPayBillVO vo);
+	public ResultMessage updateDraft(DebitAndPayBillPO po) throws RemoteException;
 	
-	/**
-	 * 提交草稿状态的单据
-	 * @param ID
-	 * @return
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public ResultMessage submitDraft(String ID);
+	
+	
 	/**
 	 * 返回给界面层显示全部的付款／收款单
 	 * @return 全部的付款／收款单的ArrayList
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ArrayList<DebitAndPayBillVO> showPay();
-	public ArrayList<DebitAndPayBillVO> showExpense();
+	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException;
+	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException;
 
 	/**
 	 * 返回给界面层显示全部在审核的付款／收款单
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayApproving();
-	public ArrayList<DebitAndPayBillVO> showExpenseApproving();
+	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException;
+	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException;
 	
 	/**
 	 * 返回给界面层显示全部通过审核的付款／收款单
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayPass();
-	public ArrayList<DebitAndPayBillVO> showExpensePass();
+	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException;
+	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException;
 	
 	/**
 	 * 返回给界面层显示全部没有通过审批的付款／收款单
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayFailure();
-	public ArrayList<DebitAndPayBillVO> showExpenseFailure();
+	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException;
+	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException;
 	
 	/**
 	 * 返回给界面层显示全部草稿状态的付款／收款单
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayDraft();
-	public ArrayList<DebitAndPayBillVO> showExpenseDraft();
+	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException;
+	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException;
 }
+	

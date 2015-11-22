@@ -9,7 +9,7 @@ import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
 
-public class DebitAndPayBillVO {
+public class DebitAndPayBillVO  {
 	private String ID;
 	private double money;
 	/**收款快递员的用户ID*/
@@ -49,7 +49,6 @@ public class DebitAndPayBillVO {
 		this.ID = ID;
 		this.money = money;
 		this.courierID = courierID;
-		this.state = ReceiptState.APPROVALING;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
 		// TODO Auto-generated constructor stub
@@ -82,7 +81,6 @@ public class DebitAndPayBillVO {
 		this.salaryMonth = salaryMonth;
 		this.items = items;
 		this.type = type;
-		this.state = ReceiptState.APPROVALING;
 		this.transListNumber = transListNumber;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
