@@ -1,5 +1,5 @@
 package businesslogic.fundbl;
 
-public class fundController {
+public class FundController {
 
 }

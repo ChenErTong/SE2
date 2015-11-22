@@ -1,7 +1,14 @@
 package businesslogic;
 
+import businesslogic.accountbl.AccountController;
+import businesslogic.basebl.BaseController;
+import businesslogic.branchbl.BranchController;
 import businesslogic.facilitybl.DriverController;
 import businesslogic.facilitybl.FacilityController;
+import businesslogic.fundbl.FundController;
+import businesslogic.inventorybl.InventoryController;
+import businesslogic.organizationbl.OrganizationController;
+import businesslogic.recordbl.RecordController;
 import businesslogic.userbl.UserController;
 
 public class ControllerFactory {
@@ -15,5 +22,33 @@ public class ControllerFactory {
 
 	public static UserController getUserController() {
 		return new UserController();
+	}
+	
+	public static AccountController getAccountController() {
+		return new AccountController();
+	}
+	
+	public static BaseController getBaseController() {
+		return new BaseController();
+	}
+	
+	public static BranchController getBranchController() {
+		return new BranchController();
+	}
+	
+	public static FundController getFundController() {
+		return new FundController();
+	}
+	
+	public static InventoryController getInventoryController() {
+		return new InventoryController();
+	}
+	
+	public static OrganizationController getOrganizationController() {
+		return new OrganizationController();
+	}
+	
+	public static RecordController getRecordController() {
+		return new RecordController();
 	}
 }
