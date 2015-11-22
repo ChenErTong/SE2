@@ -1,5 +1,7 @@
 package dataservice.facilitydataservice;
 
+import java.rmi.RemoteException;
+
 import dataservice.ManageDataService;
 import po.FacilityPO;
 
@@ -22,7 +24,7 @@ public interface FacilityDataService extends ManageDataService<FacilityPO> {
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-//	public FacilityPO findFacility(String id) throws RemoteException;
+	public FacilityPO find(String id) throws RemoteException;
 
 	/**
 	 * 添加车辆

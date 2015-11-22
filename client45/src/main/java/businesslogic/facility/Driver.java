@@ -50,6 +50,13 @@ public class Driver{
 		return driverVOs;
 
 	}
+	
+	public DriverVO findDriver(String ID) throws RemoteException {
+		DriverPO driverPO = DriverData.find(ID);
+		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
+		return driverVO;
+
+	}
 
 
 }

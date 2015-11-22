@@ -43,5 +43,6 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
+	public DriverVO findDriver(String ID);
 	public ArrayList<DriverVO> findDriver ();
 }

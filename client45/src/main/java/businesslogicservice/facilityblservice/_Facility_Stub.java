@@ -56,17 +56,17 @@ public class _Facility_Stub implements FacilityBLService {
 		return null;
 	}
 
-//	@Override
-//	public FacilityVO findFacility(String facilityId) {
-//		FacilityPO facilityPO = null;
-//		try {
-//			facilityPO = data_Stub.find(facilityId);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("You have found a car!");
-//		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
-//	}
+	@Override
+	public FacilityVO findFacility(String facilityId) {
+		FacilityPO facilityPO = null;
+		try {
+			facilityPO = data_Stub.find(facilityId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		System.out.println("You have found a car!");
+		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+	}
 
 //	@Override
 //	public ResultMessage addDriver(DriverVO driver) {

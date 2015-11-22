@@ -7,7 +7,10 @@ import po.FacilityPO;
 import state.ResultMessage;
 
 public class _Facility_Data_Stub implements FacilityDataService {
-
+	@Override
+	public FacilityPO find(String id) {
+		return new FacilityPO("Y001:2015-09-22:00008", "2015-09-22", "123233", new ArrayList<>());
+	}
 
 	@Override
 	public ResultMessage add(FacilityPO facility) {
@@ -33,31 +36,29 @@ public class _Facility_Data_Stub implements FacilityDataService {
 		return null;
 	}
 
-//	@Override
-//	public AccountPO findDriver(String id) {
-//		return new DriverPO("DY001:2014-6-4:00008", "Old driver", 
-//				"YunNan", "1990-10-24", "842160199010246291", 
-//				"16868688686", 1500.0, "2years", 100);
-//	}
-//
-//	@Override
-//	public ResultMessage addDriver(AccountPO driver) {
-//		System.out.println("You have added a driver!");
-//		return ResultMessage.SUCCESS;
-//	}
-//
-//	@Override
-//	public ResultMessage deleteDriver(String id) {
-//		System.out.println("You have deleted a driver!");
-//		return ResultMessage.SUCCESS;
-//	}
-//
-//	@Override
-//	public ResultMessage modifyDriver(AccountPO driver) {
-//		System.out.println("You have modified a driver!");
-//		return ResultMessage.SUCCESS;
-//	}
-
-	
+	// @Override
+	// public AccountPO findDriver(String id) {
+	// return new DriverPO("DY001:2014-6-4:00008", "Old driver",
+	// "YunNan", "1990-10-24", "842160199010246291",
+	// "16868688686", 1500.0, "2years", 100);
+	// }
+	//
+	// @Override
+	// public ResultMessage addDriver(AccountPO driver) {
+	// System.out.println("You have added a driver!");
+	// return ResultMessage.SUCCESS;
+	// }
+	//
+	// @Override
+	// public ResultMessage deleteDriver(String id) {
+	// System.out.println("You have deleted a driver!");
+	// return ResultMessage.SUCCESS;
+	// }
+	//
+	// @Override
+	// public ResultMessage modifyDriver(AccountPO driver) {
+	// System.out.println("You have modified a driver!");
+	// return ResultMessage.SUCCESS;
+	// }
 
 }

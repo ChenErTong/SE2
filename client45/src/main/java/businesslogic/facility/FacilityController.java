@@ -61,5 +61,15 @@ public class FacilityController implements FacilityBLService {
 		}
 		return null;
 	}
+	
+	@Override
+	public FacilityVO findFacility(String ID) {
+		try {
+			return facilityBL.findFacility(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

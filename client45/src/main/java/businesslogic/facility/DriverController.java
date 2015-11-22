@@ -58,5 +58,19 @@ public class DriverController implements DriverBLService{
 		}
 		return vos;
 	}
+	
+	@Override
+	public DriverVO findDriver(String ID) {
+		try {
+			return driverBL.findDriver(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
+	
 
 }

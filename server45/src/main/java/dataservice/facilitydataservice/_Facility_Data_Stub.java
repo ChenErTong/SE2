@@ -8,10 +8,10 @@ import state.ResultMessage;
 
 public class _Facility_Data_Stub implements FacilityDataService {
 
-//	@Override
-//	public FacilityPO find(String id) {
-//		return new FacilityPO("Y001:2015-09-22:00008" , "2015-09-22","123233", new ArrayList<>());
-//	}
+	@Override
+	public FacilityPO find(String id) {
+		return new FacilityPO("Y001:2015-09-22:00008" , "2015-09-22","123233", new ArrayList<>());
+	}
 
 	@Override
 	public ResultMessage add(FacilityPO facility) {

@@ -37,6 +37,12 @@ public class Facility {
 		return facilityData.add(facilityPO);
 	}
 
+	public FacilityVO findFacility(String ID) throws RemoteException {
+		FacilityPO facilityPO = facilityData.find(ID);
+		FacilityVO facilityVO = FacilityTrans.convertPOtoVO(facilityPO);
+		return facilityVO;
+	}
+	
 	public ArrayList<FacilityVO> findFacility() throws RemoteException {
 		ArrayList<FacilityPO> facilityPOs = facilityData.find();
 		ArrayList<FacilityVO> facilityVOs = FacilityTrans.convertFacilityPOstoVOs(facilityPOs);

@@ -48,6 +48,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
+	public FacilityVO findFacility(String ID);
 	public ArrayList<FacilityVO> findFacility ();
 	
 }
