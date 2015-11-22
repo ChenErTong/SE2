@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="po.receiptpo.AdjustReceiptPO"/>
-<fullyQualifiedTypeName name="dataservice.funddataservice.ExpenseDataService"/>
-<fullyQualifiedTypeName name="state.ConfirmState"/>
-<fullyQualifiedTypeName name="vo.CommodityVO"/>
 <fullyQualifiedTypeName name="state.CommodityState"/>
 <fullyQualifiedTypeName name="transfer.MockTransfer"/>
 <fullyQualifiedTypeName name="po.receiptpo.TransferOrderPO"/>
@@ -35,7 +31,6 @@
 <fullyQualifiedTypeName name="vo.receiptvo.DebitBillVO"/>
 <fullyQualifiedTypeName name="po.receiptpo.PaymentBillPO"/>
 <fullyQualifiedTypeName name="dataservice.funddataservice.DebitAndPayBillDataService"/>
-<fullyQualifiedTypeName name="vo.DebitAndPayBillVO"/>
 <fullyQualifiedTypeName name="po.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="po.InventoryPO"/>
 <fullyQualifiedTypeName name="vo.InventoryVO"/>
@@ -51,7 +46,6 @@
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="po.OrderPO"/>
-<fullyQualifiedTypeName name="state.ReceiptType"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="state.ReceiptCondition"/>
@@ -59,5 +53,11 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="vo.BankAccountVO"/>
 <fullyQualifiedTypeName name="po.BankAccountPO"/>
+<fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
+<fullyQualifiedTypeName name="state.ReceiptType"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.DebitAndPayBill"/>
+<fullyQualifiedTypeName name="vo.DebitAndPayBillVO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="po.ExpensePO"/>
+<fullyQualifiedTypeName name="vo.ExpenseVO"/>
 </qualifiedTypeNameHistroy>

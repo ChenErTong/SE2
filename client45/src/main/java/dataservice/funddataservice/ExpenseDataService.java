@@ -38,5 +38,7 @@ public interface ExpenseDataService extends ManageDataService<ExpensePO> {
 	 * @param ID
 	 * return 要进行查看的PO
 	 */
-	public ArrayList<ExpensePO> show(String ID) throws RemoteException;
+	public ArrayList<ExpensePO> show() throws RemoteException;
+	
+	public String getID()throws RemoteException;
 }

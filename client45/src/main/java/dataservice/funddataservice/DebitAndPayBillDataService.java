@@ -30,8 +30,12 @@ public interface DebitAndPayBillDataService {
 	/**
 	 * 更新DebitAndPayBillPO
 	 * @param PO
+	 * @return 
 	 * @return 处理结果
 	 */
+	public DebitAndPayBillPO find(String ID)throws RemoteException;
+	
+	
 	public ResultMessage update(DebitAndPayBillPO PO) throws RemoteException;
 	/**
 	 * 根据单据类型生成编号

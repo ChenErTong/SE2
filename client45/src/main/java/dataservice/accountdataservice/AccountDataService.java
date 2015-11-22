@@ -3,13 +3,7 @@ package dataservice.accountdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.InventoryPO;
 import po.accountpo.AccountPO;
-import state.ResultMessage;
-     /** @author lxl
-	 *  @version Oct 23,2015
-	 *      **/
-import vo.accountvo.AccountVO;
 	
 
 public interface AccountDataService {
@@ -17,6 +11,6 @@ public interface AccountDataService {
 	public static final String NAME = "AccountData";
 	/**初始化持久数据**/
 	public void init() throws RemoteException;
-	public ArrayList<AccountPO> show() throws RemoteException;
+	public ArrayList<AccountPO> find() throws RemoteException;
 	
 }

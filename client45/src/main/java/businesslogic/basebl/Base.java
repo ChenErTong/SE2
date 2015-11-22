@@ -8,7 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.facility.FacilityTrans;
+import businesslogic.facilitybl.FacilityTrans;
 import businesslogicservice.baseblservice.BaseBLService;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;

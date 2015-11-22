@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import businesslogic.ControllerFactory;
-import businesslogic.facility.DriverController;
+import businesslogic.facilitybl.DriverController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;

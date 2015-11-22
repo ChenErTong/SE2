@@ -1,15 +1,8 @@
 package data.organizationdata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
-import data.ManageData;
 import dataservice.organizationdataservice.OrganizationDataService;
-import po.BranchPO;
-import po.OrganizationPO;
-import po.TransferPO;
-import state.ResultMessage;
-import util.SerSaveAndLoad;
 
 public class OrganizationData  implements OrganizationDataService {
 

@@ -8,8 +8,8 @@ public class DebitAndPayBillBLService_Driver {
 	DebitAndPayBillVO vo = new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
 	public void drive(DebitAndPayBillBLService service){
 		service.addDebitAndPayBill(vo.getCourierID(), vo.getPayerName());
-		service.getPayID();
-		service.getExpenseID();
+		//service.getPayID();
+		//service.getExpenseID();
 		service.getAllBankAccounts();
 		service.showExpense();
 		service.showExpenseApproving();

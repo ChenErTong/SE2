@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import businesslogic.ControllerFactory;
-import businesslogic.facility.FacilityController;
+import businesslogic.facilitybl.FacilityController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;

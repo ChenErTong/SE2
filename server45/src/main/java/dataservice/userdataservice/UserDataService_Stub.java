@@ -57,5 +57,10 @@ public class UserDataService_Stub implements UserDataService{
 		System.out.println("UpdataAdmin succeed!");
 		return ResultMessage.SUCCESS;
 	}
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

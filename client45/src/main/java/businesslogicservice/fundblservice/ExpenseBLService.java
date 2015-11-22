@@ -1,5 +1,6 @@
 package businesslogicservice.fundblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import vo.ExpenseVO;
@@ -13,13 +14,15 @@ public interface ExpenseBLService extends BLService{
 	 * @return ID
 	 * @author zsq
 	 * @version Oct 23,2015
+	 * @throws RemoteException 
 	 */
-	public String getID();
+	public String getID() throws RemoteException;
 	/**
 	 * 显示要全部收款记录
 	 * @return 全部收款记录的ArrayList
+	 * @throws RemoteException 
 	 */
-	public ArrayList<ExpenseVO> show();
+	public ArrayList<ExpenseVO> show() throws RemoteException;
 	/**
 	 * 添加收款记录
 	 * @param vo ExpenseVO

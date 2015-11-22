@@ -1,6 +1,6 @@
 package record;
 
-import businesslogic.record.Record;
+import businesslogic.recordbl.Record;
 
 public class MockBussinessCondition extends Record{
 

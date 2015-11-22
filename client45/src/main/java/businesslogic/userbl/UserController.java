@@ -1,5 +1,6 @@
 package businesslogic.userbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ConfirmState;
@@ -11,45 +12,69 @@ import businesslogicservice.userblservice.UserBLService;
 
 public class UserController implements UserBLService{
 
+	User userBL = new User();
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return userBL.confirmOperation();
 	}
 
 	@Override
 	public ArrayList<UserVO> show(String type) {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.show();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public String getID() {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.getID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage addUser(UserVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.addUser(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage deleteUser(UserVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.deleteUser(vo.getUserName());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage updateUser(UserVO vo) {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.updateUser(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public UserIdentity login(LoginInfo loginInfo) {
-		// TODO Auto-generated method stub
+		try {
+			return userBL.login(loginInfo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
