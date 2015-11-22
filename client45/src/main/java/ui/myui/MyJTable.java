@@ -98,4 +98,15 @@ public class MyJTable extends JTable{
 		
 		return data;
 	}
+	
+	/**
+	 * 得到某一行的数据
+	 */
+	public String[] getData(int row){
+		String[] data = new String[this.getColumnCount()];
+		for(int i = 0; i < data.length; i++){
+			data[i] = (String) this.getValueAt(row, i);
+		}
+		return data;
+	}
 }

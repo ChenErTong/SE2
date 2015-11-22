@@ -44,17 +44,14 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("OrderInput")){
 			totalPanel.setVisible(false);
 			subPanel = new OrderInput(this);
-			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ReceiveInput")){
 			totalPanel.setVisible(false);
 			subPanel = new ReceiveInput(this);
-			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("TimeCostManager")){
 			totalPanel.setVisible(false);
 			subPanel = new TimeAndCostManager(this);
-			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("produceOrder")){
 			if(this.produceOrder()){

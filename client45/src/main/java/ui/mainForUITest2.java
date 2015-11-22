@@ -6,6 +6,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ui.specialui.admin.Frame_Admin;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import ui.specialui.courier.Frame_Courier;
 
 public class mainForUITest2 {
 	public static void main(String[] args) {
@@ -17,10 +18,8 @@ public class mainForUITest2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		Frame_Courier courierFrame = new Frame_Courier();
-//		courierFrame.setVisible(true);
+//		new Frame_Courier();
 		
-		Frame_Branch branchFrame = new Frame_Branch();
-		branchFrame.setVisible(true);
+		new Frame_Branch();
 	}
 }

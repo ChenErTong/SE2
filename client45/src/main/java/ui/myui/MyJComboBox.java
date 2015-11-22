@@ -23,8 +23,10 @@ public class MyJComboBox extends JComboBox<String> {
 		for(int i = 0; i < items.length; i++){
 			this.addItem(items[i]);
 		}
-		this.setSelectedItem(items[0]);
+		if(items.length > 0){
+			this.setSelectedItem(items[0]);
+		}	
+		this.setMaximumRowCount(4);
 		this.setVisible(true);
 	}
-	
 }

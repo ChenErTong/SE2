@@ -19,9 +19,9 @@ public class MyEmptyTextArea extends JTextArea{
 	public MyEmptyTextArea(int x, int y, int width, int height){
 		this.setBounds(x, y, width, height);
 		this.setVisible(true);
-		this.setOpaque(false);	
 		this.setForeground(Color.BLACK);
-		//this.setBackground(Color.BLACK);
+		this.setBackground(new Color(255, 255, 255, 75));
+		this.setFocusable(false);
 		this.setFont(new Font("幼圆", Font.BOLD, 14));
 		this.setBorder(BorderFactory.createEmptyBorder());
 	}
