@@ -1,13 +1,9 @@
 package dataservice.organizationdataservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.BranchPO;
 import po.OrganizationPO;
-import po.TransferPO;
 import state.OrganizationType;
-import state.ResultMessage;
 
 public class OrganizationDataService_Stub implements OrganizationDataService{
 	
@@ -24,53 +20,7 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 		organizationPOs.add(organizationPO_2);
 		}
 
-	@Override
-	public ResultMessage add(BranchPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteBranch(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modify(BranchPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<BranchPO> findBranch() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage add(TransferPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage deleteTransfer(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResultMessage modify(TransferPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<TransferPO> findTransfer() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 //	@Override
 //	public ResultMessage add(OrganizationPO po) {
