@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branch.BranchTrans;
 import dataservice.branchdataservice.BranchDataService;
 import dataservice.organizationdataservice.OrganizationDataService;
 import dataservice.transferdataservice.TransferDataService;
@@ -14,7 +15,9 @@ import po.FacilityPO;
 import po.OrganizationPO;
 import po.TransferPO;
 import state.ResultMessage;
+import vo.BranchVO;
 import vo.OrganizationVO;
+import vo.TransferVO;
 
 public class Organization {
 	private BranchDataService branchData;
@@ -33,30 +36,50 @@ public class Organization {
 		}
 	}
 
-	public ArrayList<OrganizationVO> show() throws RemoteException{
+	public ArrayList<BranchVO> showBranch() throws RemoteException {
 		ArrayList<BranchPO> branchPOs = branchData.find();
-		ArrayList<TransferPO> transferPOs = transferData.find();
-//		ArrayList<OrganizationPO> organizationPOs=organizationData.find();
-//		ArrayList<OrganizationVO> organizationVOs=
-		return null;
+		return BranchTrans.convertPOstoVOs(branchPOs);
 	}
 
-	public String getID() {
+	public String getBranchID()throws RemoteException  {
+		return branchData.getID();
+	}
+
+	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchData.add(po);
+	}
+
+	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
+		return branchData.delete(organizationID);
+	}
+
+	public ResultMessage updateBranch(BranchVO vo)throws RemoteException  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage addOrganization(OrganizationVO vo) {
+	public ArrayList<TransferVO> showTransfer()throws RemoteException  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage deleteOrganization(String organizationID) {
+	public String getTransferID()throws RemoteException  {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage updateOrganization(OrganizationVO vo) {
+	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage deleteTransfer(String organizationID)throws RemoteException  {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,7 +3,9 @@ package businesslogicservice.organizationblservice;
 import java.util.ArrayList;
 
 import state.ResultMessage;
+import vo.BranchVO;
 import vo.OrganizationVO;
+import vo.TransferVO;
 
 
 /**
@@ -12,19 +14,15 @@ import vo.OrganizationVO;
  * @version Oct 22,2015
  */
 public interface OrganizationBLService {
-	/**
-	 * @return 全部的系统用户
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public ArrayList<OrganizationVO> show();
+	
+	public ArrayList<BranchVO> showBranch();
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getID();
+	public String getBranchID();
 	/**
 	 * 添加一个机构
 	 * @param vo OrganizationVO
@@ -32,7 +30,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addOrganization(OrganizationVO vo);
+	public ResultMessage addBranch(BranchVO vo);
 	/**
 	 * 删除一个机构
 	 * @param organizationID
@@ -40,7 +38,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteOrganization(String organizationID);
+	public ResultMessage deleteBranch(String organizationID);
 	/**
 	 * 更新一个机构的信息
 	 * @param vo OrganizationVO
@@ -48,5 +46,42 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage updateOrganization(OrganizationVO vo);
+	public ResultMessage updateBranch(BranchVO vo);
+	/**
+	 * @return 全部的系统用户
+	 * @author zsq
+	 * @version Oct 22,2015
+	 */
+	public ArrayList<TransferVO> showTransfer();
+	/**
+	 * 界面进行新建用户操作是得到一个可用的ID
+	 * @return 
+	 * @author zsq 
+	 * @version Oct 22,2015
+	 */
+	public String getTransferID();
+	/**
+	 * 添加一个机构
+	 * @param vo OrganizationVO
+	 * @return 处理信息
+	 * @author zsq
+	 * @version Oct 22,2015
+	 */
+	public ResultMessage addTransfer(TransferVO vo);
+	/**
+	 * 删除一个机构
+	 * @param organizationID
+	 * @return 处理信息
+	 * @author zsq
+	 * @veersion Oct 22,2015
+	 */
+	public ResultMessage deleteTransfer(String organizationID);
+	/**
+	 * 更新一个机构的信息
+	 * @param vo OrganizationVO
+	 * @return 处理结果
+	 * @author zsq
+	 * @version Oct 22,2015
+	 */
+	public ResultMessage updateTransfer(TransferVO vo);
 }
