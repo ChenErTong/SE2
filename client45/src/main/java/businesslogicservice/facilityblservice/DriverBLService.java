@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import businesslogicservice.BLService;
 import state.ResultMessage;
-import vo.FacilityVO;
 import vo.accountvo.DriverVO;
 
 public interface DriverBLService  extends BLService{
