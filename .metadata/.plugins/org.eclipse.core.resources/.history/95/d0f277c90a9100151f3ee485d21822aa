@@ -26,7 +26,7 @@ public interface AccountBLService {
 	 * @return 全部员工账户的ArrayList
 	 * @throws RemoteException 
 	 */
-	public ArrayList<AccountVO> show() ;
+	public ArrayList<AccountVO> show() throws RemoteException;
 	/**
 	 * 进行一条信息的查看
 	 */

@@ -11,15 +11,9 @@ import vo.accountvo.AccountVO;
 public class AccountController implements AccountBLService{
      Account AccountBL;
 	@Override
-	public ArrayList<AccountVO> show() {
+	public ArrayList<AccountVO> show() throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			return AccountBL.show();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return AccountBL.show();
 	}
 
 }
