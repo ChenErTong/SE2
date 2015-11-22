@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import po.FacilityPO;
 import po.accountpo.AccountPO;
 
-public class BranchVO {
+public class BranchVO extends OrganizationVO{
 	/**
 	 * 编号
 	 */
@@ -31,6 +31,7 @@ public class BranchVO {
 
 	public BranchVO(String id, String date, String address, ArrayList<AccountPO> accounts,
 			ArrayList<FacilityPO> facilities) {
+		super(id, address, accounts.size());
 		this.id = id;
 		this.date = date;
 		this.address = address;

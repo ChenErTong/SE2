@@ -8,11 +8,11 @@ public class OrganizationVO {
 	/**����ʱ�䣬ϵͳ�Զ�����*/
 	protected String date;
 	/**Ա������*/
-	protected double number;
+	protected int number;
 	/**������ַ*/
 	protected String address;
 	
-	public OrganizationVO(String organizationID,String address,double number){
+	public OrganizationVO(String organizationID,String address,int number){
 
 		this.organizationID = organizationID;
 		this.address = address;

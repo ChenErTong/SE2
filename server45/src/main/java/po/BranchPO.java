@@ -9,7 +9,7 @@ import po.accountpo.AccountPO;
  * @author czw
  * @version Oct 23, 2015
  */
-public class BranchPO extends PersistentObject{	
+public class BranchPO extends OrganizationPO{	
 	/**
 	 * 
 	 */
@@ -39,8 +39,8 @@ public class BranchPO extends PersistentObject{
 	 * 构造器
 	 */
 	public BranchPO(String id, String address, String date, ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities) {
-		super(id, date);
-		this.address = address;
+		super(id, address,accounts.size());
+		//Date在Organization里能自动生成
 		this.accounts = accounts;
 		this.facilities = facilities;
 	}

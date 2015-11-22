@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderTrans;
-import dataservice.branchdataservice.BranchDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.OrderPO;
@@ -115,5 +114,7 @@ public class Branch{
 		LoadingListVO vo = new LoadingListVO(ID, branchID, destination, facilityID, courierName, orders);
 		return vo;
 	}
+	
+	
 
 }

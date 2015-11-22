@@ -13,7 +13,7 @@ import po.accountpo.AccountPO;
  * @author czw
  * @version Oct 23, 2015
  */
-public class TransferPO extends PersistentObject{
+public class TransferPO extends OrganizationPO{
 	/**
 	 * 
 	 */
@@ -35,8 +35,8 @@ public class TransferPO extends PersistentObject{
 	private ArrayList<InventoryPO> inventories;
 
 	public TransferPO(String id, String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
-		super(id, date);
-		this.address = address;
+		super(id, address,accounts.size());
+		//Date在Organization里能自动生成
 		this.accounts = accounts;
 		this.inventories = inventories;
 	}
