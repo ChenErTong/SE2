@@ -18,7 +18,6 @@ public class OrganizationTrans {
 		String organizationID=po.getID();
 		String address = po.getAddress();
 		String date = po.getDate();
-		int number=po.getNumberOfPerson();
 		OrganizationType organizationType = po.getOrganizationType();
 		if(organizationType==OrganizationType.BRANCH){
 			BranchPO branchPO=(BranchPO)po;

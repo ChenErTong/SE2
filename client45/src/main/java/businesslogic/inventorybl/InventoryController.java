@@ -5,8 +5,6 @@ package businesslogic.inventorybl;
 import java.rmi.RemoteException;
 
 import businesslogicservice.inventoryblservice.InventoryBLService;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;

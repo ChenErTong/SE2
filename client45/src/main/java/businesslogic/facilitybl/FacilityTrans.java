@@ -3,11 +3,9 @@ package businesslogic.facilitybl;
 import java.util.ArrayList;
 
 import po.FacilityPO;
-import po.accountpo.AccountPO;
 import po.accountpo.DriverPO;
 import po.receiptpo.LoadingListPO;
 import vo.FacilityVO;
-import vo.accountvo.AccountVO;
 import vo.accountvo.DriverVO;
 
 public class FacilityTrans {
