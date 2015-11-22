@@ -17,9 +17,8 @@ public class FacilityInfo extends MyTranslucentPanel{
 	
 	private void initComponent(){
 		fields = new MyJTextField[5];
-		this.add(new MyJLabel(78, 42, 60, 25, "车辆号", 18, true));
+		this.add(new MyJLabel(78, 42, 60, 25, "车牌号", 18, true));
 		fields[0] = new MyJTextField(150, 40, 130, 30);
-		fields[0].setOnlyInteger(9);
 		
 		this.add(new MyJLabel(78, 102, 60, 25, "底盘号", 18, true));
 		fields[1] = new MyJTextField(150, 100, 130, 30);

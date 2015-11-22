@@ -166,8 +166,11 @@ public class FacilityInfoManage extends MyJPanel {
 			return false;
 		}		
 		String[] data = new String[5];
-		data[0] = facility.getFacilityIdString();
-		
+		data[0] = facility.getVehicleIdentificationNumber();
+		data[1] = facility.getBottomCode();
+		data[2] = facility.getFacilityIdString();
+		data[3] = facility.getEngineCode();
+		data[4] = facility.getDateString();
 	
 		id = facilityId.getText();
 		facilityInfo.setData(data);
@@ -178,7 +181,7 @@ public class FacilityInfoManage extends MyJPanel {
 		String[] data = facilityInfo.getData();
 		if(data == null) return 1;
 		
-//		facility = new FacilityVO();
+		facility = new FacilityVO(null, null, data[2], data[4], data[1], data[3], data[0]);
 		facilityController.addFacility(facility);
 		facilityController.confirmOperation();
 		return 0;
@@ -191,9 +194,13 @@ public class FacilityInfoManage extends MyJPanel {
 		String[] data = facilityInfo.getData();
 		if(data == null) return 1;
 		
-//		facility.
-//		facilityController.modifyFacility(facility);
-//		facilityController.confirmOperation();
+		facility.setVehicleIdentificationNumber(data[0]);
+		facility.setBottomCode(data[1]);
+		facility.setFacilityIdString(data[2]);
+		facility.setEngineCode(data[3]);
+		facility.setDateString(data[4]);
+		facilityController.modifyFacility(facility);
+		facilityController.confirmOperation();
 		return 0;
 	}
 	
@@ -202,6 +209,7 @@ public class FacilityInfoManage extends MyJPanel {
 			return 2;
 		}
 		facilityController.deleteFacility(facility);
+		facilityController.confirmOperation();
 		return 0;
 	}
 	

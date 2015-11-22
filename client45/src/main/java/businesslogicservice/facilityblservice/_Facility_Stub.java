@@ -65,7 +65,8 @@ public class _Facility_Stub implements FacilityBLService {
 			e.printStackTrace();
 		}
 		System.out.println("You have found a car!");
-		return new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+		return null;
+//				new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
 	}
 
 //	@Override

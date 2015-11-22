@@ -40,13 +40,25 @@ public class FacilityVO {
 		this.facilityIdString = facilityIdString;
 	}
 
-	public FacilityVO(String managerId, ArrayList<LoadingListPO> deliverHistory, String facilityIdString,
-			String dateString) {
+	/**
+	 * @param managerId 管理员编号
+	 * @param deliverHistory 运输历史
+	 * @param facilityIdString 车辆代号
+	 * @param dateString 购入时间
+	 * @param bottomCode 底盘号
+	 * @param engineCode 发动机号
+	 * @param vehicleIdentificationNumber 车牌号
+	 */
+	public FacilityVO(String managerId,	ArrayList<LoadingListPO> deliverHistory, String facilityIdString, String dateString, String bottomCode, String engineCode, String vehicleIdentificationNumber) {
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 		this.facilityIdString = facilityIdString;
 		this.dateString = dateString;
+		this.bottomCode = bottomCode;
+		this.engineCode = engineCode;
+		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
 	}
+
 
 	public String getManagerId() {
 		return managerId;
@@ -101,17 +113,6 @@ public class FacilityVO {
 	}
 
 	public void setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
-		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
-	}
-
-	public FacilityVO(String managerId, ArrayList<LoadingListPO> deliverHistory, String facilityIdString,
-			String dateString, String bottomCode, String engineCode, String vehicleIdentificationNumber) {
-		this.managerId = managerId;
-		this.deliverHistory = deliverHistory;
-		this.facilityIdString = facilityIdString;
-		this.dateString = dateString;
-		this.bottomCode = bottomCode;
-		this.engineCode = engineCode;
 		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
 	}
 
