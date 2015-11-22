@@ -87,6 +87,5 @@ public class BankAccount implements BankAccoutBLService {
     public BankAccountVO POtoVO(BankAccountPO po){
     	BankAccountVO vo=new BankAccountVO(po.getID(), po.getName(),po.getMoney(), po.getLevel());
 		return vo;
-    	
     }
 }
