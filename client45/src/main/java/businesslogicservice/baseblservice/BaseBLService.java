@@ -1,5 +1,6 @@
 package businesslogicservice.baseblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import state.FindTypeBase;
 import state.ResultMessage;
@@ -18,39 +19,44 @@ public interface BaseBLService extends BLService{
 	 * @return BaseVO vo
 	 * @author zsq 
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
 	//TODO-
-	public ArrayList<BaseVO> show(FindTypeBase baseType);
+	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException;
 	/**
 	 * 界面进行新建一个成本常量操作是得到一个可用的ID
 	 * @param baseType 增加的常量类型：薪水策略、距离、单价
 	 * @return ID
 	 * @author zsq 
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public String getID(FindTypeBase baseType);
+	public String getID(FindTypeBase baseType) throws RemoteException;
 	/**
 	 * 添加一个常量
 	 * @param vo BaseVO
 	 * @return 处理信息
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ResultMessage addBase(BaseVO vo);
+	public ResultMessage addBase(BaseVO vo) throws RemoteException;
 	/**
 	 * 删除一个常量
 	 * @param ID
 	 * @return 处理信息
 	 * @author zsq
+	 * @throws RemoteException 
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteBase(String ID);
+	public ResultMessage deleteBase(String ID) throws RemoteException;
 	/**
 	 * 更新一条成本常量信息
 	 * @param vo BaseVO
 	 * @return 处理结果
 	 * @author zsq
 	 * @version Oct 22,2015
+	 * @throws RemoteException 
 	 */
-	public ResultMessage updateBase(BaseVO vo);
+	public ResultMessage updateBase(BaseVO vo) throws RemoteException;
 }

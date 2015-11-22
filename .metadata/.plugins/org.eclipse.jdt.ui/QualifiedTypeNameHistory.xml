@@ -45,11 +45,16 @@
 <fullyQualifiedTypeName name="po.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="po.InventoryPO"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="vo.InventoryVO"/>
 <fullyQualifiedTypeName name="businesslogicservice.inventoryblservice.InventoryBLService"/>
 <fullyQualifiedTypeName name="vo.InventoryCheckVO"/>
 <fullyQualifiedTypeName name="businesslogic.record.record"/>
 <fullyQualifiedTypeName name="businesslogicservice.recordblservice.RecordBLService"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="vo.BaseVO"/>
+<fullyQualifiedTypeName name="businesslogic.basebl.Base"/>
+<fullyQualifiedTypeName name="po.BasePO"/>
+<fullyQualifiedTypeName name="java.lang.Void"/>
+<fullyQualifiedTypeName name="vo.ValueObject"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

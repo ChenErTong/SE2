@@ -41,4 +41,6 @@ public interface BaseDataService extends ManageDataService<BasePO> {
 	 * @return 账户持久化对象
 	 */
 	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException;
+	
+	public String getID(FindTypeBase baseType)throws RemoteException;
 }
