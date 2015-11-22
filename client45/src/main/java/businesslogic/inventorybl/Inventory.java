@@ -8,8 +8,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogicservice.inventoryblservice.InventoryBLService;
-import dataservice.basedataservice.BaseDataService;
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.InventoryPO;
@@ -23,7 +21,6 @@ import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.TransferArrivalListVO;
 
 public class Inventory  {
 	private InventoryDataService inventoryData;
@@ -42,20 +39,13 @@ public class Inventory  {
 	}
 	
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException  {
-		   ArrayList<InventoryVO> VOs=new ArrayList<InventoryVO>();
 		   ArrayList<InventoryPO> POs=inventoryData.getInventoryPOList(endDate);
-		   for(InventoryPO po : POs) {
-				InventoryVO vo = POtoVO(po);
-				VOs.add(vo);
-			}
+		   ArrayList<InventoryVO> VOs=InventoryTrans.convertInventoryPOstoVOs(POs);
 			InventoryViewVO viewVO=new InventoryViewVO (inventoryData.getimportNumber(beginDate,  endDate), inventoryData.getexportNumber( beginDate, endDate), inventoryData.getNum( beginDate,  endDate),VOs);
 		   return viewVO;
 	}
 	
-	private InventoryVO POtoVO(InventoryPO po) throws RemoteException {
-		InventoryVO vo = new InventoryVO(po.getID(),po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
-		return vo;
-	}
+	
 	
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> POs=inventoryData.showImport(enddate);
@@ -63,17 +53,14 @@ public class Inventory  {
 		//记得补充一个生成方法
 		String lotNum = null;
 		for(InventoryImportReceiptPO po : POs) {
-			InventoryImportReceiptVO vo = POtoVO(po);
+			InventoryImportReceiptVO vo =InventoryTrans.convertPOtoVO(po);
 			VOs.add(vo);
 		}
 		InventoryCheckVO checkVO=new InventoryCheckVO(VOs,lotNum);
 		return checkVO;
 	}
 
-	private InventoryImportReceiptVO POtoVO(InventoryImportReceiptPO po) throws RemoteException {
-		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getCommoditiesID(),po.getDestination(),po.getA(),po.getB(),po.getC(),po.getD());
-		return vo;
-	}
+	
 	
 	
 	public String getImportID() throws RemoteException {
@@ -131,8 +118,6 @@ public class Inventory  {
 		 inventoryData.insertExport(po);
 		 inventoryData.modifyInventory(inventorypo, a, b, c, d,"empty");
 		return inventoryData.insertExport(po);
-			
-		
 	}
 
 	
@@ -159,8 +144,8 @@ public class Inventory  {
 		int afD = now.getD();
 		String ID=inventoryData.getImportID();
 		AdjustReceiptPO po=new AdjustReceiptPO(ID,exA,exB, exC,exD, afA,afB, afC,afD);
-		InventoryPO beforePO=VoToPo(before);
-		InventoryPO afterPO=VoToPo(now);
+		InventoryPO beforePO=InventoryTrans.convertVOtoPO(before);
+		InventoryPO afterPO=InventoryTrans.convertVOtoPO(now);
 		inventoryData.modifyInventory(beforePO, exA,exB,exC, exD,"empty");
 		inventoryData.modifyInventory(afterPO, afA, afB,afC,afD, "full");
 		inventoryData.insertAdjust(po);
@@ -168,12 +153,7 @@ public class Inventory  {
 		return ResultMessage.SUCCESS;
 	   
 	}
-	public InventoryPO VoToPo(InventoryVO vo) throws RemoteException{
-		InventoryPO po=new InventoryPO(vo.getID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
-		return po;
-		
-		
-	}
+	
 	
 
 }

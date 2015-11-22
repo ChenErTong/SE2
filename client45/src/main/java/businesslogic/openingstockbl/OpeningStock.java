@@ -10,6 +10,7 @@ import businesslogic.accountbl.AccountTrans;
 import businesslogic.branchbl.BranchTrans;
 import businesslogic.facilitybl.FacilityTrans;
 import businesslogic.fundbl.FundTrans;
+import businesslogic.inventorybl.InventoryTrans;
 import businesslogic.transferbl.TransferTrans;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.BankAccountPO;
@@ -52,7 +53,7 @@ public class OpeningStock {
 		ArrayList<BranchPO> branchs = BranchTrans.convertVOstoPOs(branchVOs);
 		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(accountVOs);
 		ArrayList<FacilityPO> facilities = FacilityTrans.convertVOstoPOs(facilityVOs);
-		ArrayList<InventoryPO> inventories = null;
+		ArrayList<InventoryPO> inventories = InventoryTrans.convertInventoryVOstoPOs(inventoryVOs);
 		ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
 		String ID = openingStockData.getID();
 		String date = null;
