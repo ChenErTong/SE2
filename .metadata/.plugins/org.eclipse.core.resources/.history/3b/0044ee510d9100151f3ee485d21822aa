@@ -104,7 +104,7 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 
 	@Override
 	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers)
-			{
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
