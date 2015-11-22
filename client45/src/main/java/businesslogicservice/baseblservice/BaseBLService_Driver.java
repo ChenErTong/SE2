@@ -15,12 +15,7 @@ public class BaseBLService_Driver {
 		service.confirmOperation();
 		service.deleteBase(ID);
 		service.updateBase(vo);
-		try {
 			service.show(baseType);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		service.getID(baseType);
 		
 	}
