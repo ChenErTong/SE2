@@ -1,4 +1,4 @@
-package businesslogic.record;
+package businesslogic.recordbl;
 /**
  * @author LIUXUANLIN
  */

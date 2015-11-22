@@ -1,4 +1,4 @@
-package businesslogic.facility;
+package businesslogic.facilitybl;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package businesslogic.inventory;
+package businesslogic.inventorybl;
 /**
  * @author LIUXUANLIN
  */

@@ -6,7 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branch.BranchTrans;
+import businesslogic.branchbl.BranchTrans;
 import businesslogic.transferbl.TransferTrans;
 import dataservice.branchdataservice.BranchDataService;
 import dataservice.transferdataservice.TransferDataService;

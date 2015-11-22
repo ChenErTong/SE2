@@ -1,4 +1,4 @@
-package businesslogic.facility;
+package businesslogic.facilitybl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

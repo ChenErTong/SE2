@@ -1,4 +1,4 @@
-package businesslogic.facility;
+package businesslogic.facilitybl;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

@@ -1,4 +1,4 @@
-package businesslogic.branch;
+package businesslogic.branchbl;
 /**
  * @author LIUXUANLIN
  */

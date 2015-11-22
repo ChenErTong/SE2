@@ -5,7 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import businesslogic.facility.Facility;
+import businesslogic.facilitybl.Facility;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import state.ResultMessage;
