@@ -9,12 +9,12 @@ import state.UserIdentity;
 import vo.UserVO;
 
 
-public class TestUser {
+/*public class TestUser {
 	@Test
 	public void testUser() {
 		MockUser user = new MockUser();
-		UserVO vo1 = new UserVO("ADMIN", "WangDaChui", "123456", UserIdentity.ADMIN);
-		UserVO vo2 = new UserVO("Manager","WangXiaoJian","456789",UserIdentity.GENERAL_MANAGER);
+	//	UserVO vo1 = new UserVO("ADMIN", "WangDaChui", "123456", UserIdentity.ADMIN);
+		//UserVO vo2 = new UserVO("Manager","WangXiaoJian","456789",UserIdentity.GENERAL_MANAGER);
 		
 		user.addUser(vo1);
 		user.addUser(vo2);
@@ -27,3 +27,4 @@ public class TestUser {
 		user.show();
 	}
 }
+*/

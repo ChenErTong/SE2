@@ -5,20 +5,24 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.organizationdataservice.OrganizationDataService;
+import po.BranchPO;
 import po.OrganizationPO;
+import po.TransferPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class OrganizationData extends ManageData<OrganizationPO> implements OrganizationDataService {
+public class OrganizationData  implements OrganizationDataService {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	public OrganizationData() throws RemoteException {
-		poList=new SerSaveAndLoad<OrganizationPO>("data/"+NAME+".ser");
+//		poList=new SerSaveAndLoad<OrganizationPO>("data/"+NAME+".ser");
+		//这个类好像用不到了
 	}
+
 
 
 }

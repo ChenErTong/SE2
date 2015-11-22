@@ -9,22 +9,27 @@ public class UserTrans {
 			if (vo==null) {
 				return null;
 			}
-			String ID = "UserVO里没ID";
-			String username = vo.getUsername();
-			String name = vo.getName();
+			String ID = vo.getId();
+			String username = vo.getUserName();
 			String password = vo.getPassword();
-			UserIdentity iden = vo.getIden();
-			return new UserPO(ID, username, name, password, iden);
+			String phoneNumber = vo.getPhoneNumber();
+			String iden = vo.getIden();
+			String authority = vo.getAuthority();
+			String address = vo.getAddress();
+			return new UserPO(ID, password, username ,phoneNumber, iden,authority,address);
 		}
 		
 		public static UserVO transPOtoVO(UserPO po){
 			if (po==null) {
 				return null;
 			}
+			String ID = po.getId();
 			String username = po.getUsername();
-			String name = po.getName();
 			String password = po.getPassword();
-			UserIdentity iden = po.getIden();
-			return new UserVO(username, name, password, iden);
+			String phoneNumber = po.getPhoneNumber();
+			String iden = po.getIden();
+			String authority = po.getAuthority();
+			String address = po.getAddress();
+			return new UserVO(ID, password, username ,phoneNumber, iden,authority,address);
 		}
 }

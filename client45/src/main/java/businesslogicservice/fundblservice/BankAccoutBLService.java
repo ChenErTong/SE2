@@ -1,5 +1,6 @@
 package businesslogicservice.fundblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
@@ -57,6 +58,7 @@ public interface BankAccoutBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 * @param <FindTypeAccout>
+	 * @throws RemoteException 
 	 */
-	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type);
+	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type) throws RemoteException;
 }

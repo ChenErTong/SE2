@@ -1,22 +1,29 @@
-package ui.specialui.admin.TotalPanel;
+package ui.specialui.admin;
 
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import businesslogic.ControllerFactory;
+import businesslogic.userbl.UserController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-
-import ui.specialui.admin.Frame_Admin;
+import vo.FacilityVO;
+import vo.UserVO;
 
 
 public class Panel_Admin_Total extends MyJPanel{
 	private UserInfo userInfo;
 	private UserDetails userDetails;
 	private MyJButton commonButton;
+	private UserVO user;
+	private ArrayList<UserVO> userList;
+	private UserController userController;
 	public Panel_Admin_Total(Frame_Admin frame_Admin) {
 		super(0, 0, 1280, 720);
+		userController = ControllerFactory.getUserController();
 		this.setOpaque(false);
 		this.initComponent(frame_Admin);
 	
@@ -29,8 +36,8 @@ public class Panel_Admin_Total extends MyJPanel{
 		this.add(userInfo);
 		
 		userDetails = new UserDetails();
+		userDetails.setUneditable();
 		this.add(userDetails);
-		
 		this.initButton(frame_Admin);
 	}	
 	
@@ -103,7 +110,7 @@ public class Panel_Admin_Total extends MyJPanel{
 		this.add(userDetails);
 		
 		commonButton = new MyJButton(890, 670, 120, 30, "删除用户", 20);
-		commonButton.setActionCommand("ViewUserInfomation");
+		commonButton.setActionCommand("DeleteUser");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
 		
@@ -153,71 +160,76 @@ public class Panel_Admin_Total extends MyJPanel{
 	}
 	/**
 	 * TODO 从bl层获取数据
-	 * 查找用户
+	 * 添加用户
 	 */
-/*	@SuppressWarnings("unused")
-	public boolean searchUser() {
-		String[] data;
-		
-		// TODO
-		data = null;
-		
-		if(data == null){
-			return false;
-		}
-	//	id = facilityId.getText();
-		userDetails.setData(data);
-		return true;
-	}
 
 	public int addUser() {
-		int result = this.getData();
-		if(result == 0){
-			// TODO
-			// 添加车辆
+		String [] data = userDetails.getData();
+		if(data == null){
+			return 1;
 		}
-		return result;
+		data[0] = userController.getID();
+		user = new UserVO(data[0], data[1], data[2], data[3], data[4], data[5],data[8]);
+		userController.addUser(user);
+		userController.confirmOperation();
+		return 0;
+		
 	}
-
+/**
+ * 修改用户信息
+ * 从bl层获得数据
+ */
 	public int modifyUser() {
-		if(id == null){
-			return 2;
+		String [] data = userDetails.getData();
+		if(data == null){
+			return 1;
 		}
-		int result = this.getData();
-		if(result == 0){
-			// TODO
-			// 修改车辆
-		}
-		return result;
+		user.setId(data[0]);
+		user.setPassword(data[1]);
+		user.setUserName(data[2]);
+		user.setPhoneNumber(data[3]);
+		user.setIden(data[4]);
+		user.setAuthority(data[5]);
+		user.setAddress(data[9]);
+		userController.updateUser(user);
+		userController.confirmOperation();
+		return 0;
 	}
-	
+	/**
+	 * 删除用户
+	 * @return
+	 */
 	public int deleteUser() {
-		if(id == null){
-			return 2;
-		}
-		// TODO
-		// 删除车辆
+		//现在列表中选择一个用户后再进行删除
+		userController.deleteUser(user);
+		userController.confirmOperation();
 		return 0;
 	}
 	
 	public void refresh() {
 		userDetails.refresh();
-	//	facilityId.setText(null);
+	}
+	/**
+	 * 查看用户信息列表
+	 * TODO 从bl层获取数据
+	 */
+	public boolean searchUser() {		
+		String type = userInfo.getData();
+		if(type==null){
+			return false;
+		}
+		userList = userController.show(type);
+		return true;
 	}
 	
-	private int getData(){
-		@SuppressWarnings("unused")
-		String[] data;
-		if((data = userDetails.getData()) == null) return 1;
-		return 0;	
+	/**
+	 * 查看用户详细信息
+	 */
+	public boolean viewUserDetails(){
+		//TODO
+		//从userList中选择一个要查看的用户
+		return false;
 	}
-		
-		
-	//	MyJLabel title = new MyJLabel(600,50,210,50,"用户信息",22,true);
-		//this.add(title);
-		
-*/
-		
 	private static final long serialVersionUID = 1L;
 		
 

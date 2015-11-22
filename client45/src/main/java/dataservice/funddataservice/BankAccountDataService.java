@@ -7,6 +7,7 @@ import dataservice.ManageDataService;
 import po.BankAccountPO;
 import state.FindTypeAccount;
 import state.ResultMessage;
+import vo.BankAccountVO;
 
 /**
  * 提供银行账户数据的集体载入、保存和增删改查服务
@@ -25,4 +26,20 @@ import state.ResultMessage;
 	 * @return 账户持久化对象
 	 */
 	public ArrayList<BankAccountPO> find(String keywords,FindTypeAccount bankAccoutType) throws RemoteException;
-}
+	/**
+	 * 提出创建/新增银行账户时返回账户ID
+	 *
+	 */
+	public String getID();
+	
+	public ArrayList<BankAccountVO> show();
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	}

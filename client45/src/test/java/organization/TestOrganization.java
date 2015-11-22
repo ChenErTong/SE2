@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import state.OrganizationType;
 import state.ResultMessage;
 import vo.OrganizationVO;
 
@@ -16,8 +17,8 @@ public class TestOrganization {
 	@Test
 	public void testOrganization() {
 		MockOrganization mockOrganization = new MockOrganization();
-		OrganizationVO vo1 = new OrganizationVO("123", "南京市栖霞区九乡河东路163号", 8);
-		OrganizationVO vo2 = new OrganizationVO("456","南京市鼓楼校区南京大学鼓楼校区",10);
+		OrganizationVO vo1 = new OrganizationVO("123", "南京市栖霞区九乡河东路163号", 8,OrganizationType.BRANCH);
+		OrganizationVO vo2 = new OrganizationVO("456","南京市鼓楼校区南京大学鼓楼校区",10,OrganizationType.BRANCH);
 		//ArrayList<OrganizationVO> organizations;
 		ArrayList<OrganizationVO> organizations = new ArrayList<OrganizationVO>();
 		organizations.add(vo1);

@@ -3,6 +3,8 @@ package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import state.OrganizationType;
+
 /**
  * ������ĸ��࣬�����ĸ��������ԣ�������ţ�����ʱ�䣬Ա��������������ַ
  * @author zsq
@@ -24,7 +26,9 @@ public class OrganizationPO extends PersistentObject{
 	/**������ַ*/
 	protected String address;
 	
-	public OrganizationPO(String organizationID,String address,int numberOfPerson){
+	protected OrganizationType organizationType;
+	
+	public OrganizationPO(String organizationID,String address,int numberOfPerson,OrganizationType organizationType){
 		super(organizationID);
 		this.organizationID = organizationID;
 		this.address = address;
@@ -44,6 +48,15 @@ public class OrganizationPO extends PersistentObject{
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getDate() {
+		return date;
+	}
+	public int getNumberOfPerson() {
+		return numberOfPerson;
+	}
+	public OrganizationType getOrganizationType() {
+		return organizationType;
 	}
 
 }
