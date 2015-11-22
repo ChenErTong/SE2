@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.OrderPO;
+import state.ReceiptCondition;
 import state.ReceiptState;
 import state.ResultMessage;
 import vo.CommodityVO;
@@ -45,5 +46,4 @@ public interface OrderDataService  extends ManageDataService<OrderPO>{
 	
 	
 	
-//	public ResultMessage modify(OrderPO order)throws RemoteException;
 }

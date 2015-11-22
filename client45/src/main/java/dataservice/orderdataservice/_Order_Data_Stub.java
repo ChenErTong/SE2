@@ -48,13 +48,14 @@ public class _Order_Data_Stub implements OrderDataService {
 		return null;
 	}
 
-
-
 	@Override
-	public ResultMessage modify(OrderPO order) throws RemoteException {
+	public ResultMessage modify(OrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 
 
 }
