@@ -47,6 +47,22 @@ public class RecordBLService_Stub implements RecordBLService{
 		return new BussinessConditionVO( end, totalIncome, totalExpen,profit);
 	}
 
-	
+	@Override
+	public double income(String end) {
+		// TODO Auto-generated method stub
+		return totalIncome;
+	}
+
+	@Override
+	public double earning(String end) {
+		// TODO Auto-generated method stub
+		return totalExpen;
+	}
+
+	@Override
+	public double expense(String end) {
+		// TODO Auto-generated method stub
+		return profit;
+	}
 
 }

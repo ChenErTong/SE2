@@ -79,7 +79,21 @@ public class Record implements RecordBLService{
 	   }
 	  return null;
    }
-
+@Override
+public double income(String end) throws RemoteException {
+	// TODO Auto-generated method stub
+	return 0;
+}
+@Override
+public double earning(String end) throws RemoteException {
+	// TODO Auto-generated method stub
+	return 0;
+}
+@Override
+public double expense(String end) throws RemoteException {
+	// TODO Auto-generated method stub
+	return 0;
+}
     
 
 

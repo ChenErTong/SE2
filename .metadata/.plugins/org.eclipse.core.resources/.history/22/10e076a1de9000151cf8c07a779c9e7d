@@ -19,5 +19,9 @@ public interface RecordBLService {
 	/**成本收益表数据**/
 	public  BussinessConditionVO bussinessCondition(String end) throws RemoteException;
 	/**计算得到的收入**/
-	
+	public   double income(String  end) throws RemoteException;
+	/**计算得到的利润**/
+	public   double earning(String  end) throws RemoteException;
+	/**计算得到的支出**/
+	public   double expense(String  end) throws RemoteException;
 }

@@ -22,6 +22,22 @@ public class RecordController implements RecordBLService{
 		return RecordBL.bussinessCondition(end);
 	}
 
-	
+	@Override
+	public double income(String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return RecordBL.income(end);
+	}
+
+	@Override
+	public double earning(String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return RecordBL.expense(end);
+	}
+
+	@Override
+	public double expense(String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return RecordBL.expense(end);
+	}
 
 }
