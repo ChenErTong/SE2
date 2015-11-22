@@ -36,13 +36,11 @@ public class DebitAndPayBill  {
 	}
 	
 	public String getExpenseID() throws RemoteException {
-		// TODO Auto-generated method stub
 		return  debitAndPayBillData.getExpenseID();
 	}
 
 
 	public String getPayID() throws RemoteException {
-		// TODO Auto-generated method stub
 		return  debitAndPayBillData.getPayID();
 	}
 
@@ -83,7 +81,7 @@ public class DebitAndPayBill  {
 		//疑问
 		String ID=null;
 		DebitAndPayBillVO vo=new DebitAndPayBillVO(ID,money, courierID, type, orderNumbers);
-		DebitAndPayBillPO po=VOtoPO(vo);
+		DebitAndPayBillPO po=FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.insert(po);
 	}
      
@@ -96,28 +94,12 @@ public class DebitAndPayBill  {
 				String ID=null;
 		DebitAndPayBillVO vo=new DebitAndPayBillVO(ID, money,payerName,bankAccouts, type,
 				rentYear, salaryMonth,items, transListNumber);
-		DebitAndPayBillPO po=VOtoPO(vo);
+		DebitAndPayBillPO po=FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.insert(po);
 	}
 	
 	
-	public DebitAndPayBillPO VOtoPO(DebitAndPayBillVO VO){
-	    ReceiptType type=VO.getType();
-	    if(type==ReceiptType.EXPENSE){
-	    	//收款单
-	    	DebitAndPayBillPO po=new DebitAndPayBillPO(VO.getID(),VO.getMoney(),VO.getCourierID(),VO.getType(),VO.getOrderNumbers());
-	    	 return po;
-	    }
-	   if(type==ReceiptType.PAY){
-		   //付款单
-		   DebitAndPayBillPO po=new DebitAndPayBillPO(VO.getID(),VO.getMoney(),VO.getPayerName(),VO.getBankAccouts(),VO.getType(),VO.getRentYear(),VO.getSalaryMonth(),VO.getItems(),VO.getTransListNumber());
-		   return po;
-	   }
-	   else{
-	   return null;
-	   }
-	   
-   }
+	
 	
 	
 	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException  {
