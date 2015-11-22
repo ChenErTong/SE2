@@ -14,7 +14,7 @@ public class AccountDataService_Stub implements AccountDataService{
 	}
 
 	@Override
-	public ArrayList<AccountPO> show() throws RemoteException {
+	public ArrayList<AccountPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

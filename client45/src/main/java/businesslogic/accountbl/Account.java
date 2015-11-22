@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import dataservice.accountdataservice.AccountDataService;
-import po.accountpo.AccountPO;
 import vo.accountvo.AccountVO;
 
 public class Account implements AccountBLService{
@@ -28,7 +27,7 @@ public class Account implements AccountBLService{
 	}
 	@Override
 	public ArrayList<AccountVO> show() throws RemoteException {
-		return AccountTrans.POstoVOs(accountData.show());
+		return AccountTrans.POstoVOs(accountData.find());
 	}
 	
 	

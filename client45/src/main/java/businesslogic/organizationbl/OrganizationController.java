@@ -1,11 +1,11 @@
 package businesslogic.organizationbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
 import vo.BranchVO;
-import vo.OrganizationVO;
 import vo.TransferVO;
 
 public class OrganizationController implements OrganizationBLService {
@@ -14,62 +14,102 @@ public class OrganizationController implements OrganizationBLService {
 
 	@Override
 	public ArrayList<BranchVO> showBranch() {
-		// TODO Auto-generated method stub
+		try {
+			return organization.showBranch();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public String getBranchID() {
-		// TODO Auto-generated method stub
+		try {
+			return organization.getBranchID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage addBranch(BranchVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.addBranch(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage deleteBranch(String organizationID) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.deleteBranch(organizationID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage updateBranch(BranchVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.updateBranch(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ArrayList<TransferVO> showTransfer() {
-		// TODO Auto-generated method stub
+		try {
+			return organization.showTransfer();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public String getTransferID() {
-		// TODO Auto-generated method stub
+		try {
+			return organization.getTransferID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage addTransfer(TransferVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.addTransfer(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage deleteTransfer(String organizationID) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.deleteTransfer(organizationID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public ResultMessage updateTransfer(TransferVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return organization.updateTransfer(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 	
 
