@@ -47,6 +47,7 @@ public class ReceiveInput extends MyJPanel{
 		this.add(receiveName);
 		
 		receiveDate = new MyJTextField(900, 270, 150, 30);
+		receiveDate.setForTime();
 		receiveDate.setText(GetDate.getTime());
 		this.add(receiveDate);
 		
