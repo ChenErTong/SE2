@@ -163,4 +163,10 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

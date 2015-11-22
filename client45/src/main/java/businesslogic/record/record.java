@@ -25,10 +25,10 @@ import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.PaymentBillVO;
 
-public class record implements RecordBLService{
+public class Record implements RecordBLService{
 	private RecordDataService recordData;
 	private  DebitAndPayBillDataService  DebitAndPayBillData;
-	public record() {
+	public Record() {
 		try {
 			recordData= (RecordDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+RecordDataService.NAME);
 			DebitAndPayBillData = (DebitAndPayBillDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+ RecordDataService.NAME);

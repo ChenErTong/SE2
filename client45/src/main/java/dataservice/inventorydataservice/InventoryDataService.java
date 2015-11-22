@@ -41,8 +41,10 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	
 	/**获得位置信息**/
 	public InventoryPO getInventoryPO(String id)throws RemoteException;
+	
 	public InventoryPO getInventoryPO(int a,int b,int c,int d)throws RemoteException;
 	
+	public ArrayList<InventoryPO> getInventoryPOList(String date)throws RemoteException;
 	/**返回所有入库单据的数据**/
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
 	/**返回所有出库单据的数据**/

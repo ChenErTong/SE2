@@ -1,11 +1,11 @@
 package record;
 
-import businesslogic.record.BussinessConditionList;
+import businesslogic.record.Record;
 
-public class MockBussinessCondition extends BussinessConditionList{
+public class MockBussinessCondition extends Record{
 
 	public MockBussinessCondition( String endDate) {
-		super(endDate);
+		super();
 		
 	}
 }

@@ -1,5 +1,8 @@
 package inventory;
 
+import java.util.ArrayList;
+
+import vo.InventoryVO;
 import vo.InventoryViewVO;
 
 public class MockView {
@@ -18,8 +21,8 @@ public class MockView {
         return Num;
 	}
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
-		
-		InventoryViewVO ivv=new InventoryViewVO (importNum,exportNum,Num);
+		ArrayList<InventoryVO> vos=new ArrayList<InventoryVO>();
+		InventoryViewVO ivv=new InventoryViewVO (importNum,exportNum,Num,vos);
 		return ivv;
 		}
 	

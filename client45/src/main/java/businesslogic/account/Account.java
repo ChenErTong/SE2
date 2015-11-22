@@ -30,7 +30,6 @@ public class Account implements AccountBLService{
 	}
 	
 	
-	
 
 
 }

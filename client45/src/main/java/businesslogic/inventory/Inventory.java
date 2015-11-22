@@ -40,12 +40,20 @@ public class Inventory implements InventoryBLService {
 	}
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException  {
-		
-			InventoryViewVO viewVO=new InventoryViewVO (inventoryData.getimportNumber(beginDate,  endDate), inventoryData.getexportNumber( beginDate, endDate), inventoryData.getNum( beginDate,  endDate));
-		    return viewVO;
-		
+		   ArrayList<InventoryVO> VOs=new ArrayList<InventoryVO>();
+		   ArrayList<InventoryPO> POs=inventoryData.getInventoryPOList(endDate);
+		   for(InventoryPO po : POs) {
+				InventoryVO vo = POtoVO(po);
+				VOs.add(vo);
+			}
+			InventoryViewVO viewVO=new InventoryViewVO (inventoryData.getimportNumber(beginDate,  endDate), inventoryData.getexportNumber( beginDate, endDate), inventoryData.getNum( beginDate,  endDate),VOs);
+		   return viewVO;
 	}
-
+	
+	private InventoryVO POtoVO(InventoryPO po) throws RemoteException {
+		InventoryVO vo = new InventoryVO(po.getID(),po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
+		return vo;
+	}
 	@Override
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> POs=inventoryData.showImport(enddate);
@@ -159,7 +167,7 @@ public class Inventory implements InventoryBLService {
 	   
 	}
 	public InventoryPO VoToPo(InventoryVO vo) throws RemoteException{
-		InventoryPO po=new InventoryPO(inventoryData.getInventoryID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
+		InventoryPO po=new InventoryPO(vo.getID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
 		return po;
 		
 		

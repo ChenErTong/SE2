@@ -2,7 +2,6 @@ package businesslogic.facility;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import businesslogicservice.facilityblservice.DriverBLService;
 import state.ConfirmState;
 import state.ResultMessage;
