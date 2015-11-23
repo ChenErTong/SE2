@@ -44,7 +44,7 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 		MyComboBox branchList = new MyComboBox(140,120,150,30,18,branches);
 		this.add(branchList);
 		
-		String[] dates = {};
+		String[] dates = {""};
 		MyComboBox dateList = new MyComboBox(408,120,150,30,18,dates);
 		this.add(dateList);
 		

@@ -8,12 +8,8 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.manager.AdjustBase.Panel_Manager_AddNewBase;
 import ui.specialui.manager.AdjustBase.Panel_Manager_AdjustBase;
-import ui.specialui.manager.AdjustBase.Panel_Manager_ModifyBase;
-import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AddNewPolicy;
 import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AdjustSalaryPolicy;
-import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_ModifyPolicy;
 import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
 import ui.specialui.manager.HandleReceipt.Panel_Manager_HandleReceipt;
 import ui.specialui.manager.HandleReceipt.Panel_Manager_ModifyReceiptInfo;
@@ -34,11 +30,6 @@ private static final long serialVersionUID = 1L;
 	private Panel_Manager_ViewIncomeStatement viewIncomeStatement;
 	private Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
-	
-	private Panel_Manager_AddNewPolicy addNewPolicy;
-	private Panel_Manager_ModifyPolicy modifyPolicy;
-	private Panel_Manager_AddNewBase addNewBase;
-	private Panel_Manager_ModifyBase modifyBase;
 	private MyJPanel subPanel;
 	public FrameManager(){
 		totalPanel = new Panel_Manager_Total(this);
@@ -121,26 +112,18 @@ private static final long serialVersionUID = 1L;
 			this.add(modifyReceiptInfo);
 			this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("AddNewPolicy")){
-			adjustSalaryPolicy.setVisible(false);
-			addNewPolicy = new Panel_Manager_AddNewPolicy();
-			this.add(addNewPolicy);
-			this.getLayeredPane().add(addNewPolicy,new Integer(Integer.MAX_VALUE));
+			
 		}else if(e.getActionCommand().equals("ModifyPolicy")){
-			adjustSalaryPolicy.setVisible(false);
-			modifyPolicy = new Panel_Manager_ModifyPolicy();
-			this.add(modifyPolicy);
-			this.getLayeredPane().add(modifyPolicy,new Integer(Integer.MAX_VALUE));
+	
 		
+		}else if(e.getActionCommand().equals("DeletePolicy")){
+			
 		}else if(e.getActionCommand().equals("AddNewBase")){
-			adjustBase.setVisible(false);
-			addNewBase = new Panel_Manager_AddNewBase();
-			this.add(addNewBase);
-			this.getLayeredPane().add(addNewBase,new Integer(Integer.MAX_VALUE));
+			
 		}else if(e.getActionCommand().equals("ModifyBase")){
-			adjustBase.setVisible(false);
-			modifyBase = new Panel_Manager_ModifyBase();
-			this.add(modifyBase);
-			this.getLayeredPane().add(modifyBase,new Integer(Integer.MAX_VALUE));
+			
+		}else if(e.getActionCommand().equals("DeleteBase")){
+			
 		}
 	}
 	
