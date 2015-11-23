@@ -1,26 +1,14 @@
 package ui.specialui.admin.TotalPanel;
 
-import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-
-import ui.myui.MyComboBox;
-import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyJTable;
+
 import ui.specialui.admin.Frame_Admin;
-import ui.specialui.branch_conuterman.Frame_Branch;
-import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfo;
-import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 
 
 public class Panel_Admin_Total extends MyJPanel{
@@ -28,60 +16,23 @@ public class Panel_Admin_Total extends MyJPanel{
 	private UserDetails userDetails;
 	private MyJButton commonButton;
 	public Panel_Admin_Total(Frame_Admin frame_Admin) {
-		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Admin);
-	//	this.insertPanel(frame_Admin);
 	
 	}
 	
 	private void initComponent(Frame_Admin frame_Admin){
+		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+	
 		userInfo = new UserInfo(frame_Admin);
 		this.add(userInfo);
+		
 		userDetails = new UserDetails();
 		this.add(userDetails);
-	}
-	
-/*	MyJButton AddUser = new MyJButton(50, 670, 150, 40,"添加用户",14);
-		AddUser.setActionCommand("AddUser");
-		AddUser.addActionListener(frame_Admin);
-		this.add(AddUser);
-		AddUser.setVisible(true);
 		
-		MyJButton ViewUserInfomation = new MyJButton(210, 670, 150, 40,"查看用户信息",14);
-		ViewUserInfomation.setActionCommand("ViewUserInfomation");
-		ViewUserInfomation.addActionListener(frame_Admin);
-		this.add(ViewUserInfomation);
-		ViewUserInfomation.setVisible(true);
-		
-		MyJButton DeleteUser = new MyJButton(370, 670, 150, 40,"删除用户",14);
-		DeleteUser.setActionCommand("DeleteUser");
-		DeleteUser.addActionListener(frame_Admin);
-		this.add(DeleteUser);
-		DeleteUser.setVisible(true);
-		
-		MyJButton ModifyUserInfomation = new MyJButton(530,670,150,40,"修改用户信息",14);
-		ModifyUserInfomation.setActionCommand("ModifyUserInformation");
-		ModifyUserInfomation.addActionListener(frame_Admin);
-		this.add(ModifyUserInfomation);
-		ModifyUserInfomation.setVisible(true);
-		
-		MyJButton SaveChanges = new MyJButton(690, 670, 150, 40,"保存更改",14);
-		SaveChanges.setActionCommand("SaveChanges");
-		SaveChanges.addActionListener(frame_Admin);
-		this.add(SaveChanges);
-		
-		MyJButton Backout = new MyJButton(850, 670, 150, 40,"撤销",14);
-		Backout.setActionCommand("Backout");
-		Backout.addActionListener(frame_Admin);
-		this.add(Backout);*/
-		
-		/*MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",14);
-		Withdraw.setActionCommand("Withdraw");
-		Withdraw.addActionListener(frame_Admin);
-		this.add(Withdraw);*/
-		
+		this.initButton(frame_Admin);
+	}	
 	
 		private void insertPanel(Frame_Admin frame) {
 		this.removeAll();
@@ -91,7 +42,9 @@ public class Panel_Admin_Total extends MyJPanel{
 	
 		
 		userDetails = new UserDetails();
+		userDetails.add(new MyJLabel(230,5,120,30,"新增用户",18,true));
 		this.add(userDetails);
+		
 		
 		commonButton = new MyJButton(890, 670, 120, 30, "添加用户", 20);
 		commonButton.setActionCommand("AddUser");
@@ -108,13 +61,14 @@ public class Panel_Admin_Total extends MyJPanel{
 		this.initButton(frame);
 		
 		userDetails = new UserDetails();
+		userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
 		this.add(userDetails);
 		
 		//this.add(new MyJLabel(415, 110, 100, 40, "车辆代号", 20, true));
 		//this.add(facilityId);
 		
-		commonButton = new MyJButton(890, 670, 120, 30, "修改用户信息", 20);
-		commonButton.setActionCommand("modifyFacility");
+		commonButton = new MyJButton(890, 670, 150, 30, "修改用户信息", 20);
+		commonButton.setActionCommand("ModifyUserInformation");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
 		
@@ -130,6 +84,7 @@ public class Panel_Admin_Total extends MyJPanel{
 		
 		userDetails = new UserDetails();
 		userDetails.setUneditable();
+		userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
 		this.add(userDetails);
 		
 		this.repaint();
@@ -144,10 +99,11 @@ public class Panel_Admin_Total extends MyJPanel{
 		
 		userDetails = new UserDetails();
 		userDetails.setUneditable();
+		userDetails.add(new MyJLabel(230,5,120,30,"删除用户",18,true));
 		this.add(userDetails);
 		
 		commonButton = new MyJButton(890, 670, 120, 30, "删除用户", 20);
-		commonButton.setActionCommand("deleteUser");
+		commonButton.setActionCommand("ViewUserInfomation");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
 		
