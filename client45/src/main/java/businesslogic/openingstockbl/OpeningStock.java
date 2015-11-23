@@ -12,6 +12,7 @@ import businesslogic.facilitybl.FacilityTrans;
 import businesslogic.fundbl.FundTrans;
 import businesslogic.inventorybl.InventoryTrans;
 import businesslogic.transferbl.TransferTrans;
+import config.RMIConfig;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.BankAccountPO;
 import po.BranchPO;
@@ -35,7 +36,7 @@ public class OpeningStock {
 	public OpeningStock() {
 		try {
 			openingStockData = (OpeningStockDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OpeningStockDataService.NAME);
+					.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

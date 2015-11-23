@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.ConfirmState;
@@ -19,7 +20,7 @@ public class Base{
 	private BaseDataService baseData;
 	public Base() {
 		try {
-			baseData = (BaseDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+BaseDataService.NAME);
+			baseData = (BaseDataService)Naming.lookup(RMIConfig.PREFIX+BaseDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import businesslogic.branchbl.BranchTrans;
 import businesslogic.transferbl.TransferTrans;
+import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.BranchPO;
@@ -22,8 +23,8 @@ public class Organization {
 
 	public Organization() {
 		try {
-			branchData = (BranchDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + BranchDataService.NAME);
-			transferData = (TransferDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + TransferDataService.NAME);
+			branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
+			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

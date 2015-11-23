@@ -6,9 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogicservice.transferblservice.TransferBLService;
+import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
-import po.CommodityPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -23,7 +22,7 @@ public class Transfer  {
 	public Transfer() {
 		try {
 			receiptData = (ReceiptDataService ) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
+					.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

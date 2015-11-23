@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderTrans;
+import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.OrderPO;
@@ -28,8 +29,8 @@ public class Branch{
 	private ReceiptDataService  receiptData;
 	public Branch() {
 		try {
-			orderData = (OrderDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OrderDataService.NAME);
-			receiptData = (ReceiptDataService ) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
+			orderData = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
+			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

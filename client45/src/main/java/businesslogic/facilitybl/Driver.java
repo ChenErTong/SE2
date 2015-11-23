@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.facilitydataservice.DriverDataService;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
@@ -17,7 +18,7 @@ public class Driver{
 	
 	public Driver() {
 		try {
-			DriverData = (DriverDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+DriverDataService.NAME);
+			DriverData = (DriverDataService)Naming.lookup(RMIConfig.PREFIX+DriverDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

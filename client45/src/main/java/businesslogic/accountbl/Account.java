@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import vo.accountvo.AccountVO;
 
@@ -15,7 +16,7 @@ public class Account{
 	private AccountDataService accountData;
 	public Account() {
 		try {
-			accountData = (AccountDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+AccountDataService.NAME);
+			accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

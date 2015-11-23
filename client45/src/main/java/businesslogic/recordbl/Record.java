@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import dataservice.recorddataservice.RecordDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -20,8 +21,8 @@ public class Record {
 	private  DebitAndPayBillDataService  DebitAndPayBillData;
 	public Record() {
 		try {
-			recordData= (RecordDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+RecordDataService.NAME);
-			DebitAndPayBillData = (DebitAndPayBillDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+ RecordDataService.NAME);
+			recordData= (RecordDataService)Naming.lookup(RMIConfig.PREFIX+RecordDataService.NAME);
+			DebitAndPayBillData = (DebitAndPayBillDataService)Naming.lookup(RMIConfig.PREFIX+ RecordDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

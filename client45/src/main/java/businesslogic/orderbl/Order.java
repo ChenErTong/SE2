@@ -6,7 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogicservice.orderblservice.OrderBLService;
+import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import state.ConfirmState;
@@ -20,7 +20,7 @@ public class Order{
 	public Order() {
 		try {
 			orderData = (OrderDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + OrderDataService.NAME);
+					.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

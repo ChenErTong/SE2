@@ -6,9 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin;
-
-import businesslogicservice.receiptblservice.ReceiptBLService;
+import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
@@ -22,7 +20,7 @@ public class Receipt  {
 	public Receipt() {
 		try {
 			receiptData = (ReceiptDataService ) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
+					.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import state.ConfirmState;
@@ -32,7 +33,7 @@ public class Facility {
 			// registry.lookup(FacilityDataService.NAME);
 			// System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			facilityData = (FacilityDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + FacilityDataService.NAME);
+					.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
 import state.ConfirmState;
@@ -18,7 +19,7 @@ import vo.BankAccountVO;
 public class BankAccount  {
 	private BankAccountDataService bankAccountData;
 	public BankAccount() {try {
-			bankAccountData = (BankAccountDataService) Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+BankAccountDataService.NAME);
+			bankAccountData = (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX+BankAccountDataService.NAME);
 	} catch (MalformedURLException e) {
 		e.printStackTrace();
 	} catch (RemoteException e) {

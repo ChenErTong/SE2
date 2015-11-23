@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import state.ConfirmState;
@@ -19,7 +20,7 @@ public class Expense {
 	private ExpenseDataService expenseData;
 	public Expense() {
 		try {
-			expenseData = (ExpenseDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+ExpenseDataService.NAME);
+			expenseData = (ExpenseDataService)Naming.lookup(RMIConfig.PREFIX+ExpenseDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.InventoryPO;
@@ -27,8 +28,8 @@ public class Inventory  {
 	private TransferDataService transferData;
 	public Inventory() {
 		try {
-			inventoryData= (InventoryDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+InventoryDataService.NAME);
-			transferData= (TransferDataService)Naming.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/"+TransferDataService.NAME);
+			inventoryData= (InventoryDataService)Naming.lookup(RMIConfig.PREFIX+InventoryDataService.NAME);
+			transferData= (TransferDataService)Naming.lookup(RMIConfig.PREFIX+TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
