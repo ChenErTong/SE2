@@ -16,12 +16,12 @@ public class MockTransfer extends Transfer {
 
 	public void planeDepart(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		transferOrderVO = new TransferOrderVO(facilityID, null, departure, destination, courierName, orders);
 		System.out.println("You have added a plane transfer");
 	}
 
 	public void receiptArrive(String transferID, String departure, String destination,CommodityState state, ArrayList<String> orders) {
-		transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, destination,state, orders);
+		transferArrivalListVO = new TransferArrivalListVO(transferID, null, transferID, departure, destination,state, orders);
 		System.out.println("You have fielded a receipt");
 	}
 

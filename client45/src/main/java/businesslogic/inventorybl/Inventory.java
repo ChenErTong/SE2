@@ -16,6 +16,7 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.TransferArrivalListPO;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
@@ -77,8 +78,8 @@ public class Inventory  {
 		  int b=vo.getB();
 		  int c=vo.getC();
 	 	  int d=vo.getD();
-	 	  InventoryPO inventorypo=new InventoryPO(inventoryData.getInventoryID(),a,b,c,d,"full");
-		  InventoryImportReceiptPO po=new InventoryImportReceiptPO(ID,destination,depture,commodities,a,b,c,d);
+	 	  InventoryPO inventorypo=new InventoryPO(inventoryData.getInventoryID(),ReceiptType.INVENTORY, a,b,c,d,"full");
+		  InventoryImportReceiptPO po=new InventoryImportReceiptPO(ID,ReceiptType.INSTOCK, destination,depture,commodities,a,b,c,d);
 		  inventoryData.insertImport(po);
 		  inventoryData.insertInventory(inventorypo);
 		  return inventoryData.insertInventory(inventorypo);
@@ -111,7 +112,7 @@ public class Inventory  {
 		 String TransferID=inventoryData.getTransferID();
 		 String destination=importPo.getDestination();
 		 String Commodities=importPo.getCommoditiesID();
-		 InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
+		 InventoryExportReceiptPO po=new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,Transfer, TransferID, Commodities, a, b, c, d);
 		 inventoryData.insertExport(po);
 		 inventoryData.modifyInventory(inventorypo, a, b, c, d,"empty");
 		return inventoryData.insertExport(po);
@@ -140,7 +141,7 @@ public class Inventory  {
 		int afC = now.getC();
 		int afD = now.getD();
 		String ID=inventoryData.getImportID();
-		AdjustReceiptPO po=new AdjustReceiptPO(ID,exA,exB, exC,exD, afA,afB, afC,afD);
+		AdjustReceiptPO po=new AdjustReceiptPO(ID,ReceiptType.TAKINGSTOCK, exA,exB, exC,exD, afA,afB, afC,afD);
 		InventoryPO beforePO=InventoryTrans.convertVOtoPO(before);
 		InventoryPO afterPO=InventoryTrans.convertVOtoPO(now);
 		inventoryData.modifyInventory(beforePO, exA,exB,exC, exD,"empty");

@@ -1,0 +1,97 @@
+package businesslogic.transferbl;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import config.RMIConfig;
+import dataservice.receiptdataservice.ReceiptDataService;
+import dataservice.transferdataservice.TransferDataService;
+import po.CommodityPO;
+import po.TransferPO;
+import po.receiptpo.ReceiptPO;
+import state.CommodityState;
+import state.ConfirmState;
+import state.ReceiptCondition;
+import state.ResultMessage;
+import vo.CommodityVO;
+import vo.receiptvo.TransferArrivalListVO;
+import vo.receiptvo.TransferOrderVO;
+
+public class Transfer  {
+	private ReceiptDataService  receiptData;
+	private TransferDataService transferData;
+
+	public Transfer() {
+		try {
+			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
+
+			transferData= (TransferDataService ) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public ConfirmState confirmOperation() {
+		
+		return ConfirmState.CONFIRM;
+	}
+
+	
+	public ArrayList<CommodityVO>  getAllCommodities() {
+		ArrayList<CommodityPO> pos=transferData.findCommodities();
+		ArrayList<CommodityVO> vos=new ArrayList<CommodityVO>();
+		for(CommodityPO po:pos){
+			CommodityVO vo=new CommodityVO(po.getCommodityType(),po.getWeight(),po.getVolumn(),po.getCommodityState());
+		    vos.add(vo);
+			}
+		return vos;
+	}
+
+	
+	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,ArrayList<String> orders) {
+		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		return vo;
+	}
+
+	
+	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		return vo;
+	}
+
+	
+	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		return vo;
+	}
+
+	
+	public ResultMessage submit(ReceiptPO receipt) throws RemoteException {
+		receipt.setReceiptCondition(ReceiptCondition.SUBITTED);
+		return receiptData.modify(receipt);
+	}
+
+	
+	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
+		receiptData.add(receipt);
+		return  receiptData.add(receipt);
+	}
+
+	
+	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state,
+			ArrayList<String> orders) {
+		TransferArrivalListVO vo=new TransferArrivalListVO(transferID,departure,  destination,destination, state, orders);
+		return vo;
+	}
+
+}

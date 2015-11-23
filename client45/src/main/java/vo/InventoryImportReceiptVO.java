@@ -1,5 +1,6 @@
 package vo;
 
+import state.ReceiptType;
 import vo.receiptvo.ReceiptVO;
 
 public class InventoryImportReceiptVO extends ReceiptVO{
@@ -14,8 +15,8 @@ public class InventoryImportReceiptVO extends ReceiptVO{
 	//位号
 	 public int d;	
 	
-	public InventoryImportReceiptVO(String id, String destination, int a, int b, int c, int d) {
-		super(id);
+	public InventoryImportReceiptVO(String id, ReceiptType type,String destination, int a, int b, int c, int d) {
+		super(id,type);
 		this.destination = destination;
 		this.a = a;
 		this.b = b;

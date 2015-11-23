@@ -4,22 +4,23 @@ import java.util.ArrayList;
 
 import po.InventoryPO;
 import po.receiptpo.InventoryImportReceiptPO;
+import state.ReceiptType;
 import vo.InventoryVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo){
-		InventoryPO po=new InventoryPO(vo.getID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
+		InventoryPO po=new InventoryPO(vo.getID(), ReceiptType.INVENTORY, vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
 		return po;
 	}
 	
 	public  static InventoryVO convertPOtoVO(InventoryPO po){
-		InventoryVO vo = new InventoryVO(po.getID(),po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
+		InventoryVO vo = new InventoryVO(po.getID(),ReceiptType.INVENTORY, po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
 		return vo;
 	}
 	
 	public static InventoryImportReceiptVO convertPOtoVO(InventoryImportReceiptPO po){
-		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getCommoditiesID(),po.getDestination(),po.getA(),po.getB(),po.getC(),po.getD());
+		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getCommoditiesID(), ReceiptType.INSTOCK, po.getDestination(),po.getA(),po.getB(),po.getC(),po.getD());
 		return vo;
 	}
 	

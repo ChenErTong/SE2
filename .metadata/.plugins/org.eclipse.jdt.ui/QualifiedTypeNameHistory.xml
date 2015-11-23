@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="po.receiptpo.TransferArrivalListPO"/>
-<fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="dataservice.inventorydataservice.InventoryDataService"/>
 <fullyQualifiedTypeName name="businesslogic.record.BussinessConditionList"/>
 <fullyQualifiedTypeName name="vo.BussinessConditionVO"/>
@@ -25,7 +23,6 @@
 <fullyQualifiedTypeName name="businesslogicservice.baseblservice.BaseBLService"/>
 <fullyQualifiedTypeName name="po.OrderPO"/>
 <fullyQualifiedTypeName name="vo.BankAccountVO"/>
-<fullyQualifiedTypeName name="state.ReceiptType"/>
 <fullyQualifiedTypeName name="businesslogic.fundbl.DebitAndPayBill"/>
 <fullyQualifiedTypeName name="vo.DebitAndPayBillVO"/>
 <fullyQualifiedTypeName name="po.ExpensePO"/>
@@ -48,7 +45,6 @@
 <fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 <fullyQualifiedTypeName name="businesslogic.receiptbl.Receipt"/>
 <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
-<fullyQualifiedTypeName name="vo.receiptvo.ReceiptVO"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
 <fullyQualifiedTypeName name="dataservice.receiptdataservice.ReceiptDataService"/>
 <fullyQualifiedTypeName name="businesslogicservice.receiptblservice.ReceiptBLService"/>
@@ -60,4 +56,8 @@
 <fullyQualifiedTypeName name="state.ReceiptCondition"/>
 <fullyQualifiedTypeName name="businesslogicservice.transferblservice.TransferBLService"/>
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
+<fullyQualifiedTypeName name="vo.receiptvo.ReceiptVO"/>
+<fullyQualifiedTypeName name="businesslogic.openingstockbl.OpeningStock"/>
+<fullyQualifiedTypeName name="org.omg.PortableInterceptor.USER_EXCEPTION"/>
+<fullyQualifiedTypeName name="state.ReceiptType"/>
 </qualifiedTypeNameHistroy>

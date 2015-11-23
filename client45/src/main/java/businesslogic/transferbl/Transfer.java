@@ -15,6 +15,7 @@ import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.TransferArrivalListVO;
@@ -57,21 +58,21 @@ public class Transfer  {
 
 	
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_PLANE, departure,  destination,  courierName, orders);
 		return vo;
 	}
 
 	
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_TRUCK, departure,  destination,  courierName, orders);
 		return vo;
 	}
 
 	
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,departure,  destination,  courierName, orders);
+		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_TRAIN, departure,  destination,  courierName, orders);
 		return vo;
 	}
 
@@ -90,7 +91,7 @@ public class Transfer  {
 	
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state,
 			ArrayList<String> orders) {
-		TransferArrivalListVO vo=new TransferArrivalListVO(transferID,departure,  destination,destination, state, orders);
+		TransferArrivalListVO vo=new TransferArrivalListVO(transferID,ReceiptType.TRANS_ARRIVAL, departure,  destination,destination, state, orders);
 		return vo;
 	}
 

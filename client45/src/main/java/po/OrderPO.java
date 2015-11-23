@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
+import state.ReceiptType;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -16,8 +17,8 @@ import vo.OrderVO;
  */
 public class OrderPO extends ReceiptPO {
 
-	protected OrderPO(String id) {
-		super(id);
+	protected OrderPO(String id,ReceiptType type) {
+		super(id,type);
 	}
 
 	/**
@@ -49,10 +50,10 @@ public class OrderPO extends ReceiptPO {
 	private double money;
 	private ReceiptState state;
 
-	public OrderPO(String orderIdString, String senderName, String senderAddress, String senderTel,
+	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
 			ArrayList<CommodityVO> commodityVO, String midAddres, String sendTime, String recipientTime, double money) {
-		super(orderIdString);
+		super(orderIdString,type);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;

@@ -1,5 +1,7 @@
 package po.receiptpo;
 
+import state.ReceiptType;
+
 public class InventoryImportReceiptPO extends  ReceiptPO  {
 	  /** @author lxl
 		 *  @version Oct 23,2015
@@ -19,9 +21,9 @@ public class InventoryImportReceiptPO extends  ReceiptPO  {
 	 public int c;
 	//位号
 	public int d;
-	public InventoryImportReceiptPO(String ID, String depture, String destination, String commoditiesID, int a, int b,
+	public InventoryImportReceiptPO(String ID,ReceiptType type, String depture, String destination, String commoditiesID, int a, int b,
 			int c, int d) {
-		super(ID);
+		super(ID,type);
 		this.depture = depture;
 		this.destination = destination;
 		CommoditiesID = commoditiesID;

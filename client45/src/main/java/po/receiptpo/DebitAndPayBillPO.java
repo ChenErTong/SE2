@@ -45,7 +45,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
  * @version Oct 22,2015
  */
 	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
-		super(ID);
+		super(ID, type);
 		this.money = money;
 		this.courierID = courierID;
 		this.type = type;
@@ -60,7 +60,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 */
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
-		super(ID);
+		super(ID,type);
 		this.money = money;
 		this.payerName = payerName;
 		this.bankAccouts = bankAccouts;

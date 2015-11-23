@@ -5,6 +5,7 @@ package businesslogic.accountbl;
 import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
+import state.ReceiptType;
 import vo.accountvo.AccountVO;
 
 public class AccountTrans {
@@ -43,7 +44,7 @@ public class AccountTrans {
 			double salary =vo.getSalary();
 			String workTime = vo.getWorkTime();
 			int receiptNum = vo.getReceiptNum();
-			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+			return new AccountPO(ID, ReceiptType.ACCOUNT, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		}
 	}
 	

@@ -3,6 +3,7 @@ package businesslogic.userbl;
 import java.util.ArrayList;
 
 import po.UserPO;
+import state.ReceiptType;
 import vo.UserVO;
 
 public class UserTrans {
@@ -17,7 +18,7 @@ public class UserTrans {
 			String iden = vo.getIden();
 			String authority = vo.getAuthority();
 			String address = vo.getAddress();
-			return new UserPO(ID, password, username ,phoneNumber, iden,authority,address);
+			return new UserPO(ID, ReceiptType.USER, password, username ,phoneNumber, iden,authority,address);
 		}
 		
 		public static UserVO transPOtoVO(UserPO po){

@@ -3,6 +3,7 @@ package vo.receiptvo;
 import java.util.ArrayList;
 
 import state.CommodityState;
+import state.ReceiptType;
 
 /**
  * 营业厅到达单：中转单编号、出发地、货物到达状态、订单订单号
@@ -21,9 +22,9 @@ public class BranchArrivalListVO extends ReceiptVO {
 	private CommodityState state;
 	private ArrayList<String> orders;
 	
-	public BranchArrivalListVO(String id, String transferListID, String departure, CommodityState state,
+	public BranchArrivalListVO(String id, ReceiptType type, String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		super(id);
+		super( id, type);
 		this.transferListID = transferListID;
 		this.departure = departure;
 		this.state = state;

@@ -18,7 +18,7 @@ public class TestExport {
 	@Test
 	public void testExport(){
 		MockInventoryExport test=new MockInventoryExport();
-		InventoryExportReceiptVO exportReceipt=new InventoryExportReceiptVO(null, null, null);
+		InventoryExportReceiptVO exportReceipt=new InventoryExportReceiptVO(null, null, null, null);
 	    assertEquals("1",test.getExportID());
 	    assertEquals("nanjing520",test.getCommodities());
 	    assertEquals("nanjing",test.getDestination());

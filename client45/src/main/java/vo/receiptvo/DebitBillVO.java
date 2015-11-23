@@ -1,5 +1,7 @@
 package vo.receiptvo;
 
+import state.ReceiptType;
+
 /**
  * 收款单：收款金额
  * @author czw
@@ -7,8 +9,8 @@ package vo.receiptvo;
  */
 public class DebitBillVO extends ReceiptVO {
 	
-	public DebitBillVO(String id) {
-		super(id);
+	public DebitBillVO(String id, ReceiptType type) {
+		super(id,type);
 		// TODO Auto-generated constructor stub
 	}
 

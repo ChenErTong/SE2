@@ -4,6 +4,12 @@ package state;
  * @author zsq
  * @version Oct 22,2015
  */
+/**
+ * 增为所有单据类型
+ * 
+ * @author LIUXUANLIN
+ *
+ */
 public enum ReceiptType {
 	CONFIRM("收件确认单", "SJQRD"),
 	ORDER("寄件订单", "JJDD"),
@@ -18,7 +24,18 @@ public enum ReceiptType {
 	TRANS_TRUCK("卡车转运单", "KCZYD"),
 	INSTOCK("入库单","RKD"),
 	OUTSTOCK("出库单","CCD"),
-	TAKINGSTOCK("库存调整单","KCTZD");
+	TAKINGSTOCK("库存调整单","KCTZD"),
+	
+	ACCOUNT("",""),
+	BASE("",""),
+	BRANCH("",""),
+	FACILITY("",""),
+	DRIVER("",""),
+	BANKACCOUNT("",""),
+	INVENTORY("",""),
+	OPENINGSTOCK("",""),
+     TRANSFER("",""),
+	  USER("","");
 	
 	public final String value;
 	public final String prefix;

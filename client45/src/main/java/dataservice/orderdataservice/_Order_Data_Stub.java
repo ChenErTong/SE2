@@ -15,7 +15,7 @@ public class _Order_Data_Stub implements OrderDataService {
 		if(ordernumber=="00001"){
 			System.out.println("You have found an order!");
 		OrderPO orderPO = new OrderPO(ordernumber,
-				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+				null, "xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
 				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
 				new ArrayList<CommodityVO>(),
 				"Nanjing156-Nanjing188" , 

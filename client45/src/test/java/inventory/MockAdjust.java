@@ -22,7 +22,7 @@ public class MockAdjust {
 		int afC = now.getC();
 		int afD = now.getD();
 		String ID="012345678";
-		AdjustReceiptPO arp=new AdjustReceiptPO(ID, exA,exB, exC,exD, afA,afB, afC,afD);
+		AdjustReceiptPO arp=new AdjustReceiptPO(ID, null, exA,exB, exC,exD, afA,afB, afC,afD);
 		return arp;
 	
 	}

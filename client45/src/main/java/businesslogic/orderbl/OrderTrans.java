@@ -3,12 +3,13 @@ package businesslogic.orderbl;
 import java.util.ArrayList;
 
 import po.OrderPO;
+import state.ReceiptType;
 import vo.CommodityVO;
 import vo.OrderVO;
 
 public class OrderTrans {
 	public static OrderPO convertVOtoPO(ArrayList<CommodityVO> commodityVOs, OrderVO vo) {
-		return new OrderPO(vo.getOrderIdString(), vo.getSenderName(), vo.getSenderAddress(),
+		return new OrderPO(vo.getOrderIdString(), ReceiptType.ORDER, vo.getSenderName(), vo.getSenderAddress(),
 				vo.getSenderTel(), vo.getSenderCo(), vo.getRecipientName(), vo.getRecipientAddress(),
 				vo.getRecipientTel(), vo.getRecipientCo(), commodityVOs, vo.getMidAddres(), vo.getSendTime(),
 				vo.getRecipientTime(), vo.getMoney());

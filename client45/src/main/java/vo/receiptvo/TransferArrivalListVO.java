@@ -3,6 +3,7 @@ package vo.receiptvo;
 import java.util.ArrayList;
 
 import state.CommodityState;
+import state.ReceiptType;
 
 /**
  * 中转中心到达单：中转中心编号、出发地、货物到达状态、订单订单号
@@ -16,13 +17,13 @@ public class TransferArrivalListVO extends ReceiptVO {
 	private String departure;
 	private CommodityState state;
 	private ArrayList<String> orders;
-	public TransferArrivalListVO(String id) {
-		super(id);
+	public TransferArrivalListVO(String id,ReceiptType type) {
+		super(id,type);
 	}
 	
-	public TransferArrivalListVO(String id, String transferCenterID, String destination, String departure,
+	public TransferArrivalListVO(String id, ReceiptType type,String transferCenterID, String destination, String departure,
 			CommodityState state, ArrayList<String> orders) {
-		super(id);
+		super(id,type);
 		this.transferCenterID = transferCenterID;
 		this.destination = destination;
 		this.departure = departure;
