@@ -20,11 +20,27 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 		poList=new SerSaveAndLoad<BankAccountPO>("data/"+NAME+".ser");
 	}
 
-
+	/**
+	 * type是查找的方式，为NULL则表示进行模糊查询
+	 * 但是我是把所有的账户都返回了，有问题再改
+	 * 如果ID包含关键字就返回
+	 * @see BankAccountData#find(String, FindTypeAccount)
+	 * @author Ann
+	 */
 	@Override
 	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
-		// TODO Auto-generated method stub
-		return null;
+		if(bankAccoutType==null)
+			//type是查找的方式，为NULL则表示进行模糊查询
+			//但是我是把所有的账户都返回了，有问题再改
+			return super.find();
+		ArrayList<BankAccountPO> bankAccounts = new ArrayList<>();
+		for (int i = 0; i < poList.size(); i++) {
+			BankAccountPO po = poList.get(i);
+			if (po.getID().contains(keywords))
+				//如果ID包含关键字就返回
+				bankAccounts.add(po);
+		}
+		return bankAccounts;
 	}
 
 }

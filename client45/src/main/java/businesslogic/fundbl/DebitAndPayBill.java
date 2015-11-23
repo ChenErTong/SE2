@@ -56,7 +56,7 @@ public class DebitAndPayBill {
 	}
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers)
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
 			throws RemoteException {
 		// 疑问
 		String ID = null;
@@ -67,7 +67,7 @@ public class DebitAndPayBill {
 
 	// 建立付款单
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<BankAccountPO> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList transListNumber)
+			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
 					throws RemoteException {
 		// 疑问
 		String ID = null;

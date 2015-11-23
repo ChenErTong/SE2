@@ -59,7 +59,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	}
 
 	@Override
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers) {
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers) {
 		// TODO Auto-generated method stub
 		try {
 			return DebitAndPayBL.addDebitBill(money, courierID, type, orderNumbers);
@@ -72,7 +72,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 
 	@Override
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<BankAccountPO> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList transListNumber){
+			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber){
 		// TODO Auto-generated method stub
 		try {
 			return DebitAndPayBL.addPayBill(money, payerName, bankAccouts, type, rentYear, salaryMonth, items, transListNumber);

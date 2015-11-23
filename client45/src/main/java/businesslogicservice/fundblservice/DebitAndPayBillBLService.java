@@ -65,10 +65,10 @@ public interface DebitAndPayBillBLService {
 	 */
 	
 	//建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers);
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers);
     //建立付款单
 	public ResultMessage addPayBill(double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber) throws RemoteException;
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber) throws RemoteException;
 	
 	
 		/**
