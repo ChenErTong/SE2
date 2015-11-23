@@ -1,4 +1,4 @@
-package ui.specialui.admin.TotalPanel;
+package ui.specialui.admin;
 
 
 import java.awt.Color;
@@ -15,7 +15,6 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.admin.Frame_Admin;
 
 
 
@@ -25,7 +24,7 @@ public class UserInfo extends MyTranslucentPanel{
 	 private MyJLabel userIdentity;
 	 private MyComboBox userList;
 	 private MyJButton search;
-	
+	 
 	public UserInfo(Frame_Admin frame_Admin) {
 	
 		super(50, 100, 620, 560);
@@ -44,7 +43,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userList = new MyComboBox(140,10,150,30,14,identity);
 		this.add(userList);
 		
-		search = new MyJButton(300,10,90,30,"搜索",14);
+		search = new MyJButton(500,10,90,30,"搜索",14);
 		search.setActionCommand("SearchUser");
 		search.addActionListener(frame_Admin);
 		this.add(search);
@@ -78,5 +77,17 @@ public class UserInfo extends MyTranslucentPanel{
 		
 		
 	}
+	
+	public void setData(String data) {
+		userList.setSelectedItem(data);
+		
+	}
+
+	public String getData() {
+		String  data ;
+		data = (String) userList.getSelectedItem();
+		return data;
+	}
+
 	
 }

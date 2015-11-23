@@ -17,7 +17,7 @@ public class UserBLService_Stub implements UserBLService{
 	}
 
 	@Override
-	public ArrayList<UserVO> show() {
+	public ArrayList<UserVO> show(String type) {
 		System.out.println("show all users' information!");
 		return new ArrayList<UserVO>(){};
 	}
@@ -36,7 +36,7 @@ public class UserBLService_Stub implements UserBLService{
 	}
 
 	@Override
-	public ResultMessage deleteUser(String username) {
+	public ResultMessage deleteUser(UserVO vo) {
 		System.out.println("Delete a user of the system! ");
 		return  ResultMessage.SUCCESS;
 	}

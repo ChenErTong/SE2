@@ -19,7 +19,7 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<UserVO> show();
+	public ArrayList<UserVO> show(String type);
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 
@@ -37,12 +37,12 @@ public interface UserBLService extends BLService{
 	public ResultMessage addUser(UserVO vo);
 	/**
 	 * 删除一位用户
-	 * @param username
+	 * @param vo
 	 * @return 处理信息
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteUser(String username);
+	public ResultMessage deleteUser(UserVO vo);
 	/**
 	 * 更新一位用户信息
 	 * @param vo UserVo
@@ -59,4 +59,6 @@ public interface UserBLService extends BLService{
 	 * @version Oct 22,2015
 	 */
 	public UserIdentity login(LoginInfo loginInfo);
+	
+	
 }

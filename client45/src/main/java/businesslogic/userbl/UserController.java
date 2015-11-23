@@ -18,7 +18,7 @@ public class UserController implements UserBLService{
 	}
 
 	@Override
-	public ArrayList<UserVO> show() {
+	public ArrayList<UserVO> show(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -36,7 +36,7 @@ public class UserController implements UserBLService{
 	}
 
 	@Override
-	public ResultMessage deleteUser(String username) {
+	public ResultMessage deleteUser(UserVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

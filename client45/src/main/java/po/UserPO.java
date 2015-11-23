@@ -1,10 +1,4 @@
 package po;
-
-import java.util.ArrayList;
-
-import state.UserAuthority;
-import state.UserIdentity;
-
 /**
  * 用户持久化对象
  * @author zsq
@@ -13,59 +7,84 @@ import state.UserIdentity;
 public class UserPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
+	/**
+	 * 用户ID
+	 */
+	private String id;
 	/**用户名*/
-	private String username;
-	/**用户真实姓名*/
-	private String name;
+	private String userName;
 
 	/**密码*/
 	private String password;
 	/**用户身份*/
-	private UserIdentity iden;
-	/**用户操作*/
-	private ArrayList operationRecords;
+	private String iden;
+	/**联系电话*/
+	private String phoneNumber;
+
 	/**用户权限*/
-	private UserAuthority  authority;
+	private String  authority;
+	/**地址*/
+	private String address;
+
+
 	/**
-	 * 构造函数
-	 * @param ID
-	 * @param username
-	 * @param name
-	 * @param password
-	 * @param iden
+	 * 
+	 * @param id 用户id
+	 * @param password 用户密码
+ 	 * @param userName 用户名字
+	 * @param phoneNumber 联系电话
+	 * @param iden 用户身份
+	 * @param authority 用户权限
+	 * @param address 用户地址
+	 * @return 
 	 */
-	public UserPO(String ID,String username,String name,String password,UserIdentity iden){
-		super(ID);
-		this.username = username;
-		this.name = name;
+	public UserPO(String id,String password,String userName,String phoneNumber,String iden,String authority,String address){
+		super(id);
+		this.id = id;
 		this.password = password;
+		this.userName = userName;
+		this.phoneNumber =phoneNumber;
 		this.iden = iden;
+		this.authority = authority;
+		this.address = address;
 		
 	}
 
+
+	public String getId() {
+		return id;
+	}
+
+
+
 	public String getUsername() {
-		return this.username;
+		return this.userName;
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
+	
 	public String getPassword() {
 		return this.password;
 	}
 
-	public UserIdentity getIden() {
+	public String getIden() {
 		return this.iden;
 	}
 
-	public UserAuthority getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
 
-	public void setAuthority(UserAuthority authority) {
-		this.authority = authority;
+
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	
 
 	
 }

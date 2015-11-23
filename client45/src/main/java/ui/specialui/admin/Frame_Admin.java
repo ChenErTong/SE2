@@ -11,7 +11,7 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
+import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 
 public class Frame_Admin extends MyJFrame implements ActionListener{
 
@@ -38,26 +38,23 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 				totalPanel.setVisible(true);
 			}
 		}else if(e.getActionCommand().equals("AddUser")){
-			totalPanel.setVisible(false);
-			subPanel = new Panel_Admin_AddUser(this);
-			this.add(subPanel);
-			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			if(this.addUser()){
+				totalPanel.refresh();
+			}
+			
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			//TODO
-			confirmOperation = new ConfirmOperationFrame("DeleteUser");
-			confirmOperation.getLayout();
-			confirmOperation.show();
+			if(this.deleteUser()){
+				totalPanel.refresh();
+			}
+	
 		}else if(e.getActionCommand().equals("ModifyUserInformation")){
 			//TODO
-			totalPanel.setVisible(false);
-			subPanel = new Panel_Admin_Modify(this);
-			this.add(subPanel);
-			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			if(this.modifyUserInfo()){
+				((Panel_Admin_Total)subPanel).refresh();
+			}
+			
 		}else if(e.getActionCommand().equals("ViewUserInfomation")){
-			//TODO
-		}else if(e.getActionCommand().equals("SaveChanges")){
-			//TODO
-		}else if(e.getActionCommand().equals("Backout")){
 			//TODO
 		}else if(e.getActionCommand().equals("Withdraw")){
 			//TODO
@@ -69,7 +66,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 				totalPanel.setVisible(true);
 			}
 		}else if(e.getActionCommand().equals("ModifyUser")){
-			if(this.ModifyUserInfo()){
+			if(this.modifyUserInfo()){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = null;
@@ -84,7 +81,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 	 * 与bl层连接
  	 */
 	private boolean addUser(){
-		switch(((Panel_Admin_AddUser) subPanel).addUser()){
+		switch(totalPanel.addUser()){
 		case 0: new MyNotification(this, "成功添加新用户", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成新用户信息填写", Color.RED); break;
 		}
@@ -96,10 +93,17 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 	 * @return 是否修改成功
 	 * 与bl层连接
 	 */
-	private boolean ModifyUserInfo(){
-		switch(((Panel_Admin_Modify) subPanel).ModifyUser()){
+	private boolean modifyUserInfo(){
+		switch(totalPanel.modifyUser()){
 		case 0: new MyNotification(this, "成功修改用户信息", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成用户信息修改", Color.RED); break;
+		}
+		return false;
+	}
+	
+	private boolean deleteUser(){
+		switch(totalPanel.deleteUser()){
+		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
 		}
 		return false;
 	}

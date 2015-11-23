@@ -17,7 +17,7 @@ public class UserDataService_Stub implements UserDataService{
 	public UserDataService_Stub(){
 		userPOs = new ArrayList<UserPO>();
 	
-		userPO_1 = new UserPO("username1", "name1",  "password",UserIdentity.GENERAL_MANAGER,"operationRecords", UserAuthority.MANAGER_LEVEL);
+	//	userPO_1 = new UserPO("username1", "name1",  "password",UserIdentity.GENERAL_MANAGER,"operationRecords", UserAuthority.MANAGER_LEVEL);
 		
 		userPOs.add(userPO_1);
 		userPOs.add(userPO_2);
