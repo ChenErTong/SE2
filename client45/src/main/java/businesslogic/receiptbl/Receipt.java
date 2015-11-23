@@ -6,14 +6,17 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin;
+
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
 
-public class Receipt implements ReceiptBLService {
+public class Receipt  {
 	private ReceiptDataService  receiptData;
 
 	public Receipt() {
@@ -29,28 +32,44 @@ public class Receipt implements ReceiptBLService {
 		}
 	}
 
-	@Override
-	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) throws RemoteException {
+		ReceiptPO po=new ReceiptPO(receiptVO.getID());
+		receiptData.modify(po);
+		return receiptData.modify(po);
 	}
 
-	@Override
-	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
+		for(ReceiptVO vo:VOs){
+			ReceiptPO po=new ReceiptPO(vo.getID());
+			po.setReceiptState(ReceiptState.SUCCESS);
+			POs.add(po);
+		}
+		return POs;
 	}
 
-	@Override
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
+		for(ReceiptVO vo:VOs){
+			ReceiptPO po=new ReceiptPO(vo.getID());
+			po.setReceiptState(ReceiptState.FAILURE);
+			POs.add(po);
+		}
+		return POs;
 	}
 
-	@Override
+	
 	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ReceiptVO> VOs=new ArrayList<ReceiptVO>();
+		ArrayList<ReceiptPO> POs=receiptData.showReceipt(receiptStates);
+		for(ReceiptPO po:POs){
+			ReceiptVO vo=new ReceiptVO(po.getID());
+			 VOs.add(vo);
+		}
+		return VOs;
 	}
-
+    
 }

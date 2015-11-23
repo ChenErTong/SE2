@@ -2,6 +2,7 @@ package businesslogicservice.receiptblservice;
 
 import java.util.ArrayList;
 
+import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -24,12 +25,12 @@ public class ReceiptBLService_Stub implements ReceiptBLService{
 
 
 	@Override
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs,
+	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs,
 			ReceiptType receiptTypes) {
 		
 		System.out.println("This receipt has not been passed!");
 		
-		return ResultMessage.SUCCESS;
+		return null;
 	}
 
 	@Override
@@ -41,10 +42,10 @@ public class ReceiptBLService_Stub implements ReceiptBLService{
 
 
 	@Override
-	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs,
+	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs,
 			ReceiptType receiptTypes) {
 		System.out.println("This receipt has been passed!");
-		return ResultMessage.SUCCESS;
+		return null;
 	}
 
 	

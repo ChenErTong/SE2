@@ -1,0 +1,60 @@
+package businesslogic.receiptbl;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin;
+
+import businesslogicservice.receiptblservice.ReceiptBLService;
+import dataservice.receiptdataservice.ReceiptDataService;
+import po.receiptpo.ReceiptPO;
+import state.ReceiptState;
+import state.ReceiptType;
+import state.ResultMessage;
+import vo.receiptvo.ReceiptVO;
+
+public class Receipt implements ReceiptBLService {
+	private ReceiptDataService  receiptData;
+
+	public Receipt() {
+		try {
+			receiptData = (ReceiptDataService ) Naming
+					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + ReceiptDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) {
+		ReceiptPO po=new ReceiptPO(receiptVO.getID());
+		receiptData.modify(po);
+		return null;
+	}
+
+	
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+}

@@ -1,7 +1,11 @@
 package dataservice.receiptdataservice;
 
+import java.util.ArrayList;
+
 import dataservice.ManageDataService;
 import po.receiptpo.ReceiptPO;
+import state.ReceiptState;
+import vo.receiptvo.ReceiptVO;
 /**
  * 提供单据信息的查看、单据修改和单据审批的服务
  * @author zsq
@@ -27,6 +31,8 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	 * 
 	 */
 	public String getID();
+	
+	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates);
 	
 	
 }
