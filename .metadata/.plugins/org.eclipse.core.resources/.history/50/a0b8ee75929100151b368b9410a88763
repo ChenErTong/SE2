@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
-import po.InventoryPO;
 import po.PersistentObject;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -31,7 +30,7 @@ public class InventoryData extends ManageData<PersistentObject> implements Inven
 	}
 
 	@Override
-	public String getImportID() throws RemoteException {
+	public String getImportID()  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -43,93 +42,99 @@ public class InventoryData extends ManageData<PersistentObject> implements Inven
 	}
 
 	@Override
-	public String getAdjustID() throws RemoteException {
+	public String getAlarmID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getInventoryID() throws RemoteException {
+	public String getA() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InventoryImportReceiptPO findImport(String importID) {
+	public String getB() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InventoryExportReceiptPO findExport(String exportID) {
+	public String getC()  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AdjustReceiptPO findAdjust(String adjustID) {
+	public String getD()  throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getTransferID() throws RemoteException {
+	public String getASize() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InventoryPO getInventoryPO(String id) throws RemoteException {
+	public String getBSize() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
+	public String getCSize() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
+	public String getDSize() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
+	public String getANum() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException {
+	public String getBNum() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException {
+	public String getCNum() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
+	public String getDNum() throws RemoteException {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
+	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public int getNum(String beginDate, String endDate) throws RemoteException {
+	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+	@Override
+	public ArrayList<AdjustReceiptPO> showAdjust() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -151,17 +156,21 @@ public class InventoryData extends ManageData<PersistentObject> implements Inven
 	}
 
 	@Override
-	public ResultMessage insertInventory(InventoryPO po) throws RemoteException {
+	public int getImportNum() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public ResultMessage modifyInventory(InventoryPO po, int a, int b, int c, int d, String EmptyOrFull)
-			throws RemoteException {
+	public int getExportNum() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
-	
+	@Override
+	public int getNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

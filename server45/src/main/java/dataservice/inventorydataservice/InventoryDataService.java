@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.DataService;
+import po.InventoryPO;
 import po.PersistentObject;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -17,35 +18,64 @@ public interface InventoryDataService  extends DataService<PersistentObject>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "InventoryData";
 	
+	/**初始化持久数据**/
 	public void init() throws RemoteException;
+	/**得到入库单ID**/
 	public String getImportID () throws RemoteException;
+	/**得到出库单ID**/
 	public String getExportID () throws RemoteException;
-	public String getAlarmID () throws RemoteException;
-	public String getA() throws RemoteException;
-	public String getB() throws RemoteException;
-	public String getC() throws RemoteException;
-	public String getD() throws RemoteException;
+	/**得到调整单ID**/
+	public String getAdjustID () throws RemoteException;
+	/**得到inventoryid**/
+	public  String getInventoryID() throws RemoteException;
 	
-	public String getASize() throws RemoteException;
-	public String getBSize() throws RemoteException;
-	public String getCSize() throws RemoteException;
-	public String getDSize() throws RemoteException;
+	/**查找单据**/
+	public InventoryImportReceiptPO  findImport(String importID);
+	public InventoryExportReceiptPO  findExport(String exportID);
+	public AdjustReceiptPO                 findAdjust(String adjustID);
 	
-	public String getANum() throws RemoteException;
-	public String getBNum() throws RemoteException;
-	public String getCNum() throws RemoteException;
-	public String getDNum() throws RemoteException;
+	/**生成transferid**/
+	public String getTransferID()throws RemoteException;
 	
-	public int getImportNum()throws RemoteException;
-	public int getExportNum()throws RemoteException;
-	public int getNum()throws RemoteException;
+	/**获得位置信息**/
+	public InventoryPO getInventoryPO(String id)throws RemoteException;
 	
-	public ArrayList<InventoryImportReceiptPO> showImport() throws RemoteException;
-	public ArrayList<InventoryExportReceiptPO> showExport() throws RemoteException;
-	public ArrayList<AdjustReceiptPO> showAdjust() throws RemoteException;
+	public InventoryPO getInventoryPO(int a,int b,int c,int d)throws RemoteException;
 	
+	public ArrayList<InventoryPO> getInventoryPOList(String date)throws RemoteException;
+	/**返回所有入库单据的数据**/
+	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
+	/**返回所有出库单据的数据**/
+	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException;
+	/**返回所有调整单据的数据**/
+	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException;
+	
+	/** 出库数量 **/
+	public int  getexportNumber(String beginDate, String endDate)throws RemoteException;
+	/** 入库数量）**/
+	public int getimportNumber(String beginDate, String endDate)throws RemoteException;
+	/**总数量**/
+	public int getNum(String beginDate, String endDate)throws RemoteException;
+	
+	/**增加一条po数据即生成入库单据**/
 	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException;
+	/**增加一条po数据即生成出库单据**/
 	public ResultMessage insertExport(InventoryExportReceiptPO po) throws RemoteException;
+	/**增加一条po数据即生成调整单据**/
 	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException;
 
+	/**增加一条po数据即生成位置单据**/
+	public ResultMessage insertInventory(InventoryPO po) throws RemoteException;
+	
+
+	
+	public ResultMessage modifyInventory(InventoryPO po,int a,int b,int c,int d,String EmptyOrFull) throws RemoteException;
+
+	
+	public ResultMessage delete(String id) throws RemoteException;
+	
+	
+	
+	
+	
 }
