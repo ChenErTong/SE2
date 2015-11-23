@@ -1,22 +1,20 @@
 package ui.specialui.manager;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
 
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.manager.AdjustBase.Panel_Manager_AddNewBase;
 import ui.specialui.manager.AdjustBase.Panel_Manager_AdjustBase;
 import ui.specialui.manager.AdjustBase.Panel_Manager_ModifyBase;
 import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AddNewPolicy;
 import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AdjustSalaryPolicy;
 import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_ModifyPolicy;
-import ui.specialui.manager.HandleOrganization.Panel_Manager_AddOrganization;
 import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
-import ui.specialui.manager.HandleOrganization.Panel_Manager_ModifyOrganizationInfo;
 import ui.specialui.manager.HandleReceipt.Panel_Manager_HandleReceipt;
 import ui.specialui.manager.HandleReceipt.Panel_Manager_ModifyReceiptInfo;
 import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_ViewBusinessPerformance;
@@ -35,8 +33,7 @@ private static final long serialVersionUID = 1L;
 	private Panel_Manager_ViewIncomeStatement viewIncomeStatement;
 	private Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
-	private Panel_Manager_ModifyOrganizationInfo modifyOrganizationInfo;
-	private Panel_Manager_AddOrganization addOrganization;
+	
 	private Panel_Manager_AddNewPolicy addNewPolicy;
 	private Panel_Manager_ModifyPolicy modifyPolicy;
 	private Panel_Manager_AddNewBase addNewBase;
@@ -103,22 +100,25 @@ private static final long serialVersionUID = 1L;
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
 			//TODO
-		}else if(e.getActionCommand().equals("ModifyReceiptInfo")){
+		}else if(e.getActionCommand().equals("AddOrganization")){
+			if(this.addOrganization()){
+				((Panel_Manager_HandleOrganization)subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("ModifyOrganizationInfomation")){
+			if(this.modifyOrganizationInfo()){
+				((Panel_Manager_HandleOrganization)subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("DeleteOrganization")){
+			if(this.deleteOrganization()){
+				((Panel_Manager_HandleOrganization)subPanel).refresh();
+			}
+		}
+		else if(e.getActionCommand().equals("ModifyReceiptInfo")){
+	
 			handleReceipt.setVisible(false);
 			modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
 			this.add(modifyReceiptInfo);
 			this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("ModifyOrganizationInfo")){
-			handleOrganization.setVisible(false);
-			modifyOrganizationInfo = new Panel_Manager_ModifyOrganizationInfo();
-			this.add(modifyOrganizationInfo);
-			this.getLayeredPane().add(modifyOrganizationInfo,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("AddOrganization")){
-			handleOrganization.setVisible(false);
-			addOrganization = new Panel_Manager_AddOrganization();
-			this.add(addOrganization);
-			this.getLayeredPane().add(addOrganization,new Integer(Integer.MAX_VALUE));
-			
 		}else if(e.getActionCommand().equals("AddNewPolicy")){
 			adjustSalaryPolicy.setVisible(false);
 			addNewPolicy = new Panel_Manager_AddNewPolicy();
@@ -143,5 +143,36 @@ private static final long serialVersionUID = 1L;
 		}
 	}
 	
+	/**
+	 * 添加新用户
+	 * @return 是否成功添加
+	 * 与bl层连接
+ 	 */
+	private boolean addOrganization(){
+		switch(((Panel_Manager_HandleOrganization)subPanel).addOrganization()){
+		case 0: new MyNotification(this, "成功添加新机构", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成新机构信息填写", Color.RED); break;
+		}
+		return false;
+	}
+
+	/**
+	 * 修改用户信息
+	 * @return 是否修改成功
+	 * 与bl层连接
+	 */
+	private boolean modifyOrganizationInfo(){
+		switch(((Panel_Manager_HandleOrganization)subPanel).modifyOrganization()){
+		case 0: new MyNotification(this, "成功修改机构信息", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成机构信息修改", Color.RED); break;
+		}
+		return false;
+	}
 	
+	private boolean deleteOrganization(){
+		switch(((Panel_Manager_HandleOrganization)subPanel).deleteOrganization()){
+		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
+		}
+		return false;
+	}
 }

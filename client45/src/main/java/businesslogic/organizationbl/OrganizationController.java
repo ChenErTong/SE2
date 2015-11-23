@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
+import vo.BranchVO;
 import vo.OrganizationVO;
 
 public class OrganizationController implements OrganizationBLService {
@@ -28,7 +29,7 @@ public class OrganizationController implements OrganizationBLService {
 	}
 
 	@Override
-	public ResultMessage deleteOrganization(String organizationID) {
+	public ResultMessage deleteOrganization(OrganizationVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,6 +3,7 @@ package businesslogicservice.organizationblservice;
 import java.util.ArrayList;
 
 import state.ResultMessage;
+import vo.BranchVO;
 import vo.OrganizationVO;
 
 
@@ -40,7 +41,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteOrganization(String organizationID);
+	public ResultMessage deleteOrganization(OrganizationVO vo);
 	/**
 	 * 更新一个机构的信息
 	 * @param vo OrganizationVO
@@ -49,4 +50,5 @@ public interface OrganizationBLService {
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage updateOrganization(OrganizationVO vo);
+	
 }

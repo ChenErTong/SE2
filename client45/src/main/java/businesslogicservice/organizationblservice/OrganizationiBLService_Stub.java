@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import state.ResultMessage;
 import vo.OrganizationVO;
 
-public class OrganizationiBLService_Stub implements OrganizationBLService{
+/*public class OrganizationiBLService_Stub implements OrganizationBLService{
 
 	@Override
 	public ArrayList<OrganizationVO> show() {
@@ -38,3 +38,4 @@ public class OrganizationiBLService_Stub implements OrganizationBLService{
 	}
 
 }
+*/
