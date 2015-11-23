@@ -44,18 +44,12 @@ public class DebitAndPayBillPO extends ReceiptPO{
  * @author zsq
  * @version Oct 22,2015
  */
-<<<<<<< HEAD
-	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
-		super(ID, type);
-=======
 	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
-		super(ID);
->>>>>>> origin/master
+		super(ID,type);
 		this.money = money;
 		this.courierID = courierID;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
-		// TODO Auto-generated constructor stub
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
@@ -64,13 +58,8 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @version Oct 22,2015
 	 */
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-<<<<<<< HEAD
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
-		super(ID,type);
-=======
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
-		super(ID);
->>>>>>> origin/master
+		super(ID,type);
 		this.money = money;
 		this.payerName = payerName;
 		this.bankAccouts = bankAccouts;
