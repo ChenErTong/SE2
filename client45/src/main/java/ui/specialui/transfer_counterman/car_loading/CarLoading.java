@@ -26,7 +26,7 @@ public class CarLoading extends MyJPanel{
 	}
 
 
-	public String[] jumpToCommodityForCar() {
+	public String[] jumpToCommodity() {
 		return carLoadingInfo.getData();
 	}	
 }

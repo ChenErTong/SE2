@@ -11,7 +11,9 @@ import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
 import ui.specialui.transfer_counterman.car_loading.CarCommodity;
 import ui.specialui.transfer_counterman.car_loading.CarLoading;
+import ui.specialui.transfer_counterman.plane_loading.PlaneCommodity;
 import ui.specialui.transfer_counterman.plane_loading.PlaneLoading;
+import ui.specialui.transfer_counterman.train_loading.TrainCommodity;
 import ui.specialui.transfer_counterman.train_loading.TrainLoading;
 import ui.specialui.transfer_counterman.transfer_receive.TransferReceiveManage;
 /**
@@ -81,18 +83,18 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			this.removeAll();
 			this.dispose();
 		}else if(e.getActionCommand().equals("jumpToCommodityForCar")){
-			//进入汽运装运管理货物输入界面
+			//进入汽车装运管理货物输入界面
 			if(this.jumpToCommodityForCar()){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = new CarCommodity(this);
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			}else{
-				new MyNotification(this, "请先完成汽运装车信息输入", Color.RED);
+				new MyNotification(this, "请先完成汽车装运信息输入", Color.RED);
 			}
 		}else if(e.getActionCommand().equals("TransferOrderForCar")){
-			//进入汽运装运管理货物输入界面
-			if(this.produceTransferOrder()){
+			//进入汽车装运管理货物输入界面
+			if(this.produceTransferOrderForCar()){
 				new MyNotification(this, "成功生成中转单", Color.GREEN);
 				subPanel.setVisible(false);
 				this.remove(subPanel);
@@ -101,16 +103,59 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			}else{
 				new MyNotification(this, "请至少选择一件订单", Color.RED);
 			}
+		}else if(e.getActionCommand().equals("jumpToCommodityForPlane")){
+			//进入飞机装运管理货物输入界面
+			if(this.jumpToCommodityForPlane()){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new PlaneCommodity(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请先完成飞机装运信息输入", Color.RED);
+			}
+		}else if(e.getActionCommand().equals("TransferOrderForPlane")){
+			//进入飞机装运管理货物输入界面
+			if(this.produceTransferOrderForPlane()){
+				new MyNotification(this, "成功生成中转单", Color.GREEN);
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new PlaneLoading(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请至少选择一件订单", Color.RED);
+			}
+		}else if(e.getActionCommand().equals("jumpToCommodityForTrain")){
+			//进入火车装运管理货物输入界面
+			if(this.jumpToCommodityForTrain()){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new TrainCommodity(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请先完成火车装运信息输入", Color.RED);
+			}
+		}else if(e.getActionCommand().equals("TransferOrderForTrain")){
+			//进入火车装运管理货物输入界面
+			if(this.produceTransferOrderForTrain()){
+				new MyNotification(this, "成功生成中转单", Color.GREEN);
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new TrainLoading(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请至少选择一件订单", Color.RED);
+			}
 		}
 	}
+
 	/**
 	 * 检验汽车装运基本信息是否输入完成，同时把保存数据
 	 * @return
 	 */
 	private boolean jumpToCommodityForCar(){
-		String[] data = ((CarLoading)subPanel).jumpToCommodityForCar();
+		String[] data = ((CarLoading)subPanel).jumpToCommodity();
 //		if(data == null) return false;
-		//TODO 汽运装车信息基本信息记录
+		//TODO 火车装运信息基本信息记录
 		
 		return true;
 	}
@@ -119,10 +164,58 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 * 检验汽车装运订单信息是否选择完成，同时把保存数据
 	 * @return
 	 */
-	private boolean produceTransferOrder() {
+	private boolean produceTransferOrderForCar() {
 		String[] ordersId = ((CarCommodity)subPanel).produceTransferOrder();
 //		if(ordersId == null) return false;
 		//TODO 汽车装运订单信息记录
+		
+		return true;
+	}
+	
+	/**
+	 * 检验飞机装运基本信息是否输入完成，同时把保存数据
+	 * @return
+	 */
+	private boolean jumpToCommodityForPlane() {
+		String[] data = ((PlaneLoading)subPanel).jumpToCommodity();
+//		if(data == null) return false;
+		//TODO 飞机装运信息基本信息记录
+		
+		return true;
+	}
+	
+	/**
+	 * 检验飞机装运订单信息是否输入完成，同时把保存数据
+	 * @return
+	 */
+	private boolean produceTransferOrderForPlane() {
+		String[] ordersId = ((PlaneCommodity)subPanel).produceTransferOrder();
+//		if(ordersId == null) return false;
+		//TODO 飞机装运订单信息记录
+		
+		return true;
+	}
+	
+	/**
+	 * 检验汽车装运基本信息是否输入完成，同时把保存数据
+	 * @return
+	 */
+	private boolean jumpToCommodityForTrain() {
+		String[] data = ((TrainLoading)subPanel).jumpToCommodity();
+//		if(data == null) return false;
+		//TODO 火车装运信息基本信息记录
+		
+		return true;
+	}
+	
+	/**
+	 * 检验火车装运订单信息是否选择完成，同时把保存数据
+	 * @return
+	 */
+	private boolean produceTransferOrderForTrain() {
+		String[] ordersId = ((TrainCommodity)subPanel).produceTransferOrder();
+//		if(ordersId == null) return false;
+		//TODO 火车装运订单信息记录
 		
 		return true;
 	}
