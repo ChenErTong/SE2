@@ -23,8 +23,18 @@ public class MyJFrame extends JFrame{
 	protected MyButton returnButton;
 	//用户ID
 	protected String ID;
-	
+	/**
+	 * 透明渐变启动界面
+	 */
 	public MyJFrame(){
+		this(true);
+
+		new HyalineValue().start(); // 透明渐变启动界面
+	}
+	/**
+	 * 非透明渐变启动界面
+	 */
+	public MyJFrame(boolean isGradualSetup){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.setSize(1280, 720);
@@ -32,7 +42,6 @@ public class MyJFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setResizable(false);
-		//this.ID = ID;
 		
 		this.returnButton = new MyButton(1155, 15, 30, 30);
 		this.returnButton.setMyIcon(CommonImage.TEST_RETURN_BUTTON);
@@ -56,8 +65,6 @@ public class MyJFrame extends JFrame{
 			}
 		});
 		this.add(this.closeButton);
-		
-		new HyalineValue().start(); // 透明渐变启动界面
 	}
 	
 	protected void setBackground(ImageIcon image){

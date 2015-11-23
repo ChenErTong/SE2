@@ -29,8 +29,6 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){
