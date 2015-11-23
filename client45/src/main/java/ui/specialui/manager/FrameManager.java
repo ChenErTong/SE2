@@ -19,6 +19,7 @@ import ui.specialui.manager.HandleReceipt.Panel_Manager_HandleReceipt;
 import ui.specialui.manager.HandleReceipt.Panel_Manager_ModifyReceiptInfo;
 import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_ViewBusinessPerformance;
 import ui.specialui.manager.ViewIncomeState.Panel_Manager_ViewIncomeStatement;
+import ui.specialui.manager.ViewUserInfo.Panel_Manager_ViewUser;
 
 
 public class FrameManager extends MyJFrame implements ActionListener{

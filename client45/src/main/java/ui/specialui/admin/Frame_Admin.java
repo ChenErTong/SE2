@@ -39,19 +39,19 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("AddUser")){
 			if(this.addUser()){
-				totalPanel.refresh();
+				//totalPanel.refresh();
 			}
 			
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			//TODO
 			if(this.deleteUser()){
-				totalPanel.refresh();
+				//totalPanel.refresh();
 			}
 	
 		}else if(e.getActionCommand().equals("ModifyUserInformation")){
 			//TODO
 			if(this.modifyUserInfo()){
-				((Panel_Admin_Total)subPanel).refresh();
+			//	totalPanel.refresh();
 			}
 			
 		}else if(e.getActionCommand().equals("ViewUserInfomation")){

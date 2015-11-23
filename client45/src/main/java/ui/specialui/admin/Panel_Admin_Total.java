@@ -10,7 +10,7 @@ import businesslogic.userbl.UserController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import vo.FacilityVO;
+
 import vo.UserVO;
 
 
@@ -19,13 +19,18 @@ public class Panel_Admin_Total extends MyJPanel{
 	private UserDetails userDetails;
 	private MyJButton commonButton;
 	private UserVO user;
+	@SuppressWarnings("unused")
 	private ArrayList<UserVO> userList;
 	private UserController userController;
 	public Panel_Admin_Total(Frame_Admin frame_Admin) {
 		super(0, 0, 1280, 720);
+		
 		userController = ControllerFactory.getUserController();
+		
 		this.setOpaque(false);
+
 		this.initComponent(frame_Admin);
+
 	
 	}
 	

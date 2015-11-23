@@ -1,5 +1,4 @@
-package ui.specialui.manager;
-
+package ui.specialui.manager.ViewUserInfo;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
@@ -12,29 +11,30 @@ import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
-import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
+import ui.myui.MyTranslucentPanel;
+import ui.specialui.manager.FrameManager;
+public class UserInfo extends MyTranslucentPanel{
 
-public class Panel_Manager_ViewUser extends MyJPanel{
 
-	public Panel_Manager_ViewUser(FrameManager frameManager) {
-		super(0, 0, 1280, 720);
-		this.setOpaque(false);
-		this.initComponent(frameManager);
+	public UserInfo(FrameManager frame_Manager) {
+		super(0,100,1280,560);
+		this.initComponent(frame_Manager);
 	}
-	private void initComponent(FrameManager frameManager) {
-		MyJButton AddUser = new MyJButton(565, 650, 150, 40,"查看员工信息",14);
-		AddUser.setActionCommand("ViewUser");
-		AddUser.addActionListener(frameManager);
-		this.add(AddUser);
-		AddUser.setVisible(true);
+
+	private void initComponent(FrameManager frame_Manager) {
+		String [] identity = {"总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 		
-		String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-		
-		MyJLabel userIdentity = new MyJLabel(35,100,120,30, "请选择员工类别",16,true);
+		MyJLabel userIdentity = new MyJLabel(35,5,120,30, "请选择员工类别",16,true);
 		this.add(userIdentity);
 		
-		MyComboBox userList = new MyComboBox(155,100,150,30,14,identity);
+		MyJButton search = new MyJButton(350,5,90,30,"搜索",16);
+		search.setActionCommand("Search");
+		search.addActionListener(frame_Manager);
+		this.add(search);
+		
+		
+		MyComboBox userList = new MyComboBox(155,5,150,30,14,identity);
 		this.add(userList);
 		//the table
 		String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
@@ -54,12 +54,13 @@ public class Panel_Manager_ViewUser extends MyJPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 						
-		jsp.setBounds(35, 140, 1220, 495);
+		jsp.setBounds(35, 45, 1220, 510);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());
 		jsp.setVisible(true);
 		this.add(jsp);
+		
 	}
 
 	private static final long serialVersionUID = 1L;

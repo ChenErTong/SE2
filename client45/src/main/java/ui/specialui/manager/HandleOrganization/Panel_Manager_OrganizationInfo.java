@@ -29,7 +29,7 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 	}
 	
 	private void initComponent(FrameManager frame_Manager) {
-		String [] organizationTypes = {"所有机构","营业厅","中转中心"};
+		String [] organizationTypes = {"营业厅","中转中心"};
 		
 		ChooseType = new MyJLabel(20,10,120,30, "请选择机构类别",14,true);
 		this.add(ChooseType);

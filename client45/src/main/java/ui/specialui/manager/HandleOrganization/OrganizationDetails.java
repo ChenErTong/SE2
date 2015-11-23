@@ -12,7 +12,7 @@ import ui.myui.MyTranslucentPanel;
 
 public class OrganizationDetails extends MyTranslucentPanel{
 	private MyJTextField[] fields;
-	private MyComboBox organizationType;
+	private MyComboBox organizationType ;
 	@SuppressWarnings("rawtypes")
 	private JComboBox provincesBox;
 	@SuppressWarnings("rawtypes")
@@ -36,7 +36,8 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		this.add(fields[1]);
 		
 		this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
-		organizationType = new MyComboBox(100, 100, 140, 30);
+		String[] organizationTypes = {"营业厅","中转中心"};
+		organizationType = new MyComboBox(100, 100, 140, 30,18,organizationTypes);
 		this.add(organizationType);
 		
 		this.add(new MyJLabel(250,100,100,30,"机构人数",18,true));

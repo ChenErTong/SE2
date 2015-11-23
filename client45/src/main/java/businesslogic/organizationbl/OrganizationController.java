@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
 import vo.BranchVO;
-import vo.OrganizationVO;
+
 import vo.TransferVO;
 
 public class OrganizationController implements OrganizationBLService {
