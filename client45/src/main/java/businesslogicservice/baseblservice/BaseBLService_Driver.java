@@ -15,7 +15,11 @@ public class BaseBLService_Driver {
 		service.confirmOperation();
 		service.deleteBase(ID);
 		service.updateBase(vo);
+
 		service.show(baseType);
+
+			service.show(baseType);
+
 		service.getID(baseType);
 		
 	}
