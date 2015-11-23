@@ -90,8 +90,8 @@ public class Transfer  {
 	
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state,
 			ArrayList<String> orders) {
-		TransferArrivalListVO vo=new TransferArrivalListVO(transferID,departure,  destination,destination, state, orders);
-		return vo;
+		TransferArrivalListVO receiptList vo.
+		return null;
 	}
 
 }

@@ -3,7 +3,6 @@ package dataservice.transferdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.CommodityPO;
 import po.TransferPO;
 import po.receiptpo.TransferArrivalListPO;
 import state.ResultMessage;
@@ -36,7 +35,7 @@ public class _Transfer_Data_Stub implements TransferDataService {
 	}
 
 	@Override
-	public TransferArrivalListPO findList(String id) {
+	public TransferArrivalListPO findList(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,12 +48,6 @@ public class _Transfer_Data_Stub implements TransferDataService {
 
 	@Override
 	public String getID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<CommodityPO> findCommodities() {
 		// TODO Auto-generated method stub
 		return null;
 	}

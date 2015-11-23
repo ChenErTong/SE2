@@ -69,8 +69,5 @@ public class Receipt  {
 		}
 		return VOs;
 	}
-    public  ReceiptPO VOtoPO(ReceiptVO vo){
-		return null;
-    	
-    }
+    
 }
