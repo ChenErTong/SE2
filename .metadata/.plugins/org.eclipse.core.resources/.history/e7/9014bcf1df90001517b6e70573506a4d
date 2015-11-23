@@ -44,7 +44,7 @@ public class Record implements RecordBLService{
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
 		String begin=recordData.getBegin();
 		ArrayList<DebitAndPayBillPO> POs=DebitAndPayBillData.showList(begin,end);
-		ArrayList<DebitAndPayBillVO> VOs = null;
+		ArrayList<DebitAndPayBillVO> VOs = new ArrayList<DebitAndPayBillVO>();
 		double income=0;
 		double expense=0;
 		double profit=0;

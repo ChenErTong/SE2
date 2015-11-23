@@ -30,21 +30,31 @@ public class Expense implements ExpenseBLService{
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
 	@Override
-	public String getID() {
+	public String getID() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return expenseData.getID();
 	}
 
 	@Override
-	public ArrayList<ExpenseVO> show() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ExpenseVO> show() throws RemoteException {
+		ArrayList<ExpensePO> pos=expenseData.show();
+		ArrayList<ExpenseVO> vos=new ArrayList<ExpenseVO>();
+		for(ExpensePO po :pos){
+			ExpenseVO vo=poTOvo(po);
+			vos.add(vo);
+		}
+		return vos;
 	}
-
+	
+    public ExpenseVO poTOvo(ExpensePO po){
+	    ExpenseVO vo=new ExpenseVO(po.getID(),po.getWorkshop(),po.getMoney(),po.getAddress());
+    	return vo;
+ 	
+    }
 	@Override
 	public ResultMessage add(ExpenseVO vo) {
 		ExpensePO expensePO = new ExpensePO(vo.getID(), vo.getWorkshop(), vo.getMoney(), vo.getAddress());

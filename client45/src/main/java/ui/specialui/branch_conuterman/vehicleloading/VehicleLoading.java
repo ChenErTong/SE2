@@ -1,5 +1,6 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +10,7 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 
 public class VehicleLoading extends MyJPanel {
@@ -38,9 +40,12 @@ public class VehicleLoading extends MyJPanel {
 		MyJButton calculateCost = new MyJButton(472, 560, 138, 23, "计算运费/元", 18);
 		calculateCost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO 计算运费
-				double cost = 0.0;
-				deliveryCost.setText(Double.toString(cost));
+				double cost = VehicleLoading.this.calculateCost();
+				if(cost == 0.0){
+					new MyNotification(frame, "无订单信息", Color.RED);
+				}else{
+					deliveryCost.setText(Double.toString(cost));
+				}
 			}
 		});
 		this.add(calculateCost);
@@ -50,6 +55,11 @@ public class VehicleLoading extends MyJPanel {
 		produceLoadingList.addActionListener(frame);
 		this.add(produceLoadingList);
 	}
+	
+	private double calculateCost(){		
+		return 0.0;
+	}
+	
 	/**
 	 * 从bl层得到订单编号
 	 * @return
@@ -63,6 +73,8 @@ public class VehicleLoading extends MyJPanel {
 		double cost;
 		if((loadingInfo = this.loadingInfo.getInfo())== null) return 1;	
 		if((cost = Double.parseDouble(deliveryCost.getText())) <= 0) return 2;
+		// TODO
+		// 根据数据生成装车单
 		return 0;
 	}
 }

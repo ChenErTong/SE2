@@ -2,7 +2,7 @@ package branch;
 
 import java.util.ArrayList;
 
-import businesslogic.branch.Branch;
+import businesslogic.branchbl.Branch;
 import state.CommodityState;
 import vo.receiptvo.BranchArrivalListVO;
 import vo.receiptvo.DeliveryListVO;

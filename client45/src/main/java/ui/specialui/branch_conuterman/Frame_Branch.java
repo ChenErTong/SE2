@@ -108,10 +108,25 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			if(this.deleteFacility()){
 				((FacilityInfoManage) subPanel).refresh();
 			}
+		}else if(e.getActionCommand().equals("addDriver")){
+			//添加司机
+			if(this.addDriver()){
+				((DriverInfoManage) subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("modifyDriver")){
+			//修改司机
+			if(this.modifyDriver()){
+				((DriverInfoManage) subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("deleteDriver")){
+			//删除司机
+			if(this.deleteDriver()){
+				((DriverInfoManage) subPanel).refresh();
+			}
 		}
 		
 	}
-	
+
 	/**
 	 * 增加车辆
 	 * @return
@@ -145,6 +160,43 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		switch(((FacilityInfoManage) subPanel).deleteFacility()){
 		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
 		case 2: new MyNotification(this, "请先输入正确的车辆代号进行查询", Color.RED); break;
+		}	
+		return false;
+	}
+	
+	/**
+	 * 增加司机
+	 * @return
+	 */
+	private boolean addDriver() {
+		switch(((DriverInfoManage) subPanel).addDriver()){
+		case 0: new MyNotification(this, "添加成功", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成司机信息填写", Color.RED); break;
+		}	
+		return false;
+	}
+	
+	/**
+	 * 修改司机
+	 * @return
+	 */
+	private boolean modifyDriver() {
+		switch(((DriverInfoManage) subPanel).modifyDriver()){
+		case 0: new MyNotification(this, "修改成功", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成司机信息填写", Color.RED); break;
+		case 2: new MyNotification(this, "请先输入正确的司机编号进行查询", Color.RED); break;
+		}	
+		return false;
+	}
+	
+	/**
+	 * 删除司机
+	 * @return
+	 */
+	private boolean deleteDriver() {
+		switch(((DriverInfoManage) subPanel).deleteDriver()){
+		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
+		case 2: new MyNotification(this, "请先输入正确的司机编号进行查询", Color.RED); break;
 		}	
 		return false;
 	}

@@ -1,5 +1,7 @@
 package businesslogic.fundbl;
-
+/**
+ * @author LIUXUANLIN
+ */
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.BankAccoutBLService;
 import dataservice.funddataservice.BankAccountDataService;
+import dataservice.receiptdataservice.ReceiptDataService;
+import po.BankAccountPO;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
@@ -27,20 +31,18 @@ public class BankAccount implements BankAccoutBLService {
 
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
-		return null;
+		return ConfirmState.CONFIRM;
 	}
 
 	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getID(){
+		return bankAccountData.getID();
+		
 	}
 
 	@Override
-	public ArrayList<BankAccountVO> show() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<BankAccountVO> show(){
+		return bankAccountData.show();
 	}
 
 	@Override
@@ -74,9 +76,18 @@ public class BankAccount implements BankAccoutBLService {
 	}
 
 	@Override
-	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {
+		ArrayList<BankAccountPO> P0s=bankAccountData.find(keywords,type);
+		ArrayList<BankAccountVO> V0s=new ArrayList<BankAccountVO>();
+		for(BankAccountPO PO:P0s){
+			BankAccountVO vo=POtoVO(PO);
+			V0s.add(vo);
+		}
+				return V0s;
 	}
-
+    public BankAccountVO POtoVO(BankAccountPO po){
+    	BankAccountVO vo=new BankAccountVO(po.getID(), po.getName(),po.getMoney(), po.getLevel());
+		return vo;
+    	
+    }
 }

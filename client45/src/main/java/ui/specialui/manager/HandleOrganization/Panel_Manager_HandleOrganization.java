@@ -176,11 +176,11 @@ public int addOrganization() {
 	if(data[4].equals("营业厅")){
 		data[0] = organizationController.getID();
 	//	branch = new BranchVO(name, name, name, null, null);
-		organizationController.addOrganization(branch);
+		organizationController.addBranch(branch);
 	}else if(data[4].equals("中转中心")){
 		data[0] = organizationController.getID();
 		//transfer = new TransferVO(name, name, flags, null, null);
-		organizationController.addOrganization(transfer);
+		organizationController.addTransfer(transfer);
 	}
 	
 	return 0;
@@ -198,9 +198,9 @@ public int modifyOrganization() {
 	if(data[4].equals("营业厅")){
 		branch.setId(data[0]);
 		branch.setAddress(data[7]);
-		organizationController.updateOrganization(branch);
+		organizationController.updateBranch(branch);
 	}else if(data[4].equals("中转中心")){
-		organizationController.updateOrganization(transfer);
+		organizationController.updateTransfer(transfer);
 	}
 	
 
@@ -216,9 +216,9 @@ public int deleteOrganization() {
 	//现在列表中选择一个用户后再进行删除
 	//TODO -
 	if(data[4].equals("营业厅")){
-		organizationController.deleteOrganization(branch);
+		organizationController.deleteBranch(branch.getId());
 	}else if(data[4].equals("中转中心")){
-		organizationController.deleteOrganization(transfer);
+		organizationController.deleteTransfer(transfer.getId());
 	}
 	
 	

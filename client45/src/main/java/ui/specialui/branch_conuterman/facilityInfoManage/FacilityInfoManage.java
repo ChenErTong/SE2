@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import businesslogic.ControllerFactory;
-import businesslogic.facility.FacilityController;
+import businesslogic.facilitybl.FacilityController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -172,7 +172,7 @@ public class FacilityInfoManage extends MyJPanel {
 	 * 查找车辆
 	 * @param facilityId 
 	 */
-	private boolean searchFacility(String facilityId) {		
+	private boolean searchFacility(String facilityId) {
 		facility = facilityController.findFacility(facilityId);
 		if(facility == null){
 			return false;

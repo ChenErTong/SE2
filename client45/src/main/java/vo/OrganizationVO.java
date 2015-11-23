@@ -3,6 +3,8 @@ package vo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import state.OrganizationType;
+
 public class OrganizationVO {
 	protected String organizationID;
 	/**����ʱ�䣬ϵͳ�Զ�����*/
@@ -11,8 +13,8 @@ public class OrganizationVO {
 	protected int number;
 	/**������ַ*/
 	protected String address;
-	
-	public OrganizationVO(String organizationID,String address,int number){
+	protected OrganizationType organizationType;
+	public OrganizationVO(String organizationID,String address,int number,OrganizationType organizationType){
 
 		this.organizationID = organizationID;
 		this.address = address;
@@ -31,6 +33,9 @@ public class OrganizationVO {
 	
 	public String getAddress() {
 		return address;
+	}
+	public String getDate() {
+		return date;
 	}
 	
 

@@ -10,6 +10,10 @@ import java.util.HashMap;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import dataservice.funddataservice.BankAccountDataService;
 import dataservice.funddataservice.DebitAndPayBillDataService;
+import po.BankAccountPO;
+import po.receiptpo.DebitAndPayBillPO;
+import state.PayBillItem;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.DebitAndPayBillVO;
 
@@ -30,33 +34,56 @@ public class DebitAndPayBill implements DebitAndPayBillBLService {
 	}
 
 	@Override
-	public String getPayID() {
+	public String getPayID() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return  debitAndPayBillData.getPayID();
 	}
 
 	@Override
-	public String getExpenseID() {
+	public String getExpenseID() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return  debitAndPayBillData.getExpenseID();
 	}
 
 	@Override
-	public DebitAndPayBillVO find(String ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public DebitAndPayBillVO find(String ID) throws RemoteException {
+		DebitAndPayBillPO PO=debitAndPayBillData.find(ID);
+		return  POtoVO(PO);
 	}
-
+   
+	
+	public DebitAndPayBillVO POtoVO(DebitAndPayBillPO PO){
+	    ReceiptType type=PO.getType();
+	    if(type==ReceiptType.EXPENSE){
+	    	//收款单
+	    	DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getCourierID(),PO.getType(),PO.getOrderNumbers());
+	    	 return vo;
+	    }
+	   if(type==ReceiptType.PAY){
+		   //付款单
+		   DebitAndPayBillVO vo=new DebitAndPayBillVO(PO.getID(),PO.getMoney(),PO.getPayerName(),PO.getBankAccouts(),PO.getType(),PO.getRentYear(),PO.getSalaryMonth(),PO.getItems(),PO.getTransListNumber());
+		   return vo;
+	   }
+	   else{
+	   return null;
+	   }
+	   
+   }
 	@Override
 	public HashMap<String, String> getAllBankAccounts() {
-		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 	@Override
 	public ResultMessage addDebitAndPayBill(String operatorID, String operatorName) {
-		// TODO Auto-generated method stub
+		DebitAndPayBillVO vo=new DebitAndPayBillVO(operatorName, 0, operatorName, null, null, operatorName, operatorName, null, null);
+		/**
+		 * String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber
+		 */
 		return null;
+		
 	}
 
 	@Override
