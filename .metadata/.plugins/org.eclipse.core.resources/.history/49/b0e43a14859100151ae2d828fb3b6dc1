@@ -14,7 +14,7 @@ import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
 
-public class Order{
+public class Order implements OrderBLService {
 	private OrderDataService orderData;
 
 	public Order() {
@@ -30,12 +30,12 @@ public class Order{
 		}
 	}
 
-	
+	@Override
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;
 	}
 
-
+	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
 		try {
 			return orderData.add(OrderTrans.convertVOtoPO(commmodities, order));
@@ -45,7 +45,7 @@ public class Order{
 		return ResultMessage.FAIL;
 	}
 
-
+	@Override
 	public OrderVO inquireOrder(String orderNumber, String senderName) {
 		OrderPO po=null;
 		try {
@@ -67,7 +67,7 @@ public class Order{
 		return null;
 	}
 
-	
+	@Override
 	public ResultMessage costAndTime(OrderVO order) {
 		//TODO 之后再搞，不知道返回什么
 		return ResultMessage.SUCCESS;

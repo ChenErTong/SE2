@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="state.CommodityState"/>
-<fullyQualifiedTypeName name="transfer.MockTransfer"/>
-<fullyQualifiedTypeName name="po.receiptpo.TransferOrderPO"/>
-<fullyQualifiedTypeName name="businusslogic.transfer.Transfer"/>
-<fullyQualifiedTypeName name="businesslogicservice.userblservice.UserBLService"/>
-<fullyQualifiedTypeName name="dataservice.recorddataservice.RecordDataService"/>
-<fullyQualifiedTypeName name="vo.InventoryViewVO"/>
-<fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
-<fullyQualifiedTypeName name="businesslogic.receiptbl.Receipt"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryImportReceiptVO"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="businesslogic.inventory.Inventory"/>
@@ -60,4 +51,13 @@
 <fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="state.ReceiptCondition"/>
 <fullyQualifiedTypeName name="po.BankAccountPO"/>
+<fullyQualifiedTypeName name="businesslogicservice.fundblservice.BankAccountBLService"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.BankAccountController"/>
+<fullyQualifiedTypeName name="businesslogicservice.fundblservice.DebitAndPayBillBLService"/>
+<fullyQualifiedTypeName name="businesslogicservice.fundblservice.ExpenseBLService"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.DebitAndPayBillController"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.Expense"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.ExpenseController"/>
+<fullyQualifiedTypeName name="businesslogicservice.orderblservice.OrderBLService"/>
+<fullyQualifiedTypeName name="businesslogic.orderbl.OrderController"/>
 </qualifiedTypeNameHistroy>
