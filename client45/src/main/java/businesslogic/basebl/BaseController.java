@@ -15,38 +15,52 @@ public class BaseController implements BaseBLService{
     Base BaseBL;
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
 		return BaseBL.confirmOperation();
 	}
 
 	@Override
-	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException {
-		// TODO Auto-generated method stub
-		return BaseBL.show(baseType);
-	}
-
-	@Override
-	public String getID(FindTypeBase baseType) throws RemoteException {
-		// TODO Auto-generated method stub
+	public ArrayList<BaseVO> show(FindTypeBase baseType){
+		try {
+			return BaseBL.show(baseType);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
-	public ResultMessage addBase(BaseVO vo) throws RemoteException {
-		// TODO Auto-generated method stub
-		return  BaseBL.addBase(vo);
+	public String getID(FindTypeBase baseType) {
+		return null;
 	}
 
 	@Override
-	public ResultMessage deleteBase(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return  BaseBL.deleteBase(ID);
+	public ResultMessage addBase(BaseVO vo) {
+		try {
+			return  BaseBL.addBase(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
-	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
-		// TODO Auto-generated method stub
-		return  BaseBL.updateBase(vo);
+	public ResultMessage deleteBase(String ID){
+		try {
+			return  BaseBL.deleteBase(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage updateBase(BaseVO vo){
+		try {
+			return  BaseBL.updateBase(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

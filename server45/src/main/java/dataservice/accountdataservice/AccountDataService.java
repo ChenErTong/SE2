@@ -14,6 +14,6 @@ public interface AccountDataService extends DataService<AccountPO> {
 	public static final String NAME = "AccountData";
 	
 	public void init() throws RemoteException;
-	public ArrayList<AccountPO> show() throws RemoteException;
+	public ArrayList<AccountPO> find() throws RemoteException;
 	
 }

@@ -42,6 +42,7 @@ public class LoadingInfo extends MyTranslucentPanel {
 		this.add(new MyJLabel(60, 242, 80, 25, "装车日期", 18, true));
 		loadingData = new MyJTextField(150, 240, 130, 30);
 		loadingData.setText(GetDate.getDate());
+		loadingData.setForDate();
 		this.add(loadingData);
 		
 		this.add(new MyJLabel(42, 292, 100, 25, "营业厅编号", 18, true));

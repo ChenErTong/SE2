@@ -1,7 +1,8 @@
 package businesslogic.userbl;
 
+import java.util.ArrayList;
+
 import po.UserPO;
-import state.UserIdentity;
 import vo.UserVO;
 
 public class UserTrans {
@@ -31,5 +32,14 @@ public class UserTrans {
 			String authority = po.getAuthority();
 			String address = po.getAddress();
 			return new UserVO(ID, password, username ,phoneNumber, iden,authority,address);
+		}
+		
+		public static ArrayList<UserVO> transPOstoVOs(ArrayList<UserPO> pos){
+			ArrayList<UserVO> vos = new ArrayList<>();
+			for (UserPO userPO : pos) {
+				UserVO userVO = transPOtoVO(userPO);
+				vos.add(userVO);
+			}
+			return vos;
 		}
 }

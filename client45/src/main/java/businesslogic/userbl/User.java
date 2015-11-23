@@ -14,13 +14,12 @@ import state.ResultMessage;
 import state.UserIdentity;
 import vo.UserVO;
 
-public class User{
-	private UserDataService<UserPO> userData;
+public class User {
+	private UserDataService userData;
 
-	@SuppressWarnings("unchecked")
 	public User() {
 		try {
-			userData = (UserDataService<UserPO>) Naming
+			userData = (UserDataService) Naming
 					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + UserDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -35,32 +34,31 @@ public class User{
 		return ConfirmState.CONFIRM;
 	}
 
-	public ArrayList<UserVO> show() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<UserVO> show() throws RemoteException {
+		ArrayList<UserPO> pos = userData.find();
+		ArrayList<UserVO> vos = UserTrans.transPOstoVOs(pos);
+		return vos;
 	}
 
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getID() throws RemoteException {
+		return userData.getID();
 	}
 
-	public ResultMessage addUser(UserVO vo) throws RemoteException{
-		return null;
+	public ResultMessage addUser(UserVO vo) throws RemoteException {
+		UserPO userPO = UserTrans.transVOtoPO(vo);
+		return userData.add(userPO);
 	}
 
-	public ResultMessage deleteUser(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage deleteUser(String username) throws RemoteException {
+		return userData.delete(username);
 	}
 
-	public ResultMessage updateUser(UserVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage updateUser(UserVO vo) throws RemoteException {
+		UserPO userPO = UserTrans.transVOtoPO(vo);
+		return userData.modify(userPO);
 	}
 
-	public UserIdentity login(LoginInfo loginInfo) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
+		return userData.login(loginInfo);
 	}
 }

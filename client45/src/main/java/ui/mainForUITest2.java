@@ -18,8 +18,8 @@ public class mainForUITest2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		new Frame_Courier();
+		new Frame_Courier();
 		
-		new Frame_Branch();
+//		new Frame_Branch();
 	}
 }

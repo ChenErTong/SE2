@@ -27,6 +27,7 @@ public class DriverInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(36, 122, 82, 21, "出生日期", 18, true));
 		fields[1] = new MyJTextField(130, 120, 150, 30);
+		fields[1].setForDate();
 		
 		this.add(new MyJLabel(57, 202, 63, 21, "手机号", 18, true));
 		fields[2] = new MyJTextField(130, 200, 150, 30);
@@ -44,6 +45,7 @@ public class DriverInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(355, 282, 103, 21, "行驶证期限", 18, true));
 		fields[6] = new MyJTextField(470, 280, 150, 30);
+		fields[6].setForDate();
 		
 		for (MyJTextField myJTextField : fields) {
 			this.add(myJTextField);

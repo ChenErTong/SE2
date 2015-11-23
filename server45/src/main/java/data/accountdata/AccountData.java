@@ -1,7 +1,6 @@
 package data.accountdata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.accountdataservice.AccountDataService;
@@ -22,9 +21,4 @@ public class AccountData extends ManageData<AccountPO> implements AccountDataSer
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public ArrayList<AccountPO> show() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

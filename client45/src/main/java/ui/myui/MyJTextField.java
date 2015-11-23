@@ -56,6 +56,20 @@ public class MyJTextField extends JTextField{
 		this.setDocument(new NumberLenghLimited(bitNum));
 	}
 	
+	/**
+	 * 使输入满足格式yyyy-MM-dd.
+	 */
+	public void setForDate(){
+		this.setDocument(new DateDocument());
+	}
+	
+	/**
+	 * 使输入满足格式yyyy-MM-dd-HH-mm.
+	 */
+	public void setForTime(){
+		this.setDocument(new TimeDocument());
+	}
+	
 	private class DoubleDocument extends PlainDocument {  
 	      
 	    private static final long serialVersionUID = 1L;  
@@ -108,5 +122,95 @@ public class MyJTextField extends JTextField{
 				super.insertString(offset, new String(upper, 0, length), attr);
 			}
 		}
+	}
+	
+	private class DateDocument extends PlainDocument{
+		private static final long serialVersionUID = 1L;
+		
+		public void insertString(int offset, String str, AttributeSet attributeSet) 
+				throws BadLocationException{
+			if(str == null){
+				return;
+			}
+			
+			int flag = 0;
+			if(getLength() <= 4){
+				flag = 2;
+			}else if(getLength() <= 7){
+				flag = 1;
+			}
+			String s = "";
+			for (char c : str.toCharArray()) {
+				if((c >= '0')&&(c <= '9')){
+					s += c;
+				}
+			}
+			
+			int length = getLength() + s.length() + flag;
+			if(length <= 10){
+				if((flag == 2)&&(length >= 6)){
+					s = s.substring(0, 4 - getLength()) + "-" + s.substring(4 - getLength());
+					flag --;
+				}
+				
+				if((flag == 1)&&(length >= 8)){
+					s = s.substring(0, 7 - getLength()) + "-" + s.substring(7 - getLength());
+					flag --;
+				}
+				super.insertString(offset, s, attributeSet);
+			}	
+		}		
+	}
+	
+	private class TimeDocument extends PlainDocument{
+		private static final long serialVersionUID = 1L;
+		
+		public void insertString(int offset, String str, AttributeSet attributeSet) 
+				throws BadLocationException{
+			if(str == null){
+				return;
+			}
+			
+			int flag = 0;
+			if(getLength() <= 4){
+				flag = 4;
+			}else if(getLength() <= 7){
+				flag = 3;
+			}else if(getLength() <= 10){
+				flag = 2;
+			}else if(getLength() <= 13){
+				flag = 1;
+			}
+			String s = "";
+			for (char c : str.toCharArray()) {
+				if((c >= '0')&&(c <= '9')){
+					s += c;
+				}
+			}
+			
+			int length = getLength() + s.length() + flag;
+			if(length <= 16){
+				if((flag == 4)&&(length >= 8)){
+					s = s.substring(0, 4 - getLength()) + "-" + s.substring(4 - getLength());
+					flag --;
+				}
+				
+				if((flag == 3)&&(length >= 10)){
+					s = s.substring(0, 7 - getLength()) + "-" + s.substring(7 - getLength());
+					flag --;
+				}
+				
+				if((flag == 2)&&(length >= 12)){
+					s = s.substring(0, 10 - getLength()) + "-" + s.substring(10 - getLength());
+					flag --;
+				}
+				
+				if((flag == 1)&&(length >= 14)){
+					s = s.substring(0, 13 - getLength()) + ":" + s.substring(13 - getLength());
+					flag --;
+				}
+				super.insertString(offset, s, attributeSet);
+			}	
+		}		
 	}
 }
