@@ -89,6 +89,8 @@ public class MyJTable extends JTable{
 		int row = this.getRowCount();
 		int column = this.getColumnCount();
 		
+		if(row == 0) return null;
+		
 		String[][] data = new String[row][column];
 		for(int i = 0; i < row; i++){
 			for(int j = 0; j < column; j++){

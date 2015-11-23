@@ -1,12 +1,15 @@
 package ui.specialui.transfer_counterman;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
+import ui.specialui.transfer_counterman.car_loading.CarCommodity;
 import ui.specialui.transfer_counterman.car_loading.CarLoading;
 import ui.specialui.transfer_counterman.plane_loading.PlaneLoading;
 import ui.specialui.transfer_counterman.train_loading.TrainLoading;
@@ -77,6 +80,50 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			new Frame_Inventory();
 			this.removeAll();
 			this.dispose();
+		}else if(e.getActionCommand().equals("jumpToCommodityForCar")){
+			//进入汽运装运管理货物输入界面
+			if(this.jumpToCommodityForCar()){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new CarCommodity(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请先完成汽运装车信息输入", Color.RED);
+			}
+		}else if(e.getActionCommand().equals("TransferOrderForCar")){
+			//进入汽运装运管理货物输入界面
+			if(this.produceTransferOrder()){
+				new MyNotification(this, "成功生成中转单", Color.GREEN);
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = new CarLoading(this);
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			}else{
+				new MyNotification(this, "请至少选择一件订单", Color.RED);
+			}
 		}
+	}
+	/**
+	 * 检验汽车装运基本信息是否输入完成，同时把保存数据
+	 * @return
+	 */
+	private boolean jumpToCommodityForCar(){
+		String[] data = ((CarLoading)subPanel).jumpToCommodityForCar();
+//		if(data == null) return false;
+		//TODO 汽运装车信息基本信息记录
+		
+		return true;
+	}
+	
+	/**
+	 * 检验汽车装运订单信息是否选择完成，同时把保存数据
+	 * @return
+	 */
+	private boolean produceTransferOrder() {
+		String[] ordersId = ((CarCommodity)subPanel).produceTransferOrder();
+//		if(ordersId == null) return false;
+		//TODO 汽车装运订单信息记录
+		
+		return true;
 	}
 }

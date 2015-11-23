@@ -2,15 +2,12 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
-import ui.myui.MyTranslucentPanel;
 import ui.specialui.branch_conuterman.Frame_Branch;
 /**
  * 送达货物信息查看界面
