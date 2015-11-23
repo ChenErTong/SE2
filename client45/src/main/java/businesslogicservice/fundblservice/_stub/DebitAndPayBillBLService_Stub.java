@@ -35,7 +35,7 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 	@Override
 	public HashMap<String, String> getAllBankAccounts() {
 		System.out.println("Show all BankAccounts!");
-		return new HashMap<String,String>(){};
+		return new HashMap<String,String>();
 	}
 
 	
@@ -44,66 +44,66 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPay() {
 		System.out.println("Show the all PayBills");	
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpense() {
 		System.out.println("Show the all expenseBills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayApproving() {
 		System.out.println("Show the approving paybills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpenseApproving() {
 		System.out.println("Show the approving expensebills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayPass() {
 		System.out.println("Show the pss paybills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpensePass() {
 		System.out.println("Show the pass expensebills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayFailure() {
 		System.out.println("Show the failed paybills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpenseFailure() {
 		System.out.println("Show the failed expensebills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayDraft() {
 		System.out.println("Show the draft paybills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() {
 		System.out.println("Show the draft expensebills");
-		return new ArrayList<DebitAndPayBillVO>(){};
+		return new ArrayList<DebitAndPayBillVO>();
 
 }
 
 	@Override
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers)
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
 			{
 		// TODO Auto-generated method stub
 		return null;
@@ -111,7 +111,7 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 
 	@Override
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<BankAccountPO> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList transListNumber)
+			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
 					throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

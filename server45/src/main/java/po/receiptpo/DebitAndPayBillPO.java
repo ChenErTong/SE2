@@ -20,28 +20,27 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	private String courierID;
 	private String date;
 	//TODO
-	private ArrayList orderNumbers;
+	private ArrayList<String> orderNumbers;
 	private String payerName;
 	private ArrayList<BankAccountPO> bankAccouts; 
 	private PayBillItem items;
 	private String rentYear;
 	private String salaryMonth;
 	//TODO
-	private ArrayList transListNumber;
+	private ArrayList<String> transListNumber;
 	private ReceiptType type;
 	private ReceiptState state;
 /**
  * @author zsq
  * @version Oct 22,2015
  */
-	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
+	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
 		super(ID);
 		this.money = money;
 		this.courierID = courierID;
 		this.state = ReceiptState.APPROVALING;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
-		// TODO Auto-generated constructor stub
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
@@ -50,7 +49,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @version Oct 22,2015
 	 */
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
 		super(ID);
 		this.money = money;
 		this.payerName = payerName;

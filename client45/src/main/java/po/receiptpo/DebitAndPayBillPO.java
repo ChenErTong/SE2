@@ -30,21 +30,21 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	private String courierID;
 	private String date;
 	//TODO
-	private ArrayList orderNumbers;
+	private ArrayList<String> orderNumbers;
 	private String payerName;
 	private ArrayList<BankAccountPO> bankAccouts; 
 	private PayBillItem items;
 	private String rentYear;
 	private String salaryMonth;
 	//TODO
-	private ArrayList transListNumber;
+	private ArrayList<String> transListNumber;
 	private ReceiptType type;
 	private ReceiptState state;
 /**
  * @author zsq
  * @version Oct 22,2015
  */
-	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
+	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
 		super(ID);
 		this.money = money;
 		this.courierID = courierID;
@@ -59,7 +59,7 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @version Oct 22,2015
 	 */
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
 		super(ID);
 		this.money = money;
 		this.payerName = payerName;
@@ -95,10 +95,10 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public ArrayList getOrderNumbers() {
+	public ArrayList<String> getOrderNumbers() {
 		return orderNumbers;
 	}
-	public void setOrderNumbers(ArrayList orderNumbers) {
+	public void setOrderNumbers(ArrayList<String> orderNumbers) {
 		this.orderNumbers = orderNumbers;
 	}
 	public String getPayerName() {
@@ -139,10 +139,10 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setSalaryMonth(String salaryMonth) {
 		this.salaryMonth = salaryMonth;
 	}
-	public ArrayList getTransListNumber() {
+	public ArrayList<String> getTransListNumber() {
 		return transListNumber;
 	}
-	public void setTransListNumber(ArrayList transListNumber) {
+	public void setTransListNumber(ArrayList<String> transListNumber) {
 		this.transListNumber = transListNumber;
 	}
 	public ReceiptType getType() {

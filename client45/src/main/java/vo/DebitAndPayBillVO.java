@@ -18,7 +18,7 @@ public class DebitAndPayBillVO  {
 	private String date;
 	/**对应快递订单条形码号*/
 	//TODO
-	private ArrayList orderNumbers;
+	private ArrayList<String> orderNumbers;
 	/**付款人*/
 	private String payerName;
 	/**付款账户*/
@@ -29,7 +29,7 @@ public class DebitAndPayBillVO  {
 	private String rentYear;
 	private String salaryMonth;
 	//TODO
-	private ArrayList transListNumber;
+	private ArrayList<String> transListNumber;
 	/**区分收款单和付款单*/
 	private ReceiptType type;
 	/**单据状态*/
@@ -45,7 +45,7 @@ public class DebitAndPayBillVO  {
  * @author zsq
  * @version Oct 22,2015
  */
-	public DebitAndPayBillVO(String ID,double money,String courierID,ReceiptType type,ArrayList orderNumbers) {
+	public DebitAndPayBillVO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
 		this.ID = ID;
 		this.money = money;
 		this.courierID = courierID;
@@ -72,7 +72,7 @@ public class DebitAndPayBillVO  {
 	 * @version Oct 22,2015
 	 */
 	public DebitAndPayBillVO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
-			String rentYear,String salaryMonth,PayBillItem items,ArrayList transListNumber){
+			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
 		this.ID = ID;
 		this.money = money;
 		this.payerName = payerName;
@@ -110,10 +110,10 @@ public class DebitAndPayBillVO  {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public ArrayList getOrderNumbers() {
+	public ArrayList<String> getOrderNumbers() {
 		return orderNumbers;
 	}
-	public void setOrderNumbers(ArrayList orderNumbers) {
+	public void setOrderNumbers(ArrayList<String> orderNumbers) {
 		this.orderNumbers = orderNumbers;
 	}
 	public String getPayerName() {
@@ -146,10 +146,10 @@ public class DebitAndPayBillVO  {
 	public void setSalaryMonth(String salaryMonth) {
 		this.salaryMonth = salaryMonth;
 	}
-	public ArrayList getTransListNumber() {
+	public ArrayList<String> getTransListNumber() {
 		return transListNumber;
 	}
-	public void setTransListNumber(ArrayList transListNumber) {
+	public void setTransListNumber(ArrayList<String> transListNumber) {
 		this.transListNumber = transListNumber;
 	}
 	public ReceiptType getType() {
