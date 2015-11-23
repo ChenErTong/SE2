@@ -1,6 +1,8 @@
 package ui.specialui.admin.TotalPanel;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,29 +18,32 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.specialui.admin.Frame_Admin;
+import ui.specialui.branch_conuterman.Frame_Branch;
+import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfo;
+import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 
 
 public class Panel_Admin_Total extends MyJPanel{
-	
-	String [] headers = {"所有用户列表"};
-	String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-
-	public Panel_Admin_Total(int x, int y, int width, int height) {
-		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
-	}
-
+	private UserInfo userInfo;
+	private UserDetails userDetails;
+	private MyJButton commonButton;
 	public Panel_Admin_Total(Frame_Admin frame_Admin) {
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Admin);
-		
+	//	this.insertPanel(frame_Admin);
 	
 	}
 	
 	private void initComponent(Frame_Admin frame_Admin){
-		MyJButton AddUser = new MyJButton(50, 670, 150, 40,"添加用户",14);
+		userInfo = new UserInfo(frame_Admin);
+		this.add(userInfo);
+		userDetails = new UserDetails();
+		this.add(userDetails);
+	}
+	
+/*	MyJButton AddUser = new MyJButton(50, 670, 150, 40,"添加用户",14);
 		AddUser.setActionCommand("AddUser");
 		AddUser.addActionListener(frame_Admin);
 		this.add(AddUser);
@@ -70,64 +75,196 @@ public class Panel_Admin_Total extends MyJPanel{
 		MyJButton Backout = new MyJButton(850, 670, 150, 40,"撤销",14);
 		Backout.setActionCommand("Backout");
 		Backout.addActionListener(frame_Admin);
-		this.add(Backout);
+		this.add(Backout);*/
 		
-		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",14);
+		/*MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",14);
 		Withdraw.setActionCommand("Withdraw");
 		Withdraw.addActionListener(frame_Admin);
-		this.add(Withdraw);
+		this.add(Withdraw);*/
 		
-		MyJLabel title = new MyJLabel(535,50,210,50,"用户信息",22,true);
-		this.add(title);
-		
-
-		UserInfo userInfo = new UserInfo();
-		this.add(userInfo);
-
-		
-		/*String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-		
-		MyJLabel userIdentity = new MyJLabel(35,100,120,30, "请选择用户类别",16,true);
-		this.add(userIdentity);
-		
-		MyComboBox userList = new MyComboBox(155,100,150,30,14,identity);
-		this.add(userList);
-		//the table
-				String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
-				MyJTable	table = new MyJTable(headers, false);
-				table.setBackground(new Color(40, 42, 66));
-				table.setForeground(Color.WHITE);
-				table.setFont(new MyFont(14));
 	
-						
-				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-				tcr.setHorizontalAlignment(JLabel.CENTER);
-				table.setDefaultRenderer(Object.class, tcr);
+		private void insertPanel(Frame_Admin frame) {
+		this.removeAll();
+		this.add(userInfo);
+		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+		this.initButton(frame);
+	
+		
+		userDetails = new UserDetails();
+		this.add(userDetails);
+		
+		commonButton = new MyJButton(890, 670, 120, 30, "添加用户", 20);
+		commonButton.setActionCommand("AddUser");
+		commonButton.addActionListener(frame);
+		this.add(commonButton);
+		
+		this.repaint();
+	}
+
+	private void modifyPanel(Frame_Admin frame) {
+		this.removeAll();
+		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+		this.add(userInfo);
+		this.initButton(frame);
+		
+		userDetails = new UserDetails();
+		this.add(userDetails);
+		
+		//this.add(new MyJLabel(415, 110, 100, 40, "车辆代号", 20, true));
+		//this.add(facilityId);
+		
+		commonButton = new MyJButton(890, 670, 120, 30, "修改用户信息", 20);
+		commonButton.setActionCommand("modifyFacility");
+		commonButton.addActionListener(frame);
+		this.add(commonButton);
+		
+		this.repaint();
+	}
+
+	private void searchPanel(Frame_Admin frame) {
+		
+		this.removeAll();
+		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+		this.add(userInfo);
+		this.initButton(frame);
+		
+		userDetails = new UserDetails();
+		userDetails.setUneditable();
+		this.add(userDetails);
+		
+		this.repaint();
+	}
+
+	private void deletePanel(Frame_Admin frame) {
+		
+		this.removeAll();
+		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+		this.add(userInfo);
+		this.initButton(frame);
+		
+		userDetails = new UserDetails();
+		userDetails.setUneditable();
+		this.add(userDetails);
+		
+		commonButton = new MyJButton(890, 670, 120, 30, "删除用户", 20);
+		commonButton.setActionCommand("deleteUser");
+		commonButton.addActionListener(frame);
+		this.add(commonButton);
+		
+		this.repaint();
+	}
+
+	private void initButton(Frame_Admin frame) {
+		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
+				"<html>添<br/>加<br/>用<br/>户<br/></html>", 18);
+		insertButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Admin_Total.this.insertPanel(frame);
 				
-					  	
-				JScrollPane jsp=new JScrollPane(table);
-				JTableHeader head = table.getTableHeader();
-				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-				head.setFont(new MyFont(14));
-				head.setForeground(Color.BLACK);
-				head.setResizingAllowed(false);
-						
-				jsp.setBounds(35, 140, 1220, 495);
-				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-				jsp.setOpaque(false);
-				jsp.setBorder(BorderFactory.createEmptyBorder());
-				jsp.setVisible(true);
-				this.add(jsp);
-			//	UserInfo userInfo = new UserInfo();
-				//this.add(userInfo);
->>>>>>> origin/master*/
+			}
+		});
+		this.add(insertButton);
+
+		MyJButton modifyButton = new MyJButton(0, 280, 40, 130,
+				"<html>修<br/>改<br/>用<br/>户<br/>信<br/>息<br/></html>", 18);
+		modifyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Admin_Total.this.modifyPanel(frame);
+				
+			}
+		});
+		this.add(modifyButton);
+
+		MyJButton searchButton = new MyJButton(0, 410, 40, 130,
+				"<html>查<br/>看<br/>用<br/>户<br/></html>", 18);
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Admin_Total.this.searchPanel(frame);
+				
+			}
+		});
+		this.add(searchButton);
+
+		MyJButton deleteButton = new MyJButton(0, 540, 40, 110,
+				"<html>删<br/>除<br/>用<br/>户<br/></html>", 18);
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Admin_Total.this.deletePanel(frame);
+				
+			}
+		});
+		this.add(deleteButton);
+	}
+	/**
+	 * TODO 从bl层获取数据
+	 * 查找用户
+	 */
+/*	@SuppressWarnings("unused")
+	public boolean searchUser() {
+		String[] data;
+		
+		// TODO
+		data = null;
+		
+		if(data == null){
+			return false;
+		}
+	//	id = facilityId.getText();
+		userDetails.setData(data);
+		return true;
+	}
+
+	public int addUser() {
+		int result = this.getData();
+		if(result == 0){
+			// TODO
+			// 添加车辆
+		}
+		return result;
+	}
+
+	public int modifyUser() {
+		if(id == null){
+			return 2;
+		}
+		int result = this.getData();
+		if(result == 0){
+			// TODO
+			// 修改车辆
+		}
+		return result;
+	}
+	
+	public int deleteUser() {
+		if(id == null){
+			return 2;
+		}
+		// TODO
+		// 删除车辆
+		return 0;
+	}
+	
+	public void refresh() {
+		userDetails.refresh();
+	//	facilityId.setText(null);
+	}
+	
+	private int getData(){
+		@SuppressWarnings("unused")
+		String[] data;
+		if((data = userDetails.getData()) == null) return 1;
+		return 0;	
+	}
+		
+		
+	//	MyJLabel title = new MyJLabel(600,50,210,50,"用户信息",22,true);
+		//this.add(title);
+		
+*/
+		
+	private static final long serialVersionUID = 1L;
 		
 
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-}
+	

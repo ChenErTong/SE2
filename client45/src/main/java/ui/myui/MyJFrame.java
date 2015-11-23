@@ -21,6 +21,8 @@ public class MyJFrame extends JFrame{
 	protected MyButton minimizeButton;
 	//返回按钮
 	protected MyButton returnButton;
+	//用户ID
+	protected String ID;
 	
 	public MyJFrame(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,6 +32,7 @@ public class MyJFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setResizable(false);
+		//this.ID = ID;
 		
 		this.returnButton = new MyButton(1155, 15, 30, 30);
 		this.returnButton.setMyIcon(CommonImage.TEST_RETURN_BUTTON);

@@ -1,6 +1,6 @@
 package ui.commonui.login;
 
-import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -17,7 +17,7 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyButton;
 import ui.myui.MyJTextField;
-import ui.specialui.admin.TotalPanel.Panel_Admin_Total;
+
 /**
  * 登陆界面
  * @author czw
@@ -29,7 +29,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 
 	boolean flag = false;
 	
-	MyJTextField userNameField;
+	MyJTextField userIdField;
 	MyJTextField passwordField;
 	MyButton button_Enter;
 	MyButton button_Exit;
@@ -48,11 +48,11 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 		
 //		账号输入框	
-		userNameField = new MyJTextField(421, 414, 200, 40);
-//		userNameField.setForeground(Color.WHITE);
-////		userNameField.setOpaque(false);
-//		userNameField.setBorder(BorderFactory.createEmptyBorder());
-//		userNameField.addMouseListener(new MouseAdapter(){
+		userIdField = new MyJTextField(421, 414, 200, 40);
+//		userIdField.setForeground(Color.WHITE);
+////		userIdField.setOpaque(false);
+//		userIdField.setBorder(BorderFactory.createEmptyBorder());
+//		userIdField.addMouseListener(new MouseAdapter(){
 //			public void mouseEntered(MouseEvent arg0){
 ////				label_field1.setVisible(true);
 //			}
@@ -61,7 +61,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 //			}
 //		});
 //	
-		this.add(userNameField);
+		this.add(userIdField);
 //		
 //		//密码输入框
 		passwordField = new MyJTextField(421, 464, 200, 40);
@@ -133,8 +133,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 //		if(events.getSource()==button_Enter){
 //			UserBLService controller = new UserController();
 //			
-//			UserIdentity ui = controller.login(new LoginInfo(userNameField.getText(),new String(passwordField.getText()),flag));
-//			userID = userNameField.getText();
+//			UserIdentity ui = controller.login(new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag));
+//			userID = userIdField.getText();
 //			for(int i=0;i<controller.show().size();i++){
 //				if(controller.show().get(i).username.equals(userID)){
 //					userName = controller.show().get(i).name;

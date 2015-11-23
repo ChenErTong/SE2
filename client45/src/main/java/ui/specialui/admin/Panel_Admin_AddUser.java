@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 
 
 
+
 import ui.Config.JComboBoxOfChina;
 import ui.image.CommonImage;
 import ui.myui.MyComboBox;
@@ -21,9 +22,10 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
+import ui.myui.MyTranslucentPanel;
 
 
-public class Panel_Admin_AddUser extends MyJPanel {
+public class Panel_Admin_AddUser extends MyTranslucentPanel {
 	
 	/**
 	 * 
@@ -45,32 +47,19 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	private MyEmptyTextArea addressDetails;
 	public Panel_Admin_AddUser(Frame_Admin frame_Admin) {
 		// TODO Auto-generated constructor stub
-		super(0, 0, 1280, 720);
+		super(365, 100, 550, 700);
 		this.setOpaque(false);
 		this.initComponent(frame_Admin);
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
-		
-
-		BufferedImage image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = image.createGraphics();
-		 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
-		g2d.drawImage(CommonImage.TEST_HALFOPAQUE, 0, 0, null);
-	   
-	    g2d.dispose();
-	    
-	    g.drawImage(image, 365, 40, null);
-	  
-	}
+	
 	
 	@SuppressWarnings("rawtypes")
 	private void initComponent(Frame_Admin frame_Admin){
-		MyJLabel title = new MyJLabel(580, 40, 170, 50, "新增用户信息", 24, true);
+		MyJLabel title = new MyJLabel(225, 5, 170, 50, "新增用户信息", 24, true);
 		this.add(title);
 		
-		MyJLabel userID = new MyJLabel(400, 92, 100, 30, "新用户编号", 18, true);
+		MyJLabel userID = new MyJLabel(10, 60, 100, 30, "新用户编号", 18, true);
 		this.add(userID);
 		
 		MyJLabel password = new MyJLabel(660,92,90,30,"用户密码",18,true);
@@ -154,7 +143,11 @@ public class Panel_Admin_AddUser extends MyJPanel {
 	    
 	   this.setVisible(true);
 	
-		
+	   MyJButton add = new MyJButton(500,600,100,30,"确认添加",18);
+	   add.setActionCommand("AddUser");
+	   add.addActionListener(frame_Admin);
+	   this.add(add);
+	   
 		MyJButton cancel = new MyJButton(720,600,100,30,"取消添加",18);
 		cancel.setActionCommand("cancelAddUser");
 		cancel.addActionListener(new ActionListener(){

@@ -1,15 +1,8 @@
 package ui.specialui.manager.HandleOrganization;
 
-import java.awt.Color;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
 
 import ui.myui.MyComboBox;
-import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
