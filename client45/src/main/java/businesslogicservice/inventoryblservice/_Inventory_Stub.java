@@ -5,16 +5,12 @@ import java.util.ArrayList;
 
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.inventorydataservice._Inventory_Data_Stub;
-import po.receiptpo.AdjustReceiptPO;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.TransferArrivalListVO;
 
 public class _Inventory_Stub implements InventoryBLService{
 	InventoryDataService data_stub = new _Inventory_Data_Stub();

@@ -2,10 +2,6 @@ package businesslogicservice.openingstockblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.openingstockblservice.OpeningStockBLService;
-import businesslogicservice.openingstockblservice.OpeningStockBLService_Stub;
-import businesslogicservice.inventoryblservice.InventoryBLService_Driver;
-import businesslogicservice.inventoryblservice.InventoryBLService_Stub;
 import state.ResultMessage;
 import vo.BankAccountVO;
 import vo.BranchVO;
@@ -15,6 +11,7 @@ import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
 public class OpeningStockBLService_Driver {
+	@SuppressWarnings("unused")
 	public void drive( OpeningStockBLService openingstockBLService){
 		ArrayList<TransferVO> commodities=new ArrayList<TransferVO>();
 		ArrayList<BranchVO> brabches=new ArrayList<BranchVO> ();

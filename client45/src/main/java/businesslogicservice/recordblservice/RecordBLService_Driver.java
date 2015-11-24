@@ -2,17 +2,13 @@ package businesslogicservice.recordblservice;
 
 import java.util.ArrayList;
 
-import businesslogicservice.recordblservice.RecordBLService;
-import businesslogicservice.openingstockblservice.OpeningStockBLService_Stub;
-import businesslogicservice.recordblservice.RecordBLService_Stub;
-import businesslogicservice.openingstockblservice.OpeningStockBLService_Driver;
 import vo.BussinessConditionVO;
-import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
 
 public class RecordBLService_Driver {
+	@SuppressWarnings("unused")
 	public void drive(RecordBLService recordBLService){
 		double totalIncome =10000000.0;
 		double profit = 20000000;
