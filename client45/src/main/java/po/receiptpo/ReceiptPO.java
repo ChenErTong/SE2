@@ -28,13 +28,13 @@ public class ReceiptPO extends PersistentObject{
 	protected ReceiptType receiptType;
 	
 	public ReceiptPO(String ID,ReceiptType type){
-		super(ID,type);
+		super(ID);
+		this.receiptType=type;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 		this.receiptState=ReceiptState.DRAFT;
 		this.receiptCondition=ReceiptCondition.DRAFT;
-		this.receiptType=receiptType;
 	}
 
 	public String getID() {

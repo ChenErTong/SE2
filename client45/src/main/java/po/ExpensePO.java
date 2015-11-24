@@ -25,8 +25,8 @@ public class ExpensePO extends PersistentObject{
 	/**收款日期,系统自动生成*/
 	private String date;
 	
-	public ExpensePO(String ID,ReceiptType type,String workshop,double money,String address){
-		super(ID, type);
+	public ExpensePO(String ID,String workshop,double money,String address){
+		super(ID);
 		this.ID = ID;
 		this.workshop = workshop;
 		this.money = money;

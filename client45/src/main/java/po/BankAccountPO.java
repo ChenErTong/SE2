@@ -26,8 +26,8 @@ public class BankAccountPO extends PersistentObject{
 	/**账户创建时间,系统自动计算得到*/
 	private String date;
 	
-	public BankAccountPO(String ID,ReceiptType type,String name,double money,String level){
-		super(ID,type);
+	public BankAccountPO(String ID,String name,double money,String level){
+		super(ID);
 		this.name = name;
 		this.money = money;
 		this.level = level;

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import po.InventoryPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
-import state.ReceiptType;
 import vo.TransferVO;
 
 public class TransferTrans {
@@ -18,7 +17,7 @@ public class TransferTrans {
 		String date = vo.getDate();
 		ArrayList<AccountPO> accounts = vo.getAccounts();
 		ArrayList<InventoryPO> inventoryPOs =vo.getInventories();
-		return new TransferPO(ID,ReceiptType.TRANSFER, address, date, accounts,inventoryPOs);
+		return new TransferPO(ID,address, date, accounts,inventoryPOs);
 	}
 
 	public static TransferVO convertPOtoVO(TransferPO po) {

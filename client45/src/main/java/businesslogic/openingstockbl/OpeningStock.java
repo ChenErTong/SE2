@@ -59,7 +59,7 @@ public class OpeningStock {
 		ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
 		String ID = openingStockData.getID();
 		String date = null;
-		OpeningStockPO po = new OpeningStockPO(ID, ReceiptType.OPENINGSTOCK, date, transfers, branchs, accounts, facilities, inventories,
+		OpeningStockPO po = new OpeningStockPO(ID,  date, transfers, branchs, accounts, facilities, inventories,
 				bankAccounts);
 		return openingStockData.add(po);
 	}

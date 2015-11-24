@@ -21,7 +21,7 @@ public class FacilityTrans {
 			String engineNumber  = vo.getEngineCode();
 			String VIN = vo.getVehicleIdentificationNumber();
 			ArrayList<LoadingListPO> deliverHistory = vo.getDeliverHistory();
-			return new FacilityPO(ID, ReceiptType.FACILITY, manageID, date, deliverHistory, bottomCode, engineNumber,VIN);
+			return new FacilityPO(ID,manageID, date, deliverHistory, bottomCode, engineNumber,VIN);
 		}
 	}
 
@@ -61,7 +61,7 @@ public class FacilityTrans {
 			double salary = vo.getSalary();
 			String workTime = vo.getWorkTime();
 			int receiptNum = vo.getReceiptNum();
-			return new DriverPO(ID,ReceiptType.DRIVER,duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+			return new DriverPO(ID ,duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		}
 	}
 

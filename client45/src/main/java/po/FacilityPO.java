@@ -34,8 +34,8 @@ public class FacilityPO extends PersistentObject{
 	 * 车牌号
 	 */
 	private String vehicleIdentificationNumber;
-	public FacilityPO(String id, ReceiptType type,String date, String managerId, ArrayList<LoadingListPO> deliverHistory) {
-		super(id, date ,type);
+	public FacilityPO(String id, String date, String managerId, ArrayList<LoadingListPO> deliverHistory) {
+		super(id, date);
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 	}
@@ -64,9 +64,9 @@ public class FacilityPO extends PersistentObject{
 		return vehicleIdentificationNumber;
 	}
 
-	public FacilityPO(String id, ReceiptType type,String managerId, String date, ArrayList<LoadingListPO> deliverHistory,
+	public FacilityPO(String id, String managerId, String date, ArrayList<LoadingListPO> deliverHistory,
 			String bottomCode, String engineCode, String vehicleIdentificationNumber) {
-		super(id, type);
+		super(id);
 		this.managerId = managerId;
 		this.date = date;
 		this.deliverHistory = deliverHistory;

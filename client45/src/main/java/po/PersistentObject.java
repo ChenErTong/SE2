@@ -24,17 +24,14 @@ public class PersistentObject implements Serializable{
 	/**时间*/
 	protected String date;
    
-	protected ReceiptType type;
-	protected PersistentObject(String id,ReceiptType type){
+	protected PersistentObject(String id){
 		this.ID = id;
-		this.type=type;
 	}
 
-	public PersistentObject(String iD, String date,ReceiptType type) {
+	public PersistentObject(String iD, String date) {
 		super();
 		ID = iD;
 		this.date = date;
-		this.type=type;
 	}
 
 	public String getID() {
@@ -53,13 +50,6 @@ public class PersistentObject implements Serializable{
 		this.date = date;
 	}
 
-	public ReceiptType getType() {
-		return type;
-	}
-
-	public void setType(ReceiptType type) {
-		this.type = type;
-	}
 	
 	
 	

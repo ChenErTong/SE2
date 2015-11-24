@@ -32,9 +32,9 @@ public class OpeningStockPO extends PersistentObject {
 	
 	private ArrayList<BankAccountPO> bankAccounts;
 
-	public OpeningStockPO(String ID, ReceiptType type,String date, ArrayList<TransferPO> transfers,ArrayList<BranchPO> branchs,
+	public OpeningStockPO(String ID,String date, ArrayList<TransferPO> transfers,ArrayList<BranchPO> branchs,
 			ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities, ArrayList<InventoryPO> inventories,ArrayList<BankAccountPO> bankAccounts) {
-		super(ID, date, type);
+		super(ID, date);
 		this.transfers=transfers;
 		this.branchs=branchs;
 		this.accounts = accounts;

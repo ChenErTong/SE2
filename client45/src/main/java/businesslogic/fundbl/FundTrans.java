@@ -24,7 +24,7 @@ public class FundTrans {
 			String name  =vo.getName();
 			double money = vo.getMoney();
 			String level = vo.getLevel();
-			return new BankAccountPO(ID, ReceiptType.BANKACCOUNT, name, money, level);
+			return new BankAccountPO(ID, name, money, level);
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class FundTrans {
 			String workshop = vo.getWorkshop();
 			double money = vo.getMoney();
 			String address=vo.getAddress();
-			return new ExpensePO(ID, ReceiptType.EXPENSE, workshop, money, address);
+			return new ExpensePO(ID, workshop, money, address);
 		}
 	}
 	

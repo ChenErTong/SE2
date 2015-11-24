@@ -18,7 +18,7 @@ public class BranchTrans {
 		String date = vo.getDate();
 		ArrayList<AccountPO> accounts = vo.getAccounts();
 		ArrayList<FacilityPO> facilities = vo.getFacilities();
-		return new BranchPO(ID, ReceiptType.BRANCH, address, date, accounts, facilities);
+		return new BranchPO(ID,   address, date, accounts, facilities);
 	}
 	
 	public static BranchVO convertPOtoVO(BranchPO po){

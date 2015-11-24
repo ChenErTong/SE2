@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import state.OrganizationType;
-import state.ReceiptType;
 
 /**
  * ������ĸ��࣬�����ĸ��������ԣ�������ţ�����ʱ�䣬Ա��������������ַ
@@ -29,8 +28,8 @@ public class OrganizationPO extends PersistentObject{
 	
 	protected OrganizationType organizationType;
 	
-	public OrganizationPO(String organizationID,ReceiptType type,String address,int numberOfPerson,OrganizationType organizationType){
-		super(organizationID, type);
+	public OrganizationPO(String organizationID,String address,int numberOfPerson,OrganizationType organizationType){
+		super(organizationID);
 		this.organizationID = organizationID;
 		this.address = address;
 		this.numberOfPerson=numberOfPerson;

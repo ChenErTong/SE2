@@ -48,7 +48,7 @@ public class Base{
 	}
 	
 	public BasePO VOtoPO(BaseVO vo){
-		BasePO po=new BasePO(vo.getId(), ReceiptType.BASE,vo.getDistances(), vo.getPrice(), vo.getSalaryPolicies());
+		BasePO po=new BasePO(vo.getId(),  vo.getDistances(), vo.getPrice(), vo.getSalaryPolicies());
 		return po;
 	}
 	public String getID(FindTypeBase baseType) throws RemoteException {
