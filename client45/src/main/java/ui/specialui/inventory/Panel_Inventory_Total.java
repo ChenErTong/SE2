@@ -29,12 +29,17 @@ public class Panel_Inventory_Total extends MyJPanel{
 		InventoryZoneAdjust.addActionListener(frame);
 		this.add(InventoryZoneAdjust);
 		
-		MyJButton CargoExport = new MyJButton(200, 450, 150, 40, "出库", 15);
+		MyJButton CargoImport = new MyJButton(200, 450, 150, 40, "入库", 15);
+		CargoImport.setActionCommand("CargoImport");
+		CargoImport.addActionListener(frame);
+		this.add(CargoImport);
+		
+		MyJButton CargoExport = new MyJButton(200, 500, 150, 40, "出库", 15);
 		CargoExport.setActionCommand("CargoExport");
 		CargoExport.addActionListener(frame);
 		this.add(CargoExport);
 		
-		MyJButton InventoryInitialization = new MyJButton(200, 500, 150, 40, "库存信息初始化", 15);
+		MyJButton InventoryInitialization = new MyJButton(200, 550, 150, 40, "库存信息初始化", 15);
 		InventoryInitialization.setActionCommand("InventoryInitialization");
 		InventoryInitialization.addActionListener(frame);
 		this.add(InventoryInitialization);

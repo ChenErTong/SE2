@@ -7,6 +7,7 @@ import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.specialui.inventory.check.InventoryCheck;
 import ui.specialui.inventory.export.CargoExport;
+import ui.specialui.inventory.import_.CargoImport;
 import ui.specialui.inventory.initialization.InventoryInitialization;
 import ui.specialui.inventory.stocking.Stocking;
 import ui.specialui.inventory.zone_adjust.InventoryZoneAdjust;
@@ -18,7 +19,7 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 	private MyJPanel subPanel;
 	
 	public Frame_Inventory() {
-		super(false);
+//		super(false);
 		
 		this.totalPanel = new Panel_Inventory_Total(this);
 		this.add(totalPanel);
@@ -55,6 +56,11 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 			//进入库存分区调整界面
 			totalPanel.setVisible(false);
 			subPanel = new InventoryZoneAdjust(this);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+		}else if(e.getActionCommand().equals("CargoImport")){
+			//进入入库界面
+			totalPanel.setVisible(false);
+			subPanel = new CargoImport(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("CargoExport")){
 			//进入出库界面

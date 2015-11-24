@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -24,9 +25,8 @@ public class MyJTable extends JTable{
 	public MyJTable(String[] headers, boolean isCellEditable){
 		this.isCellEditable = isCellEditable;
 		this.headers = headers;
-		
 		cellData = null;
-		
+
 		this.setCellEditable();
 		
 		this.setBackground(new Color(0, 0, 0, 0.3f));

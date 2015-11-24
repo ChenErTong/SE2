@@ -1,6 +1,7 @@
 package ui.myui;
 
 import java.awt.Color;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 /**
  * 下拉框
@@ -28,5 +29,16 @@ public class MyJComboBox extends JComboBox<String> {
 		}	
 		this.setMaximumRowCount(4);
 		this.setVisible(true);
+	}
+	
+	/**
+	 * 重设选项列表中的数据
+	 * @param newItem
+	 */
+	public void reset(String[] newItem){
+		this.removeAllItems();
+		for(int i = 0; i < newItem.length; i ++){
+			this.addItem(newItem[i]);
+		}
 	}
 }
