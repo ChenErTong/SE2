@@ -6,6 +6,7 @@ import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService {
 
@@ -20,8 +21,8 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	
 	@Override
 	public String getID() {
-		//估计单据的getID接口要加不少
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 5);
 	}
 
 }

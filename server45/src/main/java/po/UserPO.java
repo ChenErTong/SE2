@@ -84,6 +84,11 @@ public class UserPO extends PersistentObject{
 	}
 
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	
 
 	

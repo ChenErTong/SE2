@@ -7,6 +7,7 @@ import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.OpeningStockPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class OpeningStockData extends ManageData<OpeningStockPO> implements OpeningStockDataService {
 
@@ -21,26 +22,33 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 
 	@Override
 	public ResultMessage add(OpeningStockPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if (poList.add(po))
+			return ResultMessage.SUCCESS;
+		return ResultMessage.FAIL;
 	}
 
 	@Override
 	public void init() throws RemoteException {
+		/**@author Ann*/
 		// TODO 我觉得不要了
-
 	}
 
 	@Override
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < poList.size(); i++) {
+			OpeningStockPO poFind = poList.get(i);
+			if (poFind.getID().equals(id)) {
+				poList.remove(i);
+				return poFind;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 2);
 	}
 
 }

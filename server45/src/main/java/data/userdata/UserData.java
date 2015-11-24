@@ -1,7 +1,6 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.userdataservice.LoginInfo;
@@ -10,6 +9,7 @@ import po.UserPO;
 import state.ResultMessage;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class UserData extends ManageData<UserPO> implements UserDataService {
 
@@ -21,11 +21,6 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 	public UserData() throws RemoteException {
 		poList=new SerSaveAndLoad<UserPO>("data/"+NAME+".ser");
 	}
-	@Override
-	public ArrayList<UserPO> find() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	@Override
@@ -33,16 +28,25 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * Admin 默认为编号0000的用户
+	 * @author Ann
+	 */
 	@Override
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		UserPO admin = poList.get(0);
+		if(!admin.getPassword().equals(oldPassword))
+			//旧密码不正确
+			return ResultMessage.FAIL;
+		else {
+			admin.setPassword(newPassword);
+			return ResultMessage.SUCCESS;
+		}
 	}
 	@Override
 	public String getID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 4);
 	}
 
 }
