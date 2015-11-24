@@ -22,7 +22,7 @@ public class ExpenseVO {
 		this.money = money;
 		this.address = address;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
 		date = sdf.format(new Date());
 		
 	
