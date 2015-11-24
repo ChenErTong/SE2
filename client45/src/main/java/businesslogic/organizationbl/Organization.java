@@ -14,6 +14,7 @@ import dataservice.transferdataservice.TransferDataService;
 import po.BranchPO;
 import po.TransferPO;
 import state.ResultMessage;
+import util.CityTrans;
 import vo.BranchVO;
 import vo.TransferVO;
 
@@ -40,8 +41,7 @@ public class Organization {
 	}
 
 	public String getBranchID(String city)throws RemoteException  {
-		//从城市名称获得城市编号
-		String cityCode = null;
+		String cityCode = CityTrans.getCodeByCity(city);
 		return branchData.getID(cityCode);
 	}
 
@@ -65,8 +65,7 @@ public class Organization {
 	}
 
 	public String getTransferID(String city)throws RemoteException  {
-		//从城市名称获得城市编号
-		String cityCode=null;
+		String cityCode=CityTrans.getCodeByCity(city);
 		return transferData.getID(cityCode);
 	}
 
