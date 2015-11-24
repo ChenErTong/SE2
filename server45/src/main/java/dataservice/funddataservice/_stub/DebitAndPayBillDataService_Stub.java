@@ -14,8 +14,8 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 	private ArrayList<DebitAndPayBillPO> debitAndPayBillPOs;
 	private DebitAndPayBillPO debitAndPayBillPO_1;
 	private DebitAndPayBillPO debitAndPayBillPO_2;
-	private ArrayList orderNumbers;
-	private ArrayList transListNumbers;
+	private ArrayList<String> orderNumbers;
+	private ArrayList<String> transListNumbers;
 	public DebitAndPayBillDataService_Stub(){
 		debitAndPayBillPOs = new ArrayList<DebitAndPayBillPO>();
 		debitAndPayBillPO_1 = new DebitAndPayBillPO("123", 500, "courierID",ReceiptType.EXPENSE,orderNumbers);

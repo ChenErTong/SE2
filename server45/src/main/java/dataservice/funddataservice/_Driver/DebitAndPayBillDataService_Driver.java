@@ -9,7 +9,7 @@ import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 
 public class DebitAndPayBillDataService_Driver {
-	private ArrayList orderNumbers;
+	private ArrayList<String> orderNumbers;
 	private DebitAndPayBillPO po = new DebitAndPayBillPO("123", 500, "courierID",ReceiptType.EXPENSE,orderNumbers);
 	public void drive(DebitAndPayBillDataService DPBillDataService) throws RemoteException{
 		DPBillDataService.getExpenseID();
