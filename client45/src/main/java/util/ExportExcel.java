@@ -20,10 +20,13 @@ import jxl.write.WritableWorkbook;
  */
 public class ExportExcel {
 	/***************************************************************************
-	 * @param fileName EXCEL文件名称
-	 * @param listTitle EXCEL文件第一行列标题集合
-	 * @param listContent EXCEL文件正文数据集合
-	 * @return 系统提示
+	 * @param fileName
+	 *            EXCEL文件名称
+	 * @param listTitle
+	 *            EXCEL文件第一行列标题集合
+	 * @param listContent
+	 *            EXCEL文件正文数据集合
+	 * @return
 	 */
 	public final static String exportExcel(String fileName, String[] Title, List<Object> listContent) {
 		String result = "系统提示：Excel文件导出成功！";
