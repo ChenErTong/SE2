@@ -17,29 +17,32 @@ import ui.myui.MyTranslucentPanel;
 import ui.specialui.manager.FrameManager;
 
 public class BaseInfoList extends MyTranslucentPanel{
-	private MyJLabel baseTypeLabel;
-	private MyComboBox baseTypeList;
+	private MyComboBox startCityList;
+	private MyComboBox arrivalCityList;
 	private MyJButton search;
 	public BaseInfoList(FrameManager frame_Manager) {
 		super(50, 100, 620, 560);
 		this.initComponent( frame_Manager);
 	}
 	private void initComponent(FrameManager frame_Manager) {
-			String [] baseType = {"所有常量"};
 
-			baseTypeLabel= new MyJLabel(20,10,120,30, "选择常量类别",16,true);
-			this.add(baseTypeLabel);
+			String [] startCity = {"所有城市"};
+			String [] arrivalCity = {"所有城市"};
+			this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
+			this.add(new MyJLabel(270,10,120,30,"选择到达城市",16,true));
 			
-			baseTypeList = new MyComboBox(140,10,150,30,16,baseType);
-			this.add(baseTypeList);
+			startCityList = new MyComboBox(140,10,120,30,16,startCity);
+			this.add(startCityList);
 	
-			search = new MyJButton(320,10,90,30,"搜索",16);
+			arrivalCityList = new MyComboBox(390,10,150,30,16,arrivalCity);
+			this.add(arrivalCityList);
+			search = new MyJButton(550,10,70,30,"搜索",16);
 			search.setActionCommand("SearchBase");
 			search.addActionListener(frame_Manager);
 			this.add(search);
 			
 			//the table
-			String[] headers = {"常量类别","两地距离","运输单价","详细常量信息"};
+			String[] headers = {"城市距离","运输单价","详细常量信息"};
 			MyJTable	table = new MyJTable(headers, false);
 			table.setBackground(new Color(40, 42, 66));
 			table.setForeground(Color.WHITE);
@@ -64,16 +67,17 @@ public class BaseInfoList extends MyTranslucentPanel{
 			this.add(jsp);
 	}
 	
-	public void setData(String data) {
-		baseTypeList.setSelectedItem(data);
+	public void setData(String data[]) {
+		startCityList.setSelectedItem(data[0]);
+		arrivalCityList.setSelectedItem(data[1]);
 	
 	}
 
 	@SuppressWarnings("null")
-	public String getData() {
-		String  data ;
-		data= (String) baseTypeList.getSelectedItem();
-	
+	public String []getData() {
+		String  data[] = null ;
+		data[0]= (String) startCityList.getSelectedItem();
+		data[1] =(String) arrivalCityList.getSelectedItem();
 		return data;
 	}
 	private static final long serialVersionUID = 1L;

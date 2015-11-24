@@ -2,7 +2,6 @@ package businesslogicservice.fundblservice._driver;
 
 import vo.DebitAndPayBillVO;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
-import businesslogicservice.fundblservice._stub.DebitAndPayBillBLService_Stub;
 
 public class DebitAndPayBillBLService_Driver {
 	DebitAndPayBillVO vo = new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
@@ -29,7 +28,7 @@ public class DebitAndPayBillBLService_Driver {
 	}
 	public static void main(String args[]){
 		DebitAndPayBillBLService_Driver driver = new DebitAndPayBillBLService_Driver();
-		DebitAndPayBillBLService stub = new DebitAndPayBillBLService_Stub();
-		driver.drive(stub);
+		//DebitAndPayBillBLService stub = new DebitAndPayBillBLService_Stub();
+		//driver.drive(stub);
 	}
 }

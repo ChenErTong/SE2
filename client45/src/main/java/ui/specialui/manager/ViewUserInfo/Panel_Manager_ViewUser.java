@@ -2,6 +2,7 @@ package ui.specialui.manager.ViewUserInfo;
 
 
 import ui.myui.MyJButton;
+import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.manager.FrameManager;
 
@@ -13,6 +14,7 @@ public class Panel_Manager_ViewUser extends MyJPanel{
 		this.initComponent(frameManager);
 	}
 	private void initComponent(FrameManager frameManager) {
+		this.add(new MyJLabel(550, 20, 210, 90, "查看公司员工信息", 24, true));
 		MyJButton ViewUser = new MyJButton(565, 670, 150, 40,"查看员工信息",14);
 		ViewUser.setActionCommand("ViewUser");
 		ViewUser.addActionListener(frameManager);

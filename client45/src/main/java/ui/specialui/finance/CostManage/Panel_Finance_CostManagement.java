@@ -37,27 +37,8 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 
 	}
 	private void initButton(Frame_Finance frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
-				"<html>添<br/>加<br/>收<br/>款<br/>单<br/></html>", 18);
-		insertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_CostManagement.this.insertPanel(frame);
-				
-			}
-		});
-		this.add(insertButton);
-
-		MyJButton modifyButton = new MyJButton(0, 280, 40, 130,
-				"<html>修<br/>改<br/>收<br/>款<br/>单<br/></html>", 18);
-		modifyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_CostManagement.this.modifyPanel(frame);
-				
-			}
-		});
-		this.add(modifyButton);
-
-		MyJButton searchButton = new MyJButton(0, 410, 40, 130,
+		
+		MyJButton searchButton = new MyJButton(0, 240, 40, 130,
 				"<html>查<br/>看<br/>收<br/>款<br/>单<br/></html>", 18);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +48,7 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 		});
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(0, 540, 40, 110,
+		MyJButton deleteButton = new MyJButton(0, 370, 40, 130,
 				"<html>合<br/>计<br/>收<br/>款<br/>单<br/></html>", 18);
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,43 +60,7 @@ public class Panel_Finance_CostManagement extends MyJPanel{
 	}
 	
 
-	private void insertPanel(Frame_Finance frame) {
-	this.removeAll();
-	this.add(debitReceiptList);
-	this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
-	this.initButton(frame);
-
 	
-	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
-	debitReceiptInfo.add(new MyJLabel(230,5,120,30,"新增收款单",18,true));
-	this.add(debitReceiptInfo);
-	
-	
-	commonButton = new MyJButton(890, 670, 120, 30, "添加收款单", 20);
-	commonButton.setActionCommand("AddDebitReceipt");
-	commonButton.addActionListener(frame);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-private void modifyPanel(Frame_Finance frame) {
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
-	this.add(debitReceiptList);
-	this.initButton(frame);
-	
-	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
-	debitReceiptInfo.add(new MyJLabel(230,5,120,30,"修改收款单",18,true));
-	this.add(debitReceiptInfo);
-	
-	commonButton = new MyJButton(890, 670, 150, 30, "修改收款单", 20);
-	commonButton.setActionCommand("ModifyDebitReceipt");
-	commonButton.addActionListener(frame);
-	this.add(commonButton);
-	
-	this.repaint();
-}
 
 private void searchPanel(Frame_Finance frame) {
 	

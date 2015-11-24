@@ -35,59 +35,12 @@ public class Panel_Manager_HandleReceipt extends MyJPanel {
 	}
 	
 	private void initComponent(FrameManager frame_Manager) {
+		this.add(new MyJLabel(550, 20, 210, 90, "公司运营单据处理", 24, true));
 		searchPanel = new Panel_Manager_SearchReceipt();
 		this.add(searchPanel);
 		
 		receiptInfo = new Panel_Manager_ReceiptInfo();
 		this.add(receiptInfo);
-		/*String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
-		String [] receiptState = {"所有状态","草稿","正在审批","通过审批","未通过审批"};
-		
-		MyJLabel receiptTypeLabel= new MyJLabel(50,100,120,30, "选择单据类别",14,true);
-		this.add(receiptTypeLabel);
-		
-		MyJLabel receiptStateLabel = new MyJLabel(325,100,120,30,"选择单据状态",14,true);
-		this.add(receiptStateLabel);
-		
-		MyComboBox receiptTypeList = new MyComboBox(165,100,150,30,14,receiptType);
-		this.add(receiptTypeList);
-		
-		MyComboBox receiptStateList = new MyComboBox(425,100,150,30,14,receiptState);
-		this.add(receiptStateList);
-		
-		//the table
-		String[] headers = {};
-<<<<<<< HEAD
-		MyTable	table = new MyTable(headers);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-					
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-							  	
-		JScrollPane jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-						
-		jsp.setBounds(35, 140, 590, 495);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
-		this.add(jsp);*/
-
-	//	MyJTable	table = new MyJTable(headers, false);
-//		table.setBackground(new Color(40, 42, 66));
-//		table.setForeground(Color.WHITE);
-//		table.setFont(new MyFont(14));					  	
-		
-	//	MyJScrollPane jsp=new MyJScrollPane(35, 140, 590, 495, table);
-		//this.add(jsp);
 
 		
 		MyJButton ViewReceiptInfo = new MyJButton(85, 650, 150, 40,"查看当前所选单据",14);

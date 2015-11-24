@@ -12,7 +12,6 @@ import java.util.HashMap;
 
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
-import po.BankAccountPO;
 import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
 import state.ReceiptCondition;
@@ -56,7 +55,7 @@ public class DebitAndPayBill {
 	}
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList orderNumbers)
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
 			throws RemoteException {
 		// 疑问
 		String ID = null;
@@ -66,8 +65,8 @@ public class DebitAndPayBill {
 	}
 
 	// 建立付款单
-	public ResultMessage addPayBill(double money, String payerName, ArrayList<BankAccountPO> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList transListNumber)
+	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
+			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
 					throws RemoteException {
 		// 疑问
 		String ID = null;

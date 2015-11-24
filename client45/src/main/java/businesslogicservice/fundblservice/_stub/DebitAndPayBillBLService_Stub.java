@@ -12,7 +12,7 @@ import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import po.BankAccountPO;
 import po.receiptpo.DebitAndPayBillPO;
 
-public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
+/*public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 
 	@Override
 	public String getPayID() {
@@ -135,4 +135,13 @@ public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 		return null;
 	}
 
-}
+	@Override
+	public ResultMessage addPayBill(double money, String payerName,
+			ArrayList<String> bankAccouts, ReceiptType type, String rentYear,
+			String salaryMonth, PayBillItem items,
+			ArrayList<String> transListNumber) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}*/

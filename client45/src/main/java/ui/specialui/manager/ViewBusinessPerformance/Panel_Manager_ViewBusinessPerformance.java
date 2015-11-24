@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ui.myui.MyJButton;
+import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.manager.FrameManager;
 
@@ -21,6 +22,7 @@ public class Panel_Manager_ViewBusinessPerformance extends MyJPanel{
 	}
 
 	private void initComponent() {
+		this.add(new MyJLabel(550, 20, 210, 90, "查看经营情况表", 24, true));
 		businessPerformance = new Panel_Manager_BusinessPerformance();
 		this.add(businessPerformance);
 		

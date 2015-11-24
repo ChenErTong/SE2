@@ -40,10 +40,10 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		this.add(employeeTypeBox);
 		
 		String [] policyTypes = {"按月","计次","提成"};
-		policyTypeBox = new MyComboBox(420,10,150,30,14,policyTypes);
+		policyTypeBox = new MyComboBox(420,10,90,30,14,policyTypes);
 		this.add(policyTypeBox);
 		
-		search = new MyJButton(480,10,90,30,"搜索",14);
+		search = new MyJButton(520,10,90,30,"搜索",14);
 		search.setActionCommand("SearchOrganization");
 		search.addActionListener(frame_Manager);
 		this.add(search);

@@ -18,7 +18,6 @@ import ui.specialui.finance.Frame_Finance;
 
 public class DebitReceiptList extends MyTranslucentPanel{
 	private MyJLabel chooseBranch;
-	private MyJLabel chooseDate;
 	private MyComboBox branchList;
 	private MyComboBox dateList;
 	private MyJButton search;
@@ -30,26 +29,24 @@ public class DebitReceiptList extends MyTranslucentPanel{
 	private void initComponent(Frame_Finance frame_Finance) {
 		// TODO Auto-generated method stub
 
-		chooseBranch = new MyJLabel(20,10,120,30,"请选择营业厅",14,true);
+		chooseBranch = new MyJLabel(20,10,150,30,"请选择营业厅和日期",14,true);
 		this.add(chooseBranch);
 		
-		chooseDate = new MyJLabel(180,10,120,30,"请选择日期",14,true);
-		this.add(chooseDate);
 		
 		String[] branches = {"所有营业厅"};
-		branchList = new MyComboBox(140,10,150,30,14,branches);
+		branchList = new MyComboBox(170,10,150,30,14,branches);
 		this.add(branchList);
 		
 		String[] dates = {""};
-		dateList = new MyComboBox(300,10,150,30,14,dates);
+		dateList = new MyComboBox(330,10,150,30,14,dates);
 		this.add(dateList);
 		
-		search = new MyJButton(470,10,90,30,"搜索",14);
+		search = new MyJButton(490,10,90,30,"搜索",14);
 		search.setActionCommand("SearchDebitReceipt");
 		search.addActionListener(frame_Finance);
 		this.add(search);
 		//the table
-				String[] headers = {"收款单编号","营业厅编号","营业厅名称","经手人"};
+				String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
 				MyJTable	table = new MyJTable(headers, false);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
