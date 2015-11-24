@@ -1,7 +1,5 @@
 package vo;
 
-import state.ReceiptType;
-
 /**
  * ֵ����
  * @author zsq

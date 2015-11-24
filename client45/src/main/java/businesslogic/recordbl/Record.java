@@ -1,4 +1,5 @@
 package businesslogic.recordbl;
+
 /**
  * @author LIUXUANLIN
  */
@@ -18,11 +19,12 @@ import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
 	private RecordDataService recordData;
-	private  DebitAndPayBillDataService  DebitAndPayBillData;
+	private DebitAndPayBillDataService DebitAndPayBillData;
+
 	public Record() {
 		try {
-			recordData= (RecordDataService)Naming.lookup(RMIConfig.PREFIX+RecordDataService.NAME);
-			DebitAndPayBillData = (DebitAndPayBillDataService)Naming.lookup(RMIConfig.PREFIX+ RecordDataService.NAME);
+			recordData = (RecordDataService) Naming.lookup(RMIConfig.PREFIX + RecordDataService.NAME);
+			DebitAndPayBillData = (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + RecordDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -31,58 +33,56 @@ public class Record {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
-		ArrayList<DebitAndPayBillPO> POs=DebitAndPayBillData.showList(begin,end);
-		ArrayList<DebitAndPayBillVO> VOs = null;
-		for(DebitAndPayBillPO po : POs) {
+		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
+		ArrayList<DebitAndPayBillVO> VOs = new ArrayList<>();
+		for (DebitAndPayBillPO po : POs) {
 			DebitAndPayBillVO vo = poTOvo(po);
 			VOs.add(vo);
 		}
 		return VOs;
 	}
-   
-	
+
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
-		String begin=recordData.getBegin();
-		ArrayList<DebitAndPayBillPO> POs=DebitAndPayBillData.showList(begin,end);
-		ArrayList<DebitAndPayBillVO> VOs = null;
-		double income=0;
-		double expense=0;
-		double profit=0;
-		for(DebitAndPayBillPO po : POs) {
-			 ReceiptType type=po.getType();
-			   //如果是收款单
-			   if(type==ReceiptType.EXPENSE){
-				 income=income+po.getMoney();
-			   }
-			 //如果是付款单
-			   if(type==ReceiptType.PAY){
-				  expense=expense+po.getMoney();
-			   }
+		String begin = recordData.getBegin();
+		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
+		double income = 0;
+		double expense = 0;
+		double profit = 0;
+		for (DebitAndPayBillPO po : POs) {
+			ReceiptType type = po.getType();
+			// 如果是收款单
+			if (type == ReceiptType.EXPENSE) {
+				income = income + po.getMoney();
+			}
+			// 如果是付款单
+			if (type == ReceiptType.PAY) {
+				expense = expense + po.getMoney();
+			}
 		}
-		profit=income-expense;
-		BussinessConditionVO vo=new BussinessConditionVO(end, income, expense, profit);
+		profit = income - expense;
+		BussinessConditionVO vo = new BussinessConditionVO(end, income, expense, profit);
 		return vo;
-		
+
 	}
-   
-   public DebitAndPayBillVO poTOvo(DebitAndPayBillPO po){
-	   ReceiptType type=po.getType();
-	   //如果是收款单
-	   if(type==ReceiptType.EXPENSE){
-		   DebitAndPayBillVO vo1=new DebitAndPayBillVO(po.getID(),po.getMoney(),po.getCourierID(),po.getType(),po.getOrderNumbers());
-	       return vo1;
-	   }
-	 //如果是付款单
-	   if(type==ReceiptType.PAY){
-		   DebitAndPayBillVO vo2=new DebitAndPayBillVO(po.getID(),po.getMoney(),po.getPayerName(),po.getBankAccouts(),po.getType(),po.getRentYear(),po.getSalaryMonth(),po.getItems(),po.getTransListNumber());
-	       return vo2;
-	   }
-	  return null;
-   }
 
-    
-
+	public DebitAndPayBillVO poTOvo(DebitAndPayBillPO po) {
+		ReceiptType type = po.getType();
+		// 如果是收款单
+		if (type == ReceiptType.EXPENSE) {
+			DebitAndPayBillVO vo1 = new DebitAndPayBillVO(po.getID(), po.getMoney(), po.getCourierID(), po.getType(),
+					po.getOrderNumbers());
+			return vo1;
+		}
+		// 如果是付款单
+		if (type == ReceiptType.PAY) {
+			DebitAndPayBillVO vo2 = new DebitAndPayBillVO(po.getID(), po.getMoney(), po.getPayerName(),
+					po.getBankAccouts(), po.getType(), po.getRentYear(), po.getSalaryMonth(), po.getItems(),
+					po.getTransListNumber());
+			return vo2;
+		}
+		return null;
+	}
 
 }

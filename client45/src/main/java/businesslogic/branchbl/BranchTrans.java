@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import po.BranchPO;
 import po.FacilityPO;
 import po.accountpo.AccountPO;
-import state.ReceiptType;
 import vo.BranchVO;
 
 public class BranchTrans {
-	public static BranchPO convertVOtoPO(BranchVO vo ){
-		if(vo==null){
+	public static BranchPO convertVOtoPO(BranchVO vo) {
+		if (vo == null) {
 			return null;
 		}
 		String ID = vo.getId();
@@ -18,11 +17,11 @@ public class BranchTrans {
 		String date = vo.getDate();
 		ArrayList<AccountPO> accounts = vo.getAccounts();
 		ArrayList<FacilityPO> facilities = vo.getFacilities();
-		return new BranchPO(ID,   address, date, accounts, facilities);
+		return new BranchPO(ID, address, date, accounts, facilities);
 	}
-	
-	public static BranchVO convertPOtoVO(BranchPO po){
-		if (po==null) {
+
+	public static BranchVO convertPOtoVO(BranchPO po) {
+		if (po == null) {
 			return null;
 		}
 		String id = po.getID();
@@ -32,8 +31,8 @@ public class BranchTrans {
 		ArrayList<FacilityPO> facilities = po.getFacilities();
 		return new BranchVO(id, date, address, accounts, facilities);
 	}
-	
-	public static ArrayList<BranchVO> convertPOstoVOs(ArrayList<BranchPO> pos){
+
+	public static ArrayList<BranchVO> convertPOstoVOs(ArrayList<BranchPO> pos) {
 		ArrayList<BranchVO> vos = new ArrayList<>();
 		for (BranchPO branchPO : pos) {
 			BranchVO vo = convertPOtoVO(branchPO);
@@ -41,7 +40,7 @@ public class BranchTrans {
 		}
 		return vos;
 	}
-	
+
 	public static ArrayList<BranchPO> convertVOstoPOs(ArrayList<BranchVO> vos) {
 		ArrayList<BranchPO> pos = new ArrayList<>();
 		for (BranchVO vo : vos) {

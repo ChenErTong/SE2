@@ -21,7 +21,6 @@ import po.InventoryPO;
 import po.OpeningStockPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.BankAccountVO;
 import vo.BranchVO;
@@ -36,8 +35,7 @@ public class OpeningStock {
 
 	public OpeningStock() {
 		try {
-			openingStockData = (OpeningStockDataService) Naming
-					.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
+			openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -59,7 +57,7 @@ public class OpeningStock {
 		ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
 		String ID = openingStockData.getID();
 		String date = null;
-		OpeningStockPO po = new OpeningStockPO(ID,  date, transfers, branchs, accounts, facilities, inventories,
+		OpeningStockPO po = new OpeningStockPO(ID, date, transfers, branchs, accounts, facilities, inventories,
 				bankAccounts);
 		return openingStockData.add(po);
 	}

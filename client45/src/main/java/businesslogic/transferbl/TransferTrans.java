@@ -16,8 +16,8 @@ public class TransferTrans {
 		String address = vo.getAddress();
 		String date = vo.getDate();
 		ArrayList<AccountPO> accounts = vo.getAccounts();
-		ArrayList<InventoryPO> inventoryPOs =vo.getInventories();
-		return new TransferPO(ID,address, date, accounts,inventoryPOs);
+		ArrayList<InventoryPO> inventoryPOs = vo.getInventories();
+		return new TransferPO(ID, address, date, accounts, inventoryPOs);
 	}
 
 	public static TransferVO convertPOtoVO(TransferPO po) {
@@ -28,7 +28,7 @@ public class TransferTrans {
 		String date = po.getDate();
 		String address = po.getAddress();
 		ArrayList<AccountPO> accounts = po.getAccounts();
-		ArrayList<InventoryPO> inventorys =po.getInventories();
+		ArrayList<InventoryPO> inventorys = po.getInventories();
 		return new TransferVO(id, address, date, accounts, inventorys);
 	}
 
@@ -40,7 +40,7 @@ public class TransferTrans {
 		}
 		return vos;
 	}
-	
+
 	public static ArrayList<TransferPO> convertVOstoPOs(ArrayList<TransferVO> vos) {
 		ArrayList<TransferPO> pos = new ArrayList<>();
 		for (TransferVO transferVO : vos) {

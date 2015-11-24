@@ -1,4 +1,5 @@
 package businesslogic.basebl;
+
 /**
  * @author LIUXUANLIN
  */
@@ -13,15 +14,15 @@ import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.ConfirmState;
 import state.FindTypeBase;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.BaseVO;
 
-public class Base{
+public class Base {
 	private BaseDataService baseData;
+
 	public Base() {
 		try {
-			baseData = (BaseDataService)Naming.lookup(RMIConfig.PREFIX+BaseDataService.NAME);
+			baseData = (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -30,37 +31,44 @@ public class Base{
 			e.printStackTrace();
 		}
 	}
+
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;
 	}
+
 	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException {
-		ArrayList<BasePO> pos=baseData.find(baseType);
-		ArrayList<BaseVO> vos=new ArrayList<BaseVO>();
-		for(BasePO po:pos){
-			BaseVO vo=POtoVO(po);
+		ArrayList<BasePO> pos = baseData.find(baseType);
+		ArrayList<BaseVO> vos = new ArrayList<BaseVO>();
+		for (BasePO po : pos) {
+			BaseVO vo = POtoVO(po);
 			vos.add(vo);
 		}
-		 return vos;
+		return vos;
 	}
-	public BaseVO POtoVO(BasePO po){
-		BaseVO vo=new BaseVO(po.getID(),po.getDistances(), po.getPrice(), po.getSalaryPolicies());
+
+	public BaseVO POtoVO(BasePO po) {
+		BaseVO vo = new BaseVO(po.getID(), po.getDistances(), po.getPrice(), po.getSalaryPolicies());
 		return vo;
 	}
-	
-	public BasePO VOtoPO(BaseVO vo){
-		BasePO po=new BasePO(vo.getId(),  vo.getDistances(), vo.getPrice(), vo.getSalaryPolicies());
+
+	public BasePO VOtoPO(BaseVO vo) {
+		BasePO po = new BasePO(vo.getId(), vo.getDistances(), vo.getPrice(), vo.getSalaryPolicies());
 		return po;
 	}
+
 	public String getID(FindTypeBase baseType) throws RemoteException {
 		return baseData.getID(baseType);
 	}
+
 	public ResultMessage addBase(BaseVO vo) throws RemoteException {
 		BasePO PO = VOtoPO(vo);
 		return baseData.add(PO);
 	}
+
 	public ResultMessage deleteBase(String ID) throws RemoteException {
 		return baseData.delete(ID);
 	}
+
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
 		BasePO PO = VOtoPO(vo);
 		return baseData.modify(PO);

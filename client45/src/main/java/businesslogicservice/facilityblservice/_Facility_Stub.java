@@ -12,6 +12,7 @@ import vo.FacilityVO;
 
 public class _Facility_Stub implements FacilityBLService {
 	FacilityDataService data_Stub = new _Facility_Data_Stub();
+
 	@Override
 	public ConfirmState confirmOperation() {
 		System.out.println("You have confirmed!");
@@ -20,7 +21,8 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),
+				facility.getManagerId(), facility.getDeliverHistory());
 		try {
 			data_Stub.add(facilityPO);
 		} catch (RemoteException e) {
@@ -41,7 +43,8 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),facility.getManagerId(),facility.getDeliverHistory());
+		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),
+				facility.getManagerId(), facility.getDeliverHistory());
 		try {
 			data_Stub.modify(facilityPO);
 		} catch (RemoteException e) {
@@ -66,60 +69,64 @@ public class _Facility_Stub implements FacilityBLService {
 		}
 		System.out.println("You have found a car!");
 		return null;
-//				new FacilityVO(facilityPO.getManagerId(), facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
+		// new FacilityVO(facilityPO.getManagerId(),
+		// facilityPO.getDeliverHistory(), facilityId, facilityPO.getDate());
 	}
 
-//	@Override
-//	public ResultMessage addDriver(DriverVO driver) {
-//		DriverPO driverPO = new DriverPO(
-//				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
-//				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
-//				driver.getReceiptNum());
-//		try {
-//			data_Stub.addDriver(driverPO);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		return ResultMessage.SUCCESS;
-//	}
-//
-//	@Override
-//	public ResultMessage deleteDriver(DriverVO driver) {
-//		try {
-//			data_Stub.deleteDriver(driver.getID());
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		return ResultMessage.SUCCESS;
-//	}
-//
-//	@Override
-//	public ResultMessage modifyDriver(DriverVO driver) {
-//		DriverPO driverPO = new DriverPO(
-//				driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
-//				driver.getIDCard(), driver.getPhone(), driver.getSalary(), driver.getWorkTime(),
-//				driver.getReceiptNum());
-//		try {
-//			data_Stub.modifyDriver(driverPO);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		return ResultMessage.SUCCESS;
-//	}
-//
-//	@Override
-//	public DriverVO findDriver(String driverId) {
-//		DriverPO driverPO = null;
-//		try {
-//			driverPO = (DriverPO) data_Stub.findDriver(driverId);
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("You have find a driver!");
-//		return new DriverVO(
-//				driverId,driverPO.getDuty(), 
-//				driverPO.getName(), driverPO.getBirthDay(),driverPO.getIDCard(), 
-//				driverPO.getPhone(), driverPO.getSalary(), driverPO.getWorkTime(), driverPO.getReceiptNum());
-//	}
+	// @Override
+	// public ResultMessage addDriver(DriverVO driver) {
+	// DriverPO driverPO = new DriverPO(
+	// driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
+	// driver.getIDCard(), driver.getPhone(), driver.getSalary(),
+	// driver.getWorkTime(),
+	// driver.getReceiptNum());
+	// try {
+	// data_Stub.addDriver(driverPO);
+	// } catch (RemoteException e) {
+	// e.printStackTrace();
+	// }
+	// return ResultMessage.SUCCESS;
+	// }
+	//
+	// @Override
+	// public ResultMessage deleteDriver(DriverVO driver) {
+	// try {
+	// data_Stub.deleteDriver(driver.getID());
+	// } catch (RemoteException e) {
+	// e.printStackTrace();
+	// }
+	// return ResultMessage.SUCCESS;
+	// }
+	//
+	// @Override
+	// public ResultMessage modifyDriver(DriverVO driver) {
+	// DriverPO driverPO = new DriverPO(
+	// driver.getID(), driver.getDuty(), driver.getName(), driver.getBirthDay(),
+	// driver.getIDCard(), driver.getPhone(), driver.getSalary(),
+	// driver.getWorkTime(),
+	// driver.getReceiptNum());
+	// try {
+	// data_Stub.modifyDriver(driverPO);
+	// } catch (RemoteException e) {
+	// e.printStackTrace();
+	// }
+	// return ResultMessage.SUCCESS;
+	// }
+	//
+	// @Override
+	// public DriverVO findDriver(String driverId) {
+	// DriverPO driverPO = null;
+	// try {
+	// driverPO = (DriverPO) data_Stub.findDriver(driverId);
+	// } catch (RemoteException e) {
+	// e.printStackTrace();
+	// }
+	// System.out.println("You have find a driver!");
+	// return new DriverVO(
+	// driverId,driverPO.getDuty(),
+	// driverPO.getName(), driverPO.getBirthDay(),driverPO.getIDCard(),
+	// driverPO.getPhone(), driverPO.getSalary(), driverPO.getWorkTime(),
+	// driverPO.getReceiptNum());
+	// }
 
 }

@@ -10,7 +10,6 @@ import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
 import dataservice.transferdataservice.TransferDataService;
 import po.CommodityPO;
-import po.TransferPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -21,15 +20,15 @@ import vo.CommodityVO;
 import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;
 
-public class Transfer  {
-	private ReceiptDataService  receiptData;
+public class Transfer {
+	private ReceiptDataService receiptData;
 	private TransferDataService transferData;
 
 	public Transfer() {
 		try {
-			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
+			receiptData = (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 
-			transferData= (TransferDataService ) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -39,59 +38,57 @@ public class Transfer  {
 		}
 	}
 
-	
 	public ConfirmState confirmOperation() {
-		
+
 		return ConfirmState.CONFIRM;
 	}
 
-	
-	public ArrayList<CommodityVO>  getAllCommodities() {
-		ArrayList<CommodityPO> pos=transferData.findCommodities();
-		ArrayList<CommodityVO> vos=new ArrayList<CommodityVO>();
-		for(CommodityPO po:pos){
-			CommodityVO vo=new CommodityVO(po.getCommodityType(),po.getWeight(),po.getVolumn(),po.getCommodityState());
-		    vos.add(vo);
-			}
+	public ArrayList<CommodityVO> getAllCommodities() {
+		ArrayList<CommodityPO> pos = transferData.findCommodities();
+		ArrayList<CommodityVO> vos = new ArrayList<CommodityVO>();
+		for (CommodityPO po : pos) {
+			CommodityVO vo = new CommodityVO(po.getCommodityType(), po.getWeight(), po.getVolumn(),
+					po.getCommodityState());
+			vos.add(vo);
+		}
 		return vos;
 	}
 
-	
-	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_PLANE, departure,  destination,  courierName, orders);
+	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
+			ArrayList<String> orders) {
+		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_PLANE, departure, destination,
+				courierName, orders);
 		return vo;
 	}
 
-	
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_TRUCK, departure,  destination,  courierName, orders);
+		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
+				courierName, orders);
 		return vo;
 	}
 
-	
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO vo=new TransferOrderVO(facilityID,ReceiptType.TRANS_TRAIN, departure,  destination,  courierName, orders);
+		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
+				courierName, orders);
 		return vo;
 	}
 
-	
 	public ResultMessage submit(ReceiptPO receipt) throws RemoteException {
 		receipt.setReceiptCondition(ReceiptCondition.SUBITTED);
 		return receiptData.modify(receipt);
 	}
 
-	
 	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
 		receiptData.add(receipt);
-		return  receiptData.add(receipt);
+		return receiptData.add(receipt);
 	}
 
-	
-	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state,
-			ArrayList<String> orders) {
-		TransferArrivalListVO vo=new TransferArrivalListVO(transferID,ReceiptType.TRANS_ARRIVAL, departure,  destination,destination, state, orders);
+	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
+			CommodityState state, ArrayList<String> orders) {
+		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
+				destination, destination, state, orders);
 		return vo;
 	}
 
