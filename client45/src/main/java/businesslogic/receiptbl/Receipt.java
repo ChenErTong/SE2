@@ -32,7 +32,7 @@ public class Receipt  {
 
 	
 	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) throws RemoteException {
-		ReceiptPO po=new ReceiptPO(receiptVO.getID());
+		ReceiptPO po=new ReceiptPO(receiptVO.getID(), receiptType);
 		receiptData.modify(po);
 		return receiptData.modify(po);
 	}
@@ -41,7 +41,7 @@ public class Receipt  {
 	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
 		for(ReceiptVO vo:VOs){
-			ReceiptPO po=new ReceiptPO(vo.getID());
+			ReceiptPO po=new ReceiptPO(vo.getID(), receiptTypes);
 			po.setReceiptState(ReceiptState.SUCCESS);
 			POs.add(po);
 		}
@@ -52,7 +52,7 @@ public class Receipt  {
 	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
 		for(ReceiptVO vo:VOs){
-			ReceiptPO po=new ReceiptPO(vo.getID());
+			ReceiptPO po=new ReceiptPO(vo.getID(), receiptTypes);
 			po.setReceiptState(ReceiptState.FAILURE);
 			POs.add(po);
 		}
@@ -64,13 +64,14 @@ public class Receipt  {
 		ArrayList<ReceiptVO> VOs=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> POs=receiptData.showReceipt(receiptStates);
 		for(ReceiptPO po:POs){
-			ReceiptVO vo=new ReceiptVO(po.getID());
+			ReceiptVO vo=new ReceiptVO(po.getID(), null);
 			 VOs.add(vo);
 		}
 		return VOs;
 	}
     public  ReceiptPO VOtoPO(ReceiptVO vo){
 		return null;
+		
     	
     }
 }

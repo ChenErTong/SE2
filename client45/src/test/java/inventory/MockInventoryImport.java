@@ -22,12 +22,12 @@ public class MockInventoryImport {
 	}
    public InventoryVO addPlace(){
 	   
-	   InventoryVO iv=new InventoryVO(null, 1, 1, 1, 1,"full");
+	   InventoryVO iv=new InventoryVO(null, null, 1, 1, 1, 1,"full");
 	   return iv;
    }
     
 	public InventoryImportReceiptPO buildImport() {
-		InventoryVO iv=new InventoryVO(null, 1, 1, 1, 1,"full");
+		InventoryVO iv=new InventoryVO(null, null, 1, 1, 1, 1,"full");
 		int a=iv.getA();
 		int b=iv.getB();
 		int c=iv.getC();
@@ -36,7 +36,7 @@ public class MockInventoryImport {
 		String destination="nanjing";
 		String depture = null;
 		String CommoditiesID="nanjing520";
-		InventoryImportReceiptPO iir=new InventoryImportReceiptPO(ID,destination,depture,CommoditiesID,a,b,c,d);
+		InventoryImportReceiptPO iir=new InventoryImportReceiptPO(ID,null, destination,depture,CommoditiesID,a,b,c,d);
 	    return iir;
 		
 	}

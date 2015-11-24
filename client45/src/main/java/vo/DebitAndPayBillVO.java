@@ -18,7 +18,9 @@ public class DebitAndPayBillVO  {
 	private String date;
 	/**对应快递订单条形码号*/
 	//TODO
+
 	private ArrayList <String>orderNumbers;
+
 	/**付款人*/
 	private String payerName;
 	/**付款账户*/
@@ -71,7 +73,9 @@ public class DebitAndPayBillVO  {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
+
 	public DebitAndPayBillVO(String ID,double money,String payerName,ArrayList<String>bankAccouts,ReceiptType type,
+
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
 		this.ID = ID;
 		this.money = money;

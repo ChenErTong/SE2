@@ -15,15 +15,15 @@ public class TestImport {
 
 	@Test	
 	public void testImport()throws RemoteException{
-		InventoryImportReceiptVO importReceipt=new InventoryImportReceiptVO(null, null, 0, 0, 0, 0);
+		InventoryImportReceiptVO importReceipt=new InventoryImportReceiptVO(null, null, null, 0, 0, 0, 0);
 		MockInventoryImport test=new MockInventoryImport();
 		assertEquals("1",test.getImportID());
 		assertEquals("nanjing520",test.getCommodities());
 		assertEquals("nanjing",test.getDestination());
-		assertEquals((new InventoryVO(null,1, 1, 1, 1,"full")).getA(),(test.addPlace()).getA());
-		assertEquals((new InventoryVO(null,1, 1, 1, 1,"full")).getB(),(test.addPlace()).getB());
-		assertEquals((new InventoryVO(null,1, 1, 1, 1,"full")).getC(),(test.addPlace()).getC());
-		assertEquals((new InventoryVO(null,1, 1, 1, 1,"full")).getD(),(test.addPlace()).getD());
+		assertEquals((new InventoryVO(null,null,1, 1, 1, 1,"full")).getA(),(test.addPlace()).getA());
+		assertEquals((new InventoryVO(null,null,1, 1, 1, 1,"full")).getB(),(test.addPlace()).getB());
+		assertEquals((new InventoryVO(null,null,1, 1, 1, 1,"full")).getC(),(test.addPlace()).getC());
+		assertEquals((new InventoryVO(null,null,1, 1, 1, 1,"full")).getD(),(test.addPlace()).getD());
 		assertEquals(SUCCESS,test.submitImport(importReceipt));
 	}
 	

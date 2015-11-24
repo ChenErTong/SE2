@@ -11,7 +11,7 @@ public class ReceiptBLService_Driver {
 	
 	ReceiptState receiptStates = ReceiptState.APPROVALING;
 	ReceiptType receiptTypes = ReceiptType.INSTOCK;
-	ReceiptVO receiptVO = new ReceiptVO(null);
+	ReceiptVO receiptVO = new ReceiptVO(null, receiptTypes);
 	
 	
 	public void drive(ReceiptBLService service){

@@ -40,7 +40,7 @@ public class _Transfer_Stub implements TransferBLService {
 	@Override
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, null, departure, destination, courierName, orders);
 		System.out.println("You have added a plane transfer");
 		return transferOrderVO;
 	}
@@ -48,7 +48,7 @@ public class _Transfer_Stub implements TransferBLService {
 	@Override
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, null, departure, destination, courierName, orders);
 		System.out.println("You have added a truck transfer");
 		return transferOrderVO;
 	}
@@ -56,7 +56,7 @@ public class _Transfer_Stub implements TransferBLService {
 	@Override
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, departure, destination, courierName, orders);
+		TransferOrderVO transferOrderVO = new TransferOrderVO(facilityID, null, departure, destination, courierName, orders);
 		System.out.println("You have added a train transfer");
 		return transferOrderVO;
 	}
@@ -76,8 +76,8 @@ public class _Transfer_Stub implements TransferBLService {
 	@Override
 	public TransferArrivalListVO receiptList(String transferID, String departure,String destination, CommodityState state,
 			ArrayList<String> orders) {
-		TransferArrivalListVO transferArrivalListVO = new TransferArrivalListVO(transferID, transferID, departure, destination, state, orders);
-		TransferArrivalListPO transferArrivalListPO = new TransferArrivalListPO(transferID, transferID, departure, destination,state, orders);
+		TransferArrivalListVO transferArrivalListVO = new TransferArrivalListVO(transferID, null, transferID, departure, destination, state, orders);
+		TransferArrivalListPO transferArrivalListPO = new TransferArrivalListPO(transferID, null, transferID, departure, destination,state, orders);
 		System.out.println("You have fielded a receipt");
 		ResultMessage resultMessage = this.submit(transferArrivalListPO);
 		if(resultMessage==ResultMessage.SUCCESS){

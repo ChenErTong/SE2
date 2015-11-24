@@ -4,7 +4,7 @@ import vo.DebitAndPayBillVO;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 
 public class DebitAndPayBillBLService_Driver {
-	DebitAndPayBillVO vo = new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
+	//DebitAndPayBillVO vo = new DebitAndPayBillVO(null, 0, null, null, null, null, null, null, null);
 	public void drive(DebitAndPayBillBLService service){
 	//	service.addDebitAndPayBill(vo.getCourierID(), vo.getPayerName());
 		/**service.getPayID();

@@ -14,8 +14,8 @@ public class TestAdjust {
 	@Test
 	public void testAdjust()throws RemoteException{
 		MockAdjust Test=new MockAdjust();
-		MockPlaceBefore before=new MockPlaceBefore(null, 1, 1, 1, 1);
-		MockPlaceAfter  after=new MockPlaceAfter(null, 2, 2, 2, 2);
+		MockPlaceBefore before=new MockPlaceBefore(null, null, 1, 1, 1, 1);
+		MockPlaceAfter  after=new MockPlaceAfter(null, null, 2, 2, 2, 2);
 		Test.getAdjustID();
 		Test.adjust(before, after);
 		

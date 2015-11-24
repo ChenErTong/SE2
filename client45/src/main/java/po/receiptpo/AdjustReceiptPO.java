@@ -1,5 +1,7 @@
 package po.receiptpo;
 
+import state.ReceiptType;
+
 public class AdjustReceiptPO extends ReceiptPO{
 	
 	  /** @author lxl
@@ -8,9 +10,9 @@ public class AdjustReceiptPO extends ReceiptPO{
 	
 	 
 	private static final long serialVersionUID = 1L;
-	public AdjustReceiptPO(String ID, int exA, int exB, int exC, int exD, int aftA, int aftB,
+	public AdjustReceiptPO(String ID, ReceiptType type,int exA, int exB, int exC, int exD, int aftA, int aftB,
 			int aftC, int aftD) {
-		super(ID);
+		super(ID, type);
 		this.exA = exA;
 		this.exB = exB;
 		this.exC = exC;

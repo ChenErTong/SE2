@@ -3,6 +3,7 @@ package po.receiptpo;
 import java.util.ArrayList;
 
 import state.CommodityState;
+import state.ReceiptType;
 
 /**
  * 中转中心到达单：中转中心编号、出发地、货物到达状态、订单订单号
@@ -20,8 +21,8 @@ public class TransferArrivalListPO extends ReceiptPO {
 	private String destination;
 	private CommodityState state;
 	private ArrayList<String> orders;
-	public TransferArrivalListPO(String id) {
-		super(id);
+	public TransferArrivalListPO(String id,ReceiptType type) {
+		super(id, type);
 	}
 	public String getTransferCenterID() {
 		return transferCenterID;
@@ -53,9 +54,9 @@ public class TransferArrivalListPO extends ReceiptPO {
 	public void setOrders(ArrayList<String> orders) {
 		this.orders = orders;
 	}
-	public TransferArrivalListPO(String ID, String transferCenterID, String departure, String destination,
+	public TransferArrivalListPO(String ID, ReceiptType type,String transferCenterID, String departure, String destination,
 			CommodityState state, ArrayList<String> orders) {
-		super(ID);
+		super(ID, type);
 		this.transferCenterID = transferCenterID;
 		this.departure = departure;
 		this.destination = destination;

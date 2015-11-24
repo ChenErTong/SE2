@@ -53,9 +53,9 @@ public class _Branch_Stub implements BranchBLService {
 	@Override
 	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		BranchArrivalListVO branchArrivalListVO = new BranchArrivalListVO(transferListID, transferListID, departure, state, orders);
+		BranchArrivalListVO branchArrivalListVO = new BranchArrivalListVO(transferListID, null, transferListID, departure, state, orders);
 		System.out.println("You have got a serial of commodities");
-		ReceiptPO receiptPO = new ReceiptPO(transferListID);
+		ReceiptPO receiptPO = new ReceiptPO(transferListID, null);
 		System.out.println("You have fielded a receipt");
 		ResultMessage resultMessage = this.submit(receiptPO);
 		if(resultMessage==ResultMessage.SUCCESS){
@@ -69,7 +69,7 @@ public class _Branch_Stub implements BranchBLService {
 
 	@Override
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) {
-		DeliveryListVO deliveryListVO = new DeliveryListVO(null, orders, courierName);
+		DeliveryListVO deliveryListVO = new DeliveryListVO(null, null, orders, courierName);
 		System.out.println("You have fielded a delivery receipt!");
 		return deliveryListVO;
 	}
@@ -92,7 +92,7 @@ public class _Branch_Stub implements BranchBLService {
 		@SuppressWarnings("unused")
 		double fare=6.767;
 		System.out.println("You have calcuated the fare of delivery!");
-		LoadingListVO loadingListVO = new LoadingListVO(branchID, branchID, destination, facilityID, courierName, orders);
+		LoadingListVO loadingListVO = new LoadingListVO(branchID, null, branchID, destination, facilityID, courierName, orders);
 		System.out.println("You have fielded the loadingListReceipt!");
 		//TODO
 		System.out.println("You have updated the infos of branch's facilities!");

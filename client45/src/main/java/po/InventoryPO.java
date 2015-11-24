@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 
+import state.ReceiptType;
+
 /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
@@ -16,8 +18,8 @@ public class InventoryPO extends PersistentObject  {
 	public int c;
 	public int d;
 	public String  EmptyOrFull;
-	public InventoryPO(String id, int a, int b, int c, int d, String emptyOrFull) {
-		super(id);
+	public InventoryPO(String id, ReceiptType type,int a, int b, int c, int d, String emptyOrFull) {
+		super(id, type);
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -54,6 +56,7 @@ public class InventoryPO extends PersistentObject  {
 	public void setEmptyOrFull(String emptyOrFull) {
 		EmptyOrFull = emptyOrFull;
 	}
+	}
 	
 	
 	
@@ -61,4 +64,4 @@ public class InventoryPO extends PersistentObject  {
 	
 	
 	
-}
+

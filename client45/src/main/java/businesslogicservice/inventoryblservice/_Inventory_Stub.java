@@ -28,7 +28,7 @@ public class _Inventory_Stub implements InventoryBLService{
 
 	@Override
 	public InventoryCheckVO checkRecord(String enddate) {
-		InventoryImportReceiptVO iirVO = new InventoryImportReceiptVO("1234567890", "Nanjing", 1, 1, 1, 1);
+		InventoryImportReceiptVO iirVO = new InventoryImportReceiptVO("1234567890", null, "Nanjing", 1, 1, 1, 1);
 		ArrayList<InventoryImportReceiptVO> iirVOs = new ArrayList<InventoryImportReceiptVO>();
 		iirVOs.add(iirVO);
 		InventoryCheckVO icVO = new InventoryCheckVO(null, null);

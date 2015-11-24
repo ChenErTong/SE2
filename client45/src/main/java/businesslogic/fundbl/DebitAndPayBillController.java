@@ -70,6 +70,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	}
 
 	@Override
+
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
 			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber){
 		// TODO Auto-generated method stub

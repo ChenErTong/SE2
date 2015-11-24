@@ -23,7 +23,7 @@ public class _Order_Stub implements OrderBLService {
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
 		OrderPO orderPO = new OrderPO(
 				order.getOrderIdString(), 
-				order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
+				null, order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
 				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());
@@ -58,7 +58,7 @@ public class _Order_Stub implements OrderBLService {
 	public ResultMessage updateOrder(ArrayList<CommodityVO> commmodities, OrderVO order){
 		OrderPO orderPO = new OrderPO(
 				order.getOrderIdString(),
-				order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
+				null, order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
 				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
 				commmodities,order.getMidAddres(),
 				order.getSendTime(),order.getRecipientTime(),order.getMoney());

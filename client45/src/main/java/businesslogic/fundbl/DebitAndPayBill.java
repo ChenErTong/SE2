@@ -65,7 +65,9 @@ public class DebitAndPayBill {
 	}
 
 	// 建立付款单
+
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
+
 			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
 					throws RemoteException {
 		// 疑问

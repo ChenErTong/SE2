@@ -1,4 +1,7 @@
 package po;
+
+import state.ReceiptType;
+
 /**
  * 用户持久化对象
  * @author zsq
@@ -38,8 +41,8 @@ public class UserPO extends PersistentObject{
 	 * @param address 用户地址
 	 * @return 
 	 */
-	public UserPO(String id,String password,String userName,String phoneNumber,String iden,String authority,String address){
-		super(id);
+	public UserPO(String id,ReceiptType type,String password,String userName,String phoneNumber,String iden,String authority,String address){
+		super(id, type);
 		this.id = id;
 		this.password = password;
 		this.userName = userName;

@@ -2,6 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
+import state.ReceiptType;
 import state.SalaryPolicy;
 
 /**
@@ -11,16 +12,16 @@ import state.SalaryPolicy;
  */
 public class BasePO extends PersistentObject{
 
-	public BasePO(String iD, String date) {
-		super(iD, date);
+	public BasePO(String iD, String date,ReceiptType type) {
+		super(iD, date,type);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 
-	public BasePO(String id, ArrayList<Double> distances, ArrayList<Double> price,
+	public BasePO(String id, ReceiptType type,ArrayList<Double> distances, ArrayList<Double> price,
 			ArrayList<SalaryPolicy> salaryPolicies) {
-		super(id);
+		super(id,type);
 		this.distances = distances;
 		this.price = price;
 		this.salaryPolicies = salaryPolicies;

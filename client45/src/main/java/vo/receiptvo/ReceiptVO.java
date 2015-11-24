@@ -3,6 +3,7 @@ package vo.receiptvo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import state.ReceiptType;
 import vo.ValueObject;
 /**
  * 所有单据的父类，包括编号、创建时间
@@ -16,11 +17,14 @@ public class ReceiptVO extends ValueObject{
 	/**创建时间，由系统自动生成*/
 	protected String date;
 	
-	public ReceiptVO(String id){
-		super(id);
+	protected ReceiptType type;
+	
+	public ReceiptVO(String id, ReceiptType type){
+		super(id, type);
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
+	    type=this.type;
 	}
 
 	public String getID() {
@@ -37,6 +41,14 @@ public class ReceiptVO extends ValueObject{
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public ReceiptType getType() {
+		return type;
+	}
+
+	public void setType(ReceiptType type) {
+		this.type = type;
 	}
 	
 

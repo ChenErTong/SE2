@@ -25,13 +25,16 @@ public class ReceiptPO extends PersistentObject{
 	
 	protected ReceiptCondition receiptCondition;
 	
-	public ReceiptPO(String ID){
-		super(ID);
+	protected ReceiptType receiptType;
+	
+	public ReceiptPO(String ID,ReceiptType type){
+		super(ID,type);
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 		this.receiptState=ReceiptState.DRAFT;
 		this.receiptCondition=ReceiptCondition.DRAFT;
+		this.receiptType=receiptType;
 	}
 
 	public String getID() {
@@ -65,8 +68,16 @@ public class ReceiptPO extends PersistentObject{
 	public void setReceiptCondition(ReceiptCondition receiptCondition) {
 		this.receiptCondition = receiptCondition;
 	}
-	
 
+	public ReceiptType getReceiptType() {
+		return receiptType;
+	}
+
+	public void setReceiptType(ReceiptType receiptType) {
+		this.receiptType = receiptType;
+	}
+	
+   
 	
 
 

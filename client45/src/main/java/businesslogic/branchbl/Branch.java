@@ -17,6 +17,7 @@ import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -90,14 +91,14 @@ public class Branch{
 
 	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, transferListID, departure, state, orders);
+		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orders);
 		return vo;
 	}
 
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) {
 		//TODO getID
 		String ID = receiptData.getID();
-		DeliveryListVO vo = new DeliveryListVO(ID, orders, courierName);
+		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
 		return vo;
 	}
 
@@ -114,7 +115,7 @@ public class Branch{
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders) {
 		String ID = receiptData.getID();
-		LoadingListVO vo = new LoadingListVO(ID, branchID, destination, facilityID, courierName, orders);
+		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, facilityID, courierName, orders);
 		return vo;
 	}
 	

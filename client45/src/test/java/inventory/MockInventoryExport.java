@@ -24,7 +24,7 @@ public class MockInventoryExport {
 		return "nanjing";
 	}
    public InventoryVO minusPlace(){
-	   InventoryVO iv=new InventoryVO(null, 1, 1, 1, 1,"full");
+	   InventoryVO iv=new InventoryVO(null, null, 1, 1, 1, 1,"full");
 	   return iv;
    }
    public String getTransfer(){ 
@@ -36,7 +36,7 @@ public class MockInventoryExport {
    }
     
 	public InventoryExportReceiptPO buildImport() {
-		InventoryVO iv=new InventoryVO(null, 1, 1, 1, 1,"full");
+		InventoryVO iv=new InventoryVO(null, null, 1, 1, 1, 1,"full");
 		int a=iv.getA();
 		int b=iv.getB();
 		int c=iv.getC();
@@ -47,7 +47,7 @@ public class MockInventoryExport {
 		String Transfer="car";
 		String TransferID= "TransID";
 		String depture = null;
-		InventoryExportReceiptPO ier=new InventoryExportReceiptPO(ID, destination, depture,Transfer, TransferID, CommoditiesID, a, b, c, d);
+		InventoryExportReceiptPO ier=new InventoryExportReceiptPO(ID, null, destination, depture,Transfer, TransferID, CommoditiesID, a, b, c, d);
 	    return ier;
 		
 	}

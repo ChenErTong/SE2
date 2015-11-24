@@ -15,16 +15,16 @@ public class MockBranch extends Branch {
 	
 	public void mockTruckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders) {
-		loadingListVO = new LoadingListVO(branchID, branchID, destination, facilityID, courierName, orders);
+		loadingListVO = new LoadingListVO(branchID, null, branchID, destination, facilityID, courierName, orders);
 	}
 	
 	public void mockDeliveryList(ArrayList<String> orders, String courierName) {
-		deliveryListVO = new DeliveryListVO("BRANCH008", orders, courierName);
+		deliveryListVO = new DeliveryListVO("BRANCH008", null, orders, courierName);
 	}
 	
 	public void mockBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		branchArrivalListVO = new BranchArrivalListVO(transferListID, transferListID, departure, state, orders);
+		branchArrivalListVO = new BranchArrivalListVO(transferListID, null, transferListID, departure, state, orders);
 	}
 
 
