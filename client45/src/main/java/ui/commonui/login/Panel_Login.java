@@ -1,10 +1,10 @@
 package ui.commonui.login;
 
-import java.awt.Font;
-
-import javax.swing.JLabel;
-
+import ui.myui.MyJButton;
+import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyJRadioButton;
+import ui.myui.MyJTextField;
 /**
  * 登陆界面
  * @author 
@@ -12,31 +12,45 @@ import ui.myui.MyJPanel;
  */
 public class Panel_Login extends MyJPanel{
 	private static final long serialVersionUID = 1L;
-
-	public Panel_Login(int x, int y, int width, int height) {
-		super(x, y, width, height);
-	}
-
+	private MyJTextField userIdField;
+	private MyJTextField passwordField;
+	private MyJRadioButton keepPassword;
+	private MyJButton login;
+	private MyJButton backout;
 	public Panel_Login(Frame_Login frame_Login) {
-		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		
-		//ID和密码label
-			JLabel	label_field1 = new JLabel();
-			label_field1.setBounds(221, 414, 200, 40);
-			label_field1.setFont(new Font("Arail",Font.PLAIN,20));
-			//this.add(label_field1);
-			this.add(label_field1);
-			//label_field1.setVisible(true);
-			
-			JLabel	label_field2 = new JLabel();
-			label_field2.setBounds(221,464,200,40);
-			label_field2.setFont(new Font("Arail",Font.PLAIN,20));
-			//	this.add(label_field2);
-			this.add(label_field2);
-			//label_field2.setVisible(true);
-		
-		
+		this.initComponent(frame_Login);
 	}
+	
+	private void initComponent(Frame_Login frame_Login){
+		this.add(new MyJLabel(432,80,500,90,"快递物流管理系统",50,true));
+		
+		this.add(new MyJLabel(500, 235, 90, 40,"用户ID",18,true));
+		this.add(new MyJLabel(500,285,90,40,"密码",18,true));
+		
+		userIdField = new MyJTextField(590, 235, 200, 40);
+		this.add(userIdField);
+
+		passwordField = new MyJTextField(590, 285, 200, 40);
+		this.add(passwordField);
+		
+		keepPassword= new MyJRadioButton(620,335,200,30,"记住密码");
+		keepPassword.addActionListener(frame_Login);
+		this.add(keepPassword);
+		
+		login = new MyJButton(590,385,90,40,"登录",18);
+		login.setActionCommand("login");
+		login.addActionListener(frame_Login);
+		this.add(login);
+		
+		backout = new MyJButton(690,385,90,40,"取消",18);
+		backout.setActionCommand("backout");
+		backout.addActionListener(frame_Login);
+		this.add(backout);
+	}
+	
+	
+		
+	
 }

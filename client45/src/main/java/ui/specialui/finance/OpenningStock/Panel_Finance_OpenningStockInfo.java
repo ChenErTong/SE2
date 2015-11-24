@@ -6,7 +6,8 @@ import ui.myui.MyTranslucentPanel;
 public class Panel_Finance_OpenningStockInfo extends MyTranslucentPanel{
 
 	public Panel_Finance_OpenningStockInfo() {
-		super(680,100,550,550);
+		super(680,100,550,562);
+
 		//this.setOpaque(false);
 		this.initComponent();
 		
@@ -15,11 +16,14 @@ public class Panel_Finance_OpenningStockInfo extends MyTranslucentPanel{
 
 	private void initComponent() {
 		// TODO Auto-generated method stub
-		MyJLabel title = new MyJLabel(210,10,180,40,"期初账目详细信息",18,true);
-		this.add(title);
+		
 		
 	}
 
+	public void setUneditable() {
+		// TODO Auto-generated method stub
+		
+	}
 	private static final long serialVersionUID = 1L;
 
 }

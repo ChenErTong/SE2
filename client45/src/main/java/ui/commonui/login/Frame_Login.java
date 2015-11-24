@@ -1,204 +1,122 @@
 package ui.commonui.login;
 
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.KeyStroke;
-
+import dataservice.userdataservice.LoginInfo;
+import businesslogic.userbl.UserController;
 import state.UserIdentity;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
-import ui.myui.MyButton;
+import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
+import ui.specialui.admin.Frame_Admin;
+import ui.specialui.branch_conuterman.Frame_Branch;
+import ui.specialui.courier.Frame_Courier;
+import ui.specialui.finance.Frame_Finance;
+import ui.specialui.inventory.Frame_Inventory;
+import ui.specialui.manager.FrameManager;
+import ui.specialui.transfer_counterman.Frame_Transfer;
 
 /**
  * 登陆界面
  * @author czw
  * @time 2015年11月15日下午4:11:44
  */
+/**
+ * 登录界面完善
+ * @author zsq
+ * @time 2015/11/23 15:14:55
+ */
+@SuppressWarnings("unused")
 
 public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
-
+	private MyJTextField userIdField;
+	private MyJTextField passwordField;	
+	
+	private String userName;
+	private String userID;
+	private String userIden;
+	private UserIdentity iden;
 	boolean flag = false;
-	
-	MyJTextField userIdField;
-	MyJTextField passwordField;
-	MyButton button_Enter;
-	MyButton button_Exit;
-	JLabel label_field1,label_field2;
-	JLabel loginBackground2,loginBackground;
-	
-	private static String userName,userID;
-	private static UserIdentity userIden;
-	
-	Panel_Login totalPanel = new Panel_Login(this);
+
+	private Panel_Login totalPanel = new Panel_Login(this);
 	public Frame_Login(){
-//		MyColor color = new MyColor();
 		totalPanel = new Panel_Login(this);
 		this.add(totalPanel);
-		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.initComponent(this);
+	}
+	
+	
+	private void initComponent(Frame_Login frame_Login) {
+		this.add(new MyJLabel(432,80,500,90,"快递物流管理系统",50,true));
 		
-//		账号输入框	
-		userIdField = new MyJTextField(421, 414, 200, 40);
-//		userIdField.setForeground(Color.WHITE);
-////		userIdField.setOpaque(false);
-//		userIdField.setBorder(BorderFactory.createEmptyBorder());
-//		userIdField.addMouseListener(new MouseAdapter(){
-//			public void mouseEntered(MouseEvent arg0){
-////				label_field1.setVisible(true);
-//			}
-//			public void mouseExited(MouseEvent arg0){
-////				label_field1.setVisible(false);
-//			}
-//		});
-//	
+		userIdField = new MyJTextField(590, 235, 200, 40);
 		this.add(userIdField);
-//		
-//		//密码输入框
-		passwordField = new MyJTextField(421, 464, 200, 40);
-//		passwordField.setForeground(Color.WHITE);
-////		passwordField.setOpaque(false);
-//		passwordField.setBorder(BorderFactory.createEmptyBorder());
-//		passwordField.addMouseListener(new MouseAdapter(){
-//			public void mouseEntered(MouseEvent arg0){
-////				label_field2.setVisible(true);
-//			}
-//			public void mouseExited(MouseEvent arg0){
-////				label_field2.setVisible(true);
-//			}
-//		});
+
+		passwordField = new MyJTextField(590, 285, 200, 40);
 		this.add(passwordField);
 		
 		
-		
-		//确认键
-		button_Enter = new MyButton(421, 510, 60, 30);
-		button_Enter.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0){
-//				loginBackground.setVisible(false);
-//				loginBackground2.setVisible(true);
-			}
-			public void mouseExited(MouseEvent arg0){
-//				loginBackground.setVisible(true);
-//				loginBackground2.setVisible(false);
-			}
-		});
-		button_Enter.registerKeyboardAction(this, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_IN_FOCUSED_WINDOW);
-		button_Enter.addKeyListener(new KeyAdapter(){
-			public void keyPressed(KeyEvent event){
-				if(KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("enter")==0){
-					button_Enter.doClick();
-				}
-			}
-		});
-		button_Enter.addActionListener(this);
-		this.add(button_Enter);
-		
-		//确认键
-		button_Exit = new MyButton(491, 510, 60, 30);
-		button_Exit.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0){
-//				loginBackground.setVisible(false);
-//				loginBackground2.setVisible(true);
-			}
-			public void mouseExited(MouseEvent arg0){
-//				loginBackground.setVisible(true);
-//				loginBackground2.setVisible(false);
-			}
-		});
-		button_Exit.registerKeyboardAction(this, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_IN_FOCUSED_WINDOW);
-		button_Exit.addKeyListener(new KeyAdapter(){
-			public void keyPressed(KeyEvent event){
-				if(KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("enter")==0){
-					button_Enter.doClick();
-				}
-			}
-		});
-		button_Enter.addActionListener(this);
-		this.add(button_Exit);
 	}
-	
+
+
 	@Override
-	public void actionPerformed(ActionEvent events) {
-//		// TODO Auto-generated method stub
-//		if(events.getSource()==button_Enter){
-//			UserBLService controller = new UserController();
-//			
-//			UserIdentity ui = controller.login(new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag));
-//			userID = userIdField.getText();
-//			for(int i=0;i<controller.show().size();i++){
-//				if(controller.show().get(i).username.equals(userID)){
-//					userName = controller.show().get(i).name;
-//					userIden = controller.show().get(i).iden;
-//				}
-//			}
-//			if(ui == null){
-//				AnnocementFrame af = new AnnocementFrame("用户名或密码填写错误！");
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.ADMIN)){
-//				Frame_Admin au = new Frame_Admin();
-//				au.setVisible(true);
-//				
-//				this.setVisible(false);
-//				
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.INVENTORY_MANAGER)){
-//				Frame_Inventory fi = new Frame_Inventory();
-//				fi.setVisible(true);
-//				
-//				this.setVisible(false);
-//				
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.COURIER)){
-//				Frame_Courier fc = new Frame_Courier();
-//				fc.setVisible(true);
-//				
-//				this.setVisible(false);
-//				
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.GENERAL_MANAGER)){
-//				FrameManager fm = new FrameManager();
-//				fm.setVisible(true);
-//				
-//				this.setVisible(false);
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.FINANCE_MANAGER)){
-//				Frame_Finance ff = new Frame_Finance();
-//				ff.setVisible(true);
-//				
-//				this.setVisible(false);
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//
-//			}else if(ui.equals(UserIdentity.TRANSFER_CONTERMAN)){
-//				Frame_Transfer ft = new Frame_Transfer();
-//				ft.setVisible(true);
-//				
-//				this.setVisible(false);
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//			}else if(ui.equals(UserIdentity.BRANCH_COUNTERMAN)){
-//				Frame_Branch fb = new Frame_Branch();
-//				fb.setVisible(true);
-//				
-//				this.setVisible(true);
-//				AnnocementFrame af = new AnnocementFrame("欢迎您使用本系统！");
-//				af.setVisible(true);
-//			}
-//		}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("login")){
+			UserController  userController = new UserController();
+			//TODO - 如何把iden转成string orz
+			iden = userController.login(new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag));
+			String type = "";
+			userID = userIdField.getText();
+			for(int i=0;i<userController.show(type).size();i++){
+				userName = userController.show(type).get(i).getUserName();
+				userIden = userController.show(type).get(i).getIden();
+			}
+		}
+		if(iden==null){
+			this.add(new MyNotification(this,"用户名或密码填写错误！",Color.RED));
+		}else if(iden.equals(UserIdentity.ADMIN)){
+			Frame_Admin frame_Admin = new Frame_Admin();
+			frame_Admin.setVisible(true);
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.GENERAL_MANAGER)){
+			FrameManager frame_Manager = new FrameManager();
+			frame_Manager.setVisible(true);
+			frame_Manager.add(new MyNotification(frame_Manager,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.FINANCE_MANAGER)){
+			Frame_Finance frame_Finance = new Frame_Finance();
+			frame_Finance.setVisible(true);
+			frame_Finance.add(new MyNotification(frame_Finance,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.INVENTORY_MANAGER)){
+			Frame_Inventory frame_Inventory = new Frame_Inventory();
+			frame_Inventory.setVisible(true);
+			frame_Inventory.add(new MyNotification(frame_Inventory,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.COURIER)){
+			Frame_Courier frame_Courier = new Frame_Courier();
+			frame_Courier.setVisible(true);
+			frame_Courier.add(new MyNotification(frame_Courier,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.BRANCH_COUNTERMAN)){
+			Frame_Branch frame_Branch = new Frame_Branch();
+			frame_Branch.setVisible(true);
+			frame_Branch.add(new MyNotification(frame_Branch,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}else if(iden.equals(UserIdentity.TRANSFER_CONTERMAN)){
+			Frame_Transfer frame_Transfer = new Frame_Transfer();
+			frame_Transfer.setVisible(true);
+			frame_Transfer.add(new MyNotification(frame_Transfer,"欢迎使用本系统！",Color.GREEN));
+			this.setVisible(false);
+		}
+//		
+
 	}
 }

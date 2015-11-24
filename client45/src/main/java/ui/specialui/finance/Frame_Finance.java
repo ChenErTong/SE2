@@ -8,7 +8,6 @@ import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.specialui.finance.BankAccountManage.Panel_Finance_BankAccountManage;
 import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
-import ui.specialui.finance.OpenningStock.Panel_Finance_AddNewStock;
 import ui.specialui.finance.OpenningStock.Panel_Finance_OpenningStock;
 import ui.specialui.finance.SettlementManage.Panel_Finance_SettlementManage;
 import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_ViewBusinessPerformance;
@@ -27,7 +26,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
 	private MyJPanel subPanel ;
-	private Panel_Finance_AddNewStock addNewStock;
 	private Panel_Finance_BankAccountManage bankAccountManage;
 	public Frame_Finance(){
 		totalPanel = new Panel_Finance_Total(this);
@@ -86,10 +84,15 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("Withdraw")){
 			totalPanel.setVisible(false);
 		}else if(e.getActionCommand().equals("AddNewStock")){
-			openningStockPanel.setVisible(false);
-			addNewStock = new Panel_Finance_AddNewStock();
-			this.add(addNewStock);
-			this.getLayeredPane().add(addNewStock,new Integer(Integer.MAX_VALUE));
+			
+		}else if(e.getActionCommand().equals("AddDebitReceipt")){
+			
+		}else if(e.getActionCommand().equals("ModifyDebitReceipt")){
+			
+		}else if(e.getActionCommand().equals("CalculateAllDebit")){
+			
+		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
+			
 		}
 
 	}

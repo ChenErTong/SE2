@@ -1,10 +1,10 @@
-package ui.specialui.finance.CostManage;
+package ui.specialui.finance.SettlementManage;
 
 import ui.myui.MyTranslucentPanel;
 
-public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
+public class PayReceiptInfo extends MyTranslucentPanel{
 
-	public Panel_Finance_DebitReceiptInfo() {
+	public PayReceiptInfo() {
 		super(680,100,550,562);
 
 		this.initComponent();
@@ -21,5 +21,4 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

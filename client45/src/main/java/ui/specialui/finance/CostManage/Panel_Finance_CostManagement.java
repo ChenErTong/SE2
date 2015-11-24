@@ -1,148 +1,249 @@
 package ui.specialui.finance.CostManage;
 
-import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-
-import ui.myui.MyComboBox;
-import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
-import ui.myui.MyJTable;
 import ui.specialui.finance.Frame_Finance;
 
 public class Panel_Finance_CostManagement extends MyJPanel{
 
 	private static final long serialVersionUID = 1L;
-
+	private DebitReceiptList debitReceiptList;
 	private Panel_Finance_DebitReceiptInfo debitReceiptInfo;
+	private MyJButton commonButton;
 	public Panel_Finance_CostManagement(Frame_Finance frame_Finance) {
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Finance);
+		this.initButton(frame_Finance);
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
+		this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
+		debitReceiptList = new DebitReceiptList(frame_Finance);
+		this.add(debitReceiptList);
+		
 		debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
+		debitReceiptInfo.setUneditable();
 		this.add(debitReceiptInfo);
+		this.initButton(frame_Finance);
 		
-		MyJLabel chooseBranch = new MyJLabel(20,120,120,30,"请选择营业厅",18,true);
-		this.add(chooseBranch);
-		
-		MyJLabel chooseDate = new MyJLabel(300,120,108,30,"请选择日期",18,true);
-		this.add(chooseDate);
-		
-		String[] branches = {"所有营业厅"};
-		MyComboBox branchList = new MyComboBox(140,120,150,30,18,branches);
-		this.add(branchList);
-		
-		String[] dates = {""};
-		MyComboBox dateList = new MyComboBox(408,120,150,30,18,dates);
-		this.add(dateList);
-		
-		//the table
-				String[] headers = {"收款单编号","营业厅编号","营业厅名称","经手人"};
-				MyJTable	table = new MyJTable(headers, false);
-				table.setBackground(new Color(40, 42, 66));
-				table.setForeground(Color.WHITE);
-				table.setFont(new MyFont(14));
-							
-				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-				tcr.setHorizontalAlignment(JLabel.CENTER);
-				table.setDefaultRenderer(Object.class, tcr);
-									  	
-				JScrollPane jsp=new JScrollPane(table);
-				JTableHeader head = table.getTableHeader();
-				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-				head.setFont(new MyFont(14));
-				head.setForeground(Color.BLACK);
-				head.setResizingAllowed(false);
-								
-				jsp.setBounds(20, 160, 620, 510);
-				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-				jsp.setOpaque(false);
-				jsp.setBorder(BorderFactory.createEmptyBorder());
-				jsp.setVisible(true);
-				this.add(jsp);
-		
-				MyJButton ViewDebitInfo = new MyJButton(85, 675, 150, 40,"查看收款单",14);
-				ViewDebitInfo.setActionCommand("ViewReceiptInfo");
-				ViewDebitInfo.addActionListener(new ActionListener(){
 
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-				});
-				this.add(ViewDebitInfo);
-				ViewDebitInfo.setVisible(true);
-				
-				
-				
-				MyJButton ModifyDebitInfo = new MyJButton(425, 675, 150, 40,"合计收款单",14);
-				
-				ModifyDebitInfo.setActionCommand("CalculateDebitInfo");
-				ModifyDebitInfo.addActionListener(new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-				
-					}
-					
-				});
-				this.add(ModifyDebitInfo);
-				ModifyDebitInfo.setVisible(true);
-				
-				MyJButton DeleteDebit = new MyJButton(705,675,150,40,"修改收款单",14);
-				DeleteDebit.setActionCommand("ModifyDebit");
-				DeleteDebit.addActionListener(new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-				});
-				this.add(DeleteDebit);
-				DeleteDebit.setVisible(true);
-				
-				MyJButton SaveChanges = new MyJButton(875, 675, 150, 40,"保存修改",14);
-				SaveChanges.setActionCommand("SaveChanges");
-				SaveChanges.addActionListener(new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-				});
-				this.add(SaveChanges);
-				
-				MyJButton BackoutChanges = new MyJButton(1045, 675, 150, 40,"撤销修改",14);
-				BackoutChanges.setActionCommand("BackoutChanges");
-				BackoutChanges.addActionListener(new ActionListener(){
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-				});
-				this.add(BackoutChanges);
 
 	}
+	private void initButton(Frame_Finance frame) {
+		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
+				"<html>添<br/>加<br/>收<br/>款<br/>单<br/></html>", 18);
+		insertButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Finance_CostManagement.this.insertPanel(frame);
+				
+			}
+		});
+		this.add(insertButton);
+
+		MyJButton modifyButton = new MyJButton(0, 280, 40, 130,
+				"<html>修<br/>改<br/>收<br/>款<br/>单<br/></html>", 18);
+		modifyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Finance_CostManagement.this.modifyPanel(frame);
+				
+			}
+		});
+		this.add(modifyButton);
+
+		MyJButton searchButton = new MyJButton(0, 410, 40, 130,
+				"<html>查<br/>看<br/>收<br/>款<br/>单<br/></html>", 18);
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Finance_CostManagement.this.searchPanel(frame);
+				
+			}
+		});
+		this.add(searchButton);
+
+		MyJButton deleteButton = new MyJButton(0, 540, 40, 110,
+				"<html>合<br/>计<br/>收<br/>款<br/>单<br/></html>", 18);
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Finance_CostManagement.this.deletePanel(frame);
+				
+			}
+		});
+		this.add(deleteButton);
+	}
+	
+
+	private void insertPanel(Frame_Finance frame) {
+	this.removeAll();
+	this.add(debitReceiptList);
+	this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
+	this.initButton(frame);
+
+	
+	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
+	debitReceiptInfo.add(new MyJLabel(230,5,120,30,"新增收款单",18,true));
+	this.add(debitReceiptInfo);
+	
+	
+	commonButton = new MyJButton(890, 670, 120, 30, "添加收款单", 20);
+	commonButton.setActionCommand("AddDebitReceipt");
+	commonButton.addActionListener(frame);
+	this.add(commonButton);
+	
+	this.repaint();
+}
+
+private void modifyPanel(Frame_Finance frame) {
+	this.removeAll();
+	this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
+	this.add(debitReceiptList);
+	this.initButton(frame);
+	
+	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
+	debitReceiptInfo.add(new MyJLabel(230,5,120,30,"修改收款单",18,true));
+	this.add(debitReceiptInfo);
+	
+	commonButton = new MyJButton(890, 670, 150, 30, "修改收款单", 20);
+	commonButton.setActionCommand("ModifyDebitReceipt");
+	commonButton.addActionListener(frame);
+	this.add(commonButton);
+	
+	this.repaint();
+}
+
+private void searchPanel(Frame_Finance frame) {
+	
+	this.removeAll();
+	this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
+	this.add(debitReceiptList);
+	this.initButton(frame);
+	
+	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
+	debitReceiptInfo.setUneditable();
+	debitReceiptInfo.add(new MyJLabel(230,5,150,30,"查看收款单信息",18,true));
+	this.add(debitReceiptInfo);
+	
+	this.repaint();
+}
+
+private void deletePanel(Frame_Finance frame) {
+	
+	this.removeAll();
+	this.add(new MyJLabel(530,20, 250, 90, "公司运营结算管理", 24, true));
+	this.add(debitReceiptList);
+	this.initButton(frame);
+	
+	debitReceiptInfo = new Panel_Finance_DebitReceiptInfo();
+	debitReceiptInfo.setUneditable();
+	debitReceiptInfo.add(new MyJLabel(230,5,120,30,"合计收款单",18,true));
+	this.add(debitReceiptInfo);
+	
+	commonButton = new MyJButton(890, 670, 120, 30, "合计收款单", 20);
+	commonButton.setActionCommand("CalculateAllDebit");
+	commonButton.addActionListener(frame);
+	this.add(commonButton);
+	
+	this.repaint();
+}
+/**
+ * TODO 从bl层获取数据
+ * 添加用户
+ */
+/*
+public int addOrganization() {
+	String [] data = organizationDetails.getData();
+
+	if(data == null){
+		return 1;
+	}
+	if(data[4].equals("营业厅")){
+		data[0] = organizationController.getID();
+		//branch = new BranchVO(name, name, name, null, null);
+		organizationController.addBranch(branch);
+	}else if(data[4].equals("中转中心")){
+		data[0] = organizationController.getID();
+		//transfer = new TransferVO(name, name, flags, null, null);
+		organizationController.addTransfer(transfer);
+	}
+	
+	return 0;
+	
+}
+/**
+* 修改用户信息
+* 从bl层获得数据
+*/
+/*public int modifyOrganization() {
+	String [] data = organizationDetails.getData();
+	if(data == null){
+		return 1;
+	}
+	if(data[4].equals("营业厅")){
+		branch.setId(data[0]);
+		branch.setAddress(data[7]);
+		organizationController.updateBranch(branch);
+	}else if(data[4].equals("中转中心")){
+		organizationController.updateTransfer(transfer);
+	}
+	
+
+	
+	return 0;
+}
+/**
+ * 删除用户
+ * @return
+ */
+/*public int deleteOrganization() {
+	String[] data = organizationDetails.getData();
+	//现在列表中选择一个用户后再进行删除
+	//TODO -
+	if(data[4].equals("营业厅")){
+		organizationController.deleteBranch(data[0]);
+		return 0;
+	}else if(data[4].equals("中转中心")){
+		organizationController.deleteTransfer(data[0]);
+		return 0;
+	}
+	
+	
+		return 0;
+}
+
+public void refresh() {
+	organizationDetails.refresh();
+}
+/**
+ * 查看用户信息列表
+ * TODO 从bl层获取数据
+ */
+/*public boolean searchOrganization() {		
+	String type = organizationInfo.getData();
+	if(type==null){
+		return false;
+	}else if(type.equals("营业厅")){
+		branchList = organizationController.showBranch();
+		return true;
+	}else if(type.equals("中转中心")){
+		transferList = organizationController.showTransfer();
+		return true;
+	}
+	return false;
+}
+
+/**
+ * 查看用户详细信息
+ */
+/*public boolean vieworganizationDetails(){
+	//TODO
+	//从organizationList中选择一个要查看的用户
+	return false;
+}*/
 }
 	

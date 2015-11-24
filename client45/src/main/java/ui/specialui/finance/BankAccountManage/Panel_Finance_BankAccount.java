@@ -16,37 +16,31 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
+import ui.specialui.finance.Frame_Finance;
 
 public class Panel_Finance_BankAccount extends MyTranslucentPanel{
-
-	public Panel_Finance_BankAccount() {
-		super(80,100,550,608);
-		this.initComponent();
+	private MyJTextField searchField;
+	private MyJButton searchButton;
+	public Panel_Finance_BankAccount(Frame_Finance frame_Finance) {
+		super(80,100,550,530);
+		this.initComponent(frame_Finance);
 	// TODO Auto-generated constructor stub
 }
 
-private void initComponent() {
+private void initComponent(Frame_Finance frame_Finance) {
 	// TODO Auto-generated method stub
-	MyJLabel title = new MyJLabel(220,10,120,30,"账户信息",16,true);
+	MyJLabel title = new MyJLabel(230,10,120,30,"账户信息",18,true);
 	this.add(title);
 	
 	MyJLabel search = new MyJLabel(10,40,90,30,"模糊查找",16,true);
 	this.add(search);
 	
-	MyJTextField searchField = new MyJTextField(100,40,200,30);
+	searchField = new MyJTextField(100,40,200,30);
 	this.add(searchField);
 	
-	MyJButton searchButton = new MyJButton(425,40,90,30,"搜索",16);
+	searchButton = new MyJButton(425,40,90,30,"搜索",16);
 	searchButton.setActionCommand("SearchBankAccount");
-	searchButton.addActionListener(new ActionListener(){
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	});
+	searchButton.addActionListener(frame_Finance);
 	this.add(searchButton);
 	
 	//the table
@@ -67,38 +61,14 @@ private void initComponent() {
 	head.setForeground(Color.BLACK);
 	head.setResizingAllowed(false);
 					
-	jsp.setBounds(10, 76, 532, 490);
+	jsp.setBounds(10, 76, 532, 444);
 	jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 	jsp.setOpaque(false);
 	jsp.setBorder(BorderFactory.createEmptyBorder());
 	jsp.setVisible(true);
 	this.add(jsp);
 	
-	MyJButton deleteAccount = new MyJButton(50,570,180,30,"删除所选账户",16);
-	deleteAccount.setActionCommand("DeleteBankAccount");
-	deleteAccount.addActionListener(new ActionListener(){
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	});
-	this.add(deleteAccount);
 	
-	MyJButton modifyAccountInfo = new MyJButton(250,570,180,30,"修改所选账户信息",16);
-	modifyAccountInfo.setActionCommand("ModifyBankAccount");
-	modifyAccountInfo.addActionListener(new ActionListener(){
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	});
-	this.add(modifyAccountInfo);
 }
 
 private static final long serialVersionUID = 1L;

@@ -10,6 +10,7 @@ import javax.swing.table.JTableHeader;
 
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
+import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -18,6 +19,7 @@ import ui.specialui.manager.FrameManager;
 public class BaseInfoList extends MyTranslucentPanel{
 	private MyJLabel baseTypeLabel;
 	private MyComboBox baseTypeList;
+	private MyJButton search;
 	public BaseInfoList(FrameManager frame_Manager) {
 		super(50, 100, 620, 560);
 		this.initComponent( frame_Manager);
@@ -28,9 +30,14 @@ public class BaseInfoList extends MyTranslucentPanel{
 			baseTypeLabel= new MyJLabel(20,10,120,30, "选择常量类别",16,true);
 			this.add(baseTypeLabel);
 			
-			baseTypeList = new MyComboBox(140,10,150,30,14,baseType);
+			baseTypeList = new MyComboBox(140,10,150,30,16,baseType);
 			this.add(baseTypeList);
 	
+			search = new MyJButton(320,10,90,30,"搜索",16);
+			search.setActionCommand("SearchBase");
+			search.addActionListener(frame_Manager);
+			this.add(search);
+			
 			//the table
 			String[] headers = {"常量类别","两地距离","运输单价","详细常量信息"};
 			MyJTable	table = new MyJTable(headers, false);
