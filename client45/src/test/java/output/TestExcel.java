@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.ExportExcel;
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 
 public class TestExcel {
 	public static void main(String[] args) {
