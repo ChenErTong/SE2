@@ -37,5 +37,10 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 		}
 		return bankAccounts;
 	}
+	@Override
+	public String getID(FindTypeBase baseType) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

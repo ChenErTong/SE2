@@ -16,6 +16,7 @@ import state.FindTypeAccount;
 public interface BankAccountDataService extends ManageDataService<BankAccountPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "BankAccountData";
+
 	/**
 	 * 以keywords查看账户信息，type是查找的方式，为NULL则表示进行模糊查询
 	 * 
@@ -23,6 +24,7 @@ public interface BankAccountDataService extends ManageDataService<BankAccountPO>
 	 * @return 账户持久化对象
 	 */
 	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType) throws RemoteException;
+
 	/**
 	 * 提出创建/新增银行账户时返回账户ID
 	 *

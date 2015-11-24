@@ -7,7 +7,8 @@ import po.OpeningStockPO;
 public class OpeningStockDataService_Driver {
 	private OpeningStockPO po;
 	public OpeningStockDataService_Driver(){
-	po = new OpeningStockPO("123", "2015/10/25", po.getOrganizations(), po.getAccounts(), po.getFacilities(), po.getInventories());
+	po = null;
+//			new OpeningStockPO("123", "2015/10/25", po.getOrganizations(), po.getAccounts(), po.getFacilities(), po.getInventories());
 	
 	}
 	public void drive(OpeningStockDataService service) throws RemoteException{

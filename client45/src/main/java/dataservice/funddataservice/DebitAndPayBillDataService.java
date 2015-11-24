@@ -4,31 +4,19 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptState;
 import state.ReceiptType;
-import state.ResultMessage;
 
 /**
  * 收款单、付款单的集体载入、保存、查看和修改操作
  * @author zsq
  * @version Oct 22,2015
  */
-public interface DebitAndPayBillDataService {
+public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPayBillPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "DebitAndPayBillData";
-	/**
-	 * 向序列化文件中增加一个DebitAndPayBillPO
-	 * @param po
-	 * @return 处理结果
-	 */
-	public ResultMessage insert(DebitAndPayBillPO po) throws RemoteException;
-	/**
-	 * 根据ID删除序列化文件中的一个DebitAndPayBillPO
-	 * @param ID
-	 * @return 处理结果
-	 */
-	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新DebitAndPayBillPO
 	 * @param PO
@@ -36,9 +24,6 @@ public interface DebitAndPayBillDataService {
 	 * @return 处理结果
 	 */
 	public DebitAndPayBillPO find(String ID)throws RemoteException;
-	
-	
-	public ResultMessage update(DebitAndPayBillPO PO) throws RemoteException;
 	/**
 	 * 根据单据类型生成编号
 	 * @param type 收款单或者付款单
@@ -69,6 +54,7 @@ public interface DebitAndPayBillDataService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
 	/**
 	 * 按照时间区间返回单据【收款单或者付款单】
 	 * @param 
@@ -76,10 +62,13 @@ public interface DebitAndPayBillDataService {
 	 * @author lxl
 	 * @version 11  20 2015
 	 */
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState Type) throws RemoteException;
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
-	public HashMap<String, String> getAllBankAccounts();
 	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
+	
+	
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState State) throws RemoteException;
+	
+	public HashMap<String, String> getAllBankAccounts();
+	
 	
 
 }

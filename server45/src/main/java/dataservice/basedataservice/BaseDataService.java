@@ -16,27 +16,11 @@ public interface BaseDataService  extends ManageDataService<BasePO>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "BaseData";
 	/**
-	 * 向序列化文件中增加一个BasePO
-	 * @param po
-	 * @return 处理结果
-	 */
-//	public ResultMessage insert(BasePO po) throws RemoteException;
-	/**
-	 * 根据ID删除序列化文件中的一个BasePO
-	 * @param ID
-	 * @return 处理结果
-	 */
-//	public ResultMessage delete(String ID) throws RemoteException;
-	/**
-	 * 更新BasePO
-	 * @param PO
-	 * @return 处理结果
-	 */
-//	public ResultMessage update(BasePO PO) throws RemoteException;
-	/**
 	 * type是查找的类型，另一个参数是ACCOUNT对象
 	 * @param baseType
 	 * @return 账户持久化对象
 	 */
 	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException;
+	
+	public String getID(FindTypeBase baseType)throws RemoteException;
 }

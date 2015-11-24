@@ -50,5 +50,10 @@ public class BaseDataService_Stub implements BaseDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getID(FindTypeBase baseType) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

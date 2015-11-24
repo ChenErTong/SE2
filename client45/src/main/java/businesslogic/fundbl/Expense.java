@@ -41,7 +41,7 @@ public class Expense {
 
 	
 	public ArrayList<ExpenseVO> show() throws RemoteException {
-		ArrayList<ExpensePO> pos=expenseData.show();
+		ArrayList<ExpensePO> pos=expenseData.find();
 		ArrayList<ExpenseVO> vos=FundTrans.convertExpensePOstoVOs(pos);
 		return vos;
 	}

@@ -26,7 +26,4 @@ public interface FacilityDataService extends ManageDataService<FacilityPO> {
 	 */
 	public FacilityPO find(String id) throws RemoteException;
 
-	
-
-
 }

@@ -2,10 +2,12 @@ package data.funddata;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import state.ReceiptState;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
 import util.Util;
@@ -82,7 +84,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillPO> show(String begin, String end) throws RemoteException {
+	public ArrayList<DebitAndPayBillPO> showList(String begin, String end) throws RemoteException {
 		//日期比较可以利用String的字典序
 		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
 		for (DebitAndPayBillPO po: poList.getInList()) {
@@ -90,6 +92,18 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 				bills.add(po);
 		}
 		return bills;
+	}
+
+	@Override
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type, ReceiptState State) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public HashMap<String, String> getAllBankAccounts() {
+		// TODO Auto-generated method stub
+		return null;
 	}
     
 }

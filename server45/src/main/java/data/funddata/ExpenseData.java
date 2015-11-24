@@ -17,6 +17,10 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	public ExpenseData() throws RemoteException {
 		poList=new SerSaveAndLoad<ExpensePO>("data/"+NAME+".ser");
 	}
+	@Override
+	public String getID() throws RemoteException {
+		return null;
+	}
 	
 
 

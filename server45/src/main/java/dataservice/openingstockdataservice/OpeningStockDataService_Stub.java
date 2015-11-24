@@ -9,7 +9,8 @@ import state.ResultMessage;
 public class OpeningStockDataService_Stub implements OpeningStockDataService{
 	private OpeningStockPO openingStockPO;
 	public OpeningStockDataService_Stub(){
-		openingStockPO = new OpeningStockPO("123", "2015/10/25", openingStockPO.getOrganizations(),  openingStockPO.getAccounts(),openingStockPO.getFacilities(), openingStockPO.getInventories());
+		openingStockPO = null;
+//				new OpeningStockPO("123", "2015/10/25", openingStockPO.getOrganizations(),  openingStockPO.getAccounts(),openingStockPO.getFacilities(), openingStockPO.getInventories());
 	}
 
 	@Override

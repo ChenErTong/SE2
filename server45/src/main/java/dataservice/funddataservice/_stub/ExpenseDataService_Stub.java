@@ -46,6 +46,12 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 		return new ArrayList<ExpensePO>();
 	}
 
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

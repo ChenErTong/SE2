@@ -2,9 +2,11 @@ package dataservice.funddataservice._stub;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 
@@ -68,7 +70,22 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 		return null;
 	}
 	@Override
-	public ArrayList<DebitAndPayBillPO> show(String begin, String end) throws RemoteException {
+	public ArrayList<DebitAndPayBillPO> showList(String begin, String end) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public DebitAndPayBillPO find(String ID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<DebitAndPayBillPO> show(ReceiptType type, ReceiptState State) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public HashMap<String, String> getAllBankAccounts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
