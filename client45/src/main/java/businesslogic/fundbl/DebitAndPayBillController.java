@@ -14,7 +14,7 @@ import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class DebitAndPayBillController implements DebitAndPayBillBLService{
-    DebitAndPayBill DebitAndPayBL;
+    DebitAndPayBill DebitAndPayBL = new DebitAndPayBill();
 	@Override
 	public String getPayID() {
 		// TODO Auto-generated method stub

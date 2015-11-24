@@ -13,7 +13,7 @@ import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryController implements InventoryBLService {
-    Inventory InventoryBL;
+    Inventory InventoryBL = new Inventory();
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate)  {
 		// TODO Auto-generated method stub

@@ -8,6 +8,7 @@ import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.FindTypeBase;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class BaseData extends ManageData<BasePO> implements BaseDataService{
 
@@ -39,8 +40,8 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 	}
 	@Override
 	public String getID(FindTypeBase baseType) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 3);
 	}
 
 }

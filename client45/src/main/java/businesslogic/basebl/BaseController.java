@@ -12,7 +12,7 @@ import state.ResultMessage;
 import vo.BaseVO;
 
 public class BaseController implements BaseBLService{
-    Base BaseBL;
+    Base BaseBL = new Base();
 	@Override
 	public ConfirmState confirmOperation() {
 		return BaseBL.confirmOperation();

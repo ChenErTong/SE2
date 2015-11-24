@@ -6,6 +6,7 @@ import data.ManageData;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataService {
 
@@ -19,7 +20,8 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 	}
 	@Override
 	public String getID() throws RemoteException {
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 8);
 	}
 	
 

@@ -11,7 +11,7 @@ import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
 
 public class ReceiptController implements ReceiptBLService{
-    Receipt ReceiptBL;
+    Receipt ReceiptBL = new Receipt();
 	@Override
 	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) {
 		try {

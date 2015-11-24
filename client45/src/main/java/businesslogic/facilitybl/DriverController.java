@@ -9,7 +9,7 @@ import vo.accountvo.DriverVO;
 
 public class DriverController implements DriverBLService{
 	
-	Driver driverBL;
+	Driver driverBL = new Driver();
 	@Override
 	public ConfirmState confirmOperation() {
 		return driverBL.confirmOperation();

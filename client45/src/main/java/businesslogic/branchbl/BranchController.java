@@ -16,7 +16,7 @@ import vo.receiptvo.DeliveryListVO;
 import vo.receiptvo.LoadingListVO;
 
 public class BranchController implements BranchBLService {
-     Branch BranchBL;
+     Branch BranchBL = new Branch();
 	@Override
 	public ConfirmState confirmOperation() {
 		return BranchBL.confirmOperation();

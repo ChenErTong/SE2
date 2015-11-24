@@ -11,7 +11,7 @@ import state.ResultMessage;
 import vo.receiptvo.ExpenseVO;
 
 public class ExpenseController implements ExpenseBLService{
-    Expense ExpenseBL;
+    Expense ExpenseBL = new Expense();
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

@@ -9,14 +9,12 @@ import businesslogicservice.accountblservice.AccountBLService;
 import vo.accountvo.AccountVO;
 
 public class AccountController implements AccountBLService{
-     Account AccountBL;
+     Account AccountBL = new Account();
 	@Override
 	public ArrayList<AccountVO> show() {
-		// TODO Auto-generated method stub
 		try {
 			return AccountBL.show();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

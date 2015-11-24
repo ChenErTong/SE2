@@ -8,6 +8,7 @@ import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
 import state.FindTypeAccount;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class BankAccountData extends ManageData<BankAccountPO> implements BankAccountDataService {
 
@@ -52,8 +53,8 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 
 	@Override
 	public String getID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		int newID = poList.size();
+		return Util.transIntToString(newID, 2);
 	}
 
 }

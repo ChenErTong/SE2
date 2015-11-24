@@ -11,7 +11,7 @@ import vo.CommodityVO;
 import vo.OrderVO;
 
 public class OrderController implements OrderBLService{
-    Order OrderBL;
+    Order OrderBL = new Order();
 	@Override
 	public ConfirmState confirmOperation() {
 		// TODO Auto-generated method stub

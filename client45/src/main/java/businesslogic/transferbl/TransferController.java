@@ -13,7 +13,7 @@ import vo.receiptvo.TransferArrivalListVO;
 import vo.receiptvo.TransferOrderVO;
 
 public class TransferController implements TransferBLService{
-    Transfer TransferBL;
+    Transfer TransferBL = new Transfer();
 	@Override
 	public ConfirmState confirmOperation() {
 		

@@ -10,7 +10,7 @@ import vo.BussinessConditionVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class RecordController implements RecordBLService{
-    Record  RecordBL;
+    Record  RecordBL = new Record();
 		
 	@Override
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end)  {
