@@ -36,23 +36,11 @@ public class _Transfer_Data_Stub implements TransferDataService {
 	}
 
 	@Override
-	public TransferArrivalListPO findList(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<TransferPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	@Override
-	public ArrayList<CommodityPO> findCommodities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String getID(String cityCode) throws RemoteException {

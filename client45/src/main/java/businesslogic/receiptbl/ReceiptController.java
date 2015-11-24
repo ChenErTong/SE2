@@ -37,8 +37,12 @@ public class ReceiptController implements ReceiptBLService{
 
 	@Override
 	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
-		
-		return ReceiptBL.showReceipt(receiptStates);
+		try {
+			return ReceiptBL.showReceipt(receiptStates);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

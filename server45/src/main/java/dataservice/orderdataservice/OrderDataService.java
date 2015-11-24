@@ -22,21 +22,4 @@ public interface OrderDataService  extends ManageDataService<OrderPO>{
 	 */
 	public OrderPO find(String ordernumber) throws RemoteException;
 	
-	/**
-	 * 新增订单
-	 * @param order 订单持久化对象
-	 * @return 处理信息
-	 * @author czw
-	 * @version Oct 22,2015 
-	 */
-//	public ResultMessage insert(OrderPO order) throws RemoteException;
-	
-	/**
-	 * 修改订单
-	 * @param order 订单持久化对象
-	 * @return 处理信息
-	 * @author czw
-	 * @version Oct 22,2015 
-	 */
-//	public ResultMessage update(OrderPO order) throws RemoteException;
 }

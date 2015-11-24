@@ -44,7 +44,10 @@ public class Transfer {
 	}
 
 	public ArrayList<CommodityVO> getAllCommodities() {
-		ArrayList<CommodityPO> pos = transferData.findCommodities();
+		//应该用Order来拿
+		//TODO
+		ArrayList<CommodityPO> pos = null;
+//				transferData.findCommodities();
 		ArrayList<CommodityVO> vos = new ArrayList<CommodityVO>();
 		for (CommodityPO po : pos) {
 			CommodityVO vo = new CommodityVO(po.getCommodityType(), po.getWeight(), po.getVolumn(),

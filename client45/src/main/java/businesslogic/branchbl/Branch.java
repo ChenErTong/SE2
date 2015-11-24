@@ -95,7 +95,7 @@ public class Branch{
 		return vo;
 	}
 
-	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) {
+	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) throws RemoteException {
 		//TODO getID
 		String ID = receiptData.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
@@ -113,7 +113,7 @@ public class Branch{
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders) throws RemoteException {
 		String ID = receiptData.getID();
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, facilityID, courierName, orders);
 		return vo;

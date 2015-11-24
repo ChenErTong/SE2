@@ -1,7 +1,7 @@
 package dataservice.recorddataservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
+
 import po.BussinessConditionPO;
 import po.BussinessProcessPO;
 
@@ -17,5 +17,5 @@ public interface RecordDataService {
 	/**返回信息：	1. 收入2. 支出。3. 利润：总收入-总支出**/
 	public BussinessConditionPO getBusinessCondition(String enddate) throws RemoteException;
 	
-	public String getBegin();
+	public String getBegin() throws RemoteException;
 }

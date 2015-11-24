@@ -8,7 +8,6 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
-import vo.InventoryVO;
 
 public class _Inventory_Data_Stub implements InventoryDataService{
 

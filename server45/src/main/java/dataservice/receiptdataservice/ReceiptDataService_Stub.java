@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
+import state.ReceiptState;
 import state.ResultMessage;
 
 public class ReceiptDataService_Stub implements ReceiptDataService{
@@ -40,6 +41,16 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 	}
 	@Override
 	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ReceiptPO find(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -60,7 +60,7 @@ public class Receipt  {
 	}
 
 	
-	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
+	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
 		ArrayList<ReceiptVO> VOs=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> POs=receiptData.showReceipt(receiptStates);
 		for(ReceiptPO po:POs){

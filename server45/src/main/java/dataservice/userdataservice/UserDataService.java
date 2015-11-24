@@ -14,22 +14,6 @@ import state.UserIdentity;
 public interface  UserDataService extends ManageDataService<UserPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "UserData";
-	
-	/**
-	 * @param po
-	 */
-//	public ResultMessage insert(UserPO po) throws RemoteException;
-	/**
-	 * @param ID
-	 */
-//	public ResultMessage delete(String ID) throws RemoteException;
-	/**
-	 * @param PO
-	 */
-//	public ResultMessage update(UserPO PO) throws RemoteException;
-	/**
-	 */
-//	public ArrayList<UserPO> find() throws RemoteException;
 	/**
 	 * @param loginInfo
 	 * @author zsq

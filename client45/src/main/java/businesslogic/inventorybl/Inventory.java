@@ -27,12 +27,14 @@ import vo.receiptvo.InventoryImportReceiptVO;
 
 public class Inventory {
 	private InventoryDataService inventoryData;
-	private TransferDataService transferData;
+	//TODO transferData是增删查改机构的时候用的
+	//应该用Order来拿
+//	private TransferDataService transferData;
 
 	public Inventory() {
 		try {
 			inventoryData = (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
-			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+//			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -66,7 +68,10 @@ public class Inventory {
 	}
 
 	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
-		TransferArrivalListPO receipt = transferData.findList(ArrivalListID);
+		
+		TransferArrivalListPO receipt = null;
+		//应该用Order来拿
+//				transferData.findList(ArrivalListID); TODO
 		String ID = inventoryData.getImportID();
 		String commodities = receipt.getTransferCenterID();
 		String destination = receipt.getDestination();

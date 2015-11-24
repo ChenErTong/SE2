@@ -1,10 +1,12 @@
 package data.receiptdata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
+import state.ReceiptState;
 import util.SerSaveAndLoad;
 import util.Util;
 
@@ -23,6 +25,12 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	public String getID() {
 		int newID = poList.size();
 		return Util.transIntToString(newID, 5);
+	}
+
+	@Override
+	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

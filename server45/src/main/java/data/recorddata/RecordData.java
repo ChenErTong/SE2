@@ -29,4 +29,10 @@ public class RecordData extends Data implements RecordDataService {
 		return null;
 	}
 
+	@Override
+	public String getBegin() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
