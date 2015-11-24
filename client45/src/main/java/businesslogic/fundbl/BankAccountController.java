@@ -20,41 +20,58 @@ public class BankAccountController implements BankAccountBLService{
 
 	@Override
 	public String getID() {
-		// TODO Auto-generated method stub
-		return BankAccountBL.getID();
+		try {
+			return BankAccountBL.getID();
+		} catch (RemoteException e) {
+		}
+		return null;
 	}
 
 	@Override
 	public ArrayList<BankAccountVO> show() {
-		// TODO Auto-generated method stub
-		return BankAccountBL.show();
+		try {
+			return BankAccountBL.show();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public ResultMessage add(BankAccountVO vo) {
-		// TODO Auto-generated method stub
-		return BankAccountBL.add(vo);
+		try {
+			return BankAccountBL.add(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public ResultMessage delete(String ID) {
-		// TODO Auto-generated method stub
-		return BankAccountBL.delete(ID);
+		try {
+			return BankAccountBL.delete(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public ResultMessage update(BankAccountVO vo) {
-		// TODO Auto-generated method stub
-		return BankAccountBL.update(vo);
+		try {
+			return BankAccountBL.update(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
-		// TODO Auto-generated method stub
 		try {
 			return BankAccountBL.find(keywords, type);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
