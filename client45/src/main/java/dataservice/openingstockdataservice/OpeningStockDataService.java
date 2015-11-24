@@ -18,8 +18,6 @@ public interface OpeningStockDataService {
 	public ResultMessage add(OpeningStockPO po) throws RemoteException;
 	
 	public String getID() throws RemoteException;
-	/**初始化持久数据**/
-	public void init() throws RemoteException;
 	/**返回OpeningStockPO持久数据**/
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException;
 	

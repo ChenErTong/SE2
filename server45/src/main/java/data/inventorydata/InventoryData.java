@@ -6,14 +6,13 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
-import po.PersistentObject;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
 
-public class InventoryData extends ManageData<PersistentObject> implements InventoryDataService {
+public class InventoryData extends ManageData<InventoryPO> implements InventoryDataService {
 
 	/**
 	 * 
@@ -21,7 +20,7 @@ public class InventoryData extends ManageData<PersistentObject> implements Inven
 	private static final long serialVersionUID = 1L;
 	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public InventoryData() throws RemoteException {
-		poList=new SerSaveAndLoad<PersistentObject>("data/"+NAME+".ser");
+		poList=new SerSaveAndLoad<InventoryPO>("data/"+NAME+".ser");
 	}
 
 	@Override

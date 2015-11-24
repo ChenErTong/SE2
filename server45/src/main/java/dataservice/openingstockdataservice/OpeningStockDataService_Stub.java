@@ -19,11 +19,6 @@ public class OpeningStockDataService_Stub implements OpeningStockDataService{
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public void init() {
-		System.out.println("Init the data succeed!");
-		
-	}
 
 	@Override
 	public OpeningStockPO findOpeningStock(String id) {

@@ -4,7 +4,9 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.accountbl.AccountTrans;
 import businesslogic.branchbl.BranchTrans;
@@ -13,7 +15,13 @@ import businesslogic.fundbl.FundTrans;
 import businesslogic.inventorybl.InventoryTrans;
 import businesslogic.transferbl.TransferTrans;
 import config.RMIConfig;
+import dataservice.accountdataservice.AccountDataService;
+import dataservice.branchdataservice.BranchDataService;
+import dataservice.facilitydataservice.FacilityDataService;
+import dataservice.funddataservice.BankAccountDataService;
+import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.openingstockdataservice.OpeningStockDataService;
+import dataservice.transferdataservice.TransferDataService;
 import po.BankAccountPO;
 import po.BranchPO;
 import po.FacilityPO;
@@ -32,10 +40,23 @@ import vo.accountvo.AccountVO;
 
 public class OpeningStock {
 	private OpeningStockDataService openingStockData;
-
+	private BranchDataService branchData;
+	private TransferDataService transferData;
+	private AccountDataService accountData;
+	private FacilityDataService facilityData;
+	private InventoryDataService inventoryData;
+	private BankAccountDataService bankAccountData;
+	
+	
 	public OpeningStock() {
 		try {
+			accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 			openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
+			branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
+			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+			facilityData = (FacilityDataService) Naming.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
+			inventoryData = (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
+			bankAccountData = (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX + BankAccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -57,6 +78,8 @@ public class OpeningStock {
 		ArrayList<BankAccountPO> bankAccounts = FundTrans.convertVOstoPOs(bankAccountVOs);
 		String ID = openingStockData.getID();
 		String date = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd");
+		date = sdf.format(new Date());
 		OpeningStockPO po = new OpeningStockPO(ID, date, transfers, branchs, accounts, facilities, inventories,
 				bankAccounts);
 		return openingStockData.add(po);
@@ -67,11 +90,26 @@ public class OpeningStock {
 		OpeningStockVO vo = OpeningStockTrans.convertPOtoVO(po);
 		return vo;
 	}
-	
+
 	public ArrayList<OpeningStockVO> show() throws RemoteException {
 		ArrayList<OpeningStockPO> pos = openingStockData.find();
 		ArrayList<OpeningStockVO> vos = OpeningStockTrans.convertPOstoVOs(pos);
 		return vos;
+	}
+
+	public ResultMessage add() throws RemoteException {
+		String ID = openingStockData.getID();
+		String date = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd");
+		date = sdf.format(new Date());
+		ArrayList<TransferPO> transfers=transferData.find();
+		ArrayList<BranchPO> branchs=branchData.find();
+		ArrayList<AccountPO> accounts=accountData.find();
+		ArrayList<FacilityPO> facilities=facilityData.find();
+		ArrayList<InventoryPO> inventories=inventoryData.find();
+		ArrayList<BankAccountPO> bankAccounts=bankAccountData.find();
+		OpeningStockPO po=new OpeningStockPO(ID, date, transfers, branchs, accounts, facilities, inventories, bankAccounts);
+		return openingStockData.add(po);
 	}
 
 }

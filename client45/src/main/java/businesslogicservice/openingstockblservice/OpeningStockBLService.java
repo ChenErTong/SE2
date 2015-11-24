@@ -21,6 +21,7 @@ public interface OpeningStockBLService {
 	ArrayList< InventoryVO > clients3,
 	ArrayList< BankAccountVO > accounts);
 	/**查找到该期初账目**/
+	public ResultMessage add();
 	public ResultMessage find (int id);
 	public ArrayList<OpeningStockVO> show();
 }

@@ -31,7 +31,7 @@ public class ReceiptPO extends PersistentObject{
 		super(ID);
 		this.receiptType=type;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
 		date = sdf.format(new Date());
 		this.receiptState=ReceiptState.DRAFT;
 		this.receiptCondition=ReceiptCondition.DRAFT;

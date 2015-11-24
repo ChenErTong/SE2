@@ -168,4 +168,10 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<InventoryPO> find() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

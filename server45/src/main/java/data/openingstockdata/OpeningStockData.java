@@ -26,11 +26,6 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 //		return ResultMessage.FAIL;
 //	}
 
-	@Override
-	public void init() throws RemoteException {
-		/**@author Ann*/
-		// TODO 我觉得不要了
-	}
 
 	@Override
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException {

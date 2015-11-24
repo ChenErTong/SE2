@@ -60,5 +60,10 @@ public class OpeningStockBLService_Stub implements OpeningStockBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ResultMessage add() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -47,4 +47,14 @@ public class OpeningStockController implements OpeningStockBLService {
 		return null;
 	}
 
+	@Override
+	public ResultMessage add() {
+		try {
+			return OpeningStockBL.add();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

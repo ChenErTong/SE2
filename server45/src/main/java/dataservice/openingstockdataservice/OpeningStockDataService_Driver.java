@@ -12,7 +12,7 @@ public class OpeningStockDataService_Driver {
 	
 	}
 	public void drive(OpeningStockDataService service) throws RemoteException{
-		service.init();
+//		service.add();
 		service.add(po);
 		service.findOpeningStock(po.getID());
 		
