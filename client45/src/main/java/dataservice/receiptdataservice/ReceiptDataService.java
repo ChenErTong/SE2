@@ -34,5 +34,7 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	
 	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates);
 	
+	public ReceiptPO find(String ID);
+	
 	
 }

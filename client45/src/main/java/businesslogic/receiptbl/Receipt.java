@@ -64,14 +64,9 @@ public class Receipt  {
 		ArrayList<ReceiptVO> VOs=new ArrayList<ReceiptVO>();
 		ArrayList<ReceiptPO> POs=receiptData.showReceipt(receiptStates);
 		for(ReceiptPO po:POs){
-			ReceiptVO vo=new ReceiptVO(po.getID(), null);
+			ReceiptVO vo=new ReceiptVO(po.getID(), po.getReceiptType());
 			 VOs.add(vo);
 		}
 		return VOs;
 	}
-    public  ReceiptPO VOtoPO(ReceiptVO vo){
-		return null;
-		
-    	
-    }
 }
