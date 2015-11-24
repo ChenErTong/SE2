@@ -28,7 +28,7 @@ public class _Branch_Stub implements BranchBLService {
 		System.out.println("Get commodities from orderPOs");
 		for(int i=0;i<orderPOs.size();i++){
 			OrderPO orderPO = orderPOs.get(i);
-			ArrayList<CommodityVO> oneCommodityVOs = orderPO.getCommodityVO();
+			ArrayList<CommodityVO> oneCommodityVOs = null;
 			for (CommodityVO commodityVO : oneCommodityVOs) {
 				allCommodityVOs.add(commodityVO);
 			}

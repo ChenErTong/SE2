@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
 import state.OrganizationType;
-import state.ReceiptType;
 
 
 
@@ -36,9 +35,9 @@ public class TransferPO extends OrganizationPO{
 	 */
 	private ArrayList<InventoryPO> inventories;
 
-	public TransferPO(String id, ReceiptType type,String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
-		super(id, type, address,accounts.size(),OrganizationType.TRANSFER);
-		//Date在OrganizationPO里能自动生成
+	public TransferPO(String id, String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
+		super(id, address,accounts.size(),OrganizationType.TRANSFER);
+		//Date在Organization里能自动生成
 		this.accounts = accounts;
 		this.inventories = inventories;
 	}

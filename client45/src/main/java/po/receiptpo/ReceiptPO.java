@@ -20,21 +20,23 @@ public class ReceiptPO extends PersistentObject{
 	protected String ID;
 	/**创建时间，由系统自动生成*/
 	protected String date;
-	/**单据状态*/
+	
 	protected ReceiptState receiptState;
 	
 	protected ReceiptCondition receiptCondition;
 	
 	protected ReceiptType receiptType;
 	
-	public ReceiptPO(String ID,ReceiptType type){
-		super(ID,type);
+	public ReceiptPO(String ID){
+		super(ID);
+		this.ID = ID;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
-		this.receiptState=ReceiptState.DRAFT;
-		this.receiptCondition=ReceiptCondition.DRAFT;
-		this.receiptType=receiptType;
+	}
+
+	public ReceiptPO(String iD, String date) {
+		super(iD, date);
 	}
 
 	public String getID() {
@@ -77,8 +79,10 @@ public class ReceiptPO extends PersistentObject{
 		this.receiptType = receiptType;
 	}
 	
-   
 	
-
+	
+	
+	
+	
 
 }

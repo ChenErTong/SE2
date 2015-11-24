@@ -40,7 +40,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate){
 		ArrayList<InventoryImportReceiptPO> iirPOs = new ArrayList<InventoryImportReceiptPO>();
-		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789",null, "Shanghai","nanjing","0123456789",1,1,1,1);
+		InventoryImportReceiptPO iirPO = new InventoryImportReceiptPO("0123456789", "Shanghai","nanjing",1,1,1,1);
 		iirPOs.add(iirPO);
 		System.out.println("Succeed in showing the import receipts.");
 		return iirPOs;
@@ -49,7 +49,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	@Override
 	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) {
 		ArrayList<InventoryExportReceiptPO> ierPOs = new ArrayList<InventoryExportReceiptPO>();
-		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890",null, "Nanjing","shanghai","plane","0123456789","0123456789", 1, 1, 1, 1);
+		InventoryExportReceiptPO ierPO = new InventoryExportReceiptPO("1234567890", "Nanjing","shanghai","plane","0123456789","0123456789", 1, 1, 1, 1);
 		ierPOs.add(ierPO);
 		System.out.println("Succeed in showing the export receipts.");
 		return ierPOs;
@@ -58,7 +58,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) {
 		ArrayList<AdjustReceiptPO> arPOs = new ArrayList<AdjustReceiptPO>();
-		AdjustReceiptPO arPO = new AdjustReceiptPO("1234567890", null, 1, 1, 1, 1, 2, 2, 2, 2);
+		AdjustReceiptPO arPO = new AdjustReceiptPO("1234567890", 1, 1, 1, 1, 2, 2, 2, 2);
 		arPOs.add(arPO);
 		System.out.println("Succeed in showing the adjusting receipts.");
 		return arPOs;

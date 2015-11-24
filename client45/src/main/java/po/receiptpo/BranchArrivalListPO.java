@@ -3,7 +3,6 @@ package po.receiptpo;
 import java.util.ArrayList;
 
 import state.CommodityState;
-import state.ReceiptType;
 
 /**
  * 营业厅到达单：中转单编号、出发地、货物到达状态、订单订单号
@@ -18,20 +17,19 @@ public class BranchArrivalListPO extends ReceiptPO {
 	private static final long serialVersionUID = 1L;
 	private String transferListID;
 	private String departure;
-	
-	public BranchArrivalListPO(String ID, ReceiptType type,String transferListID, String departure, 
-			CommodityState state, ArrayList<String> orders) {
-		super(ID, type);
+	private CommodityState state;
+	private ArrayList<String> orders;
+	public BranchArrivalListPO(String ID) {
+		super(ID);
+	}
+	public BranchArrivalListPO(String ID, String transferListID, String departure, CommodityState state,
+			ArrayList<String> orders) {
+		super(ID);
 		this.transferListID = transferListID;
 		this.departure = departure;
-	
 		this.state = state;
 		this.orders = orders;
 	}
-	private CommodityState state;
-	private ArrayList<String> orders;
-	
-	
 	public String getTransferListID() {
 		return transferListID;
 	}

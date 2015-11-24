@@ -2,8 +2,6 @@ package po.receiptpo;
 
 import java.util.ArrayList;
 
-import state.ReceiptType;
-
 /**
  * 中转单：航班（火车）（汽车车次）编号、出发地、目的地、监装员、托运订单订单号
  * @author czw
@@ -20,12 +18,12 @@ public class TransferOrderPO extends ReceiptPO {
 	private String destination;
 	private String courierName;
 	private ArrayList<String> orders;
-	public TransferOrderPO(String ID,ReceiptType type) {
-		super(ID, type);
+	public TransferOrderPO(String ID) {
+		super(ID);
 	}
-	public TransferOrderPO(String ID, ReceiptType type,String facilityID, String departure, String destination, String courierName,
+	public TransferOrderPO(String ID, String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		super(ID, type);
+		super(ID);
 		this.facilityID = facilityID;
 		this.departure = departure;
 		this.destination = destination;
