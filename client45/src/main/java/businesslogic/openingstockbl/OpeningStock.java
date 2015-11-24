@@ -50,8 +50,8 @@ public class OpeningStock {
 	
 	public OpeningStock() {
 		try {
-			accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 			openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
+			accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 			branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 			facilityData = (FacilityDataService) Naming.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
