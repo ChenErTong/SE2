@@ -14,8 +14,8 @@ public class InventoryVO extends ReceiptVO {
 	public int c;
 	public int d;
 	public String EmptyOrFull;
-	public InventoryVO(String id,ReceiptType type,int a, int b, int c, int d, String emptyOrFull) {
-		super(id,type);
+	public InventoryVO(String id ,int a, int b, int c, int d, String emptyOrFull) {
+		super(id );
 		this.a = a;
 		this.b = b;
 		this.c = c;

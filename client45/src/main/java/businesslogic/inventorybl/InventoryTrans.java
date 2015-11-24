@@ -15,7 +15,7 @@ public class InventoryTrans {
 	}
 	
 	public  static InventoryVO convertPOtoVO(InventoryPO po){
-		InventoryVO vo = new InventoryVO(po.getID(),ReceiptType.INVENTORY, po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
+		InventoryVO vo = new InventoryVO(po.getID(), po.getA(),po.getB(),po.getC(),po.getD(),po.getEmptyOrFull());
 		return vo;
 	}
 	

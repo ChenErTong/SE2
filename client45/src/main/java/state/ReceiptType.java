@@ -24,18 +24,8 @@ public enum ReceiptType {
 	TRANS_TRUCK("卡车转运单", "KCZYD"),
 	INSTOCK("入库单","RKD"),
 	OUTSTOCK("出库单","CCD"),
-	TAKINGSTOCK("库存调整单","KCTZD"),
+	TAKINGSTOCK("库存调整单","KCTZD");
 	
-	ACCOUNT("",""),
-	BASE("",""),
-	BRANCH("",""),
-	FACILITY("",""),
-	DRIVER("",""),
-	BANKACCOUNT("",""),
-	INVENTORY("",""),
-	OPENINGSTOCK("",""),
-     TRANSFER("",""),
-	  USER("","");
 	
 	public final String value;
 	public final String prefix;

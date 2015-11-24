@@ -5,8 +5,8 @@ import vo.InventoryVO;
 
 public class MockPlaceBefore extends InventoryVO{
        
-	public MockPlaceBefore(String ID,ReceiptType type,int a, int b, int c, int d) {
-		super(ID,type, a, b, c, d,"empty");
+	public MockPlaceBefore(String ID, int a, int b, int c, int d) {
+		super(ID,  a, b, c, d,"empty");
 		
 	}
        
