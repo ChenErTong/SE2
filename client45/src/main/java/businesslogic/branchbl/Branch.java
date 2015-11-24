@@ -72,7 +72,7 @@ public class Branch{
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
 		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<OrderVO> orderVOs = OrderTrans.convertPOstoVOs(orderPOs);
+		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
 		return orderVOs;
 	}
 	/**

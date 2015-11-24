@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
-import dataservice.transferdataservice.TransferDataService;
 import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -28,7 +27,7 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class Inventory {
 	private InventoryDataService inventoryData;
 	//TODO transferData是增删查改机构的时候用的
-	//应该用Order来拿
+	//应该用Receipt来拿
 //	private TransferDataService transferData;
 
 	public Inventory() {
@@ -70,7 +69,7 @@ public class Inventory {
 	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) throws RemoteException {
 		
 		TransferArrivalListPO receipt = null;
-		//应该用Order来拿
+		//应该用Receipt来拿
 //				transferData.findList(ArrivalListID); TODO
 		String ID = inventoryData.getImportID();
 		String commodities = receipt.getTransferCenterID();

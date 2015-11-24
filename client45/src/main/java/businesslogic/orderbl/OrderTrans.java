@@ -2,7 +2,9 @@ package businesslogic.orderbl;
 
 import java.util.ArrayList;
 
+import po.CommodityPO;
 import po.OrderPO;
+import state.CommodityState;
 import state.ReceiptType;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -20,10 +22,30 @@ public class OrderTrans {
 				po.getRecipientTel(), po.getRecipientCo(), po.getMidAddres(), po.getSendTime(), po.getRecipientTime(),
 				po.getMoney());
 	}
-	public static ArrayList<OrderVO> convertPOstoVOs(ArrayList<OrderPO> pos){
+	public static ArrayList<OrderVO> convertOrderPOstoVOs(ArrayList<OrderPO> pos){
 		ArrayList<OrderVO> vos = new ArrayList<>(pos.size());
 		for (OrderPO orderPO : pos) {
 			vos.add(convertPOtoVO(orderPO));
+		}
+		return vos;
+	}
+	
+	public static CommodityVO convertPOtoVO(CommodityPO po){
+		if(po==null)
+			return null;
+		else {
+			String commodityType = po.getCommodityType();
+			double weight = po.getWeight();
+			double volumn = po.getVolumn();
+			CommodityState commodityState = po.getCommodityState();			
+			return new CommodityVO(commodityType, weight, volumn, commodityState);
+		}
+	}
+	
+	public static ArrayList<CommodityVO> convertCommodityPOstoVOs(ArrayList<CommodityPO> pos){
+		ArrayList<CommodityVO> vos = new ArrayList<CommodityVO>();
+		for (CommodityPO po : pos) {
+			vos.add(convertPOtoVO(po));
 		}
 		return vos;
 	}

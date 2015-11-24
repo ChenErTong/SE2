@@ -7,9 +7,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import config.RMIConfig;
+import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
-import dataservice.transferdataservice.TransferDataService;
-import po.CommodityPO;
+import po.OrderPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -22,13 +22,13 @@ import vo.receiptvo.TransferOrderVO;
 
 public class Transfer {
 	private ReceiptDataService receiptData;
-	private TransferDataService transferData;
+	private OrderDataService orderDataService;
 
 	public Transfer() {
 		try {
 			receiptData = (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 
-			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+			orderDataService = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -43,16 +43,14 @@ public class Transfer {
 		return ConfirmState.CONFIRM;
 	}
 
-	public ArrayList<CommodityVO> getAllCommodities() {
-		//应该用Order来拿
-		//TODO
-		ArrayList<CommodityPO> pos = null;
-//				transferData.findCommodities();
-		ArrayList<CommodityVO> vos = new ArrayList<CommodityVO>();
-		for (CommodityPO po : pos) {
-			CommodityVO vo = new CommodityVO(po.getCommodityType(), po.getWeight(), po.getVolumn(),
-					po.getCommodityState());
-			vos.add(vo);
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
+		ArrayList<OrderPO> orders = orderDataService.find();
+		ArrayList<CommodityVO> vos=new ArrayList<>();
+		for (OrderPO orderPO : orders) {
+			ArrayList<CommodityVO> vosForSingleOrder = orderPO.getCommodityVO();
+			for (CommodityVO commodityVO : vosForSingleOrder) {
+				vos.add(commodityVO);
+			}
 		}
 		return vos;
 	}

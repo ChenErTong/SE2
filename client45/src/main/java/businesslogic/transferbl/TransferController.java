@@ -22,8 +22,12 @@ public class TransferController implements TransferBLService{
 
 	@Override
 	public ArrayList<CommodityVO> getAllCommodities() {
-		
-		return TransferBL.getAllCommodities();
+		try {
+			return TransferBL.getAllCommodities();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
