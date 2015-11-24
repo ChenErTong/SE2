@@ -10,7 +10,7 @@ import state.ResultMessage;
 public class _Facility_Data_Stub implements FacilityDataService {
 	@Override
 	public FacilityPO find(String id) {
-		return null;
+		return new FacilityPO(id, null, id, id, null);
 	}
 
 	@Override

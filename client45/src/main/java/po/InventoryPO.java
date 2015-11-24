@@ -1,45 +1,67 @@
 package po;
 
+import java.io.Serializable;
+
+import state.ReceiptType;
+
 /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
 	
-public class InventoryPO extends PersistentObject {
-	/**serialVersionUID*/
-	private static final long serialVersionUID = 1L;
-	private int num;
-	public String lLocation;
-	public int size;
-	
-	public int getNum() {
-		return num;
-	}
 
-	public void setNum(int num) {
-		this.num = num;
+public class InventoryPO extends PersistentObject  {
+	/** serialVersionUID */
+	private static final long serialVersionUID = -2898348688803208513L;
+	
+	public int a;
+	public int b;
+	public int c;
+	public int d;
+	public String  EmptyOrFull;
+	public InventoryPO(String id, ReceiptType type,int a, int b, int c, int d, String emptyOrFull) {
+		super(id, type);
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+		EmptyOrFull = emptyOrFull;
 	}
-
-	public InventoryPO(String id, String lLocation, int size,int num) {
-		super(id);
-		this.lLocation = lLocation;
-		this.size = size;
-		this.num= num;
+	public int getA() {
+		return a;
+	}
+	public void setA(int a) {
+		this.a = a;
+	}
+	public int getB() {
+		return b;
+	}
+	public void setB(int b) {
+		this.b = b;
+	}
+	public int getC() {
+		return c;
+	}
+	public void setC(int c) {
+		this.c = c;
+	}
+	public int getD() {
+		return d;
+	}
+	public void setD(int d) {
+		this.d = d;
+	}
+	public String getEmptyOrFull() {
+		return EmptyOrFull;
+	}
+	public void setEmptyOrFull(String emptyOrFull) {
+		EmptyOrFull = emptyOrFull;
+	}
 	}
 	
-	public String getlLocation() {
-		return lLocation;
-	}
-	public void setlLocation(String lLocation) {
-		this.lLocation = lLocation;
-	}
-	public int getSize() {
-		return size;
-	}
-	public void setSize(int size) {
-		this.size = size;
-	}
 	
 	
 	
-}
+	
+	
+	
 

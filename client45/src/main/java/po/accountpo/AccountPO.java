@@ -1,6 +1,7 @@
 package po.accountpo;
 
 import po.PersistentObject;
+import state.ReceiptType;
 
 
 
@@ -32,10 +33,10 @@ public class AccountPO extends PersistentObject{
 	/**每日订单完成**/
 	private int ReceiptNum;
 	
-	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, double salary,
+	public AccountPO(String ID,ReceiptType type,String duty, String name, String birthDay, String IDCard, String phone, double salary,
 			String workTime, int receiptNum) {
 		
-		super(ID);
+		super(ID,type);
 		this.Duty = duty;
 		this.Name = name;
 		this.BirthDay = birthDay;

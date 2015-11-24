@@ -3,6 +3,8 @@ package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import state.ReceiptType;
+
 /**
  * 财务人员进行收款信息汇总时所需要的收款信息,包括收款日期、收款单位、收款人、收款方、收款金额、收款地点
  * @author zsq
@@ -23,8 +25,8 @@ public class ExpensePO extends PersistentObject{
 	/**收款日期,系统自动生成*/
 	private String date;
 	
-	public ExpensePO(String ID,String workshop,double money,String address){
-		super(ID);
+	public ExpensePO(String ID,ReceiptType type,String workshop,double money,String address){
+		super(ID, type);
 		this.ID = ID;
 		this.workshop = workshop;
 		this.money = money;
