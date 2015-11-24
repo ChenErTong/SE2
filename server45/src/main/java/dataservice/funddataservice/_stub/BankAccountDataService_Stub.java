@@ -51,6 +51,11 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
