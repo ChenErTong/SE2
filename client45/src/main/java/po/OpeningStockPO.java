@@ -3,7 +3,6 @@ package po;
 import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
-import state.ReceiptType;
 
 /**
  * 期初建账持久化对象
@@ -19,7 +18,7 @@ public class OpeningStockPO extends PersistentObject {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2898348688803208513L;
-
+	
 	private ArrayList<TransferPO> transfers;
 	
 	private ArrayList<BranchPO> branchs;
