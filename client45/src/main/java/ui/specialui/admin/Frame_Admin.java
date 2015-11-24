@@ -11,7 +11,6 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 
 public class Frame_Admin extends MyJFrame implements ActionListener{
 
@@ -26,8 +25,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
-
-	@SuppressWarnings("deprecation")
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){

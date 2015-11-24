@@ -29,10 +29,34 @@ public class Panel_Finance_AddBankAccount extends MyTranslucentPanel{
 		balanceField = new MyJTextField(380,80,150,30);
 		this.add(balanceField);
 		
-		
-
+	}
+	
+	public  void setUnEditable(){
+		nameField.setEditable(false);
+		balanceField.setEditable(false);
+	}
+	
+	public String[] getData(){
+		String [] data = new String[3];
+		//data[0]用于存放id
+		data[1] = nameField.getText();
+		data[2] = balanceField.getText();
+		if(data[1].equals("")||data[2].equals("")){
+			return null;
+		}
+		return data;
+	}
+	
+	public  void setData(String[] data){
+		nameField.setText(data[0]);
+		balanceField.setText(data[1]);
 	}
 
 	private static final long serialVersionUID = 1L;
+	public void refresh() {
+		nameField.setText(null);
+		balanceField.setText(null);
+	}
 
+	
 }
