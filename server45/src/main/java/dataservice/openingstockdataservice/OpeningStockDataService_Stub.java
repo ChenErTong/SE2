@@ -1,5 +1,8 @@
 package dataservice.openingstockdataservice;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 import po.OpeningStockPO;
 import state.ResultMessage;
 
@@ -29,6 +32,12 @@ public class OpeningStockDataService_Stub implements OpeningStockDataService{
 
 	@Override
 	public String getID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OpeningStockPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

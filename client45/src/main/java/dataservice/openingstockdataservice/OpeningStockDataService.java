@@ -1,6 +1,7 @@
 package dataservice.openingstockdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import po.OpeningStockPO;
 import state.ResultMessage;
@@ -21,5 +22,7 @@ public interface OpeningStockDataService {
 	public void init() throws RemoteException;
 	/**返回OpeningStockPO持久数据**/
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException;
+	
+	public ArrayList<OpeningStockPO> find() throws RemoteException;
 }
 

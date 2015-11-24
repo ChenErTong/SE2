@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import data.ManageData;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.OpeningStockPO;
-import state.ResultMessage;
 import util.SerSaveAndLoad;
 import util.Util;
 
@@ -20,12 +19,12 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 		poList=new SerSaveAndLoad<OpeningStockPO>("data/"+NAME+".ser");
 	}
 
-	@Override
-	public ResultMessage add(OpeningStockPO po) throws RemoteException {
-		if (poList.add(po))
-			return ResultMessage.SUCCESS;
-		return ResultMessage.FAIL;
-	}
+//	@Override
+//	public ResultMessage add(OpeningStockPO po) throws RemoteException {
+//		if (poList.add(po))
+//			return ResultMessage.SUCCESS;
+//		return ResultMessage.FAIL;
+//	}
 
 	@Override
 	public void init() throws RemoteException {

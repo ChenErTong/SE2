@@ -8,6 +8,7 @@ import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
+import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
@@ -53,6 +54,11 @@ public class OpeningStockBLService_Stub implements OpeningStockBLService{
 	public ResultMessage find(int id) {
 		// TODO Auto-generated method stub
 		return resultfind;
+	}
+	@Override
+	public ArrayList<OpeningStockVO> show() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

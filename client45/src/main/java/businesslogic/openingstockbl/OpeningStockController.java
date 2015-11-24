@@ -1,5 +1,6 @@
 package businesslogic.openingstockbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
@@ -8,26 +9,41 @@ import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
+import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
 public class OpeningStockController implements OpeningStockBLService {
-
+	private OpeningStock OpeningStockBL = new OpeningStock();
 	@Override
 	public ResultMessage add(
-			ArrayList<TransferVO> commodities, 
-			ArrayList<BranchVO> clients0,
-			ArrayList<AccountVO> clients1, 
-			ArrayList<FacilityVO> clients2, 
-			ArrayList<InventoryVO> clients3,
-			ArrayList<BankAccountVO> accounts) {
-		// TODO Auto-generated method stub
+			ArrayList<TransferVO> transferVOs, 
+			ArrayList<BranchVO> branchVOs,
+			ArrayList<AccountVO> accountVOs, 
+			ArrayList<FacilityVO> facilityVOs, 
+			ArrayList<InventoryVO> inventoryVOs,
+			ArrayList<BankAccountVO> bankAccountVOs) {
+		try {
+			return OpeningStockBL.add(transferVOs, branchVOs, accountVOs, facilityVOs, inventoryVOs, bankAccountVOs);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public ResultMessage find(int id) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<OpeningStockVO> show() {
+		try {
+			return OpeningStockBL.show();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

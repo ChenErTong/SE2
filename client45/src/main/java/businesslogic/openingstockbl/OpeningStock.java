@@ -67,5 +67,11 @@ public class OpeningStock {
 		OpeningStockVO vo = OpeningStockTrans.convertPOtoVO(po);
 		return vo;
 	}
+	
+	public ArrayList<OpeningStockVO> show() throws RemoteException {
+		ArrayList<OpeningStockPO> pos = openingStockData.find();
+		ArrayList<OpeningStockVO> vos = OpeningStockTrans.convertPOstoVOs(pos);
+		return vos;
+	}
 
 }

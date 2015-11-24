@@ -7,6 +7,7 @@ import vo.BankAccountVO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
+import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
@@ -21,4 +22,5 @@ public interface OpeningStockBLService {
 	ArrayList< BankAccountVO > accounts);
 	/**查找到该期初账目**/
 	public ResultMessage find (int id);
+	public ArrayList<OpeningStockVO> show();
 }

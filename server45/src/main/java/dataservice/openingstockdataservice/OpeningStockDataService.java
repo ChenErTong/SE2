@@ -1,6 +1,7 @@
 package dataservice.openingstockdataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.DataService;
 import po.OpeningStockPO;
@@ -12,6 +13,8 @@ public interface OpeningStockDataService extends DataService<OpeningStockPO> {
 	public ResultMessage add(OpeningStockPO po) throws RemoteException;
 	public String getID() throws RemoteException;
 	public void init() throws RemoteException;
+	public ArrayList<OpeningStockPO> find() throws RemoteException;
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException;
+	
 }
 
