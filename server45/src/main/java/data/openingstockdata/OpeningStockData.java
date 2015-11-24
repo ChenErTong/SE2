@@ -27,7 +27,7 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 
 	@Override
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
+		// TODO 我觉得不要了
 
 	}
 

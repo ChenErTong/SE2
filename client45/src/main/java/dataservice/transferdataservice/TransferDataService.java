@@ -14,5 +14,5 @@ public interface TransferDataService extends ManageDataService<TransferPO> {
 	public static final String NAME = "TransferData";
 	public TransferArrivalListPO  findList(String id) ;
 	public ArrayList<CommodityPO> findCommodities();
-	public String getID() throws RemoteException;
+	public String getID(String cityCode) throws RemoteException;
 }

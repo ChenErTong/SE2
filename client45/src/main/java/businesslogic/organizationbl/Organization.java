@@ -39,8 +39,10 @@ public class Organization {
 		return BranchTrans.convertPOstoVOs(branchPOs);
 	}
 
-	public String getBranchID()throws RemoteException  {
-		return branchData.getID();
+	public String getBranchID(String city)throws RemoteException  {
+		//从城市名称获得城市编号
+		String cityCode = null;
+		return branchData.getID(cityCode);
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
@@ -62,8 +64,10 @@ public class Organization {
 		return TransferTrans.convertPOstoVOs(pos);
 	}
 
-	public String getTransferID()throws RemoteException  {
-		return transferData.getID();
+	public String getTransferID(String city)throws RemoteException  {
+		//从城市名称获得城市编号
+		String cityCode=null;
+		return transferData.getID(cityCode);
 	}
 
 	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {

@@ -24,9 +24,9 @@ public class OrganizationController implements OrganizationBLService {
 	}
 
 	@Override
-	public String getBranchID() {
+	public String getBranchID(String city) {
 		try {
-			return organization.getBranchID();
+			return organization.getBranchID(city);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -77,9 +77,9 @@ public class OrganizationController implements OrganizationBLService {
 	}
 
 	@Override
-	public String getTransferID() {
+	public String getTransferID(String city) {
 		try {
-			return organization.getTransferID();
+			return organization.getTransferID(city);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

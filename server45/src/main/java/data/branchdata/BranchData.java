@@ -6,6 +6,7 @@ import data.ManageData;
 import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class BranchData extends ManageData<BranchPO> implements BranchDataService {
 
@@ -17,8 +18,14 @@ public class BranchData extends ManageData<BranchPO> implements BranchDataServic
 	public BranchData() throws RemoteException {
 		poList=new SerSaveAndLoad<BranchPO>("data/"+NAME+".ser");
 	}
+	/**
+	 * 营业厅编号(025(城市编码)+1(营业厅)+000(鼓楼营业厅))
+	 * @author Ann
+	 */
 	@Override
-	public String getID() {
-		return null;
+	public String getID(String cityCode) {
+		String prifix=cityCode+1;
+		int branchNumber=poList.size();
+		return prifix+Util.transIntToString(branchNumber, 3);
 	}
 }

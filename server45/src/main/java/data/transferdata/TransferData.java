@@ -6,6 +6,7 @@ import data.ManageData;
 import dataservice.transferdataservice.TransferDataService;
 import po.TransferPO;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class TransferData extends ManageData<TransferPO> implements TransferDataService {
 
@@ -17,10 +18,15 @@ public class TransferData extends ManageData<TransferPO> implements TransferData
 	public TransferData() throws RemoteException {
 		poList=new SerSaveAndLoad<TransferPO>("data/"+NAME+".ser");
 	}
+	/**
+	 * 中转中心编号（025城市编码+0营业厅+00鼓楼中转中心)
+	 * @author Ann
+	 */
 	@Override
-	public String getID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public String getID(String cityCode) throws RemoteException {
+		String prifix=cityCode+0;
+		int branchNumber=poList.size();
+		return prifix+Util.transIntToString(branchNumber, 2);
 	}
 
 }

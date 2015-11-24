@@ -39,8 +39,9 @@ public class _Branch_Data_Stub implements BranchDataService {
 		return null;
 	}
 
+
 	@Override
-	public String getID() {
+	public String getID(String cityCode) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

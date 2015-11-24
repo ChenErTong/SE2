@@ -47,14 +47,15 @@ public class _Transfer_Data_Stub implements TransferDataService {
 		return null;
 	}
 
+
 	@Override
-	public String getID() throws RemoteException {
+	public ArrayList<CommodityPO> findCommodities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<CommodityPO> findCommodities() {
+	public String getID(String cityCode) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

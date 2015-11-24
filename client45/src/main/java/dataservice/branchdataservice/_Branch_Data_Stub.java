@@ -28,12 +28,6 @@ public class _Branch_Data_Stub implements BranchDataService {
 	}
 
 	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<BranchPO> find() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
@@ -41,6 +35,12 @@ public class _Branch_Data_Stub implements BranchDataService {
 
 	@Override
 	public ResultMessage delete(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getID(String cityCode) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

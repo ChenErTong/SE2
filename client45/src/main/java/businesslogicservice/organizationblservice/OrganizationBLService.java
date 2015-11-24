@@ -23,7 +23,7 @@ public interface OrganizationBLService {
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getBranchID();
+	public String getBranchID(String city);
 	/**
 	 * 添加一个机构
 	 * @param vo OrganizationVO
@@ -60,7 +60,7 @@ public interface OrganizationBLService {
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getTransferID();
+	public String getTransferID(String city);
 	/**
 	 * 添加一个机构
 	 * @param vo OrganizationVO

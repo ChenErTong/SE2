@@ -42,7 +42,7 @@ public class _Transfer_Data_Stub implements TransferDataService {
 	}
 
 	@Override
-	public String getID() throws RemoteException {
+	public String getID(String cityCode) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
