@@ -3,7 +3,6 @@ package ui.specialui.transfer_counterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -144,6 +143,17 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			}else{
 				new MyNotification(this, "请至少选择一件订单", Color.RED);
+			}
+		}else if(e.getActionCommand().equals("produceArrivalList")){
+			//生成到达单
+			if(((TransferReceiveManage)subPanel).produceArrivalList()){
+				new MyNotification(this, "成功生成到达单", Color.GREEN);
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				//TODO
+				//到达单显示界面
+			}else{
+				new MyNotification(this, "请完成中转到达单信息填写", Color.RED);
 			}
 		}
 	}
