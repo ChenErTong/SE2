@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
+import po.receiptpo.TransferArrivalListPO;
 import state.ReceiptState;
 import util.SerSaveAndLoad;
 import util.Util;
@@ -29,6 +30,12 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
