@@ -51,10 +51,10 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo)  {
+	public ResultMessage addCommodities(String ID ,String ArrivalListID, InventoryVO vo)  {
 		// TODO Auto-generated method stub
 		try {
-			return InventoryBL.addCommodities(ArrivalListID, vo);
+			return InventoryBL.addCommodities( ID ,ArrivalListID, vo);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,10 +81,10 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) {
+	public ResultMessage minusCommodities(String ID ,String ImportID, String Transfer) {
 		// TODO Auto-generated method stub
 		try {
-			return InventoryBL.minusCommodities(ImportID, Transfer);
+			return InventoryBL.minusCommodities( ID ,ImportID, Transfer);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,10 +111,10 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage adjust(InventoryVO before, InventoryVO now) {
+	public ResultMessage adjust(String ID ,InventoryVO before, InventoryVO now) {
 		// TODO Auto-generated method stub
 		try {
-			return InventoryBL.adjust(before, now);
+			return InventoryBL.adjust(ID ,before, now);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

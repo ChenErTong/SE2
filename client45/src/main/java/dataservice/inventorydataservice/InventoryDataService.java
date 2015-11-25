@@ -36,6 +36,7 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	/**生成transferid**/
 	public String getTransferID()throws RemoteException;
 	
+	public String getLotNum()throws RemoteException;;
 	/**获得位置信息**/
 	public InventoryPO getInventoryPO(String id)throws RemoteException;
 	

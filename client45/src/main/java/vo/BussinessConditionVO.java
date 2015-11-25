@@ -4,7 +4,7 @@ public class BussinessConditionVO {
 	
 
 	/**
-	 * 经营情况表
+	 * 成本收益表
 	 * 统计显示一段时间内的经营收支状况和利润。
 	 * 显示信息：	
 	 * 1. 收入类

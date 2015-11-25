@@ -82,20 +82,21 @@ public class _Inventory_Stub implements InventoryBLService{
 
 	
 
+	
 	@Override
-	public ResultMessage adjust(InventoryVO before, InventoryVO now) {
+	public ResultMessage addCommodities(String ID, String ArrivalListID, InventoryVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage addCommodities(String ArrivalListID, InventoryVO vo) {
+	public ResultMessage minusCommodities(String ID, String ImportID, String Transfer) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) {
+	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) {
 		// TODO Auto-generated method stub
 		return null;
 	}

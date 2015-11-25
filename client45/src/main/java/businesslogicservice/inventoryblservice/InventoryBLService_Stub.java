@@ -98,11 +98,7 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public ResultMessage addCommodities(String ID, InventoryVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
 		// TODO Auto-generated method stub
@@ -125,13 +121,19 @@ public class InventoryBLService_Stub implements InventoryBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public ResultMessage  adjust(InventoryVO before, InventoryVO now) {
+	public ResultMessage addCommodities(String ID, String ArrivalListID, InventoryVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public ResultMessage minusCommodities(String ImportID, String Transfer) {
+	public ResultMessage minusCommodities(String ID, String ImportID, String Transfer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) {
 		// TODO Auto-generated method stub
 		return null;
 	}

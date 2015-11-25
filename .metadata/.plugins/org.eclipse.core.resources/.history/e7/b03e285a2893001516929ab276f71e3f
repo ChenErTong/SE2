@@ -1,0 +1,142 @@
+package businesslogicservice.inventoryblservice;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+import po.receiptpo.AdjustReceiptPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
+import state.ResultMessage;
+import vo.InventoryCheckVO;
+import vo.InventoryVO;
+import vo.InventoryViewVO;
+import vo.receiptvo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+import vo.receiptvo.TransferArrivalListVO;
+
+public class InventoryBLService_Stub implements InventoryBLService{
+	public String ID = null;
+	public  String destination = null;
+	public  String transferID = null;
+	public String commoditiesID = null;
+	/** 出库数量 **/
+	public int exportNumber;
+	/** 入库数量）**/
+	public int importNumber;
+	/**库存情况**/
+	public ArrayList<InventoryVO> InventoryCondition;  
+    /** 商品列表 */
+	public ArrayList<InventoryImportReceiptVO> receipts;
+	/** 批次 */
+	public String date;
+	/** 批号 */
+	public String lotNum;
+	
+	String importID;
+	String exportID;
+	String adjustID;
+	
+	ResultMessage resultadd;
+	ResultMessage resultimport;
+	ResultMessage resultminus;
+	ResultMessage resultexport;
+	
+	 String importDestination;int a; int b; int c; int d;
+	
+	String exportDestination; String transfer;
+	
+	int exA;int exB;int exC;int exD; int aftA; int aftB;
+	int aftC; int aftD;
+	public InventoryBLService_Stub(int exportNumber, int importNumber, ArrayList<InventoryVO> inventoryCondition,
+			ArrayList<InventoryImportReceiptVO> receipts, String date, String lotNum, String importID, String exportID,
+			String adjustID, ResultMessage resultadd,ResultMessage resultimport,
+			ResultMessage resultminus,ResultMessage resultexport, String importDestination,
+			int a, int b, int c, int d, String exportDestination, String transfer,  int exA, int exB, int exC,
+			int exD, int aftA, int aftB, int aftC, int aftD) {
+		super();
+		this.exportNumber = exportNumber;
+		this.importNumber = importNumber;
+		InventoryCondition = inventoryCondition;
+		this.receipts = receipts;
+		this.date = date;
+		this.lotNum = lotNum;
+		this.importID = importID;
+		this.exportID = exportID;
+		this.adjustID = adjustID;
+		 this.resultadd=resultadd;
+		 this.resultimport=resultimport;
+		 this.resultminus=resultminus;
+		 this.resultexport= resultexport;
+		this.importDestination = importDestination;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+		this.exportDestination = exportDestination;
+		this.transfer = transfer;
+		this.exA = exA;
+		this.exB = exB;
+		this.exC = exC;
+		this.exD = exD;
+		this.aftA = aftA;
+		this.aftB = aftB;
+		this.aftC = aftC;
+		this.aftD = aftD;
+	}
+	@Override
+	public InventoryViewVO viewInventory(String beginDate, String endDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public InventoryCheckVO checkRecord(String enddate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getImportID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage addCommodities(String ID, InventoryVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getExportID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	@Override
+	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getAdjustID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage  adjust(InventoryVO before, InventoryVO now) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ResultMessage minusCommodities(String ImportID, String Transfer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	
+	}

@@ -27,7 +27,7 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 		}
 		return null;
 	}
-
+    
 	public ResultMessage add(PO po) throws RemoteException {
 		if (poList.add(po))
 			return ResultMessage.SUCCESS;
