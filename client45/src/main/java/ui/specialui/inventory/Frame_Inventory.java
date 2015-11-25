@@ -1,14 +1,17 @@
 package ui.specialui.inventory;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.inventory.check.InventoryCheck;
 import ui.specialui.inventory.export.CargoExport;
 import ui.specialui.inventory.import_.CargoImport;
-import ui.specialui.inventory.initialization.InventoryInitialization;
 import ui.specialui.inventory.stocking.Stocking;
 import ui.specialui.inventory.zone_adjust.InventoryZoneAdjust;
 import ui.specialui.transfer_counterman.Frame_Transfer;
@@ -16,11 +19,11 @@ import ui.specialui.transfer_counterman.Frame_Transfer;
 public class Frame_Inventory extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private Panel_Inventory_Total totalPanel;
-	private MyJPanel subPanel;
+	private MyJPanel subPanel;	
 	
 	public Frame_Inventory() {
 //		super(false);
-		
+				
 		this.totalPanel = new Panel_Inventory_Total(this);
 		this.add(totalPanel);
 		
@@ -68,10 +71,24 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 			subPanel = new CargoExport(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("InventoryInitialization")){
-			//进入库存信息初始化界面
-			totalPanel.setVisible(false);
-			subPanel = new InventoryInitialization(this);
-			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			MyNotification notification = new MyNotification(this, "库存信息初始化后不可恢复！确认请点击提示板", Color.RED);
+			notification.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e){
+					if(Frame_Inventory.this.initInventory()){
+						new MyNotification(Frame_Inventory.this, "库存信息初始化成功", Color.GREEN);
+						notification.dispose();
+					}
+				}
+			});
 		}
+	}
+	
+	/**
+	 * TODO 库存信息初始化操作
+	 * @return
+	 */
+	protected boolean initInventory() {
+		// TODO
+		return true;
 	}
 }
