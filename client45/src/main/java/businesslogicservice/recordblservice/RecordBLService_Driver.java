@@ -8,7 +8,7 @@ import businesslogicservice.recordblservice.RecordBLService_Stub;
 import businesslogicservice.openingstockblservice.OpeningStockBLService_Driver;
 import vo.BussinessConditionVO;
 import vo.BussinessProcessVO;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
 

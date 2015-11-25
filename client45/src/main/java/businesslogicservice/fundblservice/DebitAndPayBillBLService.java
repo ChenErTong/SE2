@@ -9,7 +9,7 @@ import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 /**
  * 负责实现资金管理界面所需要的服务

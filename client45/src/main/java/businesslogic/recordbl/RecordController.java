@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.recordblservice.RecordBLService;
 import vo.BussinessConditionVO;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class RecordController implements RecordBLService{
     Record  RecordBL;

@@ -1,6 +1,6 @@
 package businesslogicservice.fundblservice._driver;
 
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 
 public class DebitAndPayBillBLService_Driver {

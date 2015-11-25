@@ -13,7 +13,7 @@ import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import state.ConfirmState;
 import state.ResultMessage;
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 
 public class Expense {
 

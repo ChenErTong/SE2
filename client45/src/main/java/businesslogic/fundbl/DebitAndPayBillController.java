@@ -11,7 +11,7 @@ import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class DebitAndPayBillController implements DebitAndPayBillBLService{
     DebitAndPayBill DebitAndPayBL;

@@ -41,7 +41,12 @@ private static final long serialVersionUID = 1L;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){
-			if(subPanel != null){
+			if(modifyReceiptInfo!=null&&subPanel!=null){
+				modifyReceiptInfo.setVisible(false);
+				this.remove(modifyReceiptInfo);
+				modifyReceiptInfo = null;
+				subPanel.setVisible(true);
+			}else if(modifyReceiptInfo==null&&subPanel != null){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = null;
@@ -107,7 +112,7 @@ private static final long serialVersionUID = 1L;
 		}
 		else if(e.getActionCommand().equals("ModifyReceiptInfo")){
 	
-			handleReceipt.setVisible(false);
+			((Panel_Manager_HandleReceipt)(subPanel)).setVisible(false);
 			modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
 			this.add(modifyReceiptInfo);
 			this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
@@ -124,6 +129,8 @@ private static final long serialVersionUID = 1L;
 			
 		}else if(e.getActionCommand().equals("DeleteBase")){
 			
+		}else if(e.getActionCommand().equals("ExportIncomeTable")){
+		
 		}
 	}
 	

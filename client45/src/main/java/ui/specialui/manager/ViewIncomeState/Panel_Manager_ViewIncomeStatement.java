@@ -1,7 +1,5 @@
 package ui.specialui.manager.ViewIncomeState;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -10,7 +8,6 @@ import ui.specialui.manager.FrameManager;
 
 public class Panel_Manager_ViewIncomeStatement extends MyJPanel {
 
-    private Panel_Manager_SearchIncomeStatement searchPanel;
 	private Panel_Manager_IncomeState statePanel;
 	public Panel_Manager_ViewIncomeStatement(FrameManager frameManager) {
 		super(0, 0, 1280, 720);
@@ -20,52 +17,14 @@ public class Panel_Manager_ViewIncomeStatement extends MyJPanel {
 
 	private void initComponent(FrameManager frameManager) {
 		this.add(new MyJLabel(550, 20, 210, 90, "查看成本收益表", 24, true));
-		searchPanel = new Panel_Manager_SearchIncomeStatement();
-		this.add(searchPanel);
 		
-		statePanel = new Panel_Manager_IncomeState();
+		statePanel = new Panel_Manager_IncomeState(frameManager);
 		this.add(statePanel);
 		
-		MyJButton SelectedAllReceipts = new MyJButton(120, 673, 150, 40,"选中所有单据",14);
-		SelectedAllReceipts.setActionCommand("SelectedAllReceipts");
-		SelectedAllReceipts.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-			//	System.out.println("111");
-				
-			}
-			
-		});
-		this.add(SelectedAllReceipts);
-		SelectedAllReceipts.setVisible(true);
 		
-		MyJButton ViewIncomeTable = new MyJButton(380, 673, 150, 40,"成本收益表预览",14);
-		ViewIncomeTable.setActionCommand("ViewIncomeTable");
-		ViewIncomeTable.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//System.out.println("222");
-			}
-			
-		});
-		this.add(ViewIncomeTable);
-		ViewIncomeTable.setVisible(true);
-		
-		MyJButton ExportIncomeTable = new MyJButton(1040,673,150,40,"生成成本收益表",14);
+		MyJButton ExportIncomeTable = new MyJButton(1040,673,150,40,"导出成本收益表",14);
 		ExportIncomeTable.setActionCommand("ExportIncomeTable");
-		ExportIncomeTable.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+		ExportIncomeTable.addActionListener(frameManager);
 		this.add(ExportIncomeTable);
 		ExportIncomeTable.setVisible(true);
 	}

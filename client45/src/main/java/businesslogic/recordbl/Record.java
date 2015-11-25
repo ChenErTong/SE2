@@ -14,7 +14,7 @@ import dataservice.recorddataservice.RecordDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import vo.BussinessConditionVO;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
 	private RecordDataService recordData;

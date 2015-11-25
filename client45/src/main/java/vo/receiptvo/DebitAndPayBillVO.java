@@ -1,4 +1,4 @@
-package vo;
+package vo.receiptvo;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,8 +8,9 @@ import po.BankAccountPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
+import vo.ValueObject;
 
-public class DebitAndPayBillVO  {
+public class DebitAndPayBillVO  extends ValueObject{
 	private String ID;
 	private double money;
 	/**收款快递员的用户ID*/

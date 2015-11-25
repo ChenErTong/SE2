@@ -20,7 +20,6 @@ public class ReceiptVO extends ValueObject{
 	protected ReceiptType type;
 	
 	public ReceiptVO(String id, ReceiptType type){
-		super(id, type);
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());

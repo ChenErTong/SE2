@@ -1,6 +1,8 @@
 package businesslogic.fundbl;
 import java.util.ArrayList;
 
+
+
 /**
  * @author LIUXUANLIN
  */
@@ -9,8 +11,8 @@ import po.ExpensePO;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import vo.BankAccountVO;
-import vo.DebitAndPayBillVO;
-import vo.ExpenseVO;
+import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.ExpenseVO;
 
 public class FundTrans {
 	public static BankAccountPO convertVOtoPO(BankAccountVO vo){

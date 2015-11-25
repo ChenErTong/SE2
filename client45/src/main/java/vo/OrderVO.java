@@ -2,7 +2,7 @@ package vo;
 
 import po.OrderPO;
 
-public class OrderVO {
+public class OrderVO extends ValueObject{
 	// 订单号
 	private String orderIdString;
 	// 寄件人姓名、寄件人住址、

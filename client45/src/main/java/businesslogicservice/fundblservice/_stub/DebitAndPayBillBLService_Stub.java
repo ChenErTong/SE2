@@ -7,7 +7,7 @@ import java.util.HashMap;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import po.BankAccountPO;
 import po.receiptpo.DebitAndPayBillPO;

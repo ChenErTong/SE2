@@ -7,8 +7,8 @@ import java.rmi.RemoteException;
 import org.junit.Test;
 
 import state.ResultMessage;
-import vo.InventoryImportReceiptVO;
 import vo.InventoryVO;
+import vo.receiptvo.InventoryImportReceiptVO;
 
 public class TestImport {
 	private ResultMessage SUCCESS;

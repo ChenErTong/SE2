@@ -18,7 +18,7 @@ import state.ReceiptCondition;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;

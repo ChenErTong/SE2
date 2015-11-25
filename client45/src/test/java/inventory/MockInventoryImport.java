@@ -2,8 +2,8 @@ package inventory;
 
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
-import vo.InventoryImportReceiptVO;
 import vo.InventoryVO;
+import vo.receiptvo.InventoryImportReceiptVO;
 
 public class MockInventoryImport {
      

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import businesslogicservice.fundblservice.ExpenseBLService;
 import state.ConfirmState;
 import state.ResultMessage;
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 
 public class ExpenseController implements ExpenseBLService{
     Expense ExpenseBL;

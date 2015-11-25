@@ -3,9 +3,8 @@ package businesslogicservice.fundblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 import state.ResultMessage;
-
 import businesslogicservice.BLService;
 
 public interface ExpenseBLService extends BLService{

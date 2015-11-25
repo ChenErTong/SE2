@@ -8,7 +8,8 @@ import org.junit.Test;
 
 import po.receiptpo.InventoryExportReceiptPO;
 import state.ResultMessage;
-import vo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryExportReceiptVO;
+
 
 
 

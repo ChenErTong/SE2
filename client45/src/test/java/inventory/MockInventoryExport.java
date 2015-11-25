@@ -3,9 +3,8 @@ package inventory;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
-import vo.InventoryExportReceiptVO;
-import vo.InventoryImportReceiptVO;
 import vo.InventoryVO;
+import vo.receiptvo.InventoryExportReceiptVO;
 
 public class MockInventoryExport {
 	private  ResultMessage SUCCESS = null;

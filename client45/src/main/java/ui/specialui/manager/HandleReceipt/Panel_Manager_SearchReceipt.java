@@ -27,6 +27,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	private MyJButton selectButton;
 	private MyComboBox receiptTypeList;
 	private MyComboBox receiptStateList;
+	private static final long serialVersionUID = 1L;
 	public Panel_Manager_SearchReceipt() {
 		super(30,100, 655, 540);
 		this.initComponent();
@@ -112,9 +113,10 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		
 		receiptStateList = new MyComboBox(395,10,150,30,14,receiptState);
 		this.add(receiptStateList);
+		this.initTable();
 		
 		//the table
-		String[] headers = {"选择","单据编号","单据种类","单据状态"};
+		/*String[] headers = {"选择","单据编号","单据种类","单据状态"};
 		MyJTable	table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
@@ -136,13 +138,11 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());
 		jsp.setVisible(true);
-		this.add(jsp);
+		this.add(jsp);*/
 		
 		
-		  
 	}
-
-	private static final long serialVersionUID = 1L;
+	
 	
 	private void getApprovalData(int index) throws RemoteException{
 	}
@@ -181,7 +181,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		table.getColumnModel().getColumn(2).setMinWidth(180);
 		
 		JScrollPane jsp = new JScrollPane(table);
-		jsp.setBounds(85, 95, 380, 465);
+		jsp.setBounds(10, 50, 630, 485);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setVisible(true);

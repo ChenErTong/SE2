@@ -1,9 +1,11 @@
-package vo;
+package vo.receiptvo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ExpenseVO {
+import vo.ValueObject;
+
+public class ExpenseVO extends ValueObject{
 	
 	/**收款业务员ID*/
 	private String ID;

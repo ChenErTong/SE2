@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 
 
+
 import state.ConfirmState;
 import state.ResultMessage;
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 import businesslogicservice.fundblservice.ExpenseBLService;
 
 public class ExpenseBLService_Stub implements ExpenseBLService{

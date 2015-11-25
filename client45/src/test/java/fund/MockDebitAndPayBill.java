@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import businesslogic.fundbl.DebitAndPayBill;
 import state.ReceiptType;
-import vo.DebitAndPayBillVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class MockDebitAndPayBill extends DebitAndPayBill{
 	private String payID;

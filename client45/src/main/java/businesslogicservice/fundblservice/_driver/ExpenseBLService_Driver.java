@@ -1,6 +1,6 @@
 package businesslogicservice.fundblservice._driver;
 
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 
 import java.rmi.RemoteException;
 

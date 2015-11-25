@@ -3,7 +3,7 @@ package fund;
 import org.junit.Test;
 
 import businesslogic.fundbl.Expense;
-import vo.ExpenseVO;
+import vo.receiptvo.ExpenseVO;
 
 public class TestExpense {
 
