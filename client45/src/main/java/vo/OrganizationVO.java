@@ -6,14 +6,14 @@ import java.util.Date;
 import state.OrganizationType;
 
 public class OrganizationVO {
-	protected String organizationID;
+	public String organizationID;
 	/**����ʱ�䣬ϵͳ�Զ�����*/
-	protected String date;
+	public String date;
 	/**Ա������*/
-	protected int number;
+	public int number;
 	/**������ַ*/
-	protected String address;
-	protected OrganizationType organizationType;
+	public String address;
+	public OrganizationType organizationType;
 	public OrganizationVO(String organizationID,String address,int number,OrganizationType organizationType){
 
 		this.organizationID = organizationID;
@@ -23,20 +23,5 @@ public class OrganizationVO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
 	}
-	public String getOrganizationID() {
-		return organizationID;
-	}
-	
-	public double getNumber() {
-		return number;
-	}
-	
-	public String getAddress() {
-		return address;
-	}
-	public String getDate() {
-		return date;
-	}
-	
 
 }

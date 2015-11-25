@@ -1,14 +1,5 @@
 package user;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import state.ResultMessage;
-import state.UserIdentity;
-import vo.UserVO;
-
-
 /*public class TestUser {
 	@Test
 	public void testUser() {

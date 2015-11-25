@@ -52,7 +52,7 @@ public class Order{
 			po = orderData.find(orderNumber);
 			OrderVO vo = OrderTrans.convertPOtoVO(po);
 			System.out.println("找到了响应的PO");
-			if(vo.getSenderName().equals(senderName)){
+			if(vo.senderName.equals(senderName)){
 				System.out.println("名字正确，返回");
 				return vo;
 			}else {

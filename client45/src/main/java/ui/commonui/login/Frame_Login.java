@@ -75,8 +75,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 			String type = "";
 			userID = userIdField.getText();
 			for(int i=0;i<userController.show(type).size();i++){
-				userName = userController.show(type).get(i).getUserName();
-				userIden = userController.show(type).get(i).getIden();
+				userName = userController.show(type).get(i).userName;
+				userIden = userController.show(type).get(i).iden;
 			}
 		}
 		if(iden==null){

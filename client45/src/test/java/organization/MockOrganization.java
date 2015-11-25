@@ -1,8 +1,6 @@
 package organization;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import businesslogic.organizationbl.Organization;
 import state.ResultMessage;

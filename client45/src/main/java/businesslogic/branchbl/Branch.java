@@ -84,7 +84,7 @@ public class Branch{
 		ArrayList<OrderVO> orderVOs = getAllOrders();
 		ArrayList<String> orderNumbers = new ArrayList<>();
 		for (OrderVO orderVO : orderVOs) {
-			orderNumbers.add(orderVO.getOrderIdString());
+			orderNumbers.add(orderVO.ID);
 		}
 		return orderNumbers;
 	}

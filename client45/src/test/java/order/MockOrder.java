@@ -2,25 +2,20 @@ package order;
 
 import java.util.ArrayList;
 
+import businesslogic.orderbl.Order;
 import po.OrderPO;
-import dataservice.orderdataservice.OrderDataService;
-import dataservice.orderdataservice._Order_Data_Stub;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import businesslogic.orderbl.Order;
 
 public class MockOrder extends Order {
 	ArrayList<CommodityVO> commmodities;
 	OrderPO order;
 	
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		this.order = new OrderPO(
-				order.getOrderIdString(), 
-				null, order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
-				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
-				commmodities,order.getMidAddres(),
-				order.getSendTime(),order.getRecipientTime(),order.getMoney());
+		this.order = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
+				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
+				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
 		return ResultMessage.SUCCESS;
 	}
 	
