@@ -74,5 +74,12 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 
 	/** 增加一条po数据即生成调整单据 **/
 	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException;
+	
+	/** 出库数量 **/
+	public int  getexportNumber(String beginDate, String endDate)throws RemoteException;
+	/** 入库数量）**/
+	public int getimportNumber(String beginDate, String endDate)throws RemoteException;
+	/**总数量**/
+	public int getNum(String beginDate, String endDate)throws RemoteException;
 
 }

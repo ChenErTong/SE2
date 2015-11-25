@@ -87,23 +87,6 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 
 	*/
 
-	@Override
-	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getNum(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	/*@Override
 	public String getInventoryID() throws RemoteException {

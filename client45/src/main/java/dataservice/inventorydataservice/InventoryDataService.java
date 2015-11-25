@@ -17,12 +17,7 @@ public interface InventoryDataService extends ManageDataService<InventoryPO>{
 	public void init() throws RemoteException;
 	
 	
-	/** 出库数量 **/
-	public int  getexportNumber(String beginDate, String endDate)throws RemoteException;
-	/** 入库数量）**/
-	public int getimportNumber(String beginDate, String endDate)throws RemoteException;
-	/**总数量**/
-	public int getNum(String beginDate, String endDate)throws RemoteException;
+
 	
 	/** 获得位置信息 **/
 	public InventoryPO getInventoryPO(String id) throws RemoteException;

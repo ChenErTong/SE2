@@ -25,23 +25,6 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getNum(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public InventoryPO getInventoryPO(String id) throws RemoteException {

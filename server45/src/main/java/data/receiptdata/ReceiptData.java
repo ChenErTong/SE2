@@ -166,4 +166,22 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return super.add(po);
 	}
 
+	@Override
+	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNum(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

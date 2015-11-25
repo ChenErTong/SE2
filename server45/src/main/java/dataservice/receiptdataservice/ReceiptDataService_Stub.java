@@ -138,5 +138,20 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getNum(String beginDate, String endDate) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
