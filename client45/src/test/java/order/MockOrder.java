@@ -13,9 +13,9 @@ public class MockOrder extends Order {
 	OrderPO order;
 	
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		this.order = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
-				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
-				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
+//		this.order = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
+//				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
+//				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
 		return ResultMessage.SUCCESS;
 	}
 	

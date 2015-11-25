@@ -14,12 +14,13 @@ public class _Order_Data_Stub  implements OrderDataService {
 		System.out.println("Finding the order......");
 		if(ordernumber=="00001"){
 			System.out.println("You have found an order!");
-		OrderPO orderPO = new OrderPO(ordernumber,ordernumber,
-				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
-				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
-				new ArrayList<CommodityPO>(),
-				"Nanjing156-Nanjing188" , 
-				"2015-10-24", "2015-10-26",6.767);
+		OrderPO orderPO = null;
+//				new OrderPO(ordernumber,ordernumber,
+//				"xiaowang", "Nanjing123", "18888888888", "SoftwareCo",
+//				"xiaoli", "Nanjing233", "16666666666", "HardwareCo",
+//				new ArrayList<CommodityPO>(),
+//				"Nanjing156-Nanjing188" , 
+//				"2015-10-24", "2015-10-26",6.767);
 		return orderPO;
 		}else{
 			System.out.println("Can not find an order!");

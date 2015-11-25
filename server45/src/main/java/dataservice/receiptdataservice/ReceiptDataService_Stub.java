@@ -17,8 +17,8 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 	private ReceiptPO receiptPO_2;
 	public ReceiptDataService_Stub(){
 		receiptPOs = new ArrayList<ReceiptPO>();
-		receiptPO_1 = new ReceiptPO("123");
-		receiptPO_2 = new ReceiptPO("456");
+//		receiptPO_1 = new ReceiptPO("123");
+//		receiptPO_2 = new ReceiptPO("456");
 		receiptPOs.add(receiptPO_1);
 		receiptPOs.add(receiptPO_2);
 	}

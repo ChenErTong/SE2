@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import po.receiptpo.ReceiptPO;
 
 public class ReceiptDataService_Driver {
-	private ReceiptPO po = new ReceiptPO("456");
+	private ReceiptPO po;
 	public void drive(ReceiptDataService receiptDataService) throws RemoteException{
 		receiptDataService.find();
 		receiptDataService.modify(po);

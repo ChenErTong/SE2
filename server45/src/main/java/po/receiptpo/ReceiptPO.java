@@ -20,23 +20,21 @@ public class ReceiptPO extends PersistentObject{
 	protected String ID;
 	/**创建时间，由系统自动生成*/
 	protected String date;
-	
+	/**单据状态*/
 	protected ReceiptState receiptState;
 	
 	protected ReceiptCondition receiptCondition;
 	
 	protected ReceiptType receiptType;
 	
-	public ReceiptPO(String ID){
+	public ReceiptPO(String ID,ReceiptType type){
 		super(ID);
-		this.ID = ID;
+		this.receiptType=type;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
 		date = sdf.format(new Date());
-	}
-
-	public ReceiptPO(String iD, String date) {
-		super(iD, date);
+		this.receiptState=ReceiptState.DRAFT;
+		this.receiptCondition=ReceiptCondition.DRAFT;
 	}
 
 	public String getID() {
@@ -47,6 +45,30 @@ public class ReceiptPO extends PersistentObject{
 		ID = iD;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public ReceiptState getReceiptState() {
+		return receiptState;
+	}
+
+	public void setReceiptState(ReceiptState receiptState) {
+		this.receiptState = receiptState;
+	}
+
+	public ReceiptCondition getReceiptCondition() {
+		return receiptCondition;
+	}
+
+	public void setReceiptCondition(ReceiptCondition receiptCondition) {
+		this.receiptCondition = receiptCondition;
+	}
+
 	public ReceiptType getReceiptType() {
 		return receiptType;
 	}
@@ -54,26 +76,9 @@ public class ReceiptPO extends PersistentObject{
 	public void setReceiptType(ReceiptType receiptType) {
 		this.receiptType = receiptType;
 	}
+	
+   
+	
 
-	public ReceiptPO(String id,ReceiptType receiptType) {
-		super(id);
-		this.receiptType = receiptType;
-	}
-
-	public ReceiptState getReceiptState() {
-		return receiptState;
-	}
-
-	public ReceiptCondition getReceiptCondition() {
-		return receiptCondition;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
