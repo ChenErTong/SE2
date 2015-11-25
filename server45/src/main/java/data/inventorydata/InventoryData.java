@@ -22,6 +22,7 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public void init() throws RemoteException {
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -44,20 +45,43 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public InventoryPO getInventoryPO(String id) throws RemoteException {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < poList.size(); i++) {
+			InventoryPO po = poList.get(i);
+			if (po.getID().equals(id)) {
+				return po;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < poList.size(); i++) {
+			InventoryPO po = poList.get(i);
+			if (isValid(po,a,b,c,d)) {
+				return po;
+			}
+		}
 		return null;
+	}
+	
+	private boolean isValid(InventoryPO po,int a,int b,int c,int d){
+		if(po.getA()==a&&po.getB()==b&&po.getC()==c&&po.getD()==d){
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList< InventoryPO> inventories = new ArrayList<>();
+		for (int i = 0; i < poList.size(); i++) {
+			InventoryPO po = poList.get(i);
+			if (po.getDate().compareTo(date)<0) {
+				inventories.add(po);
+			}
+		}
+		return inventories;
 	}
 
 }
