@@ -1,5 +1,4 @@
 package po;
-
 /**
  * 用户持久化对象
  * @author zsq
@@ -82,6 +81,11 @@ public class UserPO extends PersistentObject{
 
 	public String getAddress() {
 		return address;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
