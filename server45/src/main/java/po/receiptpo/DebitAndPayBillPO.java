@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import po.BankAccountPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;

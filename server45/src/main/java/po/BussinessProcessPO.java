@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.PaymentBillPO;
 
-public class BussinessProcessPO {
+public class BussinessProcessPO extends PersistentObject{
 	/**
 	 * 经营历程表
 	 * 查看一段时间里的所有单据，单据分为：
@@ -20,8 +20,8 @@ public class BussinessProcessPO {
 		public ArrayList<DebitBillPO> incomeReceipt;
 		public ArrayList<PaymentBillPO> expenReceipt;
     
-		public BussinessProcessPO(ArrayList<DebitBillPO> incomeReceipt, ArrayList<PaymentBillPO> expenReceipt) {
-		super();
+		public BussinessProcessPO(String id,ArrayList<DebitBillPO> incomeReceipt, ArrayList<PaymentBillPO> expenReceipt) {
+		super(id);
 		this.incomeReceipt = incomeReceipt;
 		this.expenReceipt = expenReceipt;
 	}

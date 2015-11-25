@@ -1,6 +1,6 @@
 package po;
 
-public class BussinessConditionPO {
+public class BussinessConditionPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	/**
@@ -22,8 +22,8 @@ public class BussinessConditionPO {
 		public double totalExpen;
 		/** 利润 */
 		public double profit;
-		public BussinessConditionPO(String begin, String end, double totalIncome, double totalExpen, double profit) {
-			super();
+		public BussinessConditionPO(String id,String begin, String end, double totalIncome, double totalExpen, double profit) {
+			super(id);
 			this.begin = begin;
 			this.end = end;
 			this.totalIncome = totalIncome;

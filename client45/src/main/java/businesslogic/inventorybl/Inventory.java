@@ -73,7 +73,7 @@ public class Inventory {
 		int b = vo.b;
 		int c = vo.c;
 		int d = vo.d;
-		InventoryPO inventorypo = new InventoryPO(receiptData.getInventoryID(), a, b, c, d, "full");
+		InventoryPO inventorypo = new InventoryPO(inventoryData.getInventoryID(), a, b, c, d, "full");
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities, a, b, c, d);
 		receiptData.insertImport(po);

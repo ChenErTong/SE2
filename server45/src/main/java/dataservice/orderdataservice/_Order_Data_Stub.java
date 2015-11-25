@@ -3,7 +3,6 @@ package dataservice.orderdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.CommodityPO;
 import po.OrderPO;
 import state.ResultMessage;
 

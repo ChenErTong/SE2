@@ -3,7 +3,6 @@ package po;
 import java.util.ArrayList;
 
 import po.receiptpo.LoadingListPO;
-import state.ReceiptType;
 
 public class FacilityPO extends PersistentObject{
 	/**

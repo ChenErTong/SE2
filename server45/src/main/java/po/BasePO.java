@@ -2,7 +2,6 @@ package po;
 
 import java.util.ArrayList;
 
-import state.ReceiptType;
 import state.SalaryPolicy;
 
 /**
