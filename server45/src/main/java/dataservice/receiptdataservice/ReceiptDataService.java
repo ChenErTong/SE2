@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.ManageDataService;
-import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -47,12 +46,7 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	public String getTransferID()throws RemoteException;
 	
 	public String getLotNum()throws RemoteException;;
-	/**获得位置信息**/
-	public InventoryPO getInventoryPO(String id)throws RemoteException;
 	
-	public InventoryPO getInventoryPO(int a,int b,int c,int d)throws RemoteException;
-	
-	public ArrayList<InventoryPO> getInventoryPOList(String date)throws RemoteException;
 	/**返回所有入库单据的数据**/
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
 	/**返回所有出库单据的数据**/

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
-import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -121,24 +120,6 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return null;
 	}
 
-	@Override
-	public InventoryPO getInventoryPO(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
-		//???
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {

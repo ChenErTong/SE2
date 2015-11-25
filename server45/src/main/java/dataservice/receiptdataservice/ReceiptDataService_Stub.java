@@ -3,7 +3,6 @@ package dataservice.receiptdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.InventoryPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -106,21 +105,6 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 	}
 	@Override
 	public String getLotNum() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public InventoryPO getInventoryPO(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
