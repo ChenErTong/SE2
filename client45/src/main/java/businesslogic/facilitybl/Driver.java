@@ -37,7 +37,7 @@ public class Driver{
 	}
 
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
-		return DriverData.delete(driver.getID());
+		return DriverData.delete(driver.ID);
 	}
 
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {

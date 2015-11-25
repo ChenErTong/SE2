@@ -4,15 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class BankAccountVO{
 	
-	private String ID;
+	public String ID;
 	/**账户名称*/
-	private String name;
+	public String name;
 	/**账户余额*/
-	private double money;
+	public double money;
 	/**账户属性*/
-	private String level;
+	public String level;
 	/**账户创建时间,系统自动计算得到*/
-	private String date;
+	public String date;
 	
 	public BankAccountVO(String ID,String name,double money,String level){
 		//super(ID);
@@ -23,19 +23,6 @@ public class BankAccountVO{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
-
-	public String getName() {
-		return name;
-	}
-	public void setName(String name){
-		this.name = name;
-	}
-	public double getMoney() {
-		return money;
-	}
-	public void setMoney(double money){
-		this.money = money;
-	}
 	/**
 	 * 模糊查询
 	 * @see java.lang.Object#toString()
@@ -43,17 +30,5 @@ public class BankAccountVO{
 	@Override
 	public String toString(){
 		return this.ID+"|"+this.name+"|"+this.money;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public String getLevel() {
-		return level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
 	}
 }

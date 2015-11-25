@@ -87,9 +87,9 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 			return 1;
 		}
 		double money = Double.parseDouble(data[2]);
-		bankAccount.setLevel(null);
-		bankAccount.setMoney(money);
-		bankAccount.setName(data[1]);
+		bankAccount.level=null;
+		bankAccount.money=money;
+		bankAccount.name=data[1];
 		bankAccountController.update(bankAccount);
 		bankAccountController.confirmOperation();
 		return 0;
@@ -100,7 +100,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 	 */
 	public int deleteBankAccount() {
 		//现在列表中选择一个用户后再进行删除 TODO
-		bankAccountController.delete(bankAccount.getID());
+		bankAccountController.delete(bankAccount.ID);
 		bankAccountController.confirmOperation();
 		return 0;
 	}

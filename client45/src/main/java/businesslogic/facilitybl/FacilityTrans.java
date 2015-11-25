@@ -52,15 +52,15 @@ public class FacilityTrans {
 		if (vo == null)
 			return null;
 		else {
-			String ID = vo.getID();
-			String duty = vo.getDuty();
-			String name = vo.getName();
-			String birthDay = vo.getBirthDay();
-			String IDCard = vo.getIDCard();
-			String phone = vo.getPhone();
-			double salary = vo.getSalary();
-			String workTime = vo.getWorkTime();
-			int receiptNum = vo.getReceiptNum();
+			String ID = vo.ID;
+			String duty = vo.Duty;
+			String name = vo.Name;
+			String birthDay = vo.BirthDay;
+			String IDCard = vo.IDCard;
+			String phone = vo.Phone;
+			double salary = vo.Salary;
+			String workTime = vo.WorkTime;
+			int receiptNum = vo.ReceiptNum;
 			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		}
 	}

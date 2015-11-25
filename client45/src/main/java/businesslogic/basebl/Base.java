@@ -52,7 +52,7 @@ public class Base {
 	}
 
 	public BasePO VOtoPO(BaseVO vo) {
-		BasePO po = new BasePO(vo.getId(), vo.getDistances(), vo.getPrice(), vo.getSalaryPolicies());
+		BasePO po = new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
 		return po;
 	}
 
