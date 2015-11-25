@@ -4,9 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.InventoryPO;
-import po.receiptpo.AdjustReceiptPO;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 
 public class _Inventory_Data_Stub implements InventoryDataService{
@@ -16,7 +13,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		System.out.println("Succeed in initing the inventory data.");
 	}
 
-	@Override
+/*	@Override
 	public String getImportID() {
 		System.out.println("Succeed in getting the import receipt id.");
 		return "0123456789";
@@ -88,7 +85,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return null;
 	}
 
-	
+	*/
 
 	@Override
 	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
@@ -108,7 +105,7 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return 0;
 	}
 
-	@Override
+	/*@Override
 	public String getInventoryID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
@@ -142,16 +139,16 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
-	public ResultMessage insertInventory(InventoryPO po) throws RemoteException {
+	public ResultMessage add (InventoryPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage modifyInventory(InventoryPO po, int a, int b, int c, int d, String EmptyOrFull)
+	public ResultMessage modify (InventoryPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
@@ -163,11 +160,11 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	public ArrayList<InventoryPO> find() throws RemoteException {
@@ -175,9 +172,9 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public String getLotNum() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 }

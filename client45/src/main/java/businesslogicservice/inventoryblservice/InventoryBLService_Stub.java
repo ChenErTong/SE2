@@ -1,18 +1,13 @@
 package businesslogicservice.inventoryblservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.receiptpo.AdjustReceiptPO;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.TransferArrivalListVO;
 
 public class InventoryBLService_Stub implements InventoryBLService{
 	public String ID = null;

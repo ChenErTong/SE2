@@ -43,7 +43,7 @@ public class Inventory {
 	}
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
-		ArrayList<InventoryPO> POs = inventoryData.getInventoryPOList(endDate);
+		ArrayList<InventoryPO> POs = receiptData.getInventoryPOList(endDate);
 		ArrayList<InventoryVO> VOs = InventoryTrans.convertInventoryPOstoVOs(POs);
 		InventoryViewVO viewVO = new InventoryViewVO(inventoryData.getimportNumber(beginDate, endDate),
 				inventoryData.getexportNumber(beginDate, endDate), inventoryData.getNum(beginDate, endDate), VOs);
@@ -51,21 +51,21 @@ public class Inventory {
 	}
 
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
-		ArrayList<InventoryImportReceiptPO> POs = inventoryData.showImport(enddate);
+		ArrayList<InventoryImportReceiptPO> POs = receiptData.showImport(enddate);
 		ArrayList<InventoryImportReceiptVO> VOs = InventoryTrans.convertInventoryImportReceiptPOstoVOs(POs);
-		String lotNum = inventoryData.getLotNum();
+		String lotNum = receiptData.getLotNum();
 		InventoryCheckVO checkVO = new InventoryCheckVO(VOs, lotNum);
 		return checkVO;
 	}
 
 	public String getImportID() throws RemoteException {
-		String ID = inventoryData.getImportID();
+		String ID = receiptData.getImportID();
 		return ID;
 	}
 
-	public ResultMessage addCommodities(String ID ,String ArrivalListID, InventoryVO vo) throws RemoteException {
-		
-		TransferArrivalListPO receipt =receiptData.findTransferArrivalList(ArrivalListID);
+	public ResultMessage addCommodities(String ID, String ArrivalListID, InventoryVO vo) throws RemoteException {
+
+		TransferArrivalListPO receipt = receiptData.findTransferArrivalList(ArrivalListID);
 		String commodities = receipt.getTransferCenterID();
 		String destination = receipt.getDestination();
 		String depture = receipt.getDeparture();
@@ -73,12 +73,12 @@ public class Inventory {
 		int b = vo.getB();
 		int c = vo.getC();
 		int d = vo.getD();
-		InventoryPO inventorypo = new InventoryPO(inventoryData.getInventoryID(), a, b, c, d, "full");
+		InventoryPO inventorypo = new InventoryPO(receiptData.getInventoryID(), a, b, c, d, "full");
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities, a, b, c, d);
-		inventoryData.insertImport(po);
-		inventoryData.insertInventory(inventorypo);
-		return inventoryData.insertInventory(inventorypo);
+		receiptData.insertImport(po);
+		inventoryData.add(inventorypo);
+		return inventoryData.add(inventorypo);
 
 	}
 
@@ -88,26 +88,27 @@ public class Inventory {
 	}
 
 	public String getExportID() throws RemoteException {
-		String ID = inventoryData.getExportID();
+		String ID = receiptData.getExportID();
 		return ID;
 	}
 
-	public ResultMessage minusCommodities(String ID ,String ImportID, String Transfer) throws RemoteException {
-		InventoryImportReceiptPO importPo = inventoryData.findImport(ImportID);
+	public ResultMessage minusCommodities(String ID, String ImportID, String Transfer) throws RemoteException {
+		InventoryImportReceiptPO importPo = receiptData.findImport(ImportID);
 		int a = importPo.getA();
 		int b = importPo.getB();
 		int c = importPo.getC();
 		int d = importPo.getD();
-		InventoryPO inventorypo = inventoryData.getInventoryPO(a, b, c, d);
+		InventoryPO inventorypo = receiptData.getInventoryPO(a, b, c, d);
 		String depture = importPo.getDepture();
-		String TransferID = inventoryData.getTransferID();
+		String TransferID = receiptData.getTransferID();
 		String destination = importPo.getDestination();
 		String Commodities = importPo.getCommoditiesID();
 		InventoryExportReceiptPO po = new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,
 				Transfer, TransferID, Commodities, a, b, c, d);
-		inventoryData.insertExport(po);
-		inventoryData.modifyInventory(inventorypo, a, b, c, d, "empty");
-		return inventoryData.insertExport(po);
+		receiptData.insertExport(po);
+		inventorypo.setEmptyOrFull("empty");
+		inventoryData.modify(inventorypo);
+		return receiptData.insertExport(po);
 	}
 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
@@ -116,11 +117,11 @@ public class Inventory {
 	}
 
 	public String getAdjustID() throws RemoteException {
-		String ID = inventoryData.getImportID();
+		String ID = receiptData.getImportID();
 		return ID;
 	}
 
-	public ResultMessage adjust(String ID,InventoryVO before, InventoryVO now) throws RemoteException {
+	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) throws RemoteException {
 		int exA = before.getA();
 		int exB = before.getB();
 		int exC = before.getC();
@@ -132,14 +133,13 @@ public class Inventory {
 		AdjustReceiptPO po = new AdjustReceiptPO(ID, ReceiptType.TAKINGSTOCK, exA, exB, exC, exD, afA, afB, afC, afD);
 		InventoryPO beforePO = InventoryTrans.convertVOtoPO(before);
 		InventoryPO afterPO = InventoryTrans.convertVOtoPO(now);
-		inventoryData.modifyInventory(beforePO, exA, exB, exC, exD, "empty");
-		inventoryData.modifyInventory(afterPO, afA, afB, afC, afD, "full");
-		inventoryData.insertAdjust(po);
-
+		beforePO.setEmptyOrFull("empty");
+		afterPO.setEmptyOrFull("full");
+		inventoryData.modify(beforePO);
+		inventoryData.modify(afterPO);
+		receiptData.insertAdjust(po);
 		return ResultMessage.SUCCESS;
 
 	}
-
-	
 
 }

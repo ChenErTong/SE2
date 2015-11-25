@@ -1,6 +1,5 @@
 package businesslogicservice.inventoryblservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataservice.inventorydataservice.InventoryDataService;
@@ -12,12 +11,13 @@ import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
-public class _Inventory_Stub implements InventoryBLService{
+public class _Inventory_Stub implements InventoryBLService {
 	InventoryDataService data_stub = new _Inventory_Data_Stub();
+
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		InventoryViewVO ivVO = null;
-		
+
 		System.out.println("Succeed in showing the condition of the inventory!");
 		return ivVO;
 	}
@@ -35,23 +35,12 @@ public class _Inventory_Stub implements InventoryBLService{
 	@Override
 	public String getImportID() {
 		System.out.println("Succeed in getting the import receipt id!");
-		try {
-			return data_stub.getImportID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
 		return null;
 	}
 
-	
 	@Override
 	public String getExportID() {
 		System.out.println("Succeed in getting the export receipt id!");
-		try {
-			return data_stub.getExportID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
 		return null;
 	}
 
@@ -64,15 +53,8 @@ public class _Inventory_Stub implements InventoryBLService{
 	@Override
 	public String getAdjustID() {
 		System.out.println("Succeed in getting the adjusting receipt id!");
-		try {
-			return data_stub.getAdjustID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
 		return null;
 	}
-
-	
 
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
@@ -80,9 +62,6 @@ public class _Inventory_Stub implements InventoryBLService{
 		return null;
 	}
 
-	
-
-	
 	@Override
 	public ResultMessage addCommodities(String ID, String ArrivalListID, InventoryVO vo) {
 		// TODO Auto-generated method stub
@@ -100,12 +79,5 @@ public class _Inventory_Stub implements InventoryBLService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-}
 
-	
+}
