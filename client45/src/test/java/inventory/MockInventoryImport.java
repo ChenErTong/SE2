@@ -30,14 +30,18 @@ public class MockInventoryImport {
 
 	public InventoryImportReceiptPO buildImport() {
 		InventoryVO iv = new InventoryVO(null, 1, 1, 1, 1, "full");
-		int a = iv.getA();
-		int b = iv.getB();
-		int c = iv.getC();
-		int d = iv.getD();
+//		int a = iv.getA();
+//		int b = iv.getB();
+//		int c = iv.getC();
+//		int d = iv.getD();
 		String ID = "1";
 		String destination = "nanjing";
 		String depture = null;
 		String CommoditiesID = "nanjing520";
+		int a=0;
+		int b=0;
+		int c=0;
+		int d=0;
 		InventoryImportReceiptPO iir = new InventoryImportReceiptPO(ID, null, destination, depture, CommoditiesID, a, b,
 				c, d);
 		return iir;

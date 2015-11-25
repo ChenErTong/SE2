@@ -10,7 +10,7 @@ import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
-		InventoryPO po = new InventoryPO(vo.getID(), vo.getA(), vo.getB(), vo.getC(), vo.getD(), vo.getEmptyOrFull());
+		InventoryPO po = new InventoryPO(vo.getID(), vo.a, vo.b, vo.c, vo.d, vo.EmptyOrFull);
 		return po;
 	}
 
