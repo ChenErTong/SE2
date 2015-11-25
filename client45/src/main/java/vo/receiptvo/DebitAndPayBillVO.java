@@ -11,32 +11,32 @@ import state.ReceiptType;
 import vo.ValueObject;
 
 public class DebitAndPayBillVO  extends ValueObject{
-	private String ID;
-	private double money;
+	public String ID;
+	public double money;
 	/**收款快递员的用户ID*/
-	private String courierID;
+	public String courierID;
 	/**收款或者收款日期，系统自动生成*/
-	private String date;
+	public String date;
 	/**对应快递订单条形码号*/
 	//TODO
 
-	private ArrayList <String>orderNumbers;
+	public ArrayList <String>orderNumbers;
 
 	/**付款人*/
-	private String payerName;
+	public String payerName;
 	/**付款账户*/
-	private ArrayList<String> bankAccouts; 
+	public ArrayList<String> bankAccouts; 
 	/**条目*/
-	private PayBillItem items;
+	public PayBillItem items;
 	/**备注*/
-	private String rentYear;
-	private String salaryMonth;
+	public String rentYear;
+	public String salaryMonth;
 	//TODO
-	private ArrayList<String> transListNumber;
+	public ArrayList<String> transListNumber;
 	/**区分收款单和付款单*/
-	private ReceiptType type;
+	public ReceiptType type;
 	/**单据状态*/
-	private ReceiptState state;
+	public ReceiptState state;
 /**
  * 建立收款单构造器
  * @param ID 收款单ID
@@ -91,85 +91,6 @@ public class DebitAndPayBillVO  extends ValueObject{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
 	}
-	public String getID() {
-		return ID;
-	}
-	public void setID(String iD) {
-		ID = iD;
-	}
-	public double getMoney() {
-		return money;
-	}
-	public void setMoney(double money) {
-		this.money = money;
-	}
-	public String getCourierID() {
-		return courierID;
-	}
-	public void setCourierID(String courierID) {
-		this.courierID = courierID;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public ArrayList<String> getOrderNumbers() {
-		return orderNumbers;
-	}
-	public void setOrderNumbers(ArrayList<String> orderNumbers) {
-		this.orderNumbers = orderNumbers;
-	}
-	public String getPayerName() {
-		return payerName;
-	}
-	public void setPayerName(String payerName) {
-		this.payerName = payerName;
-	}
-	public ArrayList<String> getBankAccouts() {
-		return bankAccouts;
-	}
-	public void setBankAccouts(ArrayList<String> bankAccouts) {
-		this.bankAccouts = bankAccouts;
-	}
-	public PayBillItem getItems() {
-		return items;
-	}
-	public void setItems(PayBillItem items) {
-		this.items = items;
-	}
-	public String getRentYear() {
-		return rentYear;
-	}
-	public void setRentYear(String rentYear) {
-		this.rentYear = rentYear;
-	}
-	public String getSalaryMonth() {
-		return salaryMonth;
-	}
-	public void setSalaryMonth(String salaryMonth) {
-		this.salaryMonth = salaryMonth;
-	}
-	public ArrayList<String> getTransListNumber() {
-		return transListNumber;
-	}
-	public void setTransListNumber(ArrayList<String> transListNumber) {
-		this.transListNumber = transListNumber;
-	}
-	public ReceiptType getType() {
-		return type;
-	}
-	public void setType(ReceiptType type) {
-		this.type = type;
-	}
-	public ReceiptState getState() {
-		return state;
-	}
-	public void setState(ReceiptState state) {
-		this.state = state;
-	}
-	
 
 	
 }

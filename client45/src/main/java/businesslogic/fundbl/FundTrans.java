@@ -30,27 +30,27 @@ public class FundTrans {
 		if (vo == null) {
 			return null;
 		} else {
-			String ID = vo.getID();
-			String workshop = vo.getWorkshop();
-			double money = vo.getMoney();
-			String address = vo.getAddress();
+			String ID = vo.ID;
+			String workshop = vo.workshop;
+			double money = vo.money;
+			String address = vo.address;
 			return new ExpensePO(ID, workshop, money, address);
 		}
 	}
 
 	public static DebitAndPayBillPO convertVOtoPO(DebitAndPayBillVO VO) {
-		ReceiptType type = VO.getType();
+		ReceiptType type = VO.type;
 		if (type == ReceiptType.EXPENSE) {
 			// 收款单
-			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.getID(), VO.getMoney(), VO.getCourierID(), VO.getType(),
-					VO.getOrderNumbers());
+			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.ID, VO.money, VO.courierID, VO.type,
+					VO.orderNumbers);
 			return po;
 		}
 		if (type == ReceiptType.PAY) {
 			// 付款单
-			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.getID(), VO.getMoney(), VO.getPayerName(),
-					VO.getBankAccouts(), VO.getType(), VO.getRentYear(), VO.getSalaryMonth(), VO.getItems(),
-					VO.getTransListNumber());
+			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.ID, VO.money, VO.payerName,
+					VO.bankAccouts, VO.type, VO.rentYear, VO.salaryMonth, VO.items,
+					VO.transListNumber);
 			return po;
 		} else {
 			return null;

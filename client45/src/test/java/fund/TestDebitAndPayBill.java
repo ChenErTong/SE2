@@ -26,7 +26,7 @@ public class TestDebitAndPayBill {
 		
 		mockDebitAndPayBill.findDebitAndPayBillVO(payID);
 		DebitAndPayBillVO debitAndPayBillVO = mockDebitAndPayBill.getDebitAndPayBillVO();
-		assertEquals(payID, debitAndPayBillVO.getID());
+		assertEquals(payID, debitAndPayBillVO.ID);
 		
 		HashMap<String, String> allAccounts=  mockDebitAndPayBill.getAllBankAccounts();
 		assertEquals(accounts, allAccounts);

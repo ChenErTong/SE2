@@ -13,11 +13,11 @@ public class ReceiptVO extends ValueObject{
 
 	
 	/**单据编号，不同的单据具有不同的编号格式**/
-	protected String ID;
+	public String ID;
 	/**创建时间，由系统自动生成*/
-	protected String date;
+	public String date;
 	
-	protected ReceiptType type;
+	public ReceiptType type;
 	
 	public ReceiptVO(String id, ReceiptType type){
 		/**自动生成日期*/
@@ -31,32 +31,5 @@ public class ReceiptVO extends ValueObject{
 	public ReceiptVO(String iD) {
 		ID = iD;
 	}
-
-
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public ReceiptType getType() {
-		return type;
-	}
-
-	public void setType(ReceiptType type) {
-		this.type = type;
-	}
-	
 
 }
