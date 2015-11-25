@@ -68,9 +68,9 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 		if(data == null){
 			return 1;
 		}
-		data[0] = bankAccountController.getID();
+		data[0] = "123";
 		double money = Double.parseDouble(data[2]);
-		bankAccount = new BankAccountVO(data[0], data[1], money,null);
+		bankAccount = new BankAccountVO(data[0], data[1], money," ");
 		bankAccountController.add(bankAccount);
 		bankAccountController.confirmOperation();
 		return 0;	

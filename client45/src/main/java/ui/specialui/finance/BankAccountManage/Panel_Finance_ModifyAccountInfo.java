@@ -5,6 +5,7 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Finance_ModifyAccountInfo extends MyTranslucentPanel{
+	private MyJTextField idField;
 	private MyJTextField nameField;
 	private MyJTextField balanceField;
 	public Panel_Finance_ModifyAccountInfo() {
@@ -24,6 +25,10 @@ public class Panel_Finance_ModifyAccountInfo extends MyTranslucentPanel{
 		
 		MyJLabel balance = new MyJLabel(290,80,120,30,"账户余额",16,true);
 		this.add(balance);
+		
+		idField = new MyJTextField(130,40,120,30);
+		idField.setEditable(false);
+		this.add(idField);
 		
 		 nameField = new MyJTextField(100,80,150,30);
 		this.add(nameField);
