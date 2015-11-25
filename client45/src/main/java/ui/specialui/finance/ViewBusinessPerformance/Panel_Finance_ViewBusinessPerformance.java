@@ -28,4 +28,18 @@ public class Panel_Finance_ViewBusinessPerformance extends MyJPanel{
 		ExportBusinessTable.setVisible(true);
 		
 	}
+	/**
+	 * 是否进行报表导出
+	 * @return 返回0则导出。返回1则不导出
+	 */
+	public int isExport(){
+		int rowCount = 0;
+		rowCount = businessPerformance.getTable().getRowCount();
+		if(rowCount>0){
+			return 0;
+		}
+		return 1;
+	}
+
+	
 }

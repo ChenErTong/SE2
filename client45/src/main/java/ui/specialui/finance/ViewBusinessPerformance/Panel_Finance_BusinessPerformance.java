@@ -1,22 +1,29 @@
 package ui.specialui.finance.ViewBusinessPerformance;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.finance.Frame_Finance;
+import vo.BussinessConditionVO;
 
-public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel{
+public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel implements ActionListener{
 	private MyComboBox yearBox;
 	private MyComboBox yearBox_2;
 	private MyComboBox monthBox;
@@ -76,8 +83,8 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel{
 		this.add(dayBox_2);
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
-		check.setActionCommand("ViewBusinessPerformance");
-		check.addActionListener(frame_Finance);
+		check.setActionCommand("ViewBusinessTable");
+		//check.addActionListener(frame_Finance);
 		this.add(check);
 		
 		//the table
@@ -132,13 +139,81 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel{
 	}
 	
 	private String[] getData(){
-		String[] data = null;
+		String[] data = new String[6];
+		
+		data[0] =(String) yearBox.getSelectedItem();
+		data[1] = (String) monthBox.getSelectedItem();
+		data[2] = (String) dayBox.getSelectedItem();
+		data[3] = (String)yearBox_2.getSelectedItem();
+		data[4] = (String)monthBox_2.getSelectedItem();
+		data[5] = (String)dayBox_2.getSelectedItem();
+		for(int i=0;i<6;i++){
+			if(data[i]==""){
+				return null;
+			}
+		}
 		
 		return data;
+	
+	}
+	private String addZero(String str){
+		if(Integer.parseInt(str) < 10){
+			return "0" + str;
+		}else{
+			return str;
+		}
+	}
+	private String yearAddZero(String str){
+		if(Integer.parseInt(str) < 10){
+			return "000" + str;
+		}else{
+			if(Integer.parseInt(str) < 100){
+				return "00" + str;
+			}else{
+				if(Integer.parseInt(str) < 1000){
+					return "0" + str;
+				}else{
+					return str;
+				}
+			}
+		}
+	}
+	public  MyJTable getTable(){
+		return table;
 	}
 
-	private void  setData(){
+	
+	private static final long serialVersionUID = 1L;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==check){
+			if(this.getData()==null){
+				//this.add(new MyNotification());
+			}else{
+				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
+				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
+				RecordBLService recordController = ControllerFactory.getRecordController();
+				BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+				
+				DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+				int rowCount = table.getRowCount();
+				for(int i = 0; i < rowCount; i++){
+					tableModel.removeRow(0);
+				}
+
+				String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
+						"收款单", String.format("%.2f", vo.totalIncome) + "元"};
+				tableModel.addRow(rowData);
+				
+				String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","付款单",String.format("%.2f", vo.totalExpen)+"元"};
+				
+				tableModel.addRow(rowData2);
+				
+				String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
+				
+				tableModel.addRow(rowData3);
+			}
+		}
 		
 	}
-	private static final long serialVersionUID = 1L;
 }

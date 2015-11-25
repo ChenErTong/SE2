@@ -122,14 +122,14 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
 	 */
-	private int isExport(){
+	/*private int isExport(){
 		int rowCount = 0;
 		rowCount = table.getRowCount();
 		if(rowCount>0){
 			return 0;
 		}
 		return 1;
-	}
+	}*/
 	
 	private String[] getData(){
 		String[] data = null;
@@ -139,6 +139,10 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
 
 	private void  setData(){
 		
+	}
+	
+	public  MyJTable getTable(){
+		return table;
 	}
 
 	private static final long serialVersionUID = 1L;
