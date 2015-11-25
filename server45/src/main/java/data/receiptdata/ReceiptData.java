@@ -123,20 +123,32 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<InventoryImportReceiptPO> inventoryImportReceipts = new ArrayList<>();
+		for (ReceiptPO po: poList.getInList()) {
+			if(po.getReceiptType()==ReceiptType.INSTOCK&&po.getDate().compareTo(enddate)<=0)
+				inventoryImportReceipts.add((InventoryImportReceiptPO)po);
+		}
+		return inventoryImportReceipts;
 	}
 
 	@Override
 	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<InventoryExportReceiptPO> inventoryExportReceipts = new ArrayList<>();
+		for (ReceiptPO po: poList.getInList()) {
+			if(po.getReceiptType()==ReceiptType.OUTSTOCK&&po.getDate().compareTo(enddate)<=0)
+				inventoryExportReceipts.add((InventoryExportReceiptPO)po);
+		}
+		return inventoryExportReceipts;
 	}
 
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<AdjustReceiptPO> adjustReceipts = new ArrayList<>();
+		for (ReceiptPO po: poList.getInList()) {
+			if(po.getReceiptType()==ReceiptType.TAKINGSTOCK&&po.getDate().compareTo(enddate)<=0)
+				adjustReceipts.add((AdjustReceiptPO)po);
+		}
+		return adjustReceipts;
 	}
 
 	@Override
