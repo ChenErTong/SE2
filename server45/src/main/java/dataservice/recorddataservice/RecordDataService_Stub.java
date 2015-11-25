@@ -23,7 +23,18 @@ public class RecordDataService_Stub implements RecordDataService{
 		bussinessConditionPOs.add(bussinessConditionPO);
 		
 	}
-	
+	@Override
+	public ArrayList<BussinessProcessPO> getBussinessProcess(String begindate,
+			String enddate) {
+		System.out.println("GetBussinessProcess succeed!");
+		return new ArrayList<BussinessProcessPO>();
+	}
+
+	@Override
+	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) {
+		System.out.println("GetBussinessCondition succeed!");
+		return new ArrayList<BussinessConditionPO>();
+	}
 	@Override
 	public String getBegin() throws RemoteException {
 		// TODO Auto-generated method stub

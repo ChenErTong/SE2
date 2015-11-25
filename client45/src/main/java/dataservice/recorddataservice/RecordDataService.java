@@ -15,7 +15,7 @@ public interface RecordDataService {
 	/**返回1. 收款单2.付款单**/
 	public BussinessProcessPO getBusinessProcess(String begindate,String enddate) throws RemoteException;
 	/**返回信息：	1. 收入2. 支出。3. 利润：总收入-总支出**/
-	//public BussinessConditionPO getBusinessCondition(String enddate) throws RemoteException;
+	public BussinessConditionPO getBusinessCondition(String enddate) throws RemoteException;
 	
 	public String getBegin() throws RemoteException;
 }
