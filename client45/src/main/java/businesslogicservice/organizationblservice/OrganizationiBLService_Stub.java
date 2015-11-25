@@ -1,12 +1,5 @@
 package businesslogicservice.organizationblservice;
 
-import java.util.ArrayList;
-
-import state.ResultMessage;
-import vo.BranchVO;
-import vo.OrganizationVO;
-import vo.TransferVO;
-
 /*public class OrganizationiBLService_Stub implements OrganizationBLService{
 
 	@Override

@@ -3,8 +3,6 @@ package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import state.ReceiptType;
-
 /**
  * 财务人员进行收款信息汇总时所需要的收款信息,包括收款日期、收款单位、收款人、收款方、收款金额、收款地点
  * @author zsq

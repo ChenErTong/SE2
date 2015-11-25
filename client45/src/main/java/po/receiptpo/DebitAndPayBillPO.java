@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import po.BankAccountPO;
 import state.PayBillItem;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -19,6 +18,10 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * 
 	 */
 	private static final long serialVersionUID = -5827233260131683793L;
+	public ReceiptState getState() {
+		return state;
+	}
+
 	/**
 	 * 
 	 */

@@ -1,10 +1,5 @@
 package po;
 
-import java.util.ArrayList;
-
-import vo.receiptvo.DebitBillVO;
-import vo.receiptvo.PaymentBillVO;
-
 public class BussinessConditionPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;

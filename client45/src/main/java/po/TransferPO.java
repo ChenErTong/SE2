@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
 import state.OrganizationType;
-import state.ReceiptType;
 
 
 

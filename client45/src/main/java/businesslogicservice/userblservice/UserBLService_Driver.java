@@ -1,9 +1,5 @@
 package businesslogicservice.userblservice;
 
-import dataservice.userdataservice.LoginInfo;
-import state.UserIdentity;
-import vo.UserVO;
-
 public class UserBLService_Driver {
 	/*	UserVO vo = new UserVO("123", "123", "123", UserIdentity.ADMIN);
 		LoginInfo loginInfo = new LoginInfo("123","123",false);

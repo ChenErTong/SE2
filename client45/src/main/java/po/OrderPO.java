@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
-import vo.CommodityVO;
-import vo.OrderVO;
 
 /**
  * 订单的PO类， 包括订单号、收件人（寄件人）姓名、收件人（寄件人）住址、 收件人（寄件人）电话、收件人（寄件人）单位、 货物集合信息、订单运送途径地点、

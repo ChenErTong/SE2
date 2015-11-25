@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.FacilityPO;
-import state.ReceiptType;
 import state.ResultMessage;
 
 public class _Facility_Data_Stub implements FacilityDataService {

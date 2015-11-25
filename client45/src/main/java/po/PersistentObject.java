@@ -2,8 +2,6 @@ package po;
 
 import java.io.Serializable;
 
-import state.ReceiptType;
-
 /**
  *所有PO类的父类，包括创建时间、编号
  * @author zsq

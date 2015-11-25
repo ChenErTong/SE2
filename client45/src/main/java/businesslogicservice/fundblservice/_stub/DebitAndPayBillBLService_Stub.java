@@ -1,17 +1,5 @@
 package businesslogicservice.fundblservice._stub;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import state.PayBillItem;
-import state.ReceiptType;
-import state.ResultMessage;
-import vo.receiptvo.DebitAndPayBillVO;
-import businesslogicservice.fundblservice.DebitAndPayBillBLService;
-import po.BankAccountPO;
-import po.receiptpo.DebitAndPayBillPO;
-
 /*public class DebitAndPayBillBLService_Stub implements DebitAndPayBillBLService{
 
 	@Override

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import po.CommodityPO;
 import po.OrderPO;
 import state.ResultMessage;
-import vo.CommodityVO;
 
 public class _Order_Data_Stub implements OrderDataService {
 
