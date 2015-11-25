@@ -21,9 +21,8 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public String getID() {
 		try {
-			String ID = BankAccountBL.getID();
-			System.out.println(ID+"---BankAccountController");
-			return ID;
+			return BankAccountBL.getID();
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

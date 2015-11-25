@@ -37,9 +37,7 @@ public class BankAccount {
 	}
 
 	public String getID() throws RemoteException {
-		String ID = bankAccountData.getID();
-		System.out.println(ID+"---BankAccount");
-		return ID;
+		return bankAccountData.getID();
 	}
 
 	public ArrayList<BankAccountVO> show() throws RemoteException {

@@ -15,12 +15,12 @@ public class BankAccountVO{
 	public String date;
 	
 	public BankAccountVO(String ID,String name,double money,String level){
-		//super(ID);
+		this.ID=ID;
 		this.name = name;
 		this.money = money;
 		this.level = level;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
 		date = sdf.format(new Date());
 	}
 	/**
