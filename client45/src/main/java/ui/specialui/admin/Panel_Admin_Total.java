@@ -76,9 +76,6 @@ public class Panel_Admin_Total extends MyJPanel{
 		userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
 		this.add(userDetails);
 		
-		//this.add(new MyJLabel(415, 110, 100, 40, "车辆代号", 20, true));
-		//this.add(facilityId);
-		
 		commonButton = new MyJButton(890, 670, 150, 30, "修改用户信息", 20);
 		commonButton.setActionCommand("ModifyUserInformation");
 		commonButton.addActionListener(frame);
