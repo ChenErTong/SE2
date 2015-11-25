@@ -12,7 +12,7 @@ import state.ResultMessage;
 import vo.BankAccountVO;
 
 public class BankAccountController implements BankAccountBLService{
-    BankAccount BankAccountBL;
+    BankAccount BankAccountBL = new BankAccount();
 	@Override
 	public ConfirmState confirmOperation() {
 		return BankAccountBL.confirmOperation();

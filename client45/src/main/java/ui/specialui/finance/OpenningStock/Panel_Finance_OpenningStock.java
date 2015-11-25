@@ -266,7 +266,7 @@ public void actionPerformed(ActionEvent e) {
 		this.showAll();
 	}else if(e.getSource()==insertButton){
 		OpeningStockBLService controller = new OpeningStockController();
-		//controller.add(commodities, clients0, clients1, clients2, clients3, accounts);
+		//controller.add();
 	}
 	
 }

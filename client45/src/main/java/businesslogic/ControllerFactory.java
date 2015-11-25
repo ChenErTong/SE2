@@ -45,7 +45,7 @@ public class ControllerFactory {
 	public static 	DebitAndPayBillController getDebitAndPayBillController() {
 		return new DebitAndPayBillController();
 	}
-	public static 	ExpenseController getExpenseControlle() {
+	public static 	ExpenseController getExpenseController() {
 		return new ExpenseController();
 	}
 	

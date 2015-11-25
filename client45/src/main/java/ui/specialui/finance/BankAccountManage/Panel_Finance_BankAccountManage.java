@@ -1,5 +1,6 @@
 package ui.specialui.finance.BankAccountManage;
 
+import businesslogic.ControllerFactory;
 import businesslogic.fundbl.BankAccountController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -16,7 +17,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 	private MyJButton modifyButton;
 	private MyJButton add;
 	private MyJButton modify;
-	private BankAccountController bankAccountController;
+	private BankAccountController bankAccountController = ControllerFactory.getBankAccountController();
 	private BankAccountVO bankAccount;
 	public Panel_Finance_BankAccountManage(Frame_Finance frame_Finance) {
 		super(0,0,1280,720);
@@ -65,6 +66,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 
 	public int addAccount() {
 		String [] data = addBankAccount.getData();
+		
 		if(data == null){
 			return 1;
 		}
