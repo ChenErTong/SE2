@@ -43,7 +43,7 @@ public class Inventory {
 	}
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
-		ArrayList<InventoryPO> POs = receiptData.getInventoryPOList(endDate);
+		ArrayList<InventoryPO> POs = inventoryData.getInventoryPOList(endDate);
 		ArrayList<InventoryVO> VOs = InventoryTrans.convertInventoryPOstoVOs(POs);
 		InventoryViewVO viewVO = new InventoryViewVO(inventoryData.getimportNumber(beginDate, endDate),
 				inventoryData.getexportNumber(beginDate, endDate), inventoryData.getNum(beginDate, endDate), VOs);
@@ -98,7 +98,7 @@ public class Inventory {
 		int b = importPo.getB();
 		int c = importPo.getC();
 		int d = importPo.getD();
-		InventoryPO inventorypo = receiptData.getInventoryPO(a, b, c, d);
+		InventoryPO inventorypo = inventoryData.getInventoryPO(a, b, c, d);
 		String depture = importPo.getDepture();
 		String TransferID = receiptData.getTransferID();
 		String destination = importPo.getDestination();

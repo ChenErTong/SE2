@@ -46,58 +46,71 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException {
-		for (int i = 0; i < poList.size(); i++) {
-			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType()==ReceiptType.TRANS_ARRIVAL&&po.getID().equals(id))
-				return (TransferArrivalListPO) po;
-		}
-		return null;
+		return (TransferArrivalListPO) super.find(id);
 	}
 
 	@Override
 	public String getImportID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		String prifix="IMPORT";
+		int idNumber=0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if (po.getReceiptType()==ReceiptType.INSTOCK)
+				++idNumber;
+		}
+		return prifix+Util.transIntToString(idNumber, 8);
 	}
 
 	@Override
 	public String getExportID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		String prifix="EXPORT";
+		int idNumber=0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if (po.getReceiptType()==ReceiptType.OUTSTOCK)
+				++idNumber;
+		}
+		return prifix+Util.transIntToString(idNumber, 8);
 	}
 
 	@Override
 	public String getAdjustID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		String prifix="ADJUST";
+		int idNumber=0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if (po.getReceiptType()==ReceiptType.TAKINGSTOCK)
+				++idNumber;
+		}
+		return prifix+Util.transIntToString(idNumber, 8);
 	}
 
 	@Override
 	public String getInventoryID() throws RemoteException {
+		//???
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return (InventoryImportReceiptPO) super.find(importID);
 	}
+	
 
 	@Override
 	public InventoryExportReceiptPO findExport(String exportID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return (InventoryExportReceiptPO) super.find(exportID);
 	}
 
 	@Override
 	public AdjustReceiptPO findAdjust(String adjustID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return (AdjustReceiptPO) super.find(adjustID);
 	}
 
 	@Override
 	public String getTransferID() throws RemoteException {
+		//???
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -122,6 +135,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
+		//???
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -146,20 +160,17 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return super.add(po);
 	}
 
 	@Override
 	public ResultMessage insertExport(InventoryExportReceiptPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return super.add(po);
 	}
 
 	@Override
 	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return super.add(po);
 	}
 
 }
