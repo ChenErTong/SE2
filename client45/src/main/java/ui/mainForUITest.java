@@ -23,8 +23,8 @@ public class mainForUITest {
 			e.printStackTrace();
 		}
 	
-	//Frame_Login loginFrame = new Frame_Login();
-		//loginFrame.setVisible(true);
+	Frame_Login loginFrame = new Frame_Login();
+		loginFrame.setVisible(true);
 
 	//Frame_Courier courierFrame = new Frame_Courier();
 		//courierFrame.setVisible(true);
@@ -39,8 +39,8 @@ public class mainForUITest {
 	//adminFrame.setVisible(true);
 
 
-		Frame_Finance financeFrame = new Frame_Finance();
-		financeFrame.setVisible(true);
+//		Frame_Finance financeFrame = new Frame_Finance();
+//		financeFrame.setVisible(true);
 		
 
 //		Frame_Sender senderFrame = new Frame_Sender();

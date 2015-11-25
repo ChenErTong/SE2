@@ -1,6 +1,6 @@
 package dataservice.userdataservice;
 
-public class LoginInfo {
+public class LoginInfo  {
 	/** 登陆用户名 */
 	private String username;
 	/** 密码 */
