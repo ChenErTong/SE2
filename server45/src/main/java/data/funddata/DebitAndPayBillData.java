@@ -96,8 +96,12 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type, ReceiptState State) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
+		for (DebitAndPayBillPO po: poList.getInList()) {
+			if(po.getReceiptType()==type&&po.getState()==State)
+				bills.add(po);
+		}
+		return bills;
 	}
 
 	@Override

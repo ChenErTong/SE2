@@ -25,8 +25,6 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
