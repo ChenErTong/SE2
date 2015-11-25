@@ -199,7 +199,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 				}
 				if(vo!=null){
 					String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
-							"总收入", String.format("%.2f", vo.getTotalIncome()) + "元"};
+							"总收入", String.format("%.2f", vo.totalIncome) + "元"};
 					tableModel.addRow(rowData);
 					
 					String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","总支出",String.format("%.2f", vo.totalExpen)+"元"};

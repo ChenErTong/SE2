@@ -21,8 +21,9 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage addFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),
-				facility.getManagerId(), facility.getDeliverHistory());
+		FacilityPO facilityPO = null;
+//				new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),
+//				facility.getManagerId(), facility.getDeliverHistory());
 		try {
 			data_Stub.add(facilityPO);
 		} catch (RemoteException e) {
@@ -34,7 +35,7 @@ public class _Facility_Stub implements FacilityBLService {
 	@Override
 	public ResultMessage deleteFacility(FacilityVO facility) {
 		try {
-			data_Stub.delete(facility.getFacilityIdString());
+			data_Stub.delete(facility.facilityIdString);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -43,8 +44,7 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public ResultMessage modifyFacility(FacilityVO facility) {
-		FacilityPO facilityPO = new FacilityPO(facility.getFacilityIdString(), facility.getDateString(),
-				facility.getManagerId(), facility.getDeliverHistory());
+		FacilityPO facilityPO = null;
 		try {
 			data_Stub.modify(facilityPO);
 		} catch (RemoteException e) {

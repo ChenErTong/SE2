@@ -13,13 +13,13 @@ public class FacilityTrans {
 		if (vo == null)
 			return null;
 		else {
-			String ID = vo.getFacilityIdString();
-			String date = vo.getDateString();
-			String manageID = vo.getManagerId();
-			String bottomCode = vo.getBottomCode();
-			String engineNumber = vo.getEngineCode();
-			String VIN = vo.getVehicleIdentificationNumber();
-			ArrayList<LoadingListPO> deliverHistory = vo.getDeliverHistory();
+			String ID = vo.facilityIdString;
+			String date = vo.dateString;
+			String manageID = vo.managerId;
+			String bottomCode = vo.bottomCode;
+			String engineNumber = vo.engineCode;
+			String VIN = vo.vehicleIdentificationNumber;
+			ArrayList<LoadingListPO> deliverHistory = vo.deliverHistory;
 			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber, VIN);
 		}
 	}

@@ -12,11 +12,11 @@ public class BranchTrans {
 		if (vo == null) {
 			return null;
 		}
-		String ID = vo.getId();
-		String address = vo.getAddress();
-		String date = vo.getDate();
-		ArrayList<AccountPO> accounts = vo.getAccounts();
-		ArrayList<FacilityPO> facilities = vo.getFacilities();
+		String ID = vo.id;
+		String address = vo.address;
+		String date = vo.date;
+		ArrayList<AccountPO> accounts = vo.accounts;
+		ArrayList<FacilityPO> facilities = vo.facilities;
 		return new BranchPO(ID, address, date, accounts, facilities);
 	}
 

@@ -196,8 +196,8 @@ public int modifyOrganization() {
 		return 1;
 	}
 	if(data[4].equals("营业厅")){
-		branch.setId(data[0]);
-		branch.setAddress(data[7]);
+		branch.id=data[0];
+		branch.address=data[7];
 		organizationController.updateBranch(branch);
 	}else if(data[4].equals("中转中心")){
 		organizationController.updateTransfer(transfer);
