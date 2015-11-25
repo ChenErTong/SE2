@@ -12,6 +12,7 @@ import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.CommodityPO;
 import po.OrderPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -56,7 +57,8 @@ public class Branch{
 		//获取单个订单
 		for (OrderPO orderPO : orderPOs) {
 			//单个订单中所有的商品
-			ArrayList<CommodityVO> commos = orderPO.getCommodityVO();
+			ArrayList<CommodityPO> pos  =orderPO.getCommodityPO();
+			ArrayList<CommodityVO> commos = OrderTrans.convertCommodityPOstoVOs(pos);
 			//将每个商品加入商品列表
 			for (CommodityVO commodityVO : commos) {
 				commodityVOs.add(commodityVO);

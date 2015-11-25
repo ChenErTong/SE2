@@ -11,9 +11,10 @@ import vo.OrderVO;
 
 public class OrderTrans {
 	public static OrderPO convertVOtoPO(ArrayList<CommodityVO> commodityVOs, OrderVO vo) {
+		ArrayList<CommodityPO> pos = convertCommodityVOstoPOs(commodityVOs);
 		return new OrderPO(vo.ID, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
 				vo.senderCo, vo.recipientName, vo.recipientAddress, vo.recipientTel, vo.recipientCo,
-				commodityVOs, vo.midAddres, vo.sendTime, vo.recipientTime, vo.money);
+				pos, vo.midAddres, vo.sendTime, vo.recipientTime, vo.money);
 	}
 	public static OrderVO convertPOtoVO(OrderPO po) {
 		return new OrderVO(po.getOrderIdString(), po.getSenderName(), po.getSenderAddress(),
@@ -41,11 +42,31 @@ public class OrderTrans {
 		}
 	}
 	
+	public static CommodityPO convertVOtoPO(CommodityVO po){
+		if(po==null)
+			return null;
+		else {
+			String commodityType = po.commodityType;
+			double weight = po.weight;
+			double volumn = po.volumn;
+			CommodityState commodityState = po.commodityState;			
+			return new CommodityPO(commodityType, weight, volumn, commodityState);
+		}
+	}
+	
 	public static ArrayList<CommodityVO> convertCommodityPOstoVOs(ArrayList<CommodityPO> pos){
 		ArrayList<CommodityVO> vos = new ArrayList<CommodityVO>();
 		for (CommodityPO po : pos) {
 			vos.add(convertPOtoVO(po));
 		}
 		return vos;
+	}
+	
+	public static ArrayList<CommodityPO> convertCommodityVOstoPOs(ArrayList<CommodityVO> vos){
+		ArrayList<CommodityPO> pos = new ArrayList<CommodityPO>();
+		for (CommodityVO vo : vos) {
+			pos.add(convertVOtoPO(vo));
+		}
+		return pos;
 	}
 }
