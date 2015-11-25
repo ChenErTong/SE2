@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="dataservice.inventorydataservice.InventoryDataService"/>
 <fullyQualifiedTypeName name="businesslogic.record.BussinessConditionList"/>
 <fullyQualifiedTypeName name="vo.BussinessConditionVO"/>
 <fullyQualifiedTypeName name="po.BussinessProcessPO"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="po.OrderPO"/>
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="po.PersistentObject"/>
 </qualifiedTypeNameHistroy>
