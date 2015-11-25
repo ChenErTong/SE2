@@ -2,6 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
+import state.ReceiptType;
 import state.SalaryPolicy;
 
 /**
@@ -15,6 +16,19 @@ public class BasePO extends PersistentObject{
 		super(iD, date);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public BasePO(String id, ArrayList<Double> distances, ArrayList<Double> price,
+			ArrayList<SalaryPolicy> salaryPolicies) {
+		super(id);
+		this.distances = distances;
+		this.price = price;
+		this.salaryPolicies = salaryPolicies;
+	}
+
+
+
 	/** serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	/**城市距离，ArrayList里存放的类型应该能代表两个不同的城市*/

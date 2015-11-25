@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
+import po.OpeningStockPO;
 import util.SerSaveAndLoad;
 
 public class InventoryData extends ManageData<InventoryPO> implements InventoryDataService {
@@ -22,6 +23,7 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public void init() throws RemoteException {
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -50,14 +52,29 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
-		// TODO Auto-generated method stub
+//		for (int i = 0; i < poList.size(); i++) {
+//			InventoryPO po = poList.get(i);
+//			if (po.getDate().compareTo(date)<0) {
+//				inventories.add(po);
+//			}
+//		}
 		return null;
+	}
+	
+	private boolean isValid(InventoryPO po,int a,int b,int c,int d){
+		return false;
+//		if(po.g)
 	}
 
 	@Override
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList< InventoryPO> inventories = new ArrayList<>();
+		for (int i = 0; i < poList.size(); i++) {
+			InventoryPO po = poList.get(i);
+			if (po.getDate().compareTo(date)<0) {
+				inventories.add(po);
+			}
+		}
+		return inventories;
 	}
-
 }
