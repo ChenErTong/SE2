@@ -40,8 +40,7 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/** 得到调整单ID **/
 	public String getAdjustID() throws RemoteException;
 
-	/** 得到inventoryid **/
-	public String getInventoryID() throws RemoteException;
+	
 
 	/** 查找单据 **/
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException;
