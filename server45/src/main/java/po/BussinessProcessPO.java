@@ -2,6 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
+<<<<<<< Updated upstream
 
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.PaymentBillPO;
@@ -24,6 +25,20 @@ public class BussinessProcessPO {
 		super();
 		this.incomeReceipt = incomeReceipt;
 		this.expenReceipt = expenReceipt;
+=======
+import dataservice.funddataservice.DebitAndPayBillDataService;
+import po.receiptpo.DebitAndPayBillPO;
+
+public class BussinessProcessPO {
+	
+		
+		public ArrayList<DebitAndPayBillPO> Receipt;
+	
+		public BussinessProcessPO(ArrayList<DebitAndPayBillPO> Receipt) {
+		super();
+		this.Receipt = Receipt;
+		
+>>>>>>> Stashed changes
 	}
 		
 		

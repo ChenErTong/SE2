@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
+import po.OpeningStockPO;
+import po.receiptpo.InventoryExportReceiptPO;
 import util.SerSaveAndLoad;
 
 public class InventoryData extends ManageData<InventoryPO> implements InventoryDataService {
@@ -27,8 +29,8 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 
 	@Override
 	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
 		return 0;
+		
 	}
 
 	@Override
