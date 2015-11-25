@@ -33,6 +33,7 @@ public class FacilityInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(60, 282, 80, 25, "购买时间", 18, true));
 		fields[4] = new MyJTextField(150, 280, 130, 30);
+		fields[4].setForDate();
 		
 		for (MyJTextField myJTextField : fields) {
 			this.add(myJTextField);
