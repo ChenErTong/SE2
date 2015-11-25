@@ -50,7 +50,9 @@ public class OpeningStockController implements OpeningStockBLService {
 	@Override
 	public ResultMessage add() {
 		try {
-			return OpeningStockBL.add();
+			ResultMessage resultMessage =  OpeningStockBL.add();
+			System.out.println(resultMessage);
+			return resultMessage;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
