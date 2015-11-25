@@ -21,6 +21,9 @@ import vo.BankAccountVO;
 
 
 public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionListener{
+	
+	BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+	
 	private Panel_Finance_BankAccount bankAccountPanel;
 	private Panel_Finance_AddBankAccount addBankAccount;
 	private Panel_Finance_ModifyAccountInfo modifyAccountInfo;
@@ -176,7 +179,6 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			if(addBankAccount.getData()==null){
 				this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
 			}else{
-				BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 						data[1],Double.parseDouble(data[2]),null));
 				if(rsg.equals(ResultMessage.SUCCESS)){
