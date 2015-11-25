@@ -1,9 +1,5 @@
 package ui.specialui.finance.BankAccountManage;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -14,11 +10,9 @@ public class Panel_Finance_ModifyAccountInfo extends MyTranslucentPanel{
 	public Panel_Finance_ModifyAccountInfo() {
 		super(660,390,550,240);
 		this.initComponent();
-		// TODO Auto-generated constructor stub
 	}
 
 	private void initComponent() {
-		// TODO Auto-generated method stub
 		MyJLabel title = new MyJLabel(240,10,150,30,"修改账户",19,true);
 		this.add(title);
 		
@@ -38,7 +32,33 @@ public class Panel_Finance_ModifyAccountInfo extends MyTranslucentPanel{
 		this.add(balanceField);
 		
 	}
+	
+	public void setUnEditable(){
+		nameField.setEditable(false);
+		balanceField.setEditable(false);
+	}
+	
+	public String[] getData(){
+		String [] data = new String[3];
+		//data[0]存放ID，对外不可见
+		data[1] = nameField.getText();
+		data[2] = balanceField.getText();
+		if(data[1].equals("")||data[2].equals("")){
+			return null;
+		}
+		return data;
+	}
+	
+	public  void setData(String[] data){
+		nameField.setText(data[1]);
+		balanceField.setText(data[2]);
+	}
+
 
 	private static final long serialVersionUID = 1L;
+	public void refresh() {
+		nameField.setText(null);
+		balanceField.setText(null);
+	}
 
 }

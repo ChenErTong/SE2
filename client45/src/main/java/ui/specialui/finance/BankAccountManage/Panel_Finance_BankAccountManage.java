@@ -1,9 +1,12 @@
 package ui.specialui.finance.BankAccountManage;
 
+import businesslogic.fundbl.BankAccountController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.finance.Frame_Finance;
+import vo.BankAccountVO;
+
 
 public class Panel_Finance_BankAccountManage extends MyJPanel{
 	private Panel_Finance_BankAccount bankAccountPanel;
@@ -13,6 +16,8 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 	private MyJButton modifyButton;
 	private MyJButton add;
 	private MyJButton modify;
+	private BankAccountController bankAccountController;
+	private BankAccountVO bankAccount;
 	public Panel_Finance_BankAccountManage(Frame_Finance frame_Finance) {
 		super(0,0,1280,720);
 		this.setOpaque(false);
@@ -53,6 +58,74 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 		this.add(modify);
 
 	}
+	/**
+	 * TODO 从bl层获取数据
+	 * 添加银行账户
+	 */
+
+	public int addAccount() {
+		String [] data = addBankAccount.getData();
+		if(data == null){
+			return 1;
+		}
+		data[0] = bankAccountController.getID();
+		double money = Double.parseDouble(data[2]);
+		bankAccount = new BankAccountVO(data[0], data[1], money,null);
+		bankAccountController.add(bankAccount);
+		bankAccountController.confirmOperation();
+		return 0;	
+	}
+	/**
+	* 修改银行账户
+	* 从bl层获得数据
+	*/
+	public int modifyBankAccount() {
+		String [] data = modifyAccountInfo.getData();
+		if(data == null){
+			return 1;
+		}
+		double money = Double.parseDouble(data[2]);
+		bankAccount.setLevel(null);
+		bankAccount.setMoney(money);
+		bankAccount.setName(data[1]);
+		bankAccountController.update(bankAccount);
+		bankAccountController.confirmOperation();
+		return 0;
+	}
+	/**
+	 * 删除账户
+	 * @return
+	 */
+	public int deleteBankAccount() {
+		//现在列表中选择一个用户后再进行删除 TODO
+		bankAccountController.delete(bankAccount.getID());
+		bankAccountController.confirmOperation();
+		return 0;
+	}
+
+	public void refresh() {
+		addBankAccount.refresh();
+		modifyAccountInfo.refresh();
+	}
+	/**
+	 * 查看账户信息
+	 * TODO 从bl层获取数据
+	 */
+	public boolean searchBankAccount() {		
+		//允许模糊查找 TODO
+		return false;
+	}
+
+	/**
+	 * 查看用户详细信息
+	 */
+	public boolean viewBankAccountDetails(){
+		//TODO
+		//从bankAccountList中选择一个要查看的用户
+		return false;
+	}
+
+	
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,17 +1,20 @@
 package ui.specialui.finance;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.finance.BankAccountManage.Panel_Finance_BankAccountManage;
 import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
 import ui.specialui.finance.OpenningStock.Panel_Finance_OpenningStock;
 import ui.specialui.finance.SettlementManage.Panel_Finance_SettlementManage;
 import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_ViewBusinessPerformance;
 import ui.specialui.finance.ViewIncomeState.Panel_Finance_ViewIncomeStatement;
+import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
 
 
 
@@ -93,8 +96,56 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			
 		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
 			
+		}else if(e.getActionCommand().equals("AddBankAccount")){
+			if(this.addBankAccount()){
+				((Panel_Finance_BankAccountManage)subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("ModifyBankAccount")){
+			if(this.modifyBankAccountInfo()){
+				((Panel_Finance_BankAccountManage)subPanel).refresh();
+			}
+		}else if(e.getActionCommand().equals("DeleteBankAccount")){
+			if(this.deleteBankAccount()){
+				((Panel_Finance_BankAccountManage)subPanel).refresh();
+			}
 		}
 
+	}
+	/**
+	 * 添加新银行账户
+	 * @return 是否成功添加
+	 * 与bl层连接
+ 	 */
+	private boolean addBankAccount(){
+		switch(((Panel_Finance_BankAccountManage)subPanel).addAccount()){
+		case 0: new MyNotification(this, "成功添加新银行账户", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成新银行账户信息填写", Color.RED); break;
+		}
+		return false;
+	}
+
+	/**
+	 * 修改用户信息
+	 * @return 是否修改成功
+	 * 与bl层连接
+	 */
+	private boolean modifyBankAccountInfo(){
+		switch(((Panel_Finance_BankAccountManage)subPanel).modifyBankAccount()){
+		case 0: new MyNotification(this, "成功修改银行账户信息", Color.GREEN); return true;
+		case 1: new MyNotification(this, "请完成银行账户信息修改", Color.RED); break;
+		}
+		return false;
+	}
+	
+	private boolean deleteBankAccount(){
+		switch(((Panel_Finance_BankAccountManage)subPanel).deleteBankAccount()){
+		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
+		}
+		return false;
+	}
+	private boolean searchBankAccount(){
+		//模糊查找 TODO 
+		return false;
 	}
 }
 

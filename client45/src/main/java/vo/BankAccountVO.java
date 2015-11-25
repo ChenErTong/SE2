@@ -27,21 +27,15 @@ public class BankAccountVO{
 	public String getName() {
 		return name;
 	}
-
-	
-
-	public String getLevel() {
-		return level;
+	public void setName(String name){
+		this.name = name;
 	}
-
-	
-
-	
-
 	public double getMoney() {
 		return money;
 	}
-
+	public void setMoney(double money){
+		this.money = money;
+	}
 	/**
 	 * 模糊查询
 	 * @see java.lang.Object#toString()
@@ -53,5 +47,13 @@ public class BankAccountVO{
 
 	public String getID() {
 		return ID;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
 	}
 }
