@@ -3,15 +3,12 @@ package dataservice.inventorydataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import dataservice.DataService;
 import po.InventoryPO;
-import po.TransferPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
-import po.receiptpo.TransferArrivalListPO;
 import state.ResultMessage;
-import vo.InventoryVO;
+import dataservice.DataService;
       /** @author lxl
 	 *  @version Oct 23,2015
 	 *      **/
@@ -32,9 +29,9 @@ public interface InventoryDataService extends DataService<InventoryPO>{
 	public  String getInventoryID() throws RemoteException;
 	
 	/**查找单据**/
-	public InventoryImportReceiptPO  findImport(String importID);
-	public InventoryExportReceiptPO  findExport(String exportID);
-	public AdjustReceiptPO                 findAdjust(String adjustID);
+	public InventoryImportReceiptPO  findImport(String importID) throws RemoteException;
+	public InventoryExportReceiptPO  findExport(String exportID) throws RemoteException;
+	public AdjustReceiptPO findAdjust(String adjustID) throws RemoteException;
 	
 	/**生成transferid**/
 	public String getTransferID()throws RemoteException;

@@ -3,6 +3,7 @@ package ui.specialui.finance.OpenningStock;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -17,14 +18,18 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.specialui.finance.Frame_Finance;
+import vo.OpeningStockVO;
+@SuppressWarnings("unused")
 
-
-public class Panel_Finance_OpenningStock extends MyJPanel{
+public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	private Panel_Finance_OpenningStockInfo openningStockInfo;
-	private MyJButton commonButton;
-	private MyJTable organizationTable,employTable,facilityTable,inventoryTable,bankAccountTable;
+	//private Panel_Finance_OpenningStockInfo openningStockInfo;
+	//private MyJButton commonButton;
+	private MyJButton insertButton;
+	private MyJButton searchButton;
+	
+	private MyJTable transferTable,branchTable,employTable,facilityTable,inventoryTable,bankAccountTable;
 	public Panel_Finance_OpenningStock(Frame_Finance frame_Finance) {
 		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
@@ -35,18 +40,18 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 	private void initComponent(Frame_Finance frame_Finance) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
 		this.initButton(frame_Finance);
-		String[] headers = {"机构编号", "日期"};
-		organizationTable= new MyJTable(headers,true);
-		organizationTable.setBackground(new Color(40, 42, 66));
-		organizationTable.setForeground(Color.WHITE);
-		organizationTable.setFont(new MyFont(14));
+		String[] headers = {"机构编号", "日期","机构类型","机构地址","机构人数"};
+		transferTable= new MyJTable(headers,true);
+		transferTable.setBackground(new Color(40, 42, 66));
+		transferTable.setForeground(Color.WHITE);
+		transferTable.setFont(new MyFont(14));
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
-		organizationTable.setDefaultRenderer(Object.class, tcr);
+		transferTable.setDefaultRenderer(Object.class, tcr);
 
 		
-		String[] headers2 = {"人员编号", "日期"};
+		String[] headers2 = {"人员编号", "日期","姓名","职务权限","工作时间"};
 		employTable = new MyJTable(headers2,true);
 		employTable.setBackground(new Color(40, 42, 66));
 		employTable.setForeground(Color.WHITE);
@@ -56,7 +61,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		tcr1.setHorizontalAlignment(JLabel.CENTER);
 		employTable.setDefaultRenderer(Object.class, tcr1);
 		
-		String[] headers3 = {"车辆编号", "日期"};
+		String[] headers3 = {"车辆编号", "日期","车辆购入日期","车牌号","运输历史"};
 		facilityTable = new MyJTable(headers3,true);
 		facilityTable.setBackground(new Color(40, 42, 66));
 		facilityTable.setForeground(Color.WHITE);
@@ -64,7 +69,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		
 		DefaultTableCellRenderer tcr2 = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr2.setHorizontalAlignment(JLabel.CENTER);
-		organizationTable.setDefaultRenderer(Object.class, tcr2);
+		facilityTable.setDefaultRenderer(Object.class, tcr2);
 		
 		String[] headers4 = {"库存编号", "日期"};
 		inventoryTable = new MyJTable(headers4,true);
@@ -74,7 +79,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		
 		DefaultTableCellRenderer tcr3 = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr3.setHorizontalAlignment(JLabel.CENTER);
-		organizationTable.setDefaultRenderer(Object.class, tcr3);
+		inventoryTable.setDefaultRenderer(Object.class, tcr3);
 		
 		String[] headers5 = {"账户编号","日期", "账户名称", "账户金额"};
 		bankAccountTable = new MyJTable(headers5,false);
@@ -84,9 +89,9 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		
 		DefaultTableCellRenderer tcr4 = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr4.setHorizontalAlignment(JLabel.CENTER);
-		organizationTable.setDefaultRenderer(Object.class, tcr4);
+		bankAccountTable.setDefaultRenderer(Object.class, tcr4);
 		
-		JScrollPane jsp = new JScrollPane(organizationTable);
+		JScrollPane jsp = new JScrollPane(transferTable);
 		jsp.setBounds(80, 90, 1085,  512/5);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
@@ -121,43 +126,46 @@ public class Panel_Finance_OpenningStock extends MyJPanel{
 		jsp5.setVisible(true);
 		this.add(jsp5);
 	
+		this.showAll();
 		
 	}
 	private void initButton(Frame_Finance frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
+		insertButton = new MyJButton(0, 150, 40, 130,
 				"<html>添<br/>加<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
-		insertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		insertButton.addActionListener(this);
+		/*insertButton.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent e) {
 				Panel_Finance_OpenningStock.this.insertPanel(frame);
 				
 			}
-		});
+		});*/
 		this.add(insertButton);
 
 	
 
-		MyJButton searchButton = new MyJButton(0, 280, 40, 130,
+		searchButton = new MyJButton(0, 280, 40, 130,
 				"<html>查<br/>看<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
-		searchButton.addActionListener(new ActionListener() {
+		searchButton.addActionListener(this);
+		/*searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Finance_OpenningStock.this.searchPanel(frame);
 				
 			}
-		});
+		});*/
 		this.add(searchButton);
 	}
 	
 	
 
-	private void insertPanel(Frame_Finance frame) {
+	/* void insertPanel(Frame_Finance frame) {
 	this.removeAll();
 	this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
 	this.initButton(frame);
 
 	
-	openningStockInfo = new Panel_Finance_OpenningStockInfo();
-	openningStockInfo.add(new MyJLabel(230,5,120,30,"新增期初账目",18,true));
-	this.add(openningStockInfo);
+//	openningStockInfo = new Panel_Finance_OpenningStockInfo();
+	//openningStockInfo.add(new MyJLabel(230,5,120,30,"新增期初账目",18,true));
+//	this.add(openningStockInfo);
 	
 	
 	commonButton = new MyJButton(890, 670, 150, 30, "新增期初账目", 20);
@@ -175,24 +183,24 @@ private void searchPanel(Frame_Finance frame) {
 	this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
 	this.initButton(frame);
 	
-	openningStockInfo = new Panel_Finance_OpenningStockInfo();
-	openningStockInfo.setUneditable();
-	openningStockInfo.add(new MyJLabel(230,5,150,30,"查看期初账目",18,true));
-	this.add(openningStockInfo);
+	//openningStockInfo = new Panel_Finance_OpenningStockInfo();
+	//openningStockInfo.setUneditable();
+	//openningStockInfo.add(new MyJLabel(230,5,150,30,"查看期初账目",18,true));
+	//this.add(openningStockInfo);
 	
 	this.repaint();
-}
+}*/
 public void showAll(){
 	OpeningStockBLService controller = new OpeningStockController();
-	//ArrayList<OpeningStockVO> openingStockVO = controller.show();
+	ArrayList<OpeningStockVO> openingStockVO = controller.show();
 	
-	DefaultTableModel tableModel = (DefaultTableModel)organizationTable.getModel();
+	DefaultTableModel tableModel = (DefaultTableModel)transferTable.getModel();
 	DefaultTableModel tableModel2 = (DefaultTableModel)employTable.getModel();
 	DefaultTableModel tableModel3 = (DefaultTableModel) facilityTable.getModel();
 	DefaultTableModel tableModel4 = (DefaultTableModel) inventoryTable.getModel();
 	DefaultTableModel tableModel5 = (DefaultTableModel) bankAccountTable.getModel();
 	
-	int rowCount = organizationTable.getRowCount();
+	int rowCount = transferTable.getRowCount();
 	int rowCount2 = employTable.getRowCount();
 	int rowCount3 = facilityTable.getRowCount();
 	int rowCount4 = inventoryTable.getRowCount();
@@ -212,37 +220,56 @@ public void showAll(){
 	for(int i = 0;i < rowCount5; i++){
 		
 	}
-	/*if(openingStockVO  != null){
+	if(openingStockVO  != null){
 		for(int i = 0; i < openingStockVO.size(); i++){
 			OpeningStockVO avo = openingStockVO.get(i);
 			
-			for(int j = 0; j < avo.accounts.size(); j++){
-				Object[] rowData = {avo.ID, avo.date
-						, avo.commoditySorts.get(j).ID, avo.commoditySorts.get(j).name};
+			for(int j = 0; j < avo.getTransfers().size(); j++){
+				Object[] rowData = {avo.getTransfers().get(j).getOrganizationID(), avo.getDate()
+						, avo.getTransfers().get(j).getOrganizationType(),avo.getTransfers().get(j).getNumberOfPerson(),avo.getTransfers().get(j).getAddress()};
 				tableModel.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.commodities.size(); j++){
-				Object[] rowData = {avo.ID, avo.date, avo.commodities.get(j).ID,
-						avo.commodities.get(j).name, avo.commodities.get(j).type, avo.commodities.get(j).inventoryNum};
+			for(int j = 0; j < avo.getAccounts().size(); j++){
+				Object[] rowData = {avo.getAccounts().get(j).getID(), avo.getDate(), avo.getAccounts().get(j).getName(),
+						avo.getAccounts().get(j).getDuty(), avo.getAccounts().get(j).getWorkTime()};
 				tableModel2.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.clients.size(); j++){
-				Object[] rowData = {avo.ID, avo.date, avo.clients.get(j).ID, avo.clients.get(j).name, 
-						avo.clients.get(j).receivable, avo.clients.get(j).payable};
+			for(int j = 0; j < avo.getFacilities().size(); j++){
+				Object[] rowData = {avo.getFacilities().get(j).getID(), avo.getDate(), avo.getFacilities().get(j).getDate(), avo.getFacilities().get(j).getVehicleIdentificationNumber(), 
+					avo.getFacilities().get(j).getDeliverHistory()};
 				tableModel3.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.accounts.size(); j++){
-				Object[] rowData = {avo.ID, avo.date, avo.accounts.get(j).ID
-						, avo.accounts.get(j).name, avo.accounts.get(j).money};
+			for(int j = 0; j < avo.getInventories().size(); j++){
+				Object[] rowData = {avo.getInventories().get(j).getID(), avo.getDate(), avo.getInventories().get(j).getEmptyOrFull()};
 				tableModel4.addRow(rowData);
 			}
 			
+			for(int j = 0;j<avo.getBankAccounts().size();j++){
+				Object[] rowData = {avo.getBankAccounts().get(j).getID(),avo.getDate(),avo.getBankAccounts().get(j).getName(),
+						avo.getBankAccounts().get(j).getMoney()};
+				tableModel5.addRow(rowData);
+			}
 			
-		}*/
+		}
 	}
+ }
+
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if(e.getSource()==searchButton){
+		this.showAll();
+	}else if(e.getSource()==insertButton){
+		OpeningStockBLService controller = new OpeningStockController();
+		//controller.add(commodities, clients0, clients1, clients2, clients3, accounts);
+	}
+	
+}
 }
 
 

@@ -38,6 +38,29 @@ public class ReceiptPO extends PersistentObject{
 	public ReceiptPO(String iD, String date) {
 		super(iD, date);
 	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	public ReceiptType getReceiptType() {
+		return receiptType;
+	}
+
+	public void setReceiptType(ReceiptType receiptType) {
+		this.receiptType = receiptType;
+	}
+
+	public ReceiptPO(String id,ReceiptType receiptType) {
+		super(id);
+		this.receiptType = receiptType;
+	}
+	
+	
 	
 	
 	

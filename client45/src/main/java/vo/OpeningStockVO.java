@@ -12,7 +12,7 @@ import po.accountpo.AccountPO;
 public class OpeningStockVO {
 	private String ID;
 	private String date;
-private ArrayList<TransferPO> transfers;
+private  ArrayList<TransferPO> transfers;
 	
 	private ArrayList<BranchPO> branchs;
 
@@ -33,7 +33,7 @@ private ArrayList<TransferPO> transfers;
 		this.accounts = accounts;
 		this.facilities = facilities;
 		this.inventories = inventories;
-		this.bankAccounts=bankAccounts;
+		this.bankAccounts = bankAccounts;
 	}
 
 
@@ -64,4 +64,10 @@ private ArrayList<TransferPO> transfers;
 	public ArrayList<BranchPO> getBranchs() {
 		return branchs;
 	}
+
+
+	public ArrayList<BankAccountPO> getBankAccounts() {
+		return bankAccounts;
+	}
+
 }
