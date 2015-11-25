@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.PersistentObject;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -22,11 +23,12 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
+
+	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
-		poList=new SerSaveAndLoad<ReceiptPO>("data/"+NAME+".ser");
+		poList = new SerSaveAndLoad<ReceiptPO>("data/" + NAME + ".ser");
 	}
-	
+
 	@Override
 	public String getID() {
 		int newID = poList.size();
@@ -36,8 +38,8 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	@Override
 	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptState) throws RemoteException {
 		ArrayList<ReceiptPO> bills = new ArrayList<>();
-		for (ReceiptPO po: poList.getInList()) {
-			if(po.getReceiptState()==receiptState)
+		for (ReceiptPO po : poList.getInList()) {
+			if (po.getReceiptState() == receiptState)
 				bills.add(po);
 		}
 		return bills;
@@ -50,52 +52,45 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public String getImportID() throws RemoteException {
-		String prifix="IMPORT";
-		int idNumber=0;
+		String prifix = "IMPORT";
+		int idNumber = 0;
 		for (int i = 0; i < poList.size(); i++) {
 			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType()==ReceiptType.INSTOCK)
+			if (po.getReceiptType() == ReceiptType.INSTOCK)
 				++idNumber;
 		}
-		return prifix+Util.transIntToString(idNumber, 8);
+		return prifix + Util.transIntToString(idNumber, 8);
 	}
 
 	@Override
 	public String getExportID() throws RemoteException {
-		String prifix="EXPORT";
-		int idNumber=0;
+		String prifix = "EXPORT";
+		int idNumber = 0;
 		for (int i = 0; i < poList.size(); i++) {
 			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType()==ReceiptType.OUTSTOCK)
+			if (po.getReceiptType() == ReceiptType.OUTSTOCK)
 				++idNumber;
 		}
-		return prifix+Util.transIntToString(idNumber, 8);
+		return prifix + Util.transIntToString(idNumber, 8);
 	}
 
 	@Override
 	public String getAdjustID() throws RemoteException {
-		String prifix="ADJUST";
-		int idNumber=0;
+		String prifix = "ADJUST";
+		int idNumber = 0;
 		for (int i = 0; i < poList.size(); i++) {
 			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType()==ReceiptType.TAKINGSTOCK)
+			if (po.getReceiptType() == ReceiptType.TAKINGSTOCK)
 				++idNumber;
 		}
-		return prifix+Util.transIntToString(idNumber, 8);
+		return prifix + Util.transIntToString(idNumber, 8);
 	}
 
-	@Override
-	public String getInventoryID() throws RemoteException {
-		//???
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
 		return (InventoryImportReceiptPO) super.find(importID);
 	}
-	
 
 	@Override
 	public InventoryExportReceiptPO findExport(String exportID) throws RemoteException {
@@ -109,7 +104,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public String getTransferID() throws RemoteException {
-		//???
+		// ???
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -120,13 +115,12 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return null;
 	}
 
-
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> inventoryImportReceipts = new ArrayList<>();
-		for (ReceiptPO po: poList.getInList()) {
-			if(po.getReceiptType()==ReceiptType.INSTOCK&&po.getDate().compareTo(enddate)<=0)
-				inventoryImportReceipts.add((InventoryImportReceiptPO)po);
+		for (ReceiptPO po : poList.getInList()) {
+			if (po.getReceiptType() == ReceiptType.INSTOCK && po.getDate().compareTo(enddate) <= 0)
+				inventoryImportReceipts.add((InventoryImportReceiptPO) po);
 		}
 		return inventoryImportReceipts;
 	}
@@ -134,9 +128,9 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	@Override
 	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException {
 		ArrayList<InventoryExportReceiptPO> inventoryExportReceipts = new ArrayList<>();
-		for (ReceiptPO po: poList.getInList()) {
-			if(po.getReceiptType()==ReceiptType.OUTSTOCK&&po.getDate().compareTo(enddate)<=0)
-				inventoryExportReceipts.add((InventoryExportReceiptPO)po);
+		for (ReceiptPO po : poList.getInList()) {
+			if (po.getReceiptType() == ReceiptType.OUTSTOCK && po.getDate().compareTo(enddate) <= 0)
+				inventoryExportReceipts.add((InventoryExportReceiptPO) po);
 		}
 		return inventoryExportReceipts;
 	}
@@ -144,9 +138,9 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException {
 		ArrayList<AdjustReceiptPO> adjustReceipts = new ArrayList<>();
-		for (ReceiptPO po: poList.getInList()) {
-			if(po.getReceiptType()==ReceiptType.TAKINGSTOCK&&po.getDate().compareTo(enddate)<=0)
-				adjustReceipts.add((AdjustReceiptPO)po);
+		for (ReceiptPO po : poList.getInList()) {
+			if (po.getReceiptType() == ReceiptType.TAKINGSTOCK && po.getDate().compareTo(enddate) <= 0)
+				adjustReceipts.add((AdjustReceiptPO) po);
 		}
 		return adjustReceipts;
 	}
@@ -168,20 +162,43 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
+		int size = 0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if (po.getReceiptType() == ReceiptType.OUTSTOCK && inDate(po, beginDate, endDate))
+				++size;
+		}
+		return size;
 	}
+
 
 	@Override
 	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
+		int size = 0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if (po.getReceiptType() == ReceiptType.INSTOCK && inDate(po, beginDate, endDate))
+				++size;
+		}
+		return size;
 	}
 
 	@Override
 	public int getNum(String beginDate, String endDate) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
+		int size = 0;
+		for (int i = 0; i < poList.size(); i++) {
+			ReceiptPO po = poList.get(i);
+			if ((po.getReceiptType() == ReceiptType.INSTOCK || po.getReceiptType() == ReceiptType.OUTSTOCK)
+					&& inDate(po, beginDate, endDate))
+				++size;
+		}
+		return size;
+	}
+	
+	private boolean inDate(PersistentObject po, String beginDate, String endDate) {
+		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
+			return true;
+		return false;
 	}
 
 }

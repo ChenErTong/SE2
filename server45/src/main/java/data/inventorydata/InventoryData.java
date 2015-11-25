@@ -7,6 +7,7 @@ import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class InventoryData extends ManageData<InventoryPO> implements InventoryDataService {
 
@@ -65,6 +66,12 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 			}
 		}
 		return inventories;
+	}
+
+	@Override
+	public String getInventoryID() throws RemoteException {
+		int size=poList.size();
+		return Util.transIntToString(size, 3);
 	}
 
 }

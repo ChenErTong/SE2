@@ -16,7 +16,8 @@ public interface InventoryDataService extends ManageDataService<InventoryPO>{
 	/**初始化持久数据**/
 	public void init() throws RemoteException;
 	
-	
+	/** 得到inventoryid **/
+	public String getInventoryID() throws RemoteException;
 
 	
 	/** 获得位置信息 **/

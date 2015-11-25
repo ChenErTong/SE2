@@ -79,11 +79,6 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		return null;
 	}
 	@Override
-	public String getInventoryID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

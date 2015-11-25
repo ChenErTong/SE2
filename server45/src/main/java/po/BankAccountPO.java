@@ -3,8 +3,6 @@ package po;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import state.ReceiptType;
-
 /**
  * 银行账户的持久化对象
  * 账户属性有：名称和余额、创建时间、账户属性。余额是不可以修改的，此数据项取决于收款单和付款单
@@ -13,6 +11,14 @@ import state.ReceiptType;
  */
 
 public class BankAccountPO extends PersistentObject{
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
