@@ -18,7 +18,7 @@ import ui.myui.MyTranslucentPanel;
  * @time 2015/11/18 19:33
  */
 public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
-
+	private MyJTable	table;
 	public Panel_Sender_logisticInfo() {
 		super(630, 105, 647, 605);
 		this.initComponent();
@@ -31,7 +31,7 @@ public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 		
 		//the table
 		String[] headers = {"订单号","日期","起始营业厅","转运方式","接收中转中心","目的地营业厅","派件员"};
-		MyJTable	table = new MyJTable(headers, false);
+		table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));

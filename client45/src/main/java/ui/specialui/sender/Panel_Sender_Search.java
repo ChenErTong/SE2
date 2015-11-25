@@ -11,6 +11,8 @@ import ui.myui.MyTranslucentPanel;
 public class Panel_Sender_Search extends MyTranslucentPanel{
 	 private MyJTextField orderNumberField;
 	 private MyJTextField senderNameField;
+	 private MyJButton search;
+	 private MyJButton cancel;
 	public Panel_Sender_Search(Frame_Sender frame_Sender) {
 		super(10, 105,620, 108);
 		// TODO Auto-generated constructor stub
@@ -18,13 +20,8 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 	}
 
 	private void initComponent(Frame_Sender frame_Sender) {
-		MyJLabel orderNumber = new MyJLabel(65,5,120,40,"订单号",18,true);
-		this.add(orderNumber);
-		orderNumber.setVisible(true);
-			
-		MyJLabel senderName = new MyJLabel(65,55,120,40,"寄件人姓名",18,true);
-		this.add(senderName);
-		senderName.setVisible(true);
+		this.add(new MyJLabel(65,5,120,40,"订单号",18,true));
+		this.add( new MyJLabel(65,55,120,40,"寄件人姓名",18,true));
 		
 		 orderNumberField = new MyJTextField(185, 5 ,200, 40);
 		this.add(orderNumberField);
@@ -32,12 +29,12 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 		senderNameField = new MyJTextField(185, 55, 200, 40);
 		this.add(senderNameField);
 		
-		MyJButton search = new MyJButton(398,10,90,30,"查询",16);
+		 search = new MyJButton(398,10,90,30,"查询",16);
 		search.setActionCommand("SearchLogisticInfo");
 		search.addActionListener(frame_Sender);
 		this.add(search);
 		
-		MyJButton cancel = new MyJButton(398,60,90,30,"取消",16);
+		 cancel = new MyJButton(398,60,90,30,"取消",16);
 		cancel.setActionCommand("CancelSearch");
 		cancel.addActionListener(new ActionListener(){
 
