@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -33,7 +34,14 @@ public class XMLReader {
 	}
 	
 	public void setValue(String key,String value){
-		root.addAttribute(key, value);
+		Attribute attribute=root.attribute(key);
+		if(attribute==null)
+			root.addAttribute(key, value);
+		else {
+			root.remove(attribute);
+			root.addAttribute(key, value);
+		}
+		
 		try {
 			this.saveDocument(doc, file);
 		} catch (IOException e) {

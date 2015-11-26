@@ -8,6 +8,7 @@ import dataservice.ManageDataService;
 import po.PersistentObject;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class ManageData<PO extends PersistentObject> extends Data implements ManageDataService<PO> {
 
@@ -28,7 +29,12 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 	}
 	
 	public String getID() throws RemoteException{
-		return null;
+		if (poList.isEmpty()) {
+			maxID = 0;	// 初始化最大ID
+			configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
+		}
+		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
+		return currentID;
 	}
 	public PO find(String id) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
