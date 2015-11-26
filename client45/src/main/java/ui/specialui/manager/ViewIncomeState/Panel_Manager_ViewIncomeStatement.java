@@ -31,4 +31,16 @@ public class Panel_Manager_ViewIncomeStatement extends MyJPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 是否进行报表导出
+	 * @return 返回0则导出。返回1则不导出
+	 */
+	public int isExport(){
+		int rowCount = 0;
+		rowCount = statePanel.getTable().getRowCount();
+		if(rowCount>0){
+			return 0;
+		}
+		return 1;
+	}
 }

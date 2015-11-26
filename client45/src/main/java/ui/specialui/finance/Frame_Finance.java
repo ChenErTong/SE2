@@ -22,6 +22,7 @@ import ui.specialui.finance.OpenningStock.Panel_Finance_OpenningStock;
 import ui.specialui.finance.SettlementManage.Panel_Finance_SettlementManage;
 import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_BusinessPerformance;
 import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_ViewBusinessPerformance;
+import ui.specialui.finance.ViewIncomeState.Panel_Finance_IncomeState;
 import ui.specialui.finance.ViewIncomeState.Panel_Finance_ViewIncomeStatement;
 import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
 
@@ -121,7 +122,13 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((Panel_Finance_BusinessPerformance)subPanel).getTable());
+				this.outputExcel();
 			}
+		}else if(e.getActionCommand().equals("ExportIncomeTable")){
+			if(this.isExport_2()){
+				setTable(((Panel_Finance_IncomeState)subPanel).getTable());
+				this.outputExcel();
+		}
 		}
 	}
 	/**
@@ -172,8 +179,14 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}
 		return false;
 	}
-	
-	public void outputExcel(){
+	private boolean isExport_2(){
+		switch(((Panel_Finance_ViewIncomeStatement)subPanel).isExport()){
+		case 0:new MyNotification(this,"正在导出成本收益表！",Color.GREEN);return true;
+		case 1:new MyNotification(this,"导出成本收益表失败！",Color.RED);break;
+		}
+		return false;
+	}
+	public  void outputExcel(){
     	
 		FileDialog fd = new FileDialog(this, "导出至Excel", FileDialog.SAVE);
 	    fd.setLocation(this.getX(), this.getY());

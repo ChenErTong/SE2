@@ -3,6 +3,7 @@ package ui.specialui.finance.ViewBusinessPerformance;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -22,6 +23,8 @@ import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.finance.Frame_Finance;
 import vo.BussinessConditionVO;
+import vo.BussinessProcessVO;
+import vo.receiptvo.DebitAndPayBillVO;
 
 public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel implements ActionListener{
 	private MyComboBox yearBox;
@@ -193,27 +196,27 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel imple
 				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
 				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
 				RecordBLService recordController = ControllerFactory.getRecordController();
-				BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+				ArrayList<DebitAndPayBillVO> vo = recordController.bussinessProcess(beginDate, endDate);
 				
 				DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 				int rowCount = table.getRowCount();
 				for(int i = 0; i < rowCount; i++){
 					tableModel.removeRow(0);
 				}
+				
+				if (vo!=null){
+					for(int i=0;i<vo.size();i++){
+						
+						DebitAndPayBillVO dpo = vo.get(i);
+						Object rowData[] = {dpo.getID(),dpo.getType(),dpo.getMoney(),dpo.getPayerName(),dpo.getBankAccouts(),dpo.getItems(),dpo.getRentYear(),dpo.getSalaryMonth(),dpo.getOrderNumbers(),dpo.getTransListNumber()};
+						tableModel.addRow(rowData);		
+						}
+					}
+				}
 
-				String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
-						"收款单", String.format("%.2f", vo.totalIncome) + "元"};
-				tableModel.addRow(rowData);
-				
-				String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","付款单",String.format("%.2f", vo.totalExpen)+"元"};
-				
-				tableModel.addRow(rowData2);
-				
-				String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
-				
-				tableModel.addRow(rowData3);
+	
 			}
 		}
 		
 	}
-}
+

@@ -1,13 +1,18 @@
 package ui.specialui.finance.ViewIncomeState;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
@@ -15,14 +20,19 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.finance.Frame_Finance;
+import vo.BussinessConditionVO;
 
-public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
+public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MyComboBox yearBox;
-	private MyComboBox yearBox_2;
+	//private MyComboBox yearBox_2;
 	private MyComboBox monthBox;
-	private MyComboBox monthBox_2;
+	//private MyComboBox monthBox_2;
 	private MyComboBox dayBox;
-	private MyComboBox dayBox_2;
+	//private MyComboBox dayBox_2;
 	private MyJButton check;
 	private MyJTable	table;
 	public Panel_Finance_IncomeState(Frame_Finance frame_Finance) {
@@ -34,46 +44,46 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
 	private void initComponent(Frame_Finance frame_Finance) {
 		MyJLabel title = new MyJLabel(475,5,170,40,"成本收益表预览",22,true);
 		this.add(title);
-		MyJLabel  startDate = new MyJLabel(20,40,120,30,"选择开始日期:",16,true);
+		MyJLabel  startDate = new MyJLabel(20,75,120,30,"选择截止日期:",16,true);
 		this.add(startDate);
 		
-		MyJLabel endDate = new MyJLabel(20,75,120,30,"选择截止日期:",16,true);
-		this.add(endDate);
+	//	MyJLabel endDate = new MyJLabel(20,75,120,30,"选择截止日期:",16,true);
+		//this.add(endDate);
 		
-		MyJLabel year = new MyJLabel(142,40,30,30,"年",16,true);
+		MyJLabel year = new MyJLabel(142,75,30,30,"年",16,true);
 		this.add(year);
+		//
+		//MyJLabel year_2 =new MyJLabel(142,75,30,30,"年",16,true);
+		//this.add(year_2);
 		
-		MyJLabel year_2 =new MyJLabel(142,75,30,30,"年",16,true);
-		this.add(year_2);
-		
-		MyJLabel month = new MyJLabel(265,40,30,30,"月",16,true);
+		MyJLabel month = new MyJLabel(265,75,30,30,"月",16,true);
 		this.add(month);
 		
-		MyJLabel month_2 = new MyJLabel(265,75,30,30,"月",16,true);
-		this.add(month_2);
+		//MyJLabel month_2 = new MyJLabel(265,75,30,30,"月",16,true);
+		//this.add(month_2);
 		
-		MyJLabel day = new MyJLabel(388,40,30,30,"日",16,true);
+		MyJLabel day = new MyJLabel(388,75,30,30,"日",16,true);
 		this.add(day);
-		MyJLabel day_2 = new MyJLabel(388,75,30,30,"日",16,true);
-		this.add(day_2);
+	//	MyJLabel day_2 = new MyJLabel(388,75,30,30,"日",16,true);
+		//this.add(day_2);
 		
 		String[] years = {"2015","2014"};
-		yearBox = new MyComboBox(172,40,90,30,16,years);
+		yearBox = new MyComboBox(172,75,90,30,16,years);
 		this.add(yearBox);
-		yearBox_2 = new MyComboBox(172,75,90,30,16,years);
-		this.add(yearBox_2);
+	//	yearBox_2 = new MyComboBox(172,75,90,30,16,years);
+		//this.add(yearBox_2);
 		
 		String[] months = {"一月","二月"};
-		monthBox = new MyComboBox(295,40,90,30,16,months);
+		monthBox = new MyComboBox(295,75,90,30,16,months);
 		this.add(monthBox);
-		monthBox_2 = new MyComboBox(295,75,90,30,16,months);
-		this.add(monthBox_2);
+		//monthBox_2 = new MyComboBox(295,75,90,30,16,months);
+		//this.add(monthBox_2);
 		
 		String[] days = {"01","02"};
-		dayBox = new MyComboBox(418,40,90,30,16,days);
+		dayBox = new MyComboBox(418,75,90,30,16,days);
 		this.add(dayBox);
-		dayBox_2 = new MyComboBox(418,75,90,30,16,days);
-		this.add(dayBox_2);
+		//dayBox_2 = new MyComboBox(418,75,90,30,16,days);
+		//this.add(dayBox_2);
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
 		check.setActionCommand("ViewIncomState");
@@ -118,34 +128,94 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel{
 			this.add(jsp);
 		
 	}
+
 	/**
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
 	 */
-	/*private int isExport(){
+	private int isExport(){
 		int rowCount = 0;
 		rowCount = table.getRowCount();
 		if(rowCount>0){
 			return 0;
 		}
 		return 1;
-	}*/
+	}
 	
 	private String[] getData(){
-		String[] data = null;
+		String[] data = new String[3];
+		
+		data[0] =(String) yearBox.getSelectedItem();
+		data[1] = (String) monthBox.getSelectedItem();
+		data[2] = (String) dayBox.getSelectedItem();
+	//	data[3] = (String)yearBox_2.getSelectedItem();
+		//data[4] = (String)monthBox_2.getSelectedItem();
+		//data[5] = (String)dayBox_2.getSelectedItem();
+		for(int i=0;i<6;i++){
+			if(data[i]==""){
+				return null;
+			}
+		}
 		
 		return data;
-	}
-
-	private void  setData(){
-		
-	}
 	
+	}
+	private String addZero(String str){
+		if(Integer.parseInt(str) < 10){
+			return "0" + str;
+		}else{
+			return str;
+		}
+	}
+	private String yearAddZero(String str){
+		if(Integer.parseInt(str) < 10){
+			return "000" + str;
+		}else{
+			if(Integer.parseInt(str) < 100){
+				return "00" + str;
+			}else{
+				if(Integer.parseInt(str) < 1000){
+					return "0" + str;
+				}else{
+					return str;
+				}
+			}
+		}
+	}
 	public  MyJTable getTable(){
 		return table;
 	}
 
-	private static final long serialVersionUID = 1L;
-
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==check){
+			if(this.getData()==null){
+				//this.add(new MyNotification());
+			}else{
+				
+				String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
+				RecordBLService recordController = ControllerFactory.getRecordController();
+				BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+				
+				DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+				int rowCount = table.getRowCount();
+				for(int i = 0; i < rowCount; i++){
+					tableModel.removeRow(0);
+				}
+				if(vo!=null){
+					String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
+							"总收入", String.format("%.2f", vo.getTotalIncome()) + "元"};
+					tableModel.addRow(rowData);
+					
+					String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","总支出",String.format("%.2f", vo.totalExpen)+"元"};
+					
+					tableModel.addRow(rowData2);
+					
+					String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
+					
+					tableModel.addRow(rowData3);
+				}
+			}
+			}
+	}
 }
-
