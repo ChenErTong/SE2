@@ -21,7 +21,6 @@ public class OrganizationDataService_Driver {
 		OrganizationDataService_Driver driver = new OrganizationDataService_Driver();
 		OrganizationDataService stub = new OrganizationDataService_Stub();
 		driver.drive(stub);
-		
 	}
 
 }

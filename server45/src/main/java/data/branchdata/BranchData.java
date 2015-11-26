@@ -7,7 +7,6 @@ import data.ManageData;
 import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
 import util.SerSaveAndLoad;
-import util.Util;
 
 public class BranchData extends ManageData<BranchPO> implements BranchDataService {
 

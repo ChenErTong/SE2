@@ -7,7 +7,6 @@ import data.ManageData;
 import dataservice.transferdataservice.TransferDataService;
 import po.TransferPO;
 import util.SerSaveAndLoad;
-import util.Util;
 
 public class TransferData extends ManageData<TransferPO> implements TransferDataService {
 
