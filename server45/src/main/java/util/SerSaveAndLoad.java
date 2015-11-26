@@ -66,6 +66,7 @@ public class SerSaveAndLoad<E> implements Serializable {
 	public boolean isEmpty() {
 		return poList.isEmpty();
 	}
+	
 	@SuppressWarnings("unchecked")
 	private void load(){
 		/* 没有该文件夹就创建 */

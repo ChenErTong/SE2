@@ -38,10 +38,10 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 		}
 		return bankAccounts;
 	}
-	@Override
-	public String getID(FindTypeBase baseType) throws RemoteException {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 3);
-	}
+//	@Override
+//	public String getID(FindTypeBase baseType) throws RemoteException {
+//		int newID = poList.size();
+//		return Util.transIntToString(newID, 3);
+//	}
 
 }
