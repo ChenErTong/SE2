@@ -2,6 +2,7 @@ package data.accountdata;
 
 import java.rmi.RemoteException;
 
+import config.XMLReader;
 import data.ManageData;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
@@ -24,8 +25,8 @@ public class AccountData extends ManageData<AccountPO> implements AccountDataSer
 
 	@Override
 	public void initialFile() {
-		// TODO Auto-generated method stub
-		
+		poList=new SerSaveAndLoad<AccountPO>("data/"+NAME+".ser");
+		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
 }

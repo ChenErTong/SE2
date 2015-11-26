@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import config.XMLReader;
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -20,7 +21,6 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 	private static final long serialVersionUID = 1L;
 	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public DebitAndPayBillData() throws RemoteException {
-		poList=new SerSaveAndLoad<DebitAndPayBillPO>("data/"+NAME+".ser");
 	}
 	
 	@Override
@@ -112,8 +112,8 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public void initialFile() {
-		// TODO Auto-generated method stub
-		
+		poList=new SerSaveAndLoad<DebitAndPayBillPO>("data/"+NAME+".ser");
+		configReader=new XMLReader("config/"+NAME+".xml");
 	}
     
 }

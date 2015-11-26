@@ -27,6 +27,8 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 
 	public ManageData() throws RemoteException {
 		initialFile();
+		maxID=Integer.parseInt(configReader.getValue("maxID"));
+		IDMaxBit=Integer.parseInt(configReader.getValue("IDMaxBit"));
 	}
 	
 	public String getID() throws RemoteException{

@@ -20,7 +20,6 @@ public class OrganizationData extends Data implements OrganizationDataService {
 
 	@Override
 	public void initialFile() {
-		// TODO Auto-generated method stub
-		
+		//TODO
 	}
 }

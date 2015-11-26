@@ -3,6 +3,7 @@ package data.receiptdata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.XMLReader;
 import data.ManageData;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.PersistentObject;
@@ -26,7 +27,6 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
-		poList = new SerSaveAndLoad<ReceiptPO>("data/" + NAME + ".ser");
 	}
 
 
@@ -198,8 +198,8 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public void initialFile() {
-		// TODO Auto-generated method stub
-		
+		poList=new SerSaveAndLoad<ReceiptPO>("data/"+NAME+".ser");
+		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
 }
