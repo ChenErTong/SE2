@@ -23,6 +23,7 @@ public class BankAccountController implements BankAccountBLService{
 		try {
 			return BankAccountBL.getID();
 		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

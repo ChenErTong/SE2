@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 
+import state.ReceiptType;
+
 /**
  *所有PO类的父类，包括创建时间、编号
  * @author zsq
@@ -21,7 +23,7 @@ public class PersistentObject implements Serializable{
 	protected String ID;
 	/**时间*/
 	protected String date;
-	
+   
 	protected PersistentObject(String id){
 		this.ID = id;
 	}
@@ -47,4 +49,12 @@ public class PersistentObject implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	
+	
+	
+	
+	
+	
+	
 }

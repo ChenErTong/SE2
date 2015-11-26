@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
 import state.OrganizationType;
+import state.ReceiptType;
 
 /**
  * 营业厅单一可持续化对象

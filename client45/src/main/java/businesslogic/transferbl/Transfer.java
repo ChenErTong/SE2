@@ -6,9 +6,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.CommodityPO;
 import po.OrderPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -47,7 +49,8 @@ public class Transfer {
 		ArrayList<OrderPO> orders = orderDataService.find();
 		ArrayList<CommodityVO> vos=new ArrayList<>();
 		for (OrderPO orderPO : orders) {
-			ArrayList<CommodityVO> vosForSingleOrder = orderPO.getCommodityVO();
+			ArrayList<CommodityPO> posForSingleOrder = orderPO.getCommodityPO();
+			ArrayList<CommodityVO> vosForSingleOrder = OrderTrans.convertCommodityPOstoVOs(posForSingleOrder);
 			for (CommodityVO commodityVO : vosForSingleOrder) {
 				vos.add(commodityVO);
 			}

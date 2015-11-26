@@ -21,9 +21,10 @@ public class _Order_Stub implements OrderBLService {
 
 	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		OrderPO orderPO = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
-				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
-				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
+		OrderPO orderPO = null;
+//				new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
+//				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
+//				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
 		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
 			orderDataService.add(orderPO);
@@ -53,9 +54,7 @@ public class _Order_Stub implements OrderBLService {
 	}
 
 	public ResultMessage updateOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		OrderPO orderPO = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
-				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
-				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
+		OrderPO orderPO = null;;
 		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
 			orderDataService.modify(orderPO);

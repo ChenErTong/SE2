@@ -18,7 +18,7 @@ public class OpeningStockPO extends PersistentObject {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2898348688803208513L;
-
+	
 	private ArrayList<TransferPO> transfers;
 	
 	private ArrayList<BranchPO> branchs;

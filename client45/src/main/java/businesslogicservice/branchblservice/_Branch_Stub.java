@@ -2,6 +2,7 @@ package businesslogicservice.branchblservice;
 
 import java.util.ArrayList;
 
+import po.CommodityPO;
 import po.OrderPO;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
@@ -24,17 +25,17 @@ public class _Branch_Stub implements BranchBLService {
 	public ArrayList<CommodityVO> getAllCommodities() {
 		ArrayList<OrderPO> orderPOs = new ArrayList<>();
 		System.out.println("You get all orderPOs");
-		ArrayList<CommodityVO> allCommodityVOs = new ArrayList<>();
+		ArrayList<CommodityPO> allCommodityVOs = new ArrayList<>();
 		System.out.println("Get commodities from orderPOs");
 		for(int i=0;i<orderPOs.size();i++){
 			OrderPO orderPO = orderPOs.get(i);
-			ArrayList<CommodityVO> oneCommodityVOs = orderPO.getCommodityVO();
-			for (CommodityVO commodityVO : oneCommodityVOs) {
+			ArrayList<CommodityPO> oneCommodityVOs = orderPO.getCommodityPO();
+			for (CommodityPO commodityVO : oneCommodityVOs) {
 				allCommodityVOs.add(commodityVO);
 			}
 		}
 		System.out.println("You have got all commodities!");
-		return allCommodityVOs;
+		return null;
 	}
 
 	@Override

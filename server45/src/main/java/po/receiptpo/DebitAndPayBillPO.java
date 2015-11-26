@@ -14,15 +14,32 @@ import state.ReceiptType;
  * @version Oct 22,2015
  */
 public class DebitAndPayBillPO extends ReceiptPO{
+	
+	public ReceiptState getState() {
+		return state;
+	}
+	public void setState(ReceiptState state) {
+		this.state = state;
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5827233260131683793L;
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
 	/**serialVersionUID*/
-	private static final long serialVersionUID = 1L;
 	private double money;
 	private String courierID;
 	private String date;
 	//TODO
 	private ArrayList<String> orderNumbers;
 	private String payerName;
-	private ArrayList<BankAccountPO> bankAccouts; 
+	private ArrayList<String> bankAccouts; 
 	private PayBillItem items;
 	private String rentYear;
 	private String salaryMonth;
@@ -35,10 +52,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
  * @version Oct 22,2015
  */
 	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
-		super(ID);
+
+		super(ID,type);
+
 		this.money = money;
 		this.courierID = courierID;
-		this.state = ReceiptState.APPROVALING;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
@@ -48,9 +66,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<BankAccountPO>bankAccouts,ReceiptType type,
+
+	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<String>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
-		super(ID);
+		super(ID,type);
+
 		this.money = money;
 		this.payerName = payerName;
 		this.bankAccouts = bankAccouts;
@@ -58,7 +78,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.salaryMonth = salaryMonth;
 		this.items = items;
 		this.type = type;
-		this.state = ReceiptState.APPROVALING;
 		this.transListNumber = transListNumber;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
@@ -80,7 +99,18 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setCourierID(String courierID) {
 		this.courierID = courierID;
 	}
-
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public ArrayList<String> getOrderNumbers() {
+		return orderNumbers;
+	}
+	public void setOrderNumbers(ArrayList<String> orderNumbers) {
+		this.orderNumbers = orderNumbers;
+	}
 	public String getPayerName() {
 		return payerName;
 	}
@@ -89,11 +119,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.payerName = payerName;
 	}
 
-	public ArrayList<BankAccountPO> getBankAccouts() {
+	public ArrayList<String> getBankAccouts() {
 		return bankAccouts;
 	}
 
-	public void setBankAccouts(ArrayList<BankAccountPO> bankAccouts) {
+	public void setBankAccouts(ArrayList<String> bankAccouts) {
 		this.bankAccouts = bankAccouts;
 	}
 
@@ -104,23 +134,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setItems(PayBillItem items) {
 		this.items = items;
 	}
-
-	public ReceiptType getType() {
-		return type;
-	}
-
-	public void setType(ReceiptType type) {
-		this.type = type;
-	}
-
-	public ReceiptState getState() {
-		return state;
-	}
-
-	public void setState(ReceiptState state) {
-		this.state = state;
-	}
-
 	public String getRentYear() {
 		return rentYear;
 	}
@@ -136,6 +149,23 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public void setSalaryMonth(String salaryMonth) {
 		this.salaryMonth = salaryMonth;
 	}
+	public ArrayList<String> getTransListNumber() {
+		return transListNumber;
+	}
+	public void setTransListNumber(ArrayList<String> transListNumber) {
+		this.transListNumber = transListNumber;
+	}
+	public ReceiptType getType() {
+		return type;
+	}
+
+	public void setType(ReceiptType type) {
+		this.type = type;
+	}
+
+	
+	
+	
 
 
 }

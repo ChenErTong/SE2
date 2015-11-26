@@ -17,7 +17,7 @@ public class RecordDataService_Stub implements RecordDataService{
 		bussinessConditionPOs = new ArrayList<BussinessConditionPO>();
 		
 		//bussinessProcessPO = new BussinessProcessPO();
-		bussinessConditionPO = new BussinessConditionPO(null, null, null, 0, 0, 0);
+//		bussinessConditionPO = new BussinessConditionPO(null, null, null, 0, 0, 0);
 		
 		bussinessProcessPOs.add(bussinessProcessPO);
 		bussinessConditionPOs.add(bussinessConditionPO);
