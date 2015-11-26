@@ -12,11 +12,11 @@ public class TransferTrans {
 		if (vo == null) {
 			return null;
 		}
-		String ID = vo.getOrganizationID();
-		String address = vo.getAddress();
-		String date = vo.getDate();
-		ArrayList<AccountPO> accounts = vo.getAccounts();
-		ArrayList<InventoryPO> inventoryPOs = vo.getInventories();
+		String ID = vo.organizationID;
+		String address = vo.address;
+		String date = vo.date;
+		ArrayList<AccountPO> accounts = vo.accounts;
+		ArrayList<InventoryPO> inventoryPOs = vo.inventories;
 		return new TransferPO(ID, address, date, accounts, inventoryPOs);
 	}
 

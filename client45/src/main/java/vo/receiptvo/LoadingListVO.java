@@ -11,11 +11,11 @@ import state.ReceiptType;
  */
 public class LoadingListVO extends ReceiptVO{
 	
-	private String branchID;
-	private String destination;
-	private String facilityID;
-	private String courierName;
-	private ArrayList<String> orders;
+	public String branchID;
+	public String destination;
+	public String facilityID;
+	public String courierName;
+	public ArrayList<String> orders;
 	
 	public LoadingListVO(String ID,ReceiptType type) {
 		super(ID,type );
@@ -30,46 +30,4 @@ public class LoadingListVO extends ReceiptVO{
 		this.courierName = courierName;
 		this.orders = orders;
 	}
-
-	public String getBranchID() {
-		return branchID;
-	}
-
-	public void setBranchID(String branchID) {
-		this.branchID = branchID;
-	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public String getFacilityID() {
-		return facilityID;
-	}
-
-	public void setFacilityID(String facilityID) {
-		this.facilityID = facilityID;
-	}
-
-	public String getCourierName() {
-		return courierName;
-	}
-
-	public void setCourierName(String courierName) {
-		this.courierName = courierName;
-	}
-
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
-	}
-
-	
 }

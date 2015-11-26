@@ -186,13 +186,13 @@ public class Panel_Admin_Total extends MyJPanel{
 		if(data == null){
 			return 1;
 		}
-		user.setId(data[0]);
-		user.setPassword(data[1]);
-		user.setUserName(data[2]);
-		user.setPhoneNumber(data[3]);
-		user.setIden(data[4]);
-		user.setAuthority(data[5]);
-		user.setAddress(data[9]);
+		user.id=data[0];
+		user.password=data[1];
+		user.userName=data[2];
+		user.phoneNumber=data[3];
+		user.iden=data[4];
+		user.authority=data[5];
+		user.address=data[9];
 		userController.updateUser(user);
 		userController.confirmOperation();
 		return 0;

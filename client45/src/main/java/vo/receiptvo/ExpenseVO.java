@@ -8,15 +8,15 @@ import vo.ValueObject;
 public class ExpenseVO extends ValueObject{
 	
 	/**收款业务员ID*/
-	private String ID;
+	public String ID;
 	/**收款单位*/
-	private String workshop;
+	public String workshop;
 	/**收款金额*/
-	private double money;
+	public double money;
 	/**收款地点*/
-	private String address;
+	public String address;
 	/**收款日期,系统自动生成*/
-	private String date;
+	public String date;
 	
 	public ExpenseVO(String ID,String workshop,double money,String address){
 		this.ID = ID;
@@ -26,37 +26,7 @@ public class ExpenseVO extends ValueObject{
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
 		date = sdf.format(new Date());
-		
 	
 	}
-
-	public String getID() {
-		return ID;
-	}
-
-	
-	public String getWorkshop() {
-		return workshop;
-	}
-
-	
-	public double getMoney() {
-		return money;
-	}
-
-
-	public String getAddress() {
-		return address;
-	}
-
-	
-
-	public String getDate() {
-		return date;
-	}
-
-
-	
-	
 
 }

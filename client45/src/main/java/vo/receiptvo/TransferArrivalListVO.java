@@ -12,11 +12,11 @@ import state.ReceiptType;
  */
 public class TransferArrivalListVO extends ReceiptVO {
 	
-	private String transferCenterID;
-	private String destination;
-	private String departure;
-	private CommodityState state;
-	private ArrayList<String> orders;
+	public String transferCenterID;
+	public String destination;
+	public String departure;
+	public CommodityState state;
+	public ArrayList<String> orders;
 	public TransferArrivalListVO(String id,ReceiptType type) {
 		super(id,type);
 	}
@@ -31,35 +31,5 @@ public class TransferArrivalListVO extends ReceiptVO {
 		this.orders = orders;
 	}
 
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-	public String getTransferCenterID() {
-		return transferCenterID;
-	}
-	public void setTransferCenterID(String transferCenterID) {
-		this.transferCenterID = transferCenterID;
-	}
-	public String getDeparture() {
-		return departure;
-	}
-	public void setDeparture(String departure) {
-		this.departure = departure;
-	}
-	public CommodityState getState() {
-		return state;
-	}
-	public void setState(CommodityState state) {
-		this.state = state;
-	}
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
-	}
 
 }

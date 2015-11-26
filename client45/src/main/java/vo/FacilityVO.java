@@ -8,34 +8,34 @@ public class FacilityVO {
 	/**
 	 * 管理员编号
 	 */
-	private String managerId;
+	public String managerId;
 
 	/**
 	 * 运输历史
 	 */
-	private ArrayList<LoadingListPO> deliverHistory;
+	public ArrayList<LoadingListPO> deliverHistory;
 
 	/**
 	 * 车辆编号
 	 */
-	private String facilityIdString;
+	public String facilityIdString;
 
 	/**
 	 * 购入日期
 	 */
-	private String dateString;
+	public String dateString;
 	/**
 	 * 底盘号
 	 */
-	private String bottomCode;
+	public String bottomCode;
 	/**
 	 * 发动机号
 	 */
-	private String engineCode;
+	public String engineCode;
 	/**
 	 * 车牌号
 	 */
-	private String vehicleIdentificationNumber;
+	public String vehicleIdentificationNumber;
 	public FacilityVO(String facilityIdString) {
 		this.facilityIdString = facilityIdString;
 	}
@@ -60,61 +60,6 @@ public class FacilityVO {
 	}
 
 
-	public String getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(String managerId) {
-		this.managerId = managerId;
-	}
-
-	public ArrayList<LoadingListPO> getDeliverHistory() {
-		return deliverHistory;
-	}
-
-	public void setDeliverHistory(ArrayList<LoadingListPO> deliverHistory) {
-		this.deliverHistory = deliverHistory;
-	}
-
-	public String getFacilityIdString() {
-		return facilityIdString;
-	}
-
-	public void setFacilityIdString(String facilityIdString) {
-		this.facilityIdString = facilityIdString;
-	}
-
-	public String getDateString() {
-		return dateString;
-	}
-
-	public void setDateString(String dateString) {
-		this.dateString = dateString;
-	}
-
-	public String getBottomCode() {
-		return bottomCode;
-	}
-
-	public void setBottomCode(String bottomCode) {
-		this.bottomCode = bottomCode;
-	}
-
-	public String getEngineCode() {
-		return engineCode;
-	}
-
-	public void setEngineCode(String engineCode) {
-		this.engineCode = engineCode;
-	}
-
-	public String getVehicleIdentificationNumber() {
-		return vehicleIdentificationNumber;
-	}
-
-	public void setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
-		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
-	}
 
 	@Override
 	public String toString() {

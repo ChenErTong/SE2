@@ -10,8 +10,8 @@ import state.ReceiptType;
  * @version Oct 23, 2015
  */
 public class DeliveryListVO extends ReceiptVO{
-	private ArrayList<String> orders;
-	private String courierName;
+	public ArrayList<String> orders;
+	public String courierName;
 	
 	public DeliveryListVO(String id,  ReceiptType type,ArrayList<String> orders, String courierName) {
 		super(id,type);
@@ -23,20 +23,5 @@ public class DeliveryListVO extends ReceiptVO{
 		super(ID, type);
 	}
 
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
-	}
-
-	public String getCourierName() {
-		return courierName;
-	}
-
-	public void setCourierName(String courierName) {
-		this.courierName = courierName;
-	}
 
 }

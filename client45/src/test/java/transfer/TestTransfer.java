@@ -21,11 +21,11 @@ public class TestTransfer {
 		orders.add("Head first CPP");
 		mockTransfer.planeDepart("SD1984", "哈尔滨", "齐齐哈尔", "老王", orders);
 		TransferOrderVO transferOrderVO = mockTransfer.getTransferOrderVO();
-		assertEquals(orders, transferOrderVO.getOrders());
+		assertEquals(orders, transferOrderVO.orders);
 		
 		mockTransfer.receiptArrive("ZZ001", "Nanjing", "shanghai", CommodityState.Success, orders);
 		TransferArrivalListVO transferArrivalListVO = mockTransfer.getTransferArrivalListVO();
-		assertEquals(orders, transferArrivalListVO.getOrders());
+		assertEquals(orders, transferArrivalListVO.orders);
 		
 		
 	}

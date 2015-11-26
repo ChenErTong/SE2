@@ -21,12 +21,9 @@ public class _Order_Stub implements OrderBLService {
 
 	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		OrderPO orderPO = new OrderPO(
-				order.getOrderIdString(), 
-				null, order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
-				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
-				commmodities,order.getMidAddres(),
-				order.getSendTime(),order.getRecipientTime(),order.getMoney());
+		OrderPO orderPO = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
+				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
+				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
 		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
 			orderDataService.add(orderPO);
@@ -46,22 +43,19 @@ public class _Order_Stub implements OrderBLService {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		if(orderPO!=null&&orderPO.getSenderName()==senderName){
+		if (orderPO != null && orderPO.getSenderName() == senderName) {
 			System.out.println("Found!");
-			return new OrderVO(orderPO.getSendTime(),orderPO.getRecipientTime(),orderPO.getMoney());
-		}else{
+			return new OrderVO(orderPO.getSendTime(), orderPO.getRecipientTime(), orderPO.getMoney());
+		} else {
 			System.out.println("Not Found");
 			return null;
 		}
 	}
-	
-	public ResultMessage updateOrder(ArrayList<CommodityVO> commmodities, OrderVO order){
-		OrderPO orderPO = new OrderPO(
-				order.getOrderIdString(),
-				null, order.getSenderName(), order.getSenderAddress(),order.getSenderTel(),order.getSenderCo(),
-				order.getRecipientName(),order.getRecipientAddress(),order.getRecipientTel(),order.getRecipientCo(),
-				commmodities,order.getMidAddres(),
-				order.getSendTime(),order.getRecipientTime(),order.getMoney());
+
+	public ResultMessage updateOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
+		OrderPO orderPO = new OrderPO(order.ID, null, order.senderName, order.senderAddress, order.senderTel,
+				order.senderCo, order.recipientName, order.recipientAddress, order.recipientTel, order.recipientCo,
+				commmodities, order.midAddres, order.sendTime, order.recipientTime, order.money);
 		OrderDataService orderDataService = new _Order_Data_Stub();
 		try {
 			orderDataService.modify(orderPO);
@@ -70,10 +64,11 @@ public class _Order_Stub implements OrderBLService {
 		}
 		return ResultMessage.SUCCESS;
 	}
+
 	@Override
 	public ResultMessage costAndTime(OrderVO order) {
-		System.out.println("Recipient time:"+order.getRecipientTime());
-		System.out.println("Cost:"+order.getMoney());
+		System.out.println("Recipient time:" + order.recipientTime);
+		System.out.println("Cost:" + order.money);
 		return ResultMessage.SUCCESS;
 	}
 

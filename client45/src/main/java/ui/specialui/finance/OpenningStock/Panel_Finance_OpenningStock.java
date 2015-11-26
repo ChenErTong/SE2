@@ -224,32 +224,32 @@ public void showAll(){
 		for(int i = 0; i < openingStockVO.size(); i++){
 			OpeningStockVO avo = openingStockVO.get(i);
 			
-			for(int j = 0; j < avo.getTransfers().size(); j++){
-				Object[] rowData = {avo.getTransfers().get(j).getOrganizationID(), avo.getDate()
-						, avo.getTransfers().get(j).getOrganizationType(),avo.getTransfers().get(j).getNumberOfPerson(),avo.getTransfers().get(j).getAddress()};
+			for(int j = 0; j < avo.transfers.size(); j++){
+				Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
+						, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress()};
 				tableModel.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.getAccounts().size(); j++){
-				Object[] rowData = {avo.getAccounts().get(j).getID(), avo.getDate(), avo.getAccounts().get(j).getName(),
-						avo.getAccounts().get(j).getDuty(), avo.getAccounts().get(j).getWorkTime()};
+			for(int j = 0; j < avo.accounts.size(); j++){
+				Object[] rowData = {avo.accounts.get(j).getID(), avo.date, avo.accounts.get(j).getName(),
+						avo.accounts.get(j).getDuty(), avo.accounts.get(j).getWorkTime()};
 				tableModel2.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.getFacilities().size(); j++){
-				Object[] rowData = {avo.getFacilities().get(j).getID(), avo.getDate(), avo.getFacilities().get(j).getDate(), avo.getFacilities().get(j).getVehicleIdentificationNumber(), 
-					avo.getFacilities().get(j).getDeliverHistory()};
+			for(int j = 0; j < avo.facilities.size(); j++){
+				Object[] rowData = {avo.facilities.get(j).getID(), avo.date, avo.facilities.get(j).getDate(), avo.facilities.get(j).getVehicleIdentificationNumber(), 
+					avo.facilities.get(j).getDeliverHistory()};
 				tableModel3.addRow(rowData);
 			}
 			
-			for(int j = 0; j < avo.getInventories().size(); j++){
-				Object[] rowData = {avo.getInventories().get(j).getID(), avo.getDate(), avo.getInventories().get(j).getEmptyOrFull()};
+			for(int j = 0; j < avo.inventories.size(); j++){
+				Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).getEmptyOrFull()};
 				tableModel4.addRow(rowData);
 			}
 			
-			for(int j = 0;j<avo.getBankAccounts().size();j++){
-				Object[] rowData = {avo.getBankAccounts().get(j).getID(),avo.getDate(),avo.getBankAccounts().get(j).getName(),
-						avo.getBankAccounts().get(j).getMoney()};
+			for(int j = 0;j<avo.bankAccounts.size();j++){
+				Object[] rowData = {avo.bankAccounts.get(j).getID(),avo.date,avo.bankAccounts.get(j).getName(),
+						avo.bankAccounts.get(j).getMoney()};
 				tableModel5.addRow(rowData);
 			}
 			

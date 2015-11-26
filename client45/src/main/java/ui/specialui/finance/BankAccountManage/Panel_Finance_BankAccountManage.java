@@ -100,8 +100,8 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			ArrayList<BankAccountVO> bankAccountVO = controller.show();
 			
 			for(int i = 0; i < bankAccountVO.size(); i++){
-				String[] rowData = {bankAccountVO.get(i).getID(),
-						bankAccountVO.get(i).getName(), String.valueOf(bankAccountVO.get(i).getMoney())+"元"};
+				String[] rowData = {bankAccountVO.get(i).ID,
+						bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
 				tableModel.addRow(rowData);
 				accountPool.add(bankAccountVO.get(i));
 			}
@@ -136,8 +136,8 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				}
 			
 				for(int i = 0; i < bankAccountVO.size(); i++){
-				String[] rowData = {bankAccountVO.get(i).getID(), 
-						bankAccountVO.get(i).getName(), String.valueOf(bankAccountVO.get(i).getMoney())+"元"};
+				String[] rowData = {bankAccountVO.get(i).ID, 
+						bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
 				tableModel.addRow(rowData);
 				accountPool.add(bankAccountVO.get(i));
 				System.out.println("SearchSucceed!");
@@ -148,7 +148,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				}
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
-			accountID = accountPool.get(table.getSelectedRow()).getID();
+			accountID = accountPool.get(table.getSelectedRow()).ID;
 			if(accountID.equals("")){
 				this.add(new MyNotification(this,"请先选择需要修改的账户！",Color.RED));
 			}else{
@@ -164,12 +164,12 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			if(table.getSelectedRowCount() == 0){
 				this.add(new MyNotification(this,"请先选择要修改的账户！",Color.RED));
 			}else{
-				accountID = accountPool.get(table.getSelectedRow()).getID();
+				accountID = accountPool.get(table.getSelectedRow()).ID;
 				//System.out.println(accountID);
 				String[] data = new String[3];
 				data[0] = accountID;
-				data[1] = accountPool.get(table.getSelectedRow()).getName();
-				data[2] = accountPool.get(table.getSelectedRow()).getMoney()+"";
+				data[1] = accountPool.get(table.getSelectedRow()).name;
+				data[2] = accountPool.get(table.getSelectedRow()).money+"";
 				modifyAccountInfo.setData(data);
 			}
 		}else if(e.getActionCommand().equals("AddBankAccount")){
@@ -198,9 +198,14 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		}
 
 	}
+	/**
+	 * 删除账户
+	 * @return
+	 */
+	
 	public void deleteAccount(){
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
-		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).getID());
+		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
 		
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			//System.out.println("DeleteSucceed!");

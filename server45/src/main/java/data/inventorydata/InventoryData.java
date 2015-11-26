@@ -1,6 +1,7 @@
 package data.inventorydata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import data.ManageData;
 import dataservice.inventorydataservice.InventoryDataService;
@@ -39,6 +40,24 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 	public int getNum(String beginDate, String endDate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public InventoryPO getInventoryPO(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

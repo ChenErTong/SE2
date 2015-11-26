@@ -10,19 +10,19 @@ import po.TransferPO;
 import po.accountpo.AccountPO;
 
 public class OpeningStockVO {
-	private String ID;
-	private String date;
-private  ArrayList<TransferPO> transfers;
+	public String ID;
+	public String date;
+	public  ArrayList<TransferPO> transfers;
 	
-	private ArrayList<BranchPO> branchs;
+	public ArrayList<BranchPO> branchs;
 
-	private ArrayList<AccountPO> accounts;
+	public ArrayList<AccountPO> accounts;
 
-	private ArrayList<FacilityPO> facilities;
+	public ArrayList<FacilityPO> facilities;
 
-	private ArrayList<InventoryPO> inventories;
+	public ArrayList<InventoryPO> inventories;
 	
-	private ArrayList<BankAccountPO> bankAccounts;
+	public ArrayList<BankAccountPO> bankAccounts;
 
 	public OpeningStockVO(String ID, String date, ArrayList<TransferPO> transfers,ArrayList<BranchPO> branchs,
 			ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities, ArrayList<InventoryPO> inventories,ArrayList<BankAccountPO> bankAccounts) {
@@ -37,37 +37,5 @@ private  ArrayList<TransferPO> transfers;
 	}
 
 
-	public ArrayList<FacilityPO> getFacilities() {
-		return facilities;
-	}
-
-	public ArrayList<InventoryPO> getInventories() {
-		return inventories;
-	}
-
-	public ArrayList<AccountPO> getAccounts() {
-		return accounts;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public ArrayList<TransferPO> getTransfers() {
-		return transfers;
-	}
-
-	public ArrayList<BranchPO> getBranchs() {
-		return branchs;
-	}
-
-
-	public ArrayList<BankAccountPO> getBankAccounts() {
-		return bankAccounts;
-	}
 
 }

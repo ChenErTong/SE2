@@ -17,10 +17,10 @@ import state.ReceiptType;
  */
 public class BranchArrivalListVO extends ReceiptVO {
 	
-	private String transferListID;
-	private String departure;
-	private CommodityState state;
-	private ArrayList<String> orders;
+	public String transferListID;
+	public String departure;
+	public CommodityState state;
+	public ArrayList<String> orders;
 	
 	public BranchArrivalListVO(String id, ReceiptType type, String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
@@ -31,38 +31,5 @@ public class BranchArrivalListVO extends ReceiptVO {
 		this.orders = orders;
 	}
 
-	public String getTransferListID() {
-		return transferListID;
-	}
-
-	public void setTransferListID(String transferListID) {
-		this.transferListID = transferListID;
-	}
-
-	public String getDeparture() {
-		return departure;
-	}
-
-	public void setDeparture(String departure) {
-		this.departure = departure;
-	}
-
-	public CommodityState getState() {
-		return state;
-	}
-
-	public void setState(CommodityState state) {
-		this.state = state;
-	}
-
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
-	}
-	
-	
 
 }

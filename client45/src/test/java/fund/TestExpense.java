@@ -13,7 +13,7 @@ public class TestExpense {
 		ExpenseVO expenseVO = new ExpenseVO("CCC123", "NanjingNan", 98.676767, "NanjingHHHHHH");
 		expense.add(expenseVO);
 		expense.update(expenseVO);
-		expense.delete(expenseVO.getID());
+		expense.delete(expenseVO.ID);
 		
 	}
 

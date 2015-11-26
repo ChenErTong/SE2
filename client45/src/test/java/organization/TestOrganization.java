@@ -27,12 +27,12 @@ public class TestOrganization {
 		
 		mockOrganization.addOrganization(vo1);
 		mockOrganization.addOrganization(vo2);
-		mockOrganization.deleteOrganization(vo1.getOrganizationID());
+		mockOrganization.deleteOrganization(vo1.organizationID);
 		mockOrganization.updateOrganization(vo2);
 		assertEquals(organizations,mockOrganization.show(organizations));
 		assertEquals(ResultMessage.SUCCESS,mockOrganization.addOrganization(vo1));
 		assertEquals(ResultMessage.WAIT,mockOrganization.updateOrganization(vo2));
-		assertEquals(ResultMessage.FAIL,mockOrganization.deleteOrganization(vo1.getOrganizationID()));
+		assertEquals(ResultMessage.FAIL,mockOrganization.deleteOrganization(vo1.organizationID));
 	}
 
 	

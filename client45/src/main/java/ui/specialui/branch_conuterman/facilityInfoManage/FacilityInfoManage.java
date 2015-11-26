@@ -178,11 +178,11 @@ public class FacilityInfoManage extends MyJPanel {
 			return false;
 		}		
 		String[] data = new String[5];
-		data[0] = facility.getVehicleIdentificationNumber();
-		data[1] = facility.getBottomCode();
-		data[2] = facility.getFacilityIdString();
-		data[3] = facility.getEngineCode();
-		data[4] = facility.getDateString();
+		data[0] = facility.vehicleIdentificationNumber;
+		data[1] = facility.bottomCode;
+		data[2] = facility.facilityIdString;
+		data[3] = facility.engineCode;
+		data[4] = facility.dateString;
 	
 		id = facilityId;
 		facilityInfo.setData(data);
@@ -206,11 +206,11 @@ public class FacilityInfoManage extends MyJPanel {
 		String[] data = facilityInfo.getData();
 		if(data == null) return 1;
 		
-		facility.setVehicleIdentificationNumber(data[0]);
-		facility.setBottomCode(data[1]);
-		facility.setFacilityIdString(data[2]);
-		facility.setEngineCode(data[3]);
-		facility.setDateString(data[4]);
+		facility.vehicleIdentificationNumber=data[0];
+		facility.bottomCode=data[1];
+		facility.facilityIdString=data[2];
+		facility.engineCode=data[3];
+		facility.dateString=data[4];
 		facilityController.modifyFacility(facility);
 		facilityController.confirmOperation();
 		return 0;

@@ -10,13 +10,13 @@ public class UserTrans {
 		if (vo == null) {
 			return null;
 		}
-		String ID = vo.getId();
-		String username = vo.getUserName();
-		String password = vo.getPassword();
-		String phoneNumber = vo.getPhoneNumber();
-		String iden = vo.getIden();
-		String authority = vo.getAuthority();
-		String address = vo.getAddress();
+		String ID = vo.id;
+		String username = vo.userName;
+		String password = vo.password;
+		String phoneNumber = vo.phoneNumber;
+		String iden = vo.iden;
+		String authority = vo.authority;
+		String address = vo.address;
 		return new UserPO(ID, password, username, phoneNumber, iden, authority, address);
 	}
 

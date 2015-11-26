@@ -43,7 +43,7 @@ public class Inventory {
 	}
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
-		ArrayList<InventoryPO> POs = receiptData.getInventoryPOList(endDate);
+		ArrayList<InventoryPO> POs = inventoryData.getInventoryPOList(endDate);
 		ArrayList<InventoryVO> VOs = InventoryTrans.convertInventoryPOstoVOs(POs);
 		InventoryViewVO viewVO = new InventoryViewVO(inventoryData.getimportNumber(beginDate, endDate),
 				inventoryData.getexportNumber(beginDate, endDate), inventoryData.getNum(beginDate, endDate), VOs);
@@ -69,10 +69,10 @@ public class Inventory {
 		String commodities = receipt.getTransferCenterID();
 		String destination = receipt.getDestination();
 		String depture = receipt.getDeparture();
-		int a = vo.getA();
-		int b = vo.getB();
-		int c = vo.getC();
-		int d = vo.getD();
+		int a = vo.a;
+		int b = vo.b;
+		int c = vo.c;
+		int d = vo.d;
 		InventoryPO inventorypo = new InventoryPO(receiptData.getInventoryID(), a, b, c, d, "full");
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities, a, b, c, d);
@@ -98,7 +98,7 @@ public class Inventory {
 		int b = importPo.getB();
 		int c = importPo.getC();
 		int d = importPo.getD();
-		InventoryPO inventorypo = receiptData.getInventoryPO(a, b, c, d);
+		InventoryPO inventorypo = inventoryData.getInventoryPO(a, b, c, d);
 		String depture = importPo.getDepture();
 		String TransferID = receiptData.getTransferID();
 		String destination = importPo.getDestination();
@@ -122,14 +122,14 @@ public class Inventory {
 	}
 
 	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) throws RemoteException {
-		int exA = before.getA();
-		int exB = before.getB();
-		int exC = before.getC();
-		int exD = before.getD();
-		int afA = now.getA();
-		int afB = now.getB();
-		int afC = now.getC();
-		int afD = now.getD();
+		int exA = before.a;
+		int exB = before.b;
+		int exC = before.c;
+		int exD = before.d;
+		int afA = now.a;
+		int afB = now.b;
+		int afC = now.c;
+		int afD = now.d;
 		AdjustReceiptPO po = new AdjustReceiptPO(ID, ReceiptType.TAKINGSTOCK, exA, exB, exC, exD, afA, afB, afC, afD);
 		InventoryPO beforePO = InventoryTrans.convertVOtoPO(before);
 		InventoryPO afterPO = InventoryTrans.convertVOtoPO(now);

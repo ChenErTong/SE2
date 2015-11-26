@@ -1,6 +1,7 @@
 package dataservice.inventorydataservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.InventoryPO;
@@ -25,5 +26,12 @@ public interface InventoryDataService extends ManageDataService<InventoryPO> {
 
 	/** 总数量 **/
 	public int getNum(String beginDate, String endDate) throws RemoteException;
+	
+	/**获得位置信息**/
+	public InventoryPO getInventoryPO(String id)throws RemoteException;
+	
+	public InventoryPO getInventoryPO(int a,int b,int c,int d)throws RemoteException;
+	
+	public ArrayList<InventoryPO> getInventoryPOList(String date)throws RemoteException;
 
 }

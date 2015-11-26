@@ -70,7 +70,7 @@ public class Facility {
 	}
 
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
-		return facilityData.delete(facility.getFacilityIdString());
+		return facilityData.delete(facility.facilityIdString);
 	}
 
 }

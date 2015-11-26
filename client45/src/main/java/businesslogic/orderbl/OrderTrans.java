@@ -11,10 +11,9 @@ import vo.OrderVO;
 
 public class OrderTrans {
 	public static OrderPO convertVOtoPO(ArrayList<CommodityVO> commodityVOs, OrderVO vo) {
-		return new OrderPO(vo.getOrderIdString(), ReceiptType.ORDER, vo.getSenderName(), vo.getSenderAddress(),
-				vo.getSenderTel(), vo.getSenderCo(), vo.getRecipientName(), vo.getRecipientAddress(),
-				vo.getRecipientTel(), vo.getRecipientCo(), commodityVOs, vo.getMidAddres(), vo.getSendTime(),
-				vo.getRecipientTime(), vo.getMoney());
+		return new OrderPO(vo.ID, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
+				vo.senderCo, vo.recipientName, vo.recipientAddress, vo.recipientTel, vo.recipientCo,
+				commodityVOs, vo.midAddres, vo.sendTime, vo.recipientTime, vo.money);
 	}
 	public static OrderVO convertPOtoVO(OrderPO po) {
 		return new OrderVO(po.getOrderIdString(), po.getSenderName(), po.getSenderAddress(),
