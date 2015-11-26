@@ -2,7 +2,6 @@ package data.funddata;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import config.XMLReader;
 import data.ManageData;
@@ -93,11 +92,6 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return bills;
 	}
 
-	@Override
-	public HashMap<String, String> getAllBankAccounts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void initialFile() {

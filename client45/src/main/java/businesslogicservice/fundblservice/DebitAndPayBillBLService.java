@@ -2,7 +2,6 @@ package businesslogicservice.fundblservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
@@ -44,12 +43,6 @@ public interface DebitAndPayBillBLService {
 	public DebitAndPayBillVO find(String ID) ;
 
 	
-	/**
-	 * @return 全部的付款银行账户ID和账户名 Key=>ID、value=>name
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public HashMap<String, String> getAllBankAccounts();
           
 	
 	

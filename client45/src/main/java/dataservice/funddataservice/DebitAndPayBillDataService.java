@@ -2,7 +2,6 @@ package dataservice.funddataservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -68,7 +67,6 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState State) throws RemoteException;
 	
-	public HashMap<String, String> getAllBankAccounts();
 	
 	
 

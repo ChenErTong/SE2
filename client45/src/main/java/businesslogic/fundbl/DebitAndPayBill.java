@@ -8,7 +8,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
@@ -47,11 +46,6 @@ public class DebitAndPayBill {
 	public DebitAndPayBillVO find(String ID) throws RemoteException {
 		DebitAndPayBillPO PO = debitAndPayBillData.find(ID);
 		return FundTrans.convertPOtoVO(PO);
-	}
-
-	public HashMap<String, String> getAllBankAccounts() {
-		return debitAndPayBillData.getAllBankAccounts();
-
 	}
 
 	// 建立收款单

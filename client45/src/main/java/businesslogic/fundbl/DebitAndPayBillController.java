@@ -4,7 +4,6 @@ package businesslogic.fundbl;
  */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -45,10 +44,6 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 		return null;
 	}
 
-	@Override
-	public HashMap<String, String> getAllBankAccounts() {
-		return DebitAndPayBL.getAllBankAccounts();
-	}
 
 	@Override
 	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers) {

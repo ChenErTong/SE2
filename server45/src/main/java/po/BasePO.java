@@ -13,7 +13,6 @@ public class BasePO extends PersistentObject{
 
 	public BasePO(String iD, String date) {
 		super(iD, date);
-		// TODO Auto-generated constructor stub
 	}
 	
 	
