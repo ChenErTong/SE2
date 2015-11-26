@@ -34,11 +34,7 @@ public class Record {
 
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
-		ArrayList<DebitAndPayBillVO> VOs = new ArrayList<>();
-		for (DebitAndPayBillPO po : POs) {
-			DebitAndPayBillVO vo = FundTrans.convertPOtoVO(po);
-			VOs.add(vo);
-		}
+		ArrayList<DebitAndPayBillVO> VOs = FundTrans.convertDebitAndPayBillPOstoVOs(POs);
 		return VOs;
 	}
 

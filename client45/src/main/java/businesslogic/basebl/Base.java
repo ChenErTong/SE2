@@ -38,30 +38,20 @@ public class Base {
 
 	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException {
 		ArrayList<BasePO> pos = baseData.find(baseType);
-		ArrayList<BaseVO> vos = new ArrayList<BaseVO>();
-		for (BasePO po : pos) {
-			BaseVO vo = POtoVO(po);
-			vos.add(vo);
-		}
+		ArrayList<BaseVO> vos =BaseTrans.convertPOstoVOs(pos);
 		return vos;
 	}
 
-	public BaseVO POtoVO(BasePO po) {
-		BaseVO vo = new BaseVO(po.getID(), po.getDistances(), po.getPrice(), po.getSalaryPolicies());
-		return vo;
-	}
+	
 
-	public BasePO VOtoPO(BaseVO vo) {
-		BasePO po = new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
-		return po;
-	}
+	
 
 	public String getID(FindTypeBase baseType) throws RemoteException {
 		return baseData.getID(baseType);
 	}
 
 	public ResultMessage addBase(BaseVO vo) throws RemoteException {
-		BasePO PO = VOtoPO(vo);
+		BasePO PO = BaseTrans.convertVOtoPO(vo);
 		return baseData.add(PO);
 	}
 
@@ -70,7 +60,7 @@ public class Base {
 	}
 
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
-		BasePO PO = VOtoPO(vo);
+		BasePO PO = BaseTrans.convertVOtoPO(vo);
 		return baseData.modify(PO);
 	}
 }

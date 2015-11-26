@@ -29,7 +29,6 @@ public class Transfer {
 	public Transfer() {
 		try {
 			receiptData = (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
-
 			orderDataService = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -41,7 +40,6 @@ public class Transfer {
 	}
 
 	public ConfirmState confirmOperation() {
-
 		return ConfirmState.CONFIRM;
 	}
 
