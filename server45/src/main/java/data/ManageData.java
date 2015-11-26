@@ -3,6 +3,7 @@ package data;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.XMLReader;
 import dataservice.ManageDataService;
 import po.PersistentObject;
 import state.ResultMessage;
@@ -14,11 +15,21 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected XMLReader configReader;
 	protected SerSaveAndLoad<PO> poList;
+	/** 当前最大ID */
+	protected int maxID;
+	/** 添加一条记录后的账单 */
+	protected String currentID;
+	/** ID最大位数 */
+	protected int IDMaxBit;
 
 	public ManageData() throws RemoteException {
 	}
-
+	
+	public String getID() throws RemoteException{
+		return null;
+	}
 	public PO find(String id) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
 			PO po = poList.get(i);

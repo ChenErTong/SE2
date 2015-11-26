@@ -8,7 +8,6 @@ import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.FindTypeBase;
 import util.SerSaveAndLoad;
-import util.Util;
 
 public class BaseData extends ManageData<BasePO> implements BaseDataService{
 
@@ -19,6 +18,9 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public BaseData() throws RemoteException {
 		poList=new SerSaveAndLoad<BasePO>("data/"+NAME+".ser");
+//		configReader=new XMLReader("config/"+NAME+".xml");
+//		maxID=Integer.parseInt(configReader.getValue("maxID"));
+//		IDMaxBit=Integer.parseInt(configReader.getValue("IDMaxBit"));
 	}
 	public ArrayList<BasePO> find(FindTypeBase baseType) throws RemoteException {
 		//改接口
@@ -38,10 +40,11 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 		}
 		return bankAccounts;
 	}
-//	@Override
-//	public String getID(FindTypeBase baseType) throws RemoteException {
-//		int newID = poList.size();
-//		return Util.transIntToString(newID, 3);
-//	}
+ 
+	@Override
+	public String getID(FindTypeBase baseType) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
