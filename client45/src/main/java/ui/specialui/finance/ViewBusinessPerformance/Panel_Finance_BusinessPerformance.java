@@ -208,9 +208,9 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel imple
 					for(int i=0;i<vo.size();i++){
 						
 						DebitAndPayBillVO dpo = vo.get(i);
-						Object rowData[] = { dpo.ID, dpo.type, dpo.money, dpo.payerName, dpo.bankAccouts, dpo.items,
-								dpo.rentYear, dpo.salaryMonth, dpo.orderNumbers, dpo.transListNumber };
-						tableModel.addRow(rowData);
+//						Object rowData[] = { dpo.ID, dpo.type, dpo.money, dpo.payerName, dpo.bankAccouts, dpo.items,
+//								dpo.rentYear, dpo.salaryMonth, dpo.orderNumbers, dpo.transListNumber };
+//						tableModel.addRow(rowData);
 						}
 					}
 				}

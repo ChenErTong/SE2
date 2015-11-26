@@ -1,9 +1,7 @@
 package ui;
 
 import javax.swing.UIManager;
-
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-
 import ui.specialui.inventory.Frame_Inventory;
 
 public class mainForUITest2 {
