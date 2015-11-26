@@ -22,6 +22,70 @@ public class MyNotification extends JDialog implements Runnable{
 	private Dimension size = new Dimension(300,100);
 
 	@SuppressWarnings("restriction")
+	public MyNotification(JPanel panel, String text, Color color){
+		//super(panel);
+		this.setUndecorated(true);
+		setSize(size);
+		
+		this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620);
+
+		// the underground panel
+		UndergroundPanel mainPanel = new UndergroundPanel();
+		mainPanel.setLayout(null);
+
+		// the message label
+		if (text.length() > 10) {
+			String message1 = text, message2;
+			message1 = text.substring(0, 9);
+			message2 = text.substring(9, text.length());
+			// show the two message labels
+			JLabel messageLabel1 = new JLabel(message1);
+			messageLabel1.setForeground(color);
+			messageLabel1.setFont(new MyFont(18, true));
+			messageLabel1.setBounds(
+					size.width / 2 - messageLabel1.getPreferredSize().width	/ 2, 
+					size.height / 2 - messageLabel1.getPreferredSize().height / 2 - 16, 
+					messageLabel1.getPreferredSize().width,
+					messageLabel1.getPreferredSize().height);
+			mainPanel.add(messageLabel1, BorderLayout.CENTER);
+
+			JLabel messageLabel2 = new JLabel(message2);
+			messageLabel2.setForeground(color);
+			messageLabel2.setFont(new MyFont(18, true));
+			messageLabel2.setBounds(
+					size.width / 2 - messageLabel2.getPreferredSize().width	/ 2,
+					size.height / 2	- messageLabel2.getPreferredSize().height / 2 + 16,
+					messageLabel2.getPreferredSize().width,
+					messageLabel2.getPreferredSize().height);
+			mainPanel.add(messageLabel2, BorderLayout.CENTER);
+		} else {
+			JLabel messageLabel = new JLabel(text);
+			messageLabel.setForeground(color);
+			messageLabel.setFont(new MyFont(18, true));
+			messageLabel.setBounds(
+					size.width / 2 - messageLabel.getPreferredSize().width / 2,
+					size.height / 2 - messageLabel.getPreferredSize().height / 2 - 2,
+					messageLabel.getPreferredSize().width,
+					messageLabel.getPreferredSize().height);
+			mainPanel.add(messageLabel, BorderLayout.CENTER);
+		}
+		add(mainPanel);
+
+		// set the window transparent
+		com.sun.awt.AWTUtilities.setWindowOpaque(this, false);
+
+		// 渐隐效果显示
+		float translucent = 0.01f;
+		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.0f);
+		setVisible(true);
+		while (translucent < 1) {
+			com.sun.awt.AWTUtilities.setWindowOpacity(this, translucent);
+			translucent += 0.03f;
+		}
+		
+		Thread t = new Thread(this);
+		t.start();
+	}
 	public MyNotification(JFrame frame, String text, Color color) {
 		super(frame);
 		this.setUndecorated(true);

@@ -48,6 +48,7 @@ public class Panel_Finance_AddBankAccount extends MyTranslucentPanel{
 	}
 	
 	public  void setData(String[] data){
+		
 		nameField.setText(data[0]);
 		balanceField.setText(data[1]);
 	}

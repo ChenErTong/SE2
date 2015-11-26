@@ -1,15 +1,27 @@
 package ui.specialui.finance.BankAccountManage;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.BankAccountController;
+import businesslogicservice.fundblservice.BankAccountBLService;
+import state.FindTypeAccount;
+import state.ResultMessage;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
 import vo.BankAccountVO;
 
 
-public class Panel_Finance_BankAccountManage extends MyJPanel{
+public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionListener{
 	private Panel_Finance_BankAccount bankAccountPanel;
 	private Panel_Finance_AddBankAccount addBankAccount;
 	private Panel_Finance_ModifyAccountInfo modifyAccountInfo;
@@ -17,20 +29,26 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 	private MyJButton modifyButton;
 	private MyJButton add;
 	private MyJButton modify;
-	private BankAccountController bankAccountController = ControllerFactory.getBankAccountController();
-	private BankAccountVO bankAccount;
-	public Panel_Finance_BankAccountManage(Frame_Finance frame_Finance) {
+	private MyJTable table;
+	
+	static ArrayList<BankAccountVO> accountPool;
+	static String accountID = " ";
+	
+	public BankAccountVO bankAccount;
+	public Panel_Finance_BankAccountManage() {
 		super(0,0,1280,720);
 		this.setOpaque(false);
-		this.initComponent(frame_Finance);
+		accountPool = new ArrayList<BankAccountVO>();
+		this.initComponent();
+		this.showAll();
 		
 	}
 
-	private void initComponent(Frame_Finance frame_Finance) {
+	private void initComponent() {
 		this.add(new MyJLabel(540,40,200,30,"银行账户管理",24,true));
-		bankAccountPanel = new Panel_Finance_BankAccount(frame_Finance);
+		bankAccountPanel = new Panel_Finance_BankAccount(this);
+
 		this.add(bankAccountPanel);
-		
 		addBankAccount = new Panel_Finance_AddBankAccount();
 		this.add(addBankAccount);
 		
@@ -39,96 +57,171 @@ public class Panel_Finance_BankAccountManage extends MyJPanel{
 		
 		deleteButton = new MyJButton(150,640,180,30,"删除所选账户",16);
 		deleteButton.setActionCommand("DeleteBankAccount");
-		deleteButton.addActionListener(frame_Finance);
+		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
 		modifyButton = new MyJButton(350,640,180,30,"修改所选账户信息",16);
 		modifyButton.setActionCommand("ModifyBankAccount");
-		modifyButton.addActionListener(frame_Finance);
+		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
 		
 		add = new MyJButton(868,346,120,30,"确认添加",16);	
 		add.setActionCommand("AddBankAccount");
-		add.addActionListener(frame_Finance);
+		add.addActionListener(this);
 		this.add(add);
 		
 		modify= new MyJButton(868,640,120,30,"确认修改",16);	
-		modify.setActionCommand("ModifyBankAccount");
-		modify.addActionListener(frame_Finance);
+		modify.setActionCommand("ConfirmModify");
+		modify.addActionListener(this);
 		this.add(modify);
 
 	}
+	
+	private static final long serialVersionUID = 1L;
+	
 	/**
-	 * TODO 从bl层获取数据
-	 * 添加银行账户
+	 * 显示所有的银行账号
 	 */
-
-	public int addAccount() {
-		String [] data = addBankAccount.getData();
-		
-		if(data == null){
-			return 1;
+	public void showAll(){
+			table = bankAccountPanel.getTable();
+			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+			
+			int rowCount = table.getRowCount();
+			
+			for(int i = 0; i < rowCount; i++){
+				tableModel.removeRow(0);
+			}
+			
+			accountPool.clear();
+			accountID = "";
+			
+			BankAccountBLService controller = ControllerFactory.getBankAccountController();
+			ArrayList<BankAccountVO> bankAccountVO = controller.show();
+			
+			for(int i = 0; i < bankAccountVO.size(); i++){
+				String[] rowData = {bankAccountVO.get(i).getID(),
+						bankAccountVO.get(i).getName(), String.valueOf(bankAccountVO.get(i).getMoney())+"元"};
+				tableModel.addRow(rowData);
+				accountPool.add(bankAccountVO.get(i));
+			}
 		}
-		data[0] = "123";
-		double money = Double.parseDouble(data[2]);
-		bankAccount = new BankAccountVO(data[0], data[1], money," ");
-		bankAccountController.add(bankAccount);
-		bankAccountController.confirmOperation();
-		return 0;	
-	}
-	/**
-	* 修改银行账户
-	* 从bl层获得数据
-	*/
-	public int modifyBankAccount() {
-		String [] data = modifyAccountInfo.getData();
-		if(data == null){
-			return 1;
-		}
-		double money = Double.parseDouble(data[2]);
-		bankAccount.setLevel(null);
-		bankAccount.setMoney(money);
-		bankAccount.setName(data[1]);
-		bankAccountController.update(bankAccount);
-		bankAccountController.confirmOperation();
-		return 0;
-	}
-	/**
-	 * 删除账户
-	 * @return
-	 */
-	public int deleteBankAccount() {
-		//现在列表中选择一个用户后再进行删除 TODO
-		bankAccountController.delete(bankAccount.getID());
-		bankAccountController.confirmOperation();
-		return 0;
-	}
 
-	public void refresh() {
-		addBankAccount.refresh();
-		modifyAccountInfo.refresh();
-	}
-	/**
-	 * 查看账户信息
-	 * TODO 从bl层获取数据
-	 */
-	public boolean searchBankAccount() {		
-		//允许模糊查找 TODO
-		return false;
-	}
-
-	/**
-	 * 查看用户详细信息
-	 */
-	public boolean viewBankAccountDetails(){
-		//TODO
-		//从bankAccountList中选择一个要查看的用户
-		return false;
-	}
 
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("SearchBankAccount")){
+			//table = bankAccountPanel.getTable();
+			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+			int rowCount = table.getRowCount();
+			
+			for(int i = 0; i < rowCount; i++){
+				tableModel.removeRow(0);
+			}
+			
+			accountPool.clear();
+			accountID = "";
+			
+			//"模糊查找", "账户编号(ID)", "账户名称", "账户余额"
+			BankAccountBLService controller = ControllerFactory.getBankAccountController();
+			ArrayList<BankAccountVO> bankAccountVO;
+			String[] data = bankAccountPanel.getData();
+			if(data!=null){
+				switch(Integer.parseInt(data[0])){
+					case 0 : bankAccountVO = controller.find(data[1], null);break;
+					case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
+					case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
+					default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
+				}
+			
+				for(int i = 0; i < bankAccountVO.size(); i++){
+				String[] rowData = {bankAccountVO.get(i).getID(), 
+						bankAccountVO.get(i).getName(), String.valueOf(bankAccountVO.get(i).getMoney())+"元"};
+				tableModel.addRow(rowData);
+				accountPool.add(bankAccountVO.get(i));
+				System.out.println("SearchSucceed!");
+					this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个账户满足条件！",Color.GREEN));
+				}	
+				}else {
+					this.add(new MyNotification(this,"请输入查询关键字！",Color.RED));
+				}
+		}else if(e.getActionCommand().equals("ConfirmModify")){
+			table = bankAccountPanel.getTable();
+			accountID = accountPool.get(table.getSelectedRow()).getID();
+			if(accountID.equals("")){
+				this.add(new MyNotification(this,"请先选择需要修改的账户！",Color.RED));
+			}else{
+				if(modifyAccountInfo.getData()==null){
+					this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
+				}else{
+					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					modifyAccount();
+				}
+			}
+		}else if(e.getActionCommand().equals("ModifyBankAccount")){
+			table = bankAccountPanel.getTable();
+			if(table.getSelectedRowCount() == 0){
+				this.add(new MyNotification(this,"请先选择要修改的账户！",Color.RED));
+			}else{
+				accountID = accountPool.get(table.getSelectedRow()).getID();
+				//System.out.println(accountID);
+				String[] data = new String[3];
+				data[0] = accountID;
+				data[1] = accountPool.get(table.getSelectedRow()).getName();
+				data[2] = accountPool.get(table.getSelectedRow()).getMoney()+"";
+				modifyAccountInfo.setData(data);
+			}
+		}else if(e.getActionCommand().equals("AddBankAccount")){
+			String[] data = addBankAccount.getData();
+			if(addBankAccount.getData()==null){
+				this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
+			}else{
+				BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
+						data[1],Double.parseDouble(data[2]),null));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					//System.out.println("AddSucceed!");
+					this.showAll();
+					this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+				}else{
+					this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+				}
+			}
+		}else if(e.getActionCommand().equals("DeleteBankAccount")){
+			if(table.getSelectedRowCount() == 0){
+				this.add(new MyNotification(this,"请先选择要删除的账户！",Color.RED));
+			}else{
+				this.add(new MyNotification(this,"正在修改删除账户！",Color.GREEN));
+				deleteAccount();
+			}
+		}
 
-	private static final long serialVersionUID = 1L;
-
+	}
+	public void deleteAccount(){
+		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).getID());
+		
+		if(rsg.equals(ResultMessage.SUCCESS)){
+			//System.out.println("DeleteSucceed!");
+			this.showAll();
+			this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+		}else{
+			this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+		}
+	}
+	public void modifyAccount(){
+		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+		String[] data = modifyAccountInfo.getData();
+		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
+				data[1],Double.parseDouble(data[2]),null));
+		if(rsg.equals(ResultMessage.SUCCESS)){
+			//System.out.println("ModifySucceed!");
+			this.showAll();
+			this.add(new MyNotification(this,"账户修改成功！",Color.GREEN));		
+		}else{
+			this.add(new MyNotification(this,"账户修改失败！",Color.RED));
+		}
+	}
 }
+

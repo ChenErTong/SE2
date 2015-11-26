@@ -78,7 +78,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("BankAccountManage")){
 			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_BankAccountManage(this);
+			subPanel = new Panel_Finance_BankAccountManage();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			
@@ -107,18 +107,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			
 		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
 			
-		}else if(e.getActionCommand().equals("AddBankAccount")){
-			if(this.addBankAccount()){
-				((Panel_Finance_BankAccountManage)subPanel).refresh();
-			}
-		}else if(e.getActionCommand().equals("ModifyBankAccount")){
-			if(this.modifyBankAccountInfo()){
-				((Panel_Finance_BankAccountManage)subPanel).refresh();
-			}
-		}else if(e.getActionCommand().equals("DeleteBankAccount")){
-			if(this.deleteBankAccount()){
-				((Panel_Finance_BankAccountManage)subPanel).refresh();
-			}
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((Panel_Finance_BusinessPerformance)subPanel).getTable());
@@ -131,42 +119,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}
 		}
 	}
-	/**
-	 * 添加新银行账户
-	 * @return 是否成功添加
-	 * 与bl层连接
- 	 */
-	private boolean addBankAccount(){
-		switch(((Panel_Finance_BankAccountManage)subPanel).addAccount()){
-		case 0: new MyNotification(this, "成功添加新银行账户", Color.GREEN); return true;
-		case 1: new MyNotification(this, "请完成新银行账户信息填写", Color.RED); break;
-		}
-		return false;
-	}
-
-	/**
-	 * 修改用户信息
-	 * @return 是否修改成功
-	 * 与bl层连接
-	 */
-	private boolean modifyBankAccountInfo(){
-		switch(((Panel_Finance_BankAccountManage)subPanel).modifyBankAccount()){
-		case 0: new MyNotification(this, "成功修改银行账户信息", Color.GREEN); return true;
-		case 1: new MyNotification(this, "请完成银行账户信息修改", Color.RED); break;
-		}
-		return false;
-	}
 	
-	private boolean deleteBankAccount(){
-		switch(((Panel_Finance_BankAccountManage)subPanel).deleteBankAccount()){
-		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
-		}
-		return false;
-	}
-	private boolean searchBankAccount(){
-		//模糊查找 TODO 
-		return false;
-	}
 	/**
 	 * 是否经营情况表
 	 * @return 是否导出成功
