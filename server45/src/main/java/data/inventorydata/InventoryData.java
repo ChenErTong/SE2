@@ -1,7 +1,9 @@
 package data.inventorydata;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import config.XMLReader;
 import data.ManageData;
@@ -20,7 +22,18 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 	public InventoryData() throws RemoteException {
 	}
 
-
+	/**
+	 * 库存盘点时，系统自动根据当前盘点时间生成一个截止点
+	 * 这个点就是批次（日期）批号（序号）
+	 * 在这个截点之后做的出入库是不计入盘点的。
+	 * @author Ann
+	 */
+	@Override
+	public String getLotNum() throws RemoteException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		String date = sdf.format(new Date());
+		return "CHECK"+date;
+	}
 
 	@Override
 	public InventoryPO getInventoryPO(String id) throws RemoteException {

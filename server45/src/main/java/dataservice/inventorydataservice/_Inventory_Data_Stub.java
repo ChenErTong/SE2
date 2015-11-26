@@ -136,4 +136,10 @@ public class _Inventory_Data_Stub implements InventoryDataService {
 		return null;
 	}
 
+	@Override
+	public String getLotNum() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

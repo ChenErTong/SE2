@@ -99,11 +99,6 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		return null;
 	}
 	@Override
-	public String getLotNum() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

@@ -13,6 +13,7 @@ public interface InventoryDataService extends ManageDataService<InventoryPO>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "InventoryData";
 
+	public String getLotNum() throws RemoteException;
 	
 	/** 获得位置信息 **/
 	public InventoryPO getInventoryPO(String id) throws RemoteException;

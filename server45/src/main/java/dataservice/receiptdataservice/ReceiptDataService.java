@@ -44,7 +44,7 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/**生成transferid**/
 	public String getTransferID()throws RemoteException;
 	
-	public String getLotNum()throws RemoteException;;
+	
 	
 	/**返回所有入库单据的数据**/
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;

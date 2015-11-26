@@ -53,7 +53,7 @@ public class Inventory {
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> POs = receiptData.showImport(enddate);
 		ArrayList<InventoryImportReceiptVO> VOs = InventoryTrans.convertInventoryImportReceiptPOstoVOs(POs);
-		String lotNum = receiptData.getLotNum();
+		String lotNum = inventoryData.getLotNum();
 		InventoryCheckVO checkVO = new InventoryCheckVO(VOs, lotNum);
 		return checkVO;
 	}
