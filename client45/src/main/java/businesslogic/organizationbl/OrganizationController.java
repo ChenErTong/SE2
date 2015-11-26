@@ -117,7 +117,7 @@ public class OrganizationController implements OrganizationBLService {
 	}
 
 	public String getID() {
-		// TODO Auto-generated method stub
+		// TODO getID
 		return null;
 	}
 	

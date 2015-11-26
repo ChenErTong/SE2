@@ -57,7 +57,6 @@ public class TransferController implements TransferBLService{
 		try {
 			return TransferBL.submit(receipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -69,7 +68,6 @@ public class TransferController implements TransferBLService{
 		try {
 			return TransferBL.save(receipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

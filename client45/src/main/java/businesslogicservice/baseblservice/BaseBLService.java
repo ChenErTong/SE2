@@ -21,7 +21,7 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	//TODO-
+	//TODO -
 	public ArrayList<BaseVO> show(FindTypeBase baseType);
 	/**
 	 * 界面进行新建一个成本常量操作是得到一个可用的ID

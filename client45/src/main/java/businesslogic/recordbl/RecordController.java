@@ -14,11 +14,9 @@ public class RecordController implements RecordBLService{
 		
 	@Override
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end)  {
-		// TODO Auto-generated method stub
 		try {
 			return RecordBL.bussinessProcess(begin, end);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -26,11 +24,9 @@ public class RecordController implements RecordBLService{
 
 	@Override
 	public BussinessConditionVO bussinessCondition(String end){
-		// TODO Auto-generated method stub
 		try {
 			return RecordBL.bussinessCondition(end);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

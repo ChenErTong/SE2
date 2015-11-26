@@ -83,7 +83,6 @@ public class Inventory {
 	}
 
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
@@ -112,7 +111,7 @@ public class Inventory {
 	}
 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
-		// TODO Auto-generated method stub
+		// TODO 提交
 		return ResultMessage.SUCCESS;
 	}
 

@@ -14,25 +14,21 @@ public class OrderController implements OrderBLService{
     Order OrderBL = new Order();
 	@Override
 	public ConfirmState confirmOperation() {
-		// TODO Auto-generated method stub
 		return OrderBL.confirmOperation();
 	}
 
 	@Override
 	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		// TODO Auto-generated method stub
 		return OrderBL.addOrder(commmodities, order);
 	}
 
 	@Override
 	public OrderVO inquireOrder(String orderNumber, String senderName) {
-		// TODO Auto-generated method stub
 		return OrderBL.inquireOrder(orderNumber, senderName);
 	}
 
 	@Override
 	public ResultMessage costAndTime(OrderVO order) {
-		// TODO Auto-generated method stub
 		return OrderBL.costAndTime(order);
 	}
 
