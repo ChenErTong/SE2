@@ -46,4 +46,10 @@ public class _Transfer_Data_Stub implements TransferDataService {
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

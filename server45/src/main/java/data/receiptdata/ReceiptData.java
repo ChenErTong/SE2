@@ -201,4 +201,10 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return false;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

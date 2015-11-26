@@ -56,6 +56,11 @@ public class BankAccountDataService_Stub implements BankAccountDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

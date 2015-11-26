@@ -62,5 +62,10 @@ public class UserDataService_Stub implements UserDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

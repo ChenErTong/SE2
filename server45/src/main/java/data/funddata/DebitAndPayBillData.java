@@ -109,5 +109,11 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

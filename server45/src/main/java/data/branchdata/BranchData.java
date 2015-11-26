@@ -28,4 +28,9 @@ public class BranchData extends ManageData<BranchPO> implements BranchDataServic
 		int branchNumber=poList.size();
 		return prifix+Util.transIntToString(branchNumber, 3);
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 }

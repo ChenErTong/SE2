@@ -148,5 +148,10 @@ public class ReceiptDataService_Stub implements ReceiptDataService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

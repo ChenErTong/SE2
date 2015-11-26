@@ -20,6 +20,12 @@ public class OrganizationDataService_Stub implements OrganizationDataService{
 		organizationPOs.add(organizationPO_2);
 		}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 //	@Override

@@ -38,4 +38,10 @@ public class OpeningStockDataService_Stub implements OpeningStockDataService{
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

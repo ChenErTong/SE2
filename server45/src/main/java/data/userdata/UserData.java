@@ -49,4 +49,11 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 		return Util.transIntToString(newID, 4);
 	}
 
+
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

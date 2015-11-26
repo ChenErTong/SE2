@@ -36,6 +36,12 @@ public class _Facility_Data_Stub implements FacilityDataService {
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	// @Override
 	// public AccountPO findDriver(String id) {
 	// return new DriverPO("DY001:2014-6-4:00008", "Old driver",

@@ -17,5 +17,10 @@ public class DriverData  extends ManageData<DriverPO> implements DriverDataServi
 	public DriverData() throws RemoteException {
 		poList=new SerSaveAndLoad<DriverPO>("data/"+NAME+".ser");
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

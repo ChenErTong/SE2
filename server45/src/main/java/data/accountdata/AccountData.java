@@ -22,4 +22,10 @@ public class AccountData extends ManageData<AccountPO> implements AccountDataSer
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

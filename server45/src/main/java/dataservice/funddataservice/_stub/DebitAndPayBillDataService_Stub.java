@@ -89,5 +89,10 @@ public class DebitAndPayBillDataService_Stub implements DebitAndPayBillDataServi
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

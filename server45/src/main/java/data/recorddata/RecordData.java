@@ -56,4 +56,10 @@ public class RecordData extends ManageData<PersistentObject> implements RecordDa
 		return false;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

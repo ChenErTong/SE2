@@ -74,4 +74,10 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		return Util.transIntToString(size, 3);
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

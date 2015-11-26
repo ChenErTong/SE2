@@ -21,6 +21,11 @@ public class FacilityData extends ManageData<FacilityPO> implements FacilityData
 	public FacilityData() throws RemoteException {
 		poList=new SerSaveAndLoad<FacilityPO>("data/"+NAME+".ser");
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 

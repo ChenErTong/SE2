@@ -18,4 +18,10 @@ public class OrderData extends ManageData<OrderPO> implements OrderDataService {
 		poList=new SerSaveAndLoad<OrderPO>("data/"+NAME+".ser");
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

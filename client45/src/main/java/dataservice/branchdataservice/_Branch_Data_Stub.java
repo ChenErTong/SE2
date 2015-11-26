@@ -45,4 +45,10 @@ public class _Branch_Data_Stub implements BranchDataService {
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

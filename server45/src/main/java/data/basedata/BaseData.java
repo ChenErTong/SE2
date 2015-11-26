@@ -18,6 +18,7 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 	private static final long serialVersionUID = 1L;
 	//poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public BaseData() throws RemoteException {
+		initialFile();
 		poList=new SerSaveAndLoad<BasePO>("data/"+NAME+".ser");
 		configReader=new XMLReader("config/"+NAME+".xml");
 		maxID=Integer.parseInt(configReader.getValue("maxID"));
@@ -46,6 +47,11 @@ public class BaseData extends ManageData<BasePO> implements BaseDataService{
 	public String getID(FindTypeBase baseType) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

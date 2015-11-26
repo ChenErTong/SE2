@@ -10,7 +10,7 @@ import state.ResultMessage;
 import util.SerSaveAndLoad;
 import util.Util;
 
-public class ManageData<PO extends PersistentObject> extends Data implements ManageDataService<PO> {
+public abstract class ManageData<PO extends PersistentObject> extends Data implements ManageDataService<PO> {
 
 	/**
 	 * 
@@ -26,6 +26,7 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 	protected int IDMaxBit;
 
 	public ManageData() throws RemoteException {
+		initialFile();
 	}
 	
 	public String getID() throws RemoteException{

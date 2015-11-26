@@ -57,4 +57,10 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 		return Util.transIntToString(newID, 2);
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

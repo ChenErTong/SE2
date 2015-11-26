@@ -45,4 +45,10 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 		return Util.transIntToString(newID, 2);
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
