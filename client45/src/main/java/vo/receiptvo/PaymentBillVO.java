@@ -7,7 +7,7 @@ import state.ReceiptType;
  * @author Ann
  *
  */
-public class PaymentBillVO {
+public class PaymentBillVO extends ReceiptVO{
 	/**
 	 * ID
 	 */
@@ -43,9 +43,8 @@ public class PaymentBillVO {
 	
 	public PaymentBillVO(String iD, String date, ReceiptType type, double money, String payerName, String accountID,
 			PayBillItem items, String remarks) {
-		this.ID = iD;
+		super(iD, type);
 		this.date = date;
-		this.type = type;
 		this.money = money;
 		this.payerName = payerName;
 		this.accountID = accountID;
