@@ -54,18 +54,18 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 		}
 		return null;
 	}
-
+	
 	@Override
-
-	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber){
+	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
+			PayBillItem items, String transferReceiptID) {
 		try {
-			return DebitAndPayBL.addPayBill(money, payerName, bankAccouts, type, rentYear, salaryMonth, items, transListNumber);
+			return DebitAndPayBL.addPayBill(money, payerName, accountID, type, items, transferReceiptID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 
 	@Override
 	public ResultMessage submit(DebitAndPayBillPO po) {
@@ -196,5 +196,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 		}
 		return null;
 	}
+
+	
 
 }

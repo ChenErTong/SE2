@@ -12,12 +12,14 @@ import java.util.ArrayList;
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import po.receiptpo.DebitBillPO;
 import state.PayBillItem;
 import state.ReceiptCondition;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
 
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
@@ -52,24 +54,29 @@ public class DebitAndPayBill {
 	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
 			throws RemoteException {
 		// 疑问
-		String ID = null;
-		DebitAndPayBillVO vo = new DebitAndPayBillVO(ID, money, courierID, type, orderNumbers);
-		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
+		String ID = getExpenseID();
+		DebitBillVO vo = new DebitBillVO(ID, type, courierID, money, orderNumbers);
+		DebitBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}
 
-	// 建立付款单
+	/*// 建立付款单
 
 	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
-
 			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
 					throws RemoteException {
 		// 疑问
 		String ID = null;
+		
+		
 		DebitAndPayBillVO vo = new DebitAndPayBillVO(ID, money, payerName, bankAccouts, type, rentYear, salaryMonth,
 				items, transListNumber);
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
+	}*/
+	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
+			PayBillItem items, String transferReceiptID) throws RemoteException {
+				return null;
 	}
 
 	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException {

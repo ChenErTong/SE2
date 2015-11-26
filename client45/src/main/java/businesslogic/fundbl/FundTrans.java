@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import po.BankAccountPO;
 import po.ExpensePO;
 import po.receiptpo.DebitAndPayBillPO;
+import po.receiptpo.DebitBillPO;
 import state.ReceiptType;
 import vo.BankAccountVO;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ExpenseVO;
 
 public class FundTrans {
@@ -120,5 +122,18 @@ public class FundTrans {
 			pos.add(po);
 		}
 		return pos;
+	}
+
+	public static DebitBillPO convertVOtoPO(DebitBillVO vo) {
+		if(vo==null)
+			return null;
+		else {
+			String id=vo.ID;
+			ReceiptType type = vo.receiptType;
+			String courierID=vo.courierID;
+			double money = vo.money;
+			ArrayList<String> orderNumbers=vo.orderNumbers;
+			return new DebitBillPO(id, type, courierID, money, orderNumbers);
+		}
 	}
 }
