@@ -16,7 +16,6 @@ public class LoadingListPO extends ReceiptPO{
 
 	public LoadingListPO(String ID,ReceiptType type) {
 		super(ID,type);
-		// TODO Auto-generated constructor stub
 	}
 
 }

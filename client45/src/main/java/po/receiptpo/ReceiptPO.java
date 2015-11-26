@@ -1,8 +1,5 @@
 package po.receiptpo;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import po.PersistentObject;
 import state.ReceiptCondition;
 import state.ReceiptState;
@@ -18,8 +15,6 @@ public class ReceiptPO extends PersistentObject{
 	
 	/**单据编号，不同的单据具有不同的编号格式**/
 	protected String ID;
-	/**创建时间，由系统自动生成*/
-	protected String date;
 	/**单据状态*/
 	protected ReceiptState receiptState;
 	
@@ -30,9 +25,6 @@ public class ReceiptPO extends PersistentObject{
 	public ReceiptPO(String ID,ReceiptType type){
 		super(ID);
 		this.receiptType=type;
-		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
-		date = sdf.format(new Date());
 		this.receiptState=ReceiptState.DRAFT;
 		this.receiptCondition=ReceiptCondition.DRAFT;
 	}

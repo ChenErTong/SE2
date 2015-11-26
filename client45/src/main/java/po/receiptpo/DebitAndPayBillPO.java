@@ -1,8 +1,6 @@
 package po.receiptpo;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import state.PayBillItem;
 import state.ReceiptState;
@@ -48,15 +46,11 @@ public class DebitAndPayBillPO extends ReceiptPO{
  * @version Oct 22,2015
  */
 	public DebitAndPayBillPO(String ID,double money,String courierID,ReceiptType type,ArrayList<String> orderNumbers) {
-
 		super(ID,type);
-
 		this.money = money;
 		this.courierID = courierID;
 		this.type = type;
 		this.orderNumbers = orderNumbers;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
-		date = sdf.format(new Date());
 	}
 	/**
 	 * @author zsq
@@ -66,7 +60,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public DebitAndPayBillPO(String ID,double money,String payerName,ArrayList<String>bankAccouts,ReceiptType type,
 			String rentYear,String salaryMonth,PayBillItem items,ArrayList<String> transListNumber){
 		super(ID,type);
-
 		this.money = money;
 		this.payerName = payerName;
 		this.bankAccouts = bankAccouts;
@@ -75,8 +68,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.items = items;
 		this.type = type;
 		this.transListNumber = transListNumber;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
-		date = sdf.format(new Date());
 	}
 	
 	

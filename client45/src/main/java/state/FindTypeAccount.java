@@ -13,6 +13,4 @@ public enum FindTypeAccount {
 	FindTypeAccount(String value){
 		this.value = value;
 	}
-	
-	
 }

@@ -10,11 +10,11 @@ public class ValueObject {
 	public String ID;
 	public String date;
 
-	/*
-	 * public ValueObject(String iD,ReceiptType type) { super(); ID = iD;
-	 * this.type=type;
-	 * 
-	 * }
-	 */
+	public ValueObject(String iD) {
+		ID = iD;
+	}
+
+	public ValueObject() {
+	}
 
 }
