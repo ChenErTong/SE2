@@ -24,10 +24,16 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 	 * 备注（租金年份、运单号、标注工资月份）
 	 */
 	private String remarks;
+	
+	private String payerName;
+	
+	private PayBillItem payBillItem;
 
 	public PaymentBillPO(String ID, ReceiptType type, double money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
-		super(ID, type, money, payerName, items);
+		super(ID, type, money);
+		this.payerName=payerName;
+		this.payBillItem=items;
 		this.accountID=accountID;
 		this.remarks=remarks;
 	}
@@ -40,13 +46,15 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 		return remarks;
 	}
 
-	// public PaymentBillPO(String ID, double money, String payerName,
-	// ArrayList<String> bankAccouts, ReceiptType type,
-	// String rentYear, String salaryMonth, PayBillItem items, ArrayList<String>
-	// transListNumber) {
-	// super(ID, money, payerName, bankAccouts, type, rentYear, salaryMonth,
-	// items, transListNumber);
-	// // TODO Auto-generated constructor stub
-	// }
+	public String getPayerName() {
+		return payerName;
+	}
+
+	public PayBillItem getPayBillItem() {
+		return payBillItem;
+	}
+	
+	
+
 
 }

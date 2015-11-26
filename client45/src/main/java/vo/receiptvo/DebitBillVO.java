@@ -9,16 +9,13 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class DebitBillVO extends ReceiptVO {
-	public double money;
+public class DebitBillVO extends DebitAndPayBillVO {
 	public String courierID;
-	public ReceiptType receiptType;
 	public ArrayList<String> orderNumbers;
 	
 	public DebitBillVO(String id, ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers) {
-		super(id,type);
+		super(id,type,money);
 		this.courierID=courierID;
-		this.money=money;
 		this.orderNumbers=orderNumbers;
 	}
 

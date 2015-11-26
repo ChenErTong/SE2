@@ -1,10 +1,8 @@
 package fund;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import businesslogic.fundbl.DebitAndPayBill;
-import state.ReceiptType;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class MockDebitAndPayBill extends DebitAndPayBill{
@@ -28,7 +26,7 @@ public class MockDebitAndPayBill extends DebitAndPayBill{
 	}
 
 	public void findDebitAndPayBillVO(String ID){
-		debitAndPayBillVO = new DebitAndPayBillVO(ID, 9980.56, "xiaoli",ReceiptType.PAY, new ArrayList<>());
+//		debitAndPayBillVO = new DebitAndPayBillVO(ID, 9980.56, "xiaoli",ReceiptType.PAY, new ArrayList<>());
 	}
 	
 	public HashMap<String, String> getAllBankAccounts() {

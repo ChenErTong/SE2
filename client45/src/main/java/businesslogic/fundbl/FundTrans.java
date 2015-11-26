@@ -9,11 +9,14 @@ import po.BankAccountPO;
 import po.ExpensePO;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
+import po.receiptpo.PaymentBillPO;
+import state.PayBillItem;
 import state.ReceiptType;
 import vo.BankAccountVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ExpenseVO;
+import vo.receiptvo.PaymentBillVO;
 
 public class FundTrans {
 	public static BankAccountPO convertVOtoPO(BankAccountVO vo) {
@@ -44,15 +47,12 @@ public class FundTrans {
 		ReceiptType type = VO.type;
 		if (type == ReceiptType.EXPENSE) {
 			// 收款单
-			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.ID, VO.money, VO.courierID, VO.type,
-					VO.orderNumbers);
+			DebitBillPO po =convertVOtoPO((DebitBillVO)VO);
 			return po;
 		}
 		if (type == ReceiptType.PAY) {
 			// 付款单
-			DebitAndPayBillPO po = new DebitAndPayBillPO(VO.ID, VO.money, VO.payerName,
-					VO.bankAccouts, VO.type, VO.rentYear, VO.salaryMonth, VO.items,
-					VO.transListNumber);
+			PaymentBillPO po =convertVOtoPO((PaymentBillVO)VO);
 			return po;
 		} else {
 			return null;
@@ -63,18 +63,72 @@ public class FundTrans {
 		ReceiptType type = PO.getType();
 		if (type == ReceiptType.EXPENSE) {
 			// 收款单
-			DebitAndPayBillVO vo = new DebitAndPayBillVO(PO.getID(), PO.getMoney(), PO.getCourierID(), PO.getType(),
-					PO.getOrderNumbers());
+			DebitBillVO vo = convertPOtoVO((DebitBillPO)PO);
 			return vo;
 		}
 		if (type == ReceiptType.PAY) {
 			// 付款单
-			DebitAndPayBillVO vo = new DebitAndPayBillVO(PO.getID(), PO.getMoney(), PO.getPayerName(),
-					PO.getBankAccouts(), PO.getType(), PO.getRentYear(), PO.getSalaryMonth(), PO.getItems(),
-					PO.getTransListNumber());
+			PaymentBillVO vo =convertPOtoVO((PaymentBillPO)PO);
 			return vo;
 		} else {
 			return null;
+		}
+	}
+	
+	public static DebitBillVO convertPOtoVO(DebitBillPO po) {
+		if(po==null)
+			return null;
+		else {
+			String id=po.getID();
+			ReceiptType type = po.getReceiptType();
+			String courierID = po.getCourierID();
+			double money = po.getMoney();
+			ArrayList<String> orderNumbers=po.getOrderNumbers();
+			return new DebitBillVO(id, type, courierID, money, orderNumbers);
+		}
+	}
+	
+	public static DebitBillPO convertVOtoPO(DebitBillVO vo) {
+		if(vo==null)
+			return null;
+		else {
+			String id=vo.ID;
+			ReceiptType type = vo.type;
+			String courierID = vo.courierID;
+			double money = vo.money;
+			ArrayList<String> orderNumbers=vo.orderNumbers;
+			return new DebitBillPO(id, type, courierID, money, orderNumbers);
+		}
+	}
+	
+	public static  PaymentBillVO convertPOtoVO( PaymentBillPO po) {
+		if(po==null)
+			return null;
+		else {
+			String iD=po.getID();
+			String date = po.getDate();
+			ReceiptType type = po.getReceiptType();
+			double money = po.getMoney();
+			String payerName = po.getPayerName();
+			String accountID = po.getAccountID();
+			PayBillItem items = po.getPayBillItem();
+			String remarks = po.getRemarks();
+			return new PaymentBillVO(iD, date, type, money, payerName, accountID, items, remarks);
+		}
+	}
+	
+	public static PaymentBillPO convertVOtoPO(PaymentBillVO vo) {
+		if(vo==null)
+			return null;
+		else {
+			String ID=vo.ID;
+			ReceiptType type = vo.type;
+			double money =vo.money;
+			String payerName = vo.payerName;
+			String accountID = vo.accountID;
+			PayBillItem items =vo.items;
+			String remarks = vo.remarks;
+			return new PaymentBillPO(ID, type, money, payerName, items, accountID, remarks);
 		}
 	}
 
@@ -124,16 +178,4 @@ public class FundTrans {
 		return pos;
 	}
 
-	public static DebitBillPO convertVOtoPO(DebitBillVO vo) {
-		if(vo==null)
-			return null;
-		else {
-			String id=vo.ID;
-			ReceiptType type = vo.receiptType;
-			String courierID=vo.courierID;
-			double money = vo.money;
-			ArrayList<String> orderNumbers=vo.orderNumbers;
-			return new DebitBillPO(id, type, courierID, money, orderNumbers);
-		}
-	}
 }

@@ -2,24 +2,13 @@ package vo.receiptvo;
 
 import state.PayBillItem;
 import state.ReceiptType;
+
 /**
  * 
  * @author Ann
  *
  */
-public class PaymentBillVO extends ReceiptVO{
-	/**
-	 * ID
-	 */
-	public String ID;
-	/**
-	 * 日期
-	 */
-	public String date;
-	/**
-	 * 单据类型
-	 */
-	public ReceiptType type;
+public class PaymentBillVO extends DebitAndPayBillVO {
 	/**
 	 * 付款金额
 	 */
@@ -40,17 +29,15 @@ public class PaymentBillVO extends ReceiptVO{
 	 * 备注（租金年份、运单号、标注工资月份）
 	 */
 	public String remarks;
-	
+
 	public PaymentBillVO(String iD, String date, ReceiptType type, double money, String payerName, String accountID,
 			PayBillItem items, String remarks) {
-		super(iD, type);
+		super(iD, type, money);
 		this.date = date;
-		this.money = money;
 		this.payerName = payerName;
 		this.accountID = accountID;
 		this.items = items;
 		this.remarks = remarks;
 	}
-	
-	
+
 }

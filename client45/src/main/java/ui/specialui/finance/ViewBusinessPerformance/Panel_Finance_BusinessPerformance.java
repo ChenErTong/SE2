@@ -214,7 +214,6 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel imple
 						}
 					}
 				}
-
 	
 			}
 		}
