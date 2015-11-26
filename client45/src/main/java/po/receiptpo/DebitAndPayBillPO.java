@@ -19,13 +19,6 @@ public class DebitAndPayBillPO extends ReceiptPO{
 	public ReceiptState getState() {
 		return state;
 	}
-
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
 	/**serialVersionUID*/
 	private double money;
 	private String courierID;
@@ -52,6 +45,16 @@ public class DebitAndPayBillPO extends ReceiptPO{
 		this.type = type;
 		this.orderNumbers = orderNumbers;
 	}
+	
+	
+	public DebitAndPayBillPO(String ID, ReceiptType type, double money, String payerName, PayBillItem items) {
+	super(ID, type);
+	this.money = money;
+	this.payerName = payerName;
+	this.items = items;
+}
+
+
 	/**
 	 * @author zsq
 	 * @version Oct 22,2015
