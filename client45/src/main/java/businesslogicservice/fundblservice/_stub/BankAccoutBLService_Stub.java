@@ -25,7 +25,7 @@ public class BankAccoutBLService_Stub  implements BankAccountBLService{
 	@Override
 	public ArrayList<BankAccountVO> show() {
 		System.out.println("Show all the bankAccount!");
-		return new ArrayList<BankAccountVO>(){};
+		return new ArrayList<BankAccountVO>() ;
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class BankAccoutBLService_Stub  implements BankAccountBLService{
 	@Override
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
 		System.out.println("Find the bankAccount according to the keywords");
-		return new ArrayList<BankAccountVO>(){};
+		return new ArrayList<BankAccountVO>() ;
 	}
 
 }

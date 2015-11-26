@@ -19,10 +19,6 @@ public class AccountData extends ManageData<AccountPO> implements AccountDataSer
 		poList = new SerSaveAndLoad<AccountPO>("data/"+NAME+".ser");
 	}
 
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-	}
-
 	@Override
 	public void initialFile() {
 		poList=new SerSaveAndLoad<AccountPO>("data/"+NAME+".ser");

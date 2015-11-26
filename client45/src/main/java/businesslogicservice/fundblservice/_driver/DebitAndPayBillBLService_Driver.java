@@ -26,7 +26,7 @@ public class DebitAndPayBillBLService_Driver {
 		**/
 	}
 	public static void main(String args[]){
-		DebitAndPayBillBLService_Driver driver = new DebitAndPayBillBLService_Driver();
+		 new DebitAndPayBillBLService_Driver();
 		//DebitAndPayBillBLService stub = new DebitAndPayBillBLService_Stub();
 		//driver.drive(stub);
 	}

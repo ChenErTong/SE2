@@ -8,10 +8,10 @@ import state.ResultMessage;
 
 public class _Inventory_Data_Stub implements InventoryDataService{
 
-	@Override
-	public void init() {
-		System.out.println("Succeed in initing the inventory data.");
-	}
+//	@Override
+//	public void init() {
+//		System.out.println("Succeed in initing the inventory data.");
+//	}
 
 /*	@Override
 	public String getImportID() {

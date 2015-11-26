@@ -4,19 +4,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ResultMessage;
-import vo.InventoryCheckVO;
 import vo.InventoryVO;
-import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.TransferArrivalListVO;
 
 public class InventoryBLService_Driver {
 
 
 public void drive(InventoryBLService inventoryBLBLService) throws RemoteException{
 	
-	  int exportNumber=78;
+/*	  int exportNumber=78;
 	
 	  int importNumber=98;
       ArrayList<InventoryVO> inventoryCondition = new ArrayList<InventoryVO>();
@@ -34,39 +31,39 @@ public void drive(InventoryBLService inventoryBLBLService) throws RemoteExceptio
 	  String aftA="1区";
 	  String aftB="1排";
 	  String aftC="1架"; 
-	  String aftD="1位";
+	  String aftD="1位";*/
 	  String begindate="20151010";
 	  String enddate="20151028";
 		
-		 InventoryViewVO inventoryviewvo=inventoryBLBLService.viewInventory(begindate, enddate); 
+		 inventoryBLBLService.viewInventory(begindate, enddate); 
 	     System.out.println("显示"+begindate+"到"+enddate+"库存盘点数据");
 	
-		 InventoryCheckVO inventorycheckvo=inventoryBLBLService.checkRecord(enddate);
+		 inventoryBLBLService.checkRecord(enddate);
 		 System.out.println("显示截止"+enddate+"的库存快照");
 		 
-		 String importID=inventoryBLBLService.getImportID();
+		  inventoryBLBLService.getImportID();
 		 System.out.println("自动生成的importID");
 	
-		 TransferArrivalListVO transferReceipt = null;
-		ResultMessage resultAdd=inventoryBLBLService.addCommodities(null, null, null);
+//		 TransferArrivalListVO transferReceipt = null;
+		 inventoryBLBLService.addCommodities(null, null, null);
 		 System.out.println("添加部分入库信息成功");
 	   
 		
          InventoryImportReceiptVO importReceipt = null;
-		ResultMessage resultimport=inventoryBLBLService.submitImport( importReceipt);
+		 inventoryBLBLService.submitImport( importReceipt);
          System.out.println("入货单提交成功");
          
-       	 String exportID=inventoryBLBLService.getExportID();
+       	  inventoryBLBLService.getExportID();
          System.out.println("自动生成的exportID");
          
 	  
 	     
 		 
 	    InventoryExportReceiptVO exportReceipt = null;
-		ResultMessage resulrexport=inventoryBLBLService.submitExport(exportReceipt);
+		 inventoryBLBLService.submitExport(exportReceipt);
 	     System.out.println("出货单提交成功");
 
-	    String adjustID=inventoryBLBLService.getAdjustID();
+	     inventoryBLBLService.getAdjustID();
 	     System.out.println("自动生成的adjustID");
       }
 

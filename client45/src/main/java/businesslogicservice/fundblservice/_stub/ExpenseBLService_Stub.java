@@ -27,7 +27,7 @@ public class ExpenseBLService_Stub implements ExpenseBLService{
 	@Override
 	public ArrayList<ExpenseVO> show() {
 		System.out.println("Please show all the expense!");
-		return new ArrayList<ExpenseVO>(){};
+		return new ArrayList<ExpenseVO>() ;
 	}
 
 	@Override

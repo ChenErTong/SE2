@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 public class AccountDataService_Driver {
 	public void drive(AccountDataService service) throws RemoteException{
-		service.init();
+//		service.init();
 	}
 	
 	public static void main(String args[]) throws RemoteException{

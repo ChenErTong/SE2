@@ -1,16 +1,11 @@
 package businesslogicservice.accountblservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-
-import businesslogicservice.accountblservice.AccountBLService;
-import businesslogicservice.accountblservice.AccountBLService_Stub;
-import vo.accountvo.AccountVO;
 
 public class AccountBLService_Driver {
 	public void drive(AccountBLService accountBLService) throws RemoteException{
 		
-	 ArrayList<AccountVO> accountvo=accountBLService.show();
+	  accountBLService.show();
 	 System.out.println("输出全部员工账户信息列表");
 		
 	}

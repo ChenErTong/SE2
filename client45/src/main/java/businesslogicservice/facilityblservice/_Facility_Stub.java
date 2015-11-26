@@ -61,12 +61,12 @@ public class _Facility_Stub implements FacilityBLService {
 
 	@Override
 	public FacilityVO findFacility(String facilityId) {
-		FacilityPO facilityPO = null;
+		/*FacilityPO facilityPO = null;
 		try {
 			facilityPO = data_Stub.find(facilityId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println("You have found a car!");
 		return null;
 		// new FacilityVO(facilityPO.getManagerId(),

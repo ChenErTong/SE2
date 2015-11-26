@@ -27,7 +27,7 @@ public class _Transfer_Stub implements TransferBLService {
 		ArrayList<CommodityVO> allCommodityVOs = new ArrayList<>();
 		System.out.println("Get commodities from orderPOs");
 		for(int i=0;i<orderPOs.size();i++){
-			OrderPO orderPO = orderPOs.get(i);
+//			OrderPO orderPO = orderPOs.get(i);
 			ArrayList<CommodityVO> oneCommodityVOs = new ArrayList<>();
 			for (CommodityVO commodityVO : oneCommodityVOs) {
 				allCommodityVOs.add(commodityVO);
