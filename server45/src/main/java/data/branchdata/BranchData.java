@@ -21,12 +21,12 @@ public class BranchData extends ManageData<BranchPO> implements BranchDataServic
 	/**
 	 * 营业厅编号(025(城市编码)+1(营业厅)+000(鼓楼营业厅))
 	 * @author Ann
+	 * @throws RemoteException 
 	 */
 	@Override
-	public String getID(String cityCode) {
+	public String getID(String cityCode) throws RemoteException {
 		String prifix=cityCode+1;
-		int branchNumber=poList.size();
-		return prifix+Util.transIntToString(branchNumber, 3);
+		return prifix+super.getID();
 	}
 	@Override
 	public void initialFile() {

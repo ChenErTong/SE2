@@ -25,8 +25,7 @@ public class TransferData extends ManageData<TransferPO> implements TransferData
 	@Override
 	public String getID(String cityCode) throws RemoteException {
 		String prifix=cityCode+0;
-		int branchNumber=poList.size();
-		return prifix+Util.transIntToString(branchNumber, 2);
+		return prifix+super.getID();
 	}
 	
 	@Override
