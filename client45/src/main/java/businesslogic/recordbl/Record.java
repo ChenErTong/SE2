@@ -12,20 +12,23 @@ import java.util.ArrayList;
 import businesslogic.fundbl.FundTrans;
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
-import dataservice.recorddataservice.RecordDataService;
+import dataservice.recorddataservice.BusinessConditionDataService;
+import dataservice.recorddataservice.BusinessProcessDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import vo.BussinessConditionVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
-	private RecordDataService recordData;
+	private BusinessProcessDataService businessProcessData;
+	private BusinessConditionDataService businessConditionData;
 	private DebitAndPayBillDataService DebitAndPayBillData;
 
 	public Record() {
 		try {
-			recordData = (RecordDataService) Naming.lookup(RMIConfig.PREFIX + RecordDataService.NAME);
-			DebitAndPayBillData = (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + RecordDataService.NAME);
+			businessProcessData = (BusinessProcessDataService) Naming.lookup(RMIConfig.PREFIX + BusinessProcessDataService.NAME);
+			businessConditionData = (BusinessConditionDataService) Naming.lookup(RMIConfig.PREFIX + BusinessConditionDataService.NAME);
+			DebitAndPayBillData = (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

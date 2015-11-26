@@ -25,7 +25,8 @@ import data.openingstockdata.OpeningStockData;
 import data.orderdata.OrderData;
 import data.organizationdata.OrganizationData;
 import data.receiptdata.ReceiptData;
-import data.recorddata.RecordData;
+import data.recorddata.BusinessConditionData;
+import data.recorddata.BusinessProcessData;
 import data.transferdata.TransferData;
 import data.userdata.UserData;
 
@@ -70,7 +71,8 @@ public class RMIManage {
 			Naming.bind(prefix+OrderData.NAME, DataFactory.createDataService(OrderData.NAME));
 			Naming.bind(prefix+OrganizationData.NAME, DataFactory.createDataService(OrganizationData.NAME));
 			Naming.bind(prefix+ReceiptData.NAME, DataFactory.createDataService(ReceiptData.NAME));
-			Naming.bind(prefix+RecordData.NAME, DataFactory.createDataService(RecordData.NAME));
+			Naming.bind(prefix+BusinessProcessData.NAME, DataFactory.createDataService(BusinessProcessData.NAME));
+			Naming.bind(prefix+BusinessConditionData.NAME, DataFactory.createDataService(BusinessConditionData.NAME));
 			Naming.bind(prefix+TransferData.NAME, DataFactory.createDataService(TransferData.NAME));
 			Naming.bind(prefix+UserData.NAME, DataFactory.createDataService(UserData.NAME));
 			Naming.bind(prefix+DriverData.NAME, DataFactory.createDataService(DriverData.NAME));
