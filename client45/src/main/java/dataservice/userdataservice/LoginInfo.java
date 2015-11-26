@@ -8,6 +8,7 @@ public class LoginInfo  {
 	/** 是否记住密码 */
 	private boolean isRemembered;
 
+	
 	public LoginInfo(String username, String password, boolean isRemembered) {
 		this.username = username;
 		this.password = password;
