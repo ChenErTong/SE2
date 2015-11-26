@@ -36,6 +36,12 @@ public class ManageData<PO extends PersistentObject> extends Data implements Man
 		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
 		return currentID;
 	}
+	
+	private void addID() {
+		++maxID;
+		configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
+	}
+	
 	public PO find(String id) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
 			PO po = poList.get(i);
