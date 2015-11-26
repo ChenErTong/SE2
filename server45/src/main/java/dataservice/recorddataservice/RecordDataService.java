@@ -21,5 +21,4 @@ public interface RecordDataService extends DataService<PersistentObject> {
 	/**返回信息：	1. 收入2. 支出。3. 利润：总收入-总支出**/
 	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) throws RemoteException;
 	
-	public String getBegin() throws RemoteException;
 }

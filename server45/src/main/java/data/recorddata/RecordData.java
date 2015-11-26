@@ -44,11 +44,6 @@ public class RecordData extends ManageData<PersistentObject> implements RecordDa
 		return pos;
 	}
 
-	@Override
-	public String getBegin() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	private boolean inDate(PersistentObject po, String beginDate, String endDate) {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)

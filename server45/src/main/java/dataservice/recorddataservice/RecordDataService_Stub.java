@@ -1,6 +1,5 @@
 package dataservice.recorddataservice;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.BussinessConditionPO;
@@ -34,11 +33,6 @@ public class RecordDataService_Stub implements RecordDataService{
 	public ArrayList<BussinessConditionPO> getBussinessCondition(String enddate) {
 		System.out.println("GetBussinessCondition succeed!");
 		return new ArrayList<BussinessConditionPO>();
-	}
-	@Override
-	public String getBegin() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	@Override
 	public void initialFile() {

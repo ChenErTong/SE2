@@ -2,10 +2,6 @@ package dataservice.userdataservice;
 
 import java.rmi.RemoteException;
 
-import po.UserPO;
-import state.UserAuthority;
-import state.UserIdentity;
-
 public class UserDataService_Driver {
 	//private UserPO po = new UserPO("username", "name", "password", UserIdentity.ADMIN, "123",UserAuthority.MANAGER_LEVEL);
 	private LoginInfo loginInfo = new LoginInfo("username", "password", false);

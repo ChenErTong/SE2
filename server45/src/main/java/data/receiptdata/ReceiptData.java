@@ -16,7 +16,6 @@ import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
-import util.Util;
 
 public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataService {
 
@@ -24,9 +23,14 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	String importPrifix ;
+	String exportPrifix ;
+	String adjustPrifix ;
 	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
+		importPrifix=configReader.getValue("importPrifix");
+		exportPrifix=configReader.getValue("exportPrifix");
+		adjustPrifix=configReader.getValue("adjustPrifix");
 	}
 
 
@@ -47,38 +51,17 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public String getImportID() throws RemoteException {
-		String prifix = "IMPORT";
-		int idNumber = 0;
-		for (int i = 0; i < poList.size(); i++) {
-			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType() == ReceiptType.INSTOCK)
-				++idNumber;
-		}
-		return prifix + Util.transIntToString(idNumber, 8);
+		return importPrifix +super.getID();
 	}
 
 	@Override
 	public String getExportID() throws RemoteException {
-		String prifix = "EXPORT";
-		int idNumber = 0;
-		for (int i = 0; i < poList.size(); i++) {
-			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType() == ReceiptType.OUTSTOCK)
-				++idNumber;
-		}
-		return prifix + Util.transIntToString(idNumber, 8);
+		return exportPrifix +super.getID();
 	}
 
 	@Override
 	public String getAdjustID() throws RemoteException {
-		String prifix = "ADJUST";
-		int idNumber = 0;
-		for (int i = 0; i < poList.size(); i++) {
-			ReceiptPO po = poList.get(i);
-			if (po.getReceiptType() == ReceiptType.TAKINGSTOCK)
-				++idNumber;
-		}
-		return prifix + Util.transIntToString(idNumber, 8);
+		return adjustPrifix +super.getID();
 	}
 
 

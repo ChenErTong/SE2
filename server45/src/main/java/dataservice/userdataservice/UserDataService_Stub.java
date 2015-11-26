@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import po.UserPO;
 import state.ResultMessage;
-import state.UserAuthority;
 import state.UserIdentity;
 
 public class UserDataService_Stub implements UserDataService{

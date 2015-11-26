@@ -3,9 +3,7 @@ package dataservice.transferdataservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.InventoryPO;
 import po.TransferPO;
-import po.accountpo.AccountPO;
 import state.ResultMessage;
 
 public class _Transfer_Data_Stub implements TransferDataService {
