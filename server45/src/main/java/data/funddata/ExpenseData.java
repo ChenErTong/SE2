@@ -19,11 +19,6 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 		poList=new SerSaveAndLoad<ExpensePO>("data/"+NAME+".ser");
 	}
 	@Override
-	public String getID() throws RemoteException {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 8);
-	}
-	@Override
 	public void initialFile() {
 		// TODO Auto-generated method stub
 		

@@ -173,16 +173,17 @@ public class _Inventory_Data_Stub implements InventoryDataService{
 		return null;
 	}
 
-	@Override
-	public String getInventoryID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void initialFile() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*@Override

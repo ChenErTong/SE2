@@ -51,4 +51,10 @@ public class _Branch_Data_Stub implements BranchDataService {
 		
 	}
 
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

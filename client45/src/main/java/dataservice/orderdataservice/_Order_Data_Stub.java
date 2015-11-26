@@ -59,6 +59,12 @@ public class _Order_Data_Stub implements OrderDataService {
 		
 	}
 
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 

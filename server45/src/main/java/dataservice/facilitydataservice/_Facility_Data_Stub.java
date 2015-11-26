@@ -43,6 +43,12 @@ public class _Facility_Data_Stub implements FacilityDataService {
 		
 	}
 
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	@Override
 //	public AccountPO findDriver(String id) {
 //		return new DriverPO("DY001:2014-6-4:00008", "Old driver", 

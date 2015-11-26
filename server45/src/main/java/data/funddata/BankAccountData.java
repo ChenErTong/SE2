@@ -51,11 +51,6 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 		return bankAccounts;
 	}
 
-	@Override
-	public String getID() throws RemoteException {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 2);
-	}
 
 	@Override
 	public void initialFile() {

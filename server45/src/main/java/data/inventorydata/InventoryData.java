@@ -69,12 +69,6 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 	}
 
 	@Override
-	public String getInventoryID() throws RemoteException {
-		int size=poList.size();
-		return Util.transIntToString(size, 3);
-	}
-
-	@Override
 	public void initialFile() {
 		// TODO Auto-generated method stub
 		

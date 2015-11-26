@@ -53,4 +53,10 @@ public class _Transfer_Data_Stub implements TransferDataService {
 		
 	}
 
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

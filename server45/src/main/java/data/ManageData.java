@@ -53,9 +53,10 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 	}
     
 	public ResultMessage add(PO po) throws RemoteException {
-		if (poList.add(po))
+		if (poList.add(po)){
+			addID();
 			return ResultMessage.SUCCESS;
-		return ResultMessage.FAIL;
+		}return ResultMessage.FAIL;
 	}
 
 	public ResultMessage delete(String id) throws RemoteException {
