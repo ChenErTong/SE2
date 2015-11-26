@@ -39,11 +39,6 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 		return null;
 	}
 
-	@Override
-	public String getID() {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 2);
-	}
 
 	@Override
 	public void initialFile() {

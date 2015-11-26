@@ -43,11 +43,6 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 			return ResultMessage.SUCCESS;
 		}
 	}
-	@Override
-	public String getID() throws RemoteException {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 4);
-	}
 
 
 	@Override

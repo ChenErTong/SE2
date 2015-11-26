@@ -28,6 +28,7 @@ public class TransferData extends ManageData<TransferPO> implements TransferData
 		int branchNumber=poList.size();
 		return prifix+Util.transIntToString(branchNumber, 2);
 	}
+	
 	@Override
 	public void initialFile() {
 		// TODO Auto-generated method stub

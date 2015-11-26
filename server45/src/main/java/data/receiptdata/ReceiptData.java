@@ -29,11 +29,6 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		poList = new SerSaveAndLoad<ReceiptPO>("data/" + NAME + ".ser");
 	}
 
-	@Override
-	public String getID() {
-		int newID = poList.size();
-		return Util.transIntToString(newID, 5);
-	}
 
 	@Override
 	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptState) throws RemoteException {
