@@ -40,7 +40,7 @@ public class OrderPO extends ReceiptPO {
 	// 货物集合信息
 	private ArrayList<CommodityPO> commodityPO;
 	// 订单运送途径地点
-	private String midAddres;
+	private ArrayList<String> midAddres;
 	// 派件时间、收件时间
 	private String sendTime;
 	private String recipientTime;
@@ -50,7 +50,7 @@ public class OrderPO extends ReceiptPO {
 
 	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityPO> commodityPO, String midAddres, String sendTime, String recipientTime, double money) {
+			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money) {
 		super(orderIdString,type);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
@@ -145,12 +145,9 @@ public class OrderPO extends ReceiptPO {
 		return commodityPO;
 	}
 
-	public String getMidAddres() {
-		return midAddres;
-	}
 
-	public void setMidAddres(String midAddres) {
-		this.midAddres = midAddres;
+	public ArrayList<String> getMidAddres() {
+		return midAddres;
 	}
 
 	public String getSendTime() {

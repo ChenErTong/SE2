@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 public class OrderVO extends ValueObject {
 	// 订单号
 	public String orderIdString;
@@ -16,7 +18,7 @@ public class OrderVO extends ValueObject {
 	public String recipientTel;
 	public String recipientCo;
 	// 订单运送途径地点
-	public String midAddres;
+	public ArrayList<String> midAddres;
 	// 派件时间、收件时间
 	public String sendTime;
 	public String recipientTime;
@@ -30,7 +32,7 @@ public class OrderVO extends ValueObject {
 	}
 
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
-			String recipientName, String recipientAddress, String recipientTel, String recipientCo, String midAddres,
+			String recipientName, String recipientAddress, String recipientTel, String recipientCo, ArrayList<String> midAddres,
 			String sendTime, String recipientTime, double money) {
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;

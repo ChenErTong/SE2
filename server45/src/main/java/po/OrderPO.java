@@ -15,8 +15,8 @@ import state.ReceiptType;
  */
 public class OrderPO extends ReceiptPO {
 
-	protected OrderPO(String id,ReceiptType type) {
-		super(id,type);
+	protected OrderPO(String id, ReceiptType type) {
+		super(id, type);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class OrderPO extends ReceiptPO {
 	// 货物集合信息
 	private ArrayList<CommodityPO> commodityPO;
 	// 订单运送途径地点
-	private String midAddres;
+	private ArrayList<String> midAddres;
 	// 派件时间、收件时间
 	private String sendTime;
 	private String recipientTime;
@@ -48,10 +48,11 @@ public class OrderPO extends ReceiptPO {
 	private double money;
 	private ReceiptState state;
 
-	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
+	public OrderPO(String orderIdString, ReceiptType type, String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityPO> commodityPO, String midAddres, String sendTime, String recipientTime, double money) {
-		super(orderIdString,type);
+			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime,
+			double money) {
+		super(orderIdString, type);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -140,17 +141,12 @@ public class OrderPO extends ReceiptPO {
 		this.recipientCo = recipientCo;
 	}
 
-
 	public ArrayList<CommodityPO> getCommodityPO() {
 		return commodityPO;
 	}
 
-	public String getMidAddres() {
+	public ArrayList<String> getMidAddres() {
 		return midAddres;
-	}
-
-	public void setMidAddres(String midAddres) {
-		this.midAddres = midAddres;
 	}
 
 	public String getSendTime() {
@@ -176,15 +172,13 @@ public class OrderPO extends ReceiptPO {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	
-	public  ReceiptState getState() {
+
+	public ReceiptState getState() {
 		return state;
 	}
 
-	public  void setState(ReceiptState state) {
+	public void setState(ReceiptState state) {
 		this.state = state;
 	}
-
-	
 
 }
