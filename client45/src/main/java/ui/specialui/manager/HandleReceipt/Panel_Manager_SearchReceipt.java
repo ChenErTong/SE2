@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,10 +14,8 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 import ui.myui.MyComboBox;
-import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
-import ui.myui.MyJTable;
 
 import ui.myui.MyTranslucentPanel;
 
@@ -28,13 +25,13 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	private MyComboBox receiptTypeList;
 	private MyComboBox receiptStateList;
 	private static final long serialVersionUID = 1L;
-	public Panel_Manager_SearchReceipt() {
+	public Panel_Manager_SearchReceipt(Panel_Manager_HandleReceipt handle) {
 		super(30,100, 655, 540);
-		this.initComponent();
+		this.initComponent(handle);
 		// TODO Auto-generated constructor stub
 	}
 
-	private void initComponent() {
+	private void initComponent(Panel_Manager_HandleReceipt handle) {
 		// TODO Auto-generated method stub
 		String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
 		String [] receiptState = {"所有状态","草稿","正在审批","通过审批","未通过审批"};
@@ -46,66 +43,10 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		this.add(receiptStateLabel);
 		
 		selectButton = new MyJButton(555,10,90,30,"搜索",14);
-		selectButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("111");
-			//清空VO储存池s
-		//	listPool.clear();
-			//typePool.clear();
+		selectButton.setActionCommand("SearchReceipt");;
+		selectButton.addActionListener(handle);
 			
-			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-			
-			int rowCount = table.getRowCount();
-			
-			for(int k = 0; k < rowCount; k++)
-				tableModel.removeRow(0);
-			
-			if(receiptTypeList.getSelectedIndex() == 1){
-				try {
-					getApprovalData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-			}else if(receiptTypeList.getSelectedIndex() == 2){
-				try {
-					getPassData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-			}else if(receiptTypeList.getSelectedIndex() == 3){
-				try {
-					getFailureData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-			}else{
-				try {
-					getApprovalData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-				try {
-					getPassData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-				try {
-					getFailureData(receiptStateList.getSelectedIndex());
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-			}
-			
-			if(table.getRowCount() == 0){
-				//WarningFrame wf = new WarningFrame("目前没有符合条件的单据!");
-				//wf.setVisible(true);
-			}
-		}
-			
-	});
+		
 		this.add(selectButton);
 
 		receiptTypeList = new MyComboBox(135,10,150,30,14,receiptType);
@@ -188,6 +129,8 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		this.add(jsp);	
 	}
 	
-	
+ public JTable getTable(){
+	 return table;
+ }
 
 }

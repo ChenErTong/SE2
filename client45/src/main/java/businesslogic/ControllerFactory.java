@@ -10,6 +10,7 @@ import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.ExpenseController;
 import businesslogic.inventorybl.InventoryController;
 import businesslogic.organizationbl.OrganizationController;
+import businesslogic.receiptbl.ReceiptController;
 import businesslogic.recordbl.RecordController;
 import businesslogic.userbl.UserController;
 
@@ -60,6 +61,11 @@ public class ControllerFactory {
 	
 	public static RecordController getRecordController() {
 		return new RecordController();
+	}
+
+	public static ReceiptController getReceiptController() {
+
+		return new ReceiptController();
 	}
 
 }

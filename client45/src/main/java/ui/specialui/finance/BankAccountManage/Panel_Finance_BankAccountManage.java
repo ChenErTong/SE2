@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-import businesslogic.fundbl.BankAccountController;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import state.FindTypeAccount;
 import state.ResultMessage;
@@ -17,7 +16,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
-import ui.specialui.finance.Frame_Finance;
+
 import vo.BankAccountVO;
 
 
@@ -198,10 +197,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		}
 
 	}
-	/**
-	 * 删除账户
-	 * @return
-	 */
+
 	
 	public void deleteAccount(){
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();

@@ -67,7 +67,7 @@ private static final long serialVersionUID = 1L;
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_HandleReceipt(this);
+			subPanel = new Panel_Manager_HandleReceipt();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("HandleOrganization")){
