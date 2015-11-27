@@ -3,7 +3,6 @@ package businesslogicservice.fundblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -73,7 +72,7 @@ public interface DebitAndPayBillBLService {
 	 * @return 是否成功
 	 * @throws RemoteException
 	 */
-	public ResultMessage submit(DebitAndPayBillPO po);
+	public ResultMessage submit(DebitAndPayBillVO vo);
 
 	/**
 	 * 保存成草稿状态
@@ -83,7 +82,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ResultMessage save(DebitAndPayBillPO po);
+	public ResultMessage save(DebitAndPayBillVO vo);
 
 	/**
 	 * 修改草稿状态
@@ -94,7 +93,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ResultMessage updateDraft(DebitAndPayBillPO po);
+	public ResultMessage updateDraft(DebitAndPayBillVO vo);
 
 
 }

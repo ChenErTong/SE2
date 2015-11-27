@@ -305,6 +305,12 @@ private void deletePanel(Frame_Finance frame) {
 		
 		String[] data = payReceiptInfo.getData();
 		//ResultMessage rsg = controller.updateDraft(po) TODO --为啥参数是POorz
+		
+		/**
+		 * //TODO 好的我来改了 
+		 * @author Ann
+		 */
+		
 		//if(rsg.equals(ResultMessage.SUCCESS)){
 			//System.out.println("ModifySucceed!");
 			//this.showAll();

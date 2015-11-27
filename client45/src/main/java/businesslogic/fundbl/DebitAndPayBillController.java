@@ -68,9 +68,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 
 
 	@Override
-	public ResultMessage submit(DebitAndPayBillPO po) {
+	public ResultMessage submit(DebitAndPayBillVO vo) {
 		try {
-			return DebitAndPayBL.submit(po);
+			return DebitAndPayBL.submit(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -78,9 +78,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	}
 
 	@Override
-	public ResultMessage save(DebitAndPayBillPO po) {
+	public ResultMessage save(DebitAndPayBillVO vo) {
 		try {
-			return DebitAndPayBL.save(po);
+			return DebitAndPayBL.save(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -88,9 +88,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	}
 
 	@Override
-	public ResultMessage updateDraft(DebitAndPayBillPO po) {
+	public ResultMessage updateDraft(DebitAndPayBillVO vo) {
 		try {
-			return DebitAndPayBL.updateDraft(po);
+			return DebitAndPayBL.updateDraft(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

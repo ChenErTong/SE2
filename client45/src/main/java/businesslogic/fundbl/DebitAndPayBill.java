@@ -59,20 +59,6 @@ public class DebitAndPayBill {
 		return debitAndPayBillData.add(po);
 	}
 
-	/*// 建立付款单
-
-	public ResultMessage addPayBill(double money, String payerName, ArrayList<String> bankAccouts,
-			ReceiptType type, String rentYear, String salaryMonth, PayBillItem items, ArrayList<String> transListNumber)
-					throws RemoteException {
-		// 疑问
-		String ID = null;
-		
-		
-		DebitAndPayBillVO vo = new DebitAndPayBillVO(ID, money, payerName, bankAccouts, type, rentYear, salaryMonth,
-				items, transListNumber);
-		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
-		return debitAndPayBillData.add(po);
-	}*/
 	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
 			PayBillItem items, String transferReceiptID, String remarks) throws RemoteException {
 		String ID = getPayID();
@@ -80,18 +66,21 @@ public class DebitAndPayBill {
 		return debitAndPayBillData.add(po);
 	}
 
-	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException {
+	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
+		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		po.setReceiptCondition(ReceiptCondition.SUBITTED);
 		return debitAndPayBillData.modify(po);
 	}
 
-	public ResultMessage save(DebitAndPayBillPO po) throws RemoteException {
+	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
 //		debitAndPayBillData.add(po);
+		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}
 
-	public ResultMessage updateDraft(DebitAndPayBillPO po) throws RemoteException {
+	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
 //		debitAndPayBillData.modify(po);
+		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.modify(po);
 	}
 
