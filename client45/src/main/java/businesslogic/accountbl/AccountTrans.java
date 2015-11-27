@@ -57,4 +57,15 @@ public class AccountTrans {
 		}
 		return pos;
 	}
+	
+	public static ArrayList<AccountVO> convertPOstoVOsByDuty(ArrayList<AccountPO> pos,String duty){
+		ArrayList<AccountVO> vos = new ArrayList<AccountVO>();
+		for (po.accountpo.AccountPO po : pos) {
+			if(po.getDuty().equals(duty)){
+				AccountVO vo = POToVO(po);
+				vos.add(vo);
+			}
+		}
+		return vos;
+	}
 }

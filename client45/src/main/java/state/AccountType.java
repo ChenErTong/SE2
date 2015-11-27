@@ -1,5 +1,10 @@
 package state;
-
+/**
+ * 这个类可能用不到了
+ * @author Ann
+ *
+ */
+@Deprecated
 public enum AccountType {
 	//还会改，比如应该是司机啊什么之类的
 	COURIER("快递员"),
