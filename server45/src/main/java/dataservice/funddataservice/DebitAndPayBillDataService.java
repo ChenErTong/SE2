@@ -64,6 +64,7 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	 */
 	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
 	
+	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException;
 	
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState State) throws RemoteException;
 	

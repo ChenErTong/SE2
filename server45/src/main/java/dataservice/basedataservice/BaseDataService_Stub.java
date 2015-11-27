@@ -55,5 +55,15 @@ public class BaseDataService_Stub implements BaseDataService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

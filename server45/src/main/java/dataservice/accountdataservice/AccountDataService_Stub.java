@@ -19,4 +19,10 @@ public class AccountDataService_Stub implements AccountDataService{
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -64,7 +64,6 @@ public class ControllerFactory {
 	}
 
 	public static ReceiptController getReceiptController() {
-
 		return new ReceiptController();
 	}
 

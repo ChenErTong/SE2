@@ -18,4 +18,8 @@ public class OrganizationData extends Data implements OrganizationDataService {
 		//这个类好像用不到了
 	}
 
+	@Override
+	public void initialFile() {
+		//TODO
+	}
 }

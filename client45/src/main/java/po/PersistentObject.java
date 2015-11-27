@@ -1,6 +1,8 @@
 package po;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *所有PO类的父类，包括创建时间、编号
@@ -23,11 +25,13 @@ public class PersistentObject implements Serializable{
 	protected String date;
    
 	protected PersistentObject(String id){
+		/**自动生成日期*/
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
+		date = sdf.format(new Date());
 		this.ID = id;
 	}
 
 	public PersistentObject(String iD, String date) {
-		super();
 		ID = iD;
 		this.date = date;
 	}

@@ -49,4 +49,16 @@ public class _Order_Data_Stub  implements OrderDataService {
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

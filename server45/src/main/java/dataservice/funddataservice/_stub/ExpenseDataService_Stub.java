@@ -52,6 +52,12 @@ public class ExpenseDataService_Stub implements ExpenseDataService{
 		return null;
 	}
 
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

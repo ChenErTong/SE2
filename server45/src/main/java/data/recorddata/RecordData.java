@@ -3,6 +3,7 @@ package data.recorddata;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import config.XMLReader;
 import data.ManageData;
 import dataservice.recorddataservice.RecordDataService;
 import po.BussinessConditionPO;
@@ -17,7 +18,6 @@ public class RecordData extends ManageData<PersistentObject> implements RecordDa
 	 */
 	private static final long serialVersionUID = 1L;
 	public RecordData() throws RemoteException {
-		poList=new SerSaveAndLoad<PersistentObject>("data/"+NAME+".ser");
 	}
 
 	@Override
@@ -44,16 +44,17 @@ public class RecordData extends ManageData<PersistentObject> implements RecordDa
 		return pos;
 	}
 
-	@Override
-	public String getBegin() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	private boolean inDate(PersistentObject po, String beginDate, String endDate) {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
 			return true;
 		return false;
+	}
+
+	@Override
+	public void initialFile() {
+		poList=new SerSaveAndLoad<PersistentObject>("data/"+NAME+".ser");
+		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
 }

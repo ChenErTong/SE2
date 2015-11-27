@@ -20,5 +20,7 @@ public class RMIConfig {
 		System.out.println(RMIConfig.HOST);
 		System.out.println(RMIConfig.PORT);
 		System.out.println(RMIConfig.PREFIX);
+//		XMLReader reader = new XMLReader("config/rmi.xml");
+//		reader.setValue("fuck", "brother");
 	}
 }

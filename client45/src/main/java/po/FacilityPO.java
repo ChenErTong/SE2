@@ -67,7 +67,6 @@ public class FacilityPO extends PersistentObject{
 			String bottomCode, String engineCode, String vehicleIdentificationNumber) {
 		super(id);
 		this.managerId = managerId;
-		this.date = date;
 		this.deliverHistory = deliverHistory;
 		this.bottomCode = bottomCode;
 		this.engineCode = engineCode;

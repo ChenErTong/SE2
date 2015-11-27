@@ -16,7 +16,6 @@ public class DebitBillPO extends ReceiptPO {
 
 	public DebitBillPO(String id,ReceiptType type) {
 		super(id, type);
-		// TODO Auto-generated constructor stub
 	}
 
 }

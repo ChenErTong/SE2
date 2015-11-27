@@ -45,8 +45,7 @@ public class Record {
 	}
 
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
-		String begin = recordData.getBegin();
-		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
+		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList( end);
 		double income = 0;
 		double expense = 0;
 		double profit = 0;

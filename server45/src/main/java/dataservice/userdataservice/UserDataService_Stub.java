@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import po.UserPO;
 import state.ResultMessage;
-import state.UserAuthority;
 import state.UserIdentity;
 
 public class UserDataService_Stub implements UserDataService{
@@ -61,6 +60,11 @@ public class UserDataService_Stub implements UserDataService{
 	public String getID() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public void initialFile() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
