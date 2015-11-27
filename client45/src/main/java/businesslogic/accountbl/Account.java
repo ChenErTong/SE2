@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
+import state.AccountType;
 import vo.accountvo.AccountVO;
 
 public class Account{
@@ -29,7 +30,9 @@ public class Account{
 	public ArrayList<AccountVO> show() throws RemoteException {
 		return AccountTrans.POstoVOs(accountData.find());
 	}
-	
+	public ArrayList<AccountVO> show(AccountType type) {
+		return null;
+	}
 	
 
 

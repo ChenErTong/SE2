@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
+import state.AccountType;
 import vo.accountvo.AccountVO;
 
 public class AccountController implements AccountBLService{
@@ -17,6 +18,10 @@ public class AccountController implements AccountBLService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	@Override
+	public ArrayList<AccountVO> show(AccountType type) {
 		return null;
 	}
 

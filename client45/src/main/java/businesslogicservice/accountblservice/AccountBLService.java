@@ -3,6 +3,7 @@ package businesslogicservice.accountblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import state.AccountType;
 import vo.accountvo.AccountVO;
 
 
@@ -25,8 +26,6 @@ public interface AccountBLService {
 	 * @throws RemoteException 
 	 */
 	public ArrayList<AccountVO> show() ;
-	/**
-	 * 进行一条信息的查看
-	 */
+	public ArrayList<AccountVO> show(AccountType type);
 }
 
