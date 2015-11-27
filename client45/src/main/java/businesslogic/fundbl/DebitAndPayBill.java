@@ -13,6 +13,7 @@ import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
+import po.receiptpo.PaymentBillPO;
 import state.PayBillItem;
 import state.ReceiptCondition;
 import state.ReceiptState;
@@ -53,7 +54,6 @@ public class DebitAndPayBill {
 	// 建立收款单
 	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
 			throws RemoteException {
-		// 疑问
 		String ID = getExpenseID();
 		DebitBillVO vo = new DebitBillVO(ID, type, courierID, money, orderNumbers);
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
@@ -75,8 +75,10 @@ public class DebitAndPayBill {
 		return debitAndPayBillData.add(po);
 	}*/
 	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID) throws RemoteException {
-				return null;
+			PayBillItem items, String transferReceiptID, String remarks) throws RemoteException {
+		String ID = getPayID();
+		PaymentBillPO po = new PaymentBillPO(ID, type, money, payerName, items, accountID, remarks);
+		return debitAndPayBillData.add(po);
 	}
 
 	public ResultMessage submit(DebitAndPayBillPO po) throws RemoteException {
@@ -85,12 +87,12 @@ public class DebitAndPayBill {
 	}
 
 	public ResultMessage save(DebitAndPayBillPO po) throws RemoteException {
-		debitAndPayBillData.add(po);
+//		debitAndPayBillData.add(po);
 		return debitAndPayBillData.add(po);
 	}
 
 	public ResultMessage updateDraft(DebitAndPayBillPO po) throws RemoteException {
-		debitAndPayBillData.modify(po);
+//		debitAndPayBillData.modify(po);
 		return debitAndPayBillData.modify(po);
 	}
 

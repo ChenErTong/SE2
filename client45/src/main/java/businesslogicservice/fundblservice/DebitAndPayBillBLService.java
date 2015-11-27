@@ -65,7 +65,7 @@ public interface DebitAndPayBillBLService {
 	
 	// 建立付款单
 	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID) throws RemoteException;
+			PayBillItem items, String transferReceiptID,String remarks) throws RemoteException;
 
 	/**
 	 * 提交单据进行审批

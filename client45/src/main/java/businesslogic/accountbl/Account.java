@@ -28,7 +28,7 @@ public class Account{
 	}
 
 	public ArrayList<AccountVO> show() throws RemoteException {
-		return AccountTrans.POstoVOs(accountData.find());
+		return AccountTrans.convertPOstoVOs(accountData.find());
 	}
 	public ArrayList<AccountVO> show(String duty) throws RemoteException {
 		ArrayList<AccountPO> pos = accountData.find();

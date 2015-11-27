@@ -57,9 +57,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	
 	@Override
 	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID) {
+			PayBillItem items, String transferReceiptID,String remarks) {
 		try {
-			return DebitAndPayBL.addPayBill(money, payerName, accountID, type, items, transferReceiptID);
+			return DebitAndPayBL.addPayBill(money, payerName, accountID, type, items, transferReceiptID,remarks);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
