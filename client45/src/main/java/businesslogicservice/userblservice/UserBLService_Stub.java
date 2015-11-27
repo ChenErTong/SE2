@@ -17,7 +17,7 @@ public class UserBLService_Stub implements UserBLService{
 	}
 
 	@Override
-	public ArrayList<UserVO> show(String type) {
+	public ArrayList<UserVO> show() {
 		System.out.println("show all users' information!");
 		return new ArrayList<UserVO>(){};
 	}

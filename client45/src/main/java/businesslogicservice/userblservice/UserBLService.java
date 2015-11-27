@@ -19,7 +19,7 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<UserVO> show(String type);
+	public ArrayList<UserVO> show();
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 

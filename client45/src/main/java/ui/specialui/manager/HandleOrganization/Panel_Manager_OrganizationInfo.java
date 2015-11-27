@@ -108,7 +108,7 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 		
 	}
 	
-	public void setData(String data) {
+	public void setData(String[] data) {
 		organizationType.setSelectedItem(data);
 		
 	}

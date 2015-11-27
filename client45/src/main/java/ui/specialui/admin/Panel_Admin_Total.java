@@ -220,7 +220,7 @@ public class Panel_Admin_Total extends MyJPanel{
 		if(type==null){
 			return false;
 		}
-		userList = userController.show(type);
+		userList = userController.show();
 		return true;
 	}
 	

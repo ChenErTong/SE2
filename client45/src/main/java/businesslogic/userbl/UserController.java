@@ -19,7 +19,7 @@ public class UserController implements UserBLService{
 	}
 
 	@Override
-	public ArrayList<UserVO> show(String type) {
+	public ArrayList<UserVO> show() {
 		try {
 			return userBL.show();
 		} catch (RemoteException e) {

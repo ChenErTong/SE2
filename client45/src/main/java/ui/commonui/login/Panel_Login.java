@@ -1,5 +1,12 @@
 package ui.commonui.login;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -17,6 +24,7 @@ public class Panel_Login extends MyJPanel{
 	private MyJRadioButton keepPassword;
 	private MyJButton login;
 	private MyJButton backout;
+	private Frame_Login frame_Login;
 	public Panel_Login(Frame_Login frame_Login) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -41,6 +49,18 @@ public class Panel_Login extends MyJPanel{
 		
 		login = new MyJButton(590,385,90,40,"登录",18);
 		login.setActionCommand("login");
+		login.registerKeyboardAction(frame_Login, 
+		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 
+		        JComponent.WHEN_IN_FOCUSED_WINDOW); 
+		login.addKeyListener(new KeyAdapter(){ 
+			
+		    public void keyPressed(KeyEvent event){ 
+		    	
+		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
+		    		login.doClick(); 
+		    	} 
+	    	} 
+		}); 
 		login.addActionListener(frame_Login);
 		this.add(login);
 		

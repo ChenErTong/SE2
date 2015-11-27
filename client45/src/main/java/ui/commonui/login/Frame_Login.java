@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dataservice.userdataservice.LoginInfo;
+import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.UserIdentity;
 import ui.image.CommonImage;
@@ -69,14 +70,16 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("login")){
-			UserController  userController = new UserController();
-			//TODO - 如何把iden转成string orz
+			UserController  userController = ControllerFactory.getUserController();
 			iden = userController.login(new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag));
 			String type = "";
 			userID = userIdField.getText();
-			for(int i=0;i<userController.show(type).size();i++){
-				userName = userController.show(type).get(i).userName;
-				userIden = userController.show(type).get(i).iden;
+			for(int i=0;i<userController.show().size();i++){
+				if(userController.show().get(i).id.equals(userID)){
+					userName = userController.show().get(i).userName;
+					userIden = userController.show().get(i).iden;
+				}
+				
 			}
 		}
 		if(iden==null){
