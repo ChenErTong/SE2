@@ -4,10 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
-import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
+import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -66,7 +66,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage submit(ReceiptPO receipt) throws RemoteException;
+	public ResultMessage submit(ReceiptVO receipt) ;
 	
 	/**
 	 * 淇濆瓨鍗曟嵁
@@ -76,7 +76,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage save(ReceiptPO receipt) ;
+	public ResultMessage save(ReceiptVO receipt) ;
 	
 	/**
 	 * 鑷姩璁＄畻杩愯垂

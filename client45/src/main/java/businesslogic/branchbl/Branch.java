@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderTrans;
+import businesslogic.receiptbl.ReceiptTrans;
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
@@ -22,6 +23,7 @@ import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
+import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -104,15 +106,15 @@ public class Branch{
 		return vo;
 	}
 
-	public ResultMessage submit(ReceiptPO receipt) throws RemoteException {
-	    receipt.setReceiptCondition(ReceiptCondition.SUBITTED);
-		return receiptData.modify(receipt);
+	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
+		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
+		po.setReceiptCondition(ReceiptCondition.SUBITTED);
+		return receiptData.modify(po);
 	}
 
-	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
-		
-//		receiptData.add(receipt);
-		return  receiptData.add(receipt);
+	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
+		return  receiptData.add(po);
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,

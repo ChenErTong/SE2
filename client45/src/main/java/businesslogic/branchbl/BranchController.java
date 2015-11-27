@@ -6,11 +6,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.branchblservice.BranchBLService;
-import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
+import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -59,7 +59,7 @@ public class BranchController implements BranchBLService {
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptPO receipt) {
+	public ResultMessage submit(ReceiptVO receipt) {
 		try {
 			return BranchBL.submit(receipt);
 		} catch (RemoteException e) {
@@ -69,7 +69,7 @@ public class BranchController implements BranchBLService {
 	}
 
 	@Override
-	public ResultMessage save(ReceiptPO receipt)  {
+	public ResultMessage save(ReceiptVO receipt)  {
 		try {
 			return BranchBL.save(receipt);
 		} catch (RemoteException e) {
