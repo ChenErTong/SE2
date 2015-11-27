@@ -1,4 +1,4 @@
-package po.receiptpo;
+package po.receiptpo.orderreceiptpo;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class TransferArrivalListPO extends ReceiptPO {
+public class TransferArrivalListPO extends OrderReceiptPO {
 
 	/**
 	 * 
@@ -20,9 +20,14 @@ public class TransferArrivalListPO extends ReceiptPO {
 	private String departure;
 	private String destination;
 	private CommodityState state;
-	private ArrayList<String> orders;
-	public TransferArrivalListPO(String id,ReceiptType type) {
-		super(id, type);
+	
+	public TransferArrivalListPO(String ID, ReceiptType type,String transferCenterID, String departure, String destination,
+			CommodityState state, ArrayList<String> orders) {
+		super(ID, type,orders);
+		this.transferCenterID = transferCenterID;
+		this.departure = departure;
+		this.destination = destination;
+		this.state = state;
 	}
 	public String getTransferCenterID() {
 		return transferCenterID;
@@ -48,20 +53,6 @@ public class TransferArrivalListPO extends ReceiptPO {
 	public void setState(CommodityState state) {
 		this.state = state;
 	}
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
-	}
-	public TransferArrivalListPO(String ID, ReceiptType type,String transferCenterID, String departure, String destination,
-			CommodityState state, ArrayList<String> orders) {
-		super(ID, type);
-		this.transferCenterID = transferCenterID;
-		this.departure = departure;
-		this.destination = destination;
-		this.state = state;
-		this.orders = orders;
-	}
+
 	
 }

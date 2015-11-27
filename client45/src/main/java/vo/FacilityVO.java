@@ -2,7 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
-import po.receiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.LoadingListPO;
 
 public class FacilityVO {
 	/**

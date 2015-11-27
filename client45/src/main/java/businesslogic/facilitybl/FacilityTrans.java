@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import po.FacilityPO;
 import po.accountpo.DriverPO;
-import po.receiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.LoadingListPO;
 import vo.FacilityVO;
 import vo.accountvo.DriverVO;
 

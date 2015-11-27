@@ -2,7 +2,7 @@ package po;
 
 import java.util.ArrayList;
 
-import po.receiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.LoadingListPO;
 
 public class FacilityPO extends PersistentObject{
 	/**

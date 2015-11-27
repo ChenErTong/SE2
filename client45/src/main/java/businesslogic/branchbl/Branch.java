@@ -110,7 +110,8 @@ public class Branch{
 	}
 
 	public ResultMessage save(ReceiptPO receipt) throws RemoteException {
-		receiptData.add(receipt);
+		
+//		receiptData.add(receipt);
 		return  receiptData.add(receipt);
 	}
 
@@ -120,8 +121,5 @@ public class Branch{
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, facilityID, courierName, orders);
 		return vo;
 	}
-	
-	
-	
 
 }

@@ -3,13 +3,14 @@ package businesslogic.orderbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branchbl.OrderInfo_Branch_Transfer;
 import businesslogic.orderbl.Order;
 import businesslogic.orderbl.OrderTrans;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import vo.OrderVO;
 
-public class OrderInfo {
+public class OrderInfo implements OrderInfo_Branch_Transfer{
 	Order order;
 	OrderDataService orderData;
 	public OrderInfo() {
@@ -18,6 +19,7 @@ public class OrderInfo {
 	}
 	/**
 	 * 当总经理审批后，修改订单的信息（主要是历史轨迹）
+	 * @author Ann
 	 * @param message 历史轨迹信息
 	 * @return
 	 * @throws RemoteException 
