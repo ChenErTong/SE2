@@ -13,32 +13,34 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.manager.FrameManager;
+
 public class UserInfo extends MyTranslucentPanel{
 
-
-	public UserInfo(FrameManager frame_Manager) {
+	private MyJButton search ;
+	private MyComboBox userList;
+	private MyJTable	table;
+	public UserInfo(Panel_Manager_ViewUser handle) {
 		super(0,100,1280,560);
-		this.initComponent(frame_Manager);
+		this.initComponent(handle);
 	}
 
-	private void initComponent(FrameManager frame_Manager) {
-		String [] identity = {"总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
+	private void initComponent(Panel_Manager_ViewUser handle) {
+		String [] identity = {"所有员工","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员","司机"};
 		
 		MyJLabel userIdentity = new MyJLabel(35,5,120,30, "请选择员工类别",16,true);
 		this.add(userIdentity);
 		
-		MyJButton search = new MyJButton(350,5,90,30,"搜索",16);
+		search = new MyJButton(350,5,90,30,"搜索",16);
 		search.setActionCommand("Search");
-		search.addActionListener(frame_Manager);
+		search.addActionListener( handle);
 		this.add(search);
 		
 		
-		MyComboBox userList = new MyComboBox(155,5,150,30,14,identity);
+		userList = new MyComboBox(155,5,150,30,14,identity);
 		this.add(userList);
 		//the table
-		String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
-		MyJTable	table = new MyJTable(headers, false);
+		String[] headers = {"编号", "姓名", "职务", "出生日期", "身份证号","任职时间","薪水","联系方式"};
+		table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
@@ -61,6 +63,15 @@ public class UserInfo extends MyTranslucentPanel{
 		jsp.setVisible(true);
 		this.add(jsp);
 		
+	}
+	
+	public String getData(){
+		int i = userList.getSelectedIndex();
+		String data = i+"";
+		return data;
+	}
+	public MyJTable getTable(){
+		return table;
 	}
 
 	private static final long serialVersionUID = 1L;
