@@ -77,6 +77,7 @@ public class Organization {
 	public ResultMessage deleteTransfer(String organizationID)throws RemoteException  {
 		return transferData.delete(organizationID);
 	}
+	
 
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
