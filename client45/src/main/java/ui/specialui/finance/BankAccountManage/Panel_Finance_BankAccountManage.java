@@ -151,14 +151,14 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
 			accountID = accountPool.get(table.getSelectedRow()).ID;
-			if(accountID.equals("")){
+			if(table.getSelectedRow()==0){
 				this.add(new MyNotification(this,"请先选择需要修改的账户！",Color.RED));
 			}else{
 				if(modifyAccountInfo.getData()==null){
 					this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
 				}else{
-					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
-					modifyAccount();
+				//	this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					this.modifyAccount();
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyBankAccount")){
@@ -193,8 +193,8 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			if(table.getSelectedRowCount() == 0){
 				this.add(new MyNotification(this,"请先选择要删除的账户！",Color.RED));
 			}else{
-				this.add(new MyNotification(this,"正在修改删除账户！",Color.GREEN));
-				deleteAccount();
+			//	this.add(new MyNotification(this,"正在修改删除账户！",Color.GREEN));
+				this.deleteAccount();
 			}
 		}
 
@@ -204,13 +204,12 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 	public void deleteAccount(){
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
-		
 		if(rsg.equals(ResultMessage.SUCCESS)){
-			//System.out.println("DeleteSucceed!");
+			System.out.println("DeleteSucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+			this.add(new MyNotification(this,"账户删除成功！",Color.GREEN));
 		}else{
-			this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+			this.add(new MyNotification(this,"账户删除失败！",Color.RED));
 		}
 	}
 	public void modifyAccount(){
@@ -219,7 +218,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 				data[1],Double.parseDouble(data[2]),null));
 		if(rsg.equals(ResultMessage.SUCCESS)){
-			//System.out.println("ModifySucceed!");
+			System.out.println("ModifySucceed!");
 			this.showAll();
 			this.add(new MyNotification(this,"账户修改成功！",Color.GREEN));		
 		}else{

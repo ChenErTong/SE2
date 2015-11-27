@@ -32,14 +32,13 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	}
 
 	private void initComponent(Panel_Manager_HandleReceipt handle) {
-		// TODO Auto-generated method stub
 		String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
-		String [] receiptState = {"所有状态","草稿","正在审批","通过审批","未通过审批"};
+		String [] receiptState = {"全部状态", "待审批", "通过审批", "未通过审批"};
 		
-		MyJLabel receiptTypeLabel= new MyJLabel(20,10,120,30, "选择单据类别",14,true);
+		MyJLabel receiptTypeLabel= new MyJLabel(20,10,120,30, "选择单据状态",14,true);
 		this.add(receiptTypeLabel);
 		
-		MyJLabel receiptStateLabel = new MyJLabel(295,10,120,30,"选择单据状态",14,true);
+		MyJLabel receiptStateLabel = new MyJLabel(295,10,120,30,"选择单据类别",14,true);
 		this.add(receiptStateLabel);
 		
 		selectButton = new MyJButton(555,10,90,30,"搜索",14);
@@ -49,10 +48,10 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		
 		this.add(selectButton);
 
-		receiptTypeList = new MyComboBox(135,10,150,30,14,receiptType);
+		receiptTypeList = new MyComboBox(135,10,150,30,14,receiptState);
 		this.add(receiptTypeList);
 		
-		receiptStateList = new MyComboBox(395,10,150,30,14,receiptState);
+		receiptStateList = new MyComboBox(395,10,150,30,14,receiptType);
 		this.add(receiptStateList);
 		this.initTable();
 		
@@ -132,5 +131,12 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
  public JTable getTable(){
 	 return table;
  }
+ public int[] getData(){
+	int data[] = new int[2];
+	 data[0] = receiptTypeList.getSelectedIndex();
+	 data[1] = receiptStateList.getSelectedIndex();
+	 return data;
+ }
 
 }
+

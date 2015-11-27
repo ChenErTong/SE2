@@ -123,13 +123,14 @@ private static final long serialVersionUID = 1L;
 				((Panel_Manager_HandleOrganization)subPanel).refresh();
 			}
 		}
-		else if(e.getActionCommand().equals("ModifyReceiptInfo")){
+		//else if(e.getActionCommand().equals("ModifyReceiptInfo")){
 	
-			((Panel_Manager_HandleReceipt)(subPanel)).setVisible(false);
-			modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
-			this.add(modifyReceiptInfo);
-			this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("AddNewPolicy")){
+			//((Panel_Manager_HandleReceipt)(subPanel)).setVisible(false);
+		//	modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
+			//this.add(modifyReceiptInfo);
+			//this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
+	//	}
+	else if(e.getActionCommand().equals("AddNewPolicy")){
 			
 		}else if(e.getActionCommand().equals("ModifyPolicy")){
 	

@@ -3,6 +3,9 @@ package ui.specialui.manager.HandleReceipt;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,13 +15,14 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import ui.commonui.receipt_constructor.ReceiptConductor;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.manager.FrameManager;
 import vo.ValueObject;
 import vo.receiptvo.ReceiptVO;
 /**
@@ -142,9 +146,9 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 					
 				//	if(rsg.equals(ResultMessage.FAIL)){
 					//	this.add(new MyNotification(this,"单据审批失败！",Color.RED));
-					}//else{
+					//}//else{
 						
-						//bt_search.doClick();
+						
 						
 						//index = -1;
 						//ta.setText("");
@@ -156,6 +160,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 				//}
 			}
 		}else if(events.getActionCommand().equals("PassSelectedReceipts")){
+			table = searchPanel.getTable();
 			int count = 0;
 			boolean flag = true;
 			
@@ -198,25 +203,27 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			}else if(count > 1){
 				this.add(new MyNotification(this,"请只选择一条要查看的单据！",Color.RED));
 			}else{
-				//setCondition((String)table.getValueAt(index, 3));
-				//TextConductor writer = new TextConductor();
-				//ta.setText(writer.writeBill(typePool.get(index), listPool.get(index)));
+				ReceiptConductor  writer = new ReceiptConductor();
+				receiptInfo.getTa().setText(writer.writeReceipt(typePool.get(index),listPool.get(index)));
 			}
 		}else if(events.getActionCommand().equals("ModifyReceiptInfo")){
+			table = searchPanel.getTable();
 			if(index >= 0){
 				if(!table.getValueAt(index, 3).equals("未审批")){
 					this.add(new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED));
 				}else{
-					//ApprovalModifyUI modifyUI = new ApprovalModifyUI(typePool.get(index), listPool.get(index));
-					//modifyUI.setVisible(true);
+					Panel_Manager_ModifyReceiptInfo modifyUI = new Panel_Manager_ModifyReceiptInfo(typePool.get(index),listPool.get(index));
+					this.setVisible(false);
+					modifyUI.setVisible(true);
 				}
 			}
 		}else if(events.getActionCommand().equals("ExportReceipt")){
+			table = searchPanel.getTable();
 			if(index >= 0){
 				FileSystemView fsv = FileSystemView.getFileSystemView();
 				String file = String.valueOf(fsv.getHomeDirectory()) + "/" + table.getValueAt(index, 2) + ".txt";		
 				System.out.print(file);
-			//	writeto(ta.getText().replaceAll("\n", "\r\n"),file);
+				writeto(receiptInfo.getTa().getText().replaceAll("\n", "\r\n"),file);
 				
 				this.add(new MyNotification(this,"单据成功导出至桌面！",Color.GREEN));
 			}
@@ -224,56 +231,137 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			//清空VO储存池
 			listPool.clear();
 			typePool.clear();
-			
+			table = searchPanel.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			
 			int rowCount = table.getRowCount();
 			
 			for(int k = 0; k < rowCount; k++)
 				tableModel.removeRow(0);
-			
-			if(cbb_isApproval.getSelectedIndex() == 1){
-				try {
-					getApprovalData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+			int data[] = searchPanel.getData();
+			if(data[0]==1){
+				try{
+					getApprovalData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
-			}else if(cbb_isApproval.getSelectedIndex() == 2){
-				try {
-					getPassData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+			}else if(data[0]==2){
+				try{
+					getPassData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
-			}else if(cbb_isApproval.getSelectedIndex() == 3){
-				try {
-					getFailureData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+			}else if(data[0]==3){
+				try{
+					getFailureData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
 			}else{
-				try {
-					getApprovalData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+				try{
+					getApprovalData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
-				try {
-					getPassData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+				try{
+					getPassData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
-				try {
-					getFailureData(cbb_sort.getSelectedIndex());
-				} catch (RemoteException e) {
+				try{
+					getFailureData(data[1]);
+				}catch(Exception e){
 					e.printStackTrace();
 				}
 			}
-			
 			if(table.getRowCount() == 0){
 				this.add(new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED));
 			}
 		}
 	}
-
+	}
+private void getApprovalData(int index) throws RemoteException{
+		table = searchPanel.getTable();	
+		ReceiptController controller = ControllerFactory.getReceiptController();
+		ArrayList<ReceiptVO> vo = controller.showReceipt(ReceiptState.APPROVALING);//待审批的单据
+	//	ApprovalShow controller = new ApprovalShow();
+		//ApprovalVO vo = controller.ShowApproving();
+	//	ArrayList<PurchaseVO> approval_pur = vo.purchaseVOs;
+	//	ArrayList<SalesVO> approval_sale = vo.salesVOs;
+		//ArrayList<AccountBillVO> approval_account = vo.accountBillVOs;
+		//ArrayList<InventoryBillVO> approval_inventory = vo.inventoryBillVOs;
+		//ArrayList<CashBillVO> approval_cashBill = vo.cashBillVOs;
+		
+		model = (DefaultTableModel) table.getModel();
+		
+		if(index == 0)
+			for(int i = 1; i <= 5; i++)
+				getApprovalData(i);
+		
+		if(index == 1){
+			/*for(int i = 0; i < approval_pur.size(); i++){
+				Object[] rowData = {null, "进货类单据", approval_pur.get(i).ID, "未审批"};
+				model.addRow(rowData);
+				listPool.add(approval_pur.get(i));
+				typePool.add(approval_pur.get(i).type);*/
+		}
+		
+		if(index == 2){
+			/*for(int i = 0; i < approval_sale.size(); i++){
+				Object[] rowData = {new Boolean(false), "销售类单据", approval_sale.get(i).ID, "未审批"};
+				model.addRow(rowData);
+				listPool.add(approval_sale.get(i));
+				typePool.add(approval_sale.get(i).type);*/
+		}
+		
+		if(index == 3){
+			/*for(int i = 0; i < approval_account.size(); i++){
+				Object[] rowData = {new Boolean(false), "财务类单据", approval_account.get(i).ID, "未审批"};
+				model.addRow(rowData);
+				listPool.add(approval_account.get(i));
+				typePool.add(approval_account.get(i).type);*/
+		}
+		
+		if(index == 4){
+			/*for(int i = 0; i < approval_inventory.size(); i++){
+				Object[] rowData = {new Boolean(false), "库存类单据", approval_inventory.get(i).ID, "未审批"};
+				model.addRow(rowData);
+				listPool.add(approval_inventory.get(i));
+				typePool.add(approval_inventory.get(i).billType);*/
+		}
+		
+		if(index == 5){
+			/*for(int i = 0; i < approval_cashBill.size(); i++){
+				Object[] rowData = {new Boolean(false), "现金类单据", approval_cashBill.get(i).ID, "未审批"};
+				model.addRow(rowData);
+				listPool.add(approval_cashBill.get(i));
+				typePool.add(BillType.CASH);
+			}*/
+		}
+	}
+	
+	private void getPassData(int index) throws RemoteException{
+	
+	}
+	
+	private void getFailureData(int index) throws RemoteException{
+		
+	}
+private void writeto(String a,String file){
+		
+		try {
+			File filename=new File(file);
+			
+			if (!filename.exists()) { 
+				filename.createNewFile();}
+			
+			FileWriter fw=new FileWriter(filename);
+			fw.write(a);
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 
