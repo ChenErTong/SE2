@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
@@ -25,8 +26,9 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 public class Transfer {
 	private ReceiptDataService receiptData;
 	private OrderDataService orderDataService;
-
+	private OrderInfo orderInfo;
 	public Transfer() {
+		orderInfo = new OrderInfo();
 		try {
 			receiptData = (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 			orderDataService = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
@@ -57,23 +59,29 @@ public class Transfer {
 	}
 
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders) throws RemoteException {
 		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_PLANE, departure, destination,
 				courierName, orders);
+		// 更改VO状态
+		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		return vo;
 	}
 
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders) throws RemoteException {
 		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
 				courierName, orders);
+		// 更改VO状态
+		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		return vo;
 	}
 
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders) throws RemoteException {
 		TransferOrderVO vo = new TransferOrderVO(facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
 				courierName, orders);
+		// 更改VO状态
+		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		return vo;
 	}
 
@@ -88,9 +96,11 @@ public class Transfer {
 	}
 
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
-			CommodityState state, ArrayList<String> orders) {
+			CommodityState state, ArrayList<String> orders) throws RemoteException {
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, orders);
+		//更改VO状态
+		orderInfo.changeOrderState(orders, "货物已到达"+destination+"中转中心");
 		return vo;
 	}
 

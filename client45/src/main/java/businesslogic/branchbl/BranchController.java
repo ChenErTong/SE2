@@ -45,7 +45,12 @@ public class BranchController implements BranchBLService {
 	@Override
 	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		return BranchBL.getBranchArrivalList(transferListID, departure, state, orders);
+		try {
+			return BranchBL.getBranchArrivalList(transferListID, departure, state, orders);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

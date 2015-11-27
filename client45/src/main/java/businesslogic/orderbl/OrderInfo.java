@@ -4,11 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.branchbl.OrderInfo_Branch_Transfer;
-import businesslogic.orderbl.Order;
-import businesslogic.orderbl.OrderTrans;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
-import vo.OrderVO;
 
 public class OrderInfo implements OrderInfo_Branch_Transfer{
 	Order order;
@@ -24,17 +21,17 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public void changeOrderState(ArrayList<OrderVO> orders,String message) throws RemoteException{
-		for (OrderVO orderVO : orders) {
-			addHitoryMessage(orderVO, message);
+	public void changeOrderState(ArrayList<String> orderIDs,String message) throws RemoteException{
+		for (String orderID : orderIDs) {
+			OrderPO orderPO = orderData.find(orderID);
+			addHitoryMessage(orderPO, message);
 		}
 	}
 	
-	private void addHitoryMessage(OrderVO order,String message) throws RemoteException{
-		ArrayList<String> historyMessage = order.midAddres;
+	private void addHitoryMessage(OrderPO order,String message) throws RemoteException{
+		ArrayList<String> historyMessage = order.getMidAddres();
 		historyMessage.add(message);
-		OrderPO po = OrderTrans.convertVOtoPO(order);
-		po.setMidAddres(historyMessage);
-		orderData.modify(po);
+		order.setMidAddres(historyMessage);
+		orderData.modify(order);
 	}
 }

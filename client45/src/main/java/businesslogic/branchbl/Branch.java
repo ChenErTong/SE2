@@ -8,6 +8,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.receiptbl.ReceiptTrans;
 import config.RMIConfig;
@@ -31,7 +32,9 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
 public class Branch{
 	private OrderDataService orderData;
 	private ReceiptDataService  receiptData;
+	private OrderInfo orderInfo;
 	public Branch() {
+		orderInfo = new OrderInfo();
 		try {
 			orderData = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
@@ -94,13 +97,15 @@ public class Branch{
 	}
 
 	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
-			ArrayList<String> orders) {
+			ArrayList<String> orders) throws RemoteException {
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orders);
+		//更改VO状态
+		orderInfo.changeOrderState(orders,   "货物已离开" + departure + "营业厅");
 		return vo;
 	}
 
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) throws RemoteException {
-		//TODO getID
+		//TODO
 		String ID = receiptData.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
 		return vo;
@@ -121,6 +126,8 @@ public class Branch{
 			ArrayList<String> orders) throws RemoteException {
 		String ID = receiptData.getID();
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders);
+		//更改VO状态
+		orderInfo.changeOrderState(orders, "货物已到达"+destination+"营业厅");
 		return vo;
 	}
 

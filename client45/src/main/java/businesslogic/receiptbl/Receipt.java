@@ -50,23 +50,18 @@ public class Receipt  {
 
 	
 	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
-		for(ReceiptVO vo:VOs){
-			ReceiptPO po=new ReceiptPO(vo.ID, receiptTypes);
-			po.setReceiptState(ReceiptState.FAILURE);
-			POs.add(po);
+		//TODO 写的不对 应该找相应的单据类型
+		ArrayList<ReceiptPO> POs=ReceiptTrans.convertVOstoPOs(VOs);
+		for (ReceiptPO receiptPO : POs) {
+			receiptPO.setReceiptState(ReceiptState.FAILURE);
 		}
 		return POs;
 	}
 
 	
 	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
-		ArrayList<ReceiptVO> VOs=new ArrayList<ReceiptVO>();
-		ArrayList<ReceiptPO> POs=receiptData.showReceipt(receiptStates);
-		for(ReceiptPO po:POs){
-			ReceiptVO vo=new ReceiptVO(po.getID(), po.getReceiptType());
-			 VOs.add(vo);
-		}
-		return VOs;
+		ArrayList<ReceiptPO> pos=receiptData.showReceipt(receiptStates);
+		ArrayList<ReceiptVO> vos=ReceiptTrans.convertPOstoVOs(pos);
+		return vos;
 	}
 }
