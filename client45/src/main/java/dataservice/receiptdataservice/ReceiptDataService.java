@@ -52,7 +52,7 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/** 生成transferid **/
 	public String getTransferID() throws RemoteException;
 
-	public String getLotNum() throws RemoteException;;
+	
 
 	
 

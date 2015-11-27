@@ -24,7 +24,17 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 	
 	@Override
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
-		// TODO Auto-generated method stub
+		for (UserPO po : poList.getInList()) {
+			if (po.getUsername().equals(loginInfo.username)){
+				if (po.getPassword().equals(loginInfo.password)) {
+					return UserIdentity.valueOf(po.getIden());
+				}else {
+					//密码不正确
+					return null;
+				}
+			}
+		}
+		//无用户
 		return null;
 	}
 	/**

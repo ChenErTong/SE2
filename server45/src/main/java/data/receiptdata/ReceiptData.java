@@ -26,11 +26,13 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	String importPrifix ;
 	String exportPrifix ;
 	String adjustPrifix ;
+	String transferArrialPrifix;
 	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
 		importPrifix=configReader.getValue("importPrifix");
 		exportPrifix=configReader.getValue("exportPrifix");
 		adjustPrifix=configReader.getValue("adjustPrifix");
+		transferArrialPrifix=configReader.getValue("transferArrialPrifix");
 	}
 
 
@@ -63,6 +65,11 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	public String getAdjustID() throws RemoteException {
 		return adjustPrifix +super.getID();
 	}
+	
+	@Override
+	public String getTransferID() throws RemoteException {
+		return transferArrialPrifix +super.getID();
+	}
 
 
 	@Override
@@ -80,18 +87,8 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return (AdjustReceiptPO) super.find(adjustID);
 	}
 
-	@Override
-	public String getTransferID() throws RemoteException {
-		// ???
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getLotNum() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
