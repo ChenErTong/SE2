@@ -157,7 +157,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				if(modifyAccountInfo.getData()==null){
 					this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
 				}else{
-				//	this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
 					this.modifyAccount();
 				}
 			}

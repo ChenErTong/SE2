@@ -29,10 +29,10 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 	
 
 	private void initComponent() {
-		this.add(new MyJLabel(250,10,170,40,"商品订单信息",18,true));
+		this.add(new MyJLabel(250,10,170,40,"订单信息",18,true));
 		//the table
 
-				String[] headers = {"订单号","寄件人","快递类型","种类","费用","预计到达时间"};
+				String[] headers = {"订单号","寄件人","收件人","费用","预计到达时间"};
 				table = new MyJTable(headers,false);
 
 				
