@@ -1,4 +1,4 @@
-package po.receiptpo;
+package po.receiptpo.orderreceiptpo;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class TransferOrderPO extends ReceiptPO {
+public class TransferOrderPO extends OrderReceiptPO {
 
 	/**
 	 * 
@@ -19,18 +19,14 @@ public class TransferOrderPO extends ReceiptPO {
 	private String departure;
 	private String destination;
 	private String courierName;
-	private ArrayList<String> orders;
-	public TransferOrderPO(String ID,ReceiptType type) {
-		super(ID, type);
-	}
+	
 	public TransferOrderPO(String ID, ReceiptType type,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		super(ID, type);
+		super(ID, type,orders);
 		this.facilityID = facilityID;
 		this.departure = departure;
 		this.destination = destination;
 		this.courierName = courierName;
-		this.orders = orders;
 	}
 	public String getFacilityID() {
 		return facilityID;
@@ -55,12 +51,6 @@ public class TransferOrderPO extends ReceiptPO {
 	}
 	public void setCourierName(String courierName) {
 		this.courierName = courierName;
-	}
-	public ArrayList<String> getOrders() {
-		return orders;
-	}
-	public void setOrders(ArrayList<String> orders) {
-		this.orders = orders;
 	}
 
 }

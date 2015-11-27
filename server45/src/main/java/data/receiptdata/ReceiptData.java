@@ -11,7 +11,7 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
-import po.receiptpo.TransferArrivalListPO;
+import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;

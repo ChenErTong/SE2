@@ -9,8 +9,8 @@ import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.TransferArrivalListVO;
-import vo.receiptvo.TransferOrderVO;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class TransferController implements TransferBLService{
     Transfer TransferBL = new Transfer();

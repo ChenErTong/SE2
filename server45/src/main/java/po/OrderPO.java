@@ -15,14 +15,16 @@ import state.ReceiptType;
  */
 public class OrderPO extends ReceiptPO {
 
-	protected OrderPO(String id, ReceiptType type) {
-		super(id, type);
+	protected OrderPO(String id,ReceiptType type) {
+		super(id,type);
 	}
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+
 	// 订单号
 	private String orderIdString;
 	// 寄件人姓名、寄件人住址、
@@ -48,11 +50,10 @@ public class OrderPO extends ReceiptPO {
 	private double money;
 	private ReceiptState state;
 
-	public OrderPO(String orderIdString, ReceiptType type, String senderName, String senderAddress, String senderTel,
+	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime,
-			double money) {
-		super(orderIdString, type);
+			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money) {
+		super(orderIdString,type);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -141,9 +142,11 @@ public class OrderPO extends ReceiptPO {
 		this.recipientCo = recipientCo;
 	}
 
+
 	public ArrayList<CommodityPO> getCommodityPO() {
 		return commodityPO;
 	}
+
 
 	public ArrayList<String> getMidAddres() {
 		return midAddres;
@@ -172,13 +175,21 @@ public class OrderPO extends ReceiptPO {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-
-	public ReceiptState getState() {
+	
+	public  ReceiptState getState() {
 		return state;
 	}
 
-	public void setState(ReceiptState state) {
+	public  void setState(ReceiptState state) {
 		this.state = state;
+	}
+
+	public void setCommodityPO(ArrayList<CommodityPO> commodityPO) {
+		this.commodityPO = commodityPO;
+	}
+
+	public void setMidAddres(ArrayList<String> midAddres) {
+		this.midAddres = midAddres;
 	}
 
 }

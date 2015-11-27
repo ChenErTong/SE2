@@ -1,4 +1,4 @@
-package vo.receiptvo;
+package vo.receiptvo.orderreceiptvo;
 
 import java.util.ArrayList;
 
@@ -9,19 +9,14 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class DeliveryListVO extends ReceiptVO{
-	public ArrayList<String> orders;
+public class DeliveryListVO extends OrderReceiptVO{
 	public String courierName;
 	
 	public DeliveryListVO(String id,  ReceiptType type,ArrayList<String> orders, String courierName) {
-		super(id,type);
-		this.orders = orders;
+		super(id,type,orders);
 		this.courierName = courierName;
 	}
 
-	public DeliveryListVO(String ID,ReceiptType type) {
-		super(ID, type);
-	}
 
 
 }

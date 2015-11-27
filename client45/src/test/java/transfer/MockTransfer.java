@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import businesslogic.transferbl.Transfer;
 import state.CommodityState;
-import vo.receiptvo.TransferArrivalListVO;
-import vo.receiptvo.TransferOrderVO;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class MockTransfer extends Transfer {
 	private TransferOrderVO transferOrderVO;

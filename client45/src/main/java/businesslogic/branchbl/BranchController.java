@@ -11,9 +11,9 @@ import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.BranchArrivalListVO;
-import vo.receiptvo.DeliveryListVO;
-import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
+import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class BranchController implements BranchBLService {
      Branch BranchBL = new Branch();

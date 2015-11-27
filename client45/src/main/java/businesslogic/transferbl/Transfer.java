@@ -19,8 +19,8 @@ import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.TransferArrivalListVO;
-import vo.receiptvo.TransferOrderVO;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class Transfer {
 	private ReceiptDataService receiptData;

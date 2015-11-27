@@ -1,4 +1,4 @@
-package vo.receiptvo;
+package vo.receiptvo.orderreceiptvo;
 
 import java.util.ArrayList;
 
@@ -10,25 +10,20 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class TransferArrivalListVO extends ReceiptVO {
+public class TransferArrivalListVO extends OrderReceiptVO {
 	
 	public String transferCenterID;
 	public String destination;
 	public String departure;
 	public CommodityState state;
-	public ArrayList<String> orders;
-	public TransferArrivalListVO(String id,ReceiptType type) {
-		super(id,type);
-	}
 	
 	public TransferArrivalListVO(String id, ReceiptType type,String transferCenterID, String destination, String departure,
 			CommodityState state, ArrayList<String> orders) {
-		super(id,type);
+		super(id,type,orders);
 		this.transferCenterID = transferCenterID;
 		this.destination = destination;
 		this.departure = departure;
 		this.state = state;
-		this.orders = orders;
 	}
 
 

@@ -2,13 +2,13 @@ package businesslogicservice.transferblservice;
 
 import java.util.ArrayList;
 
+import businesslogicservice.BLService;
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.TransferArrivalListVO;
-import vo.receiptvo.TransferOrderVO;
-import businesslogicservice.BLService;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 /**
  * 实现中转中心运输管理界面所需要的服务

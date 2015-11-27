@@ -37,7 +37,6 @@ public class TransferPO extends OrganizationPO{
 
 	public TransferPO(String id, String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
 		super(id,  address,accounts.size(),OrganizationType.TRANSFER);
-		//Date在OrganizationPO里能自动生成
 		this.accounts = accounts;
 		this.inventories = inventories;
 	}

@@ -8,9 +8,9 @@ import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.BranchArrivalListVO;
-import vo.receiptvo.DeliveryListVO;
-import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
+import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 /**
  * 瀹炵幇钀ヤ笟鍘呰繍杈撶鐞嗙晫闈㈡墍闇�瑕佺殑鏈嶅姟

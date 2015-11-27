@@ -12,14 +12,6 @@ import java.util.Date;
 
 public class BankAccountPO extends PersistentObject{
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
 	
@@ -29,8 +21,7 @@ public class BankAccountPO extends PersistentObject{
 	private double money;
 	/**账户属性*/
 	private String level;
-	/**账户创建时间,系统自动计算得到*/
-	private String date;
+ 
 	
 	public BankAccountPO(String ID,String name,double money,String level){
 		super(ID);
@@ -38,7 +29,7 @@ public class BankAccountPO extends PersistentObject{
 		this.money = money;
 		this.level = level;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
 		date = sdf.format(new Date());
 	}
 

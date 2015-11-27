@@ -22,9 +22,9 @@ import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.BranchArrivalListVO;
-import vo.receiptvo.DeliveryListVO;
-import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
+import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Branch{
 	private OrderDataService orderData;
@@ -118,7 +118,7 @@ public class Branch{
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders) throws RemoteException {
 		String ID = receiptData.getID();
-		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, facilityID, courierName, orders);
+		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders);
 		return vo;
 	}
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import businesslogic.branchbl.Branch;
 import state.CommodityState;
-import vo.receiptvo.BranchArrivalListVO;
-import vo.receiptvo.DeliveryListVO;
-import vo.receiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
+import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class MockBranch extends Branch {
 	private LoadingListVO loadingListVO;
@@ -15,7 +15,6 @@ public class MockBranch extends Branch {
 	
 	public void mockTruckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders) {
-		loadingListVO = new LoadingListVO(branchID, null, branchID, destination, facilityID, courierName, orders);
 	}
 	
 	public void mockDeliveryList(ArrayList<String> orders, String courierName) {

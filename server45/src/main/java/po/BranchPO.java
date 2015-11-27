@@ -41,7 +41,6 @@ public class BranchPO extends OrganizationPO{
 	 */
 	public BranchPO(String id, String address, String date, ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities) {
 		super(id, address,accounts.size(),OrganizationType.BRANCH);
-		//Date在Organization里能自动生成
 		this.accounts = accounts;
 		this.facilities = facilities;
 	}

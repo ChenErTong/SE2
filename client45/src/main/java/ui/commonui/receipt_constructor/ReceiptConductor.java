@@ -4,15 +4,15 @@ import state.ReceiptType;
 import vo.OrderVO;
 import vo.ValueObject;
 import vo.receiptvo.AdjustReceiptVO;
-import vo.receiptvo.BranchArrivalListVO;
 import vo.receiptvo.DebitAndPayBillVO;
-import vo.receiptvo.DeliveryListVO;
 import vo.receiptvo.ExpenseVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-import vo.receiptvo.LoadingListVO;
-import vo.receiptvo.TransferArrivalListVO;
-import vo.receiptvo.TransferOrderVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
+import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class ReceiptConductor {
 	public String writeReceipt(ReceiptType receiptType,ValueObject receipt){
