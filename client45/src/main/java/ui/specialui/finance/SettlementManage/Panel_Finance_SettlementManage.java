@@ -10,16 +10,13 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillController;
-import businesslogicservice.fundblservice.BankAccountBLService;
-import state.FindTypeAccount;
-import state.ResultMessage;
+import businesslogic.fundbl.DebitAndPayBillShowController;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
-import vo.BankAccountVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.PaymentBillVO;
 
@@ -33,6 +30,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 	private MyJTable table;
 	
 	DebitAndPayBillController controller = ControllerFactory.getDebitAndPayBillController();
+	DebitAndPayBillShowController showController = ControllerFactory.getDebitAndPayBillShowController();
 	static ArrayList<PaymentBillVO> paybillPool;
 	static String[] paybillIDs;
 	static String paybillID = "";
@@ -189,8 +187,8 @@ private void deletePanel(Frame_Finance frame) {
 		paybillPool.clear();
 		paybillID = "";
 		
-		 controller = ControllerFactory.getDebitAndPayBillController();
-		 ArrayList<DebitAndPayBillVO> paybillVO = controller.showPay();
+//		 showController = ControllerFactory.getDebitAndPayBillShowController();
+		 ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
 		 PaymentBillVO payVO;
 		for(int i = 0; i < paybillVO.size(); i++){
 			payVO = (PaymentBillVO) paybillVO.get(i);
