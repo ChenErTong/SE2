@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.fundblservice.BankAccountBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 import state.FindTypeAccount;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
@@ -26,63 +27,69 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	private MyJTable table_order,table2_logistic;
+	private MyJTable table_order,table_logistic;
 	
-	static ArrayList<OrderVO> commodityPool;
-	static String accountID = " ";
+	static ArrayList<OrderVO> orderPool;
+	static String orderID = " ";
 	
 	private Panel_Sender_Total totalPanel ;
 	private Panel_Sender_Search searchPanel;
-	private Panel_Sender_CommodityInfo order;
-	private Panel_Sender_logisticInfo logistic;
+	private Panel_Sender_CommodityInfo orderInfo;
+	private Panel_Sender_logisticInfo logisticInfo;
+	
+	private OrderBLService orderController;
 	public Frame_Sender(){
-
+		this.setBackground(CommonImage.TEST_BACKGROUND);
 		totalPanel = new Panel_Sender_Total(this);
 		searchPanel = new Panel_Sender_Search(this);
 		this.add(totalPanel);
 		this.add(searchPanel);
 		this.returnButton.addActionListener(this);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		orderPool = new ArrayList<OrderVO>();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand().equals("SearchLogisticInfo")){
 			if(this.isSearch()){
-				/*table_order = .getTable();
-				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-				int rowCount = table.getRowCount();
+				table_order = orderInfo.getTable();
+				table_logistic = logisticInfo.getTable();
+				DefaultTableModel tableModel_1 = (DefaultTableModel) table_order.getModel();
+				int rowCount_1 = table_order.getRowCount();
 				
-				for(int i = 0; i < rowCount; i++){
-					tableModel.removeRow(0);
+				DefaultTableModel tableModel_2 = (DefaultTableModel) table_logistic.getModel();
+				int rowCount_2 = table_logistic.getRowCount();
+				
+				for(int i=1;i<rowCount_1;i++){
+					tableModel_1.removeRow(0);
 				}
+				for(int i=1;i<rowCount_2;i++){
+					tableModel_2.removeRow(0);
+				}
+				orderPool.clear();
+				orderID = "";
 				
-				accountPool.clear();
-				accountID = "";
-				
-				//"模糊查找", "账户编号(ID)", "账户名称", "账户余额"
-				BankAccountBLService controller = ControllerFactory.getBankAccountController();
-				ArrayList<BankAccountVO> bankAccountVO;
-				String[] data = bankAccountPanel.getData();
+				//根据orderID查找 {"订单号","寄件人","收件人","费用","预计到达时间"};
+				orderController = ControllerFactory.getOrderController();
+				OrderVO orderVO;
+				String[] data = searchPanel.getSenderInfo();
 				if(data!=null){
-					switch(Integer.parseInt(data[0])){
-						case 0 : bankAccountVO = controller.find(data[1], null);break;
-						case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
-						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
-						default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
+					orderVO = orderController.inquireOrder(data[0], data[1]);
+					
+					Object[] rowData ={orderVO.orderIdString,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
+					tableModel_1.addRow(rowData);
+					
+					for(int i=0;i<orderVO.midAddres.size();i++){
+						//TODO 
+						Object[] rowData2 = {orderVO.midAddres.get(i)};
+						tableModel_1.addRow(rowData2);
 					}
-				
-					for(int i = 0; i < bankAccountVO.size(); i++){
-					String[] rowData = {bankAccountVO.get(i).ID, 
-							bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
-					tableModel.addRow(rowData);
-					accountPool.add(bankAccountVO.get(i));
+					orderPool.add(orderVO);
 					System.out.println("SearchSucceed!");
-						this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个账户满足条件！",Color.GREEN));
-					}	
-					}else {
-						this.add(new MyNotification(this,"请输入查询关键字！",Color.RED));
-					}*/
+					this.add(new MyNotification(this,"共有"+table_order.getColumnCount()+"个订单满足查新条件！",Color.GREEN));
+				}else{
+					this.add(new MyNotification(this,"请输入查询信息！",Color.RED));
+				}
 			}
 		}
 	}
@@ -134,8 +141,8 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	 * 
 	 */
 	private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
-		// TODO Auto-generated method stub
-	
+		// 调用bl的判断是否合法方法即可  TODO
+
 		return false;
 	}
 }

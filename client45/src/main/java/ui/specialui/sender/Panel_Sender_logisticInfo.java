@@ -30,7 +30,7 @@ public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 		this.add(title);
 		
 		//the table
-		String[] headers = {"订单号","日期","起始营业厅","转运方式","接收中转中心","目的地营业厅","派件员"};
+		String[] headers = {"日期","物流信息"};
 		table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
@@ -54,7 +54,9 @@ public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 		jsp.setVisible(true);
 		this.add(jsp);
 	}
-
+	public MyJTable getTable(){
+		return table;
+	}
 	private static final long serialVersionUID = 1L;
 
 }

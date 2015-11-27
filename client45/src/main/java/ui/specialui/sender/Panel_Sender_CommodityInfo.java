@@ -58,6 +58,10 @@ public class Panel_Sender_CommodityInfo extends MyTranslucentPanel{
 				jsp.setVisible(true);
 				this.add(jsp);
 	}
+	
+	public MyJTable getTable(){
+		return table;
+	}
 	private static final long serialVersionUID = 1L;
 
 }
