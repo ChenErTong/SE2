@@ -114,7 +114,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("SearchBankAccount")){
-			//table = bankAccountPanel.getTable();
+			table = bankAccountPanel.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			int rowCount = table.getRowCount();
 			
@@ -190,10 +190,11 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteBankAccount")){
+			table = bankAccountPanel.getTable();
 			if(table.getSelectedRowCount() == 0){
 				this.add(new MyNotification(this,"请先选择要删除的账户！",Color.RED));
 			}else{
-			//	this.add(new MyNotification(this,"正在修改删除账户！",Color.GREEN));
+			//	this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
 				this.deleteAccount();
 			}
 		}
@@ -202,6 +203,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 
 	
 	public void deleteAccount(){
+		table = bankAccountPanel.getTable();
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
 		if(rsg.equals(ResultMessage.SUCCESS)){
@@ -214,6 +216,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 	}
 	public void modifyAccount(){
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+		table = bankAccountPanel.getTable();
 		String[] data = modifyAccountInfo.getData();
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 				data[1],Double.parseDouble(data[2]),null));
