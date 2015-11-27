@@ -19,9 +19,12 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.manager.FrameManager;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.PaymentBillVO;
 
 public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel implements ActionListener{
 	private MyComboBox yearBox;
@@ -204,12 +207,21 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 				if (vo!=null){
 					for(int i=0;i<vo.size();i++){
 						
-						DebitAndPayBillVO dpo = vo.get(i);
-//						Object rowData[] = { dpo.ID, dpo.type, dpo.money, dpo.payerName, dpo.bankAccouts, dpo.items,
-//								dpo.rentYear, dpo.salaryMonth, dpo.orderNumbers, dpo.transListNumber };
-//						tableModel.addRow(rowData);	
+						DebitAndPayBillVO dpo = vo.get(i);//{"单据编号","单据种类","单据内容","单据金额","生成时间”};
+						switch(dpo.type){
+						case EXPENSE: DebitBillVO db = (DebitBillVO) dpo;
+								      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
+									 tableModel.addRow(rowData);
+						case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;
+								 Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
+								 tableModel.addRow(rowData2);
+						default:
+							break;
 						}
 					}
+				}else{
+					this.add((new MyNotification(this,"未找到符合条件的单据！",Color.RED)));
+				}
 				}
 
 	
