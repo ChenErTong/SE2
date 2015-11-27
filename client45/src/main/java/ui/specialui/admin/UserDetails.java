@@ -59,6 +59,7 @@ public class UserDetails extends MyTranslucentPanel{
 		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
 		//this.add(district);
 		address = new MyEmptyTextArea(100,260,400,150);
+	//	address.setEditable(true);
 		this.add(address);
 		
 		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};

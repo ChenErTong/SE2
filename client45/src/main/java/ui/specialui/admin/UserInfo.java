@@ -24,16 +24,16 @@ public class UserInfo extends MyTranslucentPanel{
 	 private MyJLabel userIdentity;
 	 private MyComboBox userList;
 	 private MyJButton search;
-	 
-	public UserInfo(Frame_Admin frame_Admin) {
+	 private MyJTable table;
+	public UserInfo(Panel_Admin_Total handle) {
 	
 		super(50, 100, 620, 560);
 		
-		this.initComponent(frame_Admin);
+		this.initComponent(handle);
 	}
 
 	
-	private void initComponent(Frame_Admin frame_Admin){
+	private void initComponent(Panel_Admin_Total handle){
 	
 		String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 	
@@ -45,12 +45,12 @@ public class UserInfo extends MyTranslucentPanel{
 		
 		search = new MyJButton(500,10,90,30,"搜索",14);
 		search.setActionCommand("SearchUser");
-		search.addActionListener(frame_Admin);
+		search.addActionListener(handle);
 		this.add(search);
 		
 		//the table
 		String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
-		MyJTable table = new MyJTable(headers,false);
+		 table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
@@ -83,10 +83,13 @@ public class UserInfo extends MyTranslucentPanel{
 		
 	}
 
-	public String getData() {
-		String  data ;
-		data = (String) userList.getSelectedItem();
+	public int  getData() {
+		int   data ;
+		data = userList.getSelectedIndex();
 		return data;
+	}
+	public MyJTable getTable(){
+		return table;
 	}
 
 	
