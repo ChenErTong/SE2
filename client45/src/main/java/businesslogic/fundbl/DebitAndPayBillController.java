@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
-import po.receiptpo.DebitAndPayBillPO;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
