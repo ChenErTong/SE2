@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import vo.OrderVO;
 
-public class Order_BranchInfo {
+public class OrderInfo {
 	Order order;
 	OrderDataService orderData;
-	public Order_BranchInfo() {
+	public OrderInfo() {
 		order = new Order();
 		orderData = order.getOrderData();
 	}
