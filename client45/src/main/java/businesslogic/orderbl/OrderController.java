@@ -1,13 +1,7 @@
 package businesslogic.orderbl;
-/**
- * @author LIUXUANLIN
- */
-import java.util.ArrayList;
-
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ConfirmState;
 import state.ResultMessage;
-import vo.CommodityVO;
 import vo.OrderVO;
 
 public class OrderController implements OrderBLService{
@@ -18,8 +12,8 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
-	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
-		return OrderBL.addOrder(commmodities, order);
+	public ResultMessage addOrder(OrderVO order) {
+		return OrderBL.addOrder(order);
 	}
 
 	@Override

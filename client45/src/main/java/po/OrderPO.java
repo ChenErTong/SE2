@@ -23,6 +23,8 @@ public class OrderPO extends ReceiptPO {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+
 	// 订单号
 	private String orderIdString;
 	// 寄件人姓名、寄件人住址、
@@ -182,6 +184,12 @@ public class OrderPO extends ReceiptPO {
 		this.state = state;
 	}
 
-	
+	public void setCommodityPO(ArrayList<CommodityPO> commodityPO) {
+		this.commodityPO = commodityPO;
+	}
+
+	public void setMidAddres(ArrayList<String> midAddres) {
+		this.midAddres = midAddres;
+	}
 
 }

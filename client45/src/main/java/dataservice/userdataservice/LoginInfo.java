@@ -6,6 +6,7 @@ import java.io.Serializable;
  * @author zsq
  * @version Oct 24,2015
  */
+//TODO Info最好换个名字，容易和bl的产生误解
 public class LoginInfo implements Serializable{
 	/** serialVersionUID */
 	private static final long serialVersionUID = -4873849122405059189L;
