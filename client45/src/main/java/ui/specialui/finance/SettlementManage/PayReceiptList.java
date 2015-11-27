@@ -20,12 +20,13 @@ public class PayReceiptList extends MyTranslucentPanel{
 	private MyJLabel chooseDate;
 	private MyComboBox dateList;
 	private MyJButton search;
-	public PayReceiptList(Frame_Finance frame_Finance) {
+	private MyJTable table;
+	public PayReceiptList(Panel_Finance_SettlementManage handle) {
 		super(50, 100, 620, 560);
-		this.initComponent(frame_Finance);
+		this.initComponent(handle);
 	}
 
-	private void initComponent(Frame_Finance frame_Finance) {
+	private void initComponent(Panel_Finance_SettlementManage handle) {
 		chooseDate = new MyJLabel(20,10,120,30,"请选择日期",14,true);
 		this.add(chooseDate);
 		
@@ -35,14 +36,14 @@ public class PayReceiptList extends MyTranslucentPanel{
 		
 		search = new MyJButton(470,10,90,30,"搜索",14);
 		search.setActionCommand("SearchPayReceipt");
-		search.addActionListener(frame_Finance);
+		search.addActionListener(handle);
 		this.add(search);
 		//the table
-				String[] headers = {"付款单编号","付款日期","付款金额","付款人","付款账号","付款条目","备注"};
-				MyJTable	table = new MyJTable(headers, false);
-				table.setBackground(new Color(40, 42, 66));
-				table.setForeground(Color.WHITE);
-				table.setFont(new MyFont(14));
+		String[] headers = {"付款单编号","付款人","付款金额","付款账号","付款条目","付款备注","付款日期"};
+		table = new MyJTable(headers, false);
+		table.setBackground(new Color(40, 42, 66));
+		table.setForeground(Color.WHITE);
+		table.setFont(new MyFont(14));
 							
 				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 				tcr.setHorizontalAlignment(JLabel.CENTER);
@@ -73,7 +74,12 @@ public class PayReceiptList extends MyTranslucentPanel{
 		data= (String) dateList.getSelectedItem();
 		return data;
 	}
-
+	
+	
 	private static final long serialVersionUID = 1L;
+	public MyJTable getTable() {
+		// TODO Auto-generated method stub
+		return table;
+	}
 
 }
