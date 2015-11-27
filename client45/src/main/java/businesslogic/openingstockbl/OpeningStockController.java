@@ -33,7 +33,7 @@ public class OpeningStockController implements OpeningStockBLService {
 
 	@Override
 	public ResultMessage find(int id) {
-		// TODO Auto-generated method stub
+		// TODO 查找
 		return null;
 	}
 

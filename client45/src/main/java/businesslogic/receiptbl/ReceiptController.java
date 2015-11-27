@@ -17,7 +17,6 @@ public class ReceiptController implements ReceiptBLService{
 		try {
 			return ReceiptBL.updateReceipt(receiptVO, receiptType);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

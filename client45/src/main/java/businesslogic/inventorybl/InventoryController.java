@@ -16,11 +16,9 @@ public class InventoryController implements InventoryBLService {
     Inventory InventoryBL = new Inventory();
 	@Override
 	public InventoryViewVO viewInventory(String beginDate, String endDate)  {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.viewInventory(beginDate, endDate);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -28,11 +26,9 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public InventoryCheckVO checkRecord(String enddate){
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.checkRecord(enddate);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -40,11 +36,9 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public String getImportID()  {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.getImportID();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -52,11 +46,9 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public ResultMessage addCommodities(String ID ,String ArrivalListID, InventoryVO vo)  {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.addCommodities( ID ,ArrivalListID, vo);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -64,17 +56,14 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
-		// TODO Auto-generated method stub
 		return InventoryBL.submitImport(importReceipt);
 	}
 
 	@Override
 	public String getExportID() {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.getExportID();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -82,11 +71,9 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public ResultMessage minusCommodities(String ID ,String ImportID, String Transfer) {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.minusCommodities( ID ,ImportID, Transfer);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -94,17 +81,14 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
-		// TODO Auto-generated method stub
 		return InventoryBL.submitExport(exportReceipt);
 	}
 
 	@Override
 	public String getAdjustID()  {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.getAdjustID();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -112,11 +96,9 @@ public class InventoryController implements InventoryBLService {
 
 	@Override
 	public ResultMessage adjust(String ID ,InventoryVO before, InventoryVO now) {
-		// TODO Auto-generated method stub
 		try {
 			return InventoryBL.adjust(ID ,before, now);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
