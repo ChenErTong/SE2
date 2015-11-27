@@ -22,6 +22,7 @@ public class AdjustReceiptPO extends ReceiptPO{
 		this.aftC = aftC;
 		this.aftD = aftD;
 	}
+	
 	public int exA;
 	public int exB;
 	public int exC;
