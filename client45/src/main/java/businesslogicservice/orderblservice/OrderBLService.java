@@ -45,7 +45,6 @@ public interface OrderBLService extends BLService{
 //	public ResultMessage costAndTime(OrderVO order);
 
 	/**
-	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * 自动生成订单号，不与已有的订单号重复
 	 * @return
 	 * @author czw
@@ -53,7 +52,6 @@ public interface OrderBLService extends BLService{
 	public String getOrderId();
 
 	/**
-	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * 根据订单信息生成运费
 	 * @return 运费
 	 * @author czw
@@ -65,7 +63,6 @@ public interface OrderBLService extends BLService{
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress, ExpressType expressType);
 
 	/**
-	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * @param senderAddress 始发地（省+空格+市+空格+详细地址）
 	 * @param receiverAddress 目的地（省+空格+市+空格+详细地址）
 	 * @param expressType 快递类型（飞机、火车、汽车）
