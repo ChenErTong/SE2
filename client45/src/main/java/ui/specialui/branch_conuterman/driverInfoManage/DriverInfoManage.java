@@ -167,7 +167,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(deleteButton);
 	}
 	/**
-	 * TODO 从bl层获取数据
+	 * 从bl层获取数据
 	 * 查找车辆
 	 * @param facilityId 
 	 */
@@ -176,8 +176,15 @@ public class DriverInfoManage extends MyJPanel {
 		if(driver == null){
 			return false;
 		}		
-		String[] data = new String[8];
-	
+		String[] data = new String[7];
+		data[0] = driver.Name;
+		data[1] = driver.BirthDay;
+		data[2] = driver.Phone;
+		data[3] = driver.carID;
+		data[4] = driver.IDCard;
+		data[5] = driver.ID;
+		data[6] = driver.WorkTime;
+		
 		id = driverId;
 		driverInfo.setData(data);
 		return true;
@@ -187,18 +194,24 @@ public class DriverInfoManage extends MyJPanel {
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
 		
-		driver = new DriverVO(id, id, id, id, id, id, 0.0, id, 0);
+		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], 0.0, data[6], 0, data[3]);
 		driverController.addDriver(driver);
 		driverController.confirmOperation();
 		return 0;
 	}
 
 	public int modifyDriver() {
-		if(id == null){
-			return 2;
-		}
+		if(id == null) return 2;
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
+		
+		driver.Name = data[0];
+		driver.BirthDay = data[1];
+		driver.Phone = data[2];
+		driver.carID = data[3];
+		driver.IDCard = data[4];
+		driver.ID = data[5];
+		driver.WorkTime = data[6];
 		
 		driverController.modifyDriver(driver);
 		driverController.confirmOperation();

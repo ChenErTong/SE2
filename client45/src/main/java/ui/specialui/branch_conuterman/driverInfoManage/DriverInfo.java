@@ -1,7 +1,6 @@
 package ui.specialui.branch_conuterman.driverInfoManage;
 
 import javax.swing.ButtonGroup;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJRadioButton;
 import ui.myui.MyJTextField;
@@ -11,8 +10,6 @@ public class DriverInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField[] fields;
-	private MyJRadioButton male;
-	private MyJRadioButton female;
 	
 	public DriverInfo() {
 		super(300, 190, 680, 355);
@@ -50,16 +47,6 @@ public class DriverInfo extends MyTranslucentPanel{
 		for (MyJTextField myJTextField : fields) {
 			this.add(myJTextField);
 		}
-		
-		this.add(new MyJLabel(418, 42, 42, 21, "性别", 18, true));
-		ButtonGroup gender = new ButtonGroup();
-		male = new MyJRadioButton(470, 42, 50, 17, "男");
-		female = new MyJRadioButton(530, 42, 50, 17, "女");
-		female.setSelected(false);
-		gender.add(male);
-		gender.add(female);
-		this.add(male);
-		this.add(female);
 	}
 
 	/**
@@ -69,8 +56,6 @@ public class DriverInfo extends MyTranslucentPanel{
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setEnabled(false);
 		}
-		male.setEnabled(false);
-		female.setEnabled(false);
 	}
 
 	/**
@@ -81,13 +66,6 @@ public class DriverInfo extends MyTranslucentPanel{
 		for(int i = 0; i < 7; i++){
 			fields[i].setText(data[i]);
 		}
-		if(data[7].equals("male")){
-			male.setSelected(true);
-			female.setSelected(false);
-		}else{
-			male.setSelected(false);
-			female.setSelected(true);
-		}
 	}
 
 	/**
@@ -95,15 +73,10 @@ public class DriverInfo extends MyTranslucentPanel{
 	 * @return
 	 */
 	public String[] getData() {
-		String[] data = new String[8];
+		String[] data = new String[7];
 		for (int i = 0; i < 7; i++) {
 			if((data[i] = fields[i].getText()).equals("")) return null;
-		}
-		if(male.isSelected()){
-			data[7] = "male";
-		}else{
-			data[7] = "female";
-		}		
+		}	
 		return data;
 	}
 	
@@ -114,7 +87,5 @@ public class DriverInfo extends MyTranslucentPanel{
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setText(null);
 		}
-		male.setSelected(true);
-		female.setSelected(false);
 	}
 }

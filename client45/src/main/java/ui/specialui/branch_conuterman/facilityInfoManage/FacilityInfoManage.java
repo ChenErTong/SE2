@@ -168,7 +168,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(deleteButton);
 	}
 	/**
-	 * TODO 从bl层获取数据
+	 * 从bl层获取数据
 	 * 查找车辆
 	 * @param facilityId 
 	 */

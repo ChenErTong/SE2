@@ -39,5 +39,4 @@ public class AccountVO {
 		this.WorkTime = workTime;
 		this.ReceiptNum = receiptNum;
 	}
-
 }
