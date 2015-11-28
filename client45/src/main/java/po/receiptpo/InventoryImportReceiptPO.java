@@ -13,6 +13,7 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	// 目的地
 	public String depture;
 	public String destination;
+	//TODO 是不是应该改成ArrayList啊
 	public String CommoditiesID;
 	// 区号
 	public int a;
@@ -28,7 +29,7 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 		super(ID, type);
 		this.depture = depture;
 		this.destination = destination;
-		CommoditiesID = commoditiesID;
+		this.CommoditiesID = commoditiesID;
 		this.a = a;
 		this.b = b;
 		this.c = c;

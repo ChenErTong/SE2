@@ -3,6 +3,10 @@ package businesslogic.receiptbl;
 import java.util.ArrayList;
 
 import po.receiptpo.AdjustReceiptPO;
+import po.receiptpo.DebitBillPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
+import po.receiptpo.PaymentBillPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
@@ -10,8 +14,14 @@ import po.receiptpo.orderreceiptpo.LoadingListPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import po.receiptpo.orderreceiptpo.TransferOrderPO;
 import state.CommodityState;
+import state.ExpressType;
+import state.PayBillItem;
 import state.ReceiptType;
 import vo.receiptvo.AdjustReceiptVO;
+import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+import vo.receiptvo.PaymentBillVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
@@ -23,7 +33,7 @@ public class ReceiptTrans {
 	public static ReceiptPO convertVOtoPO(ReceiptVO vo){
 		if(vo==null)
 			return null;
-		else {/*
+		else {
 			ReceiptType type = vo.type;
 			switch (type) {
 			case value:
@@ -31,7 +41,7 @@ public class ReceiptTrans {
 				break;
 
 			default:
-				break;*/
+				break;
 			return null;
 //			}
 		}
@@ -51,9 +61,11 @@ public class ReceiptTrans {
 			case TRANS_PLANE:
 			case TRANS_TRAIN:
 			case TRANS_TRUCK:			return convertSpecialPOtoVO((TransferOrderPO)po);
+			case EXPENSE:						return convertSpecialPOtoVO((DebitBillPO)po);
+			case PAY:								return convertSpecialPOtoVO((PaymentBillPO)po);
 			case TAKINGSTOCK:			return convertSpecialPOtoVO((AdjustReceiptPO)po);
-			
-			
+			case OUTSTOCK:					return convertSpecialPOtoVO((InventoryExportReceiptPO)po);
+			case INSTOCK:					return convertSpecialPOtoVO((InventoryImportReceiptPO)po);
 			default:  		return null;
 			}
 		}
@@ -120,10 +132,52 @@ public class ReceiptTrans {
 		int aftD = po.getAftD();
 		return new AdjustReceiptVO(id, type, exA, exB, exC, exD, aftA, aftB, aftC, aftD);
 	}
-	
-	
-	
-	
+	public static ReceiptVO convertSpecialPOtoVO(DebitBillPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		String courierID = po.getCourierID();
+		double money = po.getMoney();
+		ArrayList<String> orderNumbers = po.getOrderNumbers();
+		return new DebitBillVO(id, type, courierID, money, orderNumbers);
+	}
+	public static ReceiptVO convertSpecialPOtoVO(PaymentBillPO po){
+		String iD = po.getID();
+		String date = po.getDate();
+		ReceiptType type = po.getReceiptType();
+		double money = po.getMoney();
+		String payerName = po.getPayerName();
+		String accountID = po.getAccountID();
+		PayBillItem items = po.getPayBillItem();
+		String remarks = po.getRemarks();
+		return new PaymentBillVO(iD, date, type, money, payerName, accountID, items, remarks);
+	}
+	public static ReceiptVO convertSpecialPOtoVO(InventoryExportReceiptPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		String destination = po.getDestination();
+		String depture = po.getDepture();
+		ExpressType expressType = po.getExpressType();
+		String transferID = po.getTransferID();
+		String commoditiesID = po.getCommoditiesID();
+		int a = po.getA();
+		int b =po.getB();
+		int c = po.getC();
+		int d = po.getD();
+		return new InventoryExportReceiptVO(
+				id, type, destination, depture, expressType, transferID, commoditiesID, a, b, c, d);
+	}
+	public static ReceiptVO convertSpecialPOtoVO(InventoryImportReceiptPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		String destination = po.getDestination();
+		String depture = po.getDepture();
+		String commoditiesID = po.getCommoditiesID();
+		int a = po.getA();
+		int b =po.getB();
+		int c = po.getC();
+		int d = po.getD();
+		return new InventoryImportReceiptVO(id, type, depture, destination, commoditiesID, a, b, c, d);
+	}
 	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){
 		ArrayList<ReceiptVO> vos=new ArrayList<ReceiptVO>();

@@ -1,5 +1,6 @@
 package po.receiptpo;
 
+import state.ExpressType;
 import state.ReceiptType;
 
 public class InventoryExportReceiptPO extends ReceiptPO{
@@ -12,7 +13,7 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public String destination;
 	public String depture;
 	/**装运形式**/
-	public String Transfer;
+	public ExpressType expressType;
 	public String TransferID;
 	public String CommoditiesID;
 	public int a;
@@ -20,14 +21,14 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public int c;
 	public int d;
 	
-	public InventoryExportReceiptPO(String ID, ReceiptType type,String destination, String depture, String transfer, String transferID,
+	public InventoryExportReceiptPO(String ID, ReceiptType type,String destination, String depture, ExpressType expressType, String transferID,
 			String commoditiesID, int a, int b, int c, int d) {
 		super(ID, type);
 		this.destination = destination;
 		this.depture = depture;
-		Transfer = transfer;
-		TransferID = transferID;
-		CommoditiesID = commoditiesID;
+		this.expressType=expressType;
+		this.TransferID = transferID;
+		this.CommoditiesID = commoditiesID;
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -45,11 +46,11 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public void setDepture(String depture) {
 		this.depture = depture;
 	}
-	public String getTransfer() {
-		return Transfer;
+	public ExpressType getExpressType() {
+		return expressType;
 	}
-	public void setTransfer(String transfer) {
-		Transfer = transfer;
+	public void setExpressType(ExpressType expressType) {
+		this.expressType = expressType;
 	}
 	public String getTransferID() {
 		return TransferID;
