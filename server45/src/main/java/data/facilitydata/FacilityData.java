@@ -27,6 +27,4 @@ public class FacilityData extends ManageData<FacilityPO> implements FacilityData
 		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
-	
-
 }
