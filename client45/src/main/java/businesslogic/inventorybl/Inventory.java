@@ -154,4 +154,8 @@ public class Inventory {
 
 	}
 
+	public void Init() throws RemoteException {
+		inventoryData.initialFile();
+	}
+
 }

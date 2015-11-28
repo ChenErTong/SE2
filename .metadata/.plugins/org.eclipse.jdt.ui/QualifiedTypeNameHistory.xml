@@ -27,7 +27,6 @@
 <fullyQualifiedTypeName name="businesslogic.orderbl.OrderController"/>
 <fullyQualifiedTypeName name="org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
 <fullyQualifiedTypeName name="businesslogic.inventorybl.InventoryTrans"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryExportReceiptVO"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
 </qualifiedTypeNameHistroy>

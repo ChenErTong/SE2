@@ -22,4 +22,5 @@ public interface InventoryDataService extends ManageDataService<InventoryPO>{
 
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException;
 	
+	
 }
