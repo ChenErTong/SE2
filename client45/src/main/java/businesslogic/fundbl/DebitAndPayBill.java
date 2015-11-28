@@ -52,6 +52,10 @@ public class DebitAndPayBill {
 		DebitAndPayBillPO PO = debitAndPayBillData.find(ID);
 		return FundTrans.convertPOtoVO(PO);
 	}
+	
+	public ResultMessage delete(String ID) throws RemoteException{
+		return debitAndPayBillData.delete(ID);
+	}
 
 	// 建立收款单
 	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
