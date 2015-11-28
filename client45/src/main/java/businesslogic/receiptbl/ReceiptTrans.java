@@ -2,19 +2,22 @@ package businesslogic.receiptbl;
 
 import java.util.ArrayList;
 
+import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
+import po.receiptpo.orderreceiptpo.TransferOrderPO;
 import state.CommodityState;
-import state.ReceiptState;
 import state.ReceiptType;
+import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class ReceiptTrans {
 	public static ReceiptPO convertVOtoPO(ReceiptVO vo){
@@ -45,7 +48,10 @@ public class ReceiptTrans {
 			case BRANCH_DELIVER: 		return convertSpecialPOtoVO((DeliveryListPO)po);
 			case BRANCH_TRUCK:			return convertSpecialPOtoVO((LoadingListPO)po);
 			case TRANS_ARRIVAL:		return convertSpecialPOtoVO((TransferArrivalListPO)po);
-//			case 
+			case TRANS_PLANE:
+			case TRANS_TRAIN:
+			case TRANS_TRUCK:			return convertSpecialPOtoVO((TransferOrderPO)po);
+			case TAKINGSTOCK:			return convertSpecialPOtoVO((AdjustReceiptPO)po);
 			
 			
 			default:  		return null;
@@ -92,6 +98,33 @@ public class ReceiptTrans {
 		return new TransferArrivalListVO(id, type, transferCenterID,
 				destination, departure, state, orders);
 	}
+	public static ReceiptVO convertSpecialPOtoVO(TransferOrderPO po){
+		String facilityID = po.getFacilityID();
+		ReceiptType type = po.getReceiptType();
+		String departure = po.getDeparture();
+		String destination = po.getDestination();
+		ArrayList<String> orders = po.getOrders();
+		String courierName = po.getCourierName();
+		return new TransferOrderVO(facilityID, type, departure, destination, courierName, orders);
+	}
+	public static ReceiptVO convertSpecialPOtoVO(AdjustReceiptPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		int exA = po.getExA();
+		int exB = po.getExB();
+		int exC = po.getExC();
+		int exD = po.getExD();
+		int aftA = po.getAftA();
+		int aftB = po.getAftB();
+		int aftC = po.getAftC();
+		int aftD = po.getAftD();
+		return new AdjustReceiptVO(id, type, exA, exB, exC, exD, aftA, aftB, aftC, aftD);
+	}
+	
+	
+	
+	
+	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){
 		ArrayList<ReceiptVO> vos=new ArrayList<ReceiptVO>();
 		for(ReceiptPO po:pos){

@@ -7,7 +7,7 @@ import data.ManageData;
 import dataservice.funddataservice.ExpenseDataService;
 import po.ExpensePO;
 import util.SerSaveAndLoad;
-
+@Deprecated
 public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataService {
 
 	/**
