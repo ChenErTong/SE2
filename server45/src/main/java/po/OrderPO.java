@@ -3,6 +3,8 @@ package po;
 import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
+import state.ExpressType;
+import state.PackageType;
 import state.ReceiptState;
 import state.ReceiptType;
 
@@ -49,10 +51,16 @@ public class OrderPO extends ReceiptPO {
 	// 费用
 	private double money;
 	private ReceiptState state;
+	// 包装类型
+	private PackageType packType;
+	// 快递类型
+	private ExpressType express;
+
+	
 
 	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money) {
+			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
 		super(orderIdString,type);
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
@@ -68,6 +76,8 @@ public class OrderPO extends ReceiptPO {
 		this.sendTime = sendTime;
 		this.recipientTime = recipientTime;
 		this.money = money;
+		this.packType=packType;
+		this.express=express;
 	}
 
 	public String getOrderIdString() {
@@ -190,6 +200,14 @@ public class OrderPO extends ReceiptPO {
 
 	public void setMidAddres(ArrayList<String> midAddres) {
 		this.midAddres = midAddres;
+	}
+	
+	public PackageType getPackType() {
+		return packType;
+	}
+
+	public ExpressType getExpress() {
+		return express;
 	}
 
 }
