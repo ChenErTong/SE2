@@ -14,6 +14,7 @@ import config.RMIConfig;
 import data.DataFactory;
 import data.accountdata.AccountData;
 import data.basedata.BaseData;
+import data.basedata.PolicyData;
 import data.branchdata.BranchData;
 import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
@@ -61,6 +62,7 @@ public class RMIManage {
 			//注册Data类
 			Naming.bind(prefix+AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
 			Naming.bind(prefix+BaseData.NAME, DataFactory.createDataService(BaseData.NAME));
+			Naming.bind(prefix+PolicyData.NAME, DataFactory.createDataService(PolicyData.NAME));
 			Naming.bind(prefix+BranchData.NAME, DataFactory.createDataService(BranchData.NAME));
 			Naming.bind(prefix+FacilityData.NAME, DataFactory.createDataService(FacilityData.NAME));
 			Naming.bind(prefix+DebitAndPayBillData.NAME, DataFactory.createDataService(DebitAndPayBillData.NAME));

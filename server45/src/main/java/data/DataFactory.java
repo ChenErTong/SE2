@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import data.accountdata.AccountData;
 import data.basedata.BaseData;
+import data.basedata.PolicyData;
 import data.branchdata.BranchData;
 import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
@@ -26,6 +27,7 @@ public class DataFactory {
 		switch(name) {
 		case AccountData.NAME:			return new AccountData();
 		case BaseData.NAME:			return new BaseData();
+		case PolicyData.NAME:			return new PolicyData();
 		case BranchData.NAME:			return new BranchData();
 		case FacilityData.NAME:			return new FacilityData();
 		case DebitAndPayBillData.NAME:			return new DebitAndPayBillData();

@@ -18,13 +18,6 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 	public OpeningStockData() throws RemoteException {
 	}
 
-//	@Override
-//	public ResultMessage add(OpeningStockPO po) throws RemoteException {
-//		if (poList.add(po))
-//			return ResultMessage.SUCCESS;
-//		return ResultMessage.FAIL;
-//	}
-
 
 	@Override
 	public OpeningStockPO findOpeningStock(String id) throws RemoteException {
