@@ -110,4 +110,14 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return bills;
 	}
 
-}
+	@Override
+	public ArrayList<DebitAndPayBillPO> showDate(String date) throws RemoteException {
+				ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
+				for (DebitAndPayBillPO po : poList.getInList()) {
+					if (po.getDate()==date)
+						bills.add(po);
+				}
+				return bills;
+			}
+	}
+

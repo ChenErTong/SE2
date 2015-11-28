@@ -15,6 +15,7 @@ import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptType;
 import vo.BussinessConditionVO;
+import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
@@ -31,7 +32,8 @@ public class Record {
 			e.printStackTrace();
 		}
 	}
-
+   
+	
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
 		ArrayList<DebitAndPayBillVO> VOs = FundTrans.convertDebitAndPayBillPOstoVOs(POs);
@@ -59,5 +61,21 @@ public class Record {
 		return vo;
 
 	}
-
+	public BussinessOneDayVO bussinessOneDay(String date) throws RemoteException {
+		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showDate(date);
+		ArrayList<DebitAndPayBillVO> VOs = FundTrans.convertDebitAndPayBillPOstoVOs(POs);
+		double income = 0;
+		for (DebitAndPayBillPO po : POs) {
+			ReceiptType type = po.getType();
+			// 如果是收款单
+			if (type == ReceiptType.EXPENSE) {
+				income = income + po.getMoney();
+			}
+			
+		 }
+		BussinessOneDayVO vo=new BussinessOneDayVO(VOs, income);
+		return vo;
+		
+	}
+	
 }

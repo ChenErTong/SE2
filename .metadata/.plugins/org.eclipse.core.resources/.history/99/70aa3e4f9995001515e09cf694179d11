@@ -1,0 +1,15 @@
+package po;
+
+import java.util.ArrayList;
+
+import vo.receiptvo.DebitAndPayBillVO;
+
+public class BussinessOneDayPO {
+	public ArrayList<DebitAndPayBillVO> DebitBills;
+	double earnings;
+	public BussinessOneDayPO(ArrayList<DebitAndPayBillVO> debitBills, double earnings) {
+		super();
+		DebitBills = debitBills;
+		this.earnings = earnings;
+	}
+}

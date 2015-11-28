@@ -1,7 +1,0 @@
-package businesslogic.account;
-
-import businesslogicservice.accountblservice.AccountBLService;
-
-public class Account implements AccountBLService{
-
-}

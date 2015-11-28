@@ -4,7 +4,11 @@ package businesslogicservice.recordblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+
 import vo.BussinessConditionVO;
+import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;
      /** @author lxl
 	 *  @version Oct 23,2015
@@ -17,6 +21,7 @@ public interface RecordBLService {
 	public  ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) ;
 	/**成本收益表数据**/
 	public  BussinessConditionVO bussinessCondition(String end) ;
-	/**计算得到的收入**/
+	
+	public BussinessOneDayVO bussinessOneDay(String date);
 	
 }
