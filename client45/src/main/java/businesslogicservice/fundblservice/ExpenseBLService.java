@@ -40,4 +40,6 @@ public interface ExpenseBLService extends BLService{
 	 * @return 处理信息
 	 */
 	public ResultMessage update(ExpenseVO vo);
+	
+	
 }

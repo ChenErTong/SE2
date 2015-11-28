@@ -8,7 +8,6 @@ import businesslogic.facilitybl.FacilityController;
 import businesslogic.fundbl.BankAccountController;
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
-import businesslogic.fundbl.ExpenseController;
 import businesslogic.inventorybl.InventoryController;
 import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
@@ -52,9 +51,10 @@ public class ControllerFactory {
 	public static 	DebitAndPayBillShowController getDebitAndPayBillShowController() {
 		return new DebitAndPayBillShowController();
 	}
-	public static 	ExpenseController getExpenseController() {
-		return new ExpenseController();
-	}
+	
+//	public static 	ExpenseController getExpenseController() {
+//		return new ExpenseController();
+//	}
 	
 	
 	public static InventoryController getInventoryController() {
