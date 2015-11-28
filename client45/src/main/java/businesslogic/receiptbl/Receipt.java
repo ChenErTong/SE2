@@ -59,9 +59,9 @@ public class Receipt  {
 	}
 
 	
-	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
+	/*public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
 		ArrayList<ReceiptPO> pos=receiptData.showReceipt(receiptStates);
 		ArrayList<ReceiptVO> vos=ReceiptTrans.convertPOstoVOs(pos);
 		return vos;
-	}
+	}*/
 }

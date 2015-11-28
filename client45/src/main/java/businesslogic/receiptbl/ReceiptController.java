@@ -34,7 +34,7 @@ public class ReceiptController implements ReceiptBLService{
 		return ReceiptBL.dontPassReceipt(VOs, receiptTypes);
 	}
 
-	@Override
+	/*@Override
 	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
 		try {
 			return ReceiptBL.showReceipt(receiptStates);
@@ -42,6 +42,6 @@ public class ReceiptController implements ReceiptBLService{
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 }

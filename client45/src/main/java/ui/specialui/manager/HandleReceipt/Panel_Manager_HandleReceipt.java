@@ -283,6 +283,10 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 private void getApprovalData(int index) throws RemoteException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
+		/**
+		 * @author Ann
+		 */
+		//TODO 我的锅，一会给你加方法
 		ArrayList<ReceiptVO> vo = controller.showReceipt(ReceiptState.APPROVALING);//待审批的单据
 	//	ApprovalShow controller = new ApprovalShow();
 		//ApprovalVO vo = controller.ShowApproving();
