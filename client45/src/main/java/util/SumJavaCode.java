@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * 
  * @author jun
- * 
+ * @author Ann
  */
 public class SumJavaCode {
 
