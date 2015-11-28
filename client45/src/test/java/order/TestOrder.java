@@ -20,7 +20,8 @@ public class TestOrder {
 		commodities.add(commmodity2);
 		commodities.add(commmodity3);
 		
-		OrderVO orderVO = new OrderVO("5648213657", "Obama", "Washington D.C", "250050", "The White House", "Putin", "Moscow", "150050", "Kremlin", null, "2015-11-7", "2015-11-11", 20000,commodities);
+		OrderVO orderVO = null;
+//				new OrderVO("5648213657", "Obama", "Washington D.C", "250050", "The White House", "Putin", "Moscow", "150050", "Kremlin", null, "2015-11-7", "2015-11-11", 20000,commodities);
 		MockOrder order = new MockOrder();
 		ResultMessage RMessSet = order.addOrder(commodities, orderVO);
 		assertEquals(ResultMessage.SUCCESS,RMessSet);
