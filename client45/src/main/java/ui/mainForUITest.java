@@ -39,15 +39,11 @@ public class mainForUITest {
 		Frame_Admin adminFrame = new Frame_Admin();
 		adminFrame.setVisible(true);
 
-
-
 //	Frame_Finance financeFrame = new Frame_Finance();
 //		financeFrame.setVisible(true);
 
 //		Frame_Finance financeFrame = new Frame_Finance();
 //		financeFrame.setVisible(true);
-
-		
 
 //Frame_Sender senderFrame = new Frame_Sender();
 	//	senderFrame.setVisible(true);
