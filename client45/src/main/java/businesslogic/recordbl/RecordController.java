@@ -34,16 +34,18 @@ public class RecordController implements RecordBLService{
 	}
 
 	@Override
-	public BussinessOneDayVO bussinessOneDay(String date) {
+	public BussinessOneDayVO bussinessOneDay(String WorkPlace,String date) {
 		// TODO Auto-generated method stub
 		try {
-			return RecordBL.bussinessOneDay(date);
+			return RecordBL.bussinessOneDay(WorkPlace,date);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
+
+	
 
 	
 

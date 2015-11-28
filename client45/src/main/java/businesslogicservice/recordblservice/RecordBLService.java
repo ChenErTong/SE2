@@ -19,6 +19,6 @@ public interface RecordBLService {
 	/**成本收益表数据**/
 	public  BussinessConditionVO bussinessCondition(String end) ;
 	
-	public BussinessOneDayVO bussinessOneDay(String date);
+	 public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date);
 	
 }

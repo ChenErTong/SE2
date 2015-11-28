@@ -7,6 +7,7 @@ import config.XMLReader;
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import po.receiptpo.DebitBillPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
@@ -111,13 +112,16 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillPO> showDate(String date) throws RemoteException {
-				ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
+	public ArrayList<DebitBillPO> showDate(String date) throws RemoteException {
+				ArrayList<DebitBillPO> bills = new ArrayList<>();
 				for (DebitAndPayBillPO po : poList.getInList()) {
-					if (po.getDate()==date)
-						bills.add(po);
+					if ((po.getDate()==date)){
+						bills.add((DebitBillPO) po);
 				}
+				
+		}
 				return bills;
-			}
 	}
+
+}
 
