@@ -6,6 +6,7 @@ import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.CommodityState;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -13,6 +14,7 @@ import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 
 public class ReceiptTrans {
 	public static ReceiptPO convertVOtoPO(ReceiptVO vo){
@@ -41,7 +43,10 @@ public class ReceiptTrans {
 			switch (type) {
 			case BRANCH_ARRIVAL:		return convertSpecialPOtoVO((BranchArrivalListPO) po);
 			case BRANCH_DELIVER: 		return convertSpecialPOtoVO((DeliveryListPO)po);
-			case BRANCH_TRUCK:			return 
+			case BRANCH_TRUCK:			return convertSpecialPOtoVO((LoadingListPO)po);
+			case TRANS_ARRIVAL:		return convertSpecialPOtoVO((TransferArrivalListPO)po);
+//			case 
+			
 			
 			default:  		return null;
 			}
@@ -69,11 +74,23 @@ public class ReceiptTrans {
 		ReceiptType type = po.getReceiptType();
 		String branchID = po.getBranchID();
 		String transferNumber = po.getTransferNumber();
-		String idstination = po.getDistination();
-		
+		String distination = po.getDistination();
+		String carID = po.getCarID();
+		String monitorName = po.getMonitorName();
 		ArrayList<String> orders = po.getOrders();
 		String courierName = po.getCourierName();
 		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders);
+	}
+	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		ArrayList<String> orders = po.getOrders();
+		String transferCenterID = po.getTransferCenterID();
+		String destination = po.getDestination();
+		String departure = po.getDeparture();
+		CommodityState state = po.getState();
+		return new TransferArrivalListVO(id, type, transferCenterID,
+				destination, departure, state, orders);
 	}
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){
 		ArrayList<ReceiptVO> vos=new ArrayList<ReceiptVO>();

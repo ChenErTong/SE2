@@ -9,7 +9,4 @@ public class DriverVO extends AccountVO{
 		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
 		this.carID = carID;
 	}
-	public DriverVO(String ID) {
-		super(ID);
-	}
 }

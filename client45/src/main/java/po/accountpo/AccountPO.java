@@ -27,12 +27,13 @@ public class AccountPO extends PersistentObject{
 	private double Salary;
 	/**任职时间**/
 	private String WorkTime;
+	/**营业厅编号*/
+	private String branchID;
 	/**每日订单完成**/
 	private int ReceiptNum;
 	
 	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, double salary,
 			String workTime, int receiptNum) {
-		
 		super(ID);
 		this.Duty = duty;
 		this.Name = name;
@@ -109,5 +110,15 @@ public class AccountPO extends PersistentObject{
 		ReceiptNum = receiptNum;
 	}
 
-	 }
+
+	public String getBranchID() {
+		return branchID;
+	}
+
+
+	public void setBranchID(String branchID) {
+		this.branchID = branchID;
+	}
+	
+}
 
