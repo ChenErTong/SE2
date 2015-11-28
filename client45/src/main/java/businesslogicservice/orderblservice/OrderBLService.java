@@ -1,11 +1,8 @@
 package businesslogicservice.orderblservice;
 
-import java.util.ArrayList;
-
-import state.ResultMessage;
-import vo.CommodityVO;
-import vo.OrderVO;
 import businesslogicservice.BLService;
+import state.ResultMessage;
+import vo.OrderVO;
 
 /**
  * 实现订单管理界面所需要的服务
@@ -24,7 +21,7 @@ public interface OrderBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order);
+	public ResultMessage addOrder(OrderVO order);
 	
 	/**
 	 * 根据输入的orderNumber查找相应的订单物流信息并返回

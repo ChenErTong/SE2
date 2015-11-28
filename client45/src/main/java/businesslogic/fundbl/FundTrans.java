@@ -44,35 +44,19 @@ public class FundTrans {
 	}
 
 	public static DebitAndPayBillPO convertVOtoPO(DebitAndPayBillVO VO) {
+		/**类似factory*/
 		ReceiptType type = VO.type;
-		if (type == ReceiptType.EXPENSE) {
-			// 收款单
-			DebitBillPO po =convertVOtoPO((DebitBillVO)VO);
-			return po;
-		}
-		if (type == ReceiptType.PAY) {
-			// 付款单
-			PaymentBillPO po =convertVOtoPO((PaymentBillVO)VO);
-			return po;
-		} else {
-			return null;
-		}
+		if (type == ReceiptType.EXPENSE)	return convertVOtoPO((DebitBillVO) VO);
+		if (type == ReceiptType.PAY) 	return convertVOtoPO((PaymentBillVO) VO);
+		else			return null;
 	}
 
 	public static DebitAndPayBillVO convertPOtoVO(DebitAndPayBillPO PO) {
+		/**类似factory*/
 		ReceiptType type = PO.getType();
-		if (type == ReceiptType.EXPENSE) {
-			// 收款单
-			DebitBillVO vo = convertPOtoVO((DebitBillPO)PO);
-			return vo;
-		}
-		if (type == ReceiptType.PAY) {
-			// 付款单
-			PaymentBillVO vo =convertPOtoVO((PaymentBillPO)PO);
-			return vo;
-		} else {
-			return null;
-		}
+		if (type == ReceiptType.EXPENSE)	return convertPOtoVO((DebitBillPO)PO);
+		if (type == ReceiptType.PAY) 	return convertPOtoVO((PaymentBillPO)PO);
+		else return null;
 	}
 	
 	public static DebitBillVO convertPOtoVO(DebitBillPO po) {

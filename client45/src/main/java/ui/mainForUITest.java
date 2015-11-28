@@ -41,7 +41,7 @@ managerFrame.setVisible(true);
 
 
 //	Frame_Finance financeFrame = new Frame_Finance();
-	//	financeFrame.setVisible(true);
+//		financeFrame.setVisible(true);
 
 //		Frame_Finance financeFrame = new Frame_Finance();
 //		financeFrame.setVisible(true);

@@ -92,14 +92,14 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 			if(data!=null){
 				switch(Integer.parseInt(data)){
 				//TODO 接口改好后再加
-					case 1 : accountVO = controller.show(AccountType.GENERAL_MANAGER);
-					case 2 :accountVO = controller.show(AccountType.COURIER);
-					case 3 : accountVO = controller.show(AccountType.INVENTORY_MANAGER);
-					case 4: accountVO = controller.show(AccountType.TRANSFER_CONTERMAN);
-					case 5 :accountVO = controller.show(AccountType.BRANCH_COUNTERMAN);
-					case 6:accountVO = controller.show(AccountType.FINANCE_MANAGER);
-					case 7:accountVO = controller.show(AccountType.ADMIN);
-					case 8:accountVO = controller.show(AccountType.DRIVER);
+					case 1 : accountVO = controller.show("总经理");
+					case 2 :accountVO = controller.show("快递员");
+					case 3 : accountVO = controller.show("中转库存人员");
+					case 4: accountVO = controller.show("中转中心业务员");
+					case 5 :accountVO = controller.show("营业厅业务员");
+					case 6:accountVO = controller.show("财务人员");
+					case 7:accountVO = controller.show("管理员");
+					case 8:accountVO = controller.show("司机");
 					default : accountVO = controller.show();
 				}
 			

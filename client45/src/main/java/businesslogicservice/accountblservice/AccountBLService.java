@@ -3,7 +3,6 @@ package businesslogicservice.accountblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import state.AccountType;
 import vo.accountvo.AccountVO;
 
 
@@ -26,6 +25,6 @@ public interface AccountBLService {
 	 * @throws RemoteException 
 	 */
 	public ArrayList<AccountVO> show() ;
-	public ArrayList<AccountVO> show(AccountType type);
+	public ArrayList<AccountVO> show(String duty);
 }
 

@@ -4,23 +4,24 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import state.ConfirmState;
 import state.ResultMessage;
-import vo.CommodityVO;
 import vo.OrderVO;
 
 public class Order{
 	private OrderDataService orderData;
 
 	public Order() {
+		orderData=getOrderData();
+	}
+	
+	public OrderDataService getOrderData(){
 		try {
-			orderData = (OrderDataService) Naming
-					.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
+			return (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -28,6 +29,7 @@ public class Order{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	
@@ -36,9 +38,9 @@ public class Order{
 	}
 
 
-	public ResultMessage addOrder(ArrayList<CommodityVO> commmodities, OrderVO order) {
+	public ResultMessage addOrder(OrderVO order) {
 		try {
-			return orderData.add(OrderTrans.convertVOtoPO(commmodities, order));
+			return orderData.add(OrderTrans.convertVOtoPO(order));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

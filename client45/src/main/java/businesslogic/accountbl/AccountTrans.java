@@ -9,16 +9,16 @@ import po.accountpo.AccountPO;
 import vo.accountvo.AccountVO;
 
 public class AccountTrans {
-	public static ArrayList<AccountVO> POstoVOs(ArrayList<AccountPO> POs) {
+	public static ArrayList<AccountVO> convertPOstoVOs(ArrayList<AccountPO> POs) {
 		ArrayList<AccountVO> VOs = new ArrayList<AccountVO>();
 		for (po.accountpo.AccountPO po : POs) {
-			AccountVO vo = POToVO(po);
+			AccountVO vo = convertPOToVO(po);
 			VOs.add(vo);
 		}
 		return VOs;
 	}
 
-	public static AccountVO POToVO(AccountPO po) {
+	public static AccountVO convertPOToVO(AccountPO po) {
 		String ID = po.getID();
 		String duty = po.getDuty();
 		String name = po.getName();
@@ -56,5 +56,16 @@ public class AccountTrans {
 			pos.add(po);
 		}
 		return pos;
+	}
+	
+	public static ArrayList<AccountVO> convertPOstoVOsByDuty(ArrayList<AccountPO> pos,String duty){
+		ArrayList<AccountVO> vos = new ArrayList<AccountVO>();
+		for (po.accountpo.AccountPO po : pos) {
+			if(po.getDuty().equals(duty)){
+				AccountVO vo = convertPOToVO(po);
+				vos.add(vo);
+			}
+		}
+		return vos;
 	}
 }
