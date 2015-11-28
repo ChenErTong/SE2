@@ -24,7 +24,6 @@ public class AccountVO {
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
 			String workTime, int receiptNum) {
-
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;

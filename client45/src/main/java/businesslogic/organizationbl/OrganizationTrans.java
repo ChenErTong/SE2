@@ -32,4 +32,5 @@ public class OrganizationTrans {
 			return new TransferVO(organizationID, address, date, accounts, inventories);
 		}
 	}
+	
 }

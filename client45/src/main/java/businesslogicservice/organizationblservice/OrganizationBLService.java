@@ -88,5 +88,9 @@ public interface OrganizationBLService {
 	 */
 
 	public ResultMessage updateTransfer(TransferVO vo);
-
+	/**
+	 * 获得所有的营业厅编号
+	 * @author Ann
+	 */
+	public ArrayList<String> getAllBranchNumbers();
 }

@@ -117,7 +117,21 @@ public class OrganizationController implements OrganizationBLService {
 	}
 
 	public String getID() {
+		/**
+		 * @author Ann
+		 */
+		//我觉得没有必要getID
 		// TODO getID
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getAllBranchNumbers() {
+		try {
+			return organization.getAllBranchNumbers();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
