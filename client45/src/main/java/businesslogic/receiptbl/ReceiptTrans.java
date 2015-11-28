@@ -18,6 +18,7 @@ public class ReceiptTrans {
 		}
 	}
 	
+	
 	public static ReceiptVO convertPOtoVO(ReceiptPO po){
 		if(po==null)
 			return null;

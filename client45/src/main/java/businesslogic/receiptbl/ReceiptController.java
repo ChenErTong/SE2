@@ -30,8 +30,17 @@ public class ReceiptController implements ReceiptBLService{
 
 	@Override
 	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		
 		return ReceiptBL.dontPassReceipt(VOs, receiptTypes);
+	}
+
+	@Override
+	public <T extends ReceiptVO> ArrayList<T> showReceipt(ReceiptType type, ReceiptState state) {
+		try {
+			return ReceiptBL.findTypeReceipt(type, state);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/*@Override

@@ -34,4 +34,11 @@ public enum ReceiptType {
 		this.value = value;
 		this.prefix = prefix;
 	}
+	
+	public boolean equals(ReceiptType type){
+		if(type==null)
+			return true;
+		else
+			return super.equals(type);
+	}
 }

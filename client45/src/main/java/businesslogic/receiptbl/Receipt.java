@@ -57,7 +57,19 @@ public class Receipt  {
 		}
 		return POs;
 	}
-
+	
+	public <T extends ReceiptVO> ArrayList<T> findTypeReceipt(ReceiptType type,ReceiptState state) throws RemoteException {
+		ArrayList<ReceiptPO> pos = receiptData.find();
+		ArrayList<T> vos = new ArrayList<>();
+		for (ReceiptPO receiptPO : pos) {
+			if(receiptPO.getReceiptType().equals(type)||receiptPO.getReceiptState().equals(state)){
+				@SuppressWarnings("unchecked")
+				T vo = (T) ReceiptTrans.convertPOtoVO(receiptPO);
+				vos.add(vo);
+			}
+		}
+		return vos;
+	}
 	
 	/*public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
 		ArrayList<ReceiptPO> pos=receiptData.showReceipt(receiptStates);

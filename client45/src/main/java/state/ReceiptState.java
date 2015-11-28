@@ -15,4 +15,11 @@ public enum ReceiptState {
 	ReceiptState(String value){
 		this.value = value;
 	}
+	
+	public boolean equals(ReceiptState state){
+		if(state==null)
+			return true;
+		else
+			return super.equals(state);
+	}
 }

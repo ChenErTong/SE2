@@ -51,6 +51,6 @@ public interface ReceiptBLService {
 	 * @version Oct 22,2015
 	 * @param receiptStates，单据状态
 	 * @return 处理信息
-	 *//*
-	public  ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates);*/
+	 */
+	public <T extends ReceiptVO> ArrayList<T> showReceipt(ReceiptType type,ReceiptState state);
 }
