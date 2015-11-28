@@ -2,10 +2,7 @@ package vo;
 
 import java.util.ArrayList;
 
-import businesslogic.fundbl.DebitAndPayBill;
 import vo.receiptvo.DebitAndPayBillVO;
-import vo.receiptvo.DebitBillVO;
-import vo.receiptvo.PaymentBillVO;
 
 public class BussinessOneDayVO {
 	

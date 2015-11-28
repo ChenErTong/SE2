@@ -55,7 +55,7 @@ public class Base {
 
 	public ArrayList<BaseVO> show() throws RemoteException {
 		ArrayList<BasePO> pos = baseData.find();
-		ArrayList<BaseVO> vos = BaseTrans.convertPOstoVOs(pos);
+		ArrayList<BaseVO> vos = BaseTrans.convertBasePOstoVOs(pos);
 		return vos;
 	}
 

@@ -4,9 +4,6 @@ package businesslogicservice.recordblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-
 import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;

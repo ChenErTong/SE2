@@ -3,7 +3,11 @@ package businesslogic.basebl;
 import java.util.ArrayList;
 
 import po.BasePO;
+import po.PolicyPO;
+import state.SalaryPolicy;
+import state.UserIdentity;
 import vo.BaseVO;
+import vo.PolicyVO;
 /**
  * This class is TODO this class is todo
  * @author Ann 
@@ -24,10 +28,31 @@ public class BaseTrans {
 		}
 	}
 	
-	public static ArrayList<BaseVO> convertPOstoVOs(ArrayList<BasePO> pos){
+	public static PolicyVO convertPOtoVO(PolicyPO po){
+		if(po==null)
+			return null;
+		else {
+			String iD = po.getID();
+			UserIdentity userIdentity = po.getUserIdentity();
+			SalaryPolicy salaryPolicy = po.getSalaryPolicy();
+			String remark = po.getRemark();
+			return new PolicyVO(iD, userIdentity, salaryPolicy, remark);
+		}
+	}
+	
+	public static ArrayList<BaseVO> convertBasePOstoVOs(ArrayList<BasePO> pos){
 		ArrayList<BaseVO> vos = new ArrayList<>();
 		for (BasePO po : pos) {
 			BaseVO vo = convertPOtoVO(po);
+			vos.add(vo);
+		}
+		return vos;
+	}
+	
+	public static ArrayList<PolicyVO> convertPolicyPOstoVOs(ArrayList<PolicyPO> pos){
+		ArrayList<PolicyVO> vos = new ArrayList<>();
+		for (PolicyPO po : pos) {
+			PolicyVO vo = convertPOtoVO(po);
 			vos.add(vo);
 		}
 		return vos;
@@ -43,6 +68,18 @@ public class BaseTrans {
 			double distance = vo.distance;
 			double price = vo.price;
 			return new BasePO(id, cityFrom, cityTo, distance, price);
+		}
+	}
+	
+	public static PolicyPO convertVOtoPO(PolicyVO vo){
+		if(vo==null)
+			return null;
+		else {
+			String id = vo.ID;
+			UserIdentity userIdentity =vo.userIdentity;
+			SalaryPolicy salaryPolicy = vo.salaryPolicy;
+			String remark = vo.remark;
+			return new PolicyPO(id, userIdentity, salaryPolicy, remark);
 		}
 	}
 }
