@@ -36,7 +36,7 @@ public class OrderVO extends ValueObject {
 
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
 			String recipientName, String recipientAddress, String recipientTel, String recipientCo, ArrayList<String> midAddres,
-			String sendTime, String recipientTime, double money,ArrayList<CommodityVO> commodities, PackageType packType,ExpressType express) {
+			String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -50,9 +50,18 @@ public class OrderVO extends ValueObject {
 		this.sendTime = sendTime;
 		this.recipientTime = recipientTime;
 		this.money = money;
-		this.commodities=commodities;
 		this.packType=packType;
 		this.express=express;
+	}
+
+
+	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
+			String recipientName, String recipientAddress, String recipientTel, String recipientCo,
+			ArrayList<String> midAddres, String sendTime, String recipientTime, double money,
+			ArrayList<CommodityVO> commodities, PackageType packType, ExpressType express) {
+		this(orderIdString, senderName, senderAddress, senderTel, senderCo, recipientName, recipientAddress,
+				recipientTel, recipientCo, midAddres, sendTime, recipientTime, money, packType, express);
+		this.commodities = commodities;
 	}
 
 }

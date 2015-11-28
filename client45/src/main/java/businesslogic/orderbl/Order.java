@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
@@ -40,13 +41,8 @@ public class Order{
 	}
 
 
-	public ResultMessage addOrder(OrderVO order) {
-		try {
+	public ResultMessage addOrder(OrderVO order) throws RemoteException {
 			return orderData.add(OrderTrans.convertVOtoPO(order));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 
@@ -87,6 +83,15 @@ public class Order{
 
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
 		return 3+"";
+	}
+
+	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order) throws RemoteException {
+		ArrayList<CommodityVO> commos = new ArrayList<>();
+		for (CommodityVO commodityVO : commmodities) {
+			commos.add(commodityVO);
+		}
+		order.commodities=commos;
+		return this.addOrder(order);
 	}
 
 }

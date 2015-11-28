@@ -24,7 +24,7 @@ public interface OrderBLService extends BLService{
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage addOrder(OrderVO order);
-//	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order);
+	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order);
 	/**
 	 * 根据输入的orderNumber查找相应的订单物流信息并返回
 	 * @return 订单界面显示

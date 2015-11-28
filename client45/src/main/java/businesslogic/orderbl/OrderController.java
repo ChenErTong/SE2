@@ -17,7 +17,12 @@ public class OrderController implements OrderBLService{
 
 	@Override
 	public ResultMessage addOrder(OrderVO order) {
-		return orderBL.addOrder(order);
+		try {
+			return orderBL.addOrder(order);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -44,6 +49,16 @@ public class OrderController implements OrderBLService{
 	@Override
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
 		return orderBL.getArrivalDate(senderAddress, receiverAddress, expressType);
+	}
+
+	@Override
+	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order) {
+		try {
+			return orderBL.addOrder(commmodities,order);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
