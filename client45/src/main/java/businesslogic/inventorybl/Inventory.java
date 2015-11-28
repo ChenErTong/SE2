@@ -9,8 +9,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.omg.PortableServer.POA;
-
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.receiptdataservice.ReceiptDataService;

@@ -18,6 +18,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @author Ann
  *
  */
+@Deprecated
 public interface ReceiptShowService {
 	public ArrayList<ReceiptVO> show();
 	public ArrayList<BranchArrivalListVO> showBranchArrivalList();

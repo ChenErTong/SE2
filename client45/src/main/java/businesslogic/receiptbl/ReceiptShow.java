@@ -22,7 +22,7 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-
+@Deprecated
 public class ReceiptShow {
 	
 	private ReceiptDataService  receiptData;
