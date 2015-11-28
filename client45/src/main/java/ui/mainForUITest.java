@@ -30,11 +30,11 @@ public class mainForUITest {
 	//	courierFrame.setVisible(true);
 
 	
-FrameManager managerFrame = new FrameManager();
-managerFrame.setVisible(true);
+//FrameManager managerFrame = new FrameManager();
+//managerFrame.setVisible(true);
 		
-//	Frame_Branch branchFrame = new Frame_Branch();
-	//	branchFrame.setVisible(true);
+	Frame_Branch branchFrame = new Frame_Branch();
+		branchFrame.setVisible(true);
 		
 
 	//	Frame_Admin adminFrame = new Frame_Admin();
