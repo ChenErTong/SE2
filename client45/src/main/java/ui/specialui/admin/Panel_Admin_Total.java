@@ -389,12 +389,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}
 		}
 	}
-		
-
-
-	
-
-
 	private void modifyUser() {
 		userController = ControllerFactory.getUserController();
 		table = userInfo.getTable();
