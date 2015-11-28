@@ -287,9 +287,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
-					this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+					new MyNotification(this,"账户添加成功！",Color.GREEN);
 				}else{
-					this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+					new MyNotification(this,"账户添加失败！",Color.RED);
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
@@ -314,7 +314,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				this.add(new MyNotification(this,"请先选择要删除的员工！",Color.RED));
 			}else{
-				this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
+				new MyNotification(this,"正在删除账户！",Color.GREEN);
 				this.deleteUser();
 			
 			}
@@ -341,9 +341,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				this.add(new MyNotification(this,"请先选择需要修改的用户！",Color.RED));
 			}else{
 				if(userDetails.getData()==null){
-					this.add(new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED));
+					new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 				}else{
-					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					new MyNotification(this,"正在修改账户信息！",Color.GREEN);
 					this.modifyUser();
 				}
 			}
@@ -363,7 +363,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			userController = ControllerFactory.getUserController();
 			ArrayList<UserVO> userVO;
 			String data = userInfo.getData()+"";
-			if(data!=null){
+			if(data!=""){
 				switch(Integer.parseInt(data)){
 					case 1 : userVO = userController.show();break;
 					case 2 : userVO = userController.show();break;
@@ -404,9 +404,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"用户修改成功！",Color.GREEN));		
+			new MyNotification(this,"用户修改成功！",Color.GREEN);		
 		}else{
-			this.add(new MyNotification(this,"用户修改失败！",Color.RED));
+			new MyNotification(this,"用户修改失败！",Color.RED);
 		}
 	}
 
@@ -421,11 +421,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"用户删除成功！",Color.GREEN));
+			new MyNotification(this,"用户删除成功！",Color.GREEN);
 		}else{
-			this.add(new MyNotification(this,"用户删除失败！",Color.RED));
+			new MyNotification(this,"用户删除失败！",Color.RED);
 		}
-		
 	}
 }
 
