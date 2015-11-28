@@ -15,7 +15,7 @@ public class TransferOrderVO extends OrderReceiptVO {
 	public String destination;
 	public String courierName;
 	
-	public TransferOrderVO(String facilityID, ReceiptType type,String departure, String destination, String courierName,
+	public TransferOrderVO(String ID,String facilityID, ReceiptType type,String departure, String destination, String courierName,
 			ArrayList<String> orders) {
 		super(facilityID,type,orders);
 		this.facilityID = facilityID;

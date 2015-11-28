@@ -9,7 +9,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.accountbl.Account;
 import businesslogic.fundbl.FundTrans;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
