@@ -58,9 +58,9 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(300,210,25,30,"市",18,true));
 		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
 		//this.add(district);
-		address = new MyEmptyTextArea(100,260,400,150);
-	//	address.setEditable(true);
-		this.add(address);
+	//	address = new MyEmptyTextArea(100,260,400,150);
+		//address.setEditable(true);
+		//this.add(address);
 		
 		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 		userIdentityBox = new MyComboBox(100,140,150,30,18,identity);
@@ -107,7 +107,7 @@ public class UserDetails extends MyTranslucentPanel{
 		userAuthorityBox.setEditable(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
-		address.setEditable(false);
+	//	address.setEditable(false);
 		
 	}
 
@@ -119,14 +119,14 @@ public class UserDetails extends MyTranslucentPanel{
 		userAuthorityBox.setSelectedItem(data[5]);
 		provincesBox.setSelectedItem(data[6]);
 		citiesBox.setSelectedItem(data[7]);
-		address.setText(data[8]);	
+	//	address.setText(data[8]);	
 	}
 
 	public void refresh() {
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setText(null);
 		}
-		address.setText(null);
+		//address.setText(null);
 		
 	}
 
@@ -139,8 +139,8 @@ public class UserDetails extends MyTranslucentPanel{
 		data[5] = (String)userAuthorityBox.getSelectedItem();
 		data[6] = (String) provincesBox.getSelectedItem();
 		data[7] = (String) citiesBox.getSelectedItem();
-		data[8] = address.getText();
-		for(int i = 4;i<9;i++){
+		//data[8] = address.getText();
+		for(int i = 4;i<8;i++){
 			if(data[i].equals("")) return null;
 		}
 		return data;

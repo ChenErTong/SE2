@@ -64,7 +64,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		this.add(organizationInfo);
 		
 		organizationDetails = new OrganizationDetails();
-		organizationDetails.setUneditable();
+	//	organizationDetails.setUneditable();
 		this.add(organizationDetails);
 		this.initButton(frame_Manager);
 	}
@@ -371,16 +371,16 @@ public void showAll(){
 			}else{
 				if(data[4].equals("营业厅")){
 					//TODO 
-					//ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[6]),controller.,data[5]+data[6]+data[7],null,null,null));
-				//	if(rsg.equals(ResultMessage.SUCCESS)){
-						//System.out.println("AddSucceed!");
+					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[6]),data[0], data[1], null, null));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
 						this.showAll();
 						this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
 
 				}else{
 					//TODO 
-					//ResultMessage rsg = controller.addTransfer(new TransferVO(controller.getTransferID(data[6])));
-					//if(rsg.equals(ResultMessage.SUCCESS)){
+					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[6]), data[2],data[3], null, null));
+					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
 			
@@ -399,17 +399,17 @@ public void showAll(){
 				this.add(new MyNotification(this,"请先选择要修改的账户！",Color.RED));
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
-				case TRANSFER:Object[] data = new String[7];
+				case TRANSFER:Object[] data2 = new String[7];
 				organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-				data[0] = organizationID;
-				data[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
-				data[3] =  organizationPool.get(table.getSelectedRow()).date;
-				data[2] = organizationPool.get(table.getSelectedRow()).number;
-				data[4] = transferPool.get(table.getSelectedRow()).inventories;
-				data[5] = transferPool.get(table.getSelectedRow()).accounts;
-				data[6] =transferPool.get(table.getSelectedRow()).address;
-				String[] data2 = (String[]) data;
-				organizationDetails.setData(data2);
+				data2[0] = organizationID;
+				data2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
+				data2[3] =  organizationPool.get(table.getSelectedRow()).date;
+				data2[2] = organizationPool.get(table.getSelectedRow()).number;
+				data2[4] = transferPool.get(table.getSelectedRow()).inventories;
+				data2[5] = transferPool.get(table.getSelectedRow()).accounts;
+				data2[6] =transferPool.get(table.getSelectedRow()).address;
+				String[] data3 = (String[]) data;
+				organizationDetails.setData(data3);
 				case BRANCH:
 					Object[] data_2 = new String[7];
 					organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
@@ -442,6 +442,9 @@ public void showAll(){
 		}
 
 	}
+}
+}
+	
 
 
 
