@@ -1,7 +1,10 @@
 package ui;
 
 import javax.swing.UIManager;
+
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+
+import ui.specialui.courier.Frame_Courier;
 import ui.specialui.inventory.Frame_Inventory;
 
 public class mainForUITest2 {
@@ -13,12 +16,12 @@ public class mainForUITest2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		new Frame_Courier();
+		new Frame_Courier();
 		
 //		new Frame_Branch();
 		
 //		new	Frame_Transfer();
 		
-		new Frame_Inventory();
+//		new Frame_Inventory();
 	}
 }

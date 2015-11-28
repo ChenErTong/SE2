@@ -80,7 +80,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	 * @TODO 与bl层连接
 	 */
 	private boolean produceOrder(){
-		switch(((OrderInput) subPanel).produceOrder()){
+		switch(((OrderInput) subPanel).produceOrder(this)){
 		case 0: new MyNotification(this, "成功生成订单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成寄件人信息填写", Color.RED); break;
 		case 2: new MyNotification(this, "请完成收件人信息填写", Color.RED); break;

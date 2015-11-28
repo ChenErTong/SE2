@@ -2,7 +2,9 @@ package ui.specialui.courier.orderInput;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import state.CommodityState;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -11,13 +13,12 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import vo.CommodityVO;
 
 public class CommodityInfoInput extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField commodityNumField;
-	private MyJTextField commodityVolumnField;
-	private MyJTextField commodityWeightField;
 	private MyJComboBox packKindField;
 	private MyJComboBox deliveryKindField;
 	private MyJRadioButton choseCompareWeight;
@@ -31,56 +32,54 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 	private void initComponent() {
 		this.add(new MyJLabel(215, 30, 140, 40, "托运货物信息", 22, true));
 		this.add(new MyJLabel(50, 104, 80, 20, "原件数/件", 15, true));
-		this.add(new MyJLabel(190, 104, 120, 20, "实际体积/m^3", 15, true));
-		this.add(new MyJLabel(360, 104, 120, 20, "实际重量/kg", 15, true));
 		this.add(new MyJLabel(50, 150, 80, 20, "包装类型", 15, true));
 		this.add(new MyJLabel(300, 150, 80, 20, "快递类型", 15, true));
-		this.add(new MyJLabel(50, 250, 80, 20, "货物名", 15, true));
-		this.add(new MyJLabel(290, 250, 80, 20, "货物种类", 15, true));
+		this.add(new MyJLabel(50, 200, 80, 20, "货物种类", 15, true));
+		this.add(new MyJLabel(50, 250, 120, 20, "实际体积/m^3", 15, true));
+		this.add(new MyJLabel(300, 250, 120, 20, "实际重量/kg", 15, true));
 		
 		commodityNumField = new MyJTextField(130, 100, 50, 30);
 		commodityNumField.setOnlyInteger(3);
 		this.add(commodityNumField);
 		
-		commodityVolumnField = new MyJTextField(300, 100, 50, 30);
-		commodityVolumnField.setOnlyInteger(3);
-		this.add(commodityVolumnField);
-		
-		commodityWeightField = new MyJTextField(460, 100, 50, 30);
-		commodityWeightField.setOnlyInteger(4);
-		this.add(commodityWeightField);
+		choseCompareWeight = new MyJRadioButton(300, 104, 180, 20, "是否进行重量矫正");
+		this.add(choseCompareWeight);
 		
 		String[] packs = {"纸盒", "塑料", "泡沫", "金属"};
 		packKindField = new MyJComboBox(130, 150, 130, 30, packs);
 		this.add(packKindField);
 		
-		String[] deliveries = {"顺丰", "EMS", "圆通", "中通", "申通", "圆通", "韵达", "京东"};
+		String[] deliveries = {"汽车", "火车", "飞机"};
 		deliveryKindField = new MyJComboBox(380, 150, 130, 30, deliveries);
 		this.add(deliveryKindField);
 		
-		choseCompareWeight = new MyJRadioButton(50, 200, 180, 20, "是否进行重量矫正");
-		this.add(choseCompareWeight);
-		
-		MyJTextField commodityNameField = new MyJTextField(110, 250, 150, 30);
-		this.add(commodityNameField);
-		
-		MyJTextField commodityKindField = new MyJTextField(360, 250, 150, 30);
+		MyJTextField commodityKindField = new MyJTextField(130, 200, 130, 30);
 		this.add(commodityKindField);
-				
-		commodityList = new MyJTable(new String[]{"名称", "种类"}, false);
+			
+		MyJTextField commodityVolumnField = new MyJTextField(160, 250, 100, 30);
+		commodityVolumnField.setOnlyDouble();;
+		this.add(commodityVolumnField);
+		
+		MyJTextField commodityWeightField = new MyJTextField(400, 250, 110, 30);
+		commodityWeightField.setOnlyDouble();
+		this.add(commodityWeightField);
+		
+		commodityList = new MyJTable(new String[]{"种类", "体积", "重量"}, false);
 		MyJScrollPane jsp = new MyJScrollPane(50, 340, 460, 135, commodityList);
 		this.add(jsp);
 		
 		MyJButton addCommodity = new MyJButton(50, 300, 110, 20, "添加货物", 15);
 		addCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				String[] data = new String[2];
-				data[0] = commodityNameField.getText();
-				data[1] = commodityKindField.getText();
-				if((!data[0].equals(""))&&(!data[1].equals(""))){			
+				String[] data = new String[3];
+				data[0] = commodityKindField.getText();
+				data[1] = commodityWeightField.getText();
+				data[2] = commodityVolumnField.getText();
+				if((!data[0].equals(""))&&(!data[1].equals(""))&&(!data[2].equals(""))){			
 					commodityList.addRow(data);
-					commodityNameField.setText(null);
 					commodityKindField.setText(null);
+					commodityVolumnField.setText(null);
+					commodityWeightField.setText(null);
 				}
 			}
 		});
@@ -104,12 +103,10 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 	}
 
 	public String[] getCommodityInfo() {
-		String[] info = new String[5];
+		String[] info = new String[3];
 		info[0] = commodityNumField.getText();
-		info[1] = commodityVolumnField.getText();
-		info[2] = commodityWeightField.getText();
-		info[3] = (String) packKindField.getSelectedItem();
-		info[4] = (String) deliveryKindField.getSelectedItem();
+		info[1] = (String) packKindField.getSelectedItem();
+		info[2] = (String) deliveryKindField.getSelectedItem();
 		for (String string : info) {
 			if(string.equals("")) return null;
 		}
@@ -123,14 +120,14 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		return choseCompareWeight.isSelected();
 	}
 
-	public String[] getCommodityList() {
+	public ArrayList<CommodityVO> getCommodityList() {
 		String[][] data = commodityList.getData();
 		if(data.length == 0){
 			return null;
 		}
-		String[] commodities = new String[data.length];
+		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		for(int i = 0; i < data.length; i++){
-			commodities[i] = data[i][0] + " " + data[i][1];
+			commodities.add(new CommodityVO(data[i][0], Double.parseDouble(data[i][1]), Double.parseDouble(data[i][2]), CommodityState.Success));
 		}
 		return commodities;
 	}

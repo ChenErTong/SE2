@@ -14,5 +14,11 @@ public class CommodityVO {
 		this.volumn = volumn;
 		this.commodityState = commodityState;
 	}
-
+	/**
+	 * 进行重量矫正
+	 */
+	public void correctWeight(){
+		double weight = volumn / 5000;
+		this.weight = Double.max(this.weight, weight);
+	}
 }

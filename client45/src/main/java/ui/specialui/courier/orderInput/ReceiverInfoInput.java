@@ -1,5 +1,9 @@
 package ui.specialui.courier.orderInput;
 
+import javax.swing.JComboBox;
+
+import ui.Config.JComboBoxOfChina;
+import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -11,12 +15,15 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 	private MyJTextField PhoneField;
 	private MyJTextField AddressField;
 	private MyJTextField OfficeField;
+	private JComboBox<String> province;
+	private JComboBox<String> city;
 	
 	public ReceiverInfoInput() {
 		super(60, 360, 550, 250);
 		this.initComponent();
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void initComponent(){		
 		this.add(new MyJLabel(215, 30, 120, 40, "收件人信息", 22, true));
 		this.add(new MyJLabel(50, 102, 40, 20, "姓名", 15, true));
@@ -31,7 +38,18 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 		PhoneField.setOnlyInteger(11);;
 		this.add(PhoneField);
 		
-		AddressField = new MyJTextField(100, 142, 350, 30);
+		//构建中国各大城市的三级联动下拉框
+	    JComboBoxOfChina box = new JComboBoxOfChina();
+	    province = box.getCombobox_privince();
+	    province.setFont(new MyFont(15));
+	    province.setBounds(100, 144, 81, 20);
+	    this.add(province);
+		city = box.getCombobox_city();
+	    city.setFont(new MyFont(15));
+	    city.setBounds(190, 144, 81, 20);
+	    this.add(city);
+		
+	    AddressField = new MyJTextField(280, 142, 170, 30);
 		this.add(AddressField);
 		
 		OfficeField = new MyJTextField(100, 183, 350, 30);
@@ -42,7 +60,9 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 		String[] info = new String[4];
 		info[0] = NameField.getText();
 		info[1] = PhoneField.getText();
-		info[2] = AddressField.getText();
+		String pro = (String) province.getSelectedItem();
+		String cit = (String) city.getSelectedItem();
+		info[2] = pro + " " + cit + " " + AddressField.getText();
 		info[3] = OfficeField.getText();
 		for (String string : info) {
 			if(string.equals("")) return null;

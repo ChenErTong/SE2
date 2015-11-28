@@ -1,5 +1,7 @@
 package ui.specialui.courier.timeAndCostManager;
 
+import java.util.ArrayList;
+
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -7,6 +9,7 @@ import ui.specialui.courier.Frame_Courier;
 import ui.specialui.courier.orderInput.CommodityInfoInput;
 import ui.specialui.courier.orderInput.ReceiverInfoInput;
 import ui.specialui.courier.orderInput.SenderInfoInput;
+import vo.CommodityVO;
 /**
  * 根据订单信息估计时间与报价
  * @author czw
@@ -58,7 +61,7 @@ public class TimeAndCostManager extends MyJPanel{
 		if((commodityInfo = commodities.getCommodityInfo()) == null){
 			return 3;
 		}
-		String[] commodityList;
+		ArrayList<CommodityVO> commodityList;
 		if((commodityList = commodities.getCommodityList()) == null){
 			return 4;
 		}
