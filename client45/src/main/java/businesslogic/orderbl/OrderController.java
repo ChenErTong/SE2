@@ -1,4 +1,6 @@
 package businesslogic.orderbl;
+import java.rmi.RemoteException;
+
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ConfirmState;
 import state.ExpressType;
@@ -7,41 +9,41 @@ import vo.CommodityVO;
 import vo.OrderVO;
 
 public class OrderController implements OrderBLService{
-    Order OrderBL = new Order();
+    Order orderBL = new Order();
 	@Override
 	public ConfirmState confirmOperation() {
-		return OrderBL.confirmOperation();
+		return orderBL.confirmOperation();
 	}
 
 	@Override
 	public ResultMessage addOrder(OrderVO order) {
-		return OrderBL.addOrder(order);
+		return orderBL.addOrder(order);
 	}
 
 	@Override
 	public OrderVO inquireOrder(String orderNumber, String senderName) {
-		return OrderBL.inquireOrder(orderNumber, senderName);
+		return orderBL.inquireOrder(orderNumber, senderName);
 	}
 
 	@Override
 	public String getOrderId() {
+		try {
+			return orderBL.getOrderId();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) {
-		return 0;
+		return orderBL.getCost(commodityList, senderAddress, receiverAddress, expressType);
 	}
 
 	@Override
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
-		return null;
+		return orderBL.getArrivalDate(senderAddress, receiverAddress, expressType);
 	}
-
-/*	@Override
-	public ResultMessage costAndTime(OrderVO order) {
-		return OrderBL.costAndTime(order);
-	}*/
 
 }

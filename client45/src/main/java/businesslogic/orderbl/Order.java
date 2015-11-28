@@ -72,17 +72,21 @@ public class Order{
 	}
 
 	
-	public String getOrderId() {
-		return null;
+	public String getOrderId() throws RemoteException {
+		return orderData.getID();
 	}
 
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) {
-		return 0;
+		double cost=0;
+		for (CommodityVO commodityVO : commodityList) {
+			cost+=commodityVO.weight*0.5;
+		}
+		return cost;
 	}
 
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
-		return null;
+		return 3+"";
 	}
 
 }
