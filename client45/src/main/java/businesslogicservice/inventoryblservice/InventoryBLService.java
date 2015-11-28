@@ -3,7 +3,6 @@ package businesslogicservice.inventoryblservice;
 import java.rmi.RemoteException;
 
 import state.ExpressType;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
