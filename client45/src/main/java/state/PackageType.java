@@ -10,9 +10,18 @@ public enum PackageType {
 	Bubble("泡沫"),
 	Metal("金属");
 	
-	public final String value;
+	public String value;
 	
 	PackageType(String value){
 		this.value = value;
+	}
+	
+	public static PackageType getType(String value){
+		switch(value){
+		case "纸盒": return Paper;
+		case "塑料": return Plastic;
+		case "金属":return Metal;
+		default: return Bubble;
+		}
 	}
 }
