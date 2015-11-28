@@ -1,7 +1,9 @@
 package businesslogicservice.orderblservice;
 
 import businesslogicservice.BLService;
+import state.ExpressType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.OrderVO;
 
 /**
@@ -22,7 +24,7 @@ public interface OrderBLService extends BLService{
 	 * @version Oct 22,2015
 	 */
 	public ResultMessage addOrder(OrderVO order);
-	
+//	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order);
 	/**
 	 * 根据输入的orderNumber查找相应的订单物流信息并返回
 	 * @return 订单界面显示
@@ -40,5 +42,34 @@ public interface OrderBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage costAndTime(OrderVO order);
+//	public ResultMessage costAndTime(OrderVO order);
+
+	/**
+	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	 * 自动生成订单号，不与已有的订单号重复
+	 * @return
+	 * @author czw
+	 */
+	public String getOrderId();
+
+	/**
+	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	 * 根据订单信息生成运费
+	 * @return 运费
+	 * @author czw
+	 * @param expressType 快递类型（飞机、火车、汽车）
+	 * @param receiverAddress 目的地（省+空格+市+空格+详细地址）
+	 * @param senderAddress 始发地（省+空格+市+空格+详细地址）
+	 * @param commodityList 货物数组，每个货物都有自己的重量
+	 */
+	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress, ExpressType expressType);
+
+	/**
+	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	 * @param senderAddress 始发地（省+空格+市+空格+详细地址）
+	 * @param receiverAddress 目的地（省+空格+市+空格+详细地址）
+	 * @param expressType 快递类型（飞机、火车、汽车）
+	 * @return 日期（以字符串的形式，格式为yyyy-MM-dd）
+	 */
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType);
 }

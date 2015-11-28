@@ -9,7 +9,9 @@ import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import state.ConfirmState;
+import state.ExpressType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.OrderVO;
 
 public class Order{
@@ -70,9 +72,17 @@ public class Order{
 	}
 
 	
-	public ResultMessage costAndTime(OrderVO order) {
-		//TODO 之后再搞，不知道返回什么
-		return ResultMessage.SUCCESS;
+	public String getOrderId() {
+		return null;
+	}
+
+	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
+			ExpressType expressType) {
+		return 0;
+	}
+
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
+		return null;
 	}
 
 }

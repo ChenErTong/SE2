@@ -2,6 +2,9 @@ package vo;
 
 import java.util.ArrayList;
 
+import state.ExpressType;
+import state.PackageType;
+
 public class OrderVO extends ValueObject {
 	// 订单号
 	public String orderIdString;
@@ -25,16 +28,15 @@ public class OrderVO extends ValueObject {
 	// 费用
 	public double money;
 	public ArrayList<CommodityVO> commodities;
+	// 包装类型
+	public PackageType packType;
+	// 快递类型
+	public ExpressType express;
 
-	/*public OrderVO(String sendTime, String recipientTime, double money) {
-		this.sendTime = sendTime;
-		this.recipientTime = recipientTime;
-		this.money = money;
-	}*/
 
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
 			String recipientName, String recipientAddress, String recipientTel, String recipientCo, ArrayList<String> midAddres,
-			String sendTime, String recipientTime, double money,ArrayList<CommodityVO> commodities) {
+			String sendTime, String recipientTime, double money,ArrayList<CommodityVO> commodities, PackageType packType,ExpressType express) {
 		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -49,6 +51,8 @@ public class OrderVO extends ValueObject {
 		this.recipientTime = recipientTime;
 		this.money = money;
 		this.commodities=commodities;
+		this.packType=packType;
+		this.express=express;
 	}
 
 }

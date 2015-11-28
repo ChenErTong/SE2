@@ -1,7 +1,9 @@
 package businesslogic.orderbl;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ConfirmState;
+import state.ExpressType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.OrderVO;
 
 public class OrderController implements OrderBLService{
@@ -22,8 +24,24 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
+	public String getOrderId() {
+		return null;
+	}
+
+	@Override
+	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
+			ExpressType expressType) {
+		return 0;
+	}
+
+	@Override
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
+		return null;
+	}
+
+/*	@Override
 	public ResultMessage costAndTime(OrderVO order) {
 		return OrderBL.costAndTime(order);
-	}
+	}*/
 
 }
