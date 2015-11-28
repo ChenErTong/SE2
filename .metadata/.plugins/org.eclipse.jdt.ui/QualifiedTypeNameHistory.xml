@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="vo.BussinessProcessVO"/>
-<fullyQualifiedTypeName name="po.receiptpo.DebitBillPO"/>
-<fullyQualifiedTypeName name="vo.receiptvo.DebitBillVO"/>
-<fullyQualifiedTypeName name="po.receiptpo.PaymentBillPO"/>
-<fullyQualifiedTypeName name="dataservice.funddataservice.DebitAndPayBillDataService"/>
-<fullyQualifiedTypeName name="po.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="po.InventoryPO"/>
 <fullyQualifiedTypeName name="vo.InventoryVO"/>
 <fullyQualifiedTypeName name="businesslogicservice.inventoryblservice.InventoryBLService"/>
@@ -44,7 +38,6 @@
 <fullyQualifiedTypeName name="dataservice.transferdataservice.TransferDataService"/>
 <fullyQualifiedTypeName name="po.CommodityPO"/>
 <fullyQualifiedTypeName name="vo.receiptvo.TransferOrderVO"/>
-<fullyQualifiedTypeName name="state.ReceiptCondition"/>
 <fullyQualifiedTypeName name="businesslogicservice.transferblservice.TransferBLService"/>
 <fullyQualifiedTypeName name="vo.receiptvo.ReceiptVO"/>
 <fullyQualifiedTypeName name="businesslogic.openingstockbl.OpeningStock"/>
@@ -60,4 +53,11 @@
 <fullyQualifiedTypeName name="po.BussinessOneDayPO"/>
 <fullyQualifiedTypeName name="vo.BussinessOneDayVO"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="vo.receiptvo.InventoryImportReceiptVO"/>
+<fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
+<fullyQualifiedTypeName name="org.omg.PortableServer.POA"/>
+<fullyQualifiedTypeName name="state.ReceiptCondition"/>
+<fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
+<fullyQualifiedTypeName name="businesslogic.inventorybl.InventoryTrans"/>
+<fullyQualifiedTypeName name="vo.receiptvo.InventoryExportReceiptVO"/>
 </qualifiedTypeNameHistroy>

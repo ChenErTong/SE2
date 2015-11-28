@@ -1,12 +1,11 @@
 package businesslogic.inventorybl;
 
 import java.util.ArrayList;
+
 import po.InventoryPO;
-import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ReceiptType;
 import vo.InventoryVO;
-import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
@@ -30,19 +29,6 @@ public class InventoryTrans {
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(vo.ID, ReceiptType.INSTOCK,vo.depture,
 		vo.destination,vo.CommoditiesID,vo.a, vo.b ,vo.c, vo.d);
 		return po;
-	}
-	
-	
-	public static InventoryExportReceiptPO convertVOtoPO(InventoryExportReceiptVO vo){
-		InventoryExportReceiptPO po = new InventoryExportReceiptPO(vo.ID, ReceiptType.OUTSTOCK,vo.destination, vo.depture, vo. Transfer,vo. TransferID,
-				vo.CommoditiesID, vo.a, vo.b, vo.c, vo.d);
-				return po;
-	}
-	public static InventoryExportReceiptVO convertPOtoVO(InventoryExportReceiptPO po){
-		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.destination, po.depture, po. Transfer,po. TransferID,
-				po.CommoditiesID, po.a, po.b, po.c, po.d);
-				return vo;
-		
 	}
 	
 	public static ArrayList<InventoryVO> convertInventoryPOstoVOs(ArrayList<InventoryPO> pos) {

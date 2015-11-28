@@ -45,7 +45,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryImportReceiptVO addCommodities(String ID ,String ArrivalListID, InventoryVO vo)  {
+	public ResultMessage addCommodities(String ID ,String ArrivalListID, InventoryVO vo)  {
 		try {
 			return InventoryBL.addCommodities( ID ,ArrivalListID, vo);
 		} catch (RemoteException e) {
@@ -53,25 +53,10 @@ public class InventoryController implements InventoryBLService {
 		}
 		return null;
 	}
-	@Override
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) {
-		 try {
-			InventoryBL.saveImport(importReceipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+
 	@Override
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
-		try {
-			return InventoryBL.submitImport(importReceipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return InventoryBL.submitImport(importReceipt);
 	}
 
 	@Override
@@ -85,7 +70,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryExportReceiptVO minusCommodities(String ID ,String ImportID, String Transfer) {
+	public ResultMessage minusCommodities(String ID ,String ImportID, String Transfer) {
 		try {
 			return InventoryBL.minusCommodities( ID ,ImportID, Transfer);
 		} catch (RemoteException e) {
@@ -95,25 +80,8 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) {
-		 try {
-			InventoryBL.saveExport(exportReceipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
-		try {
-			return InventoryBL.submitExport(exportReceipt);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return InventoryBL.submitExport(exportReceipt);
 	}
 
 	@Override
@@ -135,7 +103,5 @@ public class InventoryController implements InventoryBLService {
 		}
 		return null;
 	}
-
-	
 
 }

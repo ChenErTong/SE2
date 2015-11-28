@@ -66,7 +66,7 @@ public class Inventory {
 		return ID;
 	}
 
-	public InventoryImportReceiptVO addCommodities(String ID, String ArrivalListID, InventoryVO vo) throws RemoteException {
+	public ResultMessage addCommodities(String ID, String ArrivalListID, InventoryVO vo) throws RemoteException {
 
 		TransferArrivalListPO receipt = receiptData.findTransferArrivalList(ArrivalListID);
 		String commodities = receipt.getTransferCenterID();
@@ -79,15 +79,12 @@ public class Inventory {
 		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(), a, b, c, d, "full");
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities, a, b, c, d);
-		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);
+		receiptData.insertImport(po);
 		inventoryData.add(inventorypo);
-		return voImport;
+		return inventoryData.add(inventorypo);
 
 	}
-    public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
-    	InventoryImportReceiptPO po= InventoryTrans. convertVOtoPO( importReceipt);
-    	return receiptData.insertImport(po);
-    }
+
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		InventoryImportReceiptPO po= InventoryTrans. convertVOtoPO( importReceipt);
 		po.setReceiptCondition(ReceiptCondition.SUBITTED);
@@ -100,7 +97,7 @@ public class Inventory {
 		return ID;
 	}
 
-	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, String Transfer) throws RemoteException {
+	public ResultMessage minusCommodities(String ID, String ImportID, String Transfer) throws RemoteException {
 		InventoryImportReceiptPO importPo = receiptData.findImport(ImportID);
 		int a = importPo.getA();
 		int b = importPo.getB();
@@ -113,16 +110,12 @@ public class Inventory {
 		String Commodities = importPo.getCommoditiesID();
 		InventoryExportReceiptPO po = new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,
 				Transfer, TransferID, Commodities, a, b, c, d);
-		InventoryExportReceiptVO voExport=InventoryTrans.convertPOtoVO(po);
+		receiptData.insertExport(po);
 		inventorypo.setEmptyOrFull("empty");
 		inventoryData.modify(inventorypo);
-		return voExport;
+		return receiptData.insertExport(po);
 	}
-	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
-	    	InventoryExportReceiptPO po= InventoryTrans. convertVOtoPO( exportReceipt);
-	    	return receiptData.insertExport(po);
-	    }
-	 
+
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		InventoryExportReceiptPO po= InventoryTrans.convertVOtoPO( exportReceipt);
 		po.setReceiptCondition(ReceiptCondition.SUBITTED);
