@@ -63,7 +63,11 @@ public class OrderController implements OrderBLService{
 
 	@Override
 	public OrderVO inquireOrder(String orderNumber) {
-		// TODO Auto-generated method stub
+		try {
+			return orderBL.inquireOrder(orderNumber);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
