@@ -61,7 +61,8 @@ public class FacilityTrans {
 			double salary = vo.Salary;
 			String workTime = vo.WorkTime;
 			int receiptNum = vo.ReceiptNum;
-			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+			String carID = vo.carID;
+			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum,carID);
 		}
 	}
 
@@ -78,7 +79,8 @@ public class FacilityTrans {
 			double salary = po.getSalary();
 			String workTime = po.getWorkTime();
 			int receiptNum = po.getReceiptNum();
-			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+			String carID = po.getCarID();
+			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum,carID);
 		}
 	}
 
