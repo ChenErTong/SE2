@@ -58,7 +58,7 @@ public class Receipt  {
 		return POs;
 	}
 	
-	public <T extends ReceiptVO> ArrayList<T> findTypeReceipt(ReceiptType type,ReceiptState state) throws RemoteException {
+	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
 		for (ReceiptPO receiptPO : pos) {

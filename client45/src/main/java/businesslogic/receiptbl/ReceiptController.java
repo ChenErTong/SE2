@@ -34,23 +34,13 @@ public class ReceiptController implements ReceiptBLService{
 	}
 
 	@Override
-	public <T extends ReceiptVO> ArrayList<T> showReceipt(ReceiptType type, ReceiptState state) {
+	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type, ReceiptState state) {
 		try {
-			return ReceiptBL.findTypeReceipt(type, state);
+			return ReceiptBL.show(type, state);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-
-	/*@Override
-	public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) {
-		try {
-			return ReceiptBL.showReceipt(receiptStates);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}*/
 
 }
