@@ -34,16 +34,22 @@ public class ReceiptTrans {
 		if(vo==null)
 			return null;
 		else {
-			ReceiptType type = vo.type;
+			ReceiptType type =vo.type;
 			switch (type) {
-			case value:
-				
-				break;
-
-			default:
-				break;
-			return null;
-//			}
+			case BRANCH_ARRIVAL:		return convertSpecialVOtoPO((BranchArrivalListVO)vo);
+//			case BRANCH_DELIVER: 		return convertSpecialVOtoPO((DeliveryListVO)vo);
+//			case BRANCH_TRUCK:			return convertSpecialVOtoPO((LoadingListVO)vo);
+//			case TRANS_ARRIVAL:		return convertSpecialVOtoPO((TransferArrivalListVO)vo);
+//			case TRANS_PLANE:
+//			case TRANS_TRAIN:
+//			case TRANS_TRUCK:			return convertSpecialVOtoPO((TransferOrderVO)vo);
+//			case EXPENSE:						return convertSpecialVOtoPO((DebitBillVO)vo);
+//			case PAY:								return convertSpecialVOtoPO((PaymentBillVO)vo);
+//			case TAKINGSTOCK:			return convertSpecialVOtoPO((AdjustReceiptVO)vo);
+//			case OUTSTOCK:					return convertSpecialVOtoPO((InventoryExportReceiptVO)vo);
+//			case INSTOCK:					return convertSpecialVOtoPO((InventoryImportReceiptVO)vo);
+			default:  		return null;
+			}
 		}
 	}
 	
@@ -79,6 +85,15 @@ public class ReceiptTrans {
 		CommodityState state = po.getState();
 		ArrayList<String> orders = po.getOrders();
 		return new BranchArrivalListVO(id, type, transferListID, departure, state, orders);
+	}
+	public static ReceiptPO convertSpecialVOtoPO(BranchArrivalListVO vo){
+		String ID = vo.ID;
+		ReceiptType type = vo.type;
+		String transferListID = vo.transferListID;
+		String departure = vo.departure;
+		CommodityState state = vo.state;
+		ArrayList<String> orders = vo.orders;
+		return new BranchArrivalListPO(ID, type, transferListID, departure, state, orders);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(DeliveryListPO po){
 		String id = po.getID();

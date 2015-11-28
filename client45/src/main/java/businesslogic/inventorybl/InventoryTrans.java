@@ -34,15 +34,14 @@ public class InventoryTrans {
 	
 	
 	public static InventoryExportReceiptPO convertVOtoPO(InventoryExportReceiptVO vo){
-		InventoryExportReceiptPO po = new InventoryExportReceiptPO(vo.ID, ReceiptType.OUTSTOCK,vo.destination, vo.depture, vo. Transfer,vo. TransferID,
+		InventoryExportReceiptPO po = new InventoryExportReceiptPO(vo.ID, ReceiptType.OUTSTOCK,vo.destination, vo.depture, vo.expressType,vo. TransferID,
 				vo.CommoditiesID, vo.a, vo.b, vo.c, vo.d);
 				return po;
 	}
 	public static InventoryExportReceiptVO convertPOtoVO(InventoryExportReceiptPO po){
-		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.destination, po.depture, po. Transfer,po. TransferID,
+		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.destination, po.depture, po.expressType,po. TransferID,
 				po.CommoditiesID, po.a, po.b, po.c, po.d);
 				return vo;
-		
 	}
 	
 	public static ArrayList<InventoryVO> convertInventoryPOstoVOs(ArrayList<InventoryPO> pos) {
