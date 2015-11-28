@@ -28,7 +28,8 @@ public class BaseTrans {
 	
 	public static BasePO convertVOtoPO(BaseVO vo) {
 		
-		BasePO po = new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
+		BasePO po = null;
+//				new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
 		return po;
 	}
 }

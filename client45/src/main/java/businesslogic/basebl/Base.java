@@ -41,9 +41,6 @@ public class Base {
 		ArrayList<BaseVO> vos =BaseTrans.convertPOstoVOs(pos);
 		return vos;
 	}
-
-	
-
 	
 
 	public String getID(FindTypeBase baseType) throws RemoteException {
