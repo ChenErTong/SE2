@@ -12,9 +12,16 @@ import vo.BaseVO;
 public class BaseTrans {
 	
 	public static BaseVO convertPOtoVO(BasePO po) {
-		BaseVO vo = null;
-//				new BaseVO(po.getID(), po.getDistances(), po.getPrice(), po.getSalaryPolicies());
-		return vo;
+		if(po==null)
+			return null;
+		else {
+			String iD = po.getID();
+			String cityFrom = po.getCityFrom();
+			String cityTo = po.getCityTo();
+			double distance = po.getDistance();
+			double price = po.getPrice();
+			return new BaseVO(iD, cityFrom, cityTo, distance, price);
+		}
 	}
 	
 	public static ArrayList<BaseVO> convertPOstoVOs(ArrayList<BasePO> pos){
@@ -27,9 +34,15 @@ public class BaseTrans {
 	}
 	
 	public static BasePO convertVOtoPO(BaseVO vo) {
-		
-		BasePO po = null;
-//				new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
-		return po;
+		if(vo==null)
+			return null;
+		else {
+			String id = vo.ID;
+			String cityFrom = vo.cityFrom;
+			String cityTo = vo.cityTo;
+			double distance = vo.distance;
+			double price = vo.price;
+			return new BasePO(id, cityFrom, cityTo, distance, price);
+		}
 	}
 }

@@ -13,7 +13,6 @@ import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.ConfirmState;
-import state.FindTypeBase;
 import state.ResultMessage;
 import vo.BaseVO;
 
@@ -31,25 +30,18 @@ public class Base {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;
 	}
 
-	public ArrayList<BaseVO> show(FindTypeBase baseType) throws RemoteException {
-		ArrayList<BasePO> pos = baseData.find(baseType);
-		ArrayList<BaseVO> vos =BaseTrans.convertPOstoVOs(pos);
-		return vos;
-	}
-	
-
-	public String getID(FindTypeBase baseType) throws RemoteException {
-		return baseData.getID(baseType);
+	public String getID() throws RemoteException {
+		return baseData.getID();
 	}
 
 	public ResultMessage addBase(BaseVO vo) throws RemoteException {
-		BasePO PO = BaseTrans.convertVOtoPO(vo);
-		return baseData.add(PO);
+		BasePO basePO = BaseTrans.convertVOtoPO(vo);
+		return baseData.add(basePO);
 	}
 
 	public ResultMessage deleteBase(String ID) throws RemoteException {
@@ -57,7 +49,22 @@ public class Base {
 	}
 
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
-		BasePO PO = BaseTrans.convertVOtoPO(vo);
-		return baseData.modify(PO);
+		BasePO basePO = BaseTrans.convertVOtoPO(vo);
+		return baseData.modify(basePO);
+	}
+
+	public ArrayList<BaseVO> show() throws RemoteException {
+		ArrayList<BasePO> pos = baseData.find();
+		ArrayList<BaseVO> vos = BaseTrans.convertPOstoVOs(pos);
+		return vos;
+	}
+
+	public BaseVO find(String id) throws RemoteException {
+		ArrayList<BasePO> pos = baseData.find();
+		for (BasePO basePO : pos) {
+			if(basePO.getID().equals(id))
+				return BaseTrans.convertPOtoVO(basePO);
+		}
+		return null;
 	}
 }
