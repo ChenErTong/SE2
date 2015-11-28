@@ -22,12 +22,13 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 	private MyComboBox employeeTypeBox;
 	private MyComboBox policyTypeBox;
 	private MyJButton search;
-	public PolilcyInfoList(FrameManager frame_Manager) {
+	private MyJTable table;
+	public PolilcyInfoList(Panel_Manager_AdjustSalaryPolicy handle) {
 		super(50, 100, 620, 560);
-		this.initComponent( frame_Manager);
+		this.initComponent( handle);
 	}
 
-	private void initComponent(FrameManager frame_Manager) {
+	private void initComponent(Panel_Manager_AdjustSalaryPolicy handle) {
 		String [] employeeTypes = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};
 		
 		employeeType = new MyJLabel(20,10,120,30, "请选择员工类别",14,true);
@@ -44,13 +45,13 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		this.add(policyTypeBox);
 		
 		search = new MyJButton(520,10,90,30,"搜索",14);
-		search.setActionCommand("SearchOrganization");
-		search.addActionListener(frame_Manager);
+		search.setActionCommand("Search");
+		search.addActionListener(handle);
 		this.add(search);
 		
 		//the table
 		String[] headers = {"员工类别","策略类别","策略规则","详细策略解释"};
-		MyJTable table = new MyJTable(headers,false);
+		table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
@@ -81,12 +82,14 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		policyTypeBox.setSelectedItem(data[1]);
 	}
 
-	@SuppressWarnings("null")
 	public String[] getData() {
-		String  data[] = null ;
+		String  data[] = new String[2];
 		data[0] = (String) employeeTypeBox.getSelectedItem();
 		data[1] = (String) policyTypeBox.getSelectedItem();
 		return data;
+	}
+	public MyJTable getTable(){
+		return table;
 	}
 	private static final long serialVersionUID = 1L;
 

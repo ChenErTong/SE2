@@ -11,9 +11,6 @@ import ui.specialui.manager.FrameManager;
 
 public class Panel_Manager_AdjustBase extends MyJPanel{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private BaseDetails baseDetails;
 	private BaseInfoList baseInfo;

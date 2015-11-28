@@ -1,8 +1,5 @@
 package ui.specialui.manager.AdjustSalaryPolicy;
 
-
-import java.awt.Color;
-
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJLabel;
@@ -41,12 +38,20 @@ public class PolicyDetails extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	public void setUneditable() {
-		// TODO Auto-generated method stub
+		employeeType.setEditable(false);
+		policyType.setEditable(false);
+		policyRule.setEditable(false);
+		policyExplain.setEditable(false);
 		
 	}
 
 	public void setData(String[] data) {
-	
+		if(data!=null){
+			employeeType.setSelectedItem(data[0]);
+			policyType.setSelectedItem(data[1]);
+			policyRule.setText(data[2]);
+			policyExplain.setText(data[3]);
+		}
 	}
 
 	public void refresh() {
@@ -55,8 +60,15 @@ public class PolicyDetails extends MyTranslucentPanel{
 
 	public String[] getData() {
 		String[] data = new String[9];
-		
-		return data;
+		data[0] = employeeType.getSelectedIndex()+"";
+		data[1] = policyType.getSelectedIndex()+"";
+		data[2] = policyRule.getText();
+		data[3] = policyRule.getText();
+		if(data==null){
+			return null;
+		}else {
+			return data;
+		}
 	}
 
 }

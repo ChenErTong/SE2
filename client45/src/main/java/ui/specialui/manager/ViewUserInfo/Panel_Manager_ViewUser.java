@@ -10,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.accountblservice.AccountBLService;
+import state.AccountType;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
-
 import vo.accountvo.AccountVO;
 
 public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
@@ -92,19 +92,19 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 			if(data!=null){
 				switch(Integer.parseInt(data)){
 				//TODO 接口改好后再加
-					case 1 : accountVO = controller.show();
-					case 2 :accountVO = controller.show();
-					case 3 : accountVO = controller.show();
-					case 4: accountVO = controller.show();
-					case 5 :accountVO = controller.show();
-					case 6:accountVO = controller.show();
-					case 7:accountVO = controller.show();
-					case 8:accountVO = controller.show();
+					case 1 : accountVO = controller.show(AccountType.GENERAL_MANAGER);
+					case 2 :accountVO = controller.show(AccountType.COURIER);
+					case 3 : accountVO = controller.show(AccountType.INVENTORY_MANAGER);
+					case 4: accountVO = controller.show(AccountType.TRANSFER_CONTERMAN);
+					case 5 :accountVO = controller.show(AccountType.BRANCH_COUNTERMAN);
+					case 6:accountVO = controller.show(AccountType.FINANCE_MANAGER);
+					case 7:accountVO = controller.show(AccountType.ADMIN);
+					case 8:accountVO = controller.show(AccountType.DRIVER);
 					default : accountVO = controller.show();
 				}
 			
 				for(int i = 0; i < accountVO.size(); i++){
-				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
+				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
 						accountVO.get(i).Salary+"",accountVO.get(i).Phone};
 				tableModel.addRow(rowData);
 				accountPool.add(accountVO.get(i));

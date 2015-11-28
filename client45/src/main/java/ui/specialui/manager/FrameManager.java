@@ -130,20 +130,7 @@ private static final long serialVersionUID = 1L;
 			//this.add(modifyReceiptInfo);
 			//this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
 	//	}
-	else if(e.getActionCommand().equals("AddNewPolicy")){
-			
-		}else if(e.getActionCommand().equals("ModifyPolicy")){
-	
-		
-		}else if(e.getActionCommand().equals("DeletePolicy")){
-			
-		}else if(e.getActionCommand().equals("AddNewBase")){
-			
-		}else if(e.getActionCommand().equals("ModifyBase")){
-			
-		}else if(e.getActionCommand().equals("DeleteBase")){
-			
-		}else if(e.getActionCommand().equals("ExportBusinessTable")){
+		else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((Panel_Manager_BusinessPerformance)subPanel).getTable());
 				this.outputExcel();
