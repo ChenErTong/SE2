@@ -32,6 +32,7 @@ public interface BaseBLService extends BLService{
 	 * @throws RemoteException 
 	 */
 	public String getID(FindTypeBase baseType);
+	
 	/**
 	 * 添加一个常量
 	 * @param vo BaseVO
