@@ -117,7 +117,7 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 	this.add(policyDetails);
 	
 	
-	commonButton = new MyJButton(890, 670, 120, 30, "添加策略", 20);
+	commonButton = new MyJButton(890, 670, 120, 30, "确认添加", 20);
 	commonButton.setActionCommand("AddNewPolicy");
 	commonButton.addActionListener(this);
 	this.add(commonButton);

@@ -20,11 +20,12 @@ public class BaseInfoList extends MyTranslucentPanel{
 	private MyComboBox startCityList;
 	private MyComboBox arrivalCityList;
 	private MyJButton search;
-	public BaseInfoList(FrameManager frame_Manager) {
+	private MyJTable table;
+	public BaseInfoList(Panel_Manager_AdjustBase handle) {
 		super(50, 100, 620, 560);
-		this.initComponent( frame_Manager);
+		this.initComponent( handle);
 	}
-	private void initComponent(FrameManager frame_Manager) {
+	private void initComponent(Panel_Manager_AdjustBase handle) {
 
 			String [] startCity = {"所有城市"};
 			String [] arrivalCity = {"所有城市"};
@@ -38,12 +39,12 @@ public class BaseInfoList extends MyTranslucentPanel{
 			this.add(arrivalCityList);
 			search = new MyJButton(550,10,70,30,"搜索",16);
 			search.setActionCommand("SearchBase");
-			search.addActionListener(frame_Manager);
+			search.addActionListener(handle);
 			this.add(search);
 			
 			//the table
 			String[] headers = {"城市距离","运输单价","详细常量信息"};
-			MyJTable	table = new MyJTable(headers, false);
+			table = new MyJTable(headers, false);
 			table.setBackground(new Color(40, 42, 66));
 			table.setForeground(Color.WHITE);
 			table.setFont(new MyFont(14));
@@ -79,6 +80,10 @@ public class BaseInfoList extends MyTranslucentPanel{
 		data[0]= (String) startCityList.getSelectedItem();
 		data[1] =(String) arrivalCityList.getSelectedItem();
 		return data;
+	}
+	
+	public MyJTable getTable(){
+		return table;
 	}
 	private static final long serialVersionUID = 1L;
 

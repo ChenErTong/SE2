@@ -27,9 +27,11 @@ public class BaseDetails extends MyTranslucentPanel{
 		String [] arrivalCity = {"所有城市"};
 		startCityList = new MyComboBox(115,50,150,30,16,startCity);
 		this.add(startCityList);
+		startCityList.setSelectedIndex(0);
 
 		arrivalCityList = new MyComboBox(375,50,150,30,16,arrivalCity);
 		this.add(arrivalCityList);
+		arrivalCityList.setSelectedIndex(0);
 		
 		distances = new MyJTextField(115,140,150,30);
 		distances.setOnlyDouble();
@@ -44,21 +46,40 @@ public class BaseDetails extends MyTranslucentPanel{
 		
 	}
 	public void setUneditable() {
-		// TODO Auto-generated method stub
-		
+		startCityList.setEditable(false);
+		arrivalCityList.setEditable(false);
+		distances.setEditable(false);
+		price.setEditable(false);
+		baseDetail.setEditable(false);
 	}
 
 	public void setData(String[] data) {
-	
+		if(data==null){
+			return;
+		}else{
+			startCityList.setSelectedItem(data[0]);
+			arrivalCityList.setSelectedItem(data[1]);
+			distances.setText(data[2]);
+			price.setText(data[3]);
+			baseDetail.setText(data[4]);
+		}
 	}
 
 	public void refresh() {
-		
+		startCityList.setSelectedItem(null);
+		arrivalCityList.setSelectedItem(null);
+		distances.setText(null);
+		price.setText(null);
+		baseDetail.setText(null);
 	}
 
 	public String[] getData() {
-		String[] data = new String[9];
-		
+		String[] data = new String[5];
+		data[0] = startCityList.getSelectedIndex()+"";
+		data[1] = arrivalCityList.getSelectedIndex()+"";
+		data[2] = distances.getText();
+		data[3] = price.getText();
+		data[4] = baseDetail.getText();
 		return data;
 	}
 	private static final long serialVersionUID = 1L;
