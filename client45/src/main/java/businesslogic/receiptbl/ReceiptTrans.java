@@ -97,7 +97,8 @@ public class ReceiptTrans {
 		String monitorName = po.getMonitorName();
 		ArrayList<String> orders = po.getOrders();
 		String courierName = po.getCourierName();
-		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders);
+		double money = po.getMoney();
+		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){
 		String id = po.getID();

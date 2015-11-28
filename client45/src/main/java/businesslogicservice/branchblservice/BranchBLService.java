@@ -79,8 +79,6 @@ public interface BranchBLService extends BLService{
 	public ResultMessage save(ReceiptVO receipt) ;
 	
 	/**
-	 * 鑷姩璁＄畻杩愯垂
-	 * 鐢熸垚瑁呰溅鍗�
 	 * @return 瑁呰溅鍗�
 	 * @param branchID 钀ヤ笟鍘呯紪鍙�
 	 * @param destination 鐩殑鍦�
@@ -90,5 +88,5 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders);
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, double money);
 }

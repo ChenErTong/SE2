@@ -3,7 +3,10 @@ package ui.specialui.branch_conuterman.vehicleloading;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -14,18 +17,22 @@ import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.OrderVO;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class VehicleLoading extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 	private LoadingInfo loadingInfo;
 	private MyJTextField deliveryCost;
 	private MyJTable ordersID;
+	private BranchBLService branchController;
 	
 	public VehicleLoading(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 
 		this.add(new MyJLabel(550, 30, 210, 45, "车辆装车管理", 30, true));
+		
+		branchController = ControllerFactory.getBranchController();
 		
 		loadingInfo = new LoadingInfo();
 		this.add(loadingInfo);
@@ -100,15 +107,23 @@ public class VehicleLoading extends MyJPanel {
 		return cost;
 	}
 	
-	public int produceLoadingList(){
+	public LoadingListVO produceLoadingList(){
 		String[] loadingInfo;
 		double cost;
-		if((loadingInfo = this.loadingInfo.getInfo())== null) return 1;	
-		if((cost = Double.parseDouble(deliveryCost.getText())) <= 0) return 2;
+		if((loadingInfo = this.loadingInfo.getInfo())== null){
+			new MyNotification(this, "请完成装车信息填写", Color.RED);
+			return null;	
+		}
+		if((cost = Double.parseDouble(deliveryCost.getText())) <= 0){
+			new MyNotification(this, "运费应大于0元", Color.RED);
+			return null;
+		}
 		String[][] orderNum = ordersID.getData();
-		
-		// TODO
-		// 根据数据生成装车单
-		return 0;
+		ArrayList<String> ordernum = new ArrayList<String>(orderNum.length);
+		for (String num : ordernum) {
+			ordernum.add(num);
+		}
+		new MyNotification(this, "成功生成装车单", Color.GREEN);
+		return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
 	}
 }

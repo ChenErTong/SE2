@@ -123,9 +123,9 @@ public class Branch{
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders) throws RemoteException {
+			ArrayList<String> orders, double money) throws RemoteException {
 		String ID = receiptData.getID();
-		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders);
+		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders, money);
 		//更改VO状态
 		orderInfo.changeOrderState(orders, "货物已到达"+destination+"营业厅");
 		return vo;

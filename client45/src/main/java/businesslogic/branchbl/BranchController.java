@@ -85,9 +85,9 @@ public class BranchController implements BranchBLService {
 
 	@Override
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders, double money) {
 		try {
-			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders);
+			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

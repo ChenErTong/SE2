@@ -22,10 +22,10 @@ public class LoadingListPO extends OrderReceiptPO{
 	private String carID;
 	private String monitorName;
 	private String courierName;
-	
+	private double money;
 
 	public LoadingListPO(String ID, ReceiptType type, String branchID, String transferNumber, String distination,
-			String carID, String monitorName, String courierName, ArrayList<String> orders) {
+			String carID, String monitorName, String courierName, ArrayList<String> orders, double money) {
 		super(ID, type,orders);
 		this.branchID = branchID;
 		this.transferNumber = transferNumber;
@@ -33,6 +33,7 @@ public class LoadingListPO extends OrderReceiptPO{
 		this.carID = carID;
 		this.monitorName = monitorName;
 		this.courierName = courierName;
+		this.money = money;
 	}
 
 	public String getBranchID() {
@@ -58,7 +59,12 @@ public class LoadingListPO extends OrderReceiptPO{
 	public String getCourierName() {
 		return courierName;
 	}
-	
-	
 
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
 }
