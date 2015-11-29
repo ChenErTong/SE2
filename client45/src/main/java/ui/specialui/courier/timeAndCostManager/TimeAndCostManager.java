@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
+import ui.GetDate;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -88,7 +89,7 @@ public class TimeAndCostManager extends MyJPanel{
 		double cost = controller.getCost(commodities, senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
 
 		MyNotification n = new MyNotification(this, "预计到达时间\n" + arrivalDate, Color.GREEN);
 		
