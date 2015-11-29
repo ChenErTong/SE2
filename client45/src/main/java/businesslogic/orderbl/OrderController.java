@@ -61,4 +61,10 @@ public class OrderController implements OrderBLService{
 		return null;
 	}
 
+	@Override
+	public OrderVO inquireOrder(String orderNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

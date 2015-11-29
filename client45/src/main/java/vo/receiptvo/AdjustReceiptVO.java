@@ -5,8 +5,8 @@ import state.ReceiptType;
 public class AdjustReceiptVO  extends ReceiptVO{
 
 	
-	public AdjustReceiptVO(String id, ReceiptType type,String exA, String exB, String exC, String exD, String aftA, String aftB,
-			String aftC, String aftD) {
+	public AdjustReceiptVO(String id, ReceiptType type,int exA, int exB, int exC, int exD, int aftA, int aftB,
+			int aftC, int aftD) {
 		super(id, type);
 		this.exA = exA;
 		this.exB = exB;
@@ -17,15 +17,15 @@ public class AdjustReceiptVO  extends ReceiptVO{
 		this.aftC = aftC;
 		this.aftD = aftD;
 	}
-	public String exA;
-	public String exB;
-	public String exC;
-	public String exD;
+	public int exA;
+	public int exB;
+	public int exC;
+	public int exD;
 	
-	public String aftA;
-	public String aftB;
-	public String aftC;
-	public String aftD;
+	public int aftA;
+	public int aftB;
+	public int aftC;
+	public int aftD;
 	
 
 }

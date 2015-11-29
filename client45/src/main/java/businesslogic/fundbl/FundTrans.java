@@ -161,5 +161,9 @@ public class FundTrans {
 		}
 		return pos;
 	}
-
+   
+	public static DebitBillVO convertDebitPOtoDebitVO(DebitBillPO po){
+	   DebitBillVO vo=new  DebitBillVO(po.getID(),po.getType(),po.getCourierID(),po.getMoney(), po.getOrderNumbers());
+	return vo;
+   }
 }

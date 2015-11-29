@@ -33,6 +33,7 @@ public class Driver{
 
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException{
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
+		System.out.println(driverPO.getID());
 		return DriverData.add(driverPO);
 	}
 
@@ -53,6 +54,7 @@ public class Driver{
 	}
 	
 	public DriverVO findDriver(String ID) throws RemoteException {
+		System.out.println(DriverData==null);
 		DriverPO driverPO = DriverData.find(ID);
 		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
 		return driverVO;

@@ -70,7 +70,11 @@ public class Receipt  {
 		}
 		return vos;
 	}
-	
+	/*public static void main(String[] args) throws RemoteException {
+		Receipt receipt = new Receipt();
+		ArrayList<TransferOrderVO> vos = receipt.show(ReceiptType.TRANS_PLANE, null);
+		System.out.println(vos);
+	}*/
 	/*public ArrayList<ReceiptVO> showReceipt(ReceiptState receiptStates) throws RemoteException {
 		ArrayList<ReceiptPO> pos=receiptData.showReceipt(receiptStates);
 		ArrayList<ReceiptVO> vos=ReceiptTrans.convertPOstoVOs(pos);

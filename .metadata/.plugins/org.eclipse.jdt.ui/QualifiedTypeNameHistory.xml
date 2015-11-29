@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="po.InventoryPO"/>
-<fullyQualifiedTypeName name="vo.InventoryVO"/>
-<fullyQualifiedTypeName name="businesslogicservice.inventoryblservice.InventoryBLService"/>
-<fullyQualifiedTypeName name="vo.InventoryCheckVO"/>
-<fullyQualifiedTypeName name="businesslogic.record.record"/>
-<fullyQualifiedTypeName name="businesslogicservice.recordblservice.RecordBLService"/>
 <fullyQualifiedTypeName name="vo.BaseVO"/>
 <fullyQualifiedTypeName name="businesslogic.basebl.Base"/>
 <fullyQualifiedTypeName name="po.BasePO"/>
@@ -26,8 +20,6 @@
 <fullyQualifiedTypeName name="businesslogicservice.orderblservice.OrderBLService"/>
 <fullyQualifiedTypeName name="businesslogic.orderbl.OrderController"/>
 <fullyQualifiedTypeName name="org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="state.ResultMessage"/>
 <fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
 <fullyQualifiedTypeName name="state.ReceiptState"/>
@@ -48,11 +40,8 @@
 <fullyQualifiedTypeName name="po.receiptpo.ReceiptPO"/>
 <fullyQualifiedTypeName name="businesslogic.fundbl.DebitAndPayBill"/>
 <fullyQualifiedTypeName name="vo.receiptvo.DebitAndPayBillVO"/>
-<fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
 <fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
 <fullyQualifiedTypeName name="po.BussinessOneDayPO"/>
-<fullyQualifiedTypeName name="vo.BussinessOneDayVO"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryImportReceiptVO"/>
 <fullyQualifiedTypeName name="po.receiptpo.InventoryImportReceiptPO"/>
 <fullyQualifiedTypeName name="org.omg.PortableServer.POA"/>
@@ -60,4 +49,15 @@
 <fullyQualifiedTypeName name="po.receiptpo.InventoryExportReceiptPO"/>
 <fullyQualifiedTypeName name="businesslogic.inventorybl.InventoryTrans"/>
 <fullyQualifiedTypeName name="vo.receiptvo.InventoryExportReceiptVO"/>
+<fullyQualifiedTypeName name="state.ResultMessage"/>
+<fullyQualifiedTypeName name="po.receiptpo.DebitAndPayBillPO"/>
+<fullyQualifiedTypeName name="dataservice.accountdataservice.AccountDataService"/>
+<fullyQualifiedTypeName name="po.accountpo.AccountPO"/>
+<fullyQualifiedTypeName name="businesslogic.accountbl.Account"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="businesslogic.fundbl.FundTrans"/>
+<fullyQualifiedTypeName name="vo.BussinessOneDayVO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="po.receiptpo.DebitBillPO"/>
+<fullyQualifiedTypeName name="vo.receiptvo.DebitBillVO"/>
 </qualifiedTypeNameHistroy>

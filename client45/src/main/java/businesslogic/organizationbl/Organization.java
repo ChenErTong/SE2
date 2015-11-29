@@ -83,4 +83,13 @@ public class Organization {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
 		return transferData.modify(transferPO);
 	}
+	
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+		ArrayList<BranchPO> pos = branchData.find();
+		ArrayList<String> branchNumbers = new ArrayList<>();
+		for (BranchPO branchPO : pos) {
+			branchNumbers.add(branchPO.getOrganizationID());
+		}
+		return branchNumbers;
+	}
 }

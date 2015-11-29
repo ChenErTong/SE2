@@ -18,9 +18,5 @@ public class DriverPO extends AccountPO{
 	public void setCarID(String carID) {
 		this.carID = carID;
 	}
-	
-	
-
-	
 
 }

@@ -13,11 +13,8 @@ public class AccountVO {
 	public String IDCard;
 	/** 手机号 **/
 	public String Phone;
-
-	public AccountVO(String iD) {
-		ID = iD;
-	}
-
+	/**营业厅编号*/
+	public String branchID;
 	/** 工资情况 **/
 	public double Salary;
 	/** 任职时间 **/
@@ -27,8 +24,6 @@ public class AccountVO {
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
 			String workTime, int receiptNum) {
-
-		super();
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;

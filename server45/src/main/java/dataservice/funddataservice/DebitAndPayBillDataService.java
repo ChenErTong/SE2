@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import po.receiptpo.DebitBillPO;
 import state.ReceiptState;
 import state.ReceiptType;
 
@@ -67,7 +68,7 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	
 	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState State) throws RemoteException;
 	
-	public ArrayList<DebitAndPayBillPO> showDate(String date)throws RemoteException;
+	public ArrayList<DebitBillPO> showDate(String date)throws RemoteException;
 	
 
 }

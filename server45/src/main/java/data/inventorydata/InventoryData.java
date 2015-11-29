@@ -82,4 +82,6 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
+	
+
 }

@@ -23,6 +23,6 @@ public class mainForUITest2 {
 		
 //		new	Frame_Transfer();
 		
-//		new Frame_Inventory();
+//	new Frame_Inventory();
 	}
 }

@@ -171,7 +171,7 @@ public class DriverInfoManage extends MyJPanel {
 	 * 查找车辆
 	 * @param facilityId 
 	 */
-	private boolean searchDriver(String driverId) {		
+	private boolean searchDriver(String driverId) {	
 		driver = driverController.findDriver(driverId);
 		if(driver == null){
 			return false;
@@ -195,6 +195,7 @@ public class DriverInfoManage extends MyJPanel {
 		if(data == null) return 1;
 		
 		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], 0.0, data[6], 0, data[3]);
+		System.out.println(driver.ID+"--print in ui");
 		driverController.addDriver(driver);
 		driverController.confirmOperation();
 		return 0;

@@ -3,12 +3,13 @@ package vo;
 import java.util.ArrayList;
 
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
 
 public class BussinessOneDayVO {
 	
-	public ArrayList<DebitAndPayBillVO> DebitBills;
+	public ArrayList<DebitBillVO> DebitBills;
 	double earnings;
-	public BussinessOneDayVO(ArrayList<DebitAndPayBillVO> debitBills, double earnings) {
+	public BussinessOneDayVO(ArrayList<DebitBillVO> debitBills, double earnings) {
 		super();
 		DebitBills = debitBills;
 		this.earnings = earnings;

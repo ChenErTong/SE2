@@ -136,6 +136,17 @@ public class InventoryController implements InventoryBLService {
 		return null;
 	}
 
+	@Override
+	public void Init() {
+		 try {
+			InventoryBL.Init();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 
 }

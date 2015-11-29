@@ -3,6 +3,7 @@ package ui.specialui.branch_conuterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -12,6 +13,7 @@ import ui.specialui.branch_conuterman.driverInfoManage.DriverInfoManage;
 import ui.specialui.branch_conuterman.facilityInfoManage.FacilityInfoManage;
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityInfoCheck;
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.SendCommodity;
+import ui.specialui.branch_conuterman.vehicleloading.LoadingListUI;
 import ui.specialui.branch_conuterman.vehicleloading.VehicleLoading;
 
 public class Frame_Branch extends MyJFrame implements ActionListener{
@@ -66,11 +68,11 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("produceLoadingList")){
 			//从车辆装车管理界面进入装车单界面
-			if(this.produceLoadingList()){
+			if(((VehicleLoading) subPanel).produceLoadingList() != null){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
-				subPanel = null;
-				// TODO 跳转至装车单界面
+				subPanel = new LoadingListUI();
+				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			}
 		}else if(e.getActionCommand().equals("produceArrivalList")){
 			//从接收派件货物界面进入到达单界面
@@ -198,19 +200,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		}	
 		return false;
 	}
-	
-	/**
-	 * 生成装车单
-	 * @return
-	 */
-	private boolean produceLoadingList(){
-		switch(((VehicleLoading) subPanel).produceLoadingList()){
-		case 0: new MyNotification(this, "成功生成装车单", Color.GREEN); return true;
-		case 1: new MyNotification(this, "请完成装车信息填写", Color.RED); break;
-		case 2: new MyNotification(this, "运费应大于0元", Color.RED); break;
-		}	
-		return false;
-	}
+
 	/**
 	 * 生成到达单
 	 * @return
