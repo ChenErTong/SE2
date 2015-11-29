@@ -101,5 +101,10 @@ public class Order{
 		OrderPO po= orderData.find(orderNumber);
 		return OrderTrans.convertPOtoVO(po);
 	}
+	
+	public ResultMessage updateOrder(OrderVO order) throws RemoteException {
+		OrderPO po=OrderTrans.convertVOtoPO(order);
+		return orderData.modify(po);
+	}
 
 }
