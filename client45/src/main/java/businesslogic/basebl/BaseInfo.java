@@ -18,6 +18,9 @@ public class BaseInfo implements BaseInfo_Order{
 		base = new Base();
 		baseData = base.getData();
 	}
+	/**
+	 * @see BaseInfo_Order#getArrialDateByCities(String, String, String, double)
+	 */
 	@Override
 	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, double transSpeed) throws RemoteException {
 		BasePO po = this.findBaseByCities(cityFrom, cityTo);
@@ -58,6 +61,25 @@ public class BaseInfo implements BaseInfo_Order{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	/**
+	 * @throws RemoteException 
+	 * @see BaseInfo_Order#getArrialPriceByCities(String, String, double, double)
+	 */
+	@Override
+	public double getArrialPriceByCities(String cityFrom, String cityTo, double weight, double priceConstant) throws RemoteException {
+		BasePO po = this.findBaseByCities(cityFrom, cityTo);
+		double distance;
+		if(po==null)
+			distance= 1000;
+		else
+			distance = po.getDistance();
+		double price = this.getPrice(distance,weight,priceConstant);
+		return price;
+	}
+	private double getPrice(double distance, double weight, double priceConstant) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	/*public static void main(String[] args) {

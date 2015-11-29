@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
+import state.ResultMessage;
 import vo.accountvo.AccountVO;
 
 public class AccountController implements AccountBLService{
@@ -28,5 +29,53 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
+	
+	@Override
+	public String getID() {
+		try {
+			return AccountBL.getID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public ResultMessage addBase(AccountVO vo) {
+		try {
+			return AccountBL.addBase(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public ResultMessage deleteBase(String ID) {
+		try {
+			return AccountBL.deleteBase(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public ResultMessage updateBase(AccountVO vo) {
+		try {
+			return AccountBL.updateBase(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public AccountVO find(String id) {
+		try {
+			return AccountBL.find(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 
 }
