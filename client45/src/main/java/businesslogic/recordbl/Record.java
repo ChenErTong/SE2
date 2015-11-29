@@ -10,10 +10,10 @@ import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
 	private DebitAndPayBillShowInfo_Record showInfo;
+	
 	public Record() {
 		 showInfo = new DebitAndPayBillShowInfo();
 	}
-   
 	
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
 		return showInfo.getBusinessProcess(begin, end);

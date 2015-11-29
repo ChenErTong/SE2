@@ -34,7 +34,7 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		String date = sdf.format(new Date());
 		return "CHECK"+date;
 	}
-
+	//TODO change to find
 	@Override
 	public InventoryPO getInventoryPO(String id) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
@@ -45,7 +45,7 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		}
 		return null;
 	}
-
+	//TODO
 	@Override
 	public InventoryPO getInventoryPO(int a, int b, int c, int d) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
@@ -63,7 +63,7 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 		}
 		return false;
 	}
-
+	//TODO
 	@Override
 	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
 		ArrayList< InventoryPO> inventories = new ArrayList<>();

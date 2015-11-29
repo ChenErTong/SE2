@@ -18,9 +18,6 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 	public OpeningStockData() throws RemoteException {
 	}
 
-
-
-
 	@Override
 	public void initialFile() {
 		poList=new SerSaveAndLoad<OpeningStockPO>("data/"+NAME+".ser");

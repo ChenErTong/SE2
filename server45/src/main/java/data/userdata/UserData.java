@@ -21,7 +21,7 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 	public UserData() throws RemoteException {
 	}
 
-	
+	//TODO
 	@Override
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 		for (UserPO po : poList.getInList()) {
@@ -41,6 +41,7 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 	 * Admin 默认为编号0000的用户
 	 * @author Ann
 	 */
+	//TODO
 	@Override
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
 		UserPO admin = poList.get(0);

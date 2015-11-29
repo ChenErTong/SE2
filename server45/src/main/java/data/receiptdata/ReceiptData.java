@@ -35,7 +35,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		transferArrialPrifix=configReader.getValue("transferArrialPrifix");
 	}
 
-
+	//TODO
 	@Override
 	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptState) throws RemoteException {
 		ArrayList<ReceiptPO> bills = new ArrayList<>();
@@ -89,7 +89,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	
 	
-
+	//TODO
 	@Override
 	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException {
 		ArrayList<InventoryImportReceiptPO> inventoryImportReceipts = new ArrayList<>();
@@ -99,7 +99,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		}
 		return inventoryImportReceipts;
 	}
-
+	//TODO
 	@Override
 	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException {
 		ArrayList<InventoryExportReceiptPO> inventoryExportReceipts = new ArrayList<>();
@@ -109,7 +109,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		}
 		return inventoryExportReceipts;
 	}
-
+	//TODO
 	@Override
 	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException {
 		ArrayList<AdjustReceiptPO> adjustReceipts = new ArrayList<>();
@@ -134,7 +134,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	public ResultMessage insertAdjust(AdjustReceiptPO po) throws RemoteException {
 		return super.add(po);
 	}
-
+	//TODO
 	@Override
 	public int getexportNumber(String beginDate, String endDate) throws RemoteException {
 		int size = 0;
@@ -146,7 +146,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return size;
 	}
 
-
+	//TODO
 	@Override
 	public int getimportNumber(String beginDate, String endDate) throws RemoteException {
 		int size = 0;
@@ -157,7 +157,7 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		}
 		return size;
 	}
-
+	//TODO
 	@Override
 	public int getNum(String beginDate, String endDate) throws RemoteException {
 		int size = 0;

@@ -1,8 +1,14 @@
 package po;
 
+import java.io.Serializable;
+
 import state.CommodityState;
 
-public class CommodityPO {
+public class CommodityPO  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String commodityType;
 	private double weight;
 	private double volumn;

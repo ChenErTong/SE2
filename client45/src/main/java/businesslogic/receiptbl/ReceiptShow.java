@@ -111,6 +111,5 @@ public class ReceiptShow {
 		ReceiptType type = ReceiptType.BRANCH_ARRIVAL;
 		System.out.println(type.equals(null));
 		System.out.println(type.equals(ReceiptType.BRANCH_ARRIVAL));
-		System.out.println(type.equals(ReceiptType.CONFIRM));
 	}
 }
