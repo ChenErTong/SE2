@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import org.junit.Test;
 
 import state.ResultMessage;
-import vo.InventoryVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class TestImport {

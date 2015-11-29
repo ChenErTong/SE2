@@ -14,5 +14,12 @@ public enum FindTypeAccount {
 		this.value = value;
 	}
 	
+	public boolean equals(FindTypeAccount type){
+		if(type==null)
+			return true;
+		else
+			return super.equals(type);
+	}
+	
 	
 }

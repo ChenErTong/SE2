@@ -1,7 +1,6 @@
 package data.funddata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import config.XMLReader;
 import data.ManageData;
@@ -26,8 +25,7 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 	 * @see BankAccountData#find(String, FindTypeAccount)
 	 * @author Ann
 	 */
-	@Override
-	public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
+	/*public ArrayList<BankAccountPO> find(String keywords, FindTypeAccount bankAccoutType)  throws RemoteException{
 		// type是查找的方式，为NULL则表示进行模糊查询
 		// 但是我是把所有的账户都返回了，有问题再改
 		ArrayList<BankAccountPO> bankAccounts = new ArrayList<>();
@@ -48,7 +46,7 @@ public class BankAccountData extends ManageData<BankAccountPO> implements BankAc
 			}
 		}
 		return bankAccounts;
-	}
+	}*/
 
 
 	@Override

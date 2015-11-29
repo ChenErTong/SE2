@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import businesslogic.fundbl.Expense;
 import vo.receiptvo.ExpenseVO;
-
+@Deprecated
 public class TestExpense {
 
 	@Test

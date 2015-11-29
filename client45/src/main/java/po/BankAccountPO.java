@@ -54,6 +54,10 @@ public class BankAccountPO extends PersistentObject{
 	public double getMoney() {
 		return money;
 	}
+	
+	public String getMoneyString(){
+		return money+"";
+	}
 
 	public void setMoney(double money) {
 		this.money = money;
@@ -62,6 +66,7 @@ public class BankAccountPO extends PersistentObject{
 	/**
 	 * 模糊查询
 	 * @see java.lang.Object#toString()
+	 * @author Ann
 	 */
 	@Override
 	public String toString(){

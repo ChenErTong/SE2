@@ -1,5 +1,7 @@
 package businesslogic.fundbl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 /**
  * @author LIUXUANLIN
  */
@@ -58,9 +60,35 @@ public class BankAccount {
 	}
 
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {
-		ArrayList<BankAccountPO> pos = bankAccountData.find(keywords, type);
+		ArrayList<BankAccountPO> pos =this.findByType(keywords, type);
 		ArrayList<BankAccountVO> vos = FundTrans.convertBankAccountPOstoVOs(pos);
 		return vos;
+	}
+	
+	private ArrayList<BankAccountPO> findByType(String keywords, FindTypeAccount type) throws RemoteException {
+		ArrayList<BankAccountPO> pos = bankAccountData.find();
+		ArrayList<BankAccountPO> returnpos = new ArrayList<>();
+		try {
+			for (BankAccountPO bankAccountPO : pos) {
+				Class<?> bankAccountPOClass = bankAccountPO.getClass();
+				String methodName = FindTypeAccount.toMethodName(type);
+				Method method = bankAccountPOClass.getDeclaredMethod(methodName);
+				String message = (String) method.invoke(bankAccountPO);
+				if (message.toLowerCase().contains(keywords))
+					returnpos.add(bankAccountPO);
+			}
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
+		return returnpos;
 	}
 
 }

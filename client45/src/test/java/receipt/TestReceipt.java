@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import state.ReceiptType;
 import vo.receiptvo.ReceiptVO;
 
 public class TestReceipt {

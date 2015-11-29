@@ -3,8 +3,6 @@ package receipt;
 import java.util.ArrayList;
 
 import businesslogic.receiptbl.Receipt;
-import po.receiptpo.ReceiptPO;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
 

@@ -62,6 +62,7 @@ public class BankAccountPO extends PersistentObject{
 	/**
 	 * 模糊查询
 	 * @see java.lang.Object#toString()
+	 * @author Ann
 	 */
 	@Override
 	public String toString(){

@@ -13,4 +13,18 @@ public enum FindTypeAccount {
 	FindTypeAccount(String value){
 		this.value = value;
 	}
+	/**
+	 * 根据类型返回要调用的方法名
+	 * 使用反射调用BankAccountPO的方法
+	 * @author Ann
+	 * @param type
+	 * @return
+	 */
+	public static String toMethodName(FindTypeAccount type) {
+		if(type==null)			return "toString";
+		else if(type==ID)  return "getID";
+		else if(type==NAME) return "getName";
+		else if(type==MONEY) return "getMoneyString";
+		else return null;
+	}
 }

@@ -1,12 +1,9 @@
 package inventory;
 
-import static org.junit.Assert.*;
-
-import java.rmi.RemoteException;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import po.receiptpo.InventoryExportReceiptPO;
 import state.ResultMessage;
 import vo.receiptvo.InventoryExportReceiptVO;
 

@@ -29,7 +29,7 @@ public class MockInventoryImport {
 	}
 
 	public InventoryImportReceiptPO buildImport() {
-		InventoryVO iv = new InventoryVO(null, 1, 1, 1, 1, "full");
+		new InventoryVO(null, 1, 1, 1, 1, "full");
 //		int a = iv.getA();
 //		int b = iv.getB();
 //		int c = iv.getC();
