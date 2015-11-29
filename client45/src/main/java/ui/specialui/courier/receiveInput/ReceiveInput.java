@@ -32,11 +32,13 @@ public class ReceiveInput extends MyJPanel{
 	private MyJTextField checkBoard;
 	//逻辑接口
 	private OrderBLService controller;
+	private OrderVO order;
 	
 	public ReceiveInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		controller = ControllerFactory.getOrderController();
+		order = null;
 		
 		this.add(new MyJLabel(550, 30, 200, 45, "收件信息输入", 30, true));	
 		this.add(new MyJLabel(155, 110, 100, 40, "订单号", 20, true));
@@ -86,11 +88,11 @@ public class ReceiveInput extends MyJPanel{
 	 */
 	private boolean searchOrder(String orderID) {
 		OrderBLService orderController = ControllerFactory.getOrderController();
-		OrderVO order = orderController.inquireOrder(orderID);
+		order = orderController.inquireOrder(orderID);
 		
 		if(order == null) return false;
 		
-		this.setOrderInfo(order);
+		this.setOrderInfo();
 		return true;
 	}
 
@@ -98,7 +100,7 @@ public class ReceiveInput extends MyJPanel{
 	 * 向订单信息界面生成订单信息
 	 * @param order
 	 */
-	private void setOrderInfo(OrderVO order) {
+	private void setOrderInfo() {
 		orderInfo.setText("订单编号" + order.ID + "\n");
 		orderInfo.append("寄件人信息：\n");
 		orderInfo.append("姓名：" + order.senderName + "\t");
@@ -124,10 +126,18 @@ public class ReceiveInput extends MyJPanel{
 		if((name.equals(""))||(time.equals(""))){
 			return 1;
 		}
+		if(orderInfo.getText().equals("")){
+			return 2;
+		}
 		AccountBLService accountController = ControllerFactory.getAccountController();
-		//TODO 根据当前使用者编号得到当前使用者AccountVO;
-//		AccountVO account = accountController.
-		
+
+		AccountVO account = accountController.find(frame_Courier.getID());
+		account.ordersID.add(order.ID);
+		accountController.updateBase(account);
+		order.recipientTime = time;
+		order.recipientName = name;
+		//更新订单信息
+//		controller.updata(order);
 		return 0;
 	}
 	
@@ -136,5 +146,6 @@ public class ReceiveInput extends MyJPanel{
 		receiveName.setText(null);
 		orderInfo.setText(null);
 		receiveDate.setText(GetDate.getTime());
+		order = null;
 	}
 }

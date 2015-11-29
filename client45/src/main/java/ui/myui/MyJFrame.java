@@ -72,6 +72,9 @@ public class MyJFrame extends JFrame{
 		this.add(background);
 	}
 	
+	public String getID(){
+		return this.ID;
+	}
 	/**
 	 * 透明度渐变启动界面
 	 */

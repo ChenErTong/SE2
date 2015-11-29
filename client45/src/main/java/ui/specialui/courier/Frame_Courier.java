@@ -92,6 +92,7 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 		switch(((ReceiveInput) subPanel).produceReceiveList(this)){
 		case 0: new MyNotification(this, "成功生成收件单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成收件信息填写", Color.RED); break;
+		case 2: new MyNotification(this, "请先确认一件订单", Color.RED); break;
 		}	
 		return false;
 	}
