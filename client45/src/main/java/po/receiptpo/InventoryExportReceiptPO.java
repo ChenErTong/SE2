@@ -16,23 +16,23 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public ExpressType expressType;
 	public String TransferID;
 	public String CommoditiesID;
-	public int a;
-	public int b;
-	public int c;
-	public int d;
+	public int area;
+	public int row;
+	public int frame;
+	public int position;
 	
 	public InventoryExportReceiptPO(String ID, ReceiptType type,String destination, String depture, ExpressType expressType, String transferID,
-			String commoditiesID, int a, int b, int c, int d) {
+			String commoditiesID, int area, int row, int frame, int position) {
 		super(ID, type);
 		this.destination = destination;
 		this.depture = depture;
 		this.expressType=expressType;
 		this.TransferID = transferID;
 		this.CommoditiesID = commoditiesID;
-		this.a = a;
-		this.b = b;
-		this.c = c;
-		this.d = d;
+		this.area = area;
+		this.row = row;
+		this.frame =frame;
+		this.position =position;
 	}
 	public String getDestination() {
 		return destination;
@@ -64,30 +64,31 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public void setCommoditiesID(String commoditiesID) {
 		CommoditiesID = commoditiesID;
 	}
-	public int getA() {
-		return a;
+	public int getArea() {
+		return area;
 	}
-	public void setA(int a) {
-		this.a = a;
+	public void setArea(int area) {
+		this.area = area;
 	}
-	public int getB() {
-		return b;
+	public int getRow() {
+		return row;
 	}
-	public void setB(int b) {
-		this.b = b;
+	public void setRow(int row) {
+		this.row = row;
 	}
-	public int getC() {
-		return c;
+	public int getFrame() {
+		return frame;
 	}
-	public void setC(int c) {
-		this.c = c;
+	public void setFrame(int frame) {
+		this.frame = frame;
 	}
-	public int getD() {
-		return d;
+	public int getPosition() {
+		return position;
 	}
-	public void setD(int d) {
-		this.d = d;
+	public void setPosition(int position) {
+		this.position = position;
 	}
+	
 	
 	
 }

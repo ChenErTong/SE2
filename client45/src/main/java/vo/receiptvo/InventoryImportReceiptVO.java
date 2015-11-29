@@ -11,23 +11,23 @@ public class InventoryImportReceiptVO extends ReceiptVO{
 		//货物编号
 		public String CommoditiesID;
 		// 区号
-		public int a;
+		public int area;
 		// 排号
-		public int b;
+		public int row;
 		// 架号
-		public int c;
+		public int frame;
 		// 位号
-		public int d;
+		public int position;
 		public InventoryImportReceiptVO(String id, ReceiptType type, String depture, String destination,
-				String commoditiesID, int a, int b, int c, int d) {
+				String commoditiesID, int area, int row, int frame, int position) {
 			super(id, type);
 			this.depture = depture;
 			this.destination = destination;
 			CommoditiesID = commoditiesID;
-			this.a = a;
-			this.b = b;
-			this.c = c;
-			this.d = d;
+			this.area=area;
+			this.row=row;
+			this.frame=frame;
+			this.position=position;
 		}
 
 	
