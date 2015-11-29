@@ -82,7 +82,6 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 
 
 	private static final long serialVersionUID = 1L;
-	@SuppressWarnings("null")
 	private void showAll() {
 		table = policyInfoList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -108,11 +107,13 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 
 @Override
 public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};*/
-	if(e.getActionCommand().equals("CheckAdd'")){/*		String [] policyList = {"按月","计次","提成"};*/
+	if(e.getActionCommand().equals("CheckAdd")){/*		String [] policyList = {"按月","计次","提成"};*/
+		System.out.println("111");
 		String[] data = addPolicy.getData();
 		if(addPolicy.getData()==null){
 			this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
-		}else if(data[0].equals("0")&&data[1].equals("3")){
+		}else if(data[0].equals("0")&&data[1].equals("2")){
+			System.out.println("111");
 			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("AddSucceed!");
@@ -142,7 +143,7 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 		table = policyInfoList.getTable();
 		policyID = policyPool.get(table.getSelectedRow()).ID;
 		if(table.getSelectedRowCount() == 0){
-			this.add(new MyNotification(this,"请先选择要删除的策略！",Color.RED));
+			new MyNotification(this,"请先选择要删除的策略！",Color.RED);
 		}else{
 			new MyNotification(this,"正在删除策略！",Color.RED);
 			this.deletePolicy();
@@ -159,22 +160,21 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			data[0] = policyPool.get(table.getSelectedRow()).userIdentity;
 			data[1] = policyPool.get(table.getSelectedRow()).salaryPolicy;
 			data[2] = policyPool.get(table.getSelectedRow()).remark;
-			data[3] = "";
 			modifyPolicy.setData(data);
 		}
 	}else if(e.getActionCommand().equals("CheckModify")){
 		table = policyInfoList.getTable();
 		policyID = policyPool.get(table.getSelectedRow()).ID;
-		if(table.getSelectedRow()==0){
-			this.add(new MyNotification(this,"请先选择需要修改的策略！",Color.RED));
-		}else{
+		//if(table.getSelectedRow()==0){
+			//this.add(new MyNotification(this,"请先选择需要修改的策略！",Color.RED));
+		//}else{
 			if(modifyPolicy.getData()==null){
-				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
+				new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED);
 			}else{
-				this.add(new MyNotification(this,"正在修改策略信息！",Color.GREEN));
+				new MyNotification(this,"正在修改策略信息！",Color.GREEN);
 				this.modifyPolicy();
 			}
-		}
+		//}
 	}else if(e.getActionCommand().equals("Search")){
 		table = policyInfoList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -203,10 +203,10 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			tableModel.addRow(rowData);
 			policyPool.add(policyVO.get(i));
 			System.out.println("SearchSucceed!");
-				this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个员工满足条件！",Color.GREEN));
+				new MyNotification(this,"共有"+table.getColumnCount()+"个员工满足条件！",Color.GREEN);
 			}	
 			}else {
-				this.add(new MyNotification(this,"请输入查询的薪水类型！",Color.RED));
+				new MyNotification(this,"请输入查询的薪水类型！",Color.RED);
 			}
 	}
 	
@@ -220,9 +220,9 @@ private void deletePolicy() {
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("DeleteSucceed!");
 		this.showAll();
-		this.add(new MyNotification(this,"策略删除成功！",Color.GREEN));
+		new MyNotification(this,"策略删除成功！",Color.GREEN);
 	}else{
-		this.add(new MyNotification(this,"策略删除失败！",Color.RED));
+		new MyNotification(this,"策略删除失败！",Color.RED);
 	}
 	
 }
@@ -230,14 +230,15 @@ private void deletePolicy() {
 
 private void modifyPolicy() {
 	table = policyInfoList.getTable();
+	
 	String[] data = modifyPolicy.getData();
-	ResultMessage rsg = controller.updateBase(new PolicyVO("", UserIdentity.ADMIN, SalaryPolicy.EVERYMONTH, data[2]));
+	ResultMessage rsg = controller.updateBase(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("ModifySucceed!");
 		this.showAll();
-		this.add(new MyNotification(this,"策略修改成功！",Color.GREEN));		
+		new MyNotification(this,"策略修改成功！",Color.GREEN);		
 	}else{
-		this.add(new MyNotification(this,"策略修改失败！",Color.RED));
+		new MyNotification(this,"策略修改失败！",Color.RED);
 	}
 }
 	

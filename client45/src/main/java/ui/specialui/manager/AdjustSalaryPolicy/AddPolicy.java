@@ -15,6 +15,7 @@ public class AddPolicy extends MyTranslucentPanel{
 	}
 
 	private void initComponent() {
+		this.add(new MyJLabel(225,10,100,30,"添加策略",20,true));
 		this.add(new MyJLabel(25,50,90,30,"员工类别",18,true));
 		this.add(new MyJLabel(285,50,90,30,"策略类别",18,true));
 		this.add(new MyJLabel(25,140,90,30,"策略规则",18,true));

@@ -31,7 +31,7 @@ public class UserDetails extends MyTranslucentPanel{
 
 	private void initComponent() {
 		fields = new MyJTextField[4];
-		this.add(new MyJLabel(10, 60, 90, 30, "用户编号", 18, true));
+		this.add(new MyJLabel(10, 60, 90, 30, "营业厅编号", 18, true));
 		fields[0] = new MyJTextField(100,60,140,30);
 		//fields[0].setVisible(true);
 		fields[0].setOnlyInteger(10);

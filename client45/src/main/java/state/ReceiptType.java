@@ -16,7 +16,7 @@ public enum ReceiptType {
 	BRANCH_TRUCK("装车单", "ZCD"),
 	BRANCH_ARRIVAL("营业厅到达单", "YYTDDD"),
 	BRANCH_DELIVER("营业厅派件单", "YYTPJD"),
-	EXPENSE("收款单", "SKD"),
+	DEBIT("收款单", "SKD"),
 	PAY("付款单","FKD"),
 	TRANS_ARRIVAL("中转中心到达单", "ZZZXDDD"),
 	TRANS_PLANE("飞机转运单", "FJZYD"),

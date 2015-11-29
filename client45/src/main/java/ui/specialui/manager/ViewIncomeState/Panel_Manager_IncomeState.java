@@ -18,6 +18,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.manager.FrameManager;
 import vo.BussinessConditionVO;
@@ -185,7 +186,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==check){
 			if(this.getData()==null){
-				//this.add(new MyNotification());
+				new MyNotification(this,"请选择截止日期！",Color.RED);
 			}else{
 				
 				String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());

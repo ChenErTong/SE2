@@ -46,7 +46,7 @@ public class FundTrans {
 	public static DebitAndPayBillPO convertVOtoPO(DebitAndPayBillVO VO) {
 		/**类似factory*/
 		ReceiptType type = VO.type;
-		if (type == ReceiptType.EXPENSE)	return convertVOtoPO((DebitBillVO) VO);
+		if (type == ReceiptType.DEBIT)	return convertVOtoPO((DebitBillVO) VO);
 		if (type == ReceiptType.PAY) 	return convertVOtoPO((PaymentBillVO) VO);
 		else			return null;
 	}
@@ -54,7 +54,7 @@ public class FundTrans {
 	public static DebitAndPayBillVO convertPOtoVO(DebitAndPayBillPO PO) {
 		/**类似factory*/
 		ReceiptType type = PO.getType();
-		if (type == ReceiptType.EXPENSE)	return convertPOtoVO((DebitBillPO)PO);
+		if (type == ReceiptType.DEBIT)	return convertPOtoVO((DebitBillPO)PO);
 		if (type == ReceiptType.PAY) 	return convertPOtoVO((PaymentBillPO)PO);
 		else return null;
 	}

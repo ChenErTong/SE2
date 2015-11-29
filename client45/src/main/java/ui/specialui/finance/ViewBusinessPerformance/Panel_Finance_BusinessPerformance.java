@@ -211,7 +211,7 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel imple
 						
 						DebitAndPayBillVO dpo = vo.get(i);//{"单据编号","单据种类","单据内容","单据金额","生成时间”};
 						switch(dpo.type){
-						case EXPENSE: DebitBillVO db = (DebitBillVO) dpo;
+						case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
 								      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
 									 tableModel.addRow(rowData);
 						case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;

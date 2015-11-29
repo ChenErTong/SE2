@@ -14,7 +14,6 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.Frame_Finance;
 
 public class PayReceiptList extends MyTranslucentPanel{
 	private MyJLabel chooseDate;
@@ -22,7 +21,7 @@ public class PayReceiptList extends MyTranslucentPanel{
 	private MyJButton search;
 	private MyJTable table;
 	public PayReceiptList(Panel_Finance_SettlementManage handle) {
-		super(50, 100, 620, 560);
+		super(50, 100, 620, 240);
 		this.initComponent(handle);
 	}
 
@@ -78,7 +77,7 @@ public class PayReceiptList extends MyTranslucentPanel{
 	
 	private static final long serialVersionUID = 1L;
 	public MyJTable getTable() {
-		// TODO Auto-generated method stub
+	
 		return table;
 	}
 

@@ -37,7 +37,7 @@ public class DebitAndPayBillShow {
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.EXPENSE);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT);
 		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
 		return vos;
 	}
@@ -61,7 +61,7 @@ public class DebitAndPayBillShow {
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.EXPENSE, ReceiptState.SUCCESS);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.SUCCESS);
 		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
 		return vos;
 	}
@@ -73,7 +73,7 @@ public class DebitAndPayBillShow {
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.EXPENSE, ReceiptState.FAILURE);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.FAILURE);
 		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
 		return vos;
 	}
@@ -85,7 +85,7 @@ public class DebitAndPayBillShow {
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.EXPENSE, ReceiptState.DRAFT);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.DRAFT);
 		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
 		return vos;
 	}

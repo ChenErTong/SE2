@@ -43,7 +43,7 @@ public class ReceiptConductor {
 			return writeTakingStock((AdjustReceiptVO)receipt);
 		}else if(receiptType.equals(ReceiptType.PAY)){
 			return writePay((DebitAndPayBillVO)receipt);
-		}else if(receiptType.equals(ReceiptType.EXPENSE)){
+		}else if(receiptType.equals(ReceiptType.DEBIT)){
 			return writeExpense((ExpenseVO)receipt);
 		}
 		return null;

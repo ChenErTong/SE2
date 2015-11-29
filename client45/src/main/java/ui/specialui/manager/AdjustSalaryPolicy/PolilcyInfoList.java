@@ -50,7 +50,7 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		this.add(search);
 		
 		//the table
-		String[] headers = {"员工类别","策略类别","策略规则","详细策略解释"};
+		String[] headers = {"员工类别","策略类别","策略规则"};
 		table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);

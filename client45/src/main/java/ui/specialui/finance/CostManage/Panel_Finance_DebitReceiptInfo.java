@@ -18,28 +18,29 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 	private MyJTextField numberField;
 	private MyJTextField courierField;
 	private MyJTextField dateField;
-
+	private MyJTable table;
 	public Panel_Finance_DebitReceiptInfo() {
-		super(680,100,550,562);
+		super(660,100,550,240);
 		this.initComponent();
 	}
 
 	private void initComponent() {
+		this.add(new MyJLabel(240,10,150,30,"收款单信息",18,true));
 		this.add(new MyJLabel(40,50,90,30,"收款日期",16,true));
 		this.add(new MyJLabel(290,50,90,30,"收款金额",16,true));
-		this.add(new MyJLabel(40,160,90,30,"收款快递员",16,true));
-		this.add(new MyJLabel(290,160,100,30,"对应订单号",16,true));
+		this.add(new MyJLabel(40,90,90,30,"收款快递员",16,true));
+		this.add(new MyJLabel(290,90,100,30,"对应订单号",16,true));
 		
 		dateField = new MyJTextField(140,50,120,30);
 		this.add(dateField);
 		numberField = new MyJTextField(380,50,120,30);
 		this.add(numberField);
-		courierField = new MyJTextField(140,160,120,30);
+		courierField = new MyJTextField(140,90,120,30);
 		this.add(courierField);
 		
 		//the table
 		String[] headers = {"对应订单号"};
-		MyJTable	table = new MyJTable(headers, false);
+		table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
@@ -55,7 +56,7 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 						
-		jsp.setBounds(390, 160, 130, 300);
+		jsp.setBounds(390, 90, 130, 140);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());
@@ -67,8 +68,13 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	public void setUneditable() {
-		// TODO Auto-generated method stub
+		dateField.setEditable(false);
+		numberField.setEditable(false);
+		courierField.setEditable(false);
 		
 	}
 
+	public MyJTable getTable(){
+		return table;
+	}
 }

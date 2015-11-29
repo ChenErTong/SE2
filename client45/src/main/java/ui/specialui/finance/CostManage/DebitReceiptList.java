@@ -21,12 +21,13 @@ public class DebitReceiptList extends MyTranslucentPanel{
 	private MyComboBox branchList;
 	private MyComboBox dateList;
 	private MyJButton search;
-	public DebitReceiptList(Frame_Finance frame_Finance) {
+	private MyJTable table;
+	public DebitReceiptList(Panel_Finance_CostManagement handle) {
 		super(50, 100, 620, 560);
-		this.initComponent(frame_Finance);
+		this.initComponent(handle);
 	}
 
-	private void initComponent(Frame_Finance frame_Finance) {
+	private void initComponent(Panel_Finance_CostManagement handle) {
 		// TODO Auto-generated method stub
 
 		chooseBranch = new MyJLabel(20,10,150,30,"请选择营业厅和日期",14,true);
@@ -43,7 +44,7 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		
 		search = new MyJButton(490,10,90,30,"搜索",14);
 		search.setActionCommand("SearchDebitReceipt");
-		search.addActionListener(frame_Finance);
+		search.addActionListener(handle);
 		this.add(search);
 		//the table
 				String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
@@ -81,6 +82,10 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		data[0] = (String) branchList.getSelectedItem();
 		data[1] = (String) dateList.getSelectedItem();
 		return data;
+	}
+	
+	public MyJTable getTable(){
+		return table;
 	}
 
 	private static final long serialVersionUID = 1L;

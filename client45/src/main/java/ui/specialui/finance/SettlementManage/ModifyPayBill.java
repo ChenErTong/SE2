@@ -2,19 +2,17 @@ package ui.specialui.finance.SettlementManage;
 
 import ui.GetDate;
 import ui.myui.MyJLabel;
-import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-/**
- *pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date
- */
-public class PayReceiptInfo extends MyTranslucentPanel{
+
+public class ModifyPayBill extends MyTranslucentPanel{
 	private MyJTextField[] fields ;
-	public PayReceiptInfo() {
-		super(680,100,550,240);
+	public ModifyPayBill() {
+		super(680, 390,550,240);
 		this.initComponent();
 	}
 
+	private static final long serialVersionUID = 1L;
 	private void initComponent() {
 		this.add(new MyJLabel(240,10,150,30,"添加收款单",18,true));
 		this.add(new MyJLabel(40,50,90,30,"付款人",16,true));
@@ -46,7 +44,7 @@ public class PayReceiptInfo extends MyTranslucentPanel{
 		this.add(fields[5]);		
 	}
 
-	private static final long serialVersionUID = 1L;
+
 
 	public void setUneditable() {
 		for(MyJTextField field: fields){
@@ -71,6 +69,5 @@ public class PayReceiptInfo extends MyTranslucentPanel{
 			fields[i].setText(data[i]);
 		}
 	}
-
 
 }

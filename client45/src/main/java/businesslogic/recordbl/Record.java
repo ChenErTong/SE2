@@ -48,7 +48,7 @@ public class Record {
 		for (DebitAndPayBillPO po : POs) {
 			ReceiptType type = po.getType();
 			// 如果是收款单
-			if (type == ReceiptType.EXPENSE) {
+			if (type == ReceiptType.DEBIT) {
 				income = income + po.getMoney();
 			}
 			// 如果是付款单
@@ -68,7 +68,7 @@ public class Record {
 		for (DebitAndPayBillPO po : POs) {
 			ReceiptType type = po.getType();
 			// 如果是收款单
-			if (type == ReceiptType.EXPENSE) {
+			if (type == ReceiptType.DEBIT) {
 				income = income + po.getMoney();
 			}
 			
