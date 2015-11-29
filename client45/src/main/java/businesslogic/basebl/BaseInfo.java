@@ -10,7 +10,6 @@ import java.util.GregorianCalendar;
 import businesslogic.orderbl.BaseInfo_Order;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
-import ui.mainForUITest;
 
 public class BaseInfo implements BaseInfo_Order{
 	Base base;

@@ -5,8 +5,7 @@ public enum ExpressType {
 	Train("火车",7),
 	Plane("飞机",3);
 	
-	@SuppressWarnings("unused")
-	private String value;
+	public String value;
 	public double speed;
 	
 	private ExpressType(String value,double speed){

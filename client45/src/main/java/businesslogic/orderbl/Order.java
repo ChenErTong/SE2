@@ -73,6 +73,7 @@ public class Order{
 		return orderData.getID();
 	}
 
+	//TODO
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) {
 		double cost=0;

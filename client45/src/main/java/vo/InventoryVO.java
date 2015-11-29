@@ -1,6 +1,5 @@
 package vo;
 
-import state.ReceiptType;
 import vo.receiptvo.ReceiptVO;
 
 /**
