@@ -17,6 +17,7 @@ import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
+import state.ExpressType;
 import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -98,7 +99,7 @@ public class Inventory {
 		return ID;
 	}
 
-	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, String Transfer) throws RemoteException {
+	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer) throws RemoteException {
 		InventoryImportReceiptPO importPo = receiptData.findImport(ImportID);
 		int a = importPo.getA();
 		int b = importPo.getB();

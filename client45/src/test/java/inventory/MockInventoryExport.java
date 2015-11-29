@@ -1,6 +1,7 @@
 package inventory;
 
 import po.receiptpo.InventoryExportReceiptPO;
+import state.ExpressType;
 import state.ResultMessage;
 import vo.InventoryVO;
 import vo.receiptvo.InventoryExportReceiptVO;
@@ -45,7 +46,7 @@ public class MockInventoryExport {
 		String ID = "1";
 		String destination = "nanjing";
 		String CommoditiesID = "nanjing520";
-		String Transfer = "car";
+		ExpressType Transfer = ExpressType.Car;
 		String TransferID = "TransID";
 		String depture = null;
 		InventoryExportReceiptPO ier = new InventoryExportReceiptPO(ID, null, destination, depture, Transfer,

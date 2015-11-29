@@ -5,6 +5,8 @@ package businesslogic.inventorybl;
 import java.rmi.RemoteException;
 
 import businesslogicservice.inventoryblservice.InventoryBLService;
+import state.ExpressType;
+import state.ReceiptType;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
@@ -85,7 +87,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryExportReceiptVO minusCommodities(String ID ,String ImportID, String Transfer) {
+	public InventoryExportReceiptVO minusCommodities(String ID ,String ImportID, ExpressType Transfer) {
 		try {
 			return InventoryBL.minusCommodities( ID ,ImportID, Transfer);
 		} catch (RemoteException e) {
