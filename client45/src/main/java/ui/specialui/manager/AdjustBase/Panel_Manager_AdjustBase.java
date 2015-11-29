@@ -17,17 +17,16 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
+import vo.BankAccountVO;
 import vo.BaseVO;
 
 
 public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	private BaseDetails baseDetails;
 	private AddBase addBase;
 	private ModifyAccountInfo modifyBase;
 	private BaseInfoList baseInfo;
-//	private MyJButton commonButton;
 	private MyJButton add;
 	private MyJButton modify;
 	private MyJButton deleteButton;
@@ -57,13 +56,13 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new BaseInfoList(this);
 		this.add(baseInfo);
-		deleteButton = new MyJButton(150,660,180,30,"删除所选账户",16);
-		deleteButton.setActionCommand("DeleteBankAccount");
+		deleteButton = new MyJButton(150,660,180,30,"删除所选常量",16);
+		deleteButton.setActionCommand("DeleteBase");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyJButton(350,660,180,30,"修改所选账户信息",16);
-		modifyButton.setActionCommand("ModifyBankAccount");
+		modifyButton = new MyJButton(350,660,180,30,"修改所选常量信息",16);
+		modifyButton.setActionCommand("ModifyBase");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 	
@@ -131,7 +130,7 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 //		deleteButton = new MyJButton(150,640,180,30,"删除所选账户",16);
 //		deleteButton.setActionCommand("DeleteBankAccount");
 //		deleteButton.addActionListener(this);
-		this.add(deleteButton);
+		//this.add(deleteButton);
 		
 /*		modifyButton = new MyJButton(350,640,180,30,"修改所选账户信息",16);
 		modifyButton.setActionCommand("ModifyBankAccount");
@@ -330,111 +329,69 @@ private void showAll() {
 	
 	basePool.clear();
 	baseID = "";
+	//ArrayList<BaseVO> baseVO = controller.show(baseTy);
 	
-	controller = ControllerFactory.getBaseController();
-	/**
-	 * --TODO 改vo后再改
-	 */
-	ArrayList<BaseVO> baseVO =  controller.show(FindTypeBase.DISTANCE);
-	
-	for(int i = 0; i < baseVO.size(); i++){
-		ArrayList<Double> rowData = baseVO.get(i).distances;
-		String[] rowData_1 = null ;
-		for(int j=0;j<rowData.size();j++){
-			String rowData2 = rowData.get(j).toString();
-			rowData_1[j] = rowData2;	
-		}
-		tableModel.addRow(rowData_1);
-		basePool.add(baseVO.get(i));	
-	}
+	/*for(int i = 0; i < baseVO.size(); i++){
+		String[] rowData = {baseVO.get(i).ID,
+				baseVO.get(i).name, String.valueOf(baseVO.get(i).money)+"元"};
+		tableModel.addRow(rowData);
+		basePool.add(baseVO.get(i));
+	}*/
 }
 @Override
 public void actionPerformed(ActionEvent e) {
 	if(e.getActionCommand().equals("CheckAdd")){
 		//TODO -改vo和po后
 		String[] data = baseInfo.getData();
-		if(baseDetails.getData()==null){
+		if(addBase.getData()==null){
 			this.add(new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED));
 		}else{
-			//TODO- 要改BaseVO 和 BasePO
-			ResultMessage rsg = controller.addBase(new BaseVO(data[0], null, null, null));
-			if(rsg.equals(ResultMessage.SUCCESS)){
+			//TODO- 
+		//	ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(baseType),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
+		//	if(rsg.equals(ResultMessage.SUCCESS)){
 				//System.out.println("AddSucceed!");
-				this.showAll();
-				this.add(new MyNotification(this,"常量添加成功！",Color.GREEN));
-			}else{
-				this.add(new MyNotification(this,"常量添加失败！",Color.RED));
-			}
-		}
-	}else if(e.getActionCommand().equals("ViewBase")){
-		table = baseInfo.getTable();
-		if(table.getSelectedColumnCount()==0){
-			this.add(new MyNotification(this,"请先选择要查看的员工！",Color.RED));
-		}else{
-			baseID = basePool.get(table.getSelectedRow()).id;
-			String[] data = new String[7];
-			data[0] = baseID;
-		//	data[1] = basePool.get(table.getSelectedRow())
-			//data[2] = basePool.get(table.getSelectedRow()).password;
-			//data[3] = basePool.get(table.getSelectedRow()).iden;
-			//data[4] = basePool.get(table.getSelectedRow()).authority;
-			//data[5] = basePool.get(table.getSelectedRow()).phoneNumber;
-			//data[6] = basePool.get(table.getSelectedRow()).address;
-			//policyDetails.setData(data);
+			//	this.showAll();
+				new MyNotification(this,"常量添加成功！",Color.GREEN);
+			//}else{
+				new MyNotification(this,"常量添加失败！",Color.RED);
+			//}
 		}
 	}else if(e.getActionCommand().equals("DeleteBase")){
 		table = baseInfo.getTable();
 		if(table.getSelectedRowCount() == 0){
-			this.add(new MyNotification(this,"请先选择要删除的策略！",Color.RED));
+			new MyNotification(this,"请先选择要删除的常量！",Color.RED);
 		}else{
-		//	this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
-			baseID = basePool.get(table.getSelectedRow()).id;
-			//System.out.println(accountID);
-			String[] data = new String[4];
-			data[0] = baseID;
-			data[1] = "";
-			data[2] = "";
-			data[3] = "";
-			baseDetails.setData(data);
+			new MyNotification(this,"正在删除常量！！",Color.RED);
+			this.deleteBase();
 		}
 	}else if(e.getActionCommand().equals("ModifyBase")){
 		table = baseInfo.getTable();
 		if(table.getSelectedRowCount() == 0){
-			this.add(new MyNotification(this,"请先选择要修改的员工！",Color.RED));
+			new MyNotification(this,"请先选择要修改的员工！",Color.RED);
 		}else{
-			baseID = basePool.get(table.getSelectedRow()).id;
+			baseID = basePool.get(table.getSelectedRow()).ID;
 			//System.out.println(accountID);
 			String[] data = new String[4];
-			data[0] = baseID;
-			data[1] = "";
-			data[2] = "";
-			data[3] = "";
-			baseDetails.setData(data);
-		}
-	}else if(e.getActionCommand().equals("CheckDelete")){
-		table = baseInfo.getTable();
-		baseID = basePool.get(table.getSelectedRow()).id;
-		if(table.getSelectedRow()==0){
-			this.add(new MyNotification(this,"请先选择需要删除的常量！",Color.RED));
-		}else{
-				this.add(new MyNotification(this,"正在修改常量信息！",Color.GREEN));
-				this.deleteBase();
+			data[0] = basePool.get(table.getSelectedRow()).cityFrom;
+			data[1] = basePool.get(table.getSelectedRow()).cityTo;
+			data[2] = basePool.get(table.getSelectedRow()).distance+"";
+			data[3] = basePool.get(table.getSelectedRow()).price+"";
+			modifyBase.setData(data);
 		}
 	}else if(e.getActionCommand().equals("CheckModify")){
 		table = baseInfo.getTable();
-		baseID = basePool.get(table.getSelectedRow()).id;
+		baseID = basePool.get(table.getSelectedRow()).ID;
 		if(table.getSelectedRow()==0){
-			this.add(new MyNotification(this,"请先选择需要修改的员工！",Color.RED));
+			new MyNotification(this,"请先选择需要修改的员工！",Color.RED);
 		}else{
-			if(baseDetails.getData()==null){
-				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
+			if(modifyBase.getData()==null){
+				new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED);
 			}else{
-				this.add(new MyNotification(this,"正在修改策略信息！",Color.GREEN));
+				new MyNotification(this,"正在修改策略信息！",Color.GREEN);
 				this.modifyBase();
 			}
 		}
 	}else if(e.getActionCommand().equals("SearchBase")){
-		//TODO -改vo和po后
 		table = baseInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		int rowCount = table.getRowCount();
@@ -448,7 +405,7 @@ public void actionPerformed(ActionEvent e) {
 		
 		//"模糊查找", "账户编号(ID)", "账户名称", "账户余额
 		ArrayList<BaseVO> baseVO = new ArrayList<BaseVO>();
-		String[] data = baseDetails.getData();
+		String[] data = baseInfo.getData();
 		if(data!=null){
 			switch(Integer.parseInt(data[0])){
 				case 0 :// baseVO = controller.show(SalaryPolicy.BYTIMES)
@@ -472,32 +429,32 @@ public void actionPerformed(ActionEvent e) {
 }
 
 
-private void modifyBase() {
+	private void modifyBase() {
 	table = baseInfo.getTable();
-	String[] data = baseDetails.getData();
-	ResultMessage rsg = controller.updateBase(new BaseVO(data[0], null, null, null));
-	if(rsg.equals(ResultMessage.SUCCESS)){
-		System.out.println("ModifySucceed!");
-		this.showAll();
-		this.add(new MyNotification(this,"常量修改成功！",Color.GREEN));		
-	}else{
-		this.add(new MyNotification(this,"常量修改失败！",Color.RED));
-	}
+	String[] data = modifyBase.getData();
+//	ResultMessage rsg = controller.updateBase(new BaseVO(data[0], null, null, null));
+	//if(rsg.equals(ResultMessage.SUCCESS)){
+		//System.out.println("ModifySucceed!");
+		//this.showAll();
+		//this.add(new MyNotification(this,"常量修改成功！",Color.GREEN));		
+	//}else{
+		//this.add(new MyNotification(this,"常量修改失败！",Color.RED));
+	//}
 	
-}
+	}
 
 
-private void deleteBase() {
-	table =  baseInfo.getTable();
+	private void deleteBase() {
+		table =  baseInfo.getTable();
 	
-	ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).id);
-	if(rsg.equals(ResultMessage.SUCCESS)){
-		System.out.println("DeleteSucceed!");
-		this.showAll();
-		this.add(new MyNotification(this,"常量删除成功！",Color.GREEN));
-	}else{
-		this.add(new MyNotification(this,"常量删除失败！",Color.RED));
+		ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).ID);
+		if(rsg.equals(ResultMessage.SUCCESS)){
+			System.out.println("DeleteSucceed!");
+			this.showAll();
+			this.add(new MyNotification(this,"常量删除成功！",Color.GREEN));
+		}else{
+			this.add(new MyNotification(this,"常量删除失败！",Color.RED));
+		}
+	
 	}
-	
-}
 }
