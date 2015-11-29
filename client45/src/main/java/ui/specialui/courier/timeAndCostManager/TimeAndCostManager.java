@@ -2,6 +2,7 @@ package ui.specialui.courier.timeAndCostManager;
 
 import java.awt.Color;
 import java.util.ArrayList;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
@@ -88,7 +89,23 @@ public class TimeAndCostManager extends MyJPanel{
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 
-		new MyNotification(this, "运费：" + cost +"\n预计到达时间：" + arrivalDate, Color.BLACK);
+		MyNotification n = new MyNotification(this, "预计到达时间\n" + arrivalDate, Color.GREEN);
+		
+		try {
+			Thread.sleep(1500);
+			n.dispose();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		n = new MyNotification(this, "运费\n" + cost, Color.GREEN);
+		
+		try {
+			Thread.sleep(1500);
+			n.dispose();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		return 0;
 	}
