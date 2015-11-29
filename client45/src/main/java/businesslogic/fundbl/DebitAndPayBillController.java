@@ -96,5 +96,15 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 		return null;
 	}
 
+	@Override
+	public ResultMessage delete(String ID) {
+		try {
+			return DebitAndPayBL.delete(ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }

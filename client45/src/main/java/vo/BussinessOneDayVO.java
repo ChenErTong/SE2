@@ -2,7 +2,6 @@ package vo;
 
 import java.util.ArrayList;
 
-import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 
 public class BussinessOneDayVO {

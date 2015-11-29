@@ -88,9 +88,9 @@ public class OrderInput extends MyJPanel {
 		}
 		
 		double cost = controller.getCost(commodities, senderInfo[2],
-				receiverInfo[2], ExpressType.valueOf(commodityInfo[2]));
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
-				receiverInfo[2], ExpressType.valueOf(commodityInfo[2]));
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 
 		new MyNotification(frame, "运费：" + cost +"\n预计到达时间：" + arrivalDate, Color.BLACK);
 		
@@ -99,8 +99,8 @@ public class OrderInput extends MyJPanel {
 				senderInfo[1], senderInfo[3], receiverInfo[0], receiverInfo[2],
 				receiverInfo[1], receiverInfo[3], new ArrayList<String>(),
 				GetDate.getDate(), arrivalDate, cost, commodityList,
-				PackageType.valueOf(commodityInfo[1]),
-				ExpressType.valueOf(commodityInfo[2]));
+				PackageType.getType(commodityInfo[1]),
+				ExpressType.getType(commodityInfo[2]));
 		controller.addOrder(order);
 		return 0;
 	}

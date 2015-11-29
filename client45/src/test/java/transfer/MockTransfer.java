@@ -16,7 +16,7 @@ public class MockTransfer extends Transfer {
 
 	public void planeDepart(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		transferOrderVO = new TransferOrderVO(facilityID, null, departure, destination, courierName, orders);
+		transferOrderVO = new TransferOrderVO("000",facilityID, null, departure, destination, courierName, orders);
 		System.out.println("You have added a plane transfer");
 	}
 

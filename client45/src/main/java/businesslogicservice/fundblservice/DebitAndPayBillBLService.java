@@ -94,6 +94,8 @@ public interface DebitAndPayBillBLService {
 	 * @throws RemoteException
 	 */
 	public ResultMessage updateDraft(DebitAndPayBillVO vo);
+	
+	public ResultMessage delete(String ID);
 
 
 }

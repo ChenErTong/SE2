@@ -6,7 +6,6 @@ import java.rmi.RemoteException;
 
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import state.ExpressType;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;

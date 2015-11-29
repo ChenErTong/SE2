@@ -17,9 +17,9 @@ public class mainForUITest2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		new Frame_Courier();
+		new Frame_Courier();
 		
-		new Frame_Branch();
+//		new Frame_Branch();
 		
 //		new	Frame_Transfer();
 		

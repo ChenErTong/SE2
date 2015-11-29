@@ -93,5 +93,10 @@ public class Order{
 		order.commodities=commos;
 		return this.addOrder(order);
 	}
+	
+	public OrderVO inquireOrder(String orderNumber) throws RemoteException {
+		OrderPO po= orderData.find(orderNumber);
+		return OrderTrans.convertPOtoVO(po);
+	}
 
 }
