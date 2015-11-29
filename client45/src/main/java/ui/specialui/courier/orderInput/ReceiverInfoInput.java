@@ -69,4 +69,16 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 		}
 		return info;
 	}
+
+	/**
+	 * 界面刷新
+	 */
+	public void refresh() {
+		NameField.setText(null);
+		PhoneField.setText(null);
+		AddressField.setText(null);
+		OfficeField.setText(null);
+		province.setSelectedIndex(0);
+		city.setSelectedIndex(0);
+	}
 }

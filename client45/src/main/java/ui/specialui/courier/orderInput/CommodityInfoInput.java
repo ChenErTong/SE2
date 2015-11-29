@@ -131,4 +131,15 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		}
 		return commodities;
 	}
+
+	/**
+	 * 界面刷新
+	 */
+	public void refresh() {
+		commodityNumField.setText(null);
+		packKindField.setSelectedIndex(0);
+		deliveryKindField.setSelectedIndex(0);
+		choseCompareWeight.setSelected(false);
+		commodityList.clear();
+	}
 }

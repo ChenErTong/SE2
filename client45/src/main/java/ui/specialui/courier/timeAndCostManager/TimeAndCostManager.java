@@ -1,10 +1,14 @@
 package ui.specialui.courier.timeAndCostManager;
 
+import java.awt.Color;
 import java.util.ArrayList;
-
+import businesslogic.ControllerFactory;
+import businesslogicservice.orderblservice.OrderBLService;
+import state.ExpressType;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.courier.Frame_Courier;
 import ui.specialui.courier.orderInput.CommodityInfoInput;
 import ui.specialui.courier.orderInput.ReceiverInfoInput;
@@ -50,22 +54,48 @@ public class TimeAndCostManager extends MyJPanel{
 	 */
 	public int calculateTimeAndCost() {
 		String[] senderInfo;
-		if((senderInfo = sender.getSenderInfo()) == null){
+		if ((senderInfo = sender.getSenderInfo()) == null) {
 			return 1;
 		}
 		String[] receiverInfo;
-		if((receiverInfo = receiver.getReceiverInfo()) == null){
+		if ((receiverInfo = receiver.getReceiverInfo()) == null) {
 			return 2;
 		}
 		String[] commodityInfo;
-		if((commodityInfo = commodities.getCommodityInfo()) == null){
+		if ((commodityInfo = commodities.getCommodityInfo()) == null) {
 			return 3;
 		}
 		ArrayList<CommodityVO> commodityList;
-		if((commodityList = commodities.getCommodityList()) == null){
+		if ((commodityList = commodities.getCommodityList()) == null) {
 			return 4;
 		}
-		boolean isCompareWight = commodities.isCompareWight();
+		// 如果选择比较重量则矫正重量
+		if (commodities.isCompareWight()) {
+			for (CommodityVO commodityVO : commodityList) {
+				commodityVO.correctWeight();
+			}
+		}
+
+		OrderBLService controller = ControllerFactory.getOrderController();
+		
+		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
+		for(int i = 0; i < commodities.length; ++i){
+			commodities[i] = commodityList.get(i);
+		}
+		
+		double cost = controller.getCost(commodities, senderInfo[2],
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+		String arrivalDate = controller.getArrivalDate(senderInfo[2],
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+
+		new MyNotification(this, "运费：" + cost +"\n预计到达时间：" + arrivalDate, Color.BLACK);
+		
 		return 0;
+	}
+	
+	public void refresh() {
+		sender.refresh();
+		receiver.refresh();
+		commodities.refresh();
 	}
 }

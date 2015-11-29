@@ -2,13 +2,8 @@ package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
-import javax.naming.ldap.ControlFactory;
-
 import businesslogic.ControllerFactory;
-import businesslogic.orderbl.Order;
 import businesslogicservice.orderblservice.OrderBLService;
-import state.CommodityState;
 import state.ExpressType;
 import state.PackageType;
 import ui.GetDate;
@@ -92,8 +87,7 @@ public class OrderInput extends MyJPanel {
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 
-		new MyNotification(frame, "运费：" + cost +"\n预计到达时间：" + arrivalDate, Color.BLACK);
-		
+		new MyNotification(this, "运费：" + cost +"\n预计到达时间：" + arrivalDate, Color.BLACK);
 		
 		OrderVO order = new OrderVO(id, senderInfo[0], senderInfo[2],
 				senderInfo[1], senderInfo[3], receiverInfo[0], receiverInfo[2],
@@ -103,5 +97,11 @@ public class OrderInput extends MyJPanel {
 				ExpressType.getType(commodityInfo[2]));
 		controller.addOrder(order);
 		return 0;
+	}
+
+	public void refresh() {
+		sender.refresh();
+		receiver.refresh();
+		commodities.refresh();
 	}
 }
