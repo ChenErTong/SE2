@@ -19,7 +19,9 @@ public enum ReceiptType {
 	DEBIT("收款单", "SKD"),
 	PAY("付款单","FKD"),
 	TRANS_ARRIVAL("中转中心到达单", "ZZZXDDD"),
-	TRANS_ORDER("转运单", "FJZYD"),
+	TRANS_PLANE("飞机转运单", "FJZYD"),
+	TRANS_TRAIN("火车转运单", "HCZYD"),
+	TRANS_TRUCK("卡车转运单", "KCZYD"),
 	
 	INSTOCK("入库单","RKD"),
 	OUTSTOCK("出库单","CCD"),

@@ -20,7 +20,7 @@ public interface OpeningStockDataService extends DataService<OpeningStockPO>{
 	
 	public String getID() throws RemoteException;
 	/**返回OpeningStockPO持久数据**/
-	public OpeningStockPO findOpeningStock(String id) throws RemoteException;
+	public OpeningStockPO find(String id) throws RemoteException;
 	
 	public ArrayList<OpeningStockPO> find() throws RemoteException;
 }

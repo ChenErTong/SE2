@@ -307,7 +307,7 @@ private void getApprovalData(int index) throws RemoteException{
 		ArrayList<DeliveryListVO> delivery = controller.show(ReceiptType.BRANCH_DELIVER, ReceiptState.APPROVALING);
 		ArrayList<TransferArrivalListVO> transferArrival = controller.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.APPROVALING);
 		ArrayList<InventoryImportReceiptVO> importReceipt = controller.show(ReceiptType.INSTOCK, ReceiptState.APPROVALING);
-		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_ORDER, ReceiptState.APPROVALING);
+		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.APPROVALING);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.APPROVALING);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.APPROVALING);
 		
@@ -406,7 +406,7 @@ private void getApprovalData(int index) throws RemoteException{
 		ArrayList<DeliveryListVO> delivery = controller.show(ReceiptType.BRANCH_DELIVER, ReceiptState.SUCCESS);
 		ArrayList<TransferArrivalListVO> transferArrival = controller.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.SUCCESS);
 		ArrayList<InventoryImportReceiptVO> importReceipt = controller.show(ReceiptType.INSTOCK,ReceiptState.SUCCESS);
-		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_ORDER, ReceiptState.SUCCESS);
+		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.SUCCESS);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.SUCCESS);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.SUCCESS);
 		
@@ -505,7 +505,7 @@ model = (DefaultTableModel) table.getModel();
 		ArrayList<DeliveryListVO> delivery = controller.show(ReceiptType.BRANCH_DELIVER, ReceiptState.SUCCESS);
 		ArrayList<TransferArrivalListVO> transferArrival = controller.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.SUCCESS);
 		ArrayList<InventoryImportReceiptVO> importReceipt = controller.show(ReceiptType.INSTOCK,ReceiptState.SUCCESS);
-		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_ORDER, ReceiptState.SUCCESS);
+		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.SUCCESS);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.SUCCESS);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.SUCCESS);
 		

@@ -19,17 +19,6 @@ public class OpeningStockData extends ManageData<OpeningStockPO> implements Open
 	}
 
 
-	@Override
-	public OpeningStockPO findOpeningStock(String id) throws RemoteException {
-		for (int i = 0; i < poList.size(); i++) {
-			OpeningStockPO poFind = poList.get(i);
-			if (poFind.getID().equals(id)) {
-				poList.remove(i);
-				return poFind;
-			}
-		}
-		return null;
-	}
 
 
 	@Override

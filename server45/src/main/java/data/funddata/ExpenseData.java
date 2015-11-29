@@ -23,7 +23,5 @@ public class ExpenseData extends ManageData<ExpensePO> implements ExpenseDataSer
 		configReader=new XMLReader("config/"+NAME+".xml");
 		
 	}
-	
-
 
 }

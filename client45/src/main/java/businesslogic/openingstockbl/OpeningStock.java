@@ -86,7 +86,7 @@ public class OpeningStock {
 	}
 
 	public OpeningStockVO find(String id) throws RemoteException {
-		OpeningStockPO po = openingStockData.findOpeningStock(id);
+		OpeningStockPO po = openingStockData.find(id);
 		OpeningStockVO vo = OpeningStockTrans.convertPOtoVO(po);
 		return vo;
 	}
