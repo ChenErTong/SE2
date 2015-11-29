@@ -35,7 +35,6 @@ public interface OrderBLService extends BLService{
 	 */
 	public OrderVO inquireOrder(String orderNumber, String senderName);
 	/**
-	 * TODO new!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * 根据输入的orderNumber查找相应的订单物流信息并返回，供内部人员使用
 	 * @param orderNumber 订单号
 	 * @return

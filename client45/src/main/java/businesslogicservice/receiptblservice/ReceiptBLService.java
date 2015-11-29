@@ -2,7 +2,6 @@ package businesslogicservice.receiptblservice;
 
 import java.util.ArrayList;
 
-import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -33,7 +32,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return 处理信息
 	 */
-	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
+	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
 	
 	/**
 	 * 不通过单据审批
@@ -43,7 +42,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return
 	 */
-	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
 	
 	/**
 	 * 查看单据内容，根据单据的状态进行区分：等待审核的单据、通过审核的单据、未通过审核的单据

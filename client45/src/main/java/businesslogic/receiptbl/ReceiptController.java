@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.receiptblservice.ReceiptBLService;
-import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -23,13 +22,13 @@ public class ReceiptController implements ReceiptBLService{
 	}
 
 	@Override
-	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		
 		return ReceiptBL.passReceipt(VOs, receiptTypes);
 	}
 
 	@Override
-	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		return ReceiptBL.dontPassReceipt(VOs, receiptTypes);
 	}
 

@@ -38,24 +38,26 @@ public class Receipt  {
 	}
 
 	
-	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
 		for(ReceiptVO vo:VOs){
 			ReceiptPO po=new ReceiptPO(vo.ID, receiptTypes);
 			po.setReceiptState(ReceiptState.SUCCESS);
 			POs.add(po);
 		}
-		return POs;
+//		return POs;
+		return null;
 	}
 
 	
-	public ArrayList<ReceiptPO> dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
 		//TODO 写的不对 应该找相应的单据类型
 		ArrayList<ReceiptPO> POs=ReceiptTrans.convertVOstoPOs(VOs);
 		for (ReceiptPO receiptPO : POs) {
 			receiptPO.setReceiptState(ReceiptState.FAILURE);
 		}
-		return POs;
+//		return POs
+		return null;
 	}
 	
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException {
