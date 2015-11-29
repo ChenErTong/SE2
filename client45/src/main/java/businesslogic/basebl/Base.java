@@ -20,8 +20,11 @@ public class Base {
 	private BaseDataService baseData;
 
 	public Base() {
+		baseData=getData();
+	}
+	public BaseDataService getData(){
 		try {
-			baseData = (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
+			return baseData = (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -29,6 +32,7 @@ public class Base {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public ConfirmState confirmOperation() {
@@ -67,4 +71,5 @@ public class Base {
 		}
 		return null;
 	}
+	
 }

@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.basebl.BaseInfo;
 import config.RMIConfig;
 import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
@@ -81,8 +82,10 @@ public class Order{
 		return cost;
 	}
 
-	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
-		return 3+"";
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,String begindate) throws RemoteException {
+		BaseInfo_Order baseInfo = new BaseInfo();
+		double transSpeed = expressType.speed;
+		return baseInfo.getArrialDateByCities(senderAddress, receiverAddress, begindate, transSpeed);
 	}
 
 	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order) throws RemoteException {
