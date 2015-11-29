@@ -137,7 +137,7 @@ public class ReceiveInput extends MyJPanel{
 		order.recipientTime = time;
 		order.recipientName = name;
 		//更新订单信息
-//		controller.updata(order);
+		controller.updateOrder(order);
 		return 0;
 	}
 	
