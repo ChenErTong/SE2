@@ -29,6 +29,7 @@ import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class Inventory {
+	//TODO 依赖倒置
 	private InventoryDataService inventoryData;
 	private ReceiptDataService receiptData;
 

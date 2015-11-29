@@ -39,6 +39,7 @@ import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
 public class OpeningStock {
+	//TODO 依赖倒置
 	private OpeningStockDataService openingStockData;
 	private BranchDataService branchData;
 	private TransferDataService transferData;

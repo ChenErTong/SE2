@@ -24,6 +24,7 @@ import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class Transfer {
+	//TODO 依赖倒置
 	private ReceiptDataService receiptData;
 	private OrderDataService orderDataService;
 	private OrderInfo orderInfo;
