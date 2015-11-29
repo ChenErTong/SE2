@@ -3,10 +3,10 @@ package businesslogicservice.transferblservice;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
-import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
+import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
@@ -73,7 +73,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage submit(ReceiptPO receipt);
+	public ResultMessage submit(ReceiptVO receipt);
 	
 	/**
 	 * 保存单据
@@ -82,7 +82,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage save(ReceiptPO receipt);
+	public ResultMessage save(ReceiptVO receipt);
 	
 	/**
 	 * 生成中转中心到达单

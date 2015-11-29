@@ -4,11 +4,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.transferblservice.TransferBLService;
-import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
+import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
@@ -63,7 +63,7 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptPO receipt) {
+	public ResultMessage submit(ReceiptVO receipt) {
 		try {
 			return TransferBL.submit(receipt);
 		} catch (RemoteException e) {
@@ -73,7 +73,7 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public ResultMessage save(ReceiptPO receipt) {
+	public ResultMessage save(ReceiptVO receipt) {
 		try {
 			return TransferBL.save(receipt);
 		} catch (RemoteException e) {
