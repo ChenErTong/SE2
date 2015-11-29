@@ -24,9 +24,14 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 
 	private static final long serialVersionUID = 1L;
 	private BaseDetails baseDetails;
+	private AddBase addBase;
+	private ModifyAccountInfo modifyBase;
 	private BaseInfoList baseInfo;
-	private MyJButton commonButton;
-	
+//	private MyJButton commonButton;
+	private MyJButton add;
+	private MyJButton modify;
+	private MyJButton deleteButton;
+	private MyJButton modifyButton;
 	private MyJTable table;
 	private BaseBLService controller = ControllerFactory.getBaseController();
 	static ArrayList<BaseVO> basePool;
@@ -42,19 +47,43 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 
 	private void initComponent(FrameManager frameManager) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司成本常量制定", 24, true));
-		baseDetails = new BaseDetails();
-		baseDetails.setEnabled(false);
-		this.add(baseDetails);
+		addBase = new AddBase();
+		this.add(addBase);
+		modifyBase = new ModifyAccountInfo();
+		this.add(modifyBase);
+		//baseDetails = new BaseDetails();
+		//baseDetails.setEnabled(false);
+		//this.add(baseDetails);
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new BaseInfoList(this);
 		this.add(baseInfo);
-		this.initButton(frameManager);
+		deleteButton = new MyJButton(150,660,180,30,"删除所选账户",16);
+		deleteButton.setActionCommand("DeleteBankAccount");
+		deleteButton.addActionListener(this);
+		this.add(deleteButton);
+		
+		modifyButton = new MyJButton(350,660,180,30,"修改所选账户信息",16);
+		modifyButton.setActionCommand("ModifyBankAccount");
+		modifyButton.addActionListener(this);
+		this.add(modifyButton);
+	
+		add = new MyJButton(880,346,120,30,"确认添加",16);	
+		add.setActionCommand("CheckAdd");
+		add.addActionListener(this);
+		this.add(add);
+		
+		modify= new MyJButton(880,640,120,30,"确认修改",16);	
+		modify.setActionCommand("ConfirmModify");
+		modify.addActionListener(this);
+		this.add(modify);
+
+		//this.initButton(frameManager);
 		this.showAll();
 		
 		
 	}
 	private void initButton(FrameManager frame) {
-		MyJButton insertButton = new MyJButton(75, 665, 120, 40,
+	/*	MyJButton insertButton = new MyJButton(75, 665, 120, 40,
 				"添加常量", 18);
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -62,21 +91,21 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 				
 			}
 		});
-		this.add(insertButton);
+		this.add(insertButton);*/
 
-		MyJButton modifyButton = new MyJButton(205, 665, 120, 40,
+	/*	MyJButton modifyButton = new MyJButton(205, 665, 120, 40,
 				"修改所选常量", 18);
-		modifyButton.addActionListener(new ActionListener() {
+		/*modifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Manager_AdjustBase.this.modifyPanel(frame);
 				
 			}
-		});
-		modifyButton.setActionCommand("ModifyBase");
-		modifyButton.addActionListener(this);
-		this.add(modifyButton);
+		});*/
+//		modifyButton.setActionCommand("ModifyBase");
+	//	modifyButton.addActionListener(this);
+		//this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(335, 660, 130, 40,
+		/*MyJButton searchButton = new MyJButton(335, 660, 130, 40,
 				"查看所选常量", 18);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,23 +115,43 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 		});
 		searchButton.setActionCommand("ViewBase");
 		searchButton.addActionListener(this);
-		this.add(searchButton);
+		this.add(searchButton);*/
 
-		MyJButton deleteButton = new MyJButton(465,  660, 130, 40,
-				"删除所选常量", 18);
-		deleteButton.addActionListener(new ActionListener() {
+	//	MyJButton deleteButton = new MyJButton(465,  660, 130, 40,
+			//	"删除所选常量", 18);
+		/*deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Manager_AdjustBase.this.deletePanel(frame);
 				
 			}
-		});
-		deleteButton.setActionCommand("DeleteBase");
-		deleteButton.addActionListener(this);
+		});*/
+		//deleteButton.setActionCommand("DeleteBase");
+		//deleteButton.addActionListener(this);
+		//this.add(deleteButton);
+//		deleteButton = new MyJButton(150,640,180,30,"删除所选账户",16);
+//		deleteButton.setActionCommand("DeleteBankAccount");
+//		deleteButton.addActionListener(this);
 		this.add(deleteButton);
+		
+/*		modifyButton = new MyJButton(350,640,180,30,"修改所选账户信息",16);
+		modifyButton.setActionCommand("ModifyBankAccount");
+		modifyButton.addActionListener(this);
+		this.add(modifyButton);
+	
+		add = new MyJButton(868,346,120,30,"确认添加",16);	
+		add.setActionCommand("CheckAdd");
+		add.addActionListener(this);
+		this.add(add);
+		
+		modify= new MyJButton(868,640,120,30,"确认修改",16);	
+		modify.setActionCommand("ConfirmModify");
+		modify.addActionListener(this);
+		this.add(modify);*/
+
 	}
 	
 
-	private void insertPanel(FrameManager frame) {
+	/*private void insertPanel(FrameManager frame) {
 	this.removeAll();
 	this.add(baseInfo);
 	this.add(new MyJLabel(530, 20, 250, 90, "公司成本常量制定", 24, true));
@@ -173,7 +222,7 @@ private void deletePanel(FrameManager frame) {
 	this.add(commonButton);
 	
 	this.repaint();
-}
+}*/
 /**
  * TODO 从bl层获取数据
  * 添加用户
