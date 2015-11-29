@@ -20,7 +20,7 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 	private MyJTextField dateField;
 	private MyJTable table;
 	public Panel_Finance_DebitReceiptInfo() {
-		super(660,100,550,240);
+		super(680,100,550,240);
 		this.initComponent();
 	}
 
@@ -76,5 +76,14 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 
 	public MyJTable getTable(){
 		return table;
+	}
+
+	public void setData(Object[] data) {
+		dateField.setText((String)data[0]);
+		numberField.setText((String)data[1]);
+		courierField.setText((String)data[2]);
+		//TODO
+		
+		
 	}
 }

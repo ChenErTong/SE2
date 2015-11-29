@@ -55,7 +55,7 @@ public class PayReceiptList extends MyTranslucentPanel{
 				head.setForeground(Color.BLACK);
 				head.setResizingAllowed(false);
 								
-				jsp.setBounds(15, 50, 590, 495);
+				jsp.setBounds(15, 50, 590, 180);
 				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 				jsp.setOpaque(false);
 				jsp.setBorder(BorderFactory.createEmptyBorder());

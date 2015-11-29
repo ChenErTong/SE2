@@ -25,8 +25,10 @@ import vo.receiptvo.PaymentBillVO;
 public class Panel_Finance_SettlementManage extends MyJPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
-	private PayReceiptInfo payReceiptInfo;
 	private PayReceiptList payReceiptList;
+	private AddPayBill addPaybill;
+	private ModifyPayBill modifyPaybill;
+	private ViewPayBill viewPaybill;
 	private MyJButton commonButton;
 	private MyJButton viewButton;
 	private MyJButton modifyButton;
@@ -51,17 +53,23 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 
 	private void initComponent(Frame_Finance frame_Finance) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司运营成本管理", 24, true));
-		payReceiptInfo = new PayReceiptInfo();
-		this.add(payReceiptInfo);
+	//	payReceiptInfo = new PayReceiptInfo();
+		//this.add(payReceiptInfo);
 		payReceiptList = new PayReceiptList(this);
 		this.add(payReceiptList);
 	//	this.initButton(frame_Finance);
-		viewButton = new MyJButton(150,346,120,30,"查看所选收款单",16);
-		viewButton.setActionCommand("viewPayBill");
+		addPaybill = new AddPayBill();
+		this.add(addPaybill);
+		modifyPaybill = new ModifyPayBill();
+		this.add(modifyPaybill);
+		viewPaybill = new ViewPayBill();
+		this.add(viewPaybill);
+		viewButton = new MyJButton(150,346,150,30,"查看所选收款单",16);
+		viewButton.setActionCommand("ViewPayBill");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		
-		modifyButton = new MyJButton(300,346,120,30,"修改所选收款单",16);
+		modifyButton = new MyJButton(350,346,150,30,"修改所选收款单",16);
 		modifyButton.setActionCommand("ModifyPayReceipt");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
@@ -212,13 +220,7 @@ private void searchPanel(Frame_Finance frame) {
 			ArrayList<PaymentBillVO> paybillVO = new ArrayList<PaymentBillVO>();
 			String data = payReceiptList.getData();
 			if(data!=null){//TODO - 与时间有关
-				switch(Integer.parseInt(data)){
-					//case 0 : bankAccountVO = controller.find(data[1], null);break;
-					//case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
-					//case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
-					//default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
-			}
-			
+				showController.showList(data);
 				for(int i = 0; i < paybillVO.size(); i++){
 					Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items,paybillVO.get(i).remarks};
 					tableModel.addRow(rowData);
@@ -233,7 +235,7 @@ private void searchPanel(Frame_Finance frame) {
 	
 		}else if(e.getActionCommand().equals("AddPayReceipt")){
 			controller = ControllerFactory.getDebitAndPayBillController();
-			String[] data = payReceiptInfo.getData();
+			String[] data = addPaybill.getData();
 			if(data==null){
 				this.add(new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED));
 			}else{
@@ -252,12 +254,17 @@ private void searchPanel(Frame_Finance frame) {
 				new MyNotification(this,"请先选择要修改的付款单！",Color.RED);
 			}else{
 				
-				paybillID = paybillPool.get(table.getSelectedRow()).ID;
+				paybillID = paybillPool.get(table.getSelectedRow()).ID;/*"付款人","付款金额","付款账号","付款条目","付款备注","付款日期"};*/
 				//System.out.println(accountID);
-				String[] data = new String[6];
-				//data[0] = paybillPool.get(table.getSelectedRow())
+				Object[] data = new String[6];
+				data[0] = paybillPool.get(table.getSelectedRow()).payerName;
+				data[1] = paybillPool.get(table.getSelectedRow()).money+"";
+				data[2] = paybillPool.get(table.getSelectedRow()).accountID;
+				data[3] = paybillPool.get(table.getSelectedRow()).items;
+				data[4] = paybillPool.get(table.getSelectedRow()).remarks;
+				data[5] = paybillPool.get(table.getSelectedRow()).date;
 			
-				payReceiptInfo.setData(data);
+				modifyPaybill.setData(data);
 			}
 		}else if(e.getActionCommand().endsWith("CheckModify")){
 			table = payReceiptList.getTable();
@@ -265,7 +272,7 @@ private void searchPanel(Frame_Finance frame) {
 			if(table.getSelectedRow()==0){
 				new MyNotification(this,"请先选择需要修改的付款单！",Color.RED);
 			}else{
-				if(payReceiptInfo.getData()==null){
+				if(modifyPaybill.getData()==null){
 					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改付款单信息！",Color.GREEN);
@@ -273,7 +280,21 @@ private void searchPanel(Frame_Finance frame) {
 				}
 			}
 		}else if(e.getActionCommand().equals("ViewPayBill")){
-			
+			table = payReceiptList.getTable();
+			if(table.getSelectedRowCount()==0){
+				new MyNotification(this,"请先选择要查看的付款单！",Color.RED);
+			}else{
+				paybillID = paybillPool.get(table.getSelectedRow()).ID;
+				Object[] data = new String[6];
+				data[0] = paybillPool.get(table.getSelectedRow()).payerName;
+				data[1] = paybillPool.get(table.getSelectedRow()).money+"";
+				data[2] = paybillPool.get(table.getSelectedRow()).accountID;
+				data[3] = paybillPool.get(table.getSelectedRow()).items;
+				data[4] = paybillPool.get(table.getSelectedRow()).remarks;
+				data[5] = paybillPool.get(table.getSelectedRow()).date;
+				
+				viewPaybill.setData(data);
+			}
 		}
 	}
 
@@ -281,7 +302,7 @@ private void searchPanel(Frame_Finance frame) {
 		table = payReceiptList.getTable();
 		controller = ControllerFactory.getDebitAndPayBillController();
 		
-		String[] data = payReceiptInfo.getData();
+		String[] data = modifyPaybill.getData();
 		ResultMessage rsg=  controller.updateDraft(new PaymentBillVO(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]));
 		
 		if(rsg.equals(ResultMessage.SUCCESS)){

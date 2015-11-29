@@ -68,6 +68,13 @@ public class Record {
 		return vo;
 
 	}
+	/**
+	 * 返回某一个营业厅一天的收款单
+	 * @param WorkPlace
+	 * @param date
+	 * @return
+	 * @throws RemoteException
+	 */
 	public BussinessOneDayVO bussinessOneDay(String WorkPlace,String date) throws RemoteException {
 		ArrayList<AccountPO> AccountPos=AccountData.find();
 		String ID = null;
@@ -80,12 +87,7 @@ public class Record {
 		ArrayList<DebitBillVO> VOs=new ArrayList<DebitBillVO>();
 		double income = 0;
 
-		for (DebitAndPayBillPO po : POs) {
-			ReceiptType type = po.getType();
-			// 如果是收款单
-			if (type == ReceiptType.DEBIT) {
-			}
-		}
+		
 		for (DebitBillPO po : POs) {
 
 				income = income + po.getMoney();

@@ -14,7 +14,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 
 	private static final long serialVersionUID = 1L;
 	private void initComponent() {
-		this.add(new MyJLabel(240,10,150,30,"添加收款单",18,true));
+		this.add(new MyJLabel(240,10,150,30,"修改收款单",18,true));
 		this.add(new MyJLabel(40,50,90,30,"付款人",16,true));
 		this.add(new MyJLabel(290,50,90,30,"付款金额",16,true));
 		this.add(new MyJLabel(40,90,90,30,"付款账户",16,true));
@@ -39,8 +39,8 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		this.add(fields[4]);
 		
 		fields[5] = new MyJTextField(380,130,120,30);
-		fields[5].setText(GetDate.getTime());
-		fields[5].setEditable(false);
+		//fields[5].setText(GetDate.getTime());
+		//fields[5].setEditable(false);
 		this.add(fields[5]);		
 	}
 
@@ -64,9 +64,9 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		return data;
 	}
 	
-	public void setData(String [] data){
+	public void setData(Object[] data){
 		for(int i=0;i<6;i++){
-			fields[i].setText(data[i]);
+			fields[i].setText((String) data[i]);
 		}
 	}
 
