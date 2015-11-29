@@ -3,6 +3,7 @@ package businesslogicservice.accountblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import state.ResultMessage;
 import vo.accountvo.AccountVO;
 
 
@@ -26,5 +27,10 @@ public interface AccountBLService {
 	 */
 	public ArrayList<AccountVO> show() ;
 	public ArrayList<AccountVO> show(String duty);
+	public String getID();
+	public ResultMessage addBase(AccountVO vo);
+	public ResultMessage deleteBase(String ID);
+	public ResultMessage updateBase(AccountVO vo);
+	public AccountVO find(String id);
 }
 

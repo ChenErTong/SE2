@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
+import state.ResultMessage;
 import vo.accountvo.AccountVO;
 
 public class Account{
@@ -38,6 +39,25 @@ public class Account{
 	public ArrayList<AccountVO> show(String duty) throws RemoteException {
 		ArrayList<AccountPO> pos = accountData.find();
 		return AccountTrans.convertPOstoVOsByDuty(pos, duty);
+	}
+	
+	public String getID() throws RemoteException{
+		return accountData.getID();
+	}
+	public ResultMessage addBase(AccountVO vo) throws RemoteException{
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		return accountData.add(po);
+	}
+	public ResultMessage deleteBase(String ID) throws RemoteException{
+		return accountData.delete(ID);
+	}
+	public ResultMessage updateBase(AccountVO vo) throws RemoteException{
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		return accountData.modify(po);
+	}
+	public AccountVO find(String id) throws RemoteException{
+		AccountPO po = accountData.find(id);
+		return AccountTrans.convertPOToVO(po);
 	}
 
 }

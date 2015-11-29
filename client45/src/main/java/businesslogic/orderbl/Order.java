@@ -18,7 +18,7 @@ import vo.OrderVO;
 
 public class Order{
 	private OrderDataService orderData;
-
+	private BaseInfo_Order baseInfo = new BaseInfo();
 	public Order() {
 		orderData=getOrderData();
 	}
@@ -73,18 +73,17 @@ public class Order{
 		return orderData.getID();
 	}
 
-	//TODO
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
-			ExpressType expressType) {
-		double cost=0;
+			ExpressType expressType) throws RemoteException {
+		double weight = 0;
 		for (CommodityVO commodityVO : commodityList) {
-			cost+=commodityVO.weight*0.5;
+			weight+=commodityVO.weight;
 		}
-		return cost;
+		double priceConstant = expressType.priceConstant;
+		return baseInfo.getArrialPriceByCities(senderAddress, receiverAddress, weight, priceConstant);
 	}
 
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,String begindate) throws RemoteException {
-		BaseInfo_Order baseInfo = new BaseInfo();
 		double transSpeed = expressType.speed;
 		return baseInfo.getArrialDateByCities(senderAddress, receiverAddress, begindate, transSpeed);
 	}

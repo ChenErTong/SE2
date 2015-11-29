@@ -43,7 +43,12 @@ public class OrderController implements OrderBLService{
 	@Override
 	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) {
-		return orderBL.getCost(commodityList, senderAddress, receiverAddress, expressType);
+		try {
+			return orderBL.getCost(commodityList, senderAddress, receiverAddress, expressType);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	@Override
@@ -53,7 +58,7 @@ public class OrderController implements OrderBLService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return begindate;
+		return null;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package businesslogic.accountbl;
 
+import java.rmi.RemoteException;
+
 import businesslogic.fundbl.AccountInfo_DebitAndPayBillVOShow;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
@@ -13,7 +15,7 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow {
 	}
 	
 	@Override
-	public boolean isAccountAMemberOfBranch(String accountID, String branchID) {
+	public boolean isAccountAMemberOfBranch(String accountID, String branchID) throws RemoteException {
 		AccountPO po = accountData.find(accountID);
 		if(po.getBranchID().equals(branchID))
 			return true;
