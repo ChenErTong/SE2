@@ -15,6 +15,7 @@ import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityIn
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.SendCommodity;
 import ui.specialui.branch_conuterman.vehicleloading.LoadingListUI;
 import ui.specialui.branch_conuterman.vehicleloading.VehicleLoading;
+import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Frame_Branch extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -26,7 +27,6 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		super(userID);
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
-		
 		this.returnButton.addActionListener(this);
 		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
@@ -69,10 +69,11 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("produceLoadingList")){
 			//从车辆装车管理界面进入装车单界面
-			if(((VehicleLoading) subPanel).produceLoadingList() != null){
+			LoadingListVO loadingList = ((VehicleLoading) subPanel).produceLoadingList();
+			if(loadingList != null){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
-				subPanel = new LoadingListUI();
+				subPanel = new LoadingListUI(loadingList);
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			}
 		}else if(e.getActionCommand().equals("produceArrivalList")){

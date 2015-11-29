@@ -124,6 +124,7 @@ public class VehicleLoading extends MyJPanel {
 			ordernum.add(num);
 		}
 		new MyNotification(this, "成功生成装车单", Color.GREEN);
+		
 		return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
 	}
 }

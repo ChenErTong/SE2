@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.orderblservice.OrderBLService;
-import state.PackageType;
 import ui.GetDate;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
@@ -17,6 +14,10 @@ import ui.myui.MyNotification;
 import ui.specialui.courier.Frame_Courier;
 import vo.CommodityVO;
 import vo.OrderVO;
+import vo.accountvo.AccountVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.accountblservice.AccountBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 /**
  * 收件信息输入界面
  * @author czw
@@ -117,13 +118,15 @@ public class ReceiveInput extends MyJPanel{
 		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
 	}
 	
-	public int produceReceiveList(){
+	public int produceReceiveList(Frame_Courier frame_Courier){
 		String name = receiveName.getText();
 		String time = receiveDate.getText();
 		if((name.equals(""))||(time.equals(""))){
 			return 1;
 		}
-		
+		AccountBLService accountController = ControllerFactory.getAccountController();
+		//TODO 根据当前使用者编号得到当前使用者AccountVO;
+//		AccountVO account = accountController.
 		
 		return 0;
 	}
