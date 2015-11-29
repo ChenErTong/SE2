@@ -8,7 +8,6 @@ import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
-import state.ReceiptState;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
 
@@ -45,32 +44,8 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return PAYPrifix+super.getID();
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException {
-		if (type == ReceiptType.EXPENSE)
-			return showExpense();
-		else {
-			return showPay();
-		}
-	}
 
-	private ArrayList<DebitAndPayBillPO> showExpense() {
-		ArrayList<DebitAndPayBillPO> expenses = new ArrayList<>();
-		for (DebitAndPayBillPO po : poList.getInList()) {
-			if (po.getType() == ReceiptType.EXPENSE)
-				expenses.add(po);
-		}
-		return expenses;
-	}
 
-	private ArrayList<DebitAndPayBillPO> showPay() {
-		ArrayList<DebitAndPayBillPO> pays = new ArrayList<>();
-		for (DebitAndPayBillPO po : poList.getInList()) {
-			if (po.getType() == ReceiptType.PAY)
-				pays.add(po);
-		}
-		return pays;
-	}
 
 	@Override
 	public ArrayList<DebitAndPayBillPO> showList(String begin, String end) throws RemoteException {
@@ -83,15 +58,6 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return bills;
 	}
 
-	@Override
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type, ReceiptState State) throws RemoteException {
-		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
-		for (DebitAndPayBillPO po : poList.getInList()) {
-			if (po.getReceiptType() == type && po.getState() == State)
-				bills.add(po);
-		}
-		return bills;
-	}
 
 
 	@Override

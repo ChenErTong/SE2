@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 
 import config.RMIConfig;
@@ -31,62 +32,73 @@ public class DebitAndPayBillShow {
 	}
 	
 	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos = this.show(pos,ReceiptType.PAY,null);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos = this.show(pos,ReceiptType.DEBIT,null);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY, ReceiptState.APPROVALING);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =  this.show(pos,ReceiptType.PAY, ReceiptState.APPROVALING);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY, ReceiptState.APPROVALING);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =  this.show(pos,ReceiptType.DEBIT, ReceiptState.APPROVALING);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY, ReceiptState.SUCCESS);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos =  debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =  this.show(pos,ReceiptType.PAY, ReceiptState.SUCCESS);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.SUCCESS);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos =  debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos = this.show(pos,ReceiptType.DEBIT, ReceiptState.SUCCESS);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY, ReceiptState.FAILURE);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =this.show(pos,ReceiptType.PAY, ReceiptState.FAILURE);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.FAILURE);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos = this.show(pos, ReceiptType.DEBIT, ReceiptState.FAILURE);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.PAY, ReceiptState.DRAFT);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =  this.show(pos, ReceiptType.PAY, ReceiptState.DRAFT);
 		return vos;
 	}
 
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.show(ReceiptType.DEBIT, ReceiptState.DRAFT);
-		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos = this.show(pos, ReceiptType.DEBIT, ReceiptState.DRAFT);
+		return vos;
+	}
+	
+	private ArrayList<DebitAndPayBillVO> show(ArrayList<DebitAndPayBillPO> pos,ReceiptType type,ReceiptState state){
+		ArrayList<DebitAndPayBillVO> vos = new ArrayList<>();
+		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
+			if(debitAndPayBillPO.getReceiptType().equals(type)&&debitAndPayBillPO.getState().equals(state)){
+				DebitAndPayBillVO vo  =FundTrans.convertPOtoVO(debitAndPayBillPO);
+				vos.add(vo);
+			}
+		}
 		return vos;
 	}
 	

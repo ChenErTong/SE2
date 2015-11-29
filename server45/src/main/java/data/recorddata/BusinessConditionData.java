@@ -24,7 +24,8 @@ public class BusinessConditionData extends ManageData<BussinessConditionPO> impl
 		configReader = new XMLReader("config/" + NAME + ".xml");
 	}
 
-	// 好像用不到了
+	// TODO 好像用不到了 ----不一定用不到 这个方法应该是返回list吧
+	
 	@Override
 	public BussinessConditionPO getBussinessCondition(String enddate) throws RemoteException {
 		return  null;

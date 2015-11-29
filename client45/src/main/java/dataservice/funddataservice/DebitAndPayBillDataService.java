@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
-import state.ReceiptState;
 import state.ReceiptType;
 
 /**
@@ -49,14 +48,6 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	public String getPayID()  throws RemoteException;
 
 	/**
-	 * 按照单据类型返回单据【收款单或者付款单】
-	 * @param type
-	 * @return
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type) throws RemoteException;
-	/**
 	 * 按照时间区间返回单据【收款单或者付款单】
 	 * @param 
 	 * @return
@@ -67,7 +58,6 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	
 	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException;
 	
-	public ArrayList<DebitAndPayBillPO> show(ReceiptType type,ReceiptState State) throws RemoteException;
 	
 	public ArrayList<DebitBillPO> showDate(String date)throws RemoteException;
 	
