@@ -1,5 +1,7 @@
 package vo.accountvo;
 
+import java.util.ArrayList;
+
 public class AccountVO {
 	/** 员工编号 **/
 	public String ID;
@@ -19,11 +21,11 @@ public class AccountVO {
 	public double Salary;
 	/** 任职时间 **/
 	public String WorkTime;
-	/** 每日订单完成 **/
-	public int ReceiptNum;
+	/**每日完成的订单编号**/
+	public ArrayList<String> ordersID;
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
-			String workTime, int receiptNum) {
+			String workTime) {
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;
@@ -32,6 +34,6 @@ public class AccountVO {
 		this.Phone = phone;
 		this.Salary = salary;
 		this.WorkTime = workTime;
-		this.ReceiptNum = receiptNum;
+		ordersID = new ArrayList<String>();	
 	}
 }

@@ -27,8 +27,7 @@ public class AccountTrans {
 		String phone = po.getPhone();
 		double salary = po.getSalary();
 		String workTime = po.getWorkTime();
-		int receiptNum = po.getReceiptNum();
-		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, receiptNum);
+		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime);
 		return vo;
 	}
 
@@ -44,8 +43,7 @@ public class AccountTrans {
 			String phone = vo.Phone;
 			double salary = vo.Salary;
 			String workTime = vo.WorkTime;
-			int receiptNum = vo.ReceiptNum;
-			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, receiptNum);
+			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime);
 		}
 	}
 

@@ -194,7 +194,7 @@ public class DriverInfoManage extends MyJPanel {
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
 		
-		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], 0.0, data[6], 0, data[3]);
+		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], 0.0, data[6], data[3]);
 		System.out.println(driver.ID+"--print in ui");
 		driverController.addDriver(driver);
 		driverController.confirmOperation();
