@@ -73,5 +73,5 @@ public interface OrderBLService extends BLService{
 	 * @param expressType 快递类型（飞机、火车、汽车）
 	 * @return 日期（以字符串的形式，格式为yyyy-MM-dd）
 	 */
-	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType);
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,String beginDate);
 }
