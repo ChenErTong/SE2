@@ -41,11 +41,11 @@ public class DebitAndPayBill {
 	}
 
 	public String getExpenseID() throws RemoteException {
-		return debitAndPayBillData.getExpenseID();
+		return debitAndPayBillData.getID(ReceiptType.DEBIT);
 	}
 
 	public String getPayID() throws RemoteException {
-		return debitAndPayBillData.getPayID();
+		return debitAndPayBillData.getID(ReceiptType.PAY);
 	}
 
 	public DebitAndPayBillVO find(String ID) throws RemoteException {

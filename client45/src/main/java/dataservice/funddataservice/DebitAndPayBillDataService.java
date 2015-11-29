@@ -34,32 +34,17 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	public String getID(ReceiptType type)  throws RemoteException;
 
 	/**
-	 * @return 获得新的收款单ID
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public String getExpenseID() throws RemoteException ;
-
-	/**
-	 * @return 获得新的付款单ID
-	 * @author zsq
-	 * @version Oct 22,2015
-	 */
-	public String getPayID()  throws RemoteException;
-
-	/**
 	 * 按照时间区间返回单据【收款单或者付款单】
 	 * @param 
 	 * @return
 	 * @author lxl
 	 * @version 11  20 2015
 	 */
-	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
-	
-	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException;
-	
-	
-	public ArrayList<DebitBillPO> showDate(String date)throws RemoteException;
+//	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
+//	
+//	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException;
+//	
+//	public ArrayList<DebitBillPO> showDate(String date)throws RemoteException;
 	
 
 }

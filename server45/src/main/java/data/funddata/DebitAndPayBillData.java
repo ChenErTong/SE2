@@ -27,25 +27,18 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public String getID(ReceiptType type) throws RemoteException {
-		if (type == ReceiptType.EXPENSE)
-			return EXPrifix+super.getID();
-		else {
-			return PAYPrifix+super.getID();
-		}
+		if (type == ReceiptType.EXPENSE) return this.getExpenseID();
+		else 			return this.getPayID();
+		
 	}
 
-	@Override
-	public String getExpenseID() throws RemoteException {
+	private String getExpenseID() throws RemoteException {
 		return EXPrifix+super.getID();
 	}
 
-	@Override
-	public String getPayID() throws RemoteException {
+	private String getPayID() throws RemoteException {
 		return PAYPrifix+super.getID();
 	}
-
-
-
 
 	@Override
 	public ArrayList<DebitAndPayBillPO> showList(String begin, String end) throws RemoteException {
@@ -57,8 +50,6 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		}
 		return bills;
 	}
-
-
 
 	@Override
 	public void initialFile() {
@@ -79,14 +70,13 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public ArrayList<DebitBillPO> showDate(String date) throws RemoteException {
-				ArrayList<DebitBillPO> bills = new ArrayList<>();
-				for (DebitAndPayBillPO po : poList.getInList()) {
-					if ((po.getDate()==date)){
-						bills.add((DebitBillPO) po);
-				}
-				
+		ArrayList<DebitBillPO> bills = new ArrayList<>();
+		for (DebitAndPayBillPO po : poList.getInList()) {
+			if ((po.getDate() == date)) {
+				bills.add((DebitBillPO) po);
+			}
 		}
-				return bills;
+		return bills;
 	}
 
 }
