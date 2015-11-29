@@ -1,5 +1,6 @@
 package vo;
 
+import state.ReceiptType;
 import vo.receiptvo.ReceiptVO;
 
 /**
@@ -9,24 +10,25 @@ import vo.receiptvo.ReceiptVO;
 
 public class InventoryVO extends ReceiptVO {
     //区
-	public int a;
+	public int area;
 	//排;
-	public int b;
+	public int row;
 	//架
-	public int c;
+	public int frame;
 	//位
-	public int d;
+	public int position;
 	//空或满
 	public String EmptyOrFull;
-
-	public InventoryVO(String id, int a, int b, int c, int d, String emptyOrFull) {
+	public InventoryVO(String id, int area, int row, int frame, int position, String emptyOrFull) {
 		super(id);
-		this.a = a;
-		this.b = b;
-		this.c = c;
-		this.d = d;
+		this.area = area;
+		this.row = row;
+		this.frame = frame;
+		this.position = position;
 		EmptyOrFull = emptyOrFull;
 	}
+
+	
 
 
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
+import ui.GetDate;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -28,10 +29,13 @@ public class TimeAndCostManager extends MyJPanel{
 	private ReceiverInfoInput receiver;
 	//货物信息输入面板
 	private CommodityInfoInput commodities;
+	//逻辑接口
+	private OrderBLService controller;
 	
 	public TimeAndCostManager(Frame_Courier frame){
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		controller = ControllerFactory.getOrderController();
 		
 		this.add(new MyJLabel(500, 30, 230, 45, "报价与时间管理", 30, true));
 		
@@ -76,8 +80,6 @@ public class TimeAndCostManager extends MyJPanel{
 				commodityVO.correctWeight();
 			}
 		}
-
-		OrderBLService controller = ControllerFactory.getOrderController();
 		
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
 		for(int i = 0; i < commodities.length; ++i){
@@ -87,7 +89,7 @@ public class TimeAndCostManager extends MyJPanel{
 		double cost = controller.getCost(commodities, senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
 
 		MyNotification n = new MyNotification(this, "预计到达时间\n" + arrivalDate, Color.GREEN);
 		

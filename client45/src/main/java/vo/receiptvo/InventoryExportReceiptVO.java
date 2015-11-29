@@ -15,25 +15,25 @@ public class InventoryExportReceiptVO extends ReceiptVO {
 	//货物编号
 	public String CommoditiesID;
 	//区
-	public int a;
+	public int area;
 	//排
-	public int b;
+	public int row;
 	//架
-	public int c;
+	public int frame;
 	//位
-	public int d;
+	public int position;
 	public InventoryExportReceiptVO(String id, ReceiptType type, String destination, String depture, ExpressType expressType,
-			String transferID, String commoditiesID, int a, int b, int c, int d) {
+			String transferID, String commoditiesID, int area, int row, int frame, int position) {
 		super(id, type);
 		this.destination = destination;
 		this.depture = depture;
 		this.expressType=expressType;
 		this.TransferID = transferID;
 		this.CommoditiesID = commoditiesID;
-		this.a = a;
-		this.b = b;
-		this.c = c;
-		this.d = d;
+		this.area=area;
+		this.row=row;
+		this.frame=frame;
+		this.position=position;
 	}
 	
 }

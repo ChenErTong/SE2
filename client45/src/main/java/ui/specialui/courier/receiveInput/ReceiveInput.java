@@ -1,11 +1,22 @@
 package ui.specialui.courier.receiveInput;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import businesslogic.ControllerFactory;
+import businesslogicservice.orderblservice.OrderBLService;
+import state.PackageType;
 import ui.GetDate;
+import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.specialui.courier.Frame_Courier;
+import vo.CommodityVO;
+import vo.OrderVO;
 /**
  * 收件信息输入界面
  * @author czw
@@ -14,29 +25,25 @@ import ui.specialui.courier.Frame_Courier;
 public class ReceiveInput extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 
-	private OrderInfo orderInfo;
+	private MyEmptyTextArea orderInfo;
 	private MyJTextField receiveName;
 	private MyJTextField receiveDate;
 	private MyJTextField checkBoard;
+	//逻辑接口
+	private OrderBLService controller;
 	
 	public ReceiveInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		controller = ControllerFactory.getOrderController();
 		
 		this.add(new MyJLabel(550, 30, 200, 45, "收件信息输入", 30, true));	
 		this.add(new MyJLabel(155, 110, 100, 40, "订单号", 20, true));
 		this.add(new MyJLabel(780, 210, 100, 30, "收件人姓名", 18, true));
 		this.add(new MyJLabel(800, 270, 80, 30, "收件时间", 18, true));
+		this.add(new MyJLabel(310, 165, 114, 19, "单据详细信息", 18, true));
 		
-		MyJButton checkOrderID = new MyJButton(490, 115, 60, 30, "查询", 20);
-		this.add(checkOrderID);
-		
-		MyJButton confirm = new MyJButton(900, 330, 110, 40, "生成收件单", 18);
-		confirm.setActionCommand("produceReceiveList");
-		confirm.addActionListener(frame);
-		this.add(confirm);
-		
-		orderInfo = new OrderInfo();
+		orderInfo = new MyEmptyTextArea(110, 190, 500, 480);
 		this.add(orderInfo);
 		
 		checkBoard = new MyJTextField(230, 115, 250, 30);
@@ -51,7 +58,63 @@ public class ReceiveInput extends MyJPanel{
 		receiveDate.setText(GetDate.getTime());
 		this.add(receiveDate);
 		
+		MyJButton checkOrderID = new MyJButton(490, 115, 60, 30, "查询", 20);
+		checkOrderID.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!ReceiveInput.this.searchOrder(checkBoard.getText())){
+					new MyNotification(ReceiveInput.this, "不存在该订单号", Color.RED);
+				}else{
+					checkBoard.setText(null);
+				}
+			}
+		});
+		this.add(checkOrderID);
+		
+		MyJButton confirm = new MyJButton(900, 330, 110, 40, "生成收件单", 18);
+		confirm.setActionCommand("produceReceiveList");
+		confirm.addActionListener(frame);
+		this.add(confirm);
+		
 		this.refresh();
+	}
+	
+	/**
+	 * 查询订单
+	 * @param 订单号
+	 * @return 是否查询到订单
+	 */
+	private boolean searchOrder(String orderID) {
+		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderVO order = orderController.inquireOrder(orderID);
+		
+		if(order == null) return false;
+		
+		this.setOrderInfo(order);
+		return true;
+	}
+
+	/**
+	 * 向订单信息界面生成订单信息
+	 * @param order
+	 */
+	private void setOrderInfo(OrderVO order) {
+		orderInfo.setText("订单编号" + order.ID + "\n");
+		orderInfo.append("寄件人信息：\n");
+		orderInfo.append("姓名：" + order.senderName + "\t");
+		orderInfo.append("电话：" + order.senderTel + "\n");
+		orderInfo.append("住址：" + order.senderAddress + "\n");
+		orderInfo.append("单位：" + order.senderCo + "\n");
+		orderInfo.append("收件人信息：\n");
+		orderInfo.append("姓名：" + order.recipientName + "\t");
+		orderInfo.append("电话：" + order.recipientTel + "\n");
+		orderInfo.append("住址：" + order.recipientAddress + "\n");
+		orderInfo.append("单位：" + order.recipientCo + "\n");
+		orderInfo.append("货物信息：\n");	
+		for(CommodityVO commodity: order.commodities){
+			orderInfo.append(commodity.commodityType + "\t" + commodity.volumn + "m³\t" + commodity.weight + "kg\n");	
+		}
+		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
+		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
 	}
 	
 	public int produceReceiveList(){
@@ -60,14 +123,15 @@ public class ReceiveInput extends MyJPanel{
 		if((name.equals(""))||(time.equals(""))){
 			return 1;
 		}
+		
+		
 		return 0;
 	}
 	
 	public void refresh(){
 		checkBoard.setText(null);
 		receiveName.setText(null);
+		orderInfo.setText(null);
 		receiveDate.setText(GetDate.getTime());
-		//TODO
-		orderInfo.refresh();
 	}
 }

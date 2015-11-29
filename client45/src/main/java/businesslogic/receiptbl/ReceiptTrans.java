@@ -197,28 +197,28 @@ public class ReceiptTrans {
 	public static ReceiptVO convertSpecialPOtoVO(AdjustReceiptPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
-		int exA = po.getExA();
-		int exB = po.getExB();
-		int exC = po.getExC();
-		int exD = po.getExD();
-		int aftA = po.getAftA();
-		int aftB = po.getAftB();
-		int aftC = po.getAftC();
-		int aftD = po.getAftD();
-		return new AdjustReceiptVO(id, type, exA, exB, exC, exD, aftA, aftB, aftC, aftD);
+		int exArea = po.getExArea();
+		int exRow = po.getExRow();
+		int exFrame = po.getExFrame();
+		int exPosition = po.getExPosition();
+		int aftArea = po.getAftArea();
+		int aftRow = po.getAftRow();
+		int aftFrame = po.getAftFrame();
+		int aftPosition = po.getAftPosition();
+		return new AdjustReceiptVO(id, type, exArea, exRow, exFrame, exPosition, aftArea, aftRow, aftFrame, aftPosition);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(AdjustReceiptVO vo){
 		String ID = vo.ID;
 		ReceiptType type = vo.type;
-		int exA =vo.exA;
-		int exB =vo.exB;
-		int exC =vo.exC;
-		int exD =vo.exD;
-		int aftA =vo.aftA;
-		int aftB =vo.aftB;
-		int aftC =vo.aftC;
-		int aftD =vo.aftD;
-		return new AdjustReceiptPO(ID, type, exA, exB, exC, exD, aftA, aftB, aftC, aftD);
+		int exArea =vo.exArea;
+		int exRow =vo.exRow;
+		int exFrame =vo.exFrame;
+		int exPosition =vo.exPosition;
+		int aftArea =vo.aftArea;
+		int aftRow =vo.aftRow;
+		int aftFrame =vo.aftFrame;
+		int aftPosition =vo.aftPosition;
+		return new AdjustReceiptPO(ID, type, exArea, exRow, exFrame, exPosition, aftArea, aftRow, aftFrame, aftPosition);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(DebitBillPO po){
 		String id = po.getID();
@@ -266,12 +266,12 @@ public class ReceiptTrans {
 		ExpressType expressType = po.getExpressType();
 		String transferID = po.getTransferID();
 		String commoditiesID = po.getCommoditiesID();
-		int a = po.getA();
-		int b =po.getB();
-		int c = po.getC();
-		int d = po.getD();
+		int area = po.getArea();
+		int row =po.getRow();
+		int frame = po.getFrame();
+		int position = po.getPosition();
 		return new InventoryExportReceiptVO(
-				id, type, destination, depture, expressType, transferID, commoditiesID, a, b, c, d);
+				id, type, destination, depture, expressType, transferID, commoditiesID, area,row,frame,position);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(InventoryExportReceiptVO vo){
 		String ID = vo.ID;
@@ -281,12 +281,12 @@ public class ReceiptTrans {
 		ExpressType expressType = vo.expressType;
 		String transferID = vo.TransferID;
 		String commoditiesID = vo.CommoditiesID;
-		int a = vo.a;
-		int b =vo.b;
-		int c = vo.c;
-		int d = vo.d;
+		int area= vo.area;
+		int row =vo.row;
+		int frame = vo.frame;
+		int position = vo.position;
 		return new InventoryExportReceiptPO(
-				ID, type, destination, depture, expressType, transferID, commoditiesID, a, b, c, d);
+				ID, type, destination, depture, expressType, transferID, commoditiesID, area,row,frame,position);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(InventoryImportReceiptPO po){
 		String id = po.getID();
@@ -294,11 +294,11 @@ public class ReceiptTrans {
 		String destination = po.getDestination();
 		String depture = po.getDepture();
 		String commoditiesID = po.getCommoditiesID();
-		int a = po.getA();
-		int b =po.getB();
-		int c = po.getC();
-		int d = po.getD();
-		return new InventoryImportReceiptVO(id, type, depture, destination, commoditiesID, a, b, c, d);
+		int area = po.getArea();
+		int row =po.getRow();
+		int frame = po.getFrame();
+		int position = po.getPosition();
+		return new InventoryImportReceiptVO(id, type, depture, destination, commoditiesID,area,row,frame,position);
 	}
 	
 	public static ReceiptPO convertSpecialVOtoPO(InventoryImportReceiptVO vo){
@@ -307,11 +307,11 @@ public class ReceiptTrans {
 		String destination = vo.destination;
 		String depture = vo.depture;
 		String commoditiesID = vo.CommoditiesID;
-		int a = vo.a;
-		int b =vo.b;
-		int c = vo.c;
-		int d = vo.d;
-		return new InventoryImportReceiptPO(ID, type, depture, destination, commoditiesID, a, b, c, d);
+		int area = vo.area;
+		int row =vo.row;
+		int frame = vo.frame;
+		int position = vo.position;
+		return new InventoryImportReceiptPO(ID, type, depture, destination, commoditiesID, area, row, frame, position);
 	}
 	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){

@@ -1,16 +1,9 @@
 package ui.commonui.receipt_constructor;
 
-import java.util.ArrayList;
 
-import state.CommodityState;
-import state.ExpressType;
-import state.PackageType;
 import state.ReceiptType;
-import vo.CommodityVO;
 import vo.OrderVO;
 import vo.ValueObject;
-import vo.receiptvo.AdjustReceiptVO;
-import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -177,13 +170,153 @@ public class ReceiptConductor {
 	}
 
 	private String writeOutStock(InventoryExportReceiptVO receipt) {
-		// TODO Auto-generated method stub
-		return null;
+		String ID = receipt.ID;
+		
+		String text = "";
+		String blank4 = "    ";
+		String blank = " ";
+		String line ="----";
+		
+		for(int i=0;i<25;i++){
+			blank = blank+blank4;
+		}
+		text = text+blank+"出库单"+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		for(int i=0;i<32;i++){
+			text = text+line;
+		}
+		text = text + "\n";
+		text = text +"单据编号： "+ID+"\n";
+		for(int i=0;i<35;i++){
+			text = text + blank4;
+		}
+		text = text +"出库日期： "+receipt.date+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		for(int i = 0; i < 32; i++){
+			text = text + line;
+		}
+		text = text + "\n";
+		for(int i = 0; i < 7; i++){
+			text = text + blank4;
+		}
+		text = text + "出库信息：" + "\n";
+		
+		for(int i=0;i<35;i++){
+			text = text + blank4;
+		}
+		
+		text = text +"出发地： "+receipt.depture+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		
+		for(int i=0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text +"到达地： "+receipt.destination+"\n";
+		for(int i=0;i<9;i++){
+			text = text +blank4;
+		}
+		text = text +"出库区号： "+receipt.area+"区\n";
+			
+		for(int i = 0; i < 7; i++){
+			text = text + blank4;
+		}
+		text = text + "出库排号:" +receipt.row+ "排\n";
+		for(int i = 0; i < 9; i++){
+			text = text + blank4;
+		}
+		text = text+"出库架号："+receipt.frame+"架\n";
+		for(int i = 0;i < 9;i++){
+			text = text+blank4;
+		}
+		text = text+"出库位号："+receipt.position+"位\n";
+		for(int i = 0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text+"货物编号"+receipt.CommoditiesID+"\n";
+		for(int i = 0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text + "装运编号" + receipt.TransferID+"\n";
+		return text;
 	}
 
 	private String writeInstock(InventoryImportReceiptVO receipt) {
-		// TODO Auto-generated method stub
-		return null;
+String ID = receipt.ID;
+		
+		String text = "";
+		String blank4 = "    ";
+		String blank = " ";
+		String line ="----";
+		
+		for(int i=0;i<25;i++){
+			blank = blank+blank4;
+		}
+		text = text+blank+"入库单"+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		for(int i=0;i<32;i++){
+			text = text+line;
+		}
+		text = text + "\n";
+		text = text +"单据编号： "+ID+"\n";
+		for(int i=0;i<35;i++){
+			text = text + blank4;
+		}
+		text = text +"入库日期： "+receipt.date+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		for(int i = 0; i < 32; i++){
+			text = text + line;
+		}
+		text = text + "\n";
+		for(int i = 0; i < 7; i++){
+			text = text + blank4;
+		}
+		text = text + "入库信息：" + "\n";
+		
+		for(int i=0;i<35;i++){
+			text = text + blank4;
+		}
+		
+		text = text +"出发地： "+receipt.depture+"\n";
+		for(int i=0;i<5;i++){
+			text = text + blank4;
+		}
+		
+		for(int i=0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text +"到达地： "+receipt.destination+"\n";
+		for(int i=0;i<9;i++){
+			text = text +blank4;
+		}
+		text = text +"出库区号： "+receipt.area+"区\n";
+			
+		for(int i = 0; i < 7; i++){
+			text = text + blank4;
+		}
+		text = text + "出库排号:" +receipt.row+ "排\n";
+		for(int i = 0; i < 9; i++){
+			text = text + blank4;
+		}
+		text = text+"出库架号："+receipt.frame+"架\n";
+		for(int i = 0;i < 9;i++){
+			text = text+blank4;
+		}
+		text = text+"出库位号："+receipt.position+"位\n";
+		for(int i = 0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text+"货物编号"+receipt.CommoditiesID+"\n";
+		return text;
 	}
 
 	private String writeTrans_Truck(TransferOrderVO receipt) {

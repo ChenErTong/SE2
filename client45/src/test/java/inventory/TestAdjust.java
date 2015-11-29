@@ -16,14 +16,14 @@ public class TestAdjust {
 		Test.adjust(before, after);
 
 		assertEquals("012345678", Test.getAdjustID());
-		assertEquals(1, (Test.adjust(before, after)).exA);
-		assertEquals(1, (Test.adjust(before, after)).exB);
-		assertEquals(1, (Test.adjust(before, after)).exC);
-		assertEquals(1, (Test.adjust(before, after)).exD);
-		assertEquals(2, (Test.adjust(before, after)).aftA);
-		assertEquals(2, (Test.adjust(before, after)).aftB);
-		assertEquals(2, (Test.adjust(before, after)).aftC);
-		assertEquals(2, (Test.adjust(before, after)).aftD);
+		assertEquals(1, (Test.adjust(before, after)).exArea);
+		assertEquals(1, (Test.adjust(before, after)).exRow);
+		assertEquals(1, (Test.adjust(before, after)).exFrame);
+		assertEquals(1, (Test.adjust(before, after)).exPosition);
+		assertEquals(2, (Test.adjust(before, after)).aftArea);
+		assertEquals(2, (Test.adjust(before, after)).aftRow);
+		assertEquals(2, (Test.adjust(before, after)).aftFrame);
+		assertEquals(2, (Test.adjust(before, after)).aftPosition);
 
 	}
 

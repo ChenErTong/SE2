@@ -78,13 +78,13 @@ public class Inventory {
 		String commodities = receipt.getTransferCenterID();
 		String destination = receipt.getDestination();
 		String depture = receipt.getDeparture();
-		int a = vo.a;
-		int b = vo.b;
-		int c = vo.c;
-		int d = vo.d;
-		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(), a, b, c, d, "full");
+		int area = vo.area;
+		int row = vo.row;
+		int frame = vo.frame;
+		int position = vo.position;
+		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position, "full");
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
-				commodities, a, b, c, d);
+				commodities,area,row,frame,position);
 		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);
 		inventoryData.add(inventorypo);
 		return voImport;
@@ -108,14 +108,14 @@ public class Inventory {
 
 	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer) throws RemoteException {
 		InventoryImportReceiptPO importPo = receiptData.findImport(ImportID);
-		int a = importPo.getA();
-		int b = importPo.getB();
-		int c = importPo.getC();
-		int d = importPo.getD();
+		int area = importPo.getArea();
+		int row= importPo.getRow();
+		int frame = importPo.getFrame();
+		int position = importPo.getPosition();
 		ArrayList<InventoryPO> pos = inventoryData.find();
 		InventoryPO inventorypoFind = null;
 		for (InventoryPO inventoryPO : pos) {
-			if(isValid(inventoryPO, a, b, c, d)){
+			if(isValid(inventoryPO,area,row,frame,position)){
 				inventorypoFind=inventoryPO;
 				break;
 			}
@@ -125,7 +125,7 @@ public class Inventory {
 		String destination = importPo.getDestination();
 		String Commodities = importPo.getCommoditiesID();
 		InventoryExportReceiptPO po = new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,
-				Transfer, TransferID, Commodities, a, b, c, d);
+				Transfer, TransferID, Commodities, area,row,frame,position);
 		InventoryExportReceiptVO voExport=InventoryTrans.convertPOtoVO(po);
 		inventorypoFind.setEmptyOrFull("empty");
 		inventoryData.modify(inventorypoFind);
@@ -149,15 +149,15 @@ public class Inventory {
 	}
 
 	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) throws RemoteException {
-		int exA = before.a;
-		int exB = before.b;
-		int exC = before.c;
-		int exD = before.d;
-		int afA = now.a;
-		int afB = now.b;
-		int afC = now.c;
-		int afD = now.d;
-		AdjustReceiptPO po = new AdjustReceiptPO(ID, ReceiptType.TAKINGSTOCK, exA, exB, exC, exD, afA, afB, afC, afD);
+		int exArea = before.area;
+		int exRow = before.row;
+		int exFrame = before.frame;
+		int exPosition = before.position;
+		int afArea = now.area;
+		int afRow = now.row;
+		int afFrame = now.frame;
+		int afPosition = now.position;
+		AdjustReceiptPO po = new AdjustReceiptPO(ID, ReceiptType.TAKINGSTOCK, exArea,exRow,exFrame,exPosition,afArea,afRow,afFrame,afPosition);
 		InventoryPO beforePO = InventoryTrans.convertVOtoPO(before);
 		InventoryPO afterPO = InventoryTrans.convertVOtoPO(now);
 		beforePO.setEmptyOrFull("empty");
@@ -183,11 +183,14 @@ public class Inventory {
 			return true;
 		return false;
 	}
-	private boolean isValid(InventoryPO po,int a,int b,int c,int d){
-		if(po.getA()==a&&po.getB()==b&&po.getC()==c&&po.getD()==d){
-			return true;
+
+	
+	private boolean isValid(InventoryPO po,int area,int row,int frame,int position){
+		if(po.getArea()==area&&po.getRow()==row&&po.getFrame()==frame&&po.getPosition()==position){
+
 		}
 		return false;
 	}
-
 }
+
+

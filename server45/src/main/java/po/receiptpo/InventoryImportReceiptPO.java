@@ -13,86 +13,68 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	// 目的地
 	public String depture;
 	public String destination;
+	//TODO 是不是应该改成ArrayList啊
 	public String CommoditiesID;
-	// 区号
-	public int a;
-	// 排号
-	public int b;
-	// 架号
-	public int c;
-	// 位号
-	public int d;
-
+	public int area;
+	public int row;
+	public int frame;
+	public int position;
 	public InventoryImportReceiptPO(String ID, ReceiptType type, String depture, String destination,
-			String commoditiesID, int a, int b, int c, int d) {
+			String commoditiesID, int area, int row, int frame, int position) {
 		super(ID, type);
 		this.depture = depture;
 		this.destination = destination;
 		CommoditiesID = commoditiesID;
-		this.a = a;
-		this.b = b;
-		this.c = c;
-		this.d = d;
+		this.area = area;
+		this.row = row;
+		this.frame = frame;
+		this.position = position;
 	}
-
 	public String getDepture() {
 		return depture;
 	}
-
 	public void setDepture(String depture) {
 		this.depture = depture;
 	}
-
 	public String getDestination() {
 		return destination;
 	}
-
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-
 	public String getCommoditiesID() {
 		return CommoditiesID;
 	}
-
 	public void setCommoditiesID(String commoditiesID) {
 		CommoditiesID = commoditiesID;
 	}
-
-	public int getA() {
-		return a;
+	public int getArea() {
+		return area;
 	}
-
-	public void setA(int a) {
-		this.a = a;
+	public void setArea(int area) {
+		this.area = area;
 	}
-
-	public int getB() {
-		return b;
+	public int getRow() {
+		return row;
 	}
-
-	public void setB(int b) {
-		this.b = b;
+	public void setRow(int row) {
+		this.row = row;
 	}
-
-	public int getC() {
-		return c;
+	public int getFrame() {
+		return frame;
 	}
-
-	public void setC(int c) {
-		this.c = c;
+	public void setFrame(int frame) {
+		this.frame = frame;
 	}
-
-	public int getD() {
-		return d;
+	public int getPosition() {
+		return position;
 	}
-
-	public void setD(int d) {
-		this.d = d;
+	public void setPosition(int position) {
+		this.position = position;
 	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	
 }

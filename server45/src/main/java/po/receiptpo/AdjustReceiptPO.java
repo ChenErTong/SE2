@@ -2,82 +2,87 @@ package po.receiptpo;
 
 import state.ReceiptType;
 
-public class AdjustReceiptPO extends ReceiptPO{
-	
-	  /** @author lxl
-	 *  @version Oct 23,2015
-	 *      **/
-	
-	 
+public class AdjustReceiptPO extends ReceiptPO {
+
+	/**
+	 * @author lxl
+	 * @version Oct 23,2015
+	 **/
+
 	private static final long serialVersionUID = 1L;
-	public AdjustReceiptPO(String ID, ReceiptType type,int exA, int exB, int exC, int exD, int aftA, int aftB,
-			int aftC, int aftD) {
+
+	
+
+	public int exArea;
+	public int exRow;
+	public int exFrame;
+	public int exPosition;
+
+	public int aftArea;
+	public int aftRow;
+	public int aftFrame;
+	public int aftPosition;
+	public AdjustReceiptPO(String ID, ReceiptType type, int exArea, int exRow, int exFrame, int exPosition, int aftArea,
+			int aftRow, int aftFrame, int aftPosition) {
 		super(ID, type);
-		this.exA = exA;
-		this.exB = exB;
-		this.exC = exC;
-		this.exD = exD;
-		this.aftA = aftA;
-		this.aftB = aftB;
-		this.aftC = aftC;
-		this.aftD = aftD;
+		this.exArea = exArea;
+		this.exRow = exRow;
+		this.exFrame = exFrame;
+		this.exPosition = exPosition;
+		this.aftArea = aftArea;
+		this.aftRow = aftRow;
+		this.aftFrame = aftFrame;
+		this.aftPosition = aftPosition;
 	}
-	public int exA;
-	public int exB;
-	public int exC;
-	public int exD;
+	public int getExArea() {
+		return exArea;
+	}
+	public void setExArea(int exArea) {
+		this.exArea = exArea;
+	}
+	public int getExRow() {
+		return exRow;
+	}
+	public void setExRow(int exRow) {
+		this.exRow = exRow;
+	}
+	public int getExFrame() {
+		return exFrame;
+	}
+	public void setExFrame(int exFrame) {
+		this.exFrame = exFrame;
+	}
+	public int getExPosition() {
+		return exPosition;
+	}
+	public void setExPosition(int exPosition) {
+		this.exPosition = exPosition;
+	}
+	public int getAftArea() {
+		return aftArea;
+	}
+	public void setAftArea(int aftArea) {
+		this.aftArea = aftArea;
+	}
+	public int getAftRow() {
+		return aftRow;
+	}
+	public void setAftRow(int aftRow) {
+		this.aftRow = aftRow;
+	}
+	public int getAftFrame() {
+		return aftFrame;
+	}
+	public void setAftFrame(int aftFrame) {
+		this.aftFrame = aftFrame;
+	}
+	public int getAftPosition() {
+		return aftPosition;
+	}
+	public void setAftPosition(int aftPosition) {
+		this.aftPosition = aftPosition;
+	}
+
 	
-	public int aftA;
-	public int aftB;
-	public int aftC;
-	public int aftD;
-	public int getExA() {
-		return exA;
-	}
-	public void setExA(int exA) {
-		this.exA = exA;
-	}
-	public int getExB() {
-		return exB;
-	}
-	public void setExB(int exB) {
-		this.exB = exB;
-	}
-	public int getExC() {
-		return exC;
-	}
-	public void setExC(int exC) {
-		this.exC = exC;
-	}
-	public int getExD() {
-		return exD;
-	}
-	public void setExD(int exD) {
-		this.exD = exD;
-	}
-	public int getAftA() {
-		return aftA;
-	}
-	public void setAftA(int aftA) {
-		this.aftA = aftA;
-	}
-	public int getAftB() {
-		return aftB;
-	}
-	public void setAftB(int aftB) {
-		this.aftB = aftB;
-	}
-	public int getAftC() {
-		return aftC;
-	}
-	public void setAftC(int aftC) {
-		this.aftC = aftC;
-	}
-	public int getAftD() {
-		return aftD;
-	}
-	public void setAftD(int aftD) {
-		this.aftD = aftD;
-	}
-	
+
 }
