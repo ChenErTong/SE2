@@ -15,7 +15,7 @@ public class TestReceipt {
 		ArrayList<ReceiptVO> VOs = new ArrayList<>();
 		VOs.add(new ReceiptVO("BRANCH001", null));
 		VOs.add(new ReceiptVO("TRANSFER056", null));
-		mockReceipt.passReceipt(VOs, ReceiptType.BRANCH_ARRIVAL);
+		mockReceipt.passReceipt(VOs);
 	}
 
 }

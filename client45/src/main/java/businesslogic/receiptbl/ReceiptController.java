@@ -12,9 +12,9 @@ import vo.receiptvo.ReceiptVO;
 public class ReceiptController implements ReceiptBLService{
     Receipt ReceiptBL = new Receipt();
 	@Override
-	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) {
+	public ResultMessage updateReceipt(ReceiptVO receiptVO) {
 		try {
-			return ReceiptBL.updateReceipt(receiptVO, receiptType);
+			return ReceiptBL.updateReceipt(receiptVO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -22,14 +22,23 @@ public class ReceiptController implements ReceiptBLService{
 	}
 
 	@Override
-	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		
-		return ReceiptBL.passReceipt(VOs, receiptTypes);
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) {
+		try {
+			return ReceiptBL.passReceipt(VOs);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		return ReceiptBL.dontPassReceipt(VOs, receiptTypes);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs) {
+		try {
+			return ReceiptBL.dontPassReceipt(VOs);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.FAIL;
 	}
 
 	@Override

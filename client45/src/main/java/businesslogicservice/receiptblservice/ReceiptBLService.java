@@ -22,7 +22,7 @@ public interface ReceiptBLService {
 	 * @version Oct 22,2015
 	 * @return 处理信息
 	 */
-	public ResultMessage updateReceipt(ReceiptVO receiptVO,ReceiptType receiptType);
+	public ResultMessage updateReceipt(ReceiptVO receiptVO);
 	
 	/**
 	 * 通过单据审批
@@ -32,7 +32,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return 处理信息
 	 */
-	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
+	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs);
 	
 	/**
 	 * 不通过单据审批
@@ -42,7 +42,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return
 	 */
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs,ReceiptType receiptTypes);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs);
 	
 	/**
 	 * 查看单据内容，根据单据的状态进行区分：等待审核的单据、通过审核的单据、未通过审核的单据

@@ -31,33 +31,35 @@ public class Receipt  {
 	}
 
 	
-	public ResultMessage updateReceipt(ReceiptVO receiptVO, ReceiptType receiptType) throws RemoteException {
-		ReceiptPO po=new ReceiptPO(receiptVO.ID, receiptType);
-		receiptData.modify(po);
+	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
+		ReceiptPO po=ReceiptTrans.convertVOtoPO(receiptVO);
 		return receiptData.modify(po);
 	}
 
 	
-	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		ArrayList<ReceiptPO> POs=new ArrayList<ReceiptPO>();
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
+		ResultMessage message = ResultMessage.SUCCESS;
 		for(ReceiptVO vo:VOs){
-			ReceiptPO po=new ReceiptPO(vo.ID, receiptTypes);
+			ReceiptPO po= ReceiptTrans.convertVOtoPO(vo);
 			po.setReceiptState(ReceiptState.SUCCESS);
-			POs.add(po);
+			ResultMessage messagePass = receiptData.modify(po);
+			if(messagePass==ResultMessage.FAIL)
+				message=ResultMessage.FAIL;
 		}
-//		return POs;
-		return null;
+		return message;
 	}
 
 	
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
-		//TODO 写的不对 应该找相应的单据类型
-		ArrayList<ReceiptPO> POs=ReceiptTrans.convertVOstoPOs(VOs);
-		for (ReceiptPO receiptPO : POs) {
-			receiptPO.setReceiptState(ReceiptState.FAILURE);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
+		ResultMessage message = ResultMessage.SUCCESS;
+		for(ReceiptVO vo:VOs){
+			ReceiptPO po= ReceiptTrans.convertVOtoPO(vo);
+			po.setReceiptState(ReceiptState.FAILURE);
+			ResultMessage messagePass = receiptData.modify(po);
+			if(messagePass==ResultMessage.FAIL)
+				message=ResultMessage.FAIL;
 		}
-//		return POs
-		return null;
+		return message;
 	}
 	
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException {

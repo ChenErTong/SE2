@@ -6,6 +6,7 @@ public enum ResultMessage {
 	WAIT;
 }
 
+
 /*public class ResultMessage {
 	
 	

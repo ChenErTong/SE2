@@ -10,7 +10,7 @@ import vo.receiptvo.ReceiptVO;
 
 public class MockReceipt extends Receipt{
 	@Override
-	public ArrayList<ReceiptPO> passReceipt(ArrayList<ReceiptVO> VOs, ReceiptType receiptTypes) {
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) {
 		System.out.println("These receipts have passed!");
 		return null;
 	}
