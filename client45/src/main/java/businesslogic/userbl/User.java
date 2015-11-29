@@ -58,8 +58,48 @@ public class User {
 		UserPO userPO = UserTrans.transVOtoPO(vo);
 		return userData.modify(userPO);
 	}
-
+	/**
+	 * 验证用户登录
+	 * @param loginInfo
+	 * @return 返回登录的用户的身份，登录失败时返回NULL
+	 * @author zsq
+	 * @version Oct 22,2015
+	 * @author Ann
+	 * @version Nov 29,2015
+	 */
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
-		return userData.login(loginInfo);
+		ArrayList<UserPO> pos = userData.find();
+		for (UserPO po : pos) {
+			if (po.getUsername().equals(loginInfo.username)){
+				if (po.getPassword().equals(loginInfo.password)) {
+					return UserIdentity.valueOf(po.getIden());
+				}else {
+					//密码不正确
+					return null;
+				}
+			}
+		}
+		//无用户
+		return null;
+	}
+	/**
+	 * @param oldPassword，旧密码
+	 * @param newPassword，新密码
+	 * @return 处理信息
+	 * @author zsq
+	 * @version Oct 22,2015
+	 * @author Ann
+	 * @version Nov 29,2015
+	 */
+	public ResultMessage updateAdmin(String oldPassword,String newPassword) throws RemoteException{
+		UserPO admin = userData.find("0000");
+		if(!admin.getPassword().equals(oldPassword))
+			//旧密码不正确
+			return ResultMessage.FAIL;
+		else {
+			admin.setPassword(newPassword);
+			userData.modify(admin);
+			return ResultMessage.SUCCESS;
+		}
 	}
 }
