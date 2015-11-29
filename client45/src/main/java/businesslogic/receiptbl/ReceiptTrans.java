@@ -8,6 +8,7 @@ import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.PaymentBillPO;
 import po.receiptpo.ReceiptPO;
+import po.receiptpo.RecipientConfirmReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
@@ -23,6 +24,7 @@ import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.PaymentBillVO;
 import vo.receiptvo.ReceiptVO;
+import vo.receiptvo.RecipientConfirmReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -48,6 +50,7 @@ public class ReceiptTrans {
 			case TAKINGSTOCK:			return convertSpecialVOtoPO((AdjustReceiptVO)vo);
 			case OUTSTOCK:					return convertSpecialVOtoPO((InventoryExportReceiptVO)vo);
 			case INSTOCK:					return convertSpecialVOtoPO((InventoryImportReceiptVO)vo);
+			case CONFIRM:					return convertSpecialVOtoPO((RecipientConfirmReceiptVO)vo);
 			default:  		return null;
 			}
 		}
@@ -72,11 +75,25 @@ public class ReceiptTrans {
 			case TAKINGSTOCK:			return convertSpecialPOtoVO((AdjustReceiptPO)po);
 			case OUTSTOCK:					return convertSpecialPOtoVO((InventoryExportReceiptPO)po);
 			case INSTOCK:					return convertSpecialPOtoVO((InventoryImportReceiptPO)po);
+			case CONFIRM:					return convertSpecialPOtoVO((RecipientConfirmReceiptPO)po);
 			default:  		return null;
 			}
 		}
 	}
-	
+	public static ReceiptVO convertSpecialPOtoVO(RecipientConfirmReceiptPO po){
+		String id = po.getID();
+		ReceiptType type = po.getReceiptType();
+		String orderID = po.getOrderID();
+		String recipientName = po.getRecipientName();
+		return new RecipientConfirmReceiptVO(id, type, orderID, recipientName);
+	}
+	public static ReceiptPO convertSpecialVOtoPO(RecipientConfirmReceiptVO vo){
+		String ID = vo.ID;
+		ReceiptType type = vo.type;
+		String orderID = vo.orderID;
+		String recipientName = vo.recipientName;
+		return new RecipientConfirmReceiptPO(ID, type, orderID, recipientName);
+	}
 	public static ReceiptVO convertSpecialPOtoVO(BranchArrivalListPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
@@ -86,6 +103,7 @@ public class ReceiptTrans {
 		ArrayList<String> orders = po.getOrders();
 		return new BranchArrivalListVO(id, type, transferListID, departure, state, orders);
 	}
+	
 	public static ReceiptPO convertSpecialVOtoPO(BranchArrivalListVO vo){
 		String ID = vo.ID;
 		ReceiptType type = vo.type;

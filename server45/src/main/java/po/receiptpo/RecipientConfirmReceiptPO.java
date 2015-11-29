@@ -2,7 +2,7 @@ package po.receiptpo;
 
 import state.ReceiptType;
 
-public class RecipientConfirmReceipt extends ReceiptPO {
+public class RecipientConfirmReceiptPO extends ReceiptPO {
 	/**
 	 * 
 	 */
@@ -11,7 +11,7 @@ public class RecipientConfirmReceipt extends ReceiptPO {
 	//收件编号是父类的ID
 	//收件日期是父类的date
 	private String recipientName;
-	public RecipientConfirmReceipt(String ID, ReceiptType type, String orderID, String recipientName) {
+	public RecipientConfirmReceiptPO(String ID, ReceiptType type, String orderID, String recipientName) {
 		super(ID, type);
 		this.orderID = orderID;
 		this.recipientName = recipientName;
