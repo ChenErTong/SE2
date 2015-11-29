@@ -51,7 +51,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.add(userInfo);
 		
 		userDetails = new UserDetails();
-		userDetails.setUneditable();
 		this.add(userDetails);
 		this.initButton(frame_Admin);
 	}	
@@ -102,7 +101,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.initButton(frame);
 		
 		userDetails = new UserDetails();
-		userDetails.setUneditable();
+	//	userDetails.setUneditable();
 		userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
 		this.add(userDetails);
 		
@@ -284,7 +283,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(userDetails.getData()==null){
 				this.add(new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED));
 			}else{
-				ResultMessage rsg = userController.addUser(new UserVO(data[0],data[1],data[2],data[3],data[4],data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],data[4],data[5],data[6]+data[7]+data[8]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
@@ -412,9 +411,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	}
 
 	private void deleteUser() {
+		System.out.println("111");
 		table = userInfo.getTable();
 		userController = ControllerFactory.getUserController();
-		ResultMessage rsg = userController.deleteUser(userPool.get(table.getSelectedRow()));
+		System.out.println(userPool.size());
+		UserVO vo = userPool.get(table.getSelectedRow());
+		System.out.println(vo.id);
+		ResultMessage rsg = userController.deleteUser(vo);
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();

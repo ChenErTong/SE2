@@ -57,8 +57,8 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(300,210,25,30,"市",18,true));
 		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
 		//this.add(district);
-		address = new MyEmptyTextArea(100,260,400,150);
-		this.add(address);
+	//	address = new MyEmptyTextArea(100,260,400,150);
+		//this.add(address);
 	
 		  
 		//构建中国各大城市的三级联动下拉框
@@ -96,7 +96,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		organizationType.setEditable(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
-		address.setEditable(false);
+	//	address.setEditable(false);
 	}
 	
 	public void setData(String[] data) {
@@ -106,7 +106,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		organizationType.setSelectedItem(data[4]);
 		provincesBox.setSelectedItem(data[5]);
 		citiesBox.setSelectedItem(data[6]);
-		address.setText(data[7]);	
+	//	address.setText(data[7]);	
 	}
 
 	public void refresh() {
@@ -114,7 +114,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 			myJTextField.setText(null);
 		}
 		
-		address.setText(null);
+	//	address.setText(null);
 		
 	}
 
@@ -126,8 +126,8 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		data[4] = (String)organizationType.getSelectedItem();
 		data[5] = (String) provincesBox.getSelectedItem();
 		data[6] = (String) citiesBox.getSelectedItem();
-		data[7] = address.getText();
-		for(int i = 4;i<8;i++){
+		//data[7] = address.getText();
+		for(int i = 4;i<7;i++){
 			if(data[i].equals("")) return null;
 		}
 		return data;

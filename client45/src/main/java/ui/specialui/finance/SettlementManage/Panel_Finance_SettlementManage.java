@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillController;
-import businesslogic.fundbl.DebitAndPayBillShowController;
+import state.ResultMessage;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -30,7 +30,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 	private MyJTable table;
 	
 	DebitAndPayBillController controller = ControllerFactory.getDebitAndPayBillController();
-	DebitAndPayBillShowController showController = ControllerFactory.getDebitAndPayBillShowController();
+
 	static ArrayList<PaymentBillVO> paybillPool;
 	static String[] paybillIDs;
 	static String paybillID = "";
@@ -188,7 +188,7 @@ private void deletePanel(Frame_Finance frame) {
 		paybillID = "";
 		
 //		 showController = ControllerFactory.getDebitAndPayBillShowController();
-		 ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
+		 /*ArrayList<DebitAndPayBillVO> paybillVO = controller.
 		 PaymentBillVO payVO;
 		for(int i = 0; i < paybillVO.size(); i++){
 			payVO = (PaymentBillVO) paybillVO.get(i);
@@ -196,7 +196,7 @@ private void deletePanel(Frame_Finance frame) {
 			tableModel.addRow(rowData);
 			paybillPool.add((PaymentBillVO) paybillVO.get(i));
 		
-		}
+		}*/
 	}
 
 	@Override
@@ -304,20 +304,20 @@ private void deletePanel(Frame_Finance frame) {
 		controller = ControllerFactory.getDebitAndPayBillController();
 		
 		String[] data = payReceiptInfo.getData();
-		//ResultMessage rsg = controller.updateDraft(po) TODO --为啥参数是POorz
+		ResultMessage rsg=  controller.updateDraft(new PaymentBillVO(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]));
 		
 		/**
 		 * //TODO 好的我来改了 
 		 * @author Ann
 		 */
 		
-		//if(rsg.equals(ResultMessage.SUCCESS)){
-			//System.out.println("ModifySucceed!");
-			//this.showAll();
-			//this.add(new MyNotification(this,"账户修改成功！",Color.GREEN));		
-		//}else{
-			//this.add(new MyNotification(this,"账户修改失败！",Color.RED));
-		//}
+		if(rsg.equals(ResultMessage.SUCCESS)){
+			System.out.println("ModifySucceed!");
+			this.showAll();
+			this.add(new MyNotification(this,"账户修改成功！",Color.GREEN));		
+		}else{
+			this.add(new MyNotification(this,"账户修改失败！",Color.RED));
+		}
 	
 	}
 	
