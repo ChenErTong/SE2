@@ -65,4 +65,6 @@ public interface DebitAndPayBillShowService {
 	public ArrayList<DebitAndPayBillVO> showPayDraft();
 
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft();
+	
+	public ArrayList<DebitAndPayBillVO> showList(String end);
 }

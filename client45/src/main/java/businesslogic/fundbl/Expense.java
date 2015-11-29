@@ -14,7 +14,7 @@ import po.ExpensePO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.receiptvo.ExpenseVO;
-
+@Deprecated
 public class Expense {
 
 	private ExpenseDataService expenseData;

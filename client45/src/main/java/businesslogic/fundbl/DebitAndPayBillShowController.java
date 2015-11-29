@@ -109,4 +109,14 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 		return null;
 	}
 
+	@Override
+	public ArrayList<DebitAndPayBillVO> showList(String end) {
+		try {
+			return showBL.showList(end);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

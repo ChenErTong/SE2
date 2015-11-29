@@ -4,10 +4,16 @@ import java.util.ArrayList;
 
 import po.BasePO;
 import vo.BaseVO;
-
+/**
+ * This class is TODO this class is todo
+ * @author Ann 
+ *
+ */
 public class BaseTrans {
+	
 	public static BaseVO convertPOtoVO(BasePO po) {
-		BaseVO vo = new BaseVO(po.getID(), po.getDistances(), po.getPrice(), po.getSalaryPolicies());
+		BaseVO vo = null;
+//				new BaseVO(po.getID(), po.getDistances(), po.getPrice(), po.getSalaryPolicies());
 		return vo;
 	}
 	
@@ -21,7 +27,9 @@ public class BaseTrans {
 	}
 	
 	public static BasePO convertVOtoPO(BaseVO vo) {
-		BasePO po = new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
+		
+		BasePO po = null;
+//				new BasePO(vo.id, vo.distances, vo.price, vo.salaryPolicies);
 		return po;
 	}
 }

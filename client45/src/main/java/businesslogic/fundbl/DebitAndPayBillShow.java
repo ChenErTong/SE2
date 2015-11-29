@@ -89,4 +89,16 @@ public class DebitAndPayBillShow {
 		ArrayList<DebitAndPayBillVO> vos = FundTrans.convertDebitAndPayBillPOstoVOs(pos);
 		return vos;
 	}
+	
+	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException{
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =new ArrayList<>();
+		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
+			if(debitAndPayBillPO.getDate().compareTo(end)<=0){
+				DebitAndPayBillVO vo = FundTrans.convertPOtoVO(debitAndPayBillPO);
+				vos.add(vo);
+			}
+		}
+		return vos;
+	}
 }

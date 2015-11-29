@@ -1,9 +1,5 @@
 package po;
 
-import java.util.ArrayList;
-
-import state.SalaryPolicy;
-
 /**
  * 公司基本晕运营常量，包括职工薪水策略、城市距离、运输单价
  * @author zsq
@@ -11,47 +7,46 @@ import state.SalaryPolicy;
  */
 public class BasePO extends PersistentObject{
 
-	public BasePO(String iD, String date) {
-		super(iD, date);
-	}
-	
-	
-
-	public BasePO(String id, ArrayList<Double> distances, ArrayList<Double> price,
-			ArrayList<SalaryPolicy> salaryPolicies) {
-		super(id);
-		this.distances = distances;
-		this.price = price;
-		this.salaryPolicies = salaryPolicies;
-	}
-
-
-
-	/** serialVersionUID*/
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	/**城市距离，ArrayList里存放的类型应该能代表两个不同的城市*/
-	private ArrayList<Double> distances;
-	/**运输单价，ArrayList存放顺序与城市距离对应*/
-	private ArrayList<Double> price;
-	/**薪水策略，根据不同的职工采用不同的策略*/
-	private ArrayList<SalaryPolicy> salaryPolicies;
-	public ArrayList<Double> getDistances() {
-		return distances;
+	private String cityFrom;
+	private String cityTo;
+	private double distance;
+	private double price;
+	public BasePO(String id, String cityFrom, String cityTo, double distance, double price) {
+		super(id);
+		this.cityFrom = cityFrom;
+		this.cityTo = cityTo;
+		this.distance = distance;
+		this.price = price;
 	}
-	public void setDistances(ArrayList<Double> distances) {
-		this.distances = distances;
+	public String getCityFrom() {
+		return cityFrom;
 	}
-	public ArrayList<Double> getPrice() {
+	public void setCityFrom(String cityFrom) {
+		this.cityFrom = cityFrom;
+	}
+	public String getCityTo() {
+		return cityTo;
+	}
+	public void setCityTo(String cityTo) {
+		this.cityTo = cityTo;
+	}
+	public double getDistance() {
+		return distance;
+	}
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(ArrayList<Double> price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public ArrayList<SalaryPolicy> getSalaryPolicies() {
-		return salaryPolicies;
-	}
-	public void setSalaryPolicies(ArrayList<SalaryPolicy> salaryPolicies) {
-		this.salaryPolicies = salaryPolicies;
-	}
+	
+	
 	
 }
