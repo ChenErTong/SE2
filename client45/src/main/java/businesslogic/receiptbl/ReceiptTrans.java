@@ -45,13 +45,13 @@ public class ReceiptTrans {
 			case TRANS_PLANE:
 			case TRANS_TRAIN:
 			case TRANS_TRUCK:			return convertSpecialVOtoPO((TransferOrderVO)vo);
-			case DEBIT:						return convertSpecialVOtoPO((DebitBillVO)vo);
+			case DEBIT:							return convertSpecialVOtoPO((DebitBillVO)vo);
 			case PAY:								return convertSpecialVOtoPO((PaymentBillVO)vo);
 			case TAKINGSTOCK:			return convertSpecialVOtoPO((AdjustReceiptVO)vo);
 			case OUTSTOCK:					return convertSpecialVOtoPO((InventoryExportReceiptVO)vo);
 			case INSTOCK:					return convertSpecialVOtoPO((InventoryImportReceiptVO)vo);
 			case CONFIRM:					return convertSpecialVOtoPO((RecipientConfirmReceiptVO)vo);
-			default:  		return null;
+			default:  								return null;
 			}
 		}
 	}
@@ -70,13 +70,13 @@ public class ReceiptTrans {
 			case TRANS_PLANE:
 			case TRANS_TRAIN:
 			case TRANS_TRUCK:			return convertSpecialPOtoVO((TransferOrderPO)po);
-			case DEBIT:						return convertSpecialPOtoVO((DebitBillPO)po);
+			case DEBIT:							return convertSpecialPOtoVO((DebitBillPO)po);
 			case PAY:								return convertSpecialPOtoVO((PaymentBillPO)po);
 			case TAKINGSTOCK:			return convertSpecialPOtoVO((AdjustReceiptPO)po);
 			case OUTSTOCK:					return convertSpecialPOtoVO((InventoryExportReceiptPO)po);
 			case INSTOCK:					return convertSpecialPOtoVO((InventoryImportReceiptPO)po);
 			case CONFIRM:					return convertSpecialPOtoVO((RecipientConfirmReceiptPO)po);
-			default:  		return null;
+			default:  								return null;
 			}
 		}
 	}
