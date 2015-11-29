@@ -39,6 +39,7 @@ import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
 public class OpeningStock {
+	//TODO 依赖倒置
 	private OpeningStockDataService openingStockData;
 	private BranchDataService branchData;
 	private TransferDataService transferData;
@@ -66,6 +67,7 @@ public class OpeningStock {
 		}
 	}
 
+	//可能用不到了
 	public ResultMessage add(ArrayList<TransferVO> transferVOs, ArrayList<BranchVO> branchVOs,
 			ArrayList<AccountVO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
 			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {

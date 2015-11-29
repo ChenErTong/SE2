@@ -59,6 +59,6 @@ public interface UserBLService extends BLService{
 	 * @version Oct 22,2015
 	 */
 	public UserIdentity login(LoginInfo loginInfo);
-	
+	public ResultMessage updateAdmin(String oldPassword,String newPassword);
 	
 }

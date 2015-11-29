@@ -11,7 +11,7 @@ public class MyJRadioButton extends JRadioButton {
 		this.setBounds(x, y, width, height);
 		this.setForeground(Color.BLACK);
 		this.setContentAreaFilled(false);
-		this.setSelected(true);
+		this.setSelected(false);
 		this.setText(text);
 		this.setVisible(true);
 	}

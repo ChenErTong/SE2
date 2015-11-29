@@ -1,13 +1,11 @@
 package inventory;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.junit.Test;
-
-import vo.InventoryCheckVO;
 
 
 
@@ -15,7 +13,7 @@ import vo.InventoryCheckVO;
 public class TestCheck {
 	@Test
 	public void testCheck ()throws RemoteException{
-		ArrayList<vo.receiptvo.InventoryImportReceiptVO> iirv=new ArrayList<vo.receiptvo.InventoryImportReceiptVO>();
+		new ArrayList<vo.receiptvo.InventoryImportReceiptVO>();
 		MockCheck test=new MockCheck();
 		test.getLotNum();
 		test.checkRecord();

@@ -47,7 +47,7 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
-	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType) {
+	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,String begindate) {
 		return orderBL.getArrivalDate(senderAddress, receiverAddress, expressType);
 	}
 

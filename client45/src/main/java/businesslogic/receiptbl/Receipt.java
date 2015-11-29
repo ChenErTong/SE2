@@ -66,7 +66,14 @@ public class Receipt  {
 		}
 		return message;
 	}
-	
+	/**
+	 * 根据type的类型返回特定类型的单据ArrayList
+	 * @author Ann
+	 * @param type 单据类型
+	 * @param state 单据状态
+	 * @return 特定类型的单据ArrayList
+	 * @throws RemoteException
+	 */
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();

@@ -11,6 +11,7 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow {
 		account = new Account();
 		accountData = account.getData();
 	}
+	
 	@Override
 	public boolean isAccountAMemberOfBranch(String accountID, String branchID) {
 		AccountPO po = accountData.find(accountID);

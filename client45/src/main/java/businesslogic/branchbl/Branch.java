@@ -30,6 +30,7 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Branch{
+	//TODO 依赖倒置
 	private OrderDataService orderData;
 	private ReceiptDataService  receiptData;
 	private OrderInfo orderInfo;

@@ -19,6 +19,7 @@ import vo.BranchVO;
 import vo.TransferVO;
 
 public class Organization {
+	//TODO (可能不需要依赖倒置)
 	private BranchDataService branchData;
 	private TransferDataService transferData;
 

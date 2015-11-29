@@ -55,22 +55,15 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("produceOrder")){
 			if(this.produceOrder()){
-				subPanel.setVisible(false);
-				this.remove(subPanel);
-				subPanel = null;
-				// TODO 跳转至订单单据界面
+				((OrderInput) subPanel).refresh();
 			}
 		}else if(e.getActionCommand().equals("produceReceiveList")){
 			if(this.produceReceiveList()){
 				((ReceiveInput) subPanel).refresh();
-				// TODO 跳转至订单单据界面
 			}
 		}else if(e.getActionCommand().equals("calculateTimeCost")){
 			if(this.calculateTimeCost()){
-				subPanel.setVisible(false);
-				this.remove(subPanel);
-				subPanel = null;
-				// TODO 跳转至预计时间与费用界面
+				((TimeAndCostManager) subPanel).refresh();
 			}
 		}
 	}

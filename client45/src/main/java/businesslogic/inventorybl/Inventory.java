@@ -29,6 +29,7 @@ import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class Inventory {
+	//TODO 依赖倒置
 	private InventoryDataService inventoryData;
 	private ReceiptDataService receiptData;
 
@@ -47,29 +48,17 @@ public class Inventory {
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		ArrayList<InventoryVO> VOs = this.getInventoryPOsInDate(beginDate,endDate);
+		//获得receiptInfo
 		ReceiptInfo_Inventory receiptInfo = new ReceiptInfo();
+		//通过receiptInfo得到一段时间内入库单和出库单的数量
 		int importNumber=receiptInfo.getImportNumber(beginDate, endDate);
 		int exportNumber = receiptInfo.getExportNumber(beginDate, endDate);
 		int sum = importNumber+exportNumber;
+		//新建库存查看VO
 		InventoryViewVO viewVO = new InventoryViewVO(importNumber,exportNumber,sum, VOs);
 		return viewVO;
 	}
-	private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
-		ArrayList<InventoryPO> POs = inventoryData.find();
-		ArrayList<InventoryVO> vos = new ArrayList<>();
-		for (InventoryPO inventoryPO : POs) {
-			if(inDate(inventoryPO, begin, end)){
-				InventoryVO vo  = InventoryTrans.convertPOtoVO(inventoryPO);
-				vos.add(vo);
-			}
-		}
-		return vos;
-	}
-	private boolean inDate(InventoryPO po, String beginDate, String endDate) {
-		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
-			return true;
-		return false;
-	}
+	
 
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
 		ArrayList<InventoryPO> pos = inventoryData.find();
@@ -178,13 +167,30 @@ public class Inventory {
 		receiptData.add(po);
 		return ResultMessage.SUCCESS;
 	}
-
-	public void Init() throws RemoteException {
-		inventoryData.initialFile();
+	private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
+		ArrayList<InventoryPO> POs = inventoryData.find();
+		ArrayList<InventoryVO> vos = new ArrayList<>();
+		for (InventoryPO inventoryPO : POs) {
+			if(inDate(inventoryPO, begin, end)){
+				InventoryVO vo  = InventoryTrans.convertPOtoVO(inventoryPO);
+				vos.add(vo);
+			}
+		}
+		return vos;
 	}
+	private boolean inDate(InventoryPO po, String beginDate, String endDate) {
+		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
+			return true;
+		return false;
+	}
+<<<<<<< HEAD
 	
 	private boolean isValid(InventoryPO po,int area,int row,int frame,int position){
 		if(po.getArea()==area&&po.getRow()==row&&po.getFrame()==frame&&po.getPosition()==position){
+=======
+	private boolean isValid(InventoryPO po,int a,int b,int c,int d){
+		if(po.getA()==a&&po.getB()==b&&po.getC()==c&&po.getD()==d){
+>>>>>>> origin/master2
 			return true;
 		}
 		return false;

@@ -78,4 +78,14 @@ public class UserController implements UserBLService{
 		return null;
 	}
 
+	@Override
+	public ResultMessage updateAdmin(String oldPassword, String newPassword) {
+		try {
+			return userBL.updateAdmin(oldPassword, newPassword);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
