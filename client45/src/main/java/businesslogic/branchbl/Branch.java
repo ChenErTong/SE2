@@ -32,13 +32,12 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
 public class Branch{
 	//TODO 依赖倒置
 	private OrderDataService orderData;
-	private ReceiptDataService  receiptData;
-	private OrderInfo orderInfo;
+	private OrderInfo_Branch_Transfer orderInfo;
+	private ReceiptInfo_Branch_Transfer receiptInfo;
 	public Branch() {
 		orderInfo = new OrderInfo();
 		try {
 			orderData = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
-			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -102,33 +101,33 @@ public class Branch{
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orders);
 		//更改VO状态
 		orderInfo.changeOrderState(orders,   "货物已离开" + departure + "营业厅");
+		receiptInfo.add(vo);
 		return vo;
 	}
 
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) throws RemoteException {
 		//TODO
-		String ID = receiptData.getID();
+		String ID = receiptInfo.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
 		return vo;
 	}
 
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
-		po.setReceiptCondition(ReceiptCondition.SUBITTED);
-		return receiptData.modify(po);
+		receipt.receiptCondition=ReceiptCondition.SUBITTED;
+		return receiptInfo.modify(receipt);
 	}
 
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
-		return  receiptData.add(po);
+		return  receiptInfo.add(receipt);
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, double money) throws RemoteException {
-		String ID = receiptData.getID();
+		String ID = receiptInfo.getID();
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders, money);
 		//更改VO状态
 		orderInfo.changeOrderState(orders, "货物已到达"+destination+"营业厅");
+		receiptInfo.add(vo);
 		return vo;
 	}
 

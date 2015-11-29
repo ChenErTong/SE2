@@ -3,13 +3,15 @@ package businesslogic.receiptbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branchbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.ReceiptPO;
 import state.ReceiptType;
+import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
 
-public class ReceiptInfo implements ReceiptInfo_Inventory {
+public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer {
 	Receipt receipt;
 	ReceiptDataService receiptData;
 	public ReceiptInfo() {
@@ -52,5 +54,19 @@ public class ReceiptInfo implements ReceiptInfo_Inventory {
 				++sum;
 		}
 		return sum;
+	}
+	@Override
+	public ResultMessage add(ReceiptVO vo) throws RemoteException {
+		ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
+		return receiptData.add(po);
+	}
+	@Override
+	public ResultMessage modify(ReceiptVO vo) throws RemoteException {
+		ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
+		return receiptData.add(po);
+	}
+	@Override
+	public String getID() throws RemoteException {
+		return receiptData.getID();
 	}
 }

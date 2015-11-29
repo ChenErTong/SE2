@@ -34,7 +34,7 @@ public class Receipt  {
 		}
 		return null;
 	}
-
+	
 	
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
 		ReceiptPO po=ReceiptTrans.convertVOtoPO(receiptVO);
