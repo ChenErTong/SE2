@@ -3,12 +3,16 @@ package businesslogic.fundbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountInfo;
 import businesslogic.recordbl.DebitAndPayBillShowInfo_Record;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
+import po.receiptpo.DebitBillPO;
 import state.ReceiptType;
 import vo.BussinessConditionVO;
+import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
 
 public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	DebitAndPayBill debitAndPayBill;
@@ -48,6 +52,24 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
 			return true;
 		return false;
+	}
+	@Override
+	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException {
+		AccountInfo_DebitAndPayBillVOShow accountInfo = new AccountInfo();
+		ArrayList<DebitBillVO> debits = new ArrayList<>();
+		double income = 0;
+		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
+		for (DebitAndPayBillPO debitAndPayBillPO : POs) {
+			if(debitAndPayBillPO.getDate().equals(date)&&debitAndPayBillPO.getReceiptType()==ReceiptType.DEBIT){
+				DebitBillPO po = (DebitBillPO)debitAndPayBillPO;
+				if(accountInfo.isAccountAMemberOfBranch(po.getCourierID(), branch)){
+					income+=debitAndPayBillPO.getMoney();
+					DebitBillVO vo = FundTrans.convertDebitPOtoDebitVO(po);
+					debits.add(vo);
+				}
+			}
+		}
+		return new BussinessOneDayVO(debits, income);
 	}
 	
 
