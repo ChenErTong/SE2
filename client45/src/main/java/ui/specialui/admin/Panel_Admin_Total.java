@@ -287,15 +287,15 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
-					this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+					new MyNotification(this,"账户添加成功！",Color.GREEN);
 				}else{
-					this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+					new MyNotification(this,"账户添加失败！",Color.RED);
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要修改的用户！",Color.RED));
+				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				System.out.println(userID);
@@ -312,16 +312,16 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要删除的员工！",Color.RED));
+				new MyNotification(this,"请先选择要删除的员工！",Color.RED);
 			}else{
-				this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
+				new MyNotification(this,"正在删除账户！",Color.GREEN);
 				this.deleteUser();
 			
 			}
 		}else if(e.getActionCommand().equals("ViewUserInfo")){
 			table = userInfo.getTable();
 			if(table.getSelectedColumnCount()==0){
-				this.add(new MyNotification(this,"请先选择要查看的员工！",Color.RED));
+				new MyNotification(this,"请先选择要查看的员工！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				String[] data = new String[9];
@@ -338,12 +338,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			table = userInfo.getTable();
 			userID= userPool.get(table.getSelectedRow()).id;
 			if(table.getSelectedRow()==0){
-				this.add(new MyNotification(this,"请先选择需要修改的用户！",Color.RED));
+				new MyNotification(this,"请先选择需要修改的用户！",Color.RED);
 			}else{
 				if(userDetails.getData()==null){
 					this.add(new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED));
 				}else{
-					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					new MyNotification(this,"正在修改账户信息！",Color.GREEN);
 					this.modifyUser();
 				}
 			}
@@ -363,7 +363,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			userController = ControllerFactory.getUserController();
 			ArrayList<UserVO> userVO;
 			String data = userInfo.getData()+"";
-			if(data!=null){
+			if(data!=""){
 				switch(Integer.parseInt(data)){
 					case 1 : userVO = userController.show();break;
 					case 2 : userVO = userController.show();break;
@@ -382,18 +382,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
 					System.out.println("SearchSucceed!");
-					this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个账户满足条件！",Color.GREEN));
 				}
 			}else{
-					this.add(new MyNotification(this,"请选择查询类型！",Color.RED));
+					new MyNotification(this,"请选择查询类型！",Color.RED);
 			}
 		}
 	}
-		
-
-
-	
-
 
 	private void modifyUser() {
 		userController = ControllerFactory.getUserController();
@@ -404,26 +398,23 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"用户修改成功！",Color.GREEN));		
+			new MyNotification(this,"用户修改成功！",Color.GREEN);		
 		}else{
-			this.add(new MyNotification(this,"用户修改失败！",Color.RED));
+			new MyNotification(this,"用户修改失败！",Color.RED);
 		}
 	}
 
 	private void deleteUser() {
-		System.out.println("111");
 		table = userInfo.getTable();
 		userController = ControllerFactory.getUserController();
-		System.out.println(userPool.size());
 		UserVO vo = userPool.get(table.getSelectedRow());
-		System.out.println(vo.id);
 		ResultMessage rsg = userController.deleteUser(vo);
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"用户删除成功！",Color.GREEN));
+			new MyNotification(this,"用户删除成功！",Color.GREEN);
 		}else{
-			this.add(new MyNotification(this,"用户删除失败！",Color.RED));
+			new MyNotification(this,"用户删除失败！",Color.RED);
 		}
 		
 	}
