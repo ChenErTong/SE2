@@ -51,7 +51,7 @@ public class UserController implements UserBLService{
 	@Override
 	public ResultMessage deleteUser(UserVO vo) {
 		try {
-			return userBL.deleteUser(vo.userName);
+			return userBL.deleteUser(vo.id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

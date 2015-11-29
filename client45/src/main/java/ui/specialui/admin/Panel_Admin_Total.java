@@ -341,7 +341,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请先选择需要修改的用户！",Color.RED);
 			}else{
 				if(userDetails.getData()==null){
-					this.add(new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED));
+					new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改账户信息！",Color.GREEN);
 					this.modifyUser();
@@ -416,7 +416,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else{
 			new MyNotification(this,"用户删除失败！",Color.RED);
 		}
-		
 	}
 }
 
