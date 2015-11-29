@@ -78,8 +78,7 @@ public class BaseInfo implements BaseInfo_Order{
 		return price;
 	}
 	private double getPrice(double distance, double weight, double priceConstant) {
-		// TODO Auto-generated method stub
-		return 0;
+		return distance/1000*weight*priceConstant;
 	}
 	
 	/*public static void main(String[] args) {

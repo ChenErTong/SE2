@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
-import state.PackageType;
 import ui.GetDate;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
