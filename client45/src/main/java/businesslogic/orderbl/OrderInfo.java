@@ -5,7 +5,10 @@ import java.util.ArrayList;
 
 import businesslogic.branchbl.OrderInfo_Branch_Transfer;
 import dataservice.orderdataservice.OrderDataService;
+import po.CommodityPO;
 import po.OrderPO;
+import vo.CommodityVO;
+import vo.OrderVO;
 
 public class OrderInfo implements OrderInfo_Branch_Transfer{
 	Order order;
@@ -33,5 +36,29 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 		historyMessage.add(message);
 		order.setMidAddres(historyMessage);
 		orderData.modify(order);
+	}
+	@Override
+	public ArrayList<OrderVO> getAllOrders() throws RemoteException {
+		ArrayList<OrderPO> orderPOs = orderData.find();
+		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
+		return orderVOs;
+	}
+
+	@Override
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
+		// 获取所有的订单
+		ArrayList<OrderPO> orderPOs = orderData.find();
+		ArrayList<CommodityVO> commodityVOs = new ArrayList<>();
+		// 获取单个订单
+		for (OrderPO orderPO : orderPOs) {
+			// 单个订单中所有的商品
+			ArrayList<CommodityPO> pos = orderPO.getCommodityPO();
+			ArrayList<CommodityVO> commos = OrderTrans.convertCommodityPOstoVOs(pos);
+			// 将每个商品加入商品列表
+			for (CommodityVO commodityVO : commos) {
+				commodityVOs.add(commodityVO);
+			}
+		}
+		return commodityVOs;
 	}
 }

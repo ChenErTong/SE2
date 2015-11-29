@@ -1,22 +1,9 @@
 package businesslogic.branchbl;
-/**
- * @author LIUXUANLIN
- */
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderInfo;
-import businesslogic.orderbl.OrderTrans;
-import businesslogic.receiptbl.ReceiptTrans;
-import config.RMIConfig;
-import dataservice.orderdataservice.OrderDataService;
-import dataservice.receiptdataservice.ReceiptDataService;
-import po.CommodityPO;
-import po.OrderPO;
-import po.receiptpo.ReceiptPO;
+import businesslogic.receiptbl.ReceiptInfo;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
@@ -30,21 +17,11 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Branch{
-	//TODO 依赖倒置
-	private OrderDataService orderData;
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch_Transfer receiptInfo;
 	public Branch() {
 		orderInfo = new OrderInfo();
-		try {
-			orderData = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+		receiptInfo = new ReceiptInfo();
 	}
 
 	public ConfirmState confirmOperation() {
@@ -56,20 +33,7 @@ public class Branch{
 	 * @throws RemoteException
 	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
-		//获取所有的订单
-		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<CommodityVO> commodityVOs = new ArrayList<>();
-		//获取单个订单
-		for (OrderPO orderPO : orderPOs) {
-			//单个订单中所有的商品
-			ArrayList<CommodityPO> pos  =orderPO.getCommodityPO();
-			ArrayList<CommodityVO> commos = OrderTrans.convertCommodityPOstoVOs(pos);
-			//将每个商品加入商品列表
-			for (CommodityVO commodityVO : commos) {
-				commodityVOs.add(commodityVO);
-			}
-		}
-		return null;
+		return orderInfo.getAllCommodities();
 	}
 	/**
 	 * 获得所有的订单
@@ -78,9 +42,7 @@ public class Branch{
 	 * @throws RemoteException
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
-		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
-		return orderVOs;
+		return orderInfo.getAllOrders();
 	}
 	/**
 	 * 获取所有的订单号
