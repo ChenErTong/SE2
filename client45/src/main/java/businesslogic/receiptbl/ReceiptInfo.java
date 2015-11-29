@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import businesslogic.branchbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
+import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
@@ -68,5 +70,29 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 	@Override
 	public String getID() throws RemoteException {
 		return receiptData.getID();
+	}
+	@Override
+	public String getImportID() throws RemoteException {
+		return receiptData.getImportID();
+	}
+	@Override
+	public String getExportID() throws RemoteException {
+		return receiptData.getExportID();
+	}
+	@Override
+	public String getAdjustID() throws RemoteException {
+		return receiptData.getAdjustID();
+	}
+	@Override
+	public String getTransferID() throws RemoteException {
+		return receiptData.getTransferID();
+	}
+	@Override
+	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException {
+		return receiptData.findTransferArrivalList(id);
+	}
+	@Override
+	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
+		return receiptData.findImport(importID);
 	}
 }
