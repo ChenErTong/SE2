@@ -9,7 +9,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.receiptbl.Receipt;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
@@ -48,8 +47,11 @@ public class Inventory {
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		ArrayList<InventoryVO> VOs = this.getInventoryPOsInDate(beginDate,endDate);
-		InventoryViewVO viewVO = new InventoryViewVO(receiptData.getimportNumber(beginDate, endDate),
-				receiptData.getexportNumber(beginDate, endDate), receiptData.getNum(beginDate, endDate), VOs);
+		ReceiptInfo_Inventory receiptInfo = new ReceiptInfo();
+		int importNumber=receiptInfo.getImportNumber(beginDate, endDate);
+		int exportNumber = receiptInfo.getExportNumber(beginDate, endDate);
+		int sum = importNumber+exportNumber;
+		InventoryViewVO viewVO = new InventoryViewVO(importNumber,exportNumber,sum, VOs);
 		return viewVO;
 	}
 	private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
@@ -101,7 +103,7 @@ public class Inventory {
 	}
     public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
     	InventoryImportReceiptPO po= InventoryTrans. convertVOtoPO( importReceipt);
-    	return receiptData.insertImport(po);
+    	return receiptData.add(po);
     }
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		InventoryImportReceiptPO po= InventoryTrans. convertVOtoPO( importReceipt);
@@ -142,7 +144,7 @@ public class Inventory {
 	}
 	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
 	    	InventoryExportReceiptPO po= InventoryTrans. convertVOtoPO( exportReceipt);
-	    	return receiptData.insertExport(po);
+	    	return receiptData.add(po);
 	    }
 	 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
@@ -173,7 +175,7 @@ public class Inventory {
 		afterPO.setEmptyOrFull("full");
 		inventoryData.modify(beforePO);
 		inventoryData.modify(afterPO);
-		receiptData.insertAdjust(po);
+		receiptData.add(po);
 		return ResultMessage.SUCCESS;
 	}
 

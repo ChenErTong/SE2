@@ -36,4 +36,21 @@ public class ReceiptInfo implements ReceiptInfo_Inventory {
 			return true;
 		return false;
 	}
+	@Override
+	public int getImportNumber(String begin, String end) throws RemoteException {
+		return this.getReceiptNum(ReceiptType.INSTOCK);
+	}
+	@Override
+	public int getExportNumber(String begin, String end) throws RemoteException {
+		return this.getReceiptNum(ReceiptType.OUTSTOCK);
+	}
+	private int getReceiptNum(ReceiptType type) throws RemoteException{
+		int sum=0;
+		ArrayList<ReceiptPO> pos = receiptData.find();
+		for (ReceiptPO receiptPO : pos) {
+			if(receiptPO.getReceiptType()==type)
+				++sum;
+		}
+		return sum;
+	}
 }
