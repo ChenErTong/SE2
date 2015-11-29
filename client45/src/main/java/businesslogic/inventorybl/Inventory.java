@@ -32,8 +32,11 @@ public class Inventory {
 	private ReceiptInfo_Inventory receiptInfo;
 	public Inventory() {
 		receiptInfo = new ReceiptInfo();
+		inventoryData = getData();
+	}
+	public InventoryDataService getData(){
 		try {
-			inventoryData = (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
+			return (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -41,6 +44,7 @@ public class Inventory {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {

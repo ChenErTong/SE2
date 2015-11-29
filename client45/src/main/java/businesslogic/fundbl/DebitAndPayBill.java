@@ -33,7 +33,7 @@ public class DebitAndPayBill {
 	
 	public DebitAndPayBillDataService getData(){
 		try {
-			return debitAndPayBillData = (DebitAndPayBillDataService) Naming
+			return  (DebitAndPayBillDataService) Naming
 					.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

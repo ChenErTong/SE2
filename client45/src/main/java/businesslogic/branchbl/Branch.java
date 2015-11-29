@@ -1,9 +1,14 @@
 package businesslogic.branchbl;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.receiptbl.ReceiptInfo;
+import config.RMIConfig;
+import dataservice.branchdataservice.BranchDataService;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
@@ -22,6 +27,19 @@ public class Branch{
 	public Branch() {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
+	}
+	
+	public BranchDataService getData(){
+		try {
+			return (BranchDataService)Naming.lookup(RMIConfig.PREFIX+BranchDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ConfirmState confirmOperation() {

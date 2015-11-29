@@ -22,7 +22,7 @@ public class Account{
 	
 	public AccountDataService getData(){
 		try {
-			return accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
+			return (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

@@ -23,7 +23,7 @@ public class Receipt  {
 	
 	public ReceiptDataService getData(){
 		try {
-			return receiptData = (ReceiptDataService ) Naming
+			return   (ReceiptDataService ) Naming
 					.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

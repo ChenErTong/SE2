@@ -17,10 +17,12 @@ public class Facility {
 	private FacilityDataService facilityData;
 
 	public Facility() {
+		facilityData = getData();
+	}
 
+	public FacilityDataService getData() {
 		try {
-			facilityData = (FacilityDataService) Naming
-					.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
+			return (FacilityDataService) Naming.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -28,6 +30,7 @@ public class Facility {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public ConfirmState confirmOperation() {

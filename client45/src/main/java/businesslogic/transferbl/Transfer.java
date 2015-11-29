@@ -1,5 +1,8 @@
 package businesslogic.transferbl;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -7,6 +10,8 @@ import businesslogic.branchbl.OrderInfo_Branch_Transfer;
 import businesslogic.branchbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.receiptbl.ReceiptInfo;
+import config.RMIConfig;
+import dataservice.transferdataservice.TransferDataService;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
@@ -23,6 +28,20 @@ public class Transfer {
 	public Transfer() {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
+	}
+	
+	public TransferDataService getData(){
+		try {
+			return (TransferDataService) Naming
+					.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ConfirmState confirmOperation() {
