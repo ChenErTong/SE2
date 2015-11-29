@@ -287,7 +287,7 @@ private void getApprovalData(int index) throws RemoteException{
 		 * @author Ann
 		 */
 		//TODO 我的锅，一会给你加方法
-		ArrayList<ReceiptVO> vo = controller.showReceipt(ReceiptState.APPROVALING);//待审批的单据
+		//ArrayList<ReceiptVO> vo = controller.showReceipt(ReceiptState.APPROVALING);//待审批的单据
 	//	ApprovalShow controller = new ApprovalShow();
 		//ApprovalVO vo = controller.ShowApproving();
 	//	ArrayList<PurchaseVO> approval_pur = vo.purchaseVOs;

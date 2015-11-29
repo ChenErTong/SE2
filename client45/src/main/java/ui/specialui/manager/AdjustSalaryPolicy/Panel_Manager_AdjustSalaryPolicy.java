@@ -9,30 +9,33 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-import businesslogicservice.baseblservice.BaseBLService;
+import businesslogicservice.baseblservice.PolicyBLService;
 
-import state.FindTypeBase;
 import state.ResultMessage;
 import state.SalaryPolicy;
+import state.UserIdentity;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
-import vo.BaseVO;
+import vo.PolicyVO;
 
 
 public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 
-	private PolicyDetails policyDetails;
 	private PolilcyInfoList policyInfoList;
-	private MyJButton commonButton;
-	
+	private AddPolicy addPolicy;
+	private ModifyPolicy modifyPolicy;
+	private MyJButton add;
+	private MyJButton modify;
+	private MyJButton deleteButton;
+	private MyJButton modifyButton;
 	private MyJTable table;
-	private BaseBLService controller = ControllerFactory.getBaseController();
-	static ArrayList<BaseVO> basePool;
-	static String baseID = " ";
+	private PolicyBLService controller = ControllerFactory.getPolicyController();
+	static ArrayList<PolicyVO> policyPool;
+	static String policyID = " ";
 	public Panel_Manager_AdjustSalaryPolicy(FrameManager frameManager) {
 		
 		super(0, 0, 1280, 720);
@@ -43,236 +46,41 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 	
 	private void initComponent(FrameManager frameManager) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司职员薪水策略制定", 24, true));
-		policyDetails = new PolicyDetails();
-		policyDetails.setEnabled(false);
-		this.add(policyDetails);
+		
+		addPolicy = new AddPolicy();
+		this.add(addPolicy);
+		modifyPolicy = new ModifyPolicy();
+		this.add(modifyPolicy);
+		
 		policyInfoList = new PolilcyInfoList(this);
 		this.add(policyInfoList);
-		basePool = new ArrayList<BaseVO>();
-		this.initButton(frameManager);
+		policyPool = new ArrayList<PolicyVO>();
+		deleteButton = new MyJButton(150,660,180,30,"删除所选策略",16);
+		deleteButton.setActionCommand("DeletePolicy");
+		deleteButton.addActionListener(this);
+		this.add(deleteButton);
+		
+		modifyButton = new MyJButton(350,660,180,30,"修改所选策略信息",16);
+		modifyButton.setActionCommand("ModifyPolicy");
+		modifyButton.addActionListener(this);
+		this.add(modifyButton);
+	
+		add = new MyJButton(880,346,120,30,"确认添加",16);	
+		add.setActionCommand("CheckAdd");
+		add.addActionListener(this);
+		this.add(add);
+		
+		modify= new MyJButton(880,640,120,30,"确认修改",16);	
+		modify.setActionCommand("CheckModify");
+		modify.addActionListener(this);
+		this.add(modify);
+		//this.initButton(frameManager);
 		this.showAll();
 		
 	}
 	
 
-	private void initButton(FrameManager frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
-				"<html>添<br/>加<br/>策<br/>略<br/></html>", 18);
-		insertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Manager_AdjustSalaryPolicy.this.insertPanel(frame);
-				
-			}
-		});
-		this.add(insertButton);
 
-	MyJButton modifyButton = new MyJButton(400, 665, 120, 40,
-			"修改所选策略", 18);
-		modifyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Manager_AdjustSalaryPolicy.this.modifyPanel(frame);
-				
-			}
-		});
-		modifyButton.setActionCommand("ModifyPolicy");
-		modifyButton.addActionListener(this);
-		this.add(modifyButton);
-
-		MyJButton searchButton = new MyJButton(530, 665, 120, 40,
-				"<html>查<br/>看<br/>策<br/>略<br/></html>", 18);
-		searchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Manager_AdjustSalaryPolicy.this.searchPanel(frame);
-				
-			}
-		});
-		modifyButton.setActionCommand("ViewPolicy");
-		modifyButton.addActionListener(this);
-		this.add(searchButton);
-
-		MyJButton deleteButton = new MyJButton(0, 540, 40, 110,
-				"删除所选策略", 18);
-		deleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Manager_AdjustSalaryPolicy.this.deletePanel(frame);
-				
-			}
-		});
-		deleteButton.setActionCommand("DeletePolicy");
-		deleteButton.addActionListener(this);
-		this.add(deleteButton);
-	}
-	
-
-	private void insertPanel(FrameManager frame) {
-	this.removeAll();
-	this.add(policyInfoList);
-	this.add(new MyJLabel(530, 20, 250, 90, "公司职员薪水策略制定", 24, true));
-	this.initButton(frame);
-
-	
-	policyDetails = new PolicyDetails();
-	policyDetails.add(new MyJLabel(230,5,120,30,"新增策略",18,true));
-	policyDetails.setEnabled(true);
-	this.add(policyDetails);
-	
-	
-	commonButton = new MyJButton(890, 670, 120, 30, "确认添加", 20);
-	commonButton.setActionCommand("AddNewPolicy");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-private void modifyPanel(FrameManager frame) {
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司职员薪水策略制定", 24, true));
-	this.add(policyInfoList);
-	this.initButton(frame);
-	
-	policyDetails = new PolicyDetails();
-	policyDetails.add(new MyJLabel(230,5,120,30,"修改策略信息",18,true));
-	policyDetails.setEnabled(true);
-	this.add(policyDetails);
-	
-	commonButton = new MyJButton(890, 670, 150, 30, "修改策略信息", 20);
-	commonButton.setActionCommand("CheckModify");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-private void searchPanel(FrameManager frame) {
-	
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司职员薪水策略制定", 24, true));
-	this.add(policyInfoList);
-	this.initButton(frame);
-	
-	policyDetails = new PolicyDetails();
-	policyDetails.setUneditable();
-	policyDetails.add(new MyJLabel(230,5,120,30,"查看策略信息",18,true));
-	this.add(policyDetails);
-	
-	this.repaint();
-}
-
-private void deletePanel(FrameManager frame) {
-	
-	this.removeAll();
-	this.add(new MyJLabel(530,20, 250, 90, "公司职员薪水策略制定", 24, true));
-	this.add(policyInfoList);
-	this.initButton(frame);
-	
-	policyDetails = new PolicyDetails();
-	policyDetails.setUneditable();
-	policyDetails.add(new MyJLabel(230,5,120,30,"删除策略",18,true));
-	this.add(policyDetails);
-	
-	commonButton = new MyJButton(890, 670, 120, 30, "删除策略", 20);
-	commonButton.setActionCommand("CheckDelete");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-/**
- * TODO 从bl层获取数据
- * 添加用户
- */
-/*
-public int addOrganization() {
-	String [] data = organizationDetails.getData();
-
-	if(data == null){
-		return 1;
-	}
-	if(data[4].equals("营业厅")){
-		data[0] = organizationController.getID();
-		//branch = new BranchVO(name, name, name, null, null);
-		organizationController.addBranch(branch);
-	}else if(data[4].equals("中转中心")){
-		data[0] = organizationController.getID();
-		//transfer = new TransferVO(name, name, flags, null, null);
-		organizationController.addTransfer(transfer);
-	}
-	
-	return 0;
-	
-}
-/**
-* 修改用户信息
-* 从bl层获得数据
-*/
-/*public int modifyOrganization() {
-	String [] data = organizationDetails.getData();
-	if(data == null){
-		return 1;
-	}
-	if(data[4].equals("营业厅")){
-		branch.setId(data[0]);
-		branch.setAddress(data[7]);
-		organizationController.updateBranch(branch);
-	}else if(data[4].equals("中转中心")){
-		organizationController.updateTransfer(transfer);
-	}
-	
-
-	
-	return 0;
-}
-/**
- * 删除用户
- * @return
- */
-/*public int deleteOrganization() {
-	String[] data = organizationDetails.getData();
-	//现在列表中选择一个用户后再进行删除
-	//TODO -
-	if(data[4].equals("营业厅")){
-		organizationController.deleteBranch(data[0]);
-		return 0;
-	}else if(data[4].equals("中转中心")){
-		organizationController.deleteTransfer(data[0]);
-		return 0;
-	}
-	
-	
-		return 0;
-}
-
-public void refresh() {
-	organizationDetails.refresh();
-}
-/**
- * 查看用户信息列表
- * TODO 从bl层获取数据
- */
-/*public boolean searchOrganization() {		
-	String type = organizationInfo.getData();
-	if(type==null){
-		return false;
-	}else if(type.equals("营业厅")){
-		branchList = organizationController.showBranch();
-		return true;
-	}else if(type.equals("中转中心")){
-		transferList = organizationController.showTransfer();
-		return true;
-	}
-	return false;
-}
-
-/**
- * 查看用户详细信息
- */
-/*public boolean vieworganizationDetails(){
-	//TODO
-	//从organizationList中选择一个要查看的用户
-	return false;
-}*/
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("null")
 	private void showAll() {
@@ -285,98 +93,89 @@ public void refresh() {
 			tableModel.removeRow(0);
 		}
 		
-		basePool.clear();
-		baseID = "";
+		policyPool.clear();
+		policyID = "";
 		
-		controller = ControllerFactory.getBaseController();
-		ArrayList<BaseVO> baseVO =  controller.show(FindTypeBase.SalaryPolicy);
+
+		ArrayList<PolicyVO> policyVO =  controller.show();
 		
-		for(int i = 0; i < baseVO.size(); i++){
-			ArrayList<SalaryPolicy> rowData = baseVO.get(i).salaryPolicies;
-			String[] rowData_1 = null ;
-			for(int j=0;j<rowData.size();j++){
-				String rowData2 = rowData.get(j).toString();
-				rowData_1[j] = rowData2;	
-			}
-			tableModel.addRow(rowData_1);
-			basePool.add(baseVO.get(i));	
+		for(int i = 0; i < policyVO.size(); i++){
+			Object[] rowData = {policyVO.get(i).userIdentity,policyVO.get(i).salaryPolicy,policyVO.get(i).remark};
+			tableModel.addRow(rowData);
+			policyPool.add(policyVO.get(i));	
 		}
 	}
 
 @Override
-public void actionPerformed(ActionEvent e) {
-	if(e.getActionCommand().equals("AddNewPolicy'")){
-		//TODO -改vo和po后
-		String[] data = policyInfoList.getData();
-		if(policyDetails.getData()==null){
+public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};*/
+	if(e.getActionCommand().equals("CheckAdd'")){/*		String [] policyList = {"按月","计次","提成"};*/
+		String[] data = addPolicy.getData();
+		if(addPolicy.getData()==null){
 			this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
-		}else{
-			//TODO- 要改BaseVO 和 BasePO
-			ResultMessage rsg = controller.addBase(new BaseVO(data[0], null, null, null));
+		}else if(data[0].equals("0")&&data[1].equals("3")){
+			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
-				//System.out.println("AddSucceed!");
+				System.out.println("AddSucceed!");
 				this.showAll();
-				this.add(new MyNotification(this,"策略添加成功！",Color.GREEN));
+				new MyNotification(this,"策略添加成功！",Color.GREEN);
 			}else{
-				this.add(new MyNotification(this,"策略添加失败！",Color.RED));
+				new MyNotification(this,"策略添加失败！",Color.RED);
+			}
+		}else if(data[0].equals("6")&&data[1].equals("1")){
+			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				this.showAll();
+				new MyNotification(this,"策略添加成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"策略添加失败！",Color.RED);
+			}
+		}else if(data[0].equals("2")&&data[1].equals("0")){
+			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				this.showAll();
+				new MyNotification(this,"策略添加成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"策略添加失败！",Color.RED);
 			}
 		}
-	}else if(e.getActionCommand().equals("ViewPolicy")){
-		
 	}else if(e.getActionCommand().equals("DeletePolicy")){
 		table = policyInfoList.getTable();
+		policyID = policyPool.get(table.getSelectedRow()).ID;
 		if(table.getSelectedRowCount() == 0){
 			this.add(new MyNotification(this,"请先选择要删除的策略！",Color.RED));
 		}else{
-		//	this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
-			baseID = basePool.get(table.getSelectedRow()).id;
-			//System.out.println(accountID);
-			String[] data = new String[4];
-			data[0] = baseID;
-			data[1] = "";
-			data[2] = "";
-			data[3] = "";
-			policyDetails.setData(data);
+			new MyNotification(this,"正在删除策略！",Color.RED);
+			this.deletePolicy();
 		}
 
 	}else if(e.getActionCommand().equals("ModifyPolicy")){
 		table = policyInfoList.getTable();
 		if(table.getSelectedRowCount() == 0){
-			this.add(new MyNotification(this,"请先选择要修改的员工！",Color.RED));
+			this.add(new MyNotification(this,"请先选择要修改的策略！",Color.RED));
 		}else{
-			baseID = basePool.get(table.getSelectedRow()).id;
+			policyID = policyPool.get(table.getSelectedRow()).ID;
 			//System.out.println(accountID);
-			String[] data = new String[4];
-			data[0] = baseID;
-			data[1] = "";
-			data[2] = "";
+			Object[] data = new Object[3];
+			data[0] = policyPool.get(table.getSelectedRow()).userIdentity;
+			data[1] = policyPool.get(table.getSelectedRow()).salaryPolicy;
+			data[2] = policyPool.get(table.getSelectedRow()).remark;
 			data[3] = "";
-			policyDetails.setData(data);
+			modifyPolicy.setData(data);
 		}
 	}else if(e.getActionCommand().equals("CheckModify")){
 		table = policyInfoList.getTable();
-		baseID = basePool.get(table.getSelectedRow()).id;
+		policyID = policyPool.get(table.getSelectedRow()).ID;
 		if(table.getSelectedRow()==0){
-			this.add(new MyNotification(this,"请先选择需要修改的员工！",Color.RED));
+			this.add(new MyNotification(this,"请先选择需要修改的策略！",Color.RED));
 		}else{
-			if(policyDetails.getData()==null){
+			if(modifyPolicy.getData()==null){
 				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
 			}else{
 				this.add(new MyNotification(this,"正在修改策略信息！",Color.GREEN));
 				this.modifyPolicy();
 			}
 		}
-	}else if(e.getActionCommand().equals("CheckDelete")){
-		table = policyInfoList.getTable();
-		baseID = basePool.get(table.getSelectedRow()).id;
-		if(table.getSelectedRow()==0){
-			this.add(new MyNotification(this,"请先选择需要删除的员工！",Color.RED));
-		}else{
-				this.add(new MyNotification(this,"正在修改策略信息！",Color.GREEN));
-				this.deletePolicy();
-		}
 	}else if(e.getActionCommand().equals("Search")){
-		//TODO -改vo和po后
 		table = policyInfoList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		int rowCount = table.getRowCount();
@@ -385,12 +184,12 @@ public void actionPerformed(ActionEvent e) {
 			tableModel.removeRow(0);
 		}
 		
-		basePool.clear();
-		baseID  = "";
+		policyPool.clear();
+		policyID  = "";
 		
 		//"模糊查找", "账户编号(ID)", "账户名称", "账户余额
-		ArrayList<BaseVO> baseVO = new ArrayList<BaseVO>();
-		String[] data = policyDetails.getData();
+		ArrayList<PolicyVO> policyVO = new ArrayList<PolicyVO>();
+		String[] data = policyInfoList.getData();
 		if(data!=null){
 			switch(Integer.parseInt(data[0])){
 				case 0 :// baseVO = controller.show(SalaryPolicy.BYTIMES)
@@ -399,10 +198,10 @@ public void actionPerformed(ActionEvent e) {
 				default :// baseVO = controller.find();break;
 			}
 		
-			for(int i = 0; i <baseVO.size(); i++){
+			for(int i = 0; i <policyVO.size(); i++){
 			String[] rowData = {};
 			tableModel.addRow(rowData);
-			basePool.add(baseVO.get(i));
+			policyPool.add(policyVO.get(i));
 			System.out.println("SearchSucceed!");
 				this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个员工满足条件！",Color.GREEN));
 			}	
@@ -417,7 +216,7 @@ public void actionPerformed(ActionEvent e) {
 private void deletePolicy() {
 	table = policyInfoList.getTable();
 	
-	ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).id);
+	ResultMessage rsg = controller.deleteBase(policyPool.get(table.getSelectedRow()).ID);
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("DeleteSucceed!");
 		this.showAll();
@@ -431,8 +230,8 @@ private void deletePolicy() {
 
 private void modifyPolicy() {
 	table = policyInfoList.getTable();
-	String[] data = policyDetails.getData();
-	ResultMessage rsg = controller.updateBase(new BaseVO(data[0], null, null, null));
+	String[] data = modifyPolicy.getData();
+	ResultMessage rsg = controller.updateBase(new PolicyVO("", UserIdentity.ADMIN, SalaryPolicy.EVERYMONTH, data[2]));
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("ModifySucceed!");
 		this.showAll();

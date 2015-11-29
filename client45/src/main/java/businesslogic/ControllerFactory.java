@@ -2,6 +2,7 @@ package businesslogic;
 
 import businesslogic.accountbl.AccountController;
 import businesslogic.basebl.BaseController;
+import businesslogic.basebl.PolicyController;
 import businesslogic.branchbl.BranchController;
 import businesslogic.facilitybl.DriverController;
 import businesslogic.facilitybl.FacilityController;
@@ -75,6 +76,10 @@ public class ControllerFactory {
 	
 	public static OrderController getOrderController(){
 		return new OrderController();
+	}
+	
+	public static  PolicyController getPolicyController(){
+		return new PolicyController();
 	}
 
 	
