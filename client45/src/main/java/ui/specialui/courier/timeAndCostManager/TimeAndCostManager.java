@@ -28,10 +28,13 @@ public class TimeAndCostManager extends MyJPanel{
 	private ReceiverInfoInput receiver;
 	//货物信息输入面板
 	private CommodityInfoInput commodities;
+	//逻辑接口
+	private OrderBLService controller;
 	
 	public TimeAndCostManager(Frame_Courier frame){
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		controller = ControllerFactory.getOrderController();
 		
 		this.add(new MyJLabel(500, 30, 230, 45, "报价与时间管理", 30, true));
 		
@@ -76,8 +79,6 @@ public class TimeAndCostManager extends MyJPanel{
 				commodityVO.correctWeight();
 			}
 		}
-
-		OrderBLService controller = ControllerFactory.getOrderController();
 		
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
 		for(int i = 0; i < commodities.length; ++i){

@@ -24,11 +24,14 @@ public class OrderInput extends MyJPanel {
 	private ReceiverInfoInput receiver;
 	// 货物信息输入面板
 	private CommodityInfoInput commodities;
-
+	//逻辑接口
+	private OrderBLService controller;
+	
 	public OrderInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-
+		controller = ControllerFactory.getOrderController();
+		
 		this.add(new MyJLabel(550, 30, 150, 45, "订单输入", 30, true));
 
 		sender = new SenderInfoInput();
@@ -75,7 +78,6 @@ public class OrderInput extends MyJPanel {
 			}
 		}
 
-		OrderBLService controller = ControllerFactory.getOrderController();
 		String id = controller.getOrderId();
 		
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
