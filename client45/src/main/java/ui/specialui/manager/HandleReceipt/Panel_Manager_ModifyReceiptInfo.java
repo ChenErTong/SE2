@@ -82,7 +82,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			transferArrivalTable((TransferArrivalListVO)receipt);
 		}else if(receiptType.equals(ReceiptType.INSTOCK)){
 			importTable((InventoryImportReceiptVO)receipt);
-		}else if(receiptType.equals(ReceiptType.TRANS_ORDER)){
+		}else if(receiptType.equals(ReceiptType.TRANS_PLANE)){
 			transOrderTable((TransferOrderVO) receipt);
 		}else if(receiptType.equals(ReceiptType.OUTSTOCK)){
 			exportTable((InventoryExportReceiptVO)receipt);
@@ -274,7 +274,8 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
-		}else if(billType.equals(ReceiptType.TRANS_ORDER)){
+			//TODO 改一下
+		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
 		}else if(billType.equals(ReceiptType.DEBIT)){
 			DebitBillVO  vo = (DebitBillVO) currentBill;
