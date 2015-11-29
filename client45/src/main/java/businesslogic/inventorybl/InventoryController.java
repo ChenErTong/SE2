@@ -26,9 +26,9 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryCheckVO checkRecord(String enddate){
+	public InventoryCheckVO checkRecord(String date){
 		try {
-			return InventoryBL.checkRecord(enddate);
+			return InventoryBL.checkRecord(date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

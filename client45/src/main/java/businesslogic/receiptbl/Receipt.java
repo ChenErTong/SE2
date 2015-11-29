@@ -18,8 +18,12 @@ public class Receipt  {
 	private ReceiptDataService  receiptData;
 
 	public Receipt() {
+		receiptData = getData();
+	}
+	
+	public ReceiptDataService getData(){
 		try {
-			receiptData = (ReceiptDataService ) Naming
+			return receiptData = (ReceiptDataService ) Naming
 					.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -28,6 +32,7 @@ public class Receipt  {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	
@@ -66,7 +71,7 @@ public class Receipt  {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
 		for (ReceiptPO receiptPO : pos) {
-			if(receiptPO.getReceiptType().equals(type)||receiptPO.getReceiptState().equals(state)){
+			if(receiptPO.getReceiptType().equals(type)&&receiptPO.getReceiptState().equals(state)){
 				@SuppressWarnings("unchecked")
 				T vo = (T) ReceiptTrans.convertPOtoVO(receiptPO);
 				vos.add(vo);

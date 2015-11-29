@@ -9,7 +9,6 @@ import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
-import state.ReceiptState;
 import state.ResultMessage;
 
 /**
@@ -24,8 +23,6 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	public static final String NAME = "ReceiptData";
 
 	public String getID() throws RemoteException;
-
-	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates) throws RemoteException;
 
 	public ReceiptPO find(String ID) throws RemoteException;
 
@@ -56,14 +53,14 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 
 	
 
-	/** 返回所有入库单据的数据 **/
-	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
-
-	/** 返回所有出库单据的数据 **/
-	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException;
-
-	/** 返回所有调整单据的数据 **/
-	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException;
+//	/** 返回所有入库单据的数据 **/
+//	public ArrayList<InventoryImportReceiptPO> showImport(String enddate) throws RemoteException;
+//
+//	/** 返回所有出库单据的数据 **/
+//	public ArrayList<InventoryExportReceiptPO> showExport(String enddate) throws RemoteException;
+//
+//	/** 返回所有调整单据的数据 **/
+//	public ArrayList<AdjustReceiptPO> showAdjust(String enddate) throws RemoteException;
 
 	/** 增加一条po数据即生成入库单据 **/
 	public ResultMessage insertImport(InventoryImportReceiptPO po) throws RemoteException;

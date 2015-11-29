@@ -9,7 +9,6 @@ import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
-import state.ReceiptState;
 import state.ResultMessage;
 /**
  * 提供单据信息的查看、单据修改和单据审批的服务
@@ -21,8 +20,6 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "ReceiptData";
 	public String getID() throws RemoteException;
-	
-	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptStates) throws RemoteException;
 	
 	public ReceiptPO find(String ID) throws RemoteException;
 	

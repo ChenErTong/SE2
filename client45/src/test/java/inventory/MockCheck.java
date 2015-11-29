@@ -16,9 +16,7 @@ public class MockCheck {
 	}
 	
 	public ArrayList<InventoryCheckVO> checkRecord() {
-		InventoryCheckVO icv=new InventoryCheckVO(iirv, LotNum);
-		ic.add(icv);
-		return ic;
+		return null;
 	}
 
 }

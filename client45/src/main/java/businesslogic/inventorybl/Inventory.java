@@ -9,6 +9,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.receiptbl.Receipt;
+import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import dataservice.receiptdataservice.ReceiptDataService;
@@ -68,8 +70,8 @@ public class Inventory {
 	}
 
 	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
-		ArrayList<InventoryImportReceiptPO> POs = receiptData.showImport(enddate);
-		ArrayList<InventoryImportReceiptVO> VOs = InventoryTrans.convertInventoryImportReceiptPOstoVOs(POs);
+		ArrayList<InventoryPO> pos = inventoryData.find();
+		ArrayList<InventoryVO> VOs =InventoryTrans.convertInventoryPOstoVOs(pos);
 		String lotNum = inventoryData.getLotID();
 		InventoryCheckVO checkVO = new InventoryCheckVO(VOs, lotNum);
 		return checkVO;

@@ -12,7 +12,6 @@ import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.SerSaveAndLoad;
@@ -33,17 +32,6 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		exportPrifix=configReader.getValue("exportPrifix");
 		adjustPrifix=configReader.getValue("adjustPrifix");
 		transferArrialPrifix=configReader.getValue("transferArrialPrifix");
-	}
-
-	//TODO
-	@Override
-	public ArrayList<ReceiptPO> showReceipt(ReceiptState receiptState) throws RemoteException {
-		ArrayList<ReceiptPO> bills = new ArrayList<>();
-		for (ReceiptPO po : poList.getInList()) {
-			if (po.getReceiptState() == receiptState)
-				bills.add(po);
-		}
-		return bills;
 	}
 
 	@Override

@@ -24,11 +24,11 @@ public interface InventoryBLService {
 	public InventoryViewVO viewInventory(String beginDate, String endDate);
 
 	/**
-	 * 显示截至盘点时间的库存快照
+	 * 显示截至盘点当日时间的库存快照
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryCheckVO checkRecord(String enddate);
+	public InventoryCheckVO checkRecord(String date);
 
 	/* 入库 */
 	/**
