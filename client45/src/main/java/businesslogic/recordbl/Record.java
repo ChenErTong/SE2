@@ -9,6 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.fundbl.DebitAndPayBillShowInfo;
 import businesslogic.fundbl.FundTrans;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
@@ -29,7 +30,7 @@ public class Record {
 	public Record() {
 		try {
 			DebitAndPayBillData = (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
-			DebitAndPayBillData = (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
+			AccountData = (AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -41,31 +42,13 @@ public class Record {
    
 	
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
-		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(begin, end);
-		ArrayList<DebitAndPayBillVO> VOs = FundTrans.convertDebitAndPayBillPOstoVOs(POs);
-		return VOs;
+		DebitAndPayBillShowInfo_Record showInfo = new DebitAndPayBillShowInfo();
+		return showInfo.getBusinessProcess(begin, end);
 	}
 
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
-		ArrayList<DebitAndPayBillPO> POs = DebitAndPayBillData.showList(end);
-		double income = 0;
-		double expense = 0;
-		double profit = 0;
-		for (DebitAndPayBillPO po : POs) {
-			ReceiptType type = po.getType();
-			// 如果是收款单
-			if (type == ReceiptType.DEBIT) {
-				income = income + po.getMoney();
-			}
-			// 如果是付款单
-			if (type == ReceiptType.PAY) {
-				expense = expense + po.getMoney();
-			}
-		}
-		profit = income - expense;
-		BussinessConditionVO vo = new BussinessConditionVO(end, income, expense, profit);
-		return vo;
-
+		DebitAndPayBillShowInfo_Record showInfo = new DebitAndPayBillShowInfo();
+		return showInfo.getBussinessCondition(end);
 	}
 	/**
 	 * 返回某一个营业厅一天的收款单

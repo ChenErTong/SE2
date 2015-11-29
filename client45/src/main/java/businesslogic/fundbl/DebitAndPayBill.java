@@ -28,8 +28,12 @@ public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
 
 	public DebitAndPayBill() {
+		debitAndPayBillData=getData();
+	}
+	
+	public DebitAndPayBillDataService getData(){
 		try {
-			debitAndPayBillData = (DebitAndPayBillDataService) Naming
+			return debitAndPayBillData = (DebitAndPayBillDataService) Naming
 					.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -38,6 +42,7 @@ public class DebitAndPayBill {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public String getExpenseID() throws RemoteException {
