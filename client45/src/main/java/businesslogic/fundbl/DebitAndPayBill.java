@@ -85,17 +85,12 @@ public class DebitAndPayBill {
 	}
 
 	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
-//		debitAndPayBillData.add(po);
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}
 
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
-//		debitAndPayBillData.modify(po);
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.modify(po);
 	}
-
-
-
 }

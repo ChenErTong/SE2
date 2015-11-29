@@ -87,10 +87,5 @@ public interface InventoryBLService {
 	 * @throws RemoteException
 	 **/
 	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now);
-	
-	
-	
-	
-	public void Init();
 
 }

@@ -59,7 +59,6 @@ public class InventoryController implements InventoryBLService {
 		 try {
 			InventoryBL.saveImport(importReceipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -69,7 +68,6 @@ public class InventoryController implements InventoryBLService {
 		try {
 			return InventoryBL.submitImport(importReceipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -100,7 +98,6 @@ public class InventoryController implements InventoryBLService {
 		 try {
 			InventoryBL.saveExport(exportReceipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -111,7 +108,6 @@ public class InventoryController implements InventoryBLService {
 		try {
 			return InventoryBL.submitExport(exportReceipt);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -136,18 +132,6 @@ public class InventoryController implements InventoryBLService {
 		}
 		return null;
 	}
-
-	@Override
-	public void Init() {
-		 try {
-			InventoryBL.Init();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
 	
 
 }

@@ -64,17 +64,34 @@ public class BankAccount {
 		ArrayList<BankAccountVO> vos = FundTrans.convertBankAccountPOstoVOs(pos);
 		return vos;
 	}
-	
+	/**
+	 * 按照选择的类型查找关键字
+	 * @author Ann
+	 * @see FindTypeAccount#toMethodName(FindTypeAccount)
+	 * @see BankAccountPO#toString()
+	 * @see BankAccountPO#getID()
+	 * @see BankAccountPO#getName()
+	 * @see BankAccountPO#getMoneyString()
+	 * @param keywords 关键字
+	 * @param type 查找类型，包括ID，帐户名，余额
+	 * 						type为NULL时进行模糊查询
+	 * @return 符合条件的BankAccountPO数组
+	 * @throws RemoteException
+	 */
 	private ArrayList<BankAccountPO> findByType(String keywords, FindTypeAccount type) throws RemoteException {
 		ArrayList<BankAccountPO> pos = bankAccountData.find();
 		ArrayList<BankAccountPO> returnpos = new ArrayList<>();
 		try {
 			for (BankAccountPO bankAccountPO : pos) {
+				//获得每个bankAccountPO的类
 				Class<?> bankAccountPOClass = bankAccountPO.getClass();
+				//根据type类型获得方法
 				String methodName = FindTypeAccount.toMethodName(type);
 				Method method = bankAccountPOClass.getDeclaredMethod(methodName);
+				//调用bankAccountPO的方法获得要查找的字段
 				String message = (String) method.invoke(bankAccountPO);
-				if (message.toLowerCase().contains(keywords))
+				//统一小写进行查询
+				if (message.toLowerCase().contains(keywords.toLowerCase()))
 					returnpos.add(bankAccountPO);
 			}
 		} catch (IllegalAccessException e) {
