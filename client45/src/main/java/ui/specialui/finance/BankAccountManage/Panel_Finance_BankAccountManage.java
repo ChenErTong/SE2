@@ -143,7 +143,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				tableModel.addRow(rowData);
 				accountPool.add(bankAccountVO.get(i));
 				System.out.println("SearchSucceed!");
-					this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个账户满足条件！",Color.GREEN));
+					this.add(new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN));
 				}	
 				}else {
 					this.add(new MyNotification(this,"请输入查询关键字！",Color.RED));

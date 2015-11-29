@@ -43,7 +43,7 @@ public class BaseInfoList extends MyTranslucentPanel{
 			this.add(search);
 			
 			//the table
-			String[] headers = {"城市距离","运输单价","详细常量信息"};
+			String[] headers = {"出发城市","到达城市","城市距离","运输单价"};
 			table = new MyJTable(headers, false);
 			table.setBackground(new Color(40, 42, 66));
 			table.setForeground(Color.WHITE);
@@ -76,7 +76,7 @@ public class BaseInfoList extends MyTranslucentPanel{
 
 	@SuppressWarnings("null")
 	public String []getData() {
-		String  data[] = null ;
+		String  data[] = new String[2] ;
 		data[0]= (String) startCityList.getSelectedItem();
 		data[1] =(String) arrivalCityList.getSelectedItem();
 		return data;

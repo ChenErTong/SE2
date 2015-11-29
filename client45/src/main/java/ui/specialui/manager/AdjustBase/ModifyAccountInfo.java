@@ -33,11 +33,9 @@ public class ModifyAccountInfo extends MyTranslucentPanel{
 		arrivalCityList.setSelectedIndex(0);
 	
 		distances = new MyJTextField(115,140,150,30);
-		distances.setOnlyDouble();
 		this.add(distances);
 	
 		price = new MyJTextField(375,140,150,30);
-		price.setOnlyDouble();
 		this.add(price);
 	}
 	public void setUneditable() {
