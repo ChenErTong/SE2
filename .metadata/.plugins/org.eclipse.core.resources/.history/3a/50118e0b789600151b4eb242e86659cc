@@ -8,15 +8,11 @@ import vo.receiptvo.ReceiptVO;
  **/
 
 public class InventoryVO extends ReceiptVO {
-    //区
+
 	public int a;
-	//排;
 	public int b;
-	//架
 	public int c;
-	//位
 	public int d;
-	//空或满
 	public String EmptyOrFull;
 
 	public InventoryVO(String id, int a, int b, int c, int d, String emptyOrFull) {

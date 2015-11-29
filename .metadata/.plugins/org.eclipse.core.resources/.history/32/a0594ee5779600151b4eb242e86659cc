@@ -6,21 +6,14 @@ import state.ReceiptType;
 public class InventoryExportReceiptVO extends ReceiptVO {
 	/**目的地**/
 	public String destination;
-	//出发地
 	public String depture;
 	/**装运形式**/
 	public ExpressType expressType;
-	//装运编号
 	public String TransferID;
-	//货物编号
 	public String CommoditiesID;
-	//区
 	public int a;
-	//排
 	public int b;
-	//架
 	public int c;
-	//位
 	public int d;
 	public InventoryExportReceiptVO(String id, ReceiptType type, String destination, String depture, ExpressType expressType,
 			String transferID, String commoditiesID, int a, int b, int c, int d) {
