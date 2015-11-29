@@ -221,20 +221,20 @@ public class ReceiptConductor {
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
-		text = text +"出库区号： "+receipt.a+"区\n";
+		text = text +"出库区号： "+receipt.area+"区\n";
 			
 		for(int i = 0; i < 7; i++){
 			text = text + blank4;
 		}
-		text = text + "出库排号:" +receipt.b+ "排\n";
+		text = text + "出库排号:" +receipt.row+ "排\n";
 		for(int i = 0; i < 9; i++){
 			text = text + blank4;
 		}
-		text = text+"出库架号："+receipt.c+"架\n";
+		text = text+"出库架号："+receipt.frame+"架\n";
 		for(int i = 0;i < 9;i++){
 			text = text+blank4;
 		}
-		text = text+"出库位号："+receipt.d+"位\n";
+		text = text+"出库位号："+receipt.position+"位\n";
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}
@@ -298,20 +298,20 @@ String ID = receipt.ID;
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
-		text = text +"出库区号： "+receipt.a+"区\n";
+		text = text +"出库区号： "+receipt.area+"区\n";
 			
 		for(int i = 0; i < 7; i++){
 			text = text + blank4;
 		}
-		text = text + "出库排号:" +receipt.b+ "排\n";
+		text = text + "出库排号:" +receipt.row+ "排\n";
 		for(int i = 0; i < 9; i++){
 			text = text + blank4;
 		}
-		text = text+"出库架号："+receipt.c+"架\n";
+		text = text+"出库架号："+receipt.frame+"架\n";
 		for(int i = 0;i < 9;i++){
 			text = text+blank4;
 		}
-		text = text+"出库位号："+receipt.d+"位\n";
+		text = text+"出库位号："+receipt.position+"位\n";
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}

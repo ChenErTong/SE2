@@ -183,17 +183,14 @@ public class Inventory {
 			return true;
 		return false;
 	}
-<<<<<<< HEAD
+
 	
 	private boolean isValid(InventoryPO po,int area,int row,int frame,int position){
 		if(po.getArea()==area&&po.getRow()==row&&po.getFrame()==frame&&po.getPosition()==position){
-=======
-	private boolean isValid(InventoryPO po,int a,int b,int c,int d){
-		if(po.getA()==a&&po.getB()==b&&po.getC()==c&&po.getD()==d){
->>>>>>> origin/master2
-			return true;
+
 		}
 		return false;
 	}
-
 }
+
+
