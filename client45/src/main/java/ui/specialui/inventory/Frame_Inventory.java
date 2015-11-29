@@ -40,10 +40,6 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
-			}else{
-				new Frame_Transfer(false);
-				this.removeAll();
-				this.dispose();
 			}
 		}else if(e.getActionCommand().equals("InventoryCheck")){
 			//进入库存查看界面
