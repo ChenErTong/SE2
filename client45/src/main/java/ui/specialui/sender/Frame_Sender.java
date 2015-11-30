@@ -38,8 +38,8 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	private Panel_Sender_logisticInfo logisticInfo;
 	
 	private OrderBLService orderController;
-	public Frame_Sender(){
-		
+	public Frame_Sender(String userID){
+		super(userID);
 		totalPanel = new Panel_Sender_Total();
 		//searchPanel = new Panel_Sender_Search();
 		this.add(totalPanel);

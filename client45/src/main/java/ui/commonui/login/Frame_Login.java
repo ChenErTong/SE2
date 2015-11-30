@@ -46,7 +46,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	boolean flag = false;
 
 	private Panel_Login totalPanel = new Panel_Login(this);
-	public Frame_Login(){
+	public Frame_Login(String id){
+		super(id);
 		totalPanel = new Panel_Login(this);
 		this.add(totalPanel);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
@@ -85,36 +86,36 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		if(iden==null){
 			this.add(new MyNotification(this,"用户名或密码填写错误！",Color.RED));
 		}else if(iden.equals(UserIdentity.ADMIN)){
-			Frame_Admin frame_Admin = new Frame_Admin();
+			Frame_Admin frame_Admin = new Frame_Admin(userID);
 			frame_Admin.setVisible(true);
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.GENERAL_MANAGER)){
-			FrameManager frame_Manager = new FrameManager();
+			FrameManager frame_Manager = new FrameManager(userID);
 			frame_Manager.setVisible(true);
 			frame_Manager.add(new MyNotification(frame_Manager,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.FINANCE_MANAGER)){
-			Frame_Finance frame_Finance = new Frame_Finance();
+			Frame_Finance frame_Finance = new Frame_Finance(userID);
 			frame_Finance.setVisible(true);
 			frame_Finance.add(new MyNotification(frame_Finance,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.INVENTORY_MANAGER)){
-			Frame_Inventory frame_Inventory = new Frame_Inventory();
+			Frame_Inventory frame_Inventory = new Frame_Inventory(userID);
 			frame_Inventory.setVisible(true);
 			frame_Inventory.add(new MyNotification(frame_Inventory,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.COURIER)){
-			Frame_Courier frame_Courier = new Frame_Courier();
+			Frame_Courier frame_Courier = new Frame_Courier(userID);
 			frame_Courier.setVisible(true);
 			frame_Courier.add(new MyNotification(frame_Courier,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.BRANCH_COUNTERMAN)){
-			Frame_Branch frame_Branch = new Frame_Branch();
+			Frame_Branch frame_Branch = new Frame_Branch(userID);
 			frame_Branch.setVisible(true);
 			frame_Branch.add(new MyNotification(frame_Branch,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);
 		}else if(iden.equals(UserIdentity.TRANSFER_CONTERMAN)){
-			Frame_Transfer frame_Transfer = new Frame_Transfer();
+			Frame_Transfer frame_Transfer = new Frame_Transfer(userID);
 			frame_Transfer.setVisible(true);
 			frame_Transfer.add(new MyNotification(frame_Transfer,"欢迎使用本系统！",Color.GREEN));
 			this.setVisible(false);

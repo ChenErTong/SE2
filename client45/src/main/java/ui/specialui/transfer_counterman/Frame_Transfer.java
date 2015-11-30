@@ -3,6 +3,7 @@ package ui.specialui.transfer_counterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -26,7 +27,8 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	private Panel_Transfer_Total totalPanel;
 	private MyJPanel subPanel;
 	
-	public Frame_Transfer() {
+	public Frame_Transfer(String userID) {
+		super(userID);
 		this.totalPanel = new Panel_Transfer_Total(this);
 		this.add(totalPanel);
 		

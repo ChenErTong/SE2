@@ -13,14 +13,15 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private MyJPanel subPanel;
 	private Panel_Admin_Total totalPanel;
-
-	public Frame_Admin(){
+	public Frame_Admin(String userID){
+		super(userID);
 		totalPanel = new Panel_Admin_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){

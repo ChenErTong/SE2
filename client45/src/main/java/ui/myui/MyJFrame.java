@@ -26,9 +26,9 @@ public class MyJFrame extends JFrame{
 	/**
 	 * 透明渐变启动界面
 	 */
-	public MyJFrame(){
+	public MyJFrame(String userID){
 		this(true);
-
+		this.ID = userID;
 		new HyalineValue().start(); // 透明渐变启动界面
 	}
 	/**

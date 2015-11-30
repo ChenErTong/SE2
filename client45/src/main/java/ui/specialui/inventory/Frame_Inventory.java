@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -21,9 +22,8 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 	private Panel_Inventory_Total totalPanel;
 	private MyJPanel subPanel;	
 	
-	public Frame_Inventory() {
-//		super(false);
-				
+	public Frame_Inventory(String userID) {
+		super(userID);
 		this.totalPanel = new Panel_Inventory_Total(this);
 		this.add(totalPanel);
 		

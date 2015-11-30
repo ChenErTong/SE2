@@ -23,7 +23,8 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 	private Panel_Courier_Total totalPanel;
 	private MyJPanel subPanel;
 	
-	public Frame_Courier(){
+	public Frame_Courier(String userID){
+		super(userID);
 		totalPanel = new Panel_Courier_Total(this);
 		this.add(totalPanel);
 		

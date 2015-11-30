@@ -41,7 +41,8 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
 	private MyJPanel subPanel ;
 	private Panel_Finance_BankAccountManage bankAccountManage;
-	public Frame_Finance(){
+	public Frame_Finance(String userID){
+		super(userID);
 		totalPanel = new Panel_Finance_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);

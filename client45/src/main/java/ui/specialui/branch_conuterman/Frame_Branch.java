@@ -22,7 +22,8 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 	private Panel_Branch_Total totalPanel;
 	private MyJPanel subPanel;
 	
-	public Frame_Branch() {
+	public Frame_Branch(String userID) {
+		super(userID);
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
 		

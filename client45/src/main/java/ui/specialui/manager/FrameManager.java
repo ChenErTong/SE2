@@ -16,7 +16,6 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-
 import ui.specialui.manager.AdjustBase.Panel_Manager_AdjustBase;
 import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AdjustSalaryPolicy;
 import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
@@ -42,7 +41,8 @@ private static final long serialVersionUID = 1L;
 	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
 	private MyJPanel subPanel;
 	static JTable outputTable;
-	public FrameManager(){
+	public FrameManager(String userID){
+		super(userID);
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
