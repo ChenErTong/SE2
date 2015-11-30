@@ -19,10 +19,10 @@ public class mainForUITest2 {
 		}
 //		new Frame_Courier("0");
 		
-		new Frame_Branch("0");
+//		new Frame_Branch("0");
 		
 //		new	Frame_Transfer();
 		
-//	new Frame_Inventory();
+	new Frame_Inventory("0");
 	}
 }

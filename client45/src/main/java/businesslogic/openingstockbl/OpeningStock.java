@@ -8,11 +8,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.accountbl.AccountInfo;
 import businesslogic.accountbl.AccountTrans;
+import businesslogic.branchbl.BranchInfo;
 import businesslogic.branchbl.BranchTrans;
+import businesslogic.facilitybl.FacilityInfo;
 import businesslogic.facilitybl.FacilityTrans;
+import businesslogic.fundbl.BankAccountInfo;
 import businesslogic.fundbl.FundTrans;
+import businesslogic.inventorybl.InventoryInfo;
 import businesslogic.inventorybl.InventoryTrans;
+import businesslogic.transferbl.TransferInfo;
 import businesslogic.transferbl.TransferTrans;
 import config.RMIConfig;
 import dataservice.openingstockdataservice.OpeningStockDataService;
@@ -33,7 +39,6 @@ import vo.TransferVO;
 import vo.accountvo.AccountVO;
 
 public class OpeningStock {
-	//TODO 依赖倒置
 	private OpeningStockDataService openingStockData;
 	
 	private BranchInfo_OpeningStock branchInfo;
@@ -43,8 +48,13 @@ public class OpeningStock {
 	private InventoryInfo_OpeningStock inventoryInfo;
 	private BankAccountInfo_OpeningStock bankAccountInfo;
 	
-	
 	public OpeningStock() {
+		branchInfo = new BranchInfo();
+		transferInfo = new TransferInfo();
+		accountInfo = new AccountInfo();
+		facilityInfo = new FacilityInfo();
+		inventoryInfo = new InventoryInfo();
+		bankAccountInfo=new BankAccountInfo();
 		try {
 			openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
 		} catch (MalformedURLException e) {
@@ -60,7 +70,6 @@ public class OpeningStock {
 	public ResultMessage add(ArrayList<TransferVO> transferVOs, ArrayList<BranchVO> branchVOs,
 			ArrayList<AccountVO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
 			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
-
 		ArrayList<TransferPO> transfers = TransferTrans.convertVOstoPOs(transferVOs);
 		ArrayList<BranchPO> branchs = BranchTrans.convertVOstoPOs(branchVOs);
 		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(accountVOs);

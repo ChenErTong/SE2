@@ -24,7 +24,7 @@ public class InventoryCheckVO {
 		this.receipts = vOs;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		this.date = sdf.format(new Date());
 	}
 }

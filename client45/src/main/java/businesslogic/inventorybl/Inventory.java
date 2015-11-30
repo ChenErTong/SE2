@@ -26,7 +26,7 @@ import vo.InventoryViewVO;
 import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-
+//TODO 要发生较大改动！！！！！！！
 public class Inventory {
 	private InventoryDataService inventoryData;
 	private ReceiptInfo_Inventory receiptInfo;
@@ -184,7 +184,7 @@ public class Inventory {
 	
 	private boolean isValid(InventoryPO po,int area,int row,int frame,int position){
 		if(po.getArea()==area&&po.getRow()==row&&po.getFrame()==frame&&po.getPosition()==position){
-
+			return true;
 		}
 		return false;
 	}

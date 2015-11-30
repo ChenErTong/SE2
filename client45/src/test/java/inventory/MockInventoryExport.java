@@ -25,8 +25,7 @@ public class MockInventoryExport {
 	}
 
 	public InventoryVO minusPlace() {
-		InventoryVO iv = new InventoryVO(null, 1, 1, 1, 1, "full");
-		return iv;
+		return null;
 	}
 
 	public String getTransfer() {
@@ -37,8 +36,9 @@ public class MockInventoryExport {
 		return "TransID";
 	}
 
+	@SuppressWarnings("null")
 	public InventoryExportReceiptPO buildImport() {
-		InventoryVO iv = new InventoryVO(null, 1, 1, 1, 1, "full");
+		InventoryVO iv = null;
 		int area = iv.area;
 		int row= iv.row;
 		int frame = iv.frame;

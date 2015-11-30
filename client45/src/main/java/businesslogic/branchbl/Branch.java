@@ -67,6 +67,12 @@ public class Branch{
 	 * @return
 	 * @throws RemoteException
 	 */
+	/**
+	 * @author Ann
+	 * TODO 要重写
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ArrayList<String> getAllOrderNumber() throws RemoteException {
 		ArrayList<OrderVO> orderVOs = getAllOrders();
 		ArrayList<String> orderNumbers = new ArrayList<>();
