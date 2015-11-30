@@ -7,6 +7,7 @@ import businesslogic.branchbl.OrderInfo_Branch_Transfer;
 import dataservice.orderdataservice.OrderDataService;
 import po.CommodityPO;
 import po.OrderPO;
+import state.CommodityState;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -24,13 +25,28 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 	 * @return
 	 * @throws RemoteException 
 	 */
-	public void changeOrderState(ArrayList<String> orderIDs,String message) throws RemoteException{
+	public void changeOrderState(ArrayList<String> orderIDs,String message ) throws RemoteException{
 		for (String orderID : orderIDs) {
 			OrderPO orderPO = orderData.find(orderID);
 			addHitoryMessage(orderPO, message);
 		}
 	}
+	public void changeOrderState(ArrayList<String> orderIDs,String message,CommodityState orderState) throws RemoteException{
+		for (String orderID : orderIDs) {
+			OrderPO orderPO = orderData.find(orderID);
+			addHitoryMessage(orderPO, message);
+			updateOrderState(orderPO,orderState);
+		}
+	}
 	
+	private void updateOrderState(OrderPO orderPO, CommodityState orderState) throws RemoteException {
+		ArrayList<CommodityPO> commos = orderPO.getCommodityPO();
+		for (CommodityPO commodityPO : commos) {
+			commodityPO.setCommodityState(orderState);
+		}
+		orderPO.setCommodityPO(commos);
+		orderData.modify(orderPO);
+	}
 	private void addHitoryMessage(OrderPO order,String message) throws RemoteException{
 		ArrayList<String> historyMessage = order.getMidAddres();
 		historyMessage.add(message);

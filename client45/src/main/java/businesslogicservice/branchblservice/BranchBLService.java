@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
+import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -43,8 +44,8 @@ public interface BranchBLService extends BLService{
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, ArrayList<OrderVO> orders);
-	
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders);
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders);
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟
 	 * @return 钀ヤ笟鍘呮淳浠跺崟

@@ -27,6 +27,11 @@ import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 //TODO 要发生较大改动！！！！！！！
+/**
+ * 
+ * @author Ann
+ *
+ */
 public class Inventory {
 	private InventoryDataService inventoryData;
 	private ReceiptInfo_Inventory receiptInfo;

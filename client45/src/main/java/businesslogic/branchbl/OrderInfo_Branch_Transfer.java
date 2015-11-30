@@ -3,6 +3,7 @@ package businesslogic.branchbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import state.CommodityState;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -15,6 +16,7 @@ public interface OrderInfo_Branch_Transfer {
 	 * @throws RemoteException 
 	 */
 	public void changeOrderState(ArrayList<String> orders,String message) throws RemoteException;
+	public void changeOrderState(ArrayList<String> orders,String message,CommodityState orderState) throws RemoteException;
 	public ArrayList<OrderVO> getAllOrders() throws RemoteException;
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException;
 }
