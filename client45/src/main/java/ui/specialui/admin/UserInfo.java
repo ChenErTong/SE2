@@ -49,7 +49,7 @@ public class UserInfo extends MyTranslucentPanel{
 		this.add(search);
 		
 		//the table
-		String[] headers = {"用户编号", "用户姓名", "用户职务", "员工类别", "员工权限","联系方式","家庭地址"};
+		String[] headers = {"用户编号", "用户姓名", "用户密码", "用户类别", "用户权限","联系方式","家庭地址"};
 		 table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);

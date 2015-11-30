@@ -39,18 +39,21 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	
 	private OrderBLService orderController;
 	public Frame_Sender(){
-		this.setBackground(CommonImage.TEST_BACKGROUND);
-		totalPanel = new Panel_Sender_Total(this);
-		searchPanel = new Panel_Sender_Search(this);
+		
+		totalPanel = new Panel_Sender_Total();
+		//searchPanel = new Panel_Sender_Search();
 		this.add(totalPanel);
-		this.add(searchPanel);
+//	this.add(searchPanel);
+		totalPanel.setVisible(true);
+	//	searchPanel.setVisible(true);
 		this.returnButton.addActionListener(this);
-		orderPool = new ArrayList<OrderVO>();
+		//orderPool = new ArrayList<OrderVO>();
+		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand().equals("SearchLogisticInfo")){
+		/*if(e.getActionCommand().equals("SearchLogisticInfo")){
 			if(this.isSearch()){
 				table_order = orderInfo.getTable();
 				table_logistic = logisticInfo.getTable();
@@ -91,14 +94,14 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 					this.add(new MyNotification(this,"请输入查询信息！",Color.RED));
 				}
 			}
-		}
+		}*/
 	}
 	/**
 	 * 进行查询
 	 * @return 是否进行查询
 	 * TODO 调用bl层
 	 */
-	public  boolean isSearch(){
+/*	public  boolean isSearch(){
 		switch((search())){
 		case 0: new MyNotification(this, "正在进行查询", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请填写订单号", Color.RED); break;
@@ -113,7 +116,7 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	 * 进行查询
 	 * @return 
 	 */
-	public int search() {
+	/*public int search() {
 		String[] orderNumberInfo = searchPanel.getSenderInfo();
 		String[] senderNameInfo =  searchPanel.getSenderInfo();
 		boolean isLegal = false;
@@ -140,10 +143,10 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	 * TODO 调用BL层
 	 * 
 	 */
-	private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
+	/*private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
 		// 调用bl的判断是否合法方法即可  TODO
 
 		return false;
-	}
+	}*/
 }
 

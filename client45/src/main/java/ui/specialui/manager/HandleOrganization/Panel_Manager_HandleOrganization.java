@@ -194,7 +194,7 @@ private void deletePanel(FrameManager frame) {
 
 
 /**
- * 显示所有的银行账号
+ * 显示所有的机构
  */
 public void showAll(){
 		table = (MyJTable) organizationInfo.getTable();
@@ -265,16 +265,16 @@ public void showAll(){
 					tableModel.addRow(rowData2);
 					organizationPool.add(branchVO.get(i));
 		 		}
-				this.add(new MyNotification(this,"共有"+table.getColumnCount()+"个机构满足条件！",Color.GREEN));
+				new MyNotification(this,"共有"+table.getColumnCount()+"个机构满足条件！",Color.GREEN);
 				
 			}else{
-				this.add(new MyNotification(this,"请输入要查询的机构类型！",Color.RED));
+				new MyNotification(this,"请输入要查询的机构类型！",Color.RED);
 			}
 		}else if(e.getActionCommand().equals("AddOrganization")){
 			String[] data = organizationDetails.getData();
 			controller = ControllerFactory.getOrganizationController();
 			if(data==null){
-				this.add(new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED));
+				new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 			}else{
 				if(data[4].equals("营业厅")){
 					//TODO 
@@ -282,28 +282,28 @@ public void showAll(){
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
 						this.showAll();
-						this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+						new MyNotification(this,"账户添加成功！",Color.GREEN);
 
 				}else{
 					//TODO 
 					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[6]), data[2],data[3], null, null));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
-						this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+						new MyNotification(this,"账户添加成功！",Color.GREEN);
 			
 				}		
 			}
 		}else if(e.getActionCommand().equals("DeleteOrganization")){
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要删除的机构！",Color.RED));
+				new MyNotification(this,"请先选择要删除的机构！",Color.RED);
 			}else{
-				this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
+				new MyNotification(this,"正在删除账户！",Color.GREEN);
 				this.deleteOrganization();
 			}
 		}else if(e.getActionCommand().equals("ModifyOrganizationInfo")){
 			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要修改的账户！",Color.RED));
+				new MyNotification(this,"请先选择要修改的账户！",Color.RED);
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
 				case TRANSFER:Object[] data2 = new String[7];
@@ -364,16 +364,16 @@ public void showAll(){
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							System.out.println("ModifySucceed!");
 							this.showAll();
-							this.add(new MyNotification(this,"中转中心信息修改成功！",Color.GREEN));		
+							new MyNotification(this,"中转中心信息修改成功！",Color.GREEN);		
 						}else{
-							this.add(new MyNotification(this,"中转中心信息修改失败！",Color.RED));
+							new MyNotification(this,"中转中心信息修改失败！",Color.RED);
 						}break;
 		case BRANCH:ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[0], data[1], null, null));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
-						this.add(new MyNotification(this,"营业厅信息修改成功！",Color.GREEN));
+						new MyNotification(this,"营业厅信息修改成功！",Color.GREEN);
 					}else{
-						this.add(new MyNotification(this,"营业厅信息修改失败！",Color.RED));
+						new MyNotification(this,"营业厅信息修改失败！",Color.RED);
 					}
 	}
 	}
@@ -386,7 +386,7 @@ public void showAll(){
 		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(organizationPool.get(table.getSelectedRow()).organizationID);
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							this.showAll();
-							this.add(new MyNotification(this,"账户删除成功！",Color.GREEN));
+							new MyNotification(this,"账户删除成功！",Color.GREEN);
 						}else{
 							this.add(new MyNotification(this,"账户删除失败！",Color.RED));
 						}
@@ -395,9 +395,9 @@ public void showAll(){
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						System.out.println("DeleteSucceed!");
 						this.showAll();
-						this.add(new MyNotification(this,"账户删除成功！",Color.GREEN));
+						new MyNotification(this,"账户删除成功！",Color.GREEN);
 					}else{
-						this.add(new MyNotification(this,"账户删除失败！",Color.RED));
+						new MyNotification(this,"账户删除失败！",Color.RED);
 					}
 					break;
 		

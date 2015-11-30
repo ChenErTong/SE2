@@ -19,7 +19,7 @@ public class MyComboBox extends JComboBox<String>{
 		for(int i = 0; i < str.length; i++)
 			this.addItem(str[i]);
 	
-		this.setSelectedItem(str[0]);
+	//	this.setSelectedItem(str[0]);
 		Color foreColor = Color.WHITE;
 		Color backColor = MyColor.getColor();
 		

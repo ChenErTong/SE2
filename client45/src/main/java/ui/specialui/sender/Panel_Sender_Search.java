@@ -13,13 +13,13 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 	 private MyJTextField senderNameField;
 	 private MyJButton search;
 	 private MyJButton cancel;
-	public Panel_Sender_Search(Frame_Sender frame_Sender) {
+	public Panel_Sender_Search(Panel_Sender_Total handle) {
 		super(10, 105,620, 108);
 		// TODO Auto-generated constructor stub
-		this.initComponent(frame_Sender);
+		this.initComponent(handle);
 	}
 
-	private void initComponent(Frame_Sender frame_Sender) {
+	private void initComponent(Panel_Sender_Total handle) {
 		this.add(new MyJLabel(65,5,120,40,"订单号",18,true));
 		this.add( new MyJLabel(65,55,120,40,"寄件人姓名",18,true));
 		
@@ -30,9 +30,9 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 		this.add(senderNameField);
 		
 		 search = new MyJButton(398,10,90,30,"查询",16);
-		search.setActionCommand("SearchLogisticInfo");
-		search.addActionListener(frame_Sender);
-		this.add(search);
+		 search.setActionCommand("SearchLogisticInfo");
+		 search.addActionListener(handle);
+		 this.add(search);
 		
 		 cancel = new MyJButton(398,60,90,30,"取消",16);
 		cancel.setActionCommand("CancelSearch");

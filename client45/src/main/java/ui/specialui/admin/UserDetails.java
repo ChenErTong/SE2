@@ -1,7 +1,11 @@
 package ui.specialui.admin;
 
+import java.util.ArrayList;
+
 import javax.swing.JComboBox;
 
+import businesslogic.ControllerFactory;
+import businesslogic.organizationbl.OrganizationController;
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -16,12 +20,14 @@ public class UserDetails extends MyTranslucentPanel{
 	
 	private MyJTextField[] fields;
 	private MyComboBox userIdentityBox;
+	private MyComboBox branchID;
 	@SuppressWarnings("rawtypes")
 	private JComboBox provincesBox;
 	@SuppressWarnings("rawtypes")
 	private JComboBox citiesBox;
 	private MyComboBox userAuthorityBox;
 	private MyEmptyTextArea address;
+	private OrganizationController controller = ControllerFactory.getOrganizationController();
 	public UserDetails() {
 		super(680,100,550,562);
 		this.initComponent();
@@ -30,44 +36,44 @@ public class UserDetails extends MyTranslucentPanel{
 
 
 	private void initComponent() {
-		fields = new MyJTextField[4];
-		this.add(new MyJLabel(10, 60, 90, 30, "营业厅编号", 18, true));
-		fields[0] = new MyJTextField(100,60,140,30);
-		//fields[0].setVisible(true);
-		fields[0].setOnlyInteger(10);
-		this.add(fields[0]);
+		fields = new MyJTextField[3];
+		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
+		ArrayList<String> branchIDs = new ArrayList<String>();
+		branchIDs = controller.getAllBranchNumbers();
+		String[] trans = {};
+		for(int i=0;i<branchIDs.size();i++){
+			trans[i] = branchIDs.get(i);
+		}
+		branchID = new MyComboBox(110,60,130,30,18,trans);
+		this.add(branchID);
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
-		fields[1] = new MyJTextField(340,60,140,30);
-		this.add(fields[1]);
+		fields[0] = new MyJTextField(340,60,140,30);
+		this.add(fields[0]);
 		
 		this.add(new MyJLabel(10,100, 90, 30, "用户姓名", 18, true));
-		fields[2] = new MyJTextField(100, 100, 140, 30);
-		this.add(fields[2]);
+		fields[1] = new MyJTextField(100, 100, 140, 30);
+		this.add(fields[1]);
 		
 		this.add(new MyJLabel(250,100,100,30,"联系电话",18,true));
-		fields[3] = new MyJTextField(340,100,140,30);
-		fields[3].setOnlyInteger(11);
-		this.add(fields[3]);
+		fields[2] = new MyJTextField(340,100,140,30);
+		fields[2].setOnlyInteger(11);
+		this.add(fields[2]);
 	
-		this.add(new MyJLabel(10, 140, 90, 30, "员工类别",18,true));
-		this.add(new MyJLabel(250, 140, 90, 30, "员工权限",18,true));
+		this.add(new MyJLabel(10, 140, 90, 30, "用户类别",18,true));
+		this.add(new MyJLabel(250, 140, 90, 30, "用户权限",18,true));
 		this.add(new MyJLabel(10,180,90,30,"家庭地址:",18,true));
 		this.add(new MyJLabel(10,250,90,30,"详细地址:",18,true));
 		this.add(new MyJLabel(100,210,25,30,"省",18,true));
 		this.add(new MyJLabel(300,210,25,30,"市",18,true));
-		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
-		//this.add(district);
-	//	address = new MyEmptyTextArea(100,260,400,150);
-		//address.setEditable(true);
-		//this.add(address);
+		
 		
 		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-		userIdentityBox = new MyComboBox(100,140,150,30,18,identity);
+		userIdentityBox = new MyComboBox(100,140,150,30,14,identity);
 		this.add(userIdentityBox);
 		
 		String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
-		userAuthorityBox = new MyComboBox(340,140,150,30,18,authority);
+		userAuthorityBox = new MyComboBox(340,140,150,30,14,authority);
 		this.add(userAuthorityBox);
 		  
 		//构建中国各大城市的三级联动下拉框
@@ -103,43 +109,51 @@ public class UserDetails extends MyTranslucentPanel{
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setEditable(false);
 		}
+		branchID.setEditable(false);
 		userIdentityBox.setEditable(false);
 		userAuthorityBox.setEditable(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
-	//	address.setEditable(false);
+		address.setEditable(false);
 		
 	}
 
 	public void setData(String[] data) {
-		for(int i = 0; i < 4; i++){
+		branchID.setSelectedItem(data[0]);
+		for(int i = 0; i < 3; i++){
 			fields[i].setText(data[i]);
 		}
 		userIdentityBox.setSelectedItem(data[4]);
 		userAuthorityBox.setSelectedItem(data[5]);
 		provincesBox.setSelectedItem(data[6]);
 		citiesBox.setSelectedItem(data[7]);
-	//	address.setText(data[8]);	
+		address.setText(data[8]);	
 	}
 
 	public void refresh() {
+		branchID.setSelectedItem(null);
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setText(null);
 		}
-		//address.setText(null);
+		userIdentityBox.setSelectedItem(null);
+		userAuthorityBox.setSelectedItem(null);
+		provincesBox.setSelectedItem(null);
+		citiesBox.setSelectedItem(null);
+		address.setText(null);
 		
 	}
 
 	public String[] getData() {
 		String[] data = new String[9];
-		for (int i = 1; i < 4; i++) {			
+		data[0] = (String) branchID.getSelectedItem();
+		for (int i = 0; i < 3; i++) {			
 			if((data[i] = fields[i].getText()).equals("")) return null;
 		}
 		data[4] = (String)userIdentityBox.getSelectedItem();
 		data[5] = (String)userAuthorityBox.getSelectedItem();
 		data[6] = (String) provincesBox.getSelectedItem();
 		data[7] = (String) citiesBox.getSelectedItem();
-		//data[8] = address.getText();
+		data[8] = address.getText();
 		for(int i = 4;i<8;i++){
 			if(data[i].equals("")) return null;
 		}
