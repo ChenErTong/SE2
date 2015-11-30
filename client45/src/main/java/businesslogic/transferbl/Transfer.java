@@ -95,7 +95,7 @@ public class Transfer {
 	}
 
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
-			CommodityState state, String orderID) throws RemoteException {
+			CommodityState state, String orders) throws RemoteException {
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, orders);
 		//更改VO状态

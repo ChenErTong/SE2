@@ -11,20 +11,19 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	private static final long serialVersionUID = 1L;
 
 	// 目的地
-	public String depture;
-	public String destination;
-	//TODO 是不是应该改成ArrayList啊
-	public String CommoditiesID;
-	public int area;
-	public int row;
-	public int frame;
-	public int position;
+	private String depture;
+	private String destination;
+	private String CommoditiesID;
+	private int area;
+	private int row;
+	private int frame;
+	private int position;
 	public InventoryImportReceiptPO(String ID, ReceiptType type, String depture, String destination,
 			String commoditiesID, int area, int row, int frame, int position) {
 		super(ID, type);
 		this.depture = depture;
 		this.destination = destination;
-		CommoditiesID = commoditiesID;
+		this.CommoditiesID = commoditiesID;
 		this.area = area;
 		this.row = row;
 		this.frame = frame;
@@ -41,12 +40,6 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	}
 	public void setDestination(String destination) {
 		this.destination = destination;
-	}
-	public String getCommoditiesID() {
-		return CommoditiesID;
-	}
-	public void setCommoditiesID(String commoditiesID) {
-		CommoditiesID = commoditiesID;
 	}
 	public int getArea() {
 		return area;
@@ -74,6 +67,12 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getCommoditiesID() {
+		return CommoditiesID;
+	}
+	public void setCommoditiesID(String commoditiesID) {
+		CommoditiesID = commoditiesID;
 	}
 
 	

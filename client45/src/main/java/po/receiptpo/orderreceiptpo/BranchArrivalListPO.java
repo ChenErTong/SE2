@@ -1,7 +1,5 @@
 package po.receiptpo.orderreceiptpo;
 
-import java.util.ArrayList;
-
 import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ReceiptType;

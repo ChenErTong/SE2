@@ -95,7 +95,7 @@ public interface TransferBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state, ArrayList<String> orders);
+	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,CommodityState state, String orders);
 
 	
 }

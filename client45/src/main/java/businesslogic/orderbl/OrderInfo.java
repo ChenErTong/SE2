@@ -77,4 +77,15 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 		}
 		return commodityVOs;
 	}
+	@Override
+	public void changeOrderState(String order, String message) throws RemoteException {
+		OrderPO orderPO = orderData.find(order);
+		addHitoryMessage(orderPO, message);
+	}
+	@Override
+	public void changeOrderState(String order, String message, CommodityState orderState) throws RemoteException {
+		OrderPO orderPO = orderData.find(order);
+		addHitoryMessage(orderPO, message);
+		updateOrderState(orderPO,orderState);
+	}
 }

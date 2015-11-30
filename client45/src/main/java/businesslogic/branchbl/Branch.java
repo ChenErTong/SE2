@@ -85,22 +85,23 @@ public class Branch{
 	}
 
 	public BranchArrivalListVO getBranchArrivalList(String departure,CommodityState orderState,
-			ArrayList<OrderVO> order) throws RemoteException {
+			OrderVO order) throws RemoteException {
 		 CommodityState state = CommodityState.Complete;
 		 String transferListID=null;
 		 //TODO 
-		 ArrayList<String> orderIDs = new ArrayList<>();
-		 for (OrderVO orderVO : order) {
-			orderIDs.add(orderVO.ID);
-		}
-		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderIDs);
+//		 ArrayList<String> orderIDs = new ArrayList<>();
+//		 for (OrderVO orderVO : order) {
+//			orderIDs.add(orderVO.ID);
+//		}
+		 String orderID = order.ID;
+		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderID);
 		//更改VO状态
-		orderInfo.changeOrderState(orderIDs,  "货物已到达" + departure + "营业厅",orderState);
+		orderInfo.changeOrderState(orderID,  "货物已到达" + departure + "营业厅",orderState);
 		receiptInfo.add(vo);
 		return vo;
 	}
 
-	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) throws RemoteException {
+	public DeliveryListVO getDeliveryList(String orders, String courierName) throws RemoteException {
 		//TODO
 		String ID = receiptInfo.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);

@@ -44,7 +44,7 @@ public interface BranchBLService extends BLService{
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders);
+//	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders);
 	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders);
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟
@@ -54,7 +54,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName);
+	public DeliveryListVO getDeliveryList( String  orders, String courierName);
 	
 	/**
 	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�

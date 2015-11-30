@@ -37,10 +37,11 @@ public class FacilityPO extends PersistentObject{
 	 * 
 	 */
 	private String branchID;
-	public FacilityPO(String id, String date, String managerId, ArrayList<LoadingListPO> deliverHistory) {
+	public FacilityPO(String id, String date, String managerId, ArrayList<LoadingListPO> deliverHistory,String branchID) {
 		super(id, date);
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
+		this.branchID=branchID;
 	}
 	
 	
@@ -82,13 +83,14 @@ public class FacilityPO extends PersistentObject{
 	}
 
 	public FacilityPO(String id, String managerId, String date, ArrayList<LoadingListPO> deliverHistory,
-			String bottomCode, String engineCode, String vehicleIdentificationNumber) {
+			String bottomCode, String engineCode, String vehicleIdentificationNumber,String branchID) {
 		super(id);
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 		this.bottomCode = bottomCode;
 		this.engineCode = engineCode;
 		this.vehicleIdentificationNumber = vehicleIdentificationNumber;
+		this.branchID = branchID;
 	}
 
 	
