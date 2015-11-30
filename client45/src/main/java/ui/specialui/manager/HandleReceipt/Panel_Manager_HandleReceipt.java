@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
-import businesslogic.receiptbl.ReceiptShowController;
+
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -129,17 +129,15 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			ArrayList<ReceiptType> dontPassType =  new ArrayList<ReceiptType>();
 			dontPassList.add((ReceiptVO)listPool.get(index));
 			dontPassType.add(typePool.get(index));
-		//	ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
-			
-			//if(rm.equals(ResultMessage.FAIL)){
-				//this.add(new MyNotification(this,"不通过单据失败！",Color.RED));
-			//}else{
-				
-				//bt_search.doClick();
-				
-			//}
+			ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
+			if(rm.equals(ResultMessage.FAIL)){
+				new MyNotification(this,"不通过单据失败！",Color.RED);
+			}else{
+				DontPassThisReceipt.doClick();
+			}
 		}else if(events.getActionCommand().equals("PassThisReceipt")){
 			table = searchPanel.getTable();
+			ArrayList<ReceiptVO> PassList = new ArrayList<ReceiptVO>();
 			if(index >= 0){
 				if(!table.getValueAt(index, 3).equals("未审批")){
 					this.add(new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED));
@@ -148,27 +146,23 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 					
 					passList.clear();
 					passType.clear();
+					PassList.clear();
 					
 					passList.add(listPool.get(index));
 					passType.add(typePool.get(index));
+					PassList.add((ReceiptVO)listPool.get(index));
 					
-			//		ResultMessage rsg = receiptController.passReceipt(passList, receiptTypes);
-							//passBill(passList, passType);
-					
-				//	if(rsg.equals(ResultMessage.FAIL)){
-					//	this.add(new MyNotification(this,"单据审批失败！",Color.RED));
-					//}//else{
-						
-						
-						
-						//index = -1;
+					ResultMessage rsg = receiptController.passReceipt(PassList);
+					if(rsg.equals(ResultMessage.FAIL)){
+						new MyNotification(this,"单据审批失败！",Color.RED);
+					}else{
+						index = -1;
 						//ta.setText("");
 						//word.setText("单据状态:    ");
-						
-						this.add(new MyNotification(this,"单据审批成功！",Color.GREEN));
+						new MyNotification(this,"单据审批成功！",Color.GREEN);
 							
-					//}
-				//}
+					}
+				}
 			}
 		}else if(events.getActionCommand().equals("PassSelectedReceipts")){
 			table = searchPanel.getTable();
@@ -191,12 +185,12 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			}
 			if(flag == true){
 				if(count == 0){
-					this.add(new MyNotification(this,"请先选择需要进行审批的单据！",Color.RED));
+					new MyNotification(this,"请先选择需要进行审批的单据！",Color.RED);
 				}else{
-					this.add(new MyNotification(this,"单据批量审批成功！",Color.GREEN));
+					new MyNotification(this,"单据批量审批成功！",Color.GREEN);
 				}
 			}else{
-				this.add(new MyNotification(this,"只可对未审批的单据进行审批!",Color.RED));
+				new MyNotification(this,"只可对未审批的单据进行审批!",Color.RED);
 			}
 		}else if(events.getActionCommand().equals("ViewReceiptInfo")){
 				int count = 0;
@@ -208,11 +202,10 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 						index = i;
 					}
 			}
-			
 			if(count == 0){
-				this.add(new MyNotification(this,"请选择一条要查看的单据！",Color.RED));
+				new MyNotification(this,"请选择一条要查看的单据！",Color.RED);
 			}else if(count > 1){
-				this.add(new MyNotification(this,"请只选择一条要查看的单据！",Color.RED));
+				new MyNotification(this,"请只选择一条要查看的单据！",Color.RED);
 			}else{
 				ReceiptConductor  writer = new ReceiptConductor();
 				receiptInfo.getTa().setText(writer.writeReceipt(typePool.get(index),listPool.get(index)));
@@ -221,7 +214,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			table = searchPanel.getTable();
 			if(index >= 0){
 				if(!table.getValueAt(index, 3).equals("未审批")){
-					this.add(new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED));
+					new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
 				}else{
 					Panel_Manager_ModifyReceiptInfo modifyUI = new Panel_Manager_ModifyReceiptInfo(typePool.get(index),listPool.get(index));
 					this.setVisible(false);
@@ -235,8 +228,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 				String file = String.valueOf(fsv.getHomeDirectory()) + "/" + table.getValueAt(index, 2) + ".txt";		
 				System.out.print(file);
 				writeto(receiptInfo.getTa().getText().replaceAll("\n", "\r\n"),file);
-				
-				this.add(new MyNotification(this,"单据成功导出至桌面！",Color.GREEN));
+				new MyNotification(this,"单据成功导出至桌面！",Color.GREEN);
 			}
 		}else if(events.getActionCommand().equals("SearchReceipt")){
 			//清空VO储存池
@@ -290,15 +282,11 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 			}
 		}
 	}
-	}
+	
 private void getApprovalData(int index) throws RemoteException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
 		
-		/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单*/
-		/**
-		 * @author Ann
-		 */
 		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.APPROVALING);//待审批的单据
 		ArrayList<OrderReceiptVO> orderReceipt = controller.show(ReceiptType.ORDER, ReceiptState.APPROVALING);
 		ArrayList<LoadingListVO> loadingList = controller.show(ReceiptType.BRANCH_TRUCK, ReceiptState.APPROVALING);
