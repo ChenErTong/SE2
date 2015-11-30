@@ -11,12 +11,12 @@ import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
-		InventoryPO po = new InventoryPO(vo.ID, vo.area, vo.row, vo.frame, vo.position, vo.EmptyOrFull);
+		InventoryPO po = new InventoryPO(vo.ID, vo.area, vo.row, vo.frame, vo.position, vo.isEmpty);
 		return po;
 	}
 
 	public static InventoryVO convertPOtoVO(InventoryPO po) {
-		InventoryVO vo = new InventoryVO(po.getID(), po.getArea(), po.getRow(), po.getFrame(), po.getPosition(), po.getEmptyOrFull());
+		InventoryVO vo = new InventoryVO(po.getArea(), po.getRow(), po.getFrame(), po.getPosition());
 		return vo;
 	}
 

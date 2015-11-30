@@ -83,7 +83,7 @@ public class Inventory {
 		int row = vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position, "full");
+		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position,false);
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities,area,row,frame,position);
 		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);
@@ -126,7 +126,8 @@ public class Inventory {
 		InventoryExportReceiptPO po = new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,
 				Transfer, TransferID, Commodities, area,row,frame,position);
 		InventoryExportReceiptVO voExport=InventoryTrans.convertPOtoVO(po);
-		inventorypoFind.setEmptyOrFull("empty");
+//		inventorypoFind.setEmptyOrFull("empty");
+		//TODO
 		inventoryData.modify(inventorypoFind);
 		return voExport;
 	}
@@ -157,8 +158,9 @@ public class Inventory {
 		AdjustReceiptVO vo = new AdjustReceiptVO(ID, ReceiptType.TAKINGSTOCK, exArea,exRow,exFrame,exPosition,afArea,afRow,afFrame,afPosition);
 		InventoryPO beforePO = InventoryTrans.convertVOtoPO(before);
 		InventoryPO afterPO = InventoryTrans.convertVOtoPO(now);
-		beforePO.setEmptyOrFull("empty");
-		afterPO.setEmptyOrFull("full");
+		//TODO
+//		beforePO.setEmptyOrFull("empty");
+//		afterPO.setEmptyOrFull("full");
 		inventoryData.modify(beforePO);
 		inventoryData.modify(afterPO);
 		receiptInfo.add(vo);
