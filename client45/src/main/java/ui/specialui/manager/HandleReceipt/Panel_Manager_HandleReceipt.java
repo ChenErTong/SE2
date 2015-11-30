@@ -193,6 +193,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 				new MyNotification(this,"只可对未审批的单据进行审批!",Color.RED);
 			}
 		}else if(events.getActionCommand().equals("ViewReceiptInfo")){
+		
 				int count = 0;
 			
 				for(int i = 0; i < table.getRowCount(); i++){
@@ -211,16 +212,19 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 				receiptInfo.getTa().setText(writer.writeReceipt(typePool.get(index),listPool.get(index)));
 			}
 		}else if(events.getActionCommand().equals("ModifyReceiptInfo")){
-			table = searchPanel.getTable();
-			if(index >= 0){
-				if(!table.getValueAt(index, 3).equals("未审批")){
-					new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
-				}else{
-					Panel_Manager_ModifyReceiptInfo modifyUI = new Panel_Manager_ModifyReceiptInfo(typePool.get(index),listPool.get(index));
-					this.setVisible(false);
-					modifyUI.setVisible(true);
+				//System.out.println("111");
+				table = searchPanel.getTable();
+				System.out.println(index);
+				
+				if(index >= 0){
+					if(!table.getValueAt(index, 3).equals("未审批")){
+						new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
+					}else{
+						Panel_Manager_ModifyReceiptInfo modifyUI = new Panel_Manager_ModifyReceiptInfo(typePool.get(index),listPool.get(index));
+						this.setVisible(false);
+						modifyUI.setVisible(true);
+					}
 				}
-			}
 		}else if(events.getActionCommand().equals("ExportReceipt")){
 			table = searchPanel.getTable();
 			if(index >= 0){
@@ -278,7 +282,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 				}
 			}
 			if(table.getRowCount() == 0){
-				this.add(new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED));
+				new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED);
 			}
 		}
 	}

@@ -2,7 +2,7 @@ package vo;
 
 import state.CommodityState;
 
-public class CommodityVO {
+public class CommodityVO extends ValueObject{
 	public String commodityType;
 	public double weight;
 	public double volumn;

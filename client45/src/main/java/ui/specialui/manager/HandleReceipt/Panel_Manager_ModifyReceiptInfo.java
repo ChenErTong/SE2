@@ -17,6 +17,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
+import vo.OrderVO;
 import vo.ValueObject;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryExportReceiptVO;
@@ -69,7 +70,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单*/
 	private void initTable(ReceiptType receiptType, ValueObject receipt){
 		if(receiptType.equals(ReceiptType.ORDER)){
-			orderTable((OrderReceiptVO)receipt);
+			orderTable((OrderVO)receipt);
 		}else if(receiptType.equals(ReceiptType.BRANCH_TRUCK)){
 			loadingListTable((LoadingListVO)receipt);
 		}else if(receiptType.equals(ReceiptType.BRANCH_ARRIVAL)){
@@ -100,24 +101,49 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		Object[] rowData = {receipt.payerName,receipt.money,receipt.accountID,receipt.items,receipt.remarks,receipt.date};
 		tableModel.addRow(rowData);
 	}
-	private void exportTable(InventoryExportReceiptVO receipt) {
-		// TODO Auto-generated method stub
+	private void exportTable(InventoryExportReceiptVO receipt) {/*ReceiptType type, String destination, String depture, ExpressType expressType,
+			String transferID, String commoditiesID, int a, int b, int c, int d*/
+		String [] headers = {};
+		table = new MyJTable(headers,true);
+		
+		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+		Object[] rowData = {receipt.type,receipt.destination,receipt.depture,receipt.expressType,receipt.TransferID,receipt.CommoditiesID,receipt.a,receipt.b,receipt.c,receipt.d};
+		tableModel.addRow(rowData);
 		
 	}
 	private void transOrderTable(TransferOrderVO receipt) {
-		// TODO Auto-generated method stub
+		// String facilityID, ReceiptType type,String departure, String destination, String courierName ArrayList<String> orders
+		String [] headers = {};
+		table = new MyJTable(headers,true);
+		
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[] rowData = {receipt.type,receipt.facilityID,receipt.departure,receipt.destination,receipt.courierName,receipt.orders};
+		tableModel.addRow(rowData);
 		
 	}
 	private void importTable(InventoryImportReceiptVO receipt) {
-		// TODO Auto-generated method stub
-		
+		// TODO ReceiptType type, String depture, String destination,String commoditiesID, int a, int b, int c, int d)
+		String[] headers = {};
+		table = new MyJTable(headers,true);
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[] rowData = {receipt.type,receipt.depture,receipt.destination,receipt.CommoditiesID,receipt.a,receipt.b,receipt.c,receipt.d};
+		tableModel.addRow(rowData);
 	}
 	private void transferArrivalTable(TransferArrivalListVO receipt) {
-		// TODO Auto-generated method stub
-		
+		// ReceiptType type,String transferCenterID, String destination, String departure,CommodityState state, ArrayList<String> orders
+		String[] headers = {};
+		table = new MyJTable(headers,true);
+		DefaultTableModel tableModel =(DefaultTableModel)table.getModel();
+		Object[] rowData = {receipt.type,receipt.transferCenterID,receipt.destination,receipt.departure,receipt.state,receipt.orders};
+		tableModel.addRow(rowData);
 	}
 	private void deliveryList(DeliveryListVO receipt) {
-		// TODO Auto-generated method stub
+		//  ReceiptType type,ArrayList<String> orders, String courierName
+		String[] headers = {};
+		table = new MyJTable(headers,true);
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[] rowData = {receipt.type,receipt.orders,receipt.courierName};
+		tableModel.addRow(rowData);
 		
 	}
 	private void debitBillTable(DebitBillVO receipt) {
@@ -130,16 +156,32 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		
 	}
 	private void branchArrivalTable(BranchArrivalListVO receipt) {
-		// TODO Auto-generated method stub
+		// ReceiptType type, String transferListID, String departure,		CommodityState state, ArrayList<String> orders
+		String[] headers = {};
+		table = new MyJTable(headers,true);
 		
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.orders};
+		tableModel.addRow(rowData);
 	}
 	private void loadingListTable(LoadingListVO receipt) {
-		// TODO Auto-generated method stub
+		// ReceiptType type, String branchID, String transferNumber,	String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, double money
+		String[] headers = {};
+		table = new MyJTable(headers,true);
 		
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[]rowData = {receipt.type,receipt.branchID,receipt.transferNumber,receipt.distination,receipt.carID,receipt.monitorName,receipt.courierName,receipt.orders,receipt.money};
+		tableModel.addRow(rowData);
 	}
-	private void orderTable(OrderReceiptVO receipt) {
-		// TODO Auto-generated method stub
+	private void orderTable(OrderVO receipt) {
+		// String id, ReceiptType type, ArrayList<String> orders
+		String[] headers = {};
+		table = new MyJTable(headers,true);
 		
+		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		Object[] rowData = {receipt.senderName,receipt.senderAddress,receipt.senderTel,receipt.senderCo,receipt.sendTime,receipt.recipientName,
+				receipt.recipientAddress,receipt.recipientTel,receipt.recipientCo,receipt.recipientTime,receipt.packType,receipt.express,receipt.midAddres,receipt.commodities};
+		tableModel.addRow(rowData);
 	}
 	private void initJsp(){
 		JScrollPane jsp = new JScrollPane(table);
@@ -168,121 +210,47 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 	
 	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单*/
 	private void finish(ReceiptType billType) {
-		// TODO Auto-generated method stub
 		ReceiptBLService controller = ControllerFactory.getReceiptController();
-		
 		ResultMessage rm = null;
-	//	ApprovalBLService controller = new ApprovalController();
-		
-		//ResultMessage rm = null;
-		
 		if(billType.equals(ReceiptType.ORDER)){
 			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
-		//	PurchaseVO vo = (PurchaseVO)currentBill;
-		//	ArrayList<CommodityItemVO> commodities = new ArrayList<CommodityItemVO>();
-			
-			double sum = 0;
-			double price = 0;
-			int num = 0;
-			
-			for(int i = 0; i < table.getRowCount(); i++){
-				
-				num = Integer.parseInt((String)table.getValueAt(i, 3).toString());
-			
-				price = Double.parseDouble((String)table.getValueAt(i, 4).toString());
-				
-				//String ID, int number, double price, String remark, String name, String type
-			//	commodities.add(new CommodityItemVO((String)table.getValueAt(i, 0), num, price, (String)table.getValueAt(i, 5)
-				//		, (String)table.getValueAt(i, 1), (String)table.getValueAt(i, 2)));
-				sum = sum + num * price;
-			}
-			
-			//BillType type, String ID, String clientID, String client,
-			//String user, Storage storage, ArrayList<CommodityItemVO> commodities, double beforePrice, BillState state
-		//	rm = controller.updateBill(new PurchaseVO(billType, vo.ID, vo.clientID,
-			//		vo.client, vo.user, vo.storage,commodities,sum,vo.state), billType);
-			
+		//	ArrayList<String> orders = new ArrayList<String>();
+			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
 		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
-			//SalesVO vo = (SalesVO)currentBill;
-			//ArrayList<CommodityItemVO> commodities = new ArrayList<CommodityItemVO>();
-			LoadingListVO vo = (LoadingListVO)currentBill;
-			double sum = 0;
-			double price = 0;
-			int num = 0;
-			
-			for(int i = 0; i < table.getRowCount(); i++){
-				num = Integer.parseInt((String)table.getValueAt(i, 3).toString());
-				
-				price = Double.parseDouble((String)table.getValueAt(i, 4).toString());
-				
-				sum = sum + num * price;
-				
-				//String ID, int number, double price, String remark, String name, String type
-			//	commodities.add(new CommodityItemVO((String)table.getValueAt(i, 0), num, price, (String)table.getValueAt(i, 5)
-					//	, (String)table.getValueAt(i, 1), (String)table.getValueAt(i, 2)));
-			}
-			//String ID, String clientID, String client, Storage storage, String user,
-			//String salesman, ArrayList<CommodityItemVO> commodities, String remark, 
-			//double beforePrice, double allowance, double voucher, double afterPrice, BillType type, BillState state
-		//	double afterSum = sum - vo.afterPrice - vo.voucher;
-			//rm = controller.updateBill(new SalesVO(vo.ID, vo.clientID, vo.client, vo.storage
-				//	, vo.user, vo.salesman, commodities, textField.getText()
-					//, sum, vo.allowance, vo.voucher, afterSum, vo.type, vo.state ), billType);
+			LoadingListVO vo = (LoadingListVO)currentBill;	
+			rm = controller.updateReceipt(new LoadingListVO(vo.ID,vo.type,vo.branchID,vo.transferNumber,vo.distination,
+					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
 		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
 			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
-			//InventoryBillVO vo = (InventoryBillVO)currentBill;
-			
-		//	ArrayList<CommodityItemVO> commodities = new ArrayList<CommodityItemVO>();
-			
-			double price = 0;
-			int num = 0;
-			
-			for(int i = 0; i < table.getRowCount(); i++){
-				num = Integer.parseInt((String)table.getValueAt(i, 3).toString());
-				
-				price = 0;
-				
-				//String ID, int number, double price, String remark, String name, String type
-			//	commodities.add(new CommodityItemVO((String)table.getValueAt(i, 0), num, price, null
-				//		, (String)table.getValueAt(i, 1), (String)table.getValueAt(i, 2)));
-			}
-			
-			//String ID, BillType billType, ArrayList<CommodityItemVO> commodities, String remark, BillState state
-			//rm = controller.updateBill(new InventoryBillVO(vo.ID, billType, commodities,vo.remark, vo.state), billType);
+			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orders));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
-			//CashBillVO vo = (CashBillVO)currentBill;
-			//ArrayList<CashItemVO> bills = new ArrayList<CashItemVO>();
 			double sum = 0;
 			
 			for(int i = 0; i < table.getRowCount(); i++){
-				//String name, double money, String remark
-				
-				double price = Double.parseDouble((String)table.getValueAt(i, 3));
+				double price = Double.parseDouble((String)table.getValueAt(i, 1));
 				sum = sum + price;
-				//bills.add(new CashItemVO((String)table.getValueAt(i, 1), price, (String)table.getValueAt(i, 2)));
 			}
-			
-			//String ID, String user, String account, ArrayList<CashItemVO> bills, double total, BillState state
-			//rm = controller.updateBill(new CashBillVO(vo.ID, vo.user, vo.account, bills, sum, vo.state), billType);
+			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.accountID,vo.items,vo.remarks));
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
-			
+			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.orders,vo.courierName));
 		}else if(billType.equals(ReceiptType.TRANS_ARRIVAL)){
 			TransferArrivalListVO vo = (TransferArrivalListVO) currentBill;
+			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.orders));
 		}else if(billType.equals(ReceiptType.INSTOCK)){
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
+			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.depture,vo.destination,vo.CommoditiesID,vo.a,vo.b,vo.c,vo.d));
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
-
+			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.destination,vo.depture,vo.expressType,vo.TransferID,vo.CommoditiesID,vo.a,vo.b,vo.c,vo.d));
 		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
+			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
 		}else if(billType.equals(ReceiptType.DEBIT)){
 			DebitBillVO  vo = (DebitBillVO) currentBill;
+			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers));
 		}
-		
-		//bt_return.doClick();
-		
 		if(rm.equals(ResultMessage.SUCCESS)){
 			new MyNotification(this,"单据修改成功",Color.GREEN);
 		}else{
