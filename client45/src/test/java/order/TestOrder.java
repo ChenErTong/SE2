@@ -12,9 +12,9 @@ import vo.OrderVO;
 public class TestOrder {
 	@Test
 	public void testOrder() {
-		CommodityVO commmodity1 = new CommodityVO("iphone", 0.5, 0.002, CommodityState.Success);
-		CommodityVO commmodity2 = new CommodityVO("ipad", 1, 0.008, CommodityState.Success);
-		CommodityVO commmodity3 = new CommodityVO("ipad mini", 0.75, 0.004, CommodityState.Success);
+		CommodityVO commmodity1 = new CommodityVO("iphone", 0.5, 0.002, CommodityState.Complete);
+		CommodityVO commmodity2 = new CommodityVO("ipad", 1, 0.008, CommodityState.Complete);
+		CommodityVO commmodity3 = new CommodityVO("ipad mini", 0.75, 0.004, CommodityState.Complete);
 		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		commodities.add(commmodity1);
 		commodities.add(commmodity2);
