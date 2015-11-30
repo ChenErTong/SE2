@@ -43,7 +43,6 @@ public class BranchController implements BranchBLService {
 		return null;
 	}
 
-	@Override
 	/**
 	 * 根据数据生成到达单保存到数据库并返回（我不知道到达单编号有什么用所以删掉了，如果别的用例需要编号你们可以补上）
 	 * @param transferListID 到达单编号
@@ -51,17 +50,17 @@ public class BranchController implements BranchBLService {
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders) {
+	/*public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state,  OrderVO  orders) {
 		try {
 			return BranchBL.getBranchArrivalList(departure,state, orders);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 	@Override
-	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) {
+	public DeliveryListVO getDeliveryList( String  orders, String courierName) {
 		try {
 			return BranchBL.getDeliveryList(orders, courierName);
 		} catch (RemoteException e) {
@@ -103,9 +102,8 @@ public class BranchController implements BranchBLService {
 
 	@Override
 	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) {
-		ArrayList<OrderVO> oneOrder = new ArrayList<>();
 		try {
-			return BranchBL.getBranchArrivalList(departure,state, oneOrder);
+			return BranchBL.getBranchArrivalList(departure,state, orders);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

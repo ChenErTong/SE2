@@ -26,7 +26,7 @@ public class PersistentObject implements Serializable{
    
 	protected PersistentObject(String id){
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM--dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		date = sdf.format(new Date());
 		this.ID = id;
 	}

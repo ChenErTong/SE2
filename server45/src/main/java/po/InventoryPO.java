@@ -10,23 +10,26 @@ public class InventoryPO extends PersistentObject {
 	private static final long serialVersionUID = -2898348688803208513L;
 
 	// 区
-	public int area;
+	private int area;
 	// 排;
-	public int row;
+	private int row;
 	// 架
-	public int frame;
+	private int frame;
 	// 位
-	public int position;
+	private int position;
 	// 空或满
-	public String EmptyOrFull;
+	private boolean isEmpty;
+	
+	private String transferID;
 
-	public InventoryPO(String id, int area, int row, int frame, int position, String emptyOrFull) {
+	public InventoryPO(String id, int area, int row, int frame, int position, boolean isEmpty,String transferID) {
 		super(id);
 		this.area = area;
 		this.row = row;
 		this.frame = frame;
 		this.position = position;
-		EmptyOrFull = emptyOrFull;
+		this.isEmpty = isEmpty;
+		this.transferID=transferID;
 	}
 
 	public int getArea() {
@@ -61,12 +64,20 @@ public class InventoryPO extends PersistentObject {
 		this.position = position;
 	}
 
-	public String getEmptyOrFull() {
-		return EmptyOrFull;
+	public boolean isEmpty() {
+		return isEmpty;
 	}
 
-	public void setEmptyOrFull(String emptyOrFull) {
-		EmptyOrFull = emptyOrFull;
+	public void setEmpty(boolean isEmpty) {
+		this.isEmpty = isEmpty;
+	}
+
+	public String getTransferID() {
+		return transferID;
+	}
+
+	public void setTransferID(String transferID) {
+		this.transferID = transferID;
 	}
 
 }

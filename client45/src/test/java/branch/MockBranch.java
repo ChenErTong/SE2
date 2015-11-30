@@ -18,12 +18,10 @@ public class MockBranch extends Branch {
 	}
 	
 	public void mockDeliveryList(ArrayList<String> orders, String courierName) {
-		deliveryListVO = new DeliveryListVO("BRANCH008", null, orders, courierName);
 	}
 	
 	public void mockBranchArrivalList(String transferListID, String departure, CommodityState state,
 			ArrayList<String> orders) {
-		branchArrivalListVO = new BranchArrivalListVO(transferListID, null, transferListID, departure, state, orders);
 	}
 
 

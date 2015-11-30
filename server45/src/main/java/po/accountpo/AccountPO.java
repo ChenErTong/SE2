@@ -1,5 +1,7 @@
 package po.accountpo;
 
+import java.util.ArrayList;
+
 import po.PersistentObject;
 
 
@@ -27,13 +29,13 @@ public class AccountPO extends PersistentObject{
 	private double Salary;
 	/**任职时间**/
 	private String WorkTime;
-	/**营业厅编号*/
-	private String branchID;
-	/**每日订单完成**/
-	private int ReceiptNum;
+	/**营业厅or中转中心编号*/
+	private String organizationID;
+	/**每日完成的订单编号**/
+	private ArrayList<String> ordersID;
 	
 	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, double salary,
-			String workTime, int receiptNum) {
+			String workTime) {
 		super(ID);
 		this.Duty = duty;
 		this.Name = name;
@@ -42,7 +44,7 @@ public class AccountPO extends PersistentObject{
 		this.Phone = phone;
 		this.Salary = salary;
 		this.WorkTime = workTime;
-		this.ReceiptNum = receiptNum;
+		ordersID = new ArrayList<String>();
 	}
 
 
@@ -102,23 +104,23 @@ public class AccountPO extends PersistentObject{
 		WorkTime = workTime;
 	}
 
-	public int getReceiptNum() {
-		return ReceiptNum;
-	}
-
-	public void setReceiptNum(int receiptNum) {
-		ReceiptNum = receiptNum;
-	}
-
-
-	public String getBranchID() {
-		return branchID;
-	}
-
-
-	public void setBranchID(String branchID) {
-		this.branchID = branchID;
-	}
 	
-}
+	public String getOrganizationID() {
+		return organizationID;
+	}
 
+
+	public void setOrganizationID(String organizationID) {
+		this.organizationID = organizationID;
+	}
+
+
+	public void addOrderID(String id){
+		ordersID.add(id);
+	}
+
+
+	public ArrayList<String> getOrdersID() {
+		return ordersID;
+	}
+}

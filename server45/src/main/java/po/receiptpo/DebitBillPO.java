@@ -18,11 +18,13 @@ public class DebitBillPO extends DebitAndPayBillPO {
 
 	private String courierID;
 	private ArrayList<String> orderNumbers;
+	private String date;
 	
-	public DebitBillPO(String id,ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers) {
+	public DebitBillPO(String id,ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers, String date) {
 		super(id, type, money);
 		this.courierID=courierID;
 		this.orderNumbers=orderNumbers;
+		this.date = date;
 	}
 
 	public String getCourierID() {
@@ -33,5 +35,11 @@ public class DebitBillPO extends DebitAndPayBillPO {
 		return orderNumbers;
 	}
 
-	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

@@ -1,7 +1,6 @@
 package po.receiptpo.orderreceiptpo;
 
-import java.util.ArrayList;
-
+import po.receiptpo.ReceiptPO;
 import state.CommodityState;
 import state.ReceiptType;
 
@@ -10,7 +9,7 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class BranchArrivalListPO extends OrderReceiptPO {
+public class BranchArrivalListPO extends  ReceiptPO {
 
 	/**
 	 * 
@@ -19,14 +18,17 @@ public class BranchArrivalListPO extends OrderReceiptPO {
 	private String transferListID;
 	private String departure;
 	private CommodityState state;
+	private String orders;
 	
 	public BranchArrivalListPO(String ID, ReceiptType type,String transferListID, String departure, 
-			CommodityState state, ArrayList<String> orders) {
-		super(ID, type,orders);
+			CommodityState state, String orders) {
+		super(ID, type );
 		this.transferListID = transferListID;
 		this.departure = departure;
 		this.state = state;
+		this.orders=orders;
 	}
+	
 	
 	public String getTransferListID() {
 		return transferListID;
@@ -45,6 +47,16 @@ public class BranchArrivalListPO extends OrderReceiptPO {
 	}
 	public void setState(CommodityState state) {
 		this.state = state;
+	}
+
+
+	public String getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(String orders) {
+		this.orders = orders;
 	}
 
 }

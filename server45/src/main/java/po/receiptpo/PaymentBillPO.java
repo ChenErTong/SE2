@@ -29,7 +29,17 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 	
 	private PayBillItem payBillItem;
 
-	public PaymentBillPO(String ID, ReceiptType type, double money, String payerName, PayBillItem items,
+	public PaymentBillPO(String ID, String date ,ReceiptType type, double money, String payerName, PayBillItem items,
+			String accountID, String remarks) {
+		super(ID, type, money);
+		this.date = date;
+		this.payerName=payerName;
+		this.payBillItem=items;
+		this.accountID=accountID;
+		this.remarks=remarks;
+	}
+	
+	public PaymentBillPO(String ID  ,ReceiptType type, double money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
 		super(ID, type, money);
 		this.payerName=payerName;

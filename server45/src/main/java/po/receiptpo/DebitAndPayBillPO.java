@@ -41,6 +41,4 @@ public class DebitAndPayBillPO extends ReceiptPO {
 		return state;
 	}
 
-	
-
 }

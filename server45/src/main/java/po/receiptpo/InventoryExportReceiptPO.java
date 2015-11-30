@@ -10,25 +10,25 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 		
 	private static final long serialVersionUID = 1L;
 	/**目的地**/
-	public String destination;
-	public String depture;
+	private String destination;
+	private String depture;
 	/**装运形式**/
-	public ExpressType expressType;
-	public String TransferID;
-	public String CommoditiesID;
-	public int area;
-	public int row;
-	public int frame;
-	public int position;
+	private ExpressType expressType;
+	private String TransferID;
+	private String CommoditiyID;
+	private int area;
+	private int row;
+	private int frame;
+	private int position;
 	
 	public InventoryExportReceiptPO(String ID, ReceiptType type,String destination, String depture, ExpressType expressType, String transferID,
-			String commoditiesID, int area, int row, int frame, int position) {
+			String CommoditiyID, int area, int row, int frame, int position) {
 		super(ID, type);
 		this.destination = destination;
 		this.depture = depture;
 		this.expressType=expressType;
 		this.TransferID = transferID;
-		this.CommoditiesID = commoditiesID;
+		this.CommoditiyID = CommoditiyID;
 		this.area = area;
 		this.row = row;
 		this.frame =frame;
@@ -58,12 +58,6 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	public void setTransferID(String transferID) {
 		TransferID = transferID;
 	}
-	public String getCommoditiesID() {
-		return CommoditiesID;
-	}
-	public void setCommoditiesID(String commoditiesID) {
-		CommoditiesID = commoditiesID;
-	}
 	public int getArea() {
 		return area;
 	}
@@ -87,6 +81,12 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	}
 	public void setPosition(int position) {
 		this.position = position;
+	}
+	public String getCommoditiyID() {
+		return CommoditiyID;
+	}
+	public void setCommoditiyID(String commoditiyID) {
+		CommoditiyID = commoditiyID;
 	}
 	
 	
