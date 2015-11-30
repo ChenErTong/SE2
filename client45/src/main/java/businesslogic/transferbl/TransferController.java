@@ -31,9 +31,9 @@ public class TransferController implements TransferBLService{
 
 	@Override
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.planeTransfer(facilityID, departure, destination, courierName, orders);
+			return TransferBL.planeTransfer(facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -42,9 +42,9 @@ public class TransferController implements TransferBLService{
 
 	@Override
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.truckTransfer(facilityID, departure, destination, courierName, orders);
+			return TransferBL.truckTransfer(facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -53,9 +53,9 @@ public class TransferController implements TransferBLService{
 
 	@Override
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) {
+			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.trainTransfer(facilityID, departure, destination, courierName, orders);
+			return TransferBL.trainTransfer(facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
