@@ -63,10 +63,10 @@ public class DebitAndPayBill {
 	}
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers)
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers, String date)
 			throws RemoteException {
 		String ID = getExpenseID();
-		DebitBillVO vo = new DebitBillVO(ID, type, courierID, money, orderNumbers);
+		DebitBillVO vo = new DebitBillVO(ID, type, courierID, money, orderNumbers, date);
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}

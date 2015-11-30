@@ -226,7 +226,8 @@ public class ReceiptTrans {
 		String courierID = po.getCourierID();
 		double money = po.getMoney();
 		ArrayList<String> orderNumbers = po.getOrderNumbers();
-		return new DebitBillVO(id, type, courierID, money, orderNumbers);
+		String date = po.getDate();
+		return new DebitBillVO(id, type, courierID, money, orderNumbers, date);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(DebitBillVO vo){
 		String id = vo.ID;
@@ -234,7 +235,8 @@ public class ReceiptTrans {
 		String courierID =vo.courierID;
 		double money = vo.money;
 		ArrayList<String> orderNumbers = vo.orderNumbers;
-		return new DebitBillPO(id, type, courierID, money, orderNumbers);
+		String date = vo.date;
+		return new DebitBillPO(id, type, courierID, money, orderNumbers, date);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(PaymentBillPO po){
 		String iD = po.getID();

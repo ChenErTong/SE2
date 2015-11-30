@@ -249,7 +249,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
 		}else if(billType.equals(ReceiptType.DEBIT)){
 			DebitBillVO  vo = (DebitBillVO) currentBill;
-			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers));
+			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date));
 		}
 		if(rm.equals(ResultMessage.SUCCESS)){
 			new MyNotification(this,"单据修改成功",Color.GREEN);

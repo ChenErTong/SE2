@@ -68,7 +68,8 @@ public class FundTrans {
 			String courierID = po.getCourierID();
 			double money = po.getMoney();
 			ArrayList<String> orderNumbers=po.getOrderNumbers();
-			return new DebitBillVO(id, type, courierID, money, orderNumbers);
+			String date = po.getDate();
+			return new DebitBillVO(id, type, courierID, money, orderNumbers, date);
 		}
 	}
 	
@@ -81,7 +82,8 @@ public class FundTrans {
 			String courierID = vo.courierID;
 			double money = vo.money;
 			ArrayList<String> orderNumbers=vo.orderNumbers;
-			return new DebitBillPO(id, type, courierID, money, orderNumbers);
+			String date = vo.date;
+			return new DebitBillPO(id, type, courierID, money, orderNumbers, date);
 		}
 	}
 	
@@ -163,7 +165,7 @@ public class FundTrans {
 	}
    
 	public static DebitBillVO convertDebitPOtoDebitVO(DebitBillPO po){
-	   DebitBillVO vo=new  DebitBillVO(po.getID(),po.getType(),po.getCourierID(),po.getMoney(), po.getOrderNumbers());
+	   DebitBillVO vo=new  DebitBillVO(po.getID(),po.getType(),po.getCourierID(),po.getMoney(), po.getOrderNumbers(), po.getDate());
 	return vo;
    }
 }

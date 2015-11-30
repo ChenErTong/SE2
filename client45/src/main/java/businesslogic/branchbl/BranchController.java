@@ -10,6 +10,7 @@ import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
+import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
