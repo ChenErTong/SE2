@@ -20,6 +20,7 @@ import ui.specialui.transfer_counterman.plane_loading.PlaneLoading;
 import ui.specialui.transfer_counterman.train_loading.TrainCommodity;
 import ui.specialui.transfer_counterman.train_loading.TrainLoading;
 import ui.specialui.transfer_counterman.transfer_receive.TransferReceiveManage;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 /**
  * 中转中心业务员界面
  * @author czw
@@ -194,8 +195,10 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		transferController.truckTransfer(loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
-		
+		//TODO
+		TransferOrderVO transferOrder = transferController.truckTransfer(loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
+		transferController.save(transferOrder);
+		transferController.submit(transferOrder);
 		return true;
 	}
 	
@@ -221,8 +224,10 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		transferController.planeTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
-		
+		//TODO
+		TransferOrderVO transferOrder = transferController.planeTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+		transferController.save(transferOrder);
+		transferController.submit(transferOrder);
 		return true;
 	}
 	
@@ -248,7 +253,10 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		transferController.trainTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+		// TODO
+		TransferOrderVO transferOrder = transferController.trainTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+		transferController.save(transferOrder);
+		transferController.submit(transferOrder);
 		return true;
 	}
 }
