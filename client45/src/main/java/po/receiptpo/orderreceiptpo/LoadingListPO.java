@@ -9,13 +9,12 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class LoadingListPO extends OrderReceiptPO{
+public class LoadingListPO extends  OrderReceiptPO{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private String branchID;
 	private String transferNumber;
 	private String distination;
@@ -26,7 +25,7 @@ public class LoadingListPO extends OrderReceiptPO{
 
 	public LoadingListPO(String ID, ReceiptType type, String branchID, String transferNumber, String distination,
 			String carID, String monitorName, String courierName, ArrayList<String> orders, double money) {
-		super(ID, type,orders);
+		super(ID, type,orders );
 		this.branchID = branchID;
 		this.transferNumber = transferNumber;
 		this.distination = distination;
@@ -67,4 +66,5 @@ public class LoadingListPO extends OrderReceiptPO{
 	public void setMoney(double money) {
 		this.money = money;
 	}
+	
 }

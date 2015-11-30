@@ -81,14 +81,15 @@ public class Inventory {
 
 	public InventoryImportReceiptVO addCommodities(String ID, String ArrivalListID, InventoryVO vo) throws RemoteException {
 		TransferArrivalListPO receipt = receiptInfo.findTransferArrivalList(ArrivalListID);
-		String commodities = receipt.getTransferCenterID();
+		String transferID = receipt.getTransferCenterID();
+		String commodities = receipt.getOrders();
 		String destination = receipt.getDestination();
 		String depture = receipt.getDeparture();
 		int area = vo.area;
 		int row = vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position,false);
+		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position,false,transferID);
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
 				commodities,area,row,frame,position);
 		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);

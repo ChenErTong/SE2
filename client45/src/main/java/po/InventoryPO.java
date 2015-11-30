@@ -22,13 +22,14 @@ public class InventoryPO extends PersistentObject {
 	
 	private String transferID;
 
-	public InventoryPO(String id, int area, int row, int frame, int position, boolean isEmpty) {
+	public InventoryPO(String id, int area, int row, int frame, int position, boolean isEmpty,String transferID) {
 		super(id);
 		this.area = area;
 		this.row = row;
 		this.frame = frame;
 		this.position = position;
 		this.isEmpty = isEmpty;
+		this.transferID=transferID;
 	}
 
 	public int getArea() {

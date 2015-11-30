@@ -192,7 +192,7 @@ public class FacilityInfoManage extends MyJPanel {
 	public int addFacility() {
 		String[] data = facilityInfo.getData();
 		if(data == null) return 1;
-		
+		//TODO 此处要添加branchID  branchID可以在organizationbl里拿到（getAllBranchNumbers）
 		facility = new FacilityVO(null, null, data[2], data[4], data[1], data[3], data[0]);
 		facilityController.addFacility(facility);
 		facilityController.confirmOperation();

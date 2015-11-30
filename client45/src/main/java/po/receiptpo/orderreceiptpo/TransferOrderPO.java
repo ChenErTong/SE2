@@ -9,7 +9,7 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class TransferOrderPO extends OrderReceiptPO {
+public class TransferOrderPO extends  OrderReceiptPO {
 
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class TransferOrderPO extends OrderReceiptPO {
 	
 	public TransferOrderPO(String ID, ReceiptType type,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {
-		super(ID, type,orders);
+		super(ID, type,orders );
 		this.facilityID = facilityID;
 		this.departure = departure;
 		this.destination = destination;

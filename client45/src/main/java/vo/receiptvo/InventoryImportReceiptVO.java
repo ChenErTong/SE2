@@ -23,7 +23,7 @@ public class InventoryImportReceiptVO extends ReceiptVO{
 			super(id, type);
 			this.depture = depture;
 			this.destination = destination;
-			CommoditiesID = commoditiesID;
+			this.CommoditiesID = commoditiesID;
 			this.area=area;
 			this.row=row;
 			this.frame=frame;

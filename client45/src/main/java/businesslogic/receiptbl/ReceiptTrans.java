@@ -100,7 +100,7 @@ public class ReceiptTrans {
 		String transferListID = po.getTransferListID();
 		String departure = po.getDeparture();
 		CommodityState state = po.getState();
-		ArrayList<String> orders = po.getOrders();
+		String orders = po.getOrders();
 		return new BranchArrivalListVO(id, type, transferListID, departure, state, orders);
 	}
 	
@@ -110,20 +110,20 @@ public class ReceiptTrans {
 		String transferListID = vo.transferListID;
 		String departure = vo.departure;
 		CommodityState state = vo.state;
-		ArrayList<String> orders = vo.orders;
+		String orders = vo.order ;
 		return new BranchArrivalListPO(ID, type, transferListID, departure, state, orders);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(DeliveryListPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
-		ArrayList<String> orders = po.getOrders();
+		String orders = po.getOrders();
 		String courierName = po.getCourierName();
 		return new DeliveryListVO(id, type, orders, courierName);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(DeliveryListVO vo){
 		String id = vo.ID;
 		ReceiptType type = vo.type;
-		ArrayList<String> orders = vo.orders;
+		String orders = vo.order;
 		String courierName = vo.courierName;
 		return new DeliveryListPO(id, type, orders, courierName);
 	}
@@ -156,7 +156,7 @@ public class ReceiptTrans {
 	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
-		ArrayList<String> orders = po.getOrders();
+		String orders = po.getOrders();
 		String transferCenterID = po.getTransferCenterID();
 		String destination = po.getDestination();
 		String departure = po.getDeparture();
@@ -167,7 +167,7 @@ public class ReceiptTrans {
 	public static ReceiptPO convertSpecialVOtoPO(TransferArrivalListVO vo){
 		String id = vo.ID;
 		ReceiptType type = vo.type;
-		ArrayList<String> orders = vo.orders;
+		String orders = vo.order;
 		String transferCenterID = vo.transferCenterID;
 		String destination = vo.destination;
 		String departure = vo.departure;
@@ -267,7 +267,7 @@ public class ReceiptTrans {
 		String depture = po.getDepture();
 		ExpressType expressType = po.getExpressType();
 		String transferID = po.getTransferID();
-		String commoditiesID = po.getCommoditiesID();
+		String commoditiesID = po.getCommoditiyID();
 		int area = po.getArea();
 		int row =po.getRow();
 		int frame = po.getFrame();

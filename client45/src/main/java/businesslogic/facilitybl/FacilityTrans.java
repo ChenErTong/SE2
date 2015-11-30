@@ -20,7 +20,8 @@ public class FacilityTrans {
 			String engineNumber = vo.engineCode;
 			String VIN = vo.vehicleIdentificationNumber;
 			ArrayList<LoadingListPO> deliverHistory = vo.deliverHistory;
-			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber, VIN);
+			String branchID = vo.branchID;
+			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber, VIN,branchID);
 		}
 	}
 
@@ -35,7 +36,8 @@ public class FacilityTrans {
 			String engineNumber = po.getEngineCode();
 			String VIN = po.getVehicleIdentificationNumber();
 			ArrayList<LoadingListPO> deliverHistory = po.getDeliverHistory();
-			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber, VIN);
+			String branchID = po.getBranchID();
+			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber, VIN,branchID);
 		}
 	}
 

@@ -2,6 +2,7 @@ package po.receiptpo.orderreceiptpo;
 
 import java.util.ArrayList;
 
+import po.receiptpo.ReceiptPO;
 import state.ReceiptType;
 
 /**
@@ -9,7 +10,7 @@ import state.ReceiptType;
  * @author czw
  * @version Oct 23, 2015
  */
-public class DeliveryListPO extends OrderReceiptPO{
+public class DeliveryListPO extends  ReceiptPO{
 
 	/**
 	 * 
@@ -17,10 +18,12 @@ public class DeliveryListPO extends OrderReceiptPO{
 	private static final long serialVersionUID = 1L;
 
 	private String courierName;
-
-	public DeliveryListPO(String ID, ReceiptType type, ArrayList<String> orders, String courierName) {
-		super(ID, type, orders);
+	private String orders;
+	
+	public DeliveryListPO(String ID, ReceiptType type, String orders, String courierName) {
+		super(ID, type );
 		this.setCourierName(courierName);
+		this.orders=orders;
 	}
 
 	public String getCourierName() {
@@ -30,6 +33,13 @@ public class DeliveryListPO extends OrderReceiptPO{
 	public void setCourierName(String courierName) {
 		this.courierName = courierName;
 	}
-	
+	public String getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(String orders) {
+		this.orders = orders;
+	}
 
 }

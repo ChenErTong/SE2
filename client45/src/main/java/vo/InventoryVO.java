@@ -15,11 +15,12 @@ public class InventoryVO extends ValueObject {
 	public int position;
 	public boolean isEmpty;
 	public String transferID;
-	public InventoryVO( int area, int row, int frame, int position) {
+	public InventoryVO( int area, int row, int frame, int position,String transferID) {
 		this.area = area;
 		this.row = row;
 		this.frame = frame;
 		this.position = position;
+		this.transferID=transferID;
 	}
 
 }

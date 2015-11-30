@@ -11,17 +11,17 @@ import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
-		InventoryPO po = new InventoryPO(vo.ID, vo.area, vo.row, vo.frame, vo.position, vo.isEmpty);
+		InventoryPO po = new InventoryPO(vo.ID, vo.area, vo.row, vo.frame, vo.position, vo.isEmpty,vo.transferID);
 		return po;
 	}
 
 	public static InventoryVO convertPOtoVO(InventoryPO po) {
-		InventoryVO vo = new InventoryVO(po.getArea(), po.getRow(), po.getFrame(), po.getPosition());
+		InventoryVO vo = new InventoryVO(po.getArea(), po.getRow(), po.getFrame(), po.getPosition(),po.getTransferID());
 		return vo;
 	}
 
 	public static InventoryImportReceiptVO convertPOtoVO(InventoryImportReceiptPO po) {
-		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getCommoditiesID(), ReceiptType.INSTOCK,po.getDepture(),
+		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getID(), ReceiptType.INSTOCK,po.getDepture(),
 				po.getDestination(),po.getCommoditiesID(),po.getArea(),po.getRow(),po.getFrame(),po.getPosition());
 		return vo;
 	}
@@ -39,8 +39,8 @@ public class InventoryTrans {
 				return po;
 	}
 	public static InventoryExportReceiptVO convertPOtoVO(InventoryExportReceiptPO po){
-		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.destination, po.depture, po.expressType,po. TransferID,
-				po.CommoditiesID, po.area, po.row ,po.frame, po.position);
+		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.getDestination(), po.getDepture(), po.getExpressType(),po.getTransferID(),
+				po.getCommoditiyID(), po.getArea(), po.getRow() ,po.getFrame(), po.getPosition());
 				return vo;
 	}
 	
