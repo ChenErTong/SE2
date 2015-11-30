@@ -7,7 +7,7 @@ import vo.receiptvo.DebitBillVO;
 public class BussinessOneDayVO {
 	
 	public ArrayList<DebitBillVO> DebitBills;
-	double earnings;
+	public double earnings;
 	public BussinessOneDayVO(ArrayList<DebitBillVO> debitBills, double earnings) {
 		super();
 		DebitBills = debitBills;
