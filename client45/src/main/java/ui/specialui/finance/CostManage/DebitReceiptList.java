@@ -46,29 +46,29 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		search.addActionListener(handle);
 		this.add(search);
 		//the table
-				String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
-				table = new MyJTable(headers, false);
-				table.setBackground(new Color(40, 42, 66));
-				table.setForeground(Color.WHITE);
-				table.setFont(new MyFont(14));
+		String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
+		table = new MyJTable(headers, false);
+		table.setBackground(new Color(40, 42, 66));
+		table.setForeground(Color.WHITE);
+		table.setFont(new MyFont(14));
 							
-				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-				tcr.setHorizontalAlignment(JLabel.CENTER);
-				table.setDefaultRenderer(Object.class, tcr);
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 									  	
-				JScrollPane jsp=new JScrollPane(table);
-				JTableHeader head = table.getTableHeader();
-				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-				head.setFont(new MyFont(14));
-				head.setForeground(Color.BLACK);
-				head.setResizingAllowed(false);
+		JScrollPane jsp=new JScrollPane(table);
+		JTableHeader head = table.getTableHeader();
+		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+		head.setFont(new MyFont(14));
+		head.setForeground(Color.BLACK);
+		head.setResizingAllowed(false);
 								
-				jsp.setBounds(15, 50, 590, 495);
-				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-				jsp.setOpaque(false);
-				jsp.setBorder(BorderFactory.createEmptyBorder());
-				jsp.setVisible(true);
-				this.add(jsp);
+		jsp.setBounds(15, 50, 590, 495);
+		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+		jsp.setOpaque(false);
+		jsp.setBorder(BorderFactory.createEmptyBorder());
+		jsp.setVisible(true);
+		this.add(jsp);
 	}
 	public void setData(String[] data) {
 		branchList.setSelectedItem(data[0]);

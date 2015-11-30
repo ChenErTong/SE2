@@ -29,8 +29,11 @@ import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
 import vo.BankAccountVO;
 import vo.BranchVO;
+import vo.FacilityVO;
+import vo.InventoryVO;
 import vo.OrganizationVO;
 import vo.TransferVO;
+import vo.accountvo.AccountVO;
 
 @SuppressWarnings("unused")
 public class Panel_Manager_HandleOrganization extends MyJPanel implements ActionListener{
@@ -139,6 +142,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 }
 
 private void modifyPanel(FrameManager frame) {
+	table = (MyJTable) organizationInfo.getTable();
 	this.removeAll();
 	this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
 	this.add(organizationInfo);
@@ -147,19 +151,19 @@ private void modifyPanel(FrameManager frame) {
 	this.add(new MyJLabel(687,400,90,30,"仓库/转运",18,true));
 	this.add(new MyJLabel(687,430,90,30,"信息",18,true));
 	this.add(new MyJLabel(687,530,90,30,"人员信息",18,true));
-
-	String[] headers = {"库存信息"};
-	MyJTable table = new MyJTable(headers,false);
-	table.setBackground(new Color(40, 42, 66));
-	table.setForeground(Color.WHITE);
-	table.setFont(new MyFont(14));
+//库存表格
+	String[] headers = {"库存/转运信息"};
+	MyJTable table_1 = new MyJTable(headers,false);
+	table_1.setBackground(new Color(40, 42, 66));
+	table_1.setForeground(Color.WHITE);
+	table_1.setFont(new MyFont(14));
 	
 	DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 	tcr.setHorizontalAlignment(JLabel.CENTER);
-	table.setDefaultRenderer(Object.class, tcr);
+	table_1.setDefaultRenderer(Object.class, tcr);
 		  	
-	JScrollPane jsp=new JScrollPane(table);
-	JTableHeader head = table.getTableHeader();
+	JScrollPane jsp=new JScrollPane(table_1);
+	JTableHeader head = table_1.getTableHeader();
 	head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 	head.setFont(new MyFont(14));
 	head.setForeground(Color.BLACK);
@@ -171,7 +175,7 @@ private void modifyPanel(FrameManager frame) {
 	jsp.setBorder(BorderFactory.createEmptyBorder());
 	jsp.setVisible(true);
 	this.add(jsp);
-	
+	//员工表格
 	String[] headers_2 = {"员工信息"};
 	MyJTable table_2 = new MyJTable(headers_2,false);
 	table_2.setBackground(new Color(40, 42, 66));
@@ -180,10 +184,10 @@ private void modifyPanel(FrameManager frame) {
 	
 	DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
 	tcr_2.setHorizontalAlignment(JLabel.CENTER);
-	table.setDefaultRenderer(Object.class, tcr_2);
+	table_2.setDefaultRenderer(Object.class, tcr_2);
 		  	
 	JScrollPane jsp_2=new JScrollPane(table_2);
-	JTableHeader head_2 = table.getTableHeader();
+	JTableHeader head_2 = table_2.getTableHeader();
 	head_2.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 	head_2.setFont(new MyFont(14));
 	head_2.setForeground(Color.BLACK);
@@ -200,6 +204,46 @@ private void modifyPanel(FrameManager frame) {
 	organizationDetails.add(new MyJLabel(230,5,120,30,"修改机构信息",18,true));
 	this.add(organizationDetails);
 	
+	DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
+	DefaultTableModel tableModel_2 = (DefaultTableModel) table_2.getModel();
+	OrganizationBLService controller = ControllerFactory.getOrganizationController();
+	
+	int rowCount = table.getRowCount();
+	for(int i = 0; i < rowCount; i++){
+		tableModel.removeRow(0);
+	}
+	
+	int rowCount_2 = table.getRowCount();
+	for(int i = 0;i<rowCount;i++){
+		tableModel_2.removeRow(0);
+	}
+	switch(organizationPool.get(table.getSelectedRow()).organizationType){
+	case TRANSFER:ArrayList<AccountVO> accounts = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+				  for(int i=0;i<accounts.size();i++){
+					  Object[]rowData_1 = {accounts.get(i)};
+					  tableModel_2.addRow(rowData_1);
+				  }
+				  ArrayList<InventoryVO> inventories = controller.getInventoriesByTransferID(organizationPool.get(table.getSelectedRow()).organizationID);
+				  for(int i=0;i<inventories.size();i++){
+					  Object[]rowData_2 = {inventories.get(i)};
+					  tableModel.addRow(rowData_2);
+				  }
+	case BRANCH:ArrayList<AccountVO> accounts_2 = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+				 for(int i=0;i<accounts_2.size();i++){
+					 Object[]rowData_1 = {accounts_2.get(i)};
+					 tableModel_2.addRow(rowData_1);
+				 }
+				ArrayList<FacilityVO> facilities = controller.getFacilitiesByBranchID(organizationPool.get(table.getSelectedRow()).organizationID);
+				for(int i=0;i<facilities.size();i++){
+					Object[] rowData_2 = {facilities.get(i)};
+					tableModel.addRow(rowData_2);;
+					}
+		
+	}
+
+	
+	
+	
 	//InventoryController controller = ControllerFactory.getInventoryController();
 //	TransferController controller  = ControllerFactory.getTransferController();
 //	controller.
@@ -212,7 +256,7 @@ private void modifyPanel(FrameManager frame) {
 }
 
 private void searchPanel(FrameManager frame) {
-	
+	table = (MyJTable) organizationInfo.getTable();
 	this.removeAll();
 	this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
 	this.add(organizationInfo);
@@ -222,18 +266,18 @@ private void searchPanel(FrameManager frame) {
 	this.add(new MyJLabel(687,430,90,30,"信息",18,true));
 	this.add(new MyJLabel(687,530,90,30,"人员信息",18,true));
 	
-	String[] headers = {"库存信息"};
-	MyJTable table = new MyJTable(headers,false);
-	table.setBackground(new Color(40, 42, 66));
-	table.setForeground(Color.WHITE);
-	table.setFont(new MyFont(14));
+	String[] headers = {"库存/转运信息"};
+	MyJTable table_1 = new MyJTable(headers,false);
+	table_1.setBackground(new Color(40, 42, 66));
+	table_1.setForeground(Color.WHITE);
+	table_1.setFont(new MyFont(14));
 	
 	DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 	tcr.setHorizontalAlignment(JLabel.CENTER);
-	table.setDefaultRenderer(Object.class, tcr);
+	table_1.setDefaultRenderer(Object.class, tcr);
 		  	
-	JScrollPane jsp=new JScrollPane(table);
-	JTableHeader head = table.getTableHeader();
+	JScrollPane jsp=new JScrollPane(table_1);
+	JTableHeader head = table_1.getTableHeader();
 	head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 	head.setFont(new MyFont(14));
 	head.setForeground(Color.BLACK);
@@ -254,7 +298,7 @@ private void searchPanel(FrameManager frame) {
 	
 	DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
 	tcr_2.setHorizontalAlignment(JLabel.CENTER);
-	table.setDefaultRenderer(Object.class, tcr_2);
+	table_2.setDefaultRenderer(Object.class, tcr_2);
 		  	
 	JScrollPane jsp_2=new JScrollPane(table_2);
 	JTableHeader head_2 = table.getTableHeader();
@@ -275,7 +319,43 @@ private void searchPanel(FrameManager frame) {
 	organizationDetails.add(new MyJLabel(230,5,120,30,"查看机构信息",18,true));
 	this.add(organizationDetails);
 	
+	DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
+	DefaultTableModel tableModel_2 = (DefaultTableModel) table_2.getModel();
+	OrganizationBLService controller = ControllerFactory.getOrganizationController();
+	
+	int rowCount = table_1.getRowCount();
+	for(int i = 0; i < rowCount; i++){
+		tableModel.removeRow(0);
+	}
+	
+	int rowCount_2 = table_2.getRowCount();
+	for(int i = 0;i<rowCount;i++){
+		tableModel_2.removeRow(0);
+	}
+	switch(organizationPool.get(table.getSelectedRow()).organizationType){
+	case TRANSFER:ArrayList<AccountVO> accounts = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+				  for(int i=0;i<accounts.size();i++){
+					  Object[]rowData_1 = {accounts.get(i)};
+					  tableModel_2.addRow(rowData_1);
+				  }
+				  ArrayList<InventoryVO> inventories = controller.getInventoriesByTransferID(organizationPool.get(table.getSelectedRow()).organizationID);
+				  for(int i=0;i<inventories.size();i++){
+					  Object[]rowData_2 = {inventories.get(i)};
+					  tableModel.addRow(rowData_2);
+				  }
+	case BRANCH:ArrayList<AccountVO> accounts_2 = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+				 for(int i=0;i<accounts_2.size();i++){
+					 Object[]rowData_1 = {accounts_2.get(i)};
+					 tableModel_2.addRow(rowData_1);
+				 }
+				ArrayList<FacilityVO> facilities = controller.getFacilitiesByBranchID(organizationPool.get(table.getSelectedRow()).organizationID);
+				for(int i=0;i<facilities.size();i++){
+					Object[] rowData_2 = {facilities.get(i)};
+					tableModel.addRow(rowData_2);;
+					}
+	
 	this.repaint();
+	}
 }
 
 /**
@@ -398,7 +478,7 @@ public void showAll(){
 				new MyNotification(this,"请先选择要修改的机构！",Color.RED);
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
-					case TRANSFER:Object[] data2 = new String[7];
+					case TRANSFER:Object[] data2 = new String[3];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
 						//	data2[0] = organizationID;
 							data2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;
@@ -410,7 +490,7 @@ public void showAll(){
 							String[] data3 = (String[]) data2;
 							organizationDetails.setData(data3);
 					case BRANCH:
-							Object[] data_2 = new String[7];
+							Object[] data_2 = new String[3];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
 						//	data_2[0] = organizationID;
 							data_2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;

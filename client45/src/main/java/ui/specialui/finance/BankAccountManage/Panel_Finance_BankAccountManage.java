@@ -143,28 +143,28 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				tableModel.addRow(rowData);
 				accountPool.add(bankAccountVO.get(i));
 				System.out.println("SearchSucceed!");
-					this.add(new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN));
+				new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN);
 				}	
 				}else {
-					this.add(new MyNotification(this,"请输入查询关键字！",Color.RED));
+					new MyNotification(this,"请输入查询关键字！",Color.RED);
 				}
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
 			accountID = accountPool.get(table.getSelectedRow()).ID;
 			if(table.getSelectedRow()==0){
-				this.add(new MyNotification(this,"请先选择需要修改的账户！",Color.RED));
+				new MyNotification(this,"请先选择需要修改的账户！",Color.RED);
 			}else{
 				if(modifyAccountInfo.getData()==null){
-					this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
+					new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);
 				}else{
-					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					new MyNotification(this,"正在修改账户信息！",Color.GREEN);
 					this.modifyAccount();
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyBankAccount")){
 			table = bankAccountPanel.getTable();
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要修改的账户！",Color.RED));
+				new MyNotification(this,"请先选择要修改的账户！",Color.RED);
 			}else{
 				accountID = accountPool.get(table.getSelectedRow()).ID;
 				//System.out.println(accountID);
@@ -177,22 +177,22 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		}else if(e.getActionCommand().equals("AddBankAccount")){
 			String[] data = addBankAccount.getData();
 			if(addBankAccount.getData()==null){
-				this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
+				new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);
 			}else{
 				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 						data[1],Double.parseDouble(data[2]),null));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					//System.out.println("AddSucceed!");
 					this.showAll();
-					this.add(new MyNotification(this,"账户添加成功！",Color.GREEN));
+					new MyNotification(this,"账户添加成功！",Color.GREEN);
 				}else{
-					this.add(new MyNotification(this,"账户添加失败！",Color.RED));
+					new MyNotification(this,"账户添加失败！",Color.RED);
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteBankAccount")){
 			table = bankAccountPanel.getTable();
 			if(table.getSelectedRowCount() == 0){
-				this.add(new MyNotification(this,"请先选择要删除的账户！",Color.RED));
+				new MyNotification(this,"请先选择要删除的账户！",Color.RED);
 			}else{
 			//	this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
 				this.deleteAccount();
@@ -209,9 +209,9 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"账户删除成功！",Color.GREEN));
+			new MyNotification(this,"账户删除成功！",Color.GREEN);
 		}else{
-			this.add(new MyNotification(this,"账户删除失败！",Color.RED));
+			new MyNotification(this,"账户删除失败！",Color.RED);
 		}
 	}
 	public void modifyAccount(){
@@ -223,9 +223,9 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
-			this.add(new MyNotification(this,"账户修改成功！",Color.GREEN));		
+			new MyNotification(this,"账户修改成功！",Color.GREEN);		
 		}else{
-			this.add(new MyNotification(this,"账户修改失败！",Color.RED));
+			new MyNotification(this,"账户修改失败！",Color.RED);
 		}
 	}
 }
