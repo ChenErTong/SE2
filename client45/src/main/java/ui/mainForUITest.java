@@ -12,7 +12,7 @@ import ui.specialui.manager.FrameManager;
 import ui.specialui.sender.Frame_Sender;
 
 public class mainForUITest {
-
+	static String id = "123";
 	public static void main(String[] args) {
 		try {
 			UIManager.put("RootPane.setupButtonVisible",false);
@@ -30,8 +30,8 @@ public class mainForUITest {
 	//	courierFrame.setVisible(true);
 
 	
-     FrameManager managerFrame = new FrameManager();
-     managerFrame.setVisible(true);
+		  FrameManager managerFrame = new FrameManager(id);
+		     managerFrame.setVisible(true);
 		
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);

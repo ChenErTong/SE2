@@ -55,7 +55,8 @@ public class ExitAccountPanel extends JPanel implements ActionListener{
 			ExitAccountFrame.button_close.doClick();
 		}
 		if(events.getSource()==button_yes){
-			Frame_Login fl = new Frame_Login();
+			String id = "";
+			Frame_Login fl = new Frame_Login(id);
 			fl.setVisible(true);
 			ExitAccountFrame.button_close.doClick();
 			

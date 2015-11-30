@@ -80,7 +80,7 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("InventoryManage")){
 			//进入仓库管理界面
-			new Frame_Inventory();
+			new Frame_Inventory(this.ID);
 			this.removeAll();
 			this.dispose();
 		}else if(e.getActionCommand().equals("jumpToCommodityForCar")){
