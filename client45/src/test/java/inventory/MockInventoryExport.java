@@ -39,10 +39,10 @@ public class MockInventoryExport {
 
 	public InventoryExportReceiptPO buildImport() {
 		InventoryVO iv = new InventoryVO(null, 1, 1, 1, 1, "full");
-		int area = iv.a;
-		int row= iv.b;
-		int frame = iv.c;
-		int position = iv.d;
+		int area = iv.area;
+		int row= iv.row;
+		int frame = iv.frame;
+		int position = iv.position;
 		String ID = "1";
 		String destination = "nanjing";
 		String CommoditiesID = "nanjing520";

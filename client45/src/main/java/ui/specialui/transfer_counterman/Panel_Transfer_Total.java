@@ -33,10 +33,5 @@ public class Panel_Transfer_Total extends MyJPanel{
 		TransferReceiveManage.setActionCommand("TransferReceiveManage");
 		TransferReceiveManage.addActionListener(frame);
 		this.add(TransferReceiveManage);
-		
-		MyJButton InventoryManage = new MyJButton(200, 500, 150, 40, "仓库管理", 15);
-		InventoryManage.setActionCommand("InventoryManage");
-		InventoryManage.addActionListener(frame);
-		this.add(InventoryManage);
 	}
 }
