@@ -78,7 +78,7 @@ public class FacilityTrans {
 			double salary = po.getSalary();
 			String workTime = po.getWorkTime();
 			String carID = po.getCarID();
-			String branchID = po.getBranchID();
+			String branchID = po.getOrganizationID();
 			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID,branchID);
 		}
 	}

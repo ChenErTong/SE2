@@ -29,8 +29,8 @@ public class AccountPO extends PersistentObject{
 	private double Salary;
 	/**任职时间**/
 	private String WorkTime;
-	/**营业厅编号*/
-	private String branchID;
+	/**营业厅or中转中心编号*/
+	private String organizationID;
 	/**每日完成的订单编号**/
 	private ArrayList<String> ordersID;
 	
@@ -104,15 +104,17 @@ public class AccountPO extends PersistentObject{
 		WorkTime = workTime;
 	}
 
-	public String getBranchID() {
-		return branchID;
-	}
-
-
-	public void setBranchID(String branchID) {
-		this.branchID = branchID;
-	}
 	
+	public String getOrganizationID() {
+		return organizationID;
+	}
+
+
+	public void setOrganizationID(String organizationID) {
+		this.organizationID = organizationID;
+	}
+
+
 	public void addOrderID(String id){
 		ordersID.add(id);
 	}

@@ -33,11 +33,29 @@ public class FacilityPO extends PersistentObject{
 	 * 车牌号
 	 */
 	private String vehicleIdentificationNumber;
+	/**
+	 * 
+	 */
+	private String branchID;
 	public FacilityPO(String id, String date, String managerId, ArrayList<LoadingListPO> deliverHistory) {
 		super(id, date);
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 	}
+	
+	
+
+	public String getBranchID() {
+		return branchID;
+	}
+
+
+
+	public void setBranchID(String branchID) {
+		this.branchID = branchID;
+	}
+
+
 
 	public String getManagerId() {
 		return managerId;

@@ -13,9 +13,8 @@ public class InventoryVO extends ValueObject {
 	public int frame;
 	//位
 	public int position;
-	//最大容量 TODO 硬编码 之后可能会写到配置文件中
-	public final int maxSize=200;
 	public boolean isEmpty;
+	public String transferID;
 	public InventoryVO( int area, int row, int frame, int position) {
 		this.area = area;
 		this.row = row;

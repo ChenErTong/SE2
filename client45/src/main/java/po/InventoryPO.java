@@ -5,21 +5,22 @@ package po;
  * @version Oct 23,2015
  **/
 
-// 下午改 TODO 下午改
 public class InventoryPO extends PersistentObject {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2898348688803208513L;
 
 	// 区
-	public int area;
+	private int area;
 	// 排;
-	public int row;
+	private int row;
 	// 架
-	public int frame;
+	private int frame;
 	// 位
-	public int position;
+	private int position;
 	// 空或满
-	public boolean isEmpty;
+	private boolean isEmpty;
+	
+	private String transferID;
 
 	public InventoryPO(String id, int area, int row, int frame, int position, boolean isEmpty) {
 		super(id);
@@ -68,6 +69,14 @@ public class InventoryPO extends PersistentObject {
 
 	public void setEmpty(boolean isEmpty) {
 		this.isEmpty = isEmpty;
+	}
+
+	public String getTransferID() {
+		return transferID;
+	}
+
+	public void setTransferID(String transferID) {
+		this.transferID = transferID;
 	}
 
 }

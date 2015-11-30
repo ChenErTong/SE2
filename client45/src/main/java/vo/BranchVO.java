@@ -29,6 +29,8 @@ public class BranchVO extends OrganizationVO{
 	 * 所属车辆信息
 	 */
 	public ArrayList<FacilityPO> facilities;
+	
+	public String branchID;
 
 	public BranchVO(String id, String date, String address, ArrayList<AccountPO> accounts,
 			ArrayList<FacilityPO> facilities) {

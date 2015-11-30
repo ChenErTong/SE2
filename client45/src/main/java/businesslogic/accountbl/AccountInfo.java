@@ -19,7 +19,7 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow,AccountInf
 	@Override
 	public boolean isAccountAMemberOfBranch(String accountID, String branchID) throws RemoteException {
 		AccountPO po = accountData.find(accountID);
-		if(po.getBranchID().equals(branchID))
+		if(po.getOrganizationID().equals(branchID))
 			return true;
 		return false;
 	}
