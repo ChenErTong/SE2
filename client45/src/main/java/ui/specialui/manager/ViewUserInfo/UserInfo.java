@@ -20,7 +20,7 @@ public class UserInfo extends MyTranslucentPanel{
 	private MyComboBox userList;
 	private MyJTable	table;
 	public UserInfo(Panel_Manager_ViewUser handle) {
-		super(0,100,1280,560);
+		super(50,100,610,240);
 		this.initComponent(handle);
 	}
 
@@ -39,7 +39,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userList = new MyComboBox(155,5,150,30,14,identity);
 		this.add(userList);
 		//the table
-		String[] headers = {"编号", "姓名", "职务", "出生日期", "身份证号","任职时间","薪水","联系方式"};
+		String[] headers = {"编号", "姓名", "职务", "出生日期", "身份证号","任职时间","薪水","联系方式","车辆编号","订单编号"};
 		table = new MyJTable(headers, false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
@@ -56,7 +56,7 @@ public class UserInfo extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 						
-		jsp.setBounds(35, 45, 1220, 510);
+		jsp.setBounds(15, 45, 580, 190);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());

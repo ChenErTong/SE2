@@ -1,7 +1,5 @@
 package ui.specialui.manager;
 
-import javax.swing.JButton;
-
 import ui.myui.MyJButton;
 import ui.myui.MyJPanel;
 
@@ -37,7 +35,7 @@ public class Panel_Manager_Total extends MyJPanel {
 		this.add(AdjustSalaryPolicy);
 		AdjustSalaryPolicy.setVisible(true);
 		
-		MyJButton ViewUser = new MyJButton(200, 500, 170, 40,"查看员工信息",18);
+		MyJButton ViewUser = new MyJButton(200, 500, 170, 40,"公司员工信息管理",18);
 		ViewUser.setActionCommand("ViewUser");
 		ViewUser.addActionListener(frameManager);
 		this.add(ViewUser);

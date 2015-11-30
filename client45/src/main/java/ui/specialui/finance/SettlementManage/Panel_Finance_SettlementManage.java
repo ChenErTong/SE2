@@ -29,7 +29,6 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 	private AddPayBill addPaybill;
 	private ModifyPayBill modifyPaybill;
 	private ViewPayBill viewPaybill;
-	private MyJButton commonButton;
 	private MyJButton viewButton;
 	private MyJButton modifyButton;
 	private MyJButton add;
@@ -239,7 +238,7 @@ private void searchPanel(Frame_Finance frame) {
 			if(data==null){
 				this.add(new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED));
 			}else{
-				/*ResultMessage rsg = controller.addPayBill(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]);
+			/*ResultMessage rsg = controller.addPayBill(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]);
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					//System.out.println("AddSucceed!");
 					this.showAll();
