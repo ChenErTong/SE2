@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo.BranchVO;
-
+import vo.FacilityVO;
+import vo.InventoryVO;
 import vo.TransferVO;
+import vo.accountvo.AccountVO;
 
 
 
@@ -93,4 +95,8 @@ public interface OrganizationBLService {
 	 * @author Ann
 	 */
 	public ArrayList<String> getAllBranchNumbers();
+	//branch和transfer都调这一个方法
+	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID);
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID);
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID);
 }

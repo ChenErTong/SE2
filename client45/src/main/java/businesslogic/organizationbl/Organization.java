@@ -6,7 +6,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountInfo;
 import businesslogic.branchbl.BranchTrans;
+import businesslogic.facilitybl.FacilityInfo;
+import businesslogic.inventorybl.InventoryInfo;
 import businesslogic.transferbl.TransferTrans;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
@@ -16,14 +19,23 @@ import po.TransferPO;
 import state.ResultMessage;
 import util.CityTrans;
 import vo.BranchVO;
+import vo.FacilityVO;
+import vo.InventoryVO;
 import vo.TransferVO;
+import vo.accountvo.AccountVO;
 
 public class Organization {
 	//TODO (可能不需要依赖倒置)
 	private BranchDataService branchData;
 	private TransferDataService transferData;
+	private AccountInfo_Branch_Transfer accountInfo;
+	private FacilityInfo_Branch_Transfer facilityInfo;
+	private InventoryInfo_Branch_Transfer inventoryInfo;
 
 	public Organization() {
+		accountInfo = new AccountInfo();
+		facilityInfo = new FacilityInfo();
+		inventoryInfo = new InventoryInfo();
 		try {
 			branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
@@ -92,5 +104,17 @@ public class Organization {
 			branchNumbers.add(branchPO.getOrganizationID());
 		}
 		return branchNumbers;
+	}
+	
+	public ArrayList<AccountVO> getAccountsByOrganizationID(String organizationID) throws RemoteException{
+		return accountInfo.getAccountByOrganizationID(organizationID);
+	}
+	
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID)throws RemoteException {
+		return facilityInfo.getFacilitiesByBranchID(branchID);
+	}
+
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException{
+		return inventoryInfo.getInventoriesByTransferID(transferID);
 	}
 }

@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.organizationbl;
 
 import java.rmi.RemoteException;
 

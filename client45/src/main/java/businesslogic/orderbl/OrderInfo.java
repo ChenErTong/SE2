@@ -3,7 +3,7 @@ package businesslogic.orderbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.OrderInfo_Branch_Transfer;
+import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import dataservice.orderdataservice.OrderDataService;
 import po.CommodityPO;
 import po.OrderPO;

@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderInfo;
+import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
+import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;

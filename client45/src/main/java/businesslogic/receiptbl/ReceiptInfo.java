@@ -3,8 +3,8 @@ package businesslogic.receiptbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
+import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;

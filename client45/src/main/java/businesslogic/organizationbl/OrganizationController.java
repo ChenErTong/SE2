@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
 import vo.BranchVO;
-
+import vo.FacilityVO;
+import vo.InventoryVO;
 import vo.TransferVO;
+import vo.accountvo.AccountVO;
 
 public class OrganizationController implements OrganizationBLService {
 	
@@ -129,6 +131,36 @@ public class OrganizationController implements OrganizationBLService {
 	public ArrayList<String> getAllBranchNumbers() {
 		try {
 			return organization.getAllBranchNumbers();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) {
+		try {
+			return organization.getAccountsByOrganizationID(organizationID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) {
+		try {
+			return organization.getFacilitiesByBranchID(branchID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) {
+		try {
+			return organization.getInventoriesByTransferID(transferID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

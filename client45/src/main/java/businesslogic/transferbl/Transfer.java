@@ -6,9 +6,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.OrderInfo_Branch_Transfer;
-import businesslogic.branchbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.orderbl.OrderInfo;
+import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
+import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
