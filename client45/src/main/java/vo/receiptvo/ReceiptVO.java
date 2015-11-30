@@ -31,8 +31,6 @@ public class ReceiptVO extends ValueObject{
 		date = sdf.format(new Date());
 	    type=this.type;
 	}
-	
-	
 
 	public ReceiptVO(String iD) {
 		ID = iD;
