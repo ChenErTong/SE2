@@ -3,6 +3,7 @@ package ui.specialui.branch_conuterman.debitNoteBuild;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -10,6 +11,11 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import vo.OrderVO;
+import vo.accountvo.AccountVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.accountblservice.AccountBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 /**
  * 收款单建立界面
  * @author czw
@@ -67,9 +73,21 @@ public class DebitNoteBuild extends MyJPanel{
 	 * @return
 	 */
 	private boolean searchCourier(String courierId) {
-		// TODO
-		// 根据快递员编号查找快递员
-		return false;
+		AccountBLService acountController = ControllerFactory.getAccountController();
+		AccountVO account = acountController.find(courierId);
+		if(account == null) return false;
+		if(account.ordersID.size() == 0){
+			courierBill.setText("该快递员当日未收款");
+		}else{
+			OrderBLService orderController = ControllerFactory.getOrderController();
+			OrderVO order = orderController.inquireOrder(account.ordersID.get(0));
+			courierBill.setText("订单编号：" + order.ID + "\t费用：" + order.money + "\t收款日期：" + order.recipientTime);
+			for(int i = 1; i < account.ordersID.size(); ++i){
+				order = orderController.inquireOrder(account.ordersID.get(i));
+				courierBill.append("\n订单编号：" + order.ID + "\t费用：" + order.money + "\t收款日期：" + order.recipientTime);
+			}
+		}
+		return true;
 	}
 	
 	/**
