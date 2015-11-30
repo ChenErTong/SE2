@@ -32,7 +32,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	}
 
 	private void initComponent(Panel_Manager_HandleReceipt handle) {
-		String [] receiptType = {"所有单据","寄件订单","装车单","收件确认单","营业厅到达单","营业厅派件单","收款单","付款单","中转中心到达单","飞机转运单","火车转运单","卡车转运单","入库单","出库单","库存调整单"};
+		String [] receiptType = {"所有单据","寄件单","装车单","营业厅到达单","收款单","派件单","中转中心到达单","入库单","中转单","出库单","付款单"};
 		String [] receiptState = {"全部状态", "待审批", "通过审批", "未通过审批"};
 		
 		MyJLabel receiptTypeLabel= new MyJLabel(20,10,120,30, "选择单据状态",14,true);
