@@ -1,11 +1,9 @@
 package dataservice.funddataservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
-import po.receiptpo.DebitBillPO;
 import state.ReceiptType;
 
 /**
@@ -31,19 +29,5 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	 * @version Oct 22,2015
 	 */
 	public String getID(ReceiptType type)  throws RemoteException;
-
-	/**
-	 * 按照时间区间返回单据【收款单或者付款单】
-	 * @param 
-	 * @return
-	 * @author lxl
-	 * @version 11  20 2015
-	 */
-	public ArrayList<DebitAndPayBillPO> showList(String begin,String end) throws RemoteException;
-	
-	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException;
-	
-	public ArrayList<DebitBillPO> showDate(String date)throws RemoteException;
-	
 
 }

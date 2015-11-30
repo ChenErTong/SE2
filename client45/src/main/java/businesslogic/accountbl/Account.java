@@ -16,8 +16,12 @@ import vo.accountvo.AccountVO;
 public class Account{
 	private AccountDataService accountData;
 	public Account() {
+		accountData=getData();
+	}
+	
+	public AccountDataService getData(){
 		try {
-			accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
+			return accountData = (AccountDataService)Naming.lookup(RMIConfig.PREFIX+AccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -25,6 +29,7 @@ public class Account{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public ArrayList<AccountVO> show() throws RemoteException {

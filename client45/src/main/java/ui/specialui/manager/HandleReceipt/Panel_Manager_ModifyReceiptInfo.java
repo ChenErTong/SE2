@@ -274,6 +274,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
+
 		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
 		}else if(billType.equals(ReceiptType.DEBIT)){

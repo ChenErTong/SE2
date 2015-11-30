@@ -1,13 +1,11 @@
 package data.funddata;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import config.XMLReader;
 import data.ManageData;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
-import po.receiptpo.DebitBillPO;
 import state.ReceiptType;
 import util.SerSaveAndLoad;
 
@@ -40,7 +38,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		return PAYPrifix+super.getID();
 	}
 
-	@Override
+	/*@Override
 	public ArrayList<DebitAndPayBillPO> showList(String begin, String end) throws RemoteException {
 		// 日期比较可以利用String的字典序
 		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
@@ -49,7 +47,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 				bills.add(po);
 		}
 		return bills;
-	}
+	}*/
 
 	@Override
 	public void initialFile() {
@@ -57,7 +55,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 		configReader = new XMLReader("config/" + NAME + ".xml");
 	}
 
-	@Override
+	/*@Override
 	public ArrayList<DebitAndPayBillPO> showList(String end) throws RemoteException {
 		// 日期比较可以利用String的字典序
 		ArrayList<DebitAndPayBillPO> bills = new ArrayList<>();
@@ -66,9 +64,9 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 				bills.add(po);
 		}
 		return bills;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public ArrayList<DebitBillPO> showDate(String date) throws RemoteException {
 		ArrayList<DebitBillPO> bills = new ArrayList<>();
 		for (DebitAndPayBillPO po : poList.getInList()) {
@@ -77,7 +75,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 			}
 		}
 		return bills;
-	}
+	}*/
 
 }
 
