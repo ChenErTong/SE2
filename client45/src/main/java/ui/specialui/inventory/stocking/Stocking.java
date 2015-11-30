@@ -13,7 +13,6 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
-import ui.specialui.inventory.import_.CargoImport;
 
 public class Stocking extends MyJPanel {
 	private static final long serialVersionUID = 1L;

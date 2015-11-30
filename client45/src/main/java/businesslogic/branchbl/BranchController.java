@@ -6,12 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.branchblservice.BranchBLService;
-import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
@@ -52,9 +50,9 @@ public class BranchController implements BranchBLService {
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, OrderVO order) {
+	public BranchArrivalListVO getBranchArrivalList(String departure, ArrayList<OrderVO> orders) {
 		try {
-			return BranchBL.getBranchArrivalList(transferListID, departure, state, orders);
+			return BranchBL.getBranchArrivalList(departure, orders);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

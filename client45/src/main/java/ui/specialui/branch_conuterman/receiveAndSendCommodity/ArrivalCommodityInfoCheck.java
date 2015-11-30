@@ -99,6 +99,10 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		//if(row == -1) return 1;
 		// TODO
 		//选中订单，将其转化成到达单
+		/**
+		 * @author Ann
+		 * order应该是列表啊，不能每次传一个order生成到达单啊
+		 */
 		branchController.getBranchArrivalList(null, CommodityState.getType((String)commodityState.getSelectedItem()), order);
 		row = -1;
 		return 0;

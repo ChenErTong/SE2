@@ -1,7 +1,5 @@
 package ui.myui;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;

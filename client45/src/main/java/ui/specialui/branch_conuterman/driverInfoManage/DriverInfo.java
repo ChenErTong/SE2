@@ -1,8 +1,6 @@
 package ui.specialui.branch_conuterman.driverInfoManage;
 
-import javax.swing.ButtonGroup;
 import ui.myui.MyJLabel;
-import ui.myui.MyJRadioButton;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 

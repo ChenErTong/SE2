@@ -3,16 +3,14 @@ package businesslogicservice.branchblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import state.CommodityState;
+import businesslogicservice.BLService;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
-import businesslogicservice.BLService;
 
 /**
  * 瀹炵幇钀ヤ笟鍘呰繍杈撶鐞嗙晫闈㈡墍闇�瑕佺殑鏈嶅姟
@@ -45,7 +43,7 @@ public interface BranchBLService extends BLService{
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, OrderVO order);
+	public BranchArrivalListVO getBranchArrivalList(String departure, ArrayList<OrderVO> orders);
 	
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟

@@ -76,11 +76,18 @@ public class Branch{
 		return orderNumbers;
 	}
 
-	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
-			ArrayList<String> orders) throws RemoteException {
-		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orders);
+	public BranchArrivalListVO getBranchArrivalList(String departure,
+			ArrayList<OrderVO> order) throws RemoteException {
+		 CommodityState state = CommodityState.Complete;
+		 String transferListID=null;
+		 //TODO 
+		 ArrayList<String> orderIDs = new ArrayList<>();
+		 for (OrderVO orderVO : order) {
+			orderIDs.add(orderVO.ID);
+		}
+		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderIDs);
 		//更改VO状态
-		orderInfo.changeOrderState(orders,   "货物已离开" + departure + "营业厅");
+		orderInfo.changeOrderState(orderIDs,  "货物已到达" + departure + "营业厅");
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -106,7 +113,7 @@ public class Branch{
 		String ID = receiptInfo.getID();
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders, money);
 		//更改VO状态
-		orderInfo.changeOrderState(orders, "货物已到达"+destination+"营业厅");
+		orderInfo.changeOrderState(orders, "货物已离开"+destination+"营业厅");
 		receiptInfo.add(vo);
 		return vo;
 	}
