@@ -15,7 +15,6 @@ import businesslogic.organizationbl.OrganizationController;
 import businesslogic.receiptbl.ReceiptController;
 import businesslogic.recordbl.RecordController;
 import businesslogic.userbl.UserController;
-import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 
 public class ControllerFactory {
 	public static FacilityController getFacilityController(){

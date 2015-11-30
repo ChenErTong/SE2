@@ -40,57 +40,46 @@ public class ReceiptShow {
 		}
 	}
 	public ArrayList<ReceiptVO> show()  throws RemoteException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<BranchArrivalListVO> showBranchArrivalList() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<DeliveryListVO> showDeliveryList()  throws RemoteException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<LoadingListVO> showLoadingList() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<TransferArrivalListVO> showTransferArrivalList()  throws RemoteException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<TransferOrderVO> showTransferOrder() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<AdjustReceiptVO> showAdjustReceipt() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<DebitBillVO> showDebitBill() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<InventoryExportReceiptVO> showInventoryExportReceipt()  throws RemoteException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<InventoryImportReceiptVO> showInventoryImportReceipt()  throws RemoteException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<PaymentBillVO> showPaymentBill() throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

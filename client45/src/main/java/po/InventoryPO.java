@@ -4,7 +4,7 @@ package po;
 	 *  @version Oct 23,2015
 	 *      **/
 	
-
+//下午改 TODO 下午改
 public class InventoryPO extends PersistentObject  {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2898348688803208513L;
