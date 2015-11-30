@@ -3,7 +3,11 @@ package ui.specialui.transfer_counterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import businesslogic.ControllerFactory;
+import businesslogic.transferbl.TransferController;
+import businesslogicservice.transferblservice.TransferBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -26,9 +30,15 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 
 	private Panel_Transfer_Total totalPanel;
 	private MyJPanel subPanel;
+	private String[] loadingInfo;
+	private ArrayList<String> orders;
+	private TransferBLService transferController;
 	
 	public Frame_Transfer(String userID) {
 		super(userID);
+		
+		transferController = ControllerFactory.getTransferController();
+		
 		this.totalPanel = new Panel_Transfer_Total(this);
 		this.add(totalPanel);
 		
@@ -167,10 +177,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 * @return
 	 */
 	private boolean jumpToCommodityForCar(){
-		String[] data = ((CarLoading)subPanel).jumpToCommodity();
-//		if(data == null) return false;
-		//TODO 火车装运信息基本信息记录
-		
+		loadingInfo = null;
+		loadingInfo = ((CarLoading)subPanel).jumpToCommodity();
+		if(loadingInfo == null) return false;
 		return true;
 	}
 	
@@ -180,8 +189,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 */
 	private boolean produceTransferOrderForCar() {
 		String[] ordersId = ((CarCommodity)subPanel).produceTransferOrder();
-//		if(ordersId == null) return false;
-		//TODO 汽车装运订单信息记录
+		if(ordersId == null) return false;
+		orders = new ArrayList<String>();
+		for (String orderId : ordersId) {
+			orders.add(orderId);
+		}
+		transferController.truckTransfer(loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
 		
 		return true;
 	}
@@ -191,10 +204,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 * @return
 	 */
 	private boolean jumpToCommodityForPlane() {
-		String[] data = ((PlaneLoading)subPanel).jumpToCommodity();
-//		if(data == null) return false;
-		//TODO 飞机装运信息基本信息记录
-		
+		loadingInfo = null;
+		loadingInfo = ((PlaneLoading)subPanel).jumpToCommodity();
+		if(loadingInfo == null) return false;
 		return true;
 	}
 	
@@ -204,8 +216,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 */
 	private boolean produceTransferOrderForPlane() {
 		String[] ordersId = ((PlaneCommodity)subPanel).produceTransferOrder();
-//		if(ordersId == null) return false;
-		//TODO 飞机装运订单信息记录
+		if(ordersId == null) return false;
+		orders = new ArrayList<String>();
+		for (String orderId : ordersId) {
+			orders.add(orderId);
+		}
+		transferController.planeTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 		
 		return true;
 	}
@@ -215,10 +231,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 * @return
 	 */
 	private boolean jumpToCommodityForTrain() {
-		String[] data = ((TrainLoading)subPanel).jumpToCommodity();
-//		if(data == null) return false;
-		//TODO 火车装运信息基本信息记录
-		
+		loadingInfo = null;
+		loadingInfo = ((TrainLoading)subPanel).jumpToCommodity();
+		if(loadingInfo == null) return false;
 		return true;
 	}
 	
@@ -228,9 +243,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	 */
 	private boolean produceTransferOrderForTrain() {
 		String[] ordersId = ((TrainCommodity)subPanel).produceTransferOrder();
-//		if(ordersId == null) return false;
-		//TODO 火车装运订单信息记录
-		
+		if(ordersId == null) return false;
+		orders = new ArrayList<String>();
+		for (String orderId : ordersId) {
+			orders.add(orderId);
+		}
+		transferController.trainTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 		return true;
 	}
 }

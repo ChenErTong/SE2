@@ -53,10 +53,12 @@ public class Transfer {
 	}
 
 	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) throws RemoteException {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 		String ID = receiptInfo.getID();
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_PLANE, departure, destination,
 				courierName, orders);
+		vo.date = date;
+		vo.ID = id;
 		// 更改VO状态
 		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		receiptInfo.add(vo);
@@ -64,10 +66,12 @@ public class Transfer {
 	}
 
 	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) throws RemoteException {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 		String ID = receiptInfo.getID();
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
 				courierName, orders);
+		vo.date = date;
+		vo.ID = id;
 		// 更改VO状态
 		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		receiptInfo.add(vo);
@@ -75,10 +79,12 @@ public class Transfer {
 	}
 
 	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders) throws RemoteException {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 		String ID = receiptInfo.getID();
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
 				courierName, orders);
+		vo.date = date;
+		vo.ID = id;
 		// 更改VO状态
 		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心"+"送往"+ destination + "中转中心");
 		receiptInfo.add(vo);
