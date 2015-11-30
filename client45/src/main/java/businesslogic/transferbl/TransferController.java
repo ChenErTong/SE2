@@ -83,14 +83,10 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
-			CommodityState state, String orders) {
-		try {
-			return TransferBL.receiptList(transferID, departure, destination, state, orders);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+	public TransferArrivalListVO receiptList(String transferID,
+			String departure, String destination, CommodityState state,
+			ArrayList<String> orders) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

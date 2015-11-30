@@ -2,6 +2,10 @@ package ui.specialui.transfer_counterman.train_loading;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -9,6 +13,8 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.specialui.transfer_counterman.Frame_Transfer;
+import vo.CommodityVO;
+import vo.OrderVO;
 
 public class TrainCommodity extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -23,11 +29,13 @@ public class TrainCommodity extends MyJPanel {
 		
 		//选中的订单的列表
 		orderSelected = new MyJTable(new String[]{"选中订单"}, false);
+		this.setOrdersID();
 		orderSelected.addMouseListener(new MouseAdapter() {
 			public void mouseMoved(MouseEvent e) {  
 				int row = orderSelected.rowAtPoint(e.getPoint());
 				String orderId = orderSelected.getData(row)[0];
 				MyEmptyTextArea orderInfo = new MyEmptyTextArea(e.getX(), e.getY(), 150, 250);
+				TrainCommodity.this.showOrder(orderInfo, orderId);
 				//orderId加入到orderInfo中
 				TrainCommodity.this.add(orderInfo);
 			}
@@ -48,8 +56,7 @@ public class TrainCommodity extends MyJPanel {
 				int row = orderList.rowAtPoint(e.getPoint());
 				String orderId = orderList.getData(row)[0];
 				MyEmptyTextArea orderInfo = new MyEmptyTextArea(e.getX(), e.getY(), 150, 250);
-				//orderId加入到orderInfo中
-				TrainCommodity.this.add(orderInfo);
+				TrainCommodity.this.showOrder(orderInfo, orderId);
 			}
 			
 			public void mouseClicked(MouseEvent e) {
@@ -68,6 +75,30 @@ public class TrainCommodity extends MyJPanel {
 		TransferOrder.addActionListener(frame);
 		this.add(TransferOrder);
 	}
+	
+	private void showOrder(MyEmptyTextArea orderInfo, String orderId) {
+		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderVO order = orderController.inquireOrder(orderId);
+		orderInfo.setText("订单编号" + order.ID + "\n");
+		orderInfo.append("货物信息：\n");	
+		for(CommodityVO commodity: order.commodities){
+			orderInfo.append(commodity.commodityType + "\t" + commodity.volumn + "m³\t" + commodity.weight + "kg\n");	
+		}
+		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
+		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
+		this.add(orderInfo);
+	}
+
+	/**
+	 * 得到所有订单号
+	 */
+	private void setOrdersID() {
+		BranchBLService branchController = ControllerFactory.getBranchController();
+		for (String orderID : branchController.getAllOrderNumber()) {
+			orderSelected.addRow(new String[]{orderID});
+		};		
+	}
+	
 	/**
 	 * 得到所有被选中的订单号
 	 * @return
