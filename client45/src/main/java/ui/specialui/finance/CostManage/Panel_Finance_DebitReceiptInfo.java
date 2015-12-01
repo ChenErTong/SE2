@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.GetDate;
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -18,7 +19,7 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 	private MyJTextField numberField;
 	private MyJTextField courierField;
 	private MyJTextField dateField;
-	private MyJTable table;
+	private  MyJTable table;
 	public Panel_Finance_DebitReceiptInfo() {
 		super(680,100,550,240);
 		this.initComponent();
@@ -32,8 +33,10 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,90,100,30,"对应订单号",16,true));
 		
 		dateField = new MyJTextField(140,50,120,30);
+		dateField.setText(GetDate.getDate());
 		this.add(dateField);
 		numberField = new MyJTextField(380,50,120,30);
+		numberField.setOnlyInteger(100);
 		this.add(numberField);
 		courierField = new MyJTextField(140,90,120,30);
 		this.add(courierField);
@@ -74,7 +77,7 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		
 	}
 
-	public MyJTable getTable(){
+	public  MyJTable getTable(){
 		return table;
 	}
 

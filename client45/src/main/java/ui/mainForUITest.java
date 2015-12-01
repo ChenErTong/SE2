@@ -31,7 +31,7 @@ public class mainForUITest {
 
 	
 	//	  FrameManager managerFrame = new FrameManager(id);
-		//     managerFrame.setVisible(true);
+	  //   managerFrame.setVisible(true);
 		
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);

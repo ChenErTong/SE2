@@ -84,93 +84,6 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 		this.add(modify);
 	}
 
-	/*private void initButton(Frame_Finance frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
-				"<html>添<br/>加<br/>付<br/>款<br/>单<br/></html>", 18);
-		insertButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_SettlementManage.this.insertPanel(frame);
-				
-			}
-		});
-		this.add(insertButton);
-
-		MyJButton modifyButton = new MyJButton(0, 280, 40, 130,
-				"<html>修<br/>改<br/>付<br/>款<br/>单<br/></html>", 18);
-		modifyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_SettlementManage.this.modifyPanel(frame);
-				
-			}
-		});
-		modifyButton.setActionCommand("ModifyPayReceipt");
-		modifyButton.addActionListener(this);
-		this.add(modifyButton);
-
-		MyJButton searchButton = new MyJButton(0, 410, 40, 130,
-				"<html>查<br/>看<br/>付<br/>款<br/>单<br/></html>", 18);
-		searchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_SettlementManage.this.searchPanel(frame);
-				
-			}
-		});
-		this.add(searchButton);
-	}
-	
-
-	private void insertPanel(Frame_Finance frame) {
-	this.removeAll();
-	this.add(payReceiptList);
-	this.add(new MyJLabel(530, 20, 250, 90, "公司运营成本管理", 24, true));
-	this.initButton(frame);
-
-	
-	payReceiptInfo = new PayReceiptInfo();
-	payReceiptInfo.add(new MyJLabel(230,5,120,30,"新增付款单",18,true));
-	this.add(payReceiptInfo);
-	
-	
-	commonButton = new MyJButton(890, 670, 120, 30, "添加付款单", 20);
-	commonButton.setActionCommand("AddPayReceipt");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-private void modifyPanel(Frame_Finance frame) {
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司运营成本管理", 24, true));
-	this.add(payReceiptList);
-	this.initButton(frame);
-	
-	payReceiptInfo = new PayReceiptInfo();
-	payReceiptInfo.add(new MyJLabel(230,5,120,30,"修改付款单",18,true));
-	this.add(payReceiptInfo);
-	
-	commonButton = new MyJButton(890, 670, 150, 30, "修改付款单", 20);
-	commonButton.setActionCommand("checkModify");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-private void searchPanel(Frame_Finance frame) {
-	
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司运营成本管理", 24, true));
-	this.add(payReceiptList);
-	this.initButton(frame);
-	
-	payReceiptInfo = new PayReceiptInfo();
-	payReceiptInfo.setUneditable();
-	payReceiptInfo.add(new MyJLabel(230,5,150,30,"查看付款单信息",18,true));
-	this.add(payReceiptInfo);
-	
-	this.repaint();
-}
 
 	/**
 	 * 显示所有的收款单 pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date
@@ -236,9 +149,17 @@ private void searchPanel(Frame_Finance frame) {
 			controller = ControllerFactory.getDebitAndPayBillController();
 			String[] data = addPaybill.getData();
 			if(data==null){
-				this.add(new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED));
+					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
 			}else{
-			/*ResultMessage rsg = controller.addPayBill(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]);
+				int i = Integer.parseInt(data[4]);
+				switch(i){
+				case 0:
+				case 1:
+				case 2:
+				case 3:	
+				}
+			//	ResultMessage rsg = controller.addPayBill(Double.parseDouble(data[1]), data[0], data[2], ReceiptType.PAY, PayBillItem.BONUS, "", data[4]);
+				/*ResultMessage rsg = controller.addPayBill(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]);
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					//System.out.println("AddSucceed!");
 					this.showAll();
@@ -259,8 +180,8 @@ private void searchPanel(Frame_Finance frame) {
 				data[0] = paybillPool.get(table.getSelectedRow()).payerName;
 				data[1] = paybillPool.get(table.getSelectedRow()).money+"";
 				data[2] = paybillPool.get(table.getSelectedRow()).accountID;
-				data[3] = paybillPool.get(table.getSelectedRow()).items;
-				data[4] = paybillPool.get(table.getSelectedRow()).remarks;
+				data[3] = paybillPool.get(table.getSelectedRow()).remarks;
+				data[4] = paybillPool.get(table.getSelectedRow()).items;
 				data[5] = paybillPool.get(table.getSelectedRow()).date;
 			
 				modifyPaybill.setData(data);
@@ -307,9 +228,9 @@ private void searchPanel(Frame_Finance frame) {
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
-			new MyNotification(this,"账户修改成功！",Color.GREEN);		
+			new MyNotification(this,"付款单修改成功！",Color.GREEN);		
 		}else{
-			new MyNotification(this,"账户修改失败！",Color.RED);
+			new MyNotification(this,"付款单修改失败！",Color.RED);
 		}
 	
 	}

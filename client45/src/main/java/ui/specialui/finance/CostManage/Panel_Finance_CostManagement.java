@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-
+import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.recordbl.RecordController;
 import ui.myui.MyJButton;
@@ -110,6 +110,15 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 				data[2] = debitbillPool.get(table.getSelectedRow()).courierID;
 				data[3] = debitbillPool.get(table.getSelectedRow()).orderNumbers;
 				debitReceiptInfo.setData(data);
+				MyJTable table = debitReceiptInfo.getTable();
+				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+				
+				int rowCount = table.getRowCount();
+				for(int i = 0; i < rowCount; i++){
+					tableModel.removeRow(0);
+				}
+		
+				
 			}
 		}else if(e.getActionCommand().equals("CalDebit")){
 			table = debitReceiptList.getTable();
