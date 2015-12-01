@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import state.ExpressType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
@@ -16,9 +17,9 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class InventoryController implements InventoryBLService {
     Inventory InventoryBL = new Inventory();
 	@Override
-	public InventoryViewVO viewInventory(String beginDate, String endDate)  {
+	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate)  {
 		try {
-			return InventoryBL.viewInventory(beginDate, endDate);
+			return InventoryBL.viewInventory(transferID,beginDate, endDate);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -46,9 +47,9 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public InventoryImportReceiptVO addCommodities(String ID ,String ArrivalListID, InventoryVO vo)  {
+	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position)  {
 		try {
-			return InventoryBL.addCommodities( ID ,ArrivalListID, vo);
+			return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

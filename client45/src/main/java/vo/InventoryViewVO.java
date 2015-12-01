@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.ArrayList;
 /**
  * 库存查看
  * （设定一个时间段，
@@ -23,9 +22,10 @@ public class InventoryViewVO {
 	public int importNumber;
 	/** 库存数量 **/
 	public int num;
-	public ArrayList<InventoryVO> Location;
+	
+	public InventoryVO inventory;
 
-	public InventoryViewVO(int exportNumber, int importNumber, int num, ArrayList<InventoryVO> location) {
+	public InventoryViewVO(int exportNumber, int importNumber, int num, InventoryVO location) {
 		super();
 		this.exportNumber = exportNumber;
 		this.importNumber = importNumber;

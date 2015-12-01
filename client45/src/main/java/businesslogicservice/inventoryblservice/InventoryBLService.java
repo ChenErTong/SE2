@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import state.ExpressType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
@@ -21,7 +22,7 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryViewVO viewInventory(String beginDate, String endDate);
+	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate);
 
 	/**
 	 * 显示截至盘点当日时间的库存快照
@@ -43,7 +44,7 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryImportReceiptVO addCommodities(String ID, String ArrivalListID, InventoryVO vo);
+	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position);
 
 	/** 选择并添加相应的数据（订单托运编号、入库日期、目的地、区号、排号、架号、位号）到进货单中生成进货单PO **/
 

@@ -55,18 +55,17 @@ public class Inventory {
 		}
 		return null;
 	}
-	//重写
-	//get入ku dan
-	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
-		ArrayList<InventoryVO> VOs = this.getInventoryPOsInDate(beginDate,endDate);
-		//获得receiptInfo
-		ReceiptInfo_Inventory receiptInfo = new ReceiptInfo();
+
+
+	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate) throws RemoteException {
+		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
+		InventoryVO inventoryVO = InventoryTrans.convertPOtoVO(inventoryPO);
 		//通过receiptInfo得到一段时间内入库单和出库单的数量
 		int importNumber=receiptInfo.getImportNumber(beginDate, endDate);
 		int exportNumber = receiptInfo.getExportNumber(beginDate, endDate);
 		int sum = importNumber+exportNumber;
 		//新建库存查看VO
-		InventoryViewVO viewVO = new InventoryViewVO(importNumber,exportNumber,sum, VOs);
+		InventoryViewVO viewVO = new InventoryViewVO(importNumber,exportNumber,sum, inventoryVO);
 		return viewVO;
 	}
 	
@@ -85,18 +84,34 @@ public class Inventory {
 	}
 	
 	//生成入库单
-	public InventoryImportReceiptVO addCommodities(String inventoryID,CommodityVO commodity, int area ,int row,int frame,int position) throws RemoteException {
+	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position) throws RemoteException {
 		//修改仓库信息
-		CommodityPO cpo = OrderTrans.convertVOtoPO(commodity);
-		InventoryPO ipo = inventoryData.find(inventoryID);
-		CommodityPO[][][][] commos = ipo.getCommos();
-		commos[area][row][frame][position]=cpo;
-		ipo.setCommos(commos);
-		inventoryData.modify(ipo);
+		CommodityPO commodityPO = OrderTrans.convertVOtoPO(commodity);
+		//通过中转中心的id获取inventoryPO
+		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
+		//修改库存
+		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		commos[area][row][frame][position]=commodityPO;
+		inventoryPO.setCommos(commos);
+		inventoryData.modify(inventoryPO);
 		//添加入库单
 		return receiptInfo.addImportReceipt(commodity, area, row, frame, position);
 	}
-    public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
+	/**
+	 * 通过中转中心的ID编号查找相应的仓库
+	 * @param transferID
+	 * @return
+	 * @throws RemoteException
+	 */
+    private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
+		ArrayList<InventoryPO> inventorys = inventoryData.find();
+		for (InventoryPO inventoryPO : inventorys) {
+			if(inventoryPO.getTransferID().equals(transferID))
+				return inventoryPO;
+		}
+		return null;
+	}
+	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
     	return receiptInfo.add(importReceipt);
     }
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
@@ -109,7 +124,7 @@ public class Inventory {
 		String ID = receiptInfo.getExportID();
 		return ID;
 	}
-
+	//生成出库单
 	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer) throws RemoteException {
 		InventoryImportReceiptPO importPo = receiptInfo.findImport(ImportID);
 		int area = importPo.getArea();
@@ -183,7 +198,7 @@ public class Inventory {
 		}
 		return vos;
 	}*/
-	private boolean inDate(InventoryPO po, String beginDate, String endDate) {
+	/*private boolean inDate(InventoryPO po, String beginDate, String endDate) {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
 			return true;
 		return false;
@@ -195,7 +210,7 @@ public class Inventory {
 			return true;
 		}
 		return false;
-	}
+	}*/
 }
 
 
