@@ -114,7 +114,7 @@ public class DebitNoteBuild extends MyJPanel{
 			money += Double.parseDouble(infos[1].substring(3));
 			date = infos[2].substring(5);
 		}
-		DebitAndPayBillBLService controller = ControllerFactory.getDebitAndPayBillBLService();
+		DebitAndPayBillBLService controller = ControllerFactory.getDebitAndPayBillController();
 		DebitBillVO debitBillVO = new DebitBillVO(controller.getExpenseID(), ReceiptType.DEBIT, courierID, money, orderID, date);
 		controller.addDebitBill(debitBillVO);
 		controller.save(debitBillVO);

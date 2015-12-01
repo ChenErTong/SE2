@@ -26,18 +26,18 @@ public class CargoExport extends MyJPanel {
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "出库", 30, true));
 		
-		commodities = new MyJTable(new String[]{"中转接收单编号", "订单编号", "仓库存放位置"}, false);
+		commodities = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
 		//设置为只可单选
 		commodities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(new MyJScrollPane(200, 150, 330, 370, commodities));
-		this.add(new MyJLabel(329, 110, 80, 19, "出库货物", 18, true));
+		this.add(new MyJScrollPane(150, 150, 330, 370, commodities));
+		this.add(new MyJLabel(279, 110, 80, 19, "出库货物", 18, true));
 		
-		exportList = new MyJTable(new String[]{"中转单编号", "订单编号", "出库日期", "目的地", "装运形式"}, false);
-		this.add(new MyJScrollPane(630, 150, 450, 370, exportList));
-		this.add(new MyJLabel(810, 110, 100, 19, "出库单列表", 18, true));
+		exportList = new MyJTable(new String[]{"中转单编号", "订单编号", "货物种类", "出库日期", "目的地", "装运形式"}, false);
+		this.add(new MyJScrollPane(580, 150, 550, 370, exportList));
+		this.add(new MyJLabel(805, 110, 100, 19, "出库单列表", 18, true));
 		
-		this.add(new MyJLabel(265, 550, 80, 19, "物流方式", 18, true));
-		transport = new MyJComboBox(350, 547, 101, 25, new String[]{"汽车装运", "火车装运", "飞机装运"});
+		this.add(new MyJLabel(215, 550, 80, 19, "物流方式", 18, true));
+		transport = new MyJComboBox(300, 547, 101, 25, new String[]{"汽车装运", "火车装运", "飞机装运"});
 		this.add(transport);
 		
 		MyJButton produceExportList = new MyJButton(580, 600, 120, 30, "生成出库单", 20);

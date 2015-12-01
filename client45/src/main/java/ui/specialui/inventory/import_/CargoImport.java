@@ -26,25 +26,25 @@ public class CargoImport extends MyJPanel {
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
 		
-		commodities = new MyJTable(new String[]{"中转接收单编号", "订单编号"}, false);
+		commodities = new MyJTable(new String[]{"订单编号", "货物种类"}, false);
 		//设置为只可单选
 		commodities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(new MyJScrollPane(200, 150, 300, 370, commodities));
-		this.add(new MyJLabel(310, 110, 80, 19, "入库货物", 18, true));
+		this.add(new MyJScrollPane(150, 150, 300, 370, commodities));
+		this.add(new MyJLabel(260, 110, 80, 19, "入库货物", 18, true));
 		
-		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "入库日期", "目的地", "仓库存放位置"}, false);
-		this.add(new MyJScrollPane(600, 150, 480, 370, importList));
+		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "货物种类", "入库日期", "目的地", "仓库存放位置"}, false);
+		this.add(new MyJScrollPane(550, 150, 580, 370, importList));
 		this.add(new MyJLabel(790, 110, 100, 19, "入库单列表", 18, true));
 		
-		this.add(new MyJLabel(200, 550, 19, 19, "区", 18, true));	
-		this.add(new MyJLabel(279, 550, 19, 19, "排", 18, true));
-		this.add(new MyJLabel(358, 550, 19, 19, "架", 18, true));
-		this.add(new MyJLabel(437, 550, 19, 19, "位", 18, true));
+		this.add(new MyJLabel(150, 550, 19, 19, "区", 18, true));	
+		this.add(new MyJLabel(229, 550, 19, 19, "排", 18, true));
+		this.add(new MyJLabel(308, 550, 19, 19, "架", 18, true));
+		this.add(new MyJLabel(387, 550, 19, 19, "位", 18, true));
 		
 		position = new MyJComboBox[4];
 		String[][] blankPos = this.getBlankPos();
 		for(int i = 0; i < 4; i ++){
-			position[i] = new MyJComboBox(221 + i * 79, 550, 42, 18, blankPos[i]);
+			position[i] = new MyJComboBox(171 + i * 79, 550, 42, 18, blankPos[i]);
 			this.add(position[i]);
 		}
 		
