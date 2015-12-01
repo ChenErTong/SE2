@@ -40,6 +40,7 @@ public interface OrderBLService extends BLService{
 	 * @return
 	 */
 	public OrderVO inquireOrder(String orderNumber);
+	public ResultMessage updateOrder(OrderVO order);
 	/**
 	 * 计算订单运费和预估到达时间
 	 * @return

@@ -60,7 +60,7 @@ public interface DebitAndPayBillBLService {
 	 */
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers);
+	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers, String date);
 	
 	// 建立付款单
 	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,

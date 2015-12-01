@@ -1,7 +1,4 @@
 package businesslogic.branchbl;
-/**
- * @author LIUXUANLIN
- */
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -9,14 +6,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderInfo;
-import businesslogic.orderbl.OrderTrans;
-import businesslogic.receiptbl.ReceiptTrans;
+import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
-import dataservice.orderdataservice.OrderDataService;
-import dataservice.receiptdataservice.ReceiptDataService;
-import po.CommodityPO;
-import po.OrderPO;
-import po.receiptpo.ReceiptPO;
+import dataservice.branchdataservice.BranchDataService;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
@@ -30,15 +22,16 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Branch{
-	//TODO 依赖倒置
-	private OrderDataService orderData;
-	private ReceiptDataService  receiptData;
-	private OrderInfo orderInfo;
+	private OrderInfo_Branch_Transfer orderInfo;
+	private ReceiptInfo_Branch_Transfer receiptInfo;
 	public Branch() {
 		orderInfo = new OrderInfo();
+		receiptInfo = new ReceiptInfo();
+	}
+	
+	public BranchDataService getData(){
 		try {
-			orderData = (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
-			receiptData = (ReceiptDataService ) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
+			return (BranchDataService)Naming.lookup(RMIConfig.PREFIX+BranchDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -46,6 +39,7 @@ public class Branch{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public ConfirmState confirmOperation() {
@@ -57,20 +51,7 @@ public class Branch{
 	 * @throws RemoteException
 	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
-		//获取所有的订单
-		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<CommodityVO> commodityVOs = new ArrayList<>();
-		//获取单个订单
-		for (OrderPO orderPO : orderPOs) {
-			//单个订单中所有的商品
-			ArrayList<CommodityPO> pos  =orderPO.getCommodityPO();
-			ArrayList<CommodityVO> commos = OrderTrans.convertCommodityPOstoVOs(pos);
-			//将每个商品加入商品列表
-			for (CommodityVO commodityVO : commos) {
-				commodityVOs.add(commodityVO);
-			}
-		}
-		return null;
+		return orderInfo.getAllCommodities();
 	}
 	/**
 	 * 获得所有的订单
@@ -79,9 +60,7 @@ public class Branch{
 	 * @throws RemoteException
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
-		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
-		return orderVOs;
+		return orderInfo.getAllOrders();
 	}
 	/**
 	 * 获取所有的订单号
@@ -97,38 +76,45 @@ public class Branch{
 		return orderNumbers;
 	}
 
-	public BranchArrivalListVO getBranchArrivalList(String transferListID, String departure, CommodityState state,
-			ArrayList<String> orders) throws RemoteException {
-		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orders);
+	public BranchArrivalListVO getBranchArrivalList(String departure,
+			ArrayList<OrderVO> order) throws RemoteException {
+		 CommodityState state = CommodityState.Complete;
+		 String transferListID=null;
+		 //TODO 
+		 ArrayList<String> orderIDs = new ArrayList<>();
+		 for (OrderVO orderVO : order) {
+			orderIDs.add(orderVO.ID);
+		}
+		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderIDs);
 		//更改VO状态
-		orderInfo.changeOrderState(orders,   "货物已离开" + departure + "营业厅");
+		orderInfo.changeOrderState(orderIDs,  "货物已到达" + departure + "营业厅");
+		receiptInfo.add(vo);
 		return vo;
 	}
 
 	public DeliveryListVO getDeliveryList(ArrayList<String> orders, String courierName) throws RemoteException {
 		//TODO
-		String ID = receiptData.getID();
+		String ID = receiptInfo.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
 		return vo;
 	}
 
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
-		po.setReceiptCondition(ReceiptCondition.SUBITTED);
-		return receiptData.modify(po);
+		receipt.receiptCondition=ReceiptCondition.SUBITTED;
+		return receiptInfo.modify(receipt);
 	}
 
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		ReceiptPO po = ReceiptTrans.convertVOtoPO(receipt);
-		return  receiptData.add(po);
+		return  receiptInfo.add(receipt);
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, double money) throws RemoteException {
-		String ID = receiptData.getID();
+		String ID = receiptInfo.getID();
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders, money);
 		//更改VO状态
-		orderInfo.changeOrderState(orders, "货物已到达"+destination+"营业厅");
+		orderInfo.changeOrderState(orders, "货物已离开"+destination+"营业厅");
+		receiptInfo.add(vo);
 		return vo;
 	}
 

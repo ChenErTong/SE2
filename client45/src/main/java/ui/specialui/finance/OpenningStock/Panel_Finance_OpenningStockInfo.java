@@ -1,12 +1,5 @@
 package ui.specialui.finance.OpenningStock;
 
-import java.awt.Color;
-
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-
-import ui.myui.MyFont;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 

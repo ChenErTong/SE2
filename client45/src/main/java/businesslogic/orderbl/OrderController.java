@@ -81,4 +81,14 @@ public class OrderController implements OrderBLService{
 		return null;
 	}
 
+	@Override
+	public ResultMessage updateOrder(OrderVO order) {
+		try {
+			return orderBL.updateOrder(order);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

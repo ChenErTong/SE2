@@ -127,7 +127,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		}
 		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		for(int i = 0; i < data.length; i++){
-			commodities.add(new CommodityVO(data[i][0], Double.parseDouble(data[i][1]), Double.parseDouble(data[i][2]), CommodityState.Success));
+			commodities.add(new CommodityVO(data[i][0], Double.parseDouble(data[i][1]), Double.parseDouble(data[i][2]), CommodityState.Complete));
 		}
 		return commodities;
 	}

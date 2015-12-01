@@ -24,7 +24,7 @@ public class Base {
 	}
 	public BaseDataService getData(){
 		try {
-			return baseData = (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
+			return   (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {

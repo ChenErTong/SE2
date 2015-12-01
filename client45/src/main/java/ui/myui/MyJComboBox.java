@@ -1,7 +1,7 @@
 package ui.myui;
 
 import java.awt.Color;
-import javax.swing.ComboBoxModel;
+
 import javax.swing.JComboBox;
 /**
  * 下拉框

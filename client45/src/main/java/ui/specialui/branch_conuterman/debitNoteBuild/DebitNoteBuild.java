@@ -3,6 +3,9 @@ package ui.specialui.branch_conuterman.debitNoteBuild;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import state.ReceiptType;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -10,6 +13,14 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import vo.OrderVO;
+import vo.accountvo.AccountVO;
+import vo.receiptvo.DebitBillVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.accountblservice.AccountBLService;
+import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.fundblservice.DebitAndPayBillBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 /**
  * 收款单建立界面
  * @author czw
@@ -67,9 +78,21 @@ public class DebitNoteBuild extends MyJPanel{
 	 * @return
 	 */
 	private boolean searchCourier(String courierId) {
-		// TODO
-		// 根据快递员编号查找快递员
-		return false;
+		AccountBLService acountController = ControllerFactory.getAccountController();
+		AccountVO account = acountController.find(courierId);
+		if(account == null) return false;
+		courierBill.setText("快递员编号：" + courierId);
+		if(account.ordersID.size() == 0){
+			courierBill.setText("该快递员当日未收款");
+		}else{
+			OrderBLService orderController = ControllerFactory.getOrderController();
+			OrderVO order;
+			for(int i = 0; i < account.ordersID.size(); ++i){
+				order = orderController.inquireOrder(account.ordersID.get(i));
+				courierBill.append("\n订单编号：" + order.ID + "\t费用：" + order.money + "\t收款日期：" + order.recipientTime);
+			}
+		}
+		return true;
 	}
 	
 	/**
@@ -77,9 +100,24 @@ public class DebitNoteBuild extends MyJPanel{
 	 * @return
 	 */
 	public int produceDebitNote() {
-		if(courierBill.getText().equals("")){
+		String text = courierBill.getText();
+		if(text.equals("")){
 			return 1;
 		}
+		String[] lines = text.split("\n");
+		String[] infos;
+		ArrayList<String> orderID = new ArrayList<String>();
+		double money = 0.0;
+		String date = null;
+		String courierID = lines[0].substring(6);
+		for (int i = 1; i < lines.length; ++i) {
+			infos = lines[i].split("\t");
+			orderID.add(infos[0].substring(5));
+			money += Double.parseDouble(infos[1].substring(3));
+			date = infos[2].substring(5);
+		}
+		DebitAndPayBillBLService controller = ControllerFactory.getDebitAndPayBillBLService();
+		controller.addDebitBill(money, courierID, ReceiptType.DEBIT, orderID, date);
 		return 0;
 	}
 }

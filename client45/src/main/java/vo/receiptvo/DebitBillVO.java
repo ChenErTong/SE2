@@ -12,11 +12,12 @@ import state.ReceiptType;
 public class DebitBillVO extends DebitAndPayBillVO {
 	public String courierID;
 	public ArrayList<String> orderNumbers;
+	public String date;
 	
-	public DebitBillVO(String id, ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers) {
+	public DebitBillVO(String id, ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers, String date) {
 		super(id,type,money);
 		this.courierID=courierID;
 		this.orderNumbers=orderNumbers;
-	}
-
+		this.date = date;
+	}	
 }

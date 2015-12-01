@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.commonui.exitThisFunction.ExitThisFunctionFrame;
 import ui.commonui.login.Frame_Login;
 
 public class ExitAccountPanel extends JPanel implements ActionListener{

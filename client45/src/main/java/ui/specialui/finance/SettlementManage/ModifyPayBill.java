@@ -1,6 +1,5 @@
 package ui.specialui.finance.SettlementManage;
 
-import ui.GetDate;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;

@@ -3,6 +3,9 @@ package businesslogic.branchbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import vo.CommodityVO;
+import vo.OrderVO;
+
 public interface OrderInfo_Branch_Transfer {
 	/**
 	 * 当总经理审批后，修改订单的信息（主要是历史轨迹）
@@ -12,4 +15,6 @@ public interface OrderInfo_Branch_Transfer {
 	 * @throws RemoteException 
 	 */
 	public void changeOrderState(ArrayList<String> orders,String message) throws RemoteException;
+	public ArrayList<OrderVO> getAllOrders() throws RemoteException;
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException;
 }

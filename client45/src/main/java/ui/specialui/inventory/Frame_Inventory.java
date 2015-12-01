@@ -15,7 +15,6 @@ import ui.specialui.inventory.export.CargoExport;
 import ui.specialui.inventory.import_.CargoImport;
 import ui.specialui.inventory.stocking.Stocking;
 import ui.specialui.inventory.zone_adjust.InventoryZoneAdjust;
-import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class Frame_Inventory extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;

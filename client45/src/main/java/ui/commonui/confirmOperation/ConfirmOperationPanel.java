@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myui.MyColor;
-import ui.myui.MyJButton;
 
 public class ConfirmOperationPanel extends JPanel implements ActionListener{
 

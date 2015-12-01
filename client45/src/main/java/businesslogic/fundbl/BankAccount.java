@@ -23,8 +23,12 @@ public class BankAccount {
 	private BankAccountDataService bankAccountData;
 
 	public BankAccount() {
+		bankAccountData=getData();
+	}
+	
+	public BankAccountDataService getData(){
 		try {
-			bankAccountData = (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX + BankAccountDataService.NAME);
+			return (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX + BankAccountDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -32,6 +36,7 @@ public class BankAccount {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public ConfirmState confirmOperation() {

@@ -14,7 +14,6 @@ import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.Frame_Finance;
 
 public class DebitReceiptList extends MyTranslucentPanel{
 	private MyJLabel chooseBranch;

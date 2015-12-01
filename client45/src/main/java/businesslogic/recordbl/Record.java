@@ -9,7 +9,6 @@ import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class Record {
-	//TODO 依赖倒置
 	private DebitAndPayBillShowInfo_Record showInfo;
 	
 	public Record() {
