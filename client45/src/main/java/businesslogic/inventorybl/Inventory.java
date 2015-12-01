@@ -20,6 +20,7 @@ import state.ExpressType;
 import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
@@ -27,6 +28,7 @@ import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 //TODO 要发生较大改动！！！！！！！
+//虽然和初衷不一样，但是果然发生了超大改动
 /**
  * 
  * @author Ann
@@ -78,7 +80,8 @@ public class Inventory {
 		String ID = receiptInfo.getImportID();
 		return ID;
 	}
-
+	
+	//生成入库单
 	public InventoryImportReceiptVO addCommodities(String ID, String ArrivalListID, InventoryVO vo) throws RemoteException {
 		TransferArrivalListPO receipt = receiptInfo.findTransferArrivalList(ArrivalListID);
 		String transferID = receipt.getTransferCenterID();
