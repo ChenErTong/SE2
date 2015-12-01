@@ -25,7 +25,7 @@ public class UserInfo extends MyTranslucentPanel{
 	}
 
 	private void initComponent(Panel_Manager_ViewUser handle) {
-		String [] identity = {"所有员工","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员","司机"};
+		String [] identity = {"所有员工","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员","司机","快递员"};
 		
 		MyJLabel userIdentity = new MyJLabel(35,5,120,30, "请选择员工类别",16,true);
 		this.add(userIdentity);

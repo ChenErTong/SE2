@@ -5,8 +5,8 @@ public class DriverVO extends AccountVO{
 	public String carID;
 	
 	public DriverVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
-			String workTime, String carID) {
-		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime);
+			String workTime, String carID,String branchID) {
+		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID);
 		this.carID = carID;
 	}
 }

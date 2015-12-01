@@ -25,7 +25,7 @@ public class AccountVO {
 	public ArrayList<String> ordersID;
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
-			String workTime) {
+			String workTime,String branchID) {
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;
@@ -34,6 +34,7 @@ public class AccountVO {
 		this.Phone = phone;
 		this.Salary = salary;
 		this.WorkTime = workTime;
+		this.branchID = branchID;
 		ordersID = new ArrayList<String>();	
 	}
 }

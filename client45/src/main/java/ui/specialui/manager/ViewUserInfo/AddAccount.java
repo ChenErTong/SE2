@@ -1,11 +1,18 @@
 package ui.specialui.manager.ViewUserInfo;
 
+import java.util.ArrayList;
+
+import businesslogic.ControllerFactory;
+import businesslogic.organizationbl.OrganizationController;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class AddAccount extends MyTranslucentPanel{
 	private MyJTextField[] fields ;
+	private MyJComboBox branchID;
+	private OrganizationController controller = ControllerFactory.getOrganizationController();
 	public AddAccount() {
 		super(680,100,550,240);
 		this.initComponent();
@@ -18,7 +25,9 @@ public class AddAccount extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,90,90,30,"身份证号",16,true));
 		this.add(new MyJLabel(40,130,90,30,"薪水",16,true));
 		this.add(new MyJLabel(290,130,90,30,"联系方式",16,true));
-		fields = new MyJTextField[6];
+		this.add(new MyJLabel(40,170,90,30,"任职时间",16,true));
+		this.add(new MyJLabel(290,170,100,30,"营业厅编号",16,true));
+		fields = new MyJTextField[7];
 		fields[0] = new MyJTextField(130,50,120,30);
 		this.add(fields[0]);
 		
@@ -36,7 +45,18 @@ public class AddAccount extends MyTranslucentPanel{
 		this.add(fields[4]);
 		
 		fields[5] = new MyJTextField(380,130,120,30);
-		this.add(fields[5]);		
+		this.add(fields[5]);
+		
+		fields[6] = new MyJTextField(130,170,120,30);
+		this.add(fields[6]);
+		
+		ArrayList<String> id = controller.getAllBranchNumbers();
+		String[] branchIDs = {};
+		for(int i=0;i<id.size();i++){
+			branchIDs[i] = id.get(i);
+		}
+		branchID = new MyJComboBox(390,170,110,30,branchIDs);
+		this.add(branchID);
 	}
 
 
@@ -45,24 +65,29 @@ public class AddAccount extends MyTranslucentPanel{
 		for(MyJTextField field: fields){
 			field.setEditable(false);
 		}
-		
+		branchID.setEditable(false);
 	}
 	
 	public String[] getData(){
-		String [] data = new String[6];
-		for(int i=0;i<6;i++){
+		String [] data = new String[8];
+		for(int i=0;i<7;i++){
 			data[i] = fields[i].getText();
 			if(data[i]==null){
 				return null;
 			}
 		}
+		data[7]=(String) branchID.getSelectedItem();
+		if(data[7]==null){
+			return null;
+		}
 		return data;
 	}
 	
 	public void setData(String [] data){
-		for(int i=0;i<6;i++){
+		for(int i=0;i<7;i++){
 			fields[i].setText(data[i]);
 		}
+		branchID.setSelectedItem(data[7]);
 	}
 	
 

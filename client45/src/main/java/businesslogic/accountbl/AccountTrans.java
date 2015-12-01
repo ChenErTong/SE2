@@ -27,7 +27,8 @@ public class AccountTrans {
 		String phone = po.getPhone();
 		double salary = po.getSalary();
 		String workTime = po.getWorkTime();
-		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime);
+		String branchID = po.getBranchID();
+		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime,branchID);
 		return vo;
 	}
 

@@ -297,10 +297,10 @@ public void showAll(){
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的机构！",Color.RED);
 			}else{
-				new MyNotification(this,"正在删除账户！",Color.GREEN);
+				new MyNotification(this,"正在删除机构！",Color.GREEN);
 				this.deleteOrganization();
 			}
-		}else if(e.getActionCommand().equals("ModifyOrganizationInfo")){
+		}else if(e.getActionCommand().equals("ModifyOrganizationInformation")){
 			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的账户！",Color.RED);

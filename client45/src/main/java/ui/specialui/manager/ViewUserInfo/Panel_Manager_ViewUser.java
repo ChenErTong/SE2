@@ -136,6 +136,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 					case 6:accountVO = controller.show("财务人员");
 					case 7:accountVO = controller.show("管理员");
 					case 8:accountVO = controller.show("司机");
+					case 9:accountVO = controller.show("快递员");
 					default : accountVO = controller.show();
 				}
 			
@@ -145,7 +146,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				accountPool.add(accountVO.get(i));
 				System.out.println("SearchSucceed!");
-					new MyNotification(this,"共有"+table.getColumnCount()+"个用户满足条件！",Color.GREEN);
+					new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
 				}	
 				}else {
 					new MyNotification(this,"请选择员工类型！",Color.RED);
@@ -153,10 +154,10 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("CheckAdd")){
 			String[] data = addAccount.getData();
 			if(addAccount.getData()==null){
-				this.add(new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED));
+				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
 			}else{//String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
 				//String workTime
-				ResultMessage rsg = controller.addBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),"0"));
+				ResultMessage rsg = controller.addBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
@@ -171,7 +172,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请先选择要修改的员工！",Color.RED);
 			}else{
 				accountID = accountPool.get(table.getSelectedRow()).ID;
-				String[] data = new String[7];
+				String[] data = new String[8];
 				
 				data[0] = accountPool.get(table.getSelectedRow()).Name;
 				data[1] = accountPool.get(table.getSelectedRow()).Duty;
@@ -180,6 +181,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				data[4] = accountPool.get(table.getSelectedRow()).Salary+"";
 				data[5] = accountPool.get(table.getSelectedRow()).Phone;
 				data[6] = accountPool.get(table.getSelectedRow()).WorkTime;
+				data[7] = accountPool.get(table.getSelectedRow()).branchID;
 				modifyAccount.setData(data);
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
@@ -201,7 +203,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请先选择要修改的员工！",Color.RED);
 			}else{
 				accountID = accountPool.get(table.getSelectedRow()).ID;
-				String[] data = new String[7];
+				String[] data = new String[8];
 				
 				data[0] = accountPool.get(table.getSelectedRow()).Name;
 				data[1] = accountPool.get(table.getSelectedRow()).Duty;
@@ -210,6 +212,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				data[4] = accountPool.get(table.getSelectedRow()).Salary+"";
 				data[5] = accountPool.get(table.getSelectedRow()).Phone;
 				data[6] = accountPool.get(table.getSelectedRow()).WorkTime;
+				data[7] = accountPool.get(table.getSelectedRow()).branchID;
 				viewAccount.setData(data);
 				viewAccount.setUneditable();
 			}
@@ -240,7 +243,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
 		String[] data = modifyAccount.getData();
-		ResultMessage rsg = controller.updateBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6]));
+		ResultMessage rsg = controller.updateBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
