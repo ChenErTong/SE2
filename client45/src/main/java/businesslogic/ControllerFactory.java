@@ -18,77 +18,100 @@ import businesslogic.transferbl.TransferController;
 import businesslogic.userbl.UserController;
 
 public class ControllerFactory {
+	private static FacilityController facilityController = null;
+	private static DriverController driverController = null;
+	private static UserController userController = null;
+	private static AccountController accountController = null;
+	private static BaseController baseController = null;
+	private static BankAccountController bankAccountController = null;
+	private static BranchController branchController = null;
+	private static DebitAndPayBillController debitAndPayBillController = null;
+	private static DebitAndPayBillShowController debitAndPayBillShowController = null;
+	private static InventoryController inventoryController = null;
+	private static OrganizationController organizationController = null;
+	private static RecordController recordController = null;
+	private static ReceiptController receiptController = null;
+	private static OrderController orderController = null;
+	private static PolicyController policyController = null;
+	private static TransferController transferController = null;
+	
 	public static FacilityController getFacilityController(){
-		return new FacilityController();
+		if(facilityController == null) facilityController = new FacilityController();
+		return facilityController;
 	}
 	
 	public static DriverController getDriverController(){
-		return new DriverController();
+		if(driverController == null) driverController = new DriverController();
+		return driverController;
 	}
 
 	public static UserController getUserController(){
-		return new UserController();
+		if(userController == null) userController = new UserController();
+		return userController;
 	}
 	
-	
 	public static AccountController getAccountController() {
-		return new AccountController();
+		if(accountController == null) accountController = new AccountController();
+		return accountController;
 	}
 	
 	public static BaseController getBaseController() {
-		return new BaseController();
+		if(baseController == null) baseController = new BaseController();
+		return baseController;
 	}
 	
 	public static BranchController getBranchController() {
-		return new BranchController();
+		if(branchController == null) branchController = new BranchController();
+		return branchController;
 	}
 	
 	public static 	BankAccountController getBankAccountController() {
-		return new BankAccountController();
+		if(bankAccountController == null) bankAccountController = new BankAccountController();
+		return bankAccountController;
 	}
+	
 	public static 	DebitAndPayBillController getDebitAndPayBillController() {
-		return new DebitAndPayBillController();
+		if(debitAndPayBillController == null) debitAndPayBillController = new DebitAndPayBillController();
+		return debitAndPayBillController;
 	}
 	
 	public static 	DebitAndPayBillShowController getDebitAndPayBillShowController() {
-		return new DebitAndPayBillShowController();
+		if(debitAndPayBillShowController == null) debitAndPayBillShowController = new DebitAndPayBillShowController();
+		return debitAndPayBillShowController;
 	}
 	
-//	public static 	ExpenseController getExpenseController() {
-//		return new ExpenseController();
-//	}
-	
-	
 	public static InventoryController getInventoryController() {
-		return new InventoryController();
+		if(inventoryController == null) inventoryController = new InventoryController();
+		return inventoryController;
 	}
 	
 	public static OrganizationController getOrganizationController() {
-		return new OrganizationController();
+		if(organizationController == null) organizationController = new OrganizationController();
+		return organizationController;
 	}
 	
 	public static RecordController getRecordController() {
-		return new RecordController();
+		if(recordController == null) recordController = new RecordController();
+		return recordController;
 	}
 
 	public static ReceiptController getReceiptController() {
-		return new ReceiptController();
+		if(receiptController == null) receiptController = new ReceiptController();
+		return receiptController;
 	}
 	
 	public static OrderController getOrderController(){
-		return new OrderController();
+		if(orderController == null) orderController = new OrderController();
+		return orderController;
 	}
 	
 	public static  PolicyController getPolicyController(){
-		return new PolicyController();
-	}
-
-	public static  DebitAndPayBillController getDebitAndPayBillBLService(){
-		return new DebitAndPayBillController();
+		if(policyController == null) policyController = new PolicyController();
+		return policyController;
 	}
 
 	public static TransferController getTransferController() {
-		// TODO Auto-generated method stub
-		return new TransferController();
+		if(transferController == null) transferController = new TransferController();
+		return transferController;
 	}
 }
