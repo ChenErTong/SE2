@@ -14,6 +14,7 @@ import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
 import businesslogic.receiptbl.ReceiptController;
 import businesslogic.recordbl.RecordController;
+import businesslogic.transferbl.TransferController;
 import businesslogic.userbl.UserController;
 
 public class ControllerFactory {
@@ -84,5 +85,10 @@ public class ControllerFactory {
 
 	public static  DebitAndPayBillController getDebitAndPayBillBLService(){
 		return new DebitAndPayBillController();
+	}
+
+	public static TransferController getTransferController() {
+		// TODO Auto-generated method stub
+		return new TransferController();
 	}
 }

@@ -25,17 +25,13 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	}
 
 	private void initComponent() {
-		fields = new MyJTextField[4];
+		fields = new MyJTextField[1];
 		this.add(new MyJLabel(10, 60, 90, 30, "机构类别", 18, true));
-		fields[0] = new MyJTextField(100,60,140,30);
-		//fields[0].setVisible(true);
-		fields[0].setOnlyInteger(10);
-		this.add(fields[0]);
 		
 		this.add(new MyJLabel(250,60,90,30,"成立日期",18,true));
-		fields[1] = new MyJTextField(340,60,140,30);
-		fields[1].setText(GetDate.getTime());
-		this.add(fields[1]);
+		fields[0] = new MyJTextField(340,60,140,30);
+		fields[0].setText(GetDate.getTime());
+		this.add(fields[0]);
 		
 	//	this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
 		String[] organizationTypes = {"营业厅","中转中心"};
@@ -77,9 +73,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	public void setUneditable() {
-		for (MyJTextField myJTextField : fields) {
-			myJTextField.setEditable(false);
-		}
+		fields[0].setEditable(false);
 		organizationType.setEditable(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
@@ -87,12 +81,10 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	}
 	
 	public void setData(String[] data) {
-		for(int i = 0; i < 4; i++){
-			fields[i].setText(data[i]);
-		}
-		organizationType.setSelectedItem(data[4]);
-		provincesBox.setSelectedItem(data[5]);
-		citiesBox.setSelectedItem(data[6]);
+		organizationType.setSelectedItem(data[0]);
+		fields[0].setText(data[1]);
+		provincesBox.setSelectedItem(data[2]);
+		citiesBox.setSelectedItem(data[3]);
 	//	address.setText(data[7]);	
 	}
 
@@ -101,20 +93,19 @@ public class OrganizationDetails extends MyTranslucentPanel{
 			myJTextField.setText(null);
 		}
 		
+		organizationType.setSelectedItem(null);
 	//	address.setText(null);
 		
 	}
 
 	public String[] getData() {
-		String[] data = new String[9];
-		for (int i = 1; i < 4; i++) {			
-			if((data[i] = fields[i].getText()).equals("")) return null;
-		}
-		data[4] = (String)organizationType.getSelectedItem();
-		data[5] = (String) provincesBox.getSelectedItem();
-		data[6] = (String) citiesBox.getSelectedItem();
+		String[] data = new String[5];
+		data[0] = (String)organizationType.getSelectedItem();
+		data[1] = fields[0].getText();
+		data[2] = (String) provincesBox.getSelectedItem();
+		data[3] = (String) citiesBox.getSelectedItem();
 		//data[7] = address.getText();
-		for(int i = 4;i<7;i++){
+		for(int i = 0;i<5;i++){
 			if(data[i].equals("")) return null;
 		}
 		return data;

@@ -4,15 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
+import businesslogic.inventorybl.InventoryController;
 import businesslogic.organizationbl.OrganizationController;
+import businesslogic.transferbl.TransferController;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.FindTypeAccount;
 import state.OrganizationType;
 import state.ResultMessage;
+import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -136,10 +144,65 @@ private void modifyPanel(FrameManager frame) {
 	this.add(organizationInfo);
 	this.initButton(frame);
 	
+	this.add(new MyJLabel(687,400,90,30,"仓库/转运",18,true));
+	this.add(new MyJLabel(687,430,90,30,"信息",18,true));
+	this.add(new MyJLabel(687,530,90,30,"人员信息",18,true));
+
+	String[] headers = {"库存信息"};
+	MyJTable table = new MyJTable(headers,false);
+	table.setBackground(new Color(40, 42, 66));
+	table.setForeground(Color.WHITE);
+	table.setFont(new MyFont(14));
+	
+	DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+	tcr.setHorizontalAlignment(JLabel.CENTER);
+	table.setDefaultRenderer(Object.class, tcr);
+		  	
+	JScrollPane jsp=new JScrollPane(table);
+	JTableHeader head = table.getTableHeader();
+	head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+	head.setFont(new MyFont(14));
+	head.setForeground(Color.BLACK);
+	head.setResizingAllowed(false);
+			
+	jsp.setBounds(777, 400, 400, 125);
+	jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+	jsp.setOpaque(false);
+	jsp.setBorder(BorderFactory.createEmptyBorder());
+	jsp.setVisible(true);
+	this.add(jsp);
+	
+	String[] headers_2 = {"员工信息"};
+	MyJTable table_2 = new MyJTable(headers_2,false);
+	table_2.setBackground(new Color(40, 42, 66));
+	table_2.setForeground(Color.WHITE);
+	table_2.setFont(new MyFont(14));
+	
+	DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+	tcr_2.setHorizontalAlignment(JLabel.CENTER);
+	table.setDefaultRenderer(Object.class, tcr_2);
+		  	
+	JScrollPane jsp_2=new JScrollPane(table_2);
+	JTableHeader head_2 = table.getTableHeader();
+	head_2.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+	head_2.setFont(new MyFont(14));
+	head_2.setForeground(Color.BLACK);
+	head_2.setResizingAllowed(false);
+			
+	jsp_2.setBounds(777, 530, 400, 125);
+	jsp_2.getViewport().setBackground(new Color(0,0,0,0.3f));
+	jsp_2.setOpaque(false);
+	jsp_2.setBorder(BorderFactory.createEmptyBorder());
+	jsp_2.setVisible(true);
+	this.add(jsp_2);
+	
 	organizationDetails = new OrganizationDetails();
 	organizationDetails.add(new MyJLabel(230,5,120,30,"修改机构信息",18,true));
 	this.add(organizationDetails);
 	
+	//InventoryController controller = ControllerFactory.getInventoryController();
+//	TransferController controller  = ControllerFactory.getTransferController();
+//	controller.
 	commonButton = new MyJButton(890, 670, 150, 30, "修改机构信息", 20);
 	commonButton.setActionCommand("CheckModify");
 	commonButton.addActionListener(this);
@@ -154,6 +217,58 @@ private void searchPanel(FrameManager frame) {
 	this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
 	this.add(organizationInfo);
 	this.initButton(frame);
+	
+	this.add(new MyJLabel(687,400,90,30,"仓库/转运",18,true));
+	this.add(new MyJLabel(687,430,90,30,"信息",18,true));
+	this.add(new MyJLabel(687,530,90,30,"人员信息",18,true));
+	
+	String[] headers = {"库存信息"};
+	MyJTable table = new MyJTable(headers,false);
+	table.setBackground(new Color(40, 42, 66));
+	table.setForeground(Color.WHITE);
+	table.setFont(new MyFont(14));
+	
+	DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+	tcr.setHorizontalAlignment(JLabel.CENTER);
+	table.setDefaultRenderer(Object.class, tcr);
+		  	
+	JScrollPane jsp=new JScrollPane(table);
+	JTableHeader head = table.getTableHeader();
+	head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+	head.setFont(new MyFont(14));
+	head.setForeground(Color.BLACK);
+	head.setResizingAllowed(false);
+			
+	jsp.setBounds(777, 400, 400, 125);
+	jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+	jsp.setOpaque(false);
+	jsp.setBorder(BorderFactory.createEmptyBorder());
+	jsp.setVisible(true);
+	this.add(jsp);
+	
+	String[] headers_2 = {"员工信息"};
+	MyJTable table_2 = new MyJTable(headers_2,false);
+	table_2.setBackground(new Color(40, 42, 66));
+	table_2.setForeground(Color.WHITE);
+	table_2.setFont(new MyFont(14));
+	
+	DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+	tcr_2.setHorizontalAlignment(JLabel.CENTER);
+	table.setDefaultRenderer(Object.class, tcr_2);
+		  	
+	JScrollPane jsp_2=new JScrollPane(table_2);
+	JTableHeader head_2 = table.getTableHeader();
+	head_2.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+	head_2.setFont(new MyFont(14));
+	head_2.setForeground(Color.BLACK);
+	head_2.setResizingAllowed(false);
+			
+	jsp_2.setBounds(777, 530, 400, 125);
+	jsp_2.getViewport().setBackground(new Color(0,0,0,0.3f));
+	jsp_2.setOpaque(false);
+	jsp_2.setBorder(BorderFactory.createEmptyBorder());
+	jsp_2.setVisible(true);
+	this.add(jsp_2);
 	
 	organizationDetails = new OrganizationDetails();
 	organizationDetails.setUneditable();
@@ -235,7 +350,7 @@ public void showAll(){
 					tableModel.addRow(rowData2);
 					organizationPool.add(branchVO.get(i));
 		 		}
-				new MyNotification(this,"共有"+table.getColumnCount()+"个机构满足条件！",Color.GREEN);
+				new MyNotification(this,"共有"+table.getRowCount()+"个机构满足条件！",Color.GREEN);
 				
 			}else{
 				new MyNotification(this,"请输入要查询的机构类型！",Color.RED);
@@ -280,30 +395,30 @@ public void showAll(){
 		}else if(e.getActionCommand().equals("ModifyOrganizationInformation")){
 			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
-				new MyNotification(this,"请先选择要修改的账户！",Color.RED);
+				new MyNotification(this,"请先选择要修改的机构！",Color.RED);
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
 					case TRANSFER:Object[] data2 = new String[7];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-							data2[0] = organizationID;
-							data2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
-							data2[3] =  organizationPool.get(table.getSelectedRow()).date;
-							data2[2] = organizationPool.get(table.getSelectedRow()).number;
-							data2[4] = transferPool.get(table.getSelectedRow()).inventories;
-							data2[5] = transferPool.get(table.getSelectedRow()).accounts;
-							data2[6] =transferPool.get(table.getSelectedRow()).address;
+						//	data2[0] = organizationID;
+							data2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;
+							data2[1] =  organizationPool.get(table.getSelectedRow()).date;
+							//data2[2] = organizationPool.get(table.getSelectedRow()).number;
+						//	data2[4] = transferPool.get(table.getSelectedRow()).inventories;
+							//data2[5] = transferPool.get(table.getSelectedRow()).accounts;
+							data2[2] =transferPool.get(table.getSelectedRow()).address;
 							String[] data3 = (String[]) data2;
 							organizationDetails.setData(data3);
 					case BRANCH:
 							Object[] data_2 = new String[7];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-							data_2[0] = organizationID;
-							data_2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
-							data_2[3] =  organizationPool.get(table.getSelectedRow()).date;
-							data_2[2] = organizationPool.get(table.getSelectedRow()).number;
-							data_2[4] = branchPool.get(table.getSelectedRow()).facilities;
-							data_2[5] = branchPool.get(table.getSelectedRow()).accounts;
-							data_2[6] =branchPool.get(table.getSelectedRow()).address;
+						//	data_2[0] = organizationID;
+							data_2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;
+							data_2[1] =  organizationPool.get(table.getSelectedRow()).date;
+							//data_2[2] = organizationPool.get(table.getSelectedRow()).number;
+					//		data_2[4] = branchPool.get(table.getSelectedRow()).facilities;
+						//	data_2[5] = branchPool.get(table.getSelectedRow()).accounts;
+							data_2[2] =branchPool.get(table.getSelectedRow()).address;
 							String[] data2_2 = (String[]) data_2;
 							organizationDetails.setData(data2_2);
 				}
@@ -311,7 +426,7 @@ public void showAll(){
 		
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table =organizationInfo.getTable();
-			System.out.println("111");
+			//System.out.println("111");
 			organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
 		//	if(table.getSelectedRow()==0){
 			//	new MyNotification(this,"请先选择需要修改的机构！",Color.RED);
@@ -363,18 +478,18 @@ public void showAll(){
 		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(organizationPool.get(table.getSelectedRow()).organizationID);
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							this.showAll();
-							new MyNotification(this,"账户删除成功！",Color.GREEN);
+							new MyNotification(this,"中转中心删除成功！",Color.GREEN);
 						}else{
-							this.add(new MyNotification(this,"账户删除失败！",Color.RED));
+							this.add(new MyNotification(this,"中转中心删除失败！",Color.RED));
 						}
 						break;
 		case BRANCH:ResultMessage rsg1 = controller.deleteBranch(organizationPool.get(table.getSelectedRow()).organizationID);
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						System.out.println("DeleteSucceed!");
 						this.showAll();
-						new MyNotification(this,"账户删除成功！",Color.GREEN);
+						new MyNotification(this,"营业厅删除成功！",Color.GREEN);
 					}else{
-						new MyNotification(this,"账户删除失败！",Color.RED);
+						new MyNotification(this,"营业厅删除失败！",Color.RED);
 					}
 					break;
 		

@@ -243,7 +243,7 @@ public void showAll(){
 			}
 			
 			for(int j = 0; j < avo.inventories.size(); j++){
-				Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).getEmptyOrFull()};
+				Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.isEmpty()};
 				tableModel4.addRow(rowData);
 			}
 			
