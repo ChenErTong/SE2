@@ -38,11 +38,12 @@ public class MockInventoryExport {
 
 	@SuppressWarnings("null")
 	public InventoryExportReceiptPO buildImport() {
-		InventoryVO iv = null;
-		int area = iv.area;
-		int row= iv.row;
-		int frame = iv.frame;
-		int position = iv.position;
+		return null;
+/*		InventoryVO iv = null;
+//		int area = iv.area;
+//		int row= iv.row;
+//		int frame = iv.frame;
+//		int position = iv.position;
 		String ID = "1";
 		String destination = "nanjing";
 		String CommoditiesID = "nanjing520";
@@ -52,7 +53,7 @@ public class MockInventoryExport {
 		InventoryExportReceiptPO ier = new InventoryExportReceiptPO(ID, null, destination, depture, Transfer,
 				TransferID, CommoditiesID, area, row, frame, position);
 		return ier;
-
+*/
 	}
 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {

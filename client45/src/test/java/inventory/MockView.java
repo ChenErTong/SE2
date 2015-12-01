@@ -22,7 +22,8 @@ public class MockView {
 	}
 	public InventoryViewVO viewInventory(String beginDate, String endDate) {
 		ArrayList<InventoryVO> vos=new ArrayList<InventoryVO>();
-		InventoryViewVO ivv=new InventoryViewVO (importNum,exportNum,Num,vos);
+		InventoryViewVO ivv=null;
+//		new InventoryViewVO (importNum,exportNum,Num,vos);
 		return ivv;
 		}
 	

@@ -14,7 +14,8 @@ public class TestImport {
 
 	@Test
 	public void testImport() throws RemoteException {
-		InventoryImportReceiptVO importReceipt = new InventoryImportReceiptVO(null, null, null, null, null, 0, 0, 0, 0);
+		InventoryImportReceiptVO importReceipt = null;
+//				new InventoryImportReceiptVO(null, null, null, null, null, 0, 0, 0, 0);
 		MockInventoryImport test = new MockInventoryImport();
 		assertEquals("1", test.getImportID());
 		assertEquals("nanjing520", test.getCommodities());

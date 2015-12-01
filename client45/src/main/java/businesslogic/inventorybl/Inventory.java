@@ -124,9 +124,9 @@ public class Inventory {
 		String ID = receiptInfo.getExportID();
 		return ID;
 	}
-	//生成出库单
+	//生成出库单 //转运同时自动出库
 	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer) throws RemoteException {
-		InventoryImportReceiptPO importPo = receiptInfo.findImport(ImportID);
+		/*InventoryImportReceiptPO importPo = receiptInfo.findImport(ImportID);
 		int area = importPo.getArea();
 		int row= importPo.getRow();
 		int frame = importPo.getFrame();
@@ -148,8 +148,9 @@ public class Inventory {
 		InventoryExportReceiptVO voExport=InventoryTrans.convertPOtoVO(po);
 //		inventorypoFind.setEmptyOrFull("empty");
 		//TODO
-		inventoryData.modify(inventorypoFind);
-		return voExport;
+		inventoryData.modify(inventorypoFind);*/
+//		return voExport;
+		return null;
 	}
 	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
 	    	return receiptInfo.add(exportReceipt);
