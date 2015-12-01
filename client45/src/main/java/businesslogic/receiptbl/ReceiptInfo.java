@@ -11,6 +11,8 @@ import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.ReceiptType;
 import state.ResultMessage;
+import vo.CommodityVO;
+import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
 
 public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer {
@@ -94,5 +96,13 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 	@Override
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
 		return receiptData.findImport(importID);
+	}
+	@Override
+	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
+			throws RemoteException {
+		String id = this.getImportID();
+		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row, frame, position);
+		this.add(importReceiptVO);
+		return importReceiptVO;
 	}
 }

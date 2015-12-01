@@ -56,7 +56,7 @@ public class Inventory {
 		return null;
 	}
 	//重写
-	//get入款单
+	//get入ku dan
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		ArrayList<InventoryVO> VOs = this.getInventoryPOsInDate(beginDate,endDate);
 		//获得receiptInfo
@@ -86,18 +86,15 @@ public class Inventory {
 	
 	//生成入库单
 	public InventoryImportReceiptVO addCommodities(String inventoryID,CommodityVO commodity, int area ,int row,int frame,int position) throws RemoteException {
+		//修改仓库信息
 		CommodityPO cpo = OrderTrans.convertVOtoPO(commodity);
 		InventoryPO ipo = inventoryData.find(inventoryID);
 		CommodityPO[][][][] commos = ipo.getCommos();
 		commos[area][row][frame][position]=cpo;
 		ipo.setCommos(commos);
 		inventoryData.modify(ipo);
-//		OrderPO po = orderInfo
-		//入库单改接口
-		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
-				cpo,area,row,frame,position);
-		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);
-		return voImport;
+		//添加入库单
+		return receiptInfo.addImportReceipt(commodity, area, row, frame, position);
 	}
     public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
     	return receiptInfo.add(importReceipt);

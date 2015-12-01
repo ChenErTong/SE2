@@ -7,6 +7,8 @@ import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.ReceiptType;
 import state.ResultMessage;
+import vo.CommodityVO;
+import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
 
 public interface ReceiptInfo_Inventory {
@@ -28,6 +30,8 @@ public interface ReceiptInfo_Inventory {
 	
 	public ResultMessage add(ReceiptVO po) throws RemoteException;
 	public ResultMessage modify(ReceiptVO po) throws RemoteException;
+	
+	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo,int area,int row,int frame,int position) throws RemoteException;
 	
 	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException;
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException;

@@ -1,16 +1,15 @@
 package vo;
 
-import java.util.ArrayList;
-
 /**
  * @author lxl
  * @version Oct 23,2015
  **/
 public class InventoryVO extends ValueObject {
-	public ArrayList<InventoryPositionVO> commodities;
+	public CommodityVO[][][][] commodities;
 	public String transferID;
-	public InventoryVO(ArrayList<InventoryPositionVO> commodities,String transferID) {
-		this.commodities=commodities;
+	public InventoryVO(String id, int area, int row, int frame, int position,String transferID) {
+		super(id);
+		this.commodities=new CommodityVO[area][row][frame][position];
 		this.transferID=transferID;
 	}
 }
