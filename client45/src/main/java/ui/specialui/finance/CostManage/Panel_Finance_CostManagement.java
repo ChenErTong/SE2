@@ -121,12 +121,14 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 				String[] data = debitReceiptList.getData();
 				BussinessOneDayVO debitbillVO ;
 				if(data!=null){
+					System.out.println("111");
 					debitbillVO =  showController_2.bussinessOneDay(data[0],data[1]);
 					earnings = debitbillVO.earnings;
 					calAll.init(earnings+"");
 				}
 			}
-		}else if(e.getActionCommand().equals("Search")){
+		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
+			System.out.println("111");
 			table = debitReceiptList.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			int rowCount = table.getRowCount();
@@ -145,7 +147,7 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 					Object[] rowData = {debitbillVO.DebitBills};
 					tableModel.addRow(rowData);
 				System.out.println("SearchSucceed!");
-					new MyNotification(this,"共有"+table.getColumnCount()+"个付款单满足条件！",Color.GREEN);
+					new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
 			}

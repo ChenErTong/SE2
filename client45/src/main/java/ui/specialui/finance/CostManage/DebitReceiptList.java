@@ -47,7 +47,7 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		this.add(search);
 		//the table
 				String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
-				MyJTable	table = new MyJTable(headers, false);
+				table = new MyJTable(headers, false);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
 				table.setFont(new MyFont(14));
@@ -75,9 +75,8 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		dateList.setSelectedItem(data[1]);
 	}
 
-	@SuppressWarnings("null")
 	public String[] getData() {
-		String  data[] = null ;
+		String  data[] = new String[2] ;
 		data[0] = (String) branchList.getSelectedItem();
 		data[1] = (String) dateList.getSelectedItem();
 		return data;
