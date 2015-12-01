@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.branchblservice.BranchBLService;
+import state.CommodityState;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
@@ -50,9 +51,9 @@ public class BranchController implements BranchBLService {
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-	public BranchArrivalListVO getBranchArrivalList(String departure, ArrayList<OrderVO> orders) {
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders) {
 		try {
-			return BranchBL.getBranchArrivalList(departure, orders);
+			return BranchBL.getBranchArrivalList(departure,state, orders);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -94,6 +95,17 @@ public class BranchController implements BranchBLService {
 			ArrayList<String> orders, double money) {
 		try {
 			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) {
+		ArrayList<OrderVO> oneOrder = new ArrayList<>();
+		try {
+			return BranchBL.getBranchArrivalList(departure,state, oneOrder);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
