@@ -187,6 +187,7 @@ public void actionPerformed(ActionEvent e) {
 	private void modifyBase() {
 		table = baseInfo.getTable();
 		String[] data = modifyBase.getData();
+		//这里不能getID来new会出错
 		ResultMessage rsg = controller.updateBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
