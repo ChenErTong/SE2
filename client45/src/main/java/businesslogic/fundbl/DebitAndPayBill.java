@@ -10,19 +10,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.PaymentBillPO;
-import state.PayBillItem;
 import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.PaymentBillVO;
 
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
@@ -63,18 +62,14 @@ public class DebitAndPayBill {
 	}
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers, String date)
+	public ResultMessage addDebitBill(DebitBillVO vo)
 			throws RemoteException {
-		String ID = getExpenseID();
-		DebitBillVO vo = new DebitBillVO(ID, type, courierID, money, orderNumbers, date);
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}
 
-	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID, String remarks) throws RemoteException {
-		String ID = getPayID();
-		PaymentBillPO po = new PaymentBillPO(ID, type, money, payerName, items, accountID, remarks);
+	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException {
+		PaymentBillPO po = FundTrans.convertVOtoPO(vo);
 		return debitAndPayBillData.add(po);
 	}
 

@@ -3,13 +3,12 @@ package businesslogic.fundbl;
  * @author LIUXUANLIN
  */
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
-import state.PayBillItem;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.PaymentBillVO;
 
 public class DebitAndPayBillController implements DebitAndPayBillBLService{
     DebitAndPayBill DebitAndPayBL = new DebitAndPayBill();
@@ -45,9 +44,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 
 
 	@Override
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers, String date) {
+	public ResultMessage addDebitBill(DebitBillVO vo) {
 		try {
-			return DebitAndPayBL.addDebitBill(money, courierID, type, orderNumbers, date);
+			return DebitAndPayBL.addDebitBill(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -55,10 +54,9 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 	}
 	
 	@Override
-	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID,String remarks) {
+	public ResultMessage addPayBill(PaymentBillVO vo) {
 		try {
-			return DebitAndPayBL.addPayBill(money, payerName, accountID, type, items, transferReceiptID,remarks);
+			return DebitAndPayBL.addPayBill(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

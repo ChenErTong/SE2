@@ -1,12 +1,11 @@
 package businesslogicservice.fundblservice;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
-import state.PayBillItem;
-import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
+import vo.receiptvo.DebitBillVO;
+import vo.receiptvo.PaymentBillVO;
 
 /**
  * 负责实现资金管理界面所需要的服务
@@ -60,11 +59,10 @@ public interface DebitAndPayBillBLService {
 	 */
 
 	// 建立收款单
-	public ResultMessage addDebitBill(double money, String courierID, ReceiptType type, ArrayList<String> orderNumbers, String date);
+	public ResultMessage addDebitBill(DebitBillVO vo);
 	
 	// 建立付款单
-	public ResultMessage addPayBill(double money, String payerName, String accountID, ReceiptType type,
-			PayBillItem items, String transferReceiptID,String remarks) throws RemoteException;
+	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException;
 
 	/**
 	 * 提交单据进行审批
