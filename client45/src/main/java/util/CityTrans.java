@@ -12,7 +12,7 @@ public class CityTrans {
 		map=new HashMap<String, String>();
 		BufferedReader bReader=null;
 		try {
-			 bReader = new BufferedReader(new FileReader("city.txt"));
+			 bReader = new BufferedReader(new FileReader("config/city.txt"));
 			String line;
 			while((line=bReader.readLine())!=null){
 				String city=line.split(" ")[0];

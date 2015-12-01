@@ -448,7 +448,7 @@ public void showAll(){
 					}
 				}else{
 					//TODO 
-					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[0]), data[2],data[3], null, null));
+					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[0]), data[2],data[3], new ArrayList<>(), new ArrayList<>()));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						new MyNotification(this,"新机构添加成功！",Color.GREEN);
