@@ -9,9 +9,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderTrans;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
+import po.CommodityPO;
 import po.InventoryPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
@@ -53,7 +55,8 @@ public class Inventory {
 		}
 		return null;
 	}
-
+	//重写
+	//get入款单
 	public InventoryViewVO viewInventory(String beginDate, String endDate) throws RemoteException {
 		ArrayList<InventoryVO> VOs = this.getInventoryPOsInDate(beginDate,endDate);
 		//获得receiptInfo
@@ -82,19 +85,19 @@ public class Inventory {
 	}
 	
 	//生成入库单
-	public InventoryImportReceiptVO addCommodities(String ArrivalListID, int area ,int row,int frame,int position) throws RemoteException {
-		TransferArrivalListPO receipt = receiptInfo.findTransferArrivalList(ArrivalListID);
-		String transferID = receipt.getTransferCenterID();
-		String commodities = receipt.getOrders();
-		String destination = receipt.getDestination();
-		String depture = receipt.getDeparture();
-		InventoryPO inventorypo = new InventoryPO(inventoryData.getID(),area,row,frame,position,false,transferID);
+	public InventoryImportReceiptVO addCommodities(String inventoryID,CommodityVO commodity, int area ,int row,int frame,int position) throws RemoteException {
+		CommodityPO cpo = OrderTrans.convertVOtoPO(commodity);
+		InventoryPO ipo = inventoryData.find(inventoryID);
+		CommodityPO[][][][] commos = ipo.getCommos();
+		commos[area][row][frame][position]=cpo;
+		ipo.setCommos(commos);
+		inventoryData.modify(ipo);
+//		OrderPO po = orderInfo
+		//入库单改接口
 		InventoryImportReceiptPO po = new InventoryImportReceiptPO(ID, ReceiptType.INSTOCK, destination, depture,
-				commodities,area,row,frame,position);
+				cpo,area,row,frame,position);
 		InventoryImportReceiptVO voImport=InventoryTrans. convertPOtoVO(po);
-		inventoryData.add(inventorypo);
 		return voImport;
-
 	}
     public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
     	return receiptInfo.add(importReceipt);
@@ -152,7 +155,8 @@ public class Inventory {
 	}
 
 	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) throws RemoteException {
-		int exArea = before.area;
+		//TODO
+		/*		int exArea = before.area;
 		int exRow = before.row;
 		int exFrame = before.frame;
 		int exPosition = before.position;
@@ -168,10 +172,10 @@ public class Inventory {
 //		afterPO.setEmptyOrFull("full");
 		inventoryData.modify(beforePO);
 		inventoryData.modify(afterPO);
-		receiptInfo.add(vo);
+		receiptInfo.add(vo);*/
 		return ResultMessage.SUCCESS;
 	}
-	private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
+	/*private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
 		ArrayList<InventoryPO> POs = inventoryData.find();
 		ArrayList<InventoryVO> vos = new ArrayList<>();
 		for (InventoryPO inventoryPO : POs) {
@@ -181,7 +185,7 @@ public class Inventory {
 			}
 		}
 		return vos;
-	}
+	}*/
 	private boolean inDate(InventoryPO po, String beginDate, String endDate) {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
 			return true;

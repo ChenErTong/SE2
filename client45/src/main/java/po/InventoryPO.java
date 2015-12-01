@@ -11,13 +11,13 @@ public class InventoryPO extends PersistentObject {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2898348688803208513L;
 
-	private CommodityVO[][][][] commos;
+	private CommodityPO[][][][] commos;
 	
 	private String transferID;
 
 	public InventoryPO(String id, int area, int row, int frame, int position,String transferID) {
 		super(id);
-		this.commos = new CommodityVO[area][row][frame][position];
+		this.commos = new CommodityPO[area][row][frame][position];
 		this.transferID=transferID;
 	}
 
@@ -29,10 +29,10 @@ public class InventoryPO extends PersistentObject {
 		this.transferID = transferID;
 	}
 
-	public CommodityVO[][][][] getCommos() {
+	public CommodityPO[][][][] getCommos() {
 		return commos;
 	}
-	public void setCommos(CommodityVO[][][][] commos) {
+	public void setCommos(CommodityPO[][][][] commos) {
 		this.commos = commos;
 	}
 
