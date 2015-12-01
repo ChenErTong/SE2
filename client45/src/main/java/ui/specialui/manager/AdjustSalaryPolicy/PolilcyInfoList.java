@@ -11,6 +11,7 @@ import javax.swing.table.JTableHeader;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -19,8 +20,8 @@ import ui.specialui.manager.FrameManager;
 public class PolilcyInfoList  extends MyTranslucentPanel{
 	private MyJLabel employeeType;
 	private MyJLabel policyType;
-	private MyComboBox employeeTypeBox;
-	private MyComboBox policyTypeBox;
+	private MyJComboBox employeeTypeBox;
+	private MyJComboBox policyTypeBox;
 	private MyJButton search;
 	private MyJTable table;
 	public PolilcyInfoList(Panel_Manager_AdjustSalaryPolicy handle) {
@@ -37,11 +38,11 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		policyType = new MyJLabel(300,10,120,30,"请选择策略类别",14,true);
 		this.add(policyType);
 		
-		 employeeTypeBox= new MyComboBox(140,10,150,30,14,employeeTypes);
+		 employeeTypeBox= new MyJComboBox(140,10,150,30,employeeTypes);
 		this.add(employeeTypeBox);
 		
 		String [] policyTypes = {"按月","计次","提成"};
-		policyTypeBox = new MyComboBox(420,10,90,30,14,policyTypes);
+		policyTypeBox = new MyJComboBox(420,10,90,30,policyTypes);
 		this.add(policyTypeBox);
 		
 		search = new MyJButton(520,10,90,30,"搜索",14);

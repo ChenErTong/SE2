@@ -303,7 +303,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
-					System.out.println("SearchSucceed!");
+				System.out.println("SearchSucceed!");
+				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 				}
 			}else{
 					new MyNotification(this,"请选择查询类型！",Color.RED);

@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -23,7 +24,7 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	 private MyJLabel ChooseType;
-	 private MyComboBox organizationType;
+	 private MyJComboBox organizationType;
 	 private MyJButton search;
 	 private  MyJTable table;
 	public Panel_Manager_OrganizationInfo(Panel_Manager_HandleOrganization handle) {
@@ -37,7 +38,7 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 		ChooseType = new MyJLabel(20,10,120,30, "请选择机构类别",14,true);
 		this.add(ChooseType);
 		
-		 organizationType= new MyComboBox(140,10,150,30,14,organizationTypes);
+		 organizationType= new MyJComboBox(140,10,150,30,organizationTypes);
 		this.add(organizationType);
 		
 		search = new MyJButton(500,10,90,30,"搜索",14);

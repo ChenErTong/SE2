@@ -134,7 +134,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		String[] headers = {};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel =(DefaultTableModel)table.getModel();
-		Object[] rowData = {receipt.type,receipt.transferCenterID,receipt.destination,receipt.departure,receipt.state,receipt.orders};
+		Object[] rowData = {receipt.type,receipt.transferCenterID,receipt.destination,receipt.departure,receipt.state,receipt.order};
 		tableModel.addRow(rowData);
 	}
 	private void deliveryList(DeliveryListVO receipt) {
@@ -142,7 +142,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		String[] headers = {};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-		Object[] rowData = {receipt.type,receipt.orders,receipt.courierName};
+		Object[] rowData = {receipt.type,receipt.order,receipt.courierName};
 		tableModel.addRow(rowData);
 		
 	}
@@ -161,7 +161,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.orders};
+		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.order};
 		tableModel.addRow(rowData);
 	}
 	private void loadingListTable(LoadingListVO receipt) {
@@ -222,7 +222,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
 		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
 			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
-			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orders));
+			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.order));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
 			double sum = 0;
@@ -234,10 +234,10 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.accountID,vo.items,vo.remarks));
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
-			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.orders,vo.courierName));
+			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));
 		}else if(billType.equals(ReceiptType.TRANS_ARRIVAL)){
 			TransferArrivalListVO vo = (TransferArrivalListVO) currentBill;
-			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.orders));
+			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
 		}else if(billType.equals(ReceiptType.INSTOCK)){
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
 			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.depture,vo.destination,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));

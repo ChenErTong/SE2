@@ -9,9 +9,9 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -22,7 +22,7 @@ public class UserInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	 private MyJLabel userIdentity;
-	 private MyComboBox userList;
+	 private MyJComboBox userList;
 	 private MyJButton search;
 	 private MyJTable table;
 	public UserInfo(Panel_Admin_Total handle) {
@@ -40,7 +40,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userIdentity = new MyJLabel(20,10,120,30, "请选择用户类别",14,true);
 		this.add(userIdentity);
 		
-		userList = new MyComboBox(140,10,150,30,14,identity);
+		userList = new MyJComboBox(140,10,150,30,identity);
 		this.add(userList);
 		
 		search = new MyJButton(500,10,90,30,"搜索",14);

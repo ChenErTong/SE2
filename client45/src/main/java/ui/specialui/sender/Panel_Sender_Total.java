@@ -90,7 +90,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 					}
 						orderPool.add(orderVO);
 						System.out.println("SearchSucceed!");
-						new MyNotification(this,"共有"+table_order.getColumnCount()+"个订单满足查新条件！",Color.GREEN);
+						new MyNotification(this,"共有"+table_order.getRowCount()+"个订单满足查新条件！",Color.GREEN);
 					}
 				}else{
 					new MyNotification(this,"请输入查询信息！",Color.RED);

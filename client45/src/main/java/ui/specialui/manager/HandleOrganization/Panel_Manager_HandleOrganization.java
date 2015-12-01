@@ -237,16 +237,10 @@ private void modifyPanel(FrameManager frame) {
 				for(int i=0;i<facilities.size();i++){
 					Object[] rowData_2 = {facilities.get(i)};
 					tableModel.addRow(rowData_2);;
-					}
-		
+				}
 	}
 
-	
-	
-	
-	//InventoryController controller = ControllerFactory.getInventoryController();
-//	TransferController controller  = ControllerFactory.getTransferController();
-//	controller.
+
 	commonButton = new MyJButton(890, 670, 150, 30, "修改机构信息", 20);
 	commonButton.setActionCommand("CheckModify");
 	commonButton.addActionListener(this);

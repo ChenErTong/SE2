@@ -17,6 +17,7 @@ import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -27,12 +28,12 @@ import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
 
 public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel implements ActionListener{
-	private MyComboBox yearBox;
-	private MyComboBox yearBox_2;
-	private MyComboBox monthBox;
-	private MyComboBox monthBox_2;
-	private MyComboBox dayBox;
-	private MyComboBox dayBox_2;
+	private MyJComboBox yearBox;
+	private MyJComboBox yearBox_2;
+	private MyJComboBox monthBox;
+	private MyJComboBox monthBox_2;
+	private MyJComboBox dayBox;
+	private MyJComboBox dayBox_2;
 	private MyJButton check;
 	private MyJTable	table;
 	public Panel_Manager_BusinessPerformance(FrameManager frame_Manager) {
@@ -68,21 +69,21 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 		this.add(day_2);
 		
 		String[] years = {"2015","2014"};
-		yearBox = new MyComboBox(172,40,90,30,16,years);
+		yearBox = new MyJComboBox(172,40,90,30,years);
 		this.add(yearBox);
-		yearBox_2 = new MyComboBox(172,75,90,30,16,years);
+		yearBox_2 = new MyJComboBox(172,75,90,30,years);
 		this.add(yearBox_2);
 		
 		String[] months = {"一月","二月"};
-		monthBox = new MyComboBox(295,40,90,30,16,months);
+		monthBox = new MyJComboBox(295,40,90,30,months);
 		this.add(monthBox);
-		monthBox_2 = new MyComboBox(295,75,90,30,16,months);
+		monthBox_2 = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox_2);
 		
 		String[] days = {"01","02"};
-		dayBox = new MyComboBox(418,40,90,30,16,days);
+		dayBox = new MyJComboBox(418,40,90,30,days);
 		this.add(dayBox);
-		dayBox_2 = new MyComboBox(418,75,90,30,16,days);
+		dayBox_2 = new MyJComboBox(418,75,90,30,days);
 		this.add(dayBox_2);
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
@@ -191,7 +192,7 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==check){
 			if(this.getData()==null){
-				//this.add(new MyNotification());
+				new MyNotification(this,"请选择查询日期！",Color.RED);
 			}else{
 				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
 				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
@@ -220,7 +221,7 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 						}
 					}
 				}else{
-					this.add((new MyNotification(this,"未找到符合条件的单据！",Color.RED)));
+					new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 				}
 				}
 

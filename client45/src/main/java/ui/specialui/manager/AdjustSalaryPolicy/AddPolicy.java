@@ -2,12 +2,13 @@ package ui.specialui.manager.AdjustSalaryPolicy;
 
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
 
 public class AddPolicy extends MyTranslucentPanel{
-	private MyComboBox employeeType;
-	private MyComboBox policyType;
+	private MyJComboBox employeeType;
+	private MyJComboBox policyType;
 	private MyEmptyTextArea policyRule;
 	public AddPolicy() {
 		super(680,100,550,240);
@@ -20,10 +21,10 @@ public class AddPolicy extends MyTranslucentPanel{
 		this.add(new MyJLabel(285,50,90,30,"策略类别",18,true));
 		this.add(new MyJLabel(25,140,90,30,"策略规则",18,true));
 		String [] employeeList = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};
-		employeeType = new MyComboBox(115,50,150,30,14,employeeList);
+		employeeType = new MyJComboBox(115,50,150,30,employeeList);
 		this.add(employeeType);
 		String [] policyList = {"按月","计次","提成"};
-		policyType = new MyComboBox(375,50,150,30,14,policyList);
+		policyType = new MyJComboBox(375,50,150,30,policyList);
 		this.add(policyType);
 		
 		policyRule = new MyEmptyTextArea(115,140,410,90);

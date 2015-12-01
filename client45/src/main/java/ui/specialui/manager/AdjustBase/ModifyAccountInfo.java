@@ -1,13 +1,13 @@
 package ui.specialui.manager.AdjustBase;
 
-import ui.myui.MyComboBox;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class ModifyAccountInfo extends MyTranslucentPanel{
-	private MyComboBox startCityList;
-	private MyComboBox arrivalCityList;
+	private MyJComboBox startCityList;
+	private MyJComboBox arrivalCityList;
 	private MyJTextField distances;
 	private MyJTextField price;
 	public ModifyAccountInfo() {
@@ -24,11 +24,11 @@ public class ModifyAccountInfo extends MyTranslucentPanel{
 		
 		String [] startCity = {"所有城市"};
 		String [] arrivalCity = {"所有城市"};
-		startCityList = new MyComboBox(115,50,150,30,16,startCity);
+		startCityList = new MyJComboBox(115,50,150,30,startCity);
 		this.add(startCityList);
 		startCityList.setSelectedIndex(0);
 
-		arrivalCityList = new MyComboBox(375,50,150,30,16,arrivalCity);
+		arrivalCityList = new MyJComboBox(375,50,150,30,arrivalCity);
 		this.add(arrivalCityList);
 		arrivalCityList.setSelectedIndex(0);
 	

@@ -12,11 +12,13 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.openingstockbl.OpeningStockController;
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
+import state.ResultMessage;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
 import vo.OpeningStockVO;
 @SuppressWarnings("unused")
@@ -146,50 +148,10 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 		searchButton = new MyJButton(0, 280, 40, 130,
 				"<html>查<br/>看<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
 		searchButton.addActionListener(this);
-		/*searchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Finance_OpenningStock.this.searchPanel(frame);
-				
-			}
-		});*/
 		this.add(searchButton);
 	}
 	
 	
-
-	/* void insertPanel(Frame_Finance frame) {
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
-	this.initButton(frame);
-
-	
-//	openningStockInfo = new Panel_Finance_OpenningStockInfo();
-	//openningStockInfo.add(new MyJLabel(230,5,120,30,"新增期初账目",18,true));
-//	this.add(openningStockInfo);
-	
-	
-	commonButton = new MyJButton(890, 670, 150, 30, "新增期初账目", 20);
-	commonButton.setActionCommand("AddNewStock");
-	commonButton.addActionListener(frame);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-
-private void searchPanel(Frame_Finance frame) {
-	
-	this.removeAll();
-	this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
-	this.initButton(frame);
-	
-	//openningStockInfo = new Panel_Finance_OpenningStockInfo();
-	//openningStockInfo.setUneditable();
-	//openningStockInfo.add(new MyJLabel(230,5,150,30,"查看期初账目",18,true));
-	//this.add(openningStockInfo);
-	
-	this.repaint();
-}*/
 public void showAll(){
 	OpeningStockBLService controller = new OpeningStockController();
 	ArrayList<OpeningStockVO> openingStockVO = controller.show();
@@ -259,16 +221,18 @@ public void showAll(){
 	}
  }
 
-
-
 @Override
 public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
 	if(e.getSource()==searchButton){
 		this.showAll();
 	}else if(e.getSource()==insertButton){
 		OpeningStockBLService controller = new OpeningStockController();
-		controller.add();
+		ResultMessage rsg = controller.add();
+		if(rsg.equals(ResultMessage.SUCCESS)){
+			new MyNotification(this,"期初建账成功！",Color.GREEN);
+		}else{
+			new MyNotification(this,"期初建账失败！",Color.RED);
+		}
 	}
 	
 }

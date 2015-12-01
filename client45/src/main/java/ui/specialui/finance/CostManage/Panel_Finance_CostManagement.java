@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.recordbl.RecordController;
 import ui.myui.MyJButton;

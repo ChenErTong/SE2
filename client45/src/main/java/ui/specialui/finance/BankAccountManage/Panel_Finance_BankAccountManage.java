@@ -194,7 +194,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的账户！",Color.RED);
 			}else{
-			//	this.add(new MyNotification(this,"正在删除账户！",Color.GREEN));
+				new MyNotification(this,"正在删除账户！",Color.GREEN);
 				this.deleteAccount();
 			}
 		}

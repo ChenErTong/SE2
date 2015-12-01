@@ -7,13 +7,14 @@ import ui.Config.JComboBoxOfChina;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class OrganizationDetails extends MyTranslucentPanel{
 	private MyJTextField[] fields;
-	private MyComboBox organizationType ;
+	private MyJComboBox organizationType ;
 	@SuppressWarnings("rawtypes")
 	private JComboBox provincesBox;
 	@SuppressWarnings("rawtypes")
@@ -35,7 +36,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		
 	//	this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
 		String[] organizationTypes = {"营业厅","中转中心"};
-		organizationType = new MyComboBox(100,60,140,30,18,organizationTypes);
+		organizationType = new MyJComboBox(100,60,140,30,organizationTypes);
 		this.add(organizationType);
 		
 	//	this.add(new MyJLabel(250,100,100,30,"机构人数",18,true));

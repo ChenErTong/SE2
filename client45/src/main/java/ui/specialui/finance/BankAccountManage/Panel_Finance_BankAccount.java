@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyJTable;
@@ -24,7 +25,7 @@ import vo.BankAccountVO;
 public class Panel_Finance_BankAccount extends MyTranslucentPanel {
 
 	private static final long serialVersionUID = 1L;
-	private MyComboBox findType;
+	private MyJComboBox findType;
 	private MyJTextField searchField;
 	private MyJButton searchButton;
 	private   MyJTable	table;
@@ -48,7 +49,7 @@ private void initComponent(Panel_Finance_BankAccountManage manage) {
 	//this.add(searchField_2);
 	
 	String[] types = {"账户ID","账户名称","账户余额","模糊查找"};
-	findType = new MyComboBox(10,40,120,30,16,types);
+	findType = new MyJComboBox(10,40,120,30,types);
 	this.add(findType);
 	
 	searchButton = new MyJButton(480,40,60,30,"搜索",16);

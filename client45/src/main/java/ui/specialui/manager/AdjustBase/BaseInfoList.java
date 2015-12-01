@@ -8,17 +8,17 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.manager.FrameManager;
+
 
 public class BaseInfoList extends MyTranslucentPanel{
-	private MyComboBox startCityList;
-	private MyComboBox arrivalCityList;
+	private MyJComboBox startCityList;
+	private MyJComboBox arrivalCityList;
 	private MyJButton search;
 	private MyJTable table;
 	public BaseInfoList(Panel_Manager_AdjustBase handle) {
@@ -27,15 +27,15 @@ public class BaseInfoList extends MyTranslucentPanel{
 	}
 	private void initComponent(Panel_Manager_AdjustBase handle) {
 
-			String [] startCity = {"所有城市"};
-			String [] arrivalCity = {"所有城市"};
+			String [] startCity = {"上海","南京","杭州","广州"};
+			String [] arrivalCity = {"上海","南京","杭州","广州"};
 			this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
 			this.add(new MyJLabel(270,10,120,30,"选择到达城市",16,true));
 			
-			startCityList = new MyComboBox(140,10,120,30,16,startCity);
+			startCityList = new MyJComboBox(140,10,120,30,startCity);
 			this.add(startCityList);
 	
-			arrivalCityList = new MyComboBox(390,10,150,30,16,arrivalCity);
+			arrivalCityList = new MyJComboBox(390,10,150,30,arrivalCity);
 			this.add(arrivalCityList);
 			search = new MyJButton(550,10,70,30,"搜索",16);
 			search.setActionCommand("SearchBase");
@@ -74,7 +74,6 @@ public class BaseInfoList extends MyTranslucentPanel{
 	
 	}
 
-	@SuppressWarnings("null")
 	public String []getData() {
 		String  data[] = new String[2] ;
 		data[0]= (String) startCityList.getSelectedItem();

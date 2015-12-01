@@ -69,36 +69,4 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 		}
 	}
 	
-	/**
-	 * 添加新用户
-	 * @return 是否成功添加
-	 * 与bl层连接
- 	 */
-	/*private boolean addUser(){
-		switch(totalPanel.addUser()){
-		case 0: new MyNotification(this, "成功添加新用户", Color.GREEN); return true;
-		case 1: new MyNotification(this, "请完成新用户信息填写", Color.RED); break;
-		}
-		return false;
-	}
-
-	/**
-	 * 修改用户信息
-	 * @return 是否修改成功
-	 * 与bl层连接
-	 */
-	/*private boolean modifyUserInfo(){
-		switch(totalPanel.modifyUser()){
-		case 0: new MyNotification(this, "成功修改用户信息", Color.GREEN); return true;
-		case 1: new MyNotification(this, "请完成用户信息修改", Color.RED); break;
-		}
-		return false;
-	}
-	
-	private boolean deleteUser(){
-		switch(totalPanel.deleteUser()){
-		case 0: new MyNotification(this, "删除成功", Color.GREEN); return true;
-		}
-		return false;
-	}*/
 }

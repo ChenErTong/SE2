@@ -16,6 +16,7 @@ import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -28,11 +29,11 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private MyComboBox yearBox;
+	private MyJComboBox yearBox;
 	//private MyComboBox yearBox_2;
-	private MyComboBox monthBox;
+	private MyJComboBox monthBox;
 	//private MyComboBox monthBox_2;
-	private MyComboBox dayBox;
+	private MyJComboBox dayBox;
 	//private MyComboBox dayBox_2;
 	private MyJButton check;
 	private MyJTable	table;
@@ -69,19 +70,19 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 		//this.add(day_2);
 		
 		String[] years = {"2015","2014"};
-		yearBox = new MyComboBox(172,75,90,30,16,years);
+		yearBox = new MyJComboBox(172,75,90,30,years);
 		this.add(yearBox);
 	//	yearBox_2 = new MyComboBox(172,75,90,30,16,years);
 		//this.add(yearBox_2);
 		
-		String[] months = {"一月","二月"};
-		monthBox = new MyComboBox(295,75,90,30,16,months);
+		String[] months = {"一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
+		monthBox = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox);
 		//monthBox_2 = new MyComboBox(295,75,90,30,16,months);
 		//this.add(monthBox_2);
 		
 		String[] days = {"01","02"};
-		dayBox = new MyComboBox(418,75,90,30,16,days);
+		dayBox = new MyJComboBox(418,75,90,30,days);
 		this.add(dayBox);
 		//dayBox_2 = new MyComboBox(418,75,90,30,16,days);
 		//this.add(dayBox_2);
@@ -215,6 +216,7 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 					String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
 					
 					tableModel.addRow(rowData3);
+					
 				}
 			}
 			}

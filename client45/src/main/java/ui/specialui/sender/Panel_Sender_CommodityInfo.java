@@ -9,9 +9,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
 import ui.myui.MyFont;
-import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
-import ui.myui.MyJTextField;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 /**

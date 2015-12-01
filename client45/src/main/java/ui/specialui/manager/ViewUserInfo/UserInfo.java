@@ -10,6 +10,7 @@ import javax.swing.table.JTableHeader;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -17,7 +18,7 @@ import ui.myui.MyTranslucentPanel;
 public class UserInfo extends MyTranslucentPanel{
 
 	private MyJButton search ;
-	private MyComboBox userList;
+	private MyJComboBox userList;
 	private MyJTable	table;
 	public UserInfo(Panel_Manager_ViewUser handle) {
 		super(50,100,610,240);
@@ -36,7 +37,7 @@ public class UserInfo extends MyTranslucentPanel{
 		this.add(search);
 		
 		
-		userList = new MyComboBox(155,5,150,30,14,identity);
+		userList = new MyJComboBox(155,5,150,30,identity);
 		this.add(userList);
 		//the table
 		String[] headers = {"编号", "姓名", "职务", "出生日期", "身份证号","任职时间","薪水","联系方式","车辆编号","订单编号"};

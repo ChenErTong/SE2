@@ -597,9 +597,9 @@ String ID = receipt.ID;
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
-		for(int i=0;i<receipt.orders.size();i++){
-			text = text+": "+receipt.orders.get(i)+"\n";
-		}
+	///	for(int i=0;i<receipt.order.size();i++){
+		//	text = text+": "+receipt.order.get(i)+"\n";
+		//}
 		return text;
 	}
 
@@ -647,9 +647,9 @@ String ID = receipt.ID;
 			text = text +blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
-		for(int i=0;i<receipt.orders.size();i++){
-			text = text+": "+receipt.orders.get(i)+"\n";
-		}
+		//for(int i=0;i<receipt.orders.size();i++){
+			//text = text+": "+receipt.orders.get(i)+"\n";
+		//}
 		return null;
 	}
 
@@ -714,9 +714,9 @@ String ID = receipt.ID;
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
-		for(int i=0;i<receipt.orders.size();i++){
-			text = text+": "+receipt.orders.get(i)+"\n";
-		}
+//		for(int i=0;i<receipt.orders.size();i++){
+	//		text = text+": "+receipt.orders.get(i)+"\n";
+		//}
 		return text;
 	}
 

@@ -50,9 +50,7 @@ public class Panel_Manager_AdjustBase extends MyJPanel implements ActionListener
 		this.add(addBase);
 		modifyBase = new ModifyAccountInfo();
 		this.add(modifyBase);
-		//baseDetails = new BaseDetails();
-		//baseDetails.setEnabled(false);
-		//this.add(baseDetails);
+	
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new BaseInfoList(this);
 		this.add(baseInfo);
@@ -123,7 +121,7 @@ public void actionPerformed(ActionEvent e) {
 			this.deleteBase();
 		}
 	}else if(e.getActionCommand().equals("ModifyBase")){
-	//	System.out.println("111");
+	
 		table = baseInfo.getTable();
 		if(table.getSelectedRowCount() == 0){
 			new MyNotification(this,"请先选择要修改常量！",Color.RED);
@@ -170,7 +168,6 @@ public void actionPerformed(ActionEvent e) {
 		basePool.clear();
 		baseID  = "";
 		
-		//"模糊查找", "账户编号(ID)", "账户名称", "账户余额
 		ArrayList<BaseVO> baseVO = new ArrayList<BaseVO>();
 		String[] data = baseInfo.getData();
 		if(data!=null){
