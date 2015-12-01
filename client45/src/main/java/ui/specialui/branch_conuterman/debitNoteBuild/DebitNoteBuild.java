@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import state.ReceiptType;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
@@ -18,7 +17,6 @@ import vo.accountvo.AccountVO;
 import vo.receiptvo.DebitBillVO;
 import businesslogic.ControllerFactory;
 import businesslogicservice.accountblservice.AccountBLService;
-import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 /**

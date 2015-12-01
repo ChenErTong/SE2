@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -71,6 +73,10 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			//从车辆装车管理界面进入装车单界面
 			LoadingListVO loadingList = ((VehicleLoading) subPanel).produceLoadingList();
 			if(loadingList != null){
+				// TODO
+				BranchBLService branchController = ControllerFactory.getBranchController();
+				branchController.save(loadingList);
+				branchController.submit(loadingList);
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = new LoadingListUI(loadingList);
@@ -79,9 +85,10 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("produceArrivalList")){
 			//从接收派件货物界面进入到达单界面
 			if(this.produceArrivalList()){
+				String orderID = ((ArrivalCommodityInfoCheck) subPanel).getOrderID();
 				subPanel.setVisible(false);
 				this.getLayeredPane().remove(subPanel);
-				subPanel = new SendCommodity(this);
+				subPanel = new SendCommodity(this, orderID);
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));			}
 		}else if(e.getActionCommand().equals("produceDeliveryList")){
 			//从到达单界面进入接收派件货物界面

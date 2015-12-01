@@ -1,6 +1,7 @@
 package ui.specialui.branch_conuterman;
 
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJPanel;
 
 public class Panel_Branch_Total extends MyJPanel{
@@ -9,7 +10,6 @@ public class Panel_Branch_Total extends MyJPanel{
 	public Panel_Branch_Total(Frame_Branch frame){
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		
 		this.initComponent(frame);
 	}
 	

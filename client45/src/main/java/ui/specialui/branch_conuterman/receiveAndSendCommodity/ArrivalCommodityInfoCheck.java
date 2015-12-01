@@ -2,8 +2,6 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
 import state.CommodityState;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
@@ -15,6 +13,7 @@ import ui.myui.MyJTable;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.CommodityVO;
 import vo.OrderVO;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -50,7 +49,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 				}
 			}
 		});
-//	TODO	this.setOrderList();
+		this.setOrderList();
 		this.add(new MyJScrollPane(250, 150, 340, 370, orders));
 
 		orderInfo = new MyEmptyTextArea(690, 150, 340, 370);
@@ -96,14 +95,11 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	 */
 	public int produceArrivalList() {
 		//未选中任何订单
-		//if(row == -1) return 1;
-		// TODO
+		if(row == -1) return 1;
 		//选中订单，将其转化成到达单
-		/**
-		 * @author Ann
-		 * order应该是列表啊，不能每次传一个order生成到达单啊
-		 */
-		branchController.getBranchArrivalList(null, CommodityState.getType((String)commodityState.getSelectedItem()), order);
+		BranchArrivalListVO arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
+		branchController.save(arrivalList);
+		branchController.submit(arrivalList);
 		row = -1;
 		return 0;
 	}
@@ -117,5 +113,9 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		for (String orderID : branchController.getAllOrderNumber()) {
 			orders.addRow(new String[]{orderID});
 		}
+	}
+	
+	public String getOrderID(){
+		return order.ID;
 	}
 }

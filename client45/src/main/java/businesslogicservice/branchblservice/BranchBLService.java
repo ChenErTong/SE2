@@ -8,6 +8,7 @@ import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
+import vo.accountvo.AccountVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
@@ -49,12 +50,12 @@ public interface BranchBLService extends BLService{
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟
 	 * @return 钀ヤ笟鍘呮淳浠跺崟
-	 * @param orders 璁㈠崟缂栧彿
+	 * @param order 璁㈠崟缂栧彿
 	 * @param courierName 娲鹃�佸憳濮撳悕
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public DeliveryListVO getDeliveryList( String  orders, String courierName);
+	public DeliveryListVO getDeliveryList(String order, String courierName);
 	
 	/**
 	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�
@@ -87,4 +88,10 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 23,2015
 	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, double money);
+	
+	/**
+	 * 得到营业厅所有快递员信息
+	 * @return
+	 */
+	public ArrayList<AccountVO> getAllCouriers();
 }
