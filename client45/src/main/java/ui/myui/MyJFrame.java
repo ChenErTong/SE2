@@ -23,6 +23,8 @@ public class MyJFrame extends JFrame{
 	protected MyButton returnButton;
 	//用户ID
 	protected String ID;
+	
+	public static  String frameName;
 	/**
 	 * 透明渐变启动界面
 	 */
