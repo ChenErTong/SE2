@@ -2,6 +2,7 @@ package ui.specialui.manager.HandleOrganization;
 
 import javax.swing.JComboBox;
 
+import ui.GetDate;
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
@@ -25,66 +26,52 @@ public class OrganizationDetails extends MyTranslucentPanel{
 
 	private void initComponent() {
 		fields = new MyJTextField[4];
-		this.add(new MyJLabel(10, 60, 90, 30, "机构编号", 18, true));
+		this.add(new MyJLabel(10, 60, 90, 30, "机构类别", 18, true));
 		fields[0] = new MyJTextField(100,60,140,30);
 		//fields[0].setVisible(true);
 		fields[0].setOnlyInteger(10);
 		this.add(fields[0]);
 		
-		this.add(new MyJLabel(250,60,90,30,"机构名称",18,true));
+		this.add(new MyJLabel(250,60,90,30,"成立日期",18,true));
 		fields[1] = new MyJTextField(340,60,140,30);
+		fields[1].setText(GetDate.getTime());
 		this.add(fields[1]);
 		
-		this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
+	//	this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
 		String[] organizationTypes = {"营业厅","中转中心"};
-		organizationType = new MyComboBox(100, 100, 140, 30,18,organizationTypes);
+		organizationType = new MyComboBox(100,60,140,30,18,organizationTypes);
 		this.add(organizationType);
 		
-		this.add(new MyJLabel(250,100,100,30,"机构人数",18,true));
-		fields[2] = new MyJTextField(340,100,140,30);
-		fields[2].setOnlyInteger(11);
-		this.add(fields[2]);
+	//	this.add(new MyJLabel(250,100,100,30,"机构人数",18,true));
+		//fields[2] = new MyJTextField(340,100,140,30);
+		//fields[2].setOnlyInteger(11);
+		//this.add(fields[2]);
 	
-		this.add(new MyJLabel(10, 140, 90, 30, "联系电话",18,true));
-		fields[3] = new MyJTextField(100,140,150,30);
-		fields[3].setOnlyInteger(11);
-		this.add(fields[3]);
+		//this.add(new MyJLabel(10, 140, 90, 30, "联系电话",18,true));
+		//fields[3] = new MyJTextField(100,140,150,30);
+		//fields[3].setOnlyInteger(11);
+		//this.add(fields[3]);
 		
 		
-		this.add(new MyJLabel(10,180,90,30,"机构地址:",18,true));
-		this.add(new MyJLabel(10,250,90,30,"详细地址:",18,true));
-		this.add(new MyJLabel(100,210,25,30,"省",18,true));
-		this.add(new MyJLabel(300,210,25,30,"市",18,true));
-		//MyJLabel district = new MyJLabel(660,400,25,30,"区",18,true);
-		//this.add(district);
-	//	address = new MyEmptyTextArea(100,260,400,150);
-		//this.add(address);
-	
-		  
-		//构建中国各大城市的三级联动下拉框
+		this.add(new MyJLabel(10,100,90,30,"机构地址:",18,true));
+		this.add(new MyJLabel(10,170,90,30,"详细地址:",18,true));
+		this.add(new MyJLabel(100,130,25,30,"省",18,true));
+		this.add(new MyJLabel(300,130,25,30,"市",18,true));
+		
 	    JComboBoxOfChina box = new JComboBoxOfChina();
 	    
-	 
 	    provincesBox = box.getCombobox_privince();
-	    provincesBox.setBounds(130,210,120,30);
+	    provincesBox.setBounds(130,130,120,30);
 	    provincesBox.setFont(new MyFont(14,true));
 	    provincesBox.setVisible(true);
 	    this.add(provincesBox);
 	    
 	    //构造市级下拉框
 	    citiesBox =box.getCombobox_city();
-	    citiesBox.setBounds(325,210,120,30);
+	    citiesBox.setBounds(325,130,120,30);
 	    citiesBox.setFont(new MyFont(14,true));
 	    citiesBox.setVisible(true);
 	    this.add(citiesBox);
-	    
-	    //构建区级下拉框
-	    //JComboBox combobox_area = box.getCombobox_area();
-	    //districtsBox = box.getCombobox_area();
-	    //combobox_area.setBounds(100, 150, 150, 30);
-	    //this.add(combobox_area);*/
-	
-		
 	}
 
 	private static final long serialVersionUID = 1L;

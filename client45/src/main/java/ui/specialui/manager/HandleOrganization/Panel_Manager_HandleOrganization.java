@@ -64,14 +64,12 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		this.add(organizationInfo);
 		
 		organizationDetails = new OrganizationDetails();
-	//	organizationDetails.setUneditable();
 		this.add(organizationDetails);
 		this.initButton(frame_Manager);
 	}
 	
 	private void initButton(FrameManager frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 130,
-				"<html>添<br/>加<br/>机<br/>构<br/></html>", 18);
+		MyJButton insertButton = new MyJButton(55, 660, 130, 40,"添加机构",16);
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Manager_HandleOrganization.this.insertPanel(frame);
@@ -80,40 +78,35 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		});
 		this.add(insertButton);
 
-		MyJButton modifyButton = new MyJButton(0, 280, 40, 130,
-				"<html>修<br/>改<br/>机<br/>构<br/>信<br/>息<br/></html>", 18);
+		MyJButton modifyButton = new MyJButton(200,660,130,40,
+				"修改所选机构", 16);
 		modifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Manager_HandleOrganization.this.modifyPanel(frame);
 				
 			}
 		});
+		modifyButton.setActionCommand("ModifyOrganizationInformation");
+		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(0, 410, 40, 130,
-				"<html>查<br/>看<br/>机<br/>构<br/></html>", 18);
+		MyJButton searchButton = new MyJButton(345,660,150,40,
+				"查看所选机构信息", 16);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Manager_HandleOrganization.this.searchPanel(frame);
 				
 			}
 		});
+		searchButton.setActionCommand("ViewOrganization");
+		searchButton.addActionListener(this);
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(0, 540, 40, 110,
-				"<html>删<br/>除<br/>机<br/>构<br/></html>", 18);
-		deleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Manager_HandleOrganization.this.deletePanel(frame);
-				
-			}
-		});
+		MyJButton deleteButton = new MyJButton(510,660,130,40,
+				"删除所选机构", 16);
+		deleteButton.setActionCommand("DeleteOrganization");
+		deleteButton.addActionListener(this);
 		this.add(deleteButton);
-		
-		check = new MyJButton(450,670,200,40,"查看所选机构信息",20);
-		check.setActionCommand("ConfirmCheck");
-		check.addActionListener(this);
-		this.add(check);
 	}
 	
 
@@ -148,7 +141,7 @@ private void modifyPanel(FrameManager frame) {
 	this.add(organizationDetails);
 	
 	commonButton = new MyJButton(890, 670, 150, 30, "修改机构信息", 20);
-	commonButton.setActionCommand("ModifyorganizationInformation");
+	commonButton.setActionCommand("CheckModify");
 	commonButton.addActionListener(this);
 	this.add(commonButton);
 	
@@ -169,29 +162,6 @@ private void searchPanel(FrameManager frame) {
 	
 	this.repaint();
 }
-
-private void deletePanel(FrameManager frame) {
-	
-	this.removeAll();
-	this.add(new MyJLabel(550,20, 210, 90, "公司机构信息管理", 24, true));
-	this.add(organizationInfo);
-	this.initButton(frame);
-	
-	organizationDetails = new OrganizationDetails();
-	organizationDetails.setUneditable();
-	organizationDetails.add(new MyJLabel(230,5,120,30,"删除机构",18,true));
-	this.add(organizationDetails);
-	
-	commonButton = new MyJButton(890, 670, 120, 30, "删除机构", 20);
-	commonButton.setActionCommand("DeleteOrganization");
-	commonButton.addActionListener(this);
-	this.add(commonButton);
-	
-	this.repaint();
-}
-
-
-
 
 /**
  * 显示所有的机构
@@ -282,18 +252,25 @@ public void showAll(){
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
 						this.showAll();
-						new MyNotification(this,"账户添加成功！",Color.GREEN);
-
+						new MyNotification(this,"新机构添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"新机构添加失败！",Color.RED);
+					}
 				}else{
 					//TODO 
 					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[6]), data[2],data[3], null, null));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
-						new MyNotification(this,"账户添加成功！",Color.GREEN);
+						new MyNotification(this,"新机构添加成功！",Color.GREEN);
 			
-				}		
+					}else{
+						new MyNotification(this,"新机构添加失败！",Color.RED);
+					}	
+				}
 			}
 		}else if(e.getActionCommand().equals("DeleteOrganization")){
+			System.out.println("111");
+			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的机构！",Color.RED);
 			}else{
@@ -306,51 +283,51 @@ public void showAll(){
 				new MyNotification(this,"请先选择要修改的账户！",Color.RED);
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
-				case TRANSFER:Object[] data2 = new String[7];
-				organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-				data2[0] = organizationID;
-				data2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
-				data2[3] =  organizationPool.get(table.getSelectedRow()).date;
-				data2[2] = organizationPool.get(table.getSelectedRow()).number;
-				data2[4] = transferPool.get(table.getSelectedRow()).inventories;
-				data2[5] = transferPool.get(table.getSelectedRow()).accounts;
-				data2[6] =transferPool.get(table.getSelectedRow()).address;
-				String[] data3 = (String[]) data;
-				organizationDetails.setData(data3);
-				case BRANCH:
-					Object[] data_2 = new String[7];
-					organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-					data_2[0] = organizationID;
-					data_2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
-					data_2[3] =  organizationPool.get(table.getSelectedRow()).date;
-					data_2[2] = organizationPool.get(table.getSelectedRow()).number;
-					data_2[4] = branchPool.get(table.getSelectedRow()).facilities;
-					data_2[5] = branchPool.get(table.getSelectedRow()).accounts;
-					data_2[6] =branchPool.get(table.getSelectedRow()).address;
-					String[] data2_2 = (String[]) data_2;
-					organizationDetails.setData(data2_2);
+					case TRANSFER:Object[] data2 = new String[7];
+							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
+							data2[0] = organizationID;
+							data2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
+							data2[3] =  organizationPool.get(table.getSelectedRow()).date;
+							data2[2] = organizationPool.get(table.getSelectedRow()).number;
+							data2[4] = transferPool.get(table.getSelectedRow()).inventories;
+							data2[5] = transferPool.get(table.getSelectedRow()).accounts;
+							data2[6] =transferPool.get(table.getSelectedRow()).address;
+							String[] data3 = (String[]) data2;
+							organizationDetails.setData(data3);
+					case BRANCH:
+							Object[] data_2 = new String[7];
+							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
+							data_2[0] = organizationID;
+							data_2[1] =  organizationPool.get(table.getSelectedRow()).organizationType;
+							data_2[3] =  organizationPool.get(table.getSelectedRow()).date;
+							data_2[2] = organizationPool.get(table.getSelectedRow()).number;
+							data_2[4] = branchPool.get(table.getSelectedRow()).facilities;
+							data_2[5] = branchPool.get(table.getSelectedRow()).accounts;
+							data_2[6] =branchPool.get(table.getSelectedRow()).address;
+							String[] data2_2 = (String[]) data_2;
+							organizationDetails.setData(data2_2);
 				}
 			}
 		
-		}else if(e.getActionCommand().equals("ConfirmCheck")){
+		}else if(e.getActionCommand().equals("CheckModify")){
 			table =organizationInfo.getTable();
-			
+			System.out.println("111");
 			organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
-			if(table.getSelectedRow()==0){
-				this.add(new MyNotification(this,"请先选择需要修改的账户！",Color.RED));
-			}else{
+		//	if(table.getSelectedRow()==0){
+			//	new MyNotification(this,"请先选择需要修改的机构！",Color.RED);
+			//}else{
 				if(organizationDetails.getData()==null){
-					this.add(new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED));
+					new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 				}else{
-					this.add(new MyNotification(this,"正在修改账户信息！",Color.GREEN));
+					new MyNotification(this,"正在修改机构信息！",Color.GREEN);
 					this.modifyOrganization();
 				}
-			}
+			//}
 		}
 
 	}
-}
-}
+
+
 	
 
 
