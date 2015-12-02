@@ -18,7 +18,7 @@ public class UserTrans {
 		UserIdentity iden = vo.iden;
 		String authority = vo.authority;
 		String address = vo.address;
-		return new UserPO(ID, password, username, phoneNumber, iden, authority, address);
+		return new UserPO(ID, username, password, iden, phoneNumber, authority, address);
 	}
 
 	public static UserVO transPOtoVO(UserPO po) {
@@ -26,7 +26,7 @@ public class UserTrans {
 			return null;
 		}
 		String ID = po.getId();
-		String username = po.getUsername();
+		String username = po.getUserName();
 		String password = po.getPassword();
 		String phoneNumber = po.getPhoneNumber();
 		UserIdentity iden = po.getIden();

@@ -70,7 +70,7 @@ public class User {
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 		ArrayList<UserPO> pos = userData.find();
 		for (UserPO po : pos) {
-			if (po.getUsername().equals(loginInfo.username)){
+			if (po.getUserName().equals(loginInfo.username)){
 				if (po.getPassword().equals(loginInfo.password)) {
 					return po.getIden();
 				}else {

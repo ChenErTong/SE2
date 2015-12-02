@@ -28,71 +28,43 @@ public class UserPO extends PersistentObject{
 	private String  authority;
 	/**地址*/
 	private String address;
-
-
-	/**
-	 * 
-	 * @param id 用户id
-	 * @param password 用户密码
- 	 * @param userName 用户名字
-	 * @param phoneNumber 联系电话
-	 * @param iden 用户身份
-	 * @param authority 用户权限
-	 * @param address 用户地址
-	 * @return 
-	 */
-	public UserPO(String id,String password,String userName,String phoneNumber,UserIdentity iden,String authority,String address){
+	public UserPO(String id, String userName, String password, UserIdentity iden, String phoneNumber, String authority,
+			String address) {
 		super(id);
-		this.id = id;
-		this.password = password;
 		this.userName = userName;
-		this.phoneNumber =phoneNumber;
+		this.password = password;
 		this.iden = iden;
+		this.phoneNumber = phoneNumber;
 		this.authority = authority;
 		this.address = address;
-		
 	}
-
-
 	public String getId() {
 		return id;
 	}
-
-
-
-	public String getUsername() {
-		return this.userName;
+	public String getUserName() {
+		return userName;
 	}
-
-	
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
-
 	public UserIdentity getIden() {
-		return this.iden;
+		return iden;
 	}
-
-	public String getAuthority() {
-		return authority;
-	}
-
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-
+	public String getAuthority() {
+		return authority;
+	}
 	public String getAddress() {
 		return address;
 	}
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 	
+	
+
 
 	
 }
