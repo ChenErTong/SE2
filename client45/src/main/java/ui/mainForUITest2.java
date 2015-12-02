@@ -21,8 +21,8 @@ public class mainForUITest2 {
 		
 //		new Frame_Branch("0");
 		
-		new	Frame_Transfer("0");
+//		new	Frame_Transfer("0");
 		
-//		new Frame_Inventory("0");
+		new Frame_Inventory("0");
 	}
 }
