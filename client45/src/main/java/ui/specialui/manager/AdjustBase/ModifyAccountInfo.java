@@ -67,8 +67,8 @@ public class ModifyAccountInfo extends MyTranslucentPanel{
 
 	public String[] getData() {
 		String[] data = new String[4];
-		data[0] = startCityList.getSelectedIndex()+"";
-		data[1] = arrivalCityList.getSelectedIndex()+"";
+		data[0] = (String) startCityList.getSelectedItem();
+		data[1] = arrivalCityList.getSelectedItem()+"";
 		data[2] = distances.getText();
 		data[3] = price.getText();
 		return data;

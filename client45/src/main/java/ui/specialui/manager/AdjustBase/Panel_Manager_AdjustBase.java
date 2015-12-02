@@ -187,7 +187,11 @@ public void actionPerformed(ActionEvent e) {
 	private void modifyBase() {
 		table = baseInfo.getTable();
 		String[] data = modifyBase.getData();
-		ResultMessage rsg = controller.updateBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
+		if(data[0].equals(data[1])){
+			new MyNotification(this,"出发城市和到达城市不能相同！",Color.RED);
+			return;
+		}
+		ResultMessage rsg = controller.updateBase(new BaseVO(basePool.get(table.getSelectedRow()).ID,data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();

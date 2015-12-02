@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
+import businesslogic.accountbl.AccountController;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
 import ui.myui.MyJButton;
@@ -17,6 +18,7 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import vo.UserVO;
+import vo.accountvo.AccountVO;
 
 
 public class Panel_Admin_Total extends MyJPanel implements ActionListener{
@@ -51,6 +53,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.add(userInfo);
 		
 		userDetails = new UserDetails();
+		userDetails.setUneditable();
 		this.add(userDetails);
 		this.initButton(frame_Admin);
 	}	
@@ -64,6 +67,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		
 		userDetails = new UserDetails();
 		userDetails.add(new MyJLabel(230,5,120,30,"新增用户",18,true));
+		
 		this.add(userDetails);
 		
 		
@@ -81,7 +85,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.add(userInfo);
 		this.initButton(frame);
 		
-		userDetails = new UserDetails();
+	userDetails = new UserDetails();
 		userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
 		this.add(userDetails);
 		
@@ -102,12 +106,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		
 		userDetails = new UserDetails();
 		userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
+		userDetails.setUneditable();
 		this.add(userDetails);
 		
 		this.repaint();
 	}
 
-	private void deletePanel(Frame_Admin frame) {
+/*	private void deletePanel(Frame_Admin frame) {
 		
 		this.removeAll();
 		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
@@ -119,7 +124,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		userDetails.add(new MyJLabel(230,5,120,30,"删除用户",18,true));
 		this.add(userDetails);
 		this.repaint();
-	}
+	}*/
 
 	private void initButton(Frame_Admin frame) {
 		MyJButton insertButton = new MyJButton(75, 660, 130, 40,
@@ -158,12 +163,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 
 		MyJButton deleteButton = new MyJButton(465,  660, 130, 40,
 				"删除用户", 18);
-		deleteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Total.this.deletePanel(frame);
-				
-			}
-		});
 		deleteButton.setActionCommand("DeleteUser");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
@@ -204,31 +203,43 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			String[] data = userDetails.getData();
 			if(userDetails.getData()==null){
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-			}else{
+			}else{//String id, String password, String userName, String phoneNumber, String iden, String authority,
+				//String address
 				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],data[4],data[5],data[6]+data[7]+data[8]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
+					userDetails.refresh();
 					new MyNotification(this,"用户添加成功！",Color.GREEN);
+				
+					
 				}else{
 					new MyNotification(this,"用户添加失败！",Color.RED);
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
-			table = userInfo.getTable();
+				table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
-				System.out.println(userID);
+			//	System.out.println(userID);
 				String[] data = new String[9];
 				data[0] = userID;
-				data[1] = userPool.get(table.getSelectedRow()).userName;
-				data[2] = userPool.get(table.getSelectedRow()).password;
-				data[3] = userPool.get(table.getSelectedRow()).iden;
-				data[4] = userPool.get(table.getSelectedRow()).authority;
-				data[5] = userPool.get(table.getSelectedRow()).phoneNumber;
-				data[6] = userPool.get(table.getSelectedRow()).address;
+				data[1] = userPool.get(table.getSelectedRow()).password;
+				data[2] = userPool.get(table.getSelectedRow()).userName;
+				data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
+				data[4] = userPool.get(table.getSelectedRow()).iden;
+				data[5] = userPool.get(table.getSelectedRow()).authority;
+				data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
+				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
+				data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
+				
+				userDetails = new UserDetails();
+				userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
+				userDetails.setData(data);
+				//userDetails.setUneditable();
+				this.add(userDetails);
 				userDetails.setData(data);
 			}
 		}else if(e.getActionCommand().equals("DeleteUser")){
@@ -247,27 +258,29 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				String[] data = new String[9];
-				data[0] = userPool.get(table.getSelectedRow()).id;
+				data[0] = userID;
 				data[1] = userPool.get(table.getSelectedRow()).password;
 				data[2] = userPool.get(table.getSelectedRow()).userName;
 				data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
 				data[4] = userPool.get(table.getSelectedRow()).iden;
 				data[5] = userPool.get(table.getSelectedRow()).authority;
-				data[8] = userPool.get(table.getSelectedRow()).address;
+				data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
+				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
+				data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
 				userDetails.setData(data);
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
 			userID= userPool.get(table.getSelectedRow()).id;
-			if(table.getSelectedRow()==0){
-				new MyNotification(this,"请先选择需要修改的用户！",Color.RED);
-			}else{
+			//if(table.getSelectedRow()==0){
+				//new MyNotification(this,"请先选择需要修改的用户！",Color.RED);
+			//}else{
 				if(userDetails.getData()==null){
 					new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改用户信息！",Color.GREEN);
 					this.modifyUser();
-				}
+				//s}
 			}
 		}else if(e.getActionCommand().equals("SearchUser")){
 			table = userInfo.getTable();
@@ -282,27 +295,29 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			userID = "";
 			
 			// {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-			userController = ControllerFactory.getUserController();
-			ArrayList<UserVO> userVO;
+			//--TODO 缺少接口
+		 AccountController	accountController = ControllerFactory.getAccountController();
+			ArrayList<AccountVO> userVO;
 			String data = userInfo.getData()+"";
 			if(data!=""){
 				switch(Integer.parseInt(data)){
-					case 1 : userVO = userController.show();break;
-					case 2 : userVO = userController.show();break;
-					case 3 : userVO = userController.show();break;
-					case 4 : userVO = userController.show();break;
-					case 5 : userVO = userController.show();break;
-					case 6 : userVO = userController.show();break;
-					case 7 : userVO = userController.show();break;
-					default : userVO = userController.show();break;
+					case 1 : userVO = accountController.show("总经理");break;
+					case 2 : userVO = accountController.show("快递员");break;
+					case 3 : userVO = accountController.show("中转库存人员");break;
+					case 4 : userVO = accountController.show("中转中心业务员");break;
+					case 5 : userVO = accountController.show("营业厅业务员");break;
+					case 6 : userVO = accountController.show("财务人员");break;
+					case 7 : userVO = accountController.show("管理员");break;
+					default : userVO = accountController.show();break;
 					
 				}
 			
 				for(int i = 0; i < userVO.size(); i++){
-				String[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
-						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
-				tableModel.addRow(rowData);
-				userPool.add(userVO.get(i));
+			//	String[] rowData = {userVO.get(i)。,userVO.get(i).userName,userVO.get(i).password,
+				//		userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
+				//	String[] rowData = {userVO.get(i).ID,use}
+				//tableModel.addRow(rowData);
+				//userPool.add(userVO.get(i));
 				System.out.println("SearchSucceed!");
 				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 				}

@@ -1,5 +1,6 @@
 package ui.specialui.admin;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -7,9 +8,10 @@ import javax.swing.JComboBox;
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
 import ui.Config.JComboBoxOfChina;
-import ui.myui.MyComboBox;
+
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -19,13 +21,13 @@ public class UserDetails extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private MyJTextField[] fields;
-	private MyComboBox userIdentityBox;
-	private MyComboBox branchID;
+	private MyJComboBox userIdentityBox;
+	private MyJComboBox branchID;
 	@SuppressWarnings("rawtypes")
 	private JComboBox provincesBox;
 	@SuppressWarnings("rawtypes")
 	private JComboBox citiesBox;
-	private MyComboBox userAuthorityBox;
+	private MyJComboBox userAuthorityBox;
 	private MyEmptyTextArea address;
 	private OrganizationController controller = ControllerFactory.getOrganizationController();
 	public UserDetails() {
@@ -44,7 +46,7 @@ public class UserDetails extends MyTranslucentPanel{
 		for(int i=0;i<branchIDs.size();i++){
 			trans[i] = branchIDs.get(i);
 		}
-		branchID = new MyComboBox(110,60,130,30,18,trans);
+		branchID = new MyJComboBox(110,60,130,30,trans);
 		this.add(branchID);
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
@@ -68,12 +70,12 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(300,210,25,30,"市",18,true));
 		
 		
-		String [] identity = {"请选择用户类型","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-		userIdentityBox = new MyComboBox(100,140,150,30,14,identity);
+		String [] identity = {"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
+		userIdentityBox = new MyJComboBox(100,140,150,30,identity);
 		this.add(userIdentityBox);
 		
-		String [] authority = {"请选择权限类型","管理员权限","总经理权限","普通员工权限"};
-		userAuthorityBox = new MyComboBox(340,140,150,30,14,authority);
+		String [] authority = {"管理员权限","总经理权限","普通员工权限","高级财务权限"};
+		userAuthorityBox = new MyJComboBox(340,140,150,30,authority);
 		this.add(userAuthorityBox);
 		  
 		//构建中国各大城市的三级联动下拉框
@@ -98,7 +100,9 @@ public class UserDetails extends MyTranslucentPanel{
 	    //districtsBox = box.getCombobox_area();
 	    //combobox_area.setBounds(100, 150, 150, 30);
 	    //this.add(combobox_area);*/
-	
+	    address = new MyEmptyTextArea(100,250,410,100);
+	    address.setBackground(Color.WHITE);
+	    this.add(address);
 
 	    
 	}
@@ -121,7 +125,7 @@ public class UserDetails extends MyTranslucentPanel{
 	public void setData(String[] data) {
 		branchID.setSelectedItem(data[0]);
 		for(int i = 0; i < 3; i++){
-			fields[i].setText(data[i]);
+			fields[i].setText(data[i+1]);
 		}
 		userIdentityBox.setSelectedItem(data[4]);
 		userAuthorityBox.setSelectedItem(data[5]);
@@ -147,7 +151,7 @@ public class UserDetails extends MyTranslucentPanel{
 		String[] data = new String[9];
 		data[0] = (String) branchID.getSelectedItem();
 		for (int i = 0; i < 3; i++) {			
-			if((data[i] = fields[i].getText()).equals("")) return null;
+			if((data[i+1] = fields[i].getText()).equals("")) return null;
 		}
 		data[4] = (String)userIdentityBox.getSelectedItem();
 		data[5] = (String)userAuthorityBox.getSelectedItem();

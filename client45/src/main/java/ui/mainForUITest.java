@@ -41,8 +41,8 @@ public class mainForUITest {
 
 		//Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
 
-//		Frame_Admin adminFrame = new Frame_Admin();
-//		adminFrame.setVisible(true);
+//	Frame_Admin adminFrame = new Frame_Admin(id);
+	//	adminFrame.setVisible(true);
 
 
 
