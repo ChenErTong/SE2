@@ -26,12 +26,14 @@ public class TransferVO extends OrganizationVO {
 	public TransferVO(String organizationID, String address,String date, ArrayList<AccountVO> accounts,
 			ArrayList<InventoryVO> inventories) {
 		super(organizationID, address, accounts.size(),OrganizationType.TRANSFER);
-		this.accounts = new ArrayList<AccountVO>();
-		this.inventories = new ArrayList<InventoryVO>();
+		this.accounts = accounts;
+		this.inventories = inventories;
 	}
 
 	public TransferVO(String organizationID, String address, OrganizationType organizationType) {
 		super(organizationID, address,0, organizationType);
+		this.accounts = new ArrayList<AccountVO>();
+		this.inventories = new ArrayList<InventoryVO>();
 	}
 	
 	

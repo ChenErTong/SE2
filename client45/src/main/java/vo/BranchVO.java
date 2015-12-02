@@ -34,15 +34,14 @@ public class BranchVO extends OrganizationVO{
 	public BranchVO(String id, String date, String address, ArrayList<AccountVO> accounts,
 			ArrayList<FacilityVO> facilities) {
 		super(id, address, accounts.size(),OrganizationType.BRANCH);
-		this.id = id;
-		this.date = date;
-		this.address = address;
-		this.accounts = new ArrayList<AccountVO> ();
-		this.facilities = new ArrayList<FacilityVO>();
+		this.accounts = accounts;
+		this.facilities = facilities;
 	}
 
 	public BranchVO(String organizationID, String address, OrganizationType organizationType) {
 		super(organizationID, address, 0, organizationType);
+		this.accounts = new ArrayList<AccountVO> ();
+		this.facilities = new ArrayList<FacilityVO>();
 	}
 	
 	
