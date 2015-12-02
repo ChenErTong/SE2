@@ -1,7 +1,6 @@
 package inventory;
 
 import po.receiptpo.InventoryExportReceiptPO;
-import state.ExpressType;
 import state.ResultMessage;
 import vo.InventoryVO;
 import vo.receiptvo.InventoryExportReceiptVO;
@@ -36,7 +35,6 @@ public class MockInventoryExport {
 		return "TransID";
 	}
 
-	@SuppressWarnings("null")
 	public InventoryExportReceiptPO buildImport() {
 		return null;
 /*		InventoryVO iv = null;
