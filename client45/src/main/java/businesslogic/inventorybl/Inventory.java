@@ -195,6 +195,26 @@ public class Inventory {
 		}
 		return false;
 	}*/
+	
+	public double inventoryUseRate(String transferID) throws RemoteException{
+		double positionUsed=0;
+		double positionNotUsed=0;
+		double useRate=0;
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		for (CommodityPO[][][] areas : commos) {
+			for (CommodityPO[][] rows : areas) {
+				for (CommodityPO[] frames : rows) {
+					for (CommodityPO commoInPosition : frames) {
+						if(commoInPosition==null)	positionNotUsed+=1;
+						else									positionUsed+=1;
+					}
+				}
+			}
+		}
+		useRate=positionUsed/(positionUsed+positionNotUsed);
+		return useRate;
+	}
 }
 
 

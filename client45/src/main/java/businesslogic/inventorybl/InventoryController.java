@@ -131,6 +131,16 @@ public class InventoryController implements InventoryBLService {
 		}
 		return null;
 	}
+
+	@Override
+	public double inventoryAlarm(String transferID) {
+		try {
+			return InventoryBL.inventoryUseRate(transferID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 
 }
