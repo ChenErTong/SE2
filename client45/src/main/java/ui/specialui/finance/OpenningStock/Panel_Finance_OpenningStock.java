@@ -42,7 +42,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 	private void initComponent(Frame_Finance frame_Finance) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
 		this.initButton(frame_Finance);
-		String[] headers = {"机构编号", "日期","机构类型","机构地址","机构人数"};
+		String[] headers = {"机构编号", "成立日期","机构类型","机构人数","机构地址","机构人员信息","仓库/转运工具信息"};
 		transferTable= new MyJTable(headers,true);
 		transferTable.setBackground(new Color(40, 42, 66));
 		transferTable.setForeground(Color.WHITE);
@@ -53,7 +53,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 		transferTable.setDefaultRenderer(Object.class, tcr);
 
 		
-		String[] headers2 = {"人员编号", "日期","姓名","职务权限","工作时间"};
+		String[] headers2 = {"人员编号", " 日期","姓名","职务权限","工作时间"};
 		employTable = new MyJTable(headers2,true);
 		employTable.setBackground(new Color(40, 42, 66));
 		employTable.setForeground(Color.WHITE);
@@ -94,35 +94,35 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 		bankAccountTable.setDefaultRenderer(Object.class, tcr4);
 		
 		JScrollPane jsp = new JScrollPane(transferTable);
-		jsp.setBounds(80, 90, 1085,  512/5);
+		jsp.setBounds(80, 90, 1085,  512/5+16);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setVisible(true);
 		this.add(jsp);
 		
 		JScrollPane jsp2 = new JScrollPane(employTable);
-		jsp2.setBounds(80, 90+ (512/5)*1 + 10, 1085, 512/5 );
+		jsp2.setBounds(80, 90+ (512/5)*1 + 10+16, 1085, 512/5+16 );
 		jsp2.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp2.setOpaque(false);
 		jsp2.setVisible(true);
 		this.add(jsp2);
 		
 		JScrollPane jsp3 = new JScrollPane(facilityTable);
-		jsp3.setBounds(80, 90 + (512/5)*2 + 20, 1085, 512/5 );
+		jsp3.setBounds(80, 90 + (512/5)*2 + 20+16*2, 1085, 512/5+16 );
 		jsp3.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp3.setOpaque(false);
 		jsp3.setVisible(true);
 		this.add(jsp3);
 		
 		JScrollPane jsp4 = new JScrollPane(inventoryTable);
-		jsp4.setBounds(80, 90 + (512/5)*3 + 30 ,1085, 512/5);
+		jsp4.setBounds(80, 90 + (512/5)*3 + 30 +16*3,1085, 512/5+16);
 		jsp4.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp4.setOpaque(false);
 		jsp4.setVisible(true);
 		this.add(jsp4);
 		
 		JScrollPane jsp5 = new JScrollPane(bankAccountTable);
-		jsp5.setBounds(80, 90+(512/5)*4+40, 1085, 512/5);
+		jsp5.setBounds(80, 90+(512/5)*4+40+16*3+10, 1085, 512/5+16);
 		jsp5.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp5.setOpaque(false);
 		jsp5.setVisible(true);
@@ -188,7 +188,13 @@ public void showAll(){
 			
 			for(int j = 0; j < avo.transfers.size(); j++){
 				Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
-						, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress()};
+						, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress(),
+						avo.transfers.get(j).getAccounts(),avo.transfers.get(j).getInventories()};
+				tableModel.addRow(rowData);
+			}
+			for(int j = 0;j<avo.branchs.size();j++){
+				Object[] rowData = {avo.branchs.get(j).getOrganizationID(),avo.date,avo.branchs.get(j).getOrganizationType(),avo.branchs.get(j).getNumberOfPerson(),avo.branchs.get(j).getAddress(),avo.branchs.get(j).getAccounts(),
+						avo.branchs.get(j).getFacilities()};
 				tableModel.addRow(rowData);
 			}
 			

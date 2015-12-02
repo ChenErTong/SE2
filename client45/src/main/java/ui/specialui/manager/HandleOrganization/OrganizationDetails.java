@@ -1,10 +1,11 @@
 package ui.specialui.manager.HandleOrganization;
 
+import java.awt.Color;
+
 import javax.swing.JComboBox;
 
 import ui.GetDate;
 import ui.Config.JComboBoxOfChina;
-import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
@@ -69,6 +70,10 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	    citiesBox.setFont(new MyFont(14,true));
 	    citiesBox.setVisible(true);
 	    this.add(citiesBox);
+	    
+	    address = new MyEmptyTextArea(100,170,410,100);
+	    address.setBackground(Color.WHITE);
+	    this.add(address);
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -78,7 +83,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		organizationType.setEditable(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
-	//	address.setEditable(false);
+		address.setEditable(false);
 	}
 	
 	public void setData(String[] data) {
@@ -86,7 +91,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		fields[0].setText(data[1]);
 		provincesBox.setSelectedItem(data[2]);
 		citiesBox.setSelectedItem(data[3]);
-	//	address.setText(data[7]);	
+		address.setText(data[4]);	
 	}
 
 	public void refresh() {
@@ -95,7 +100,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		}
 		
 		organizationType.setSelectedItem(null);
-	//	address.setText(null);
+		address.setText(null);
 		
 	}
 
@@ -105,7 +110,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		data[1] = fields[0].getText();
 		data[2] = (String) provincesBox.getSelectedItem();
 		data[3] = (String) citiesBox.getSelectedItem();
-		//data[7] = address.getText();
+		data[4] = address.getText();
 		for(int i = 0;i<5;i++){
 			if(data[i].equals("")) return null;
 		}

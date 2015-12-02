@@ -1,5 +1,7 @@
 package ui.specialui.manager.AdjustSalaryPolicy;
 
+import java.awt.Color;
+
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -27,6 +29,7 @@ public class ModifyPolicy extends MyTranslucentPanel{
 		this.add(policyType);
 		
 		policyRule = new MyEmptyTextArea(115,140,410,90);
+		policyRule.setBackground(Color.WHITE);
 		this.add(policyRule);
 	}
 	public void setData(Object[] data) {

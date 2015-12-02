@@ -22,13 +22,17 @@ public class Panel_Manager_ReceiptInfo extends MyTranslucentPanel{
 		this.add(title);
 		
 		ta = new MyEmptyTextArea(10,60,530,460);
-		//ta.setEditable(false);
+		ta.setEditable(false);
 		ta.setBackground(getBackground());
 		this.add(ta);
 	}
 	public MyEmptyTextArea getTa(){
+		ta = new MyEmptyTextArea(10,60,530,460);
+		ta.setEditable(true);
+		this.add(ta);
 		return ta;
 	}
+		
 	private static final long serialVersionUID = 1L;
 
 }

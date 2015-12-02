@@ -75,6 +75,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		this.add(organizationInfo);
 		
 		organizationDetails = new OrganizationDetails();
+		organizationDetails.setUneditable();
 		this.add(organizationDetails);
 		this.initButton(frame_Manager);
 	}
@@ -435,9 +436,9 @@ public void showAll(){
 			if(data==null){
 				new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 			}else{
-				if(data[4].equals("营业厅")){
+				if(data[0].equals("营业厅")){
 					//TODO 
-					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[6]),data[0], data[1], null, null));
+					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[0]),data[0], data[1], null, null));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
 						this.showAll();
@@ -447,7 +448,7 @@ public void showAll(){
 					}
 				}else{
 					//TODO 
-					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[6]), data[2],data[3], null, null));
+					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[0]), data[2],data[3], null, null));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						new MyNotification(this,"新机构添加成功！",Color.GREEN);
@@ -458,7 +459,7 @@ public void showAll(){
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteOrganization")){
-			System.out.println("111");
+			//System.out.println("111");
 			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的机构！",Color.RED);

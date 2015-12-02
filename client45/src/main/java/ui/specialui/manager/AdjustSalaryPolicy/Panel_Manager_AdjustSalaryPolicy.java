@@ -74,7 +74,6 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);
-		//this.initButton(frameManager);
 		this.showAll();
 		
 	}
@@ -108,12 +107,10 @@ public class Panel_Manager_AdjustSalaryPolicy extends MyJPanel implements Action
 @Override
 public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};*/
 	if(e.getActionCommand().equals("CheckAdd")){/*		String [] policyList = {"按月","计次","提成"};*/
-		System.out.println("111");
 		String[] data = addPolicy.getData();
 		if(addPolicy.getData()==null){
 			this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
 		}else if(data[0].equals("0")&&data[1].equals("2")){
-			System.out.println("111");
 			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("AddSucceed!");
@@ -122,7 +119,7 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			}else{
 				new MyNotification(this,"策略添加失败！",Color.RED);
 			}
-		}else if(data[0].equals("6")&&data[1].equals("1")){
+		}else if(data[0].equals("5")&&data[1].equals("1")){
 			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();
@@ -155,7 +152,6 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			this.add(new MyNotification(this,"请先选择要修改的策略！",Color.RED));
 		}else{
 			policyID = policyPool.get(table.getSelectedRow()).ID;
-			//System.out.println(accountID);
 			Object[] data = new Object[3];
 			data[0] = policyPool.get(table.getSelectedRow()).userIdentity;
 			data[1] = policyPool.get(table.getSelectedRow()).salaryPolicy;
@@ -165,16 +161,12 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 	}else if(e.getActionCommand().equals("CheckModify")){
 		table = policyInfoList.getTable();
 		policyID = policyPool.get(table.getSelectedRow()).ID;
-		//if(table.getSelectedRow()==0){
-			//this.add(new MyNotification(this,"请先选择需要修改的策略！",Color.RED));
-		//}else{
 			if(modifyPolicy.getData()==null){
 				new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED);
 			}else{
 				new MyNotification(this,"正在修改策略信息！",Color.GREEN);
 				this.modifyPolicy();
 			}
-		//}
 	}else if(e.getActionCommand().equals("Search")){
 		table = policyInfoList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();

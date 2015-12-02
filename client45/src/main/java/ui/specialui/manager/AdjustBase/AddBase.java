@@ -11,15 +11,17 @@ public class AddBase extends MyTranslucentPanel{
 	private MyJTextField distances;
 	private MyJTextField price;
 	public AddBase() {
-		super(680,100,550,240);
+		super(680,100,580,240);
 		this.initComponent();
 	}
 	private void initComponent() {
-		this.add(new MyJLabel(225,10,100,30,"添加常量",20,true));
+		this.add(new MyJLabel(240,10,100,30,"添加常量",20,true));
 		this.add(new MyJLabel(25,50,90,30,"出发城市",18,true));
 		this.add(new MyJLabel(285,50,90,30,"到达城市",18,true));
 		this.add(new MyJLabel(25,140,90,30,"两地距离",18,true));
-		this.add(new MyJLabel(285,140,90,30,"运输单价",18,true));
+		this.add(new MyJLabel(295,140,80,30,"运输单价",18,true));
+		this.add(new MyJLabel(265,140,20,30,"km",18,true));
+		this.add(new MyJLabel(525,140,50,30,"元/km",18,true));
 		
 		String [] startCity = {"上海","南京","杭州","广州"};
 		String [] arrivalCity = {"上海","南京","杭州","广州"};

@@ -11,19 +11,21 @@ public class ModifyAccountInfo extends MyTranslucentPanel{
 	private MyJTextField distances;
 	private MyJTextField price;
 	public ModifyAccountInfo() {
-		super(680,390,550,240);
+		super(680,390,580,240);
 		this.initComponent();
 	}
 
 	private void initComponent() {
-		this.add(new MyJLabel(225,10,100,30,"修改常量",20,true));
+		this.add(new MyJLabel(240,10,100,30,"修改常量",20,true));
 		this.add(new MyJLabel(25,50,90,30,"出发城市",18,true));
 		this.add(new MyJLabel(285,50,90,30,"到达城市",18,true));
 		this.add(new MyJLabel(25,140,90,30,"两地距离",18,true));
-		this.add(new MyJLabel(285,140,90,30,"运输单价",18,true));
+		this.add(new MyJLabel(295,140,80,30,"运输单价",18,true));
+		this.add(new MyJLabel(265,140,20,30,"km",18,true));
+		this.add(new MyJLabel(525,140,50,30,"元/km",18,true));
 		
-		String [] startCity = {"所有城市"};
-		String [] arrivalCity = {"所有城市"};
+		String [] startCity = {"上海","南京","杭州","广州"};
+		String [] arrivalCity = {"上海","南京","杭州","广州"};
 		startCityList = new MyJComboBox(115,50,150,30,startCity);
 		this.add(startCityList);
 		startCityList.setSelectedIndex(0);

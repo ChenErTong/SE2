@@ -91,7 +91,7 @@ private void showAll() {
 	ArrayList<BaseVO> baseVO = controller.show();
 	
 	for(int i = 0; i < baseVO.size(); i++){
-		String[] rowData = {baseVO.get(i).cityFrom,baseVO.get(i).cityTo,baseVO.get(i).distance+"",baseVO.get(i).price+""};
+		String[] rowData = {baseVO.get(i).cityFrom,baseVO.get(i).cityTo,baseVO.get(i).distance+"km",baseVO.get(i).price+"元/km"};
 		tableModel.addRow(rowData);
 		basePool.add(baseVO.get(i));
 	}
@@ -100,8 +100,12 @@ private void showAll() {
 public void actionPerformed(ActionEvent e) {
 	if(e.getActionCommand().equals("CheckAdd")){
 		String[] data = addBase.getData();
+		if(data[0].equals(data[1])){
+			new MyNotification(this,"出发城市和到达城市不能相同！",Color.RED);
+			return;
+		}
 		if(addBase.getData()==null){
-			this.add(new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED));
+			new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 		}else{
 			ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
@@ -126,36 +130,23 @@ public void actionPerformed(ActionEvent e) {
 		if(table.getSelectedRowCount() == 0){
 			new MyNotification(this,"请先选择要修改常量！",Color.RED);
 		}else{
-			//System.out.println(basePool.size());
 			baseID = basePool.get(table.getSelectedRow()).ID;
-			//System.out.println(baseID);
 			String[] data = new String[4];
 			data[0] = basePool.get(table.getSelectedRow()).cityFrom;
-		//	System.out.println(data[0]);
 			data[1] = basePool.get(table.getSelectedRow()).cityTo;
-			//System.out.println(data[1]);
 			data[2] = basePool.get(table.getSelectedRow()).distance+"";
-			//System.out.println(data[2]);
 			data[3] = basePool.get(table.getSelectedRow()).price+"";
-			//System.out.println(data[3]);
 			modifyBase.setData(data);
 		}
 	}else if(e.getActionCommand().equals("CheckModify")){
-		System.out.println("111");
 		table = baseInfo.getTable();
 		baseID = basePool.get(table.getSelectedRow()).ID;
-		//if(table.getSelectedRow()==0){
-			//new MyNotification(this,"请先选择需要修改的常量！",Color.RED);
-		//}else{
 			if(modifyBase.getData()==null){
-				System.out.println("111");
 				new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 			}else{
-				System.out.println("111");
 				new MyNotification(this,"正在修改常量信息！",Color.GREEN);
 				this.modifyBase();
 			}
-		//}
 	}else if(e.getActionCommand().equals("Search")){
 		table = baseInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -183,7 +174,7 @@ public void actionPerformed(ActionEvent e) {
 			tableModel.addRow(rowData);
 			basePool.add(baseVO.get(i));
 			System.out.println("SearchSucceed!");
-				new MyNotification(this,"共有"+table.getColumnCount()+"个常量满足条件！",Color.GREEN);
+				new MyNotification(this,"共有"+table.getRowCount()+"个常量满足条件！",Color.GREEN);
 			}	
 			}else {
 				new MyNotification(this,"请输入查询的常量类型！",Color.RED);
@@ -194,7 +185,6 @@ public void actionPerformed(ActionEvent e) {
 
 
 	private void modifyBase() {
-		System.out.println("111");
 		table = baseInfo.getTable();
 		String[] data = modifyBase.getData();
 		ResultMessage rsg = controller.updateBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
@@ -207,8 +197,6 @@ public void actionPerformed(ActionEvent e) {
 			}
 	
 	}
-
-
 	private void deleteBase() {
 		table =  baseInfo.getTable();
 	

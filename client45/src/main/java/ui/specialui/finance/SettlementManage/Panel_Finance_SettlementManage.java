@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
+import state.PayBillItem;
+import state.ReceiptType;
 import state.ResultMessage;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -74,7 +76,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 		this.add(modifyButton);
 		
 		add = new MyJButton(868,346,120,30,"确认添加",16);	
-		add.setActionCommand("AddPayReceieptt");
+		add.setActionCommand("AddPayReceipt");
 		add.addActionListener(this);
 		this.add(add);
 		
@@ -146,27 +148,51 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 			}
 	
 		}else if(e.getActionCommand().equals("AddPayReceipt")){
+			System.out.println("111");
 			controller = ControllerFactory.getDebitAndPayBillController();
 			String[] data = addPaybill.getData();
 			if(data==null){
 					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
 			}else{
 				int i = Integer.parseInt(data[4]);
-				switch(i){
-				case 0:
-				case 1:
-				case 2:
-				case 3:	
+				switch(i){//String iD, String date, ReceiptType type, double money, String payerName, String accountID,	PayBillItem items, String remarks
+				case 0:ResultMessage rsg = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+						PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.RentMoney,data[3]));
+						if(rsg.equals(ResultMessage.SUCCESS)){
+							System.out.println("Add Succeed!");
+							this.showAll();
+							new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"付款单添加失败！",Color.RED);
+						}
+				case 1:ResultMessage rsg1 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+						PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.CARRIGE,data[3]));
+						if(rsg1.equals(ResultMessage.SUCCESS)){
+							System.out.println("Add Succeed!");
+							this.showAll();
+							new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"付款单添加失败！",Color.RED);
+						}
+				case 2:ResultMessage rsg2 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+						PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.SALARY,data[3]));
+						if(rsg2.equals(ResultMessage.SUCCESS)){
+							System.out.println("Add Succeed!");
+							this.showAll();
+							new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"付款单添加失败！",Color.RED);
+						}
+				case 3:	ResultMessage rsg3 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+						PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.BONUS,data[3]));
+						if(rsg3.equals(ResultMessage.SUCCESS)){
+							System.out.println("Add Succeed!");
+							this.showAll();
+							new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"付款单添加失败！",Color.RED);
+						}
 				}
-			//	ResultMessage rsg = controller.addPayBill(Double.parseDouble(data[1]), data[0], data[2], ReceiptType.PAY, PayBillItem.BONUS, "", data[4]);
-				/*ResultMessage rsg = controller.addPayBill(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]);
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					//System.out.println("AddSucceed!");
-					this.showAll();
-					this.add(new MyNotification(this,"付款单添加成功！",Color.GREEN));
-				}else{
-					this.add(new MyNotification(this,"付款单添加失败！",Color.RED));
-				}*/
 			}
 		}else if(e.getActionCommand().equals("ModifyPayReceipt")){
 			table = payReceiptList.getTable();
@@ -223,15 +249,49 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 		controller = ControllerFactory.getDebitAndPayBillController();
 		
 		String[] data = modifyPaybill.getData();
-		ResultMessage rsg=  controller.updateDraft(new PaymentBillVO(data[0], data[1], null, getAlignmentX(), data[2], data[3], null, data[5]));
-		
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("ModifySucceed!");
-			this.showAll();
-			new MyNotification(this,"付款单修改成功！",Color.GREEN);		
+		if(data==null){
+			new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
 		}else{
-			new MyNotification(this,"付款单修改失败！",Color.RED);
+		int i = Integer.parseInt(data[4]);
+		switch(i){//String iD, String date, ReceiptType type, double money, String payerName, String accountID,	PayBillItem items, String remarks
+		case 0:ResultMessage rsg = controller.updateDraft(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+				PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.RentMoney,data[3]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					System.out.println("Add Succeed!");
+					this.showAll();
+					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"付款单修改失败！",Color.RED);
+				}
+		case 1:ResultMessage rsg1 = controller.updateDraft(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+				PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.CARRIGE,data[3]));
+				if(rsg1.equals(ResultMessage.SUCCESS)){
+					System.out.println("Add Succeed!");
+					this.showAll();
+					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"付款单修改失败！",Color.RED);
+				}
+		case 2:ResultMessage rsg2 = controller.updateDraft(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+				PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.SALARY,data[3]));
+				if(rsg2.equals(ResultMessage.SUCCESS)){
+					System.out.println("Add Succeed!");
+					this.showAll();
+					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"付款单修改失败！",Color.RED);
+				}
+		case 3:	ResultMessage rsg3 = controller.updateDraft(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+				PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.BONUS,data[3]));
+				if(rsg3.equals(ResultMessage.SUCCESS)){
+					System.out.println("Add Succeed!");
+					this.showAll();
+					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"付款单修改失败！",Color.RED);
+				}
 		}
+	}
 	
 	}
 }

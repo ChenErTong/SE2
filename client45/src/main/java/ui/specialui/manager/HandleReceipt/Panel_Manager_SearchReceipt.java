@@ -13,17 +13,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import ui.myui.MyColor;
 import ui.myui.MyComboBox;
 import ui.myui.MyJButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
-
+import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	private JTable table;
+	DefaultTableModel model;
+	
 	private MyJButton selectButton;
-	private MyComboBox receiptTypeList;
-	private MyComboBox receiptStateList;
+	private MyJComboBox receiptTypeList;
+	private MyJComboBox receiptStateList;
 	private static final long serialVersionUID = 1L;
 	public Panel_Manager_SearchReceipt(Panel_Manager_HandleReceipt handle) {
 		super(30,100, 655, 540);
@@ -48,10 +52,10 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		
 		this.add(selectButton);
 
-		receiptTypeList = new MyComboBox(135,10,150,30,14,receiptState);
+		receiptTypeList = new MyJComboBox(135,10,150,30,receiptState);
 		this.add(receiptTypeList);
 		
-		receiptStateList = new MyComboBox(395,10,150,30,14,receiptType);
+		receiptStateList = new MyJComboBox(395,10,150,30,receiptType);
 		this.add(receiptStateList);
 		this.initTable();
 		
@@ -105,7 +109,8 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);	
 		JTableHeader head = table.getTableHeader();
-		
+	//	head.setForeground(Color.WHITE);
+		head.setBackground(MyColor.getColor());
 		
 		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
 		firsetColumn.setPreferredWidth(30);
