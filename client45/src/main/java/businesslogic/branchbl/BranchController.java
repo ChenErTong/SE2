@@ -11,7 +11,6 @@ import state.ConfirmState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.accountvo.AccountVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
@@ -108,12 +107,6 @@ public class BranchController implements BranchBLService {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return null;
-	}
-
-	@Override
-	public ArrayList<AccountVO> getAllCouriers() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

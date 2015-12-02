@@ -49,6 +49,14 @@ public class SendCommodity extends MyJPanel{
 
 	private void setCourier(){
 		//快递员
+		/**
+		 * TODO 这里要输入branchID来查找相应的快递员
+		 * 这个方法已经写过了，在organizationBL里面
+		 * 方法名是getAccountByOrganizationID
+		 * 参数是transferID或branchID
+		 * 你要查营业厅的就把营业厅的ID传进去
+		 * @author Ann
+		 */
 		ArrayList<AccountVO> couriers = branchController.getAllCouriers();
 		String[] courierInfo = null;
 		if(couriers.size() > 0){
