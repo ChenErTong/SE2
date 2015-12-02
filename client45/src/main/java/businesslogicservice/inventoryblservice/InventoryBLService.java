@@ -2,7 +2,6 @@ package businesslogicservice.inventoryblservice;
 
 import java.rmi.RemoteException;
 
-import state.ExpressType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
@@ -65,7 +64,7 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer);
+	public InventoryExportReceiptVO minusCommodities(String transferID, int area,int row,int frame,int position);
 
 	/** 选择并添加相应的数据（订单托运编号、出库日期、目的地、装运形式、中转单编号）到出库单中生成出库单PO **/
 	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt);

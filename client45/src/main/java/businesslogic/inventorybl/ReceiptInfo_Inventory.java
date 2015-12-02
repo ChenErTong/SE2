@@ -28,8 +28,8 @@ public interface ReceiptInfo_Inventory {
 	/** 生成transferid **/
 	public String getTransferID() throws RemoteException;
 	
-	public ResultMessage add(ReceiptVO po) throws RemoteException;
-	public ResultMessage modify(ReceiptVO po) throws RemoteException;
+	public ResultMessage add(ReceiptVO vo) throws RemoteException;
+	public ResultMessage modify(ReceiptVO vo) throws RemoteException;
 	
 	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo,int area,int row,int frame,int position) throws RemoteException;
 	

@@ -2,16 +2,8 @@ package businesslogic.inventorybl;
 
 import java.util.ArrayList;
 
-import businesslogic.orderbl.OrderTrans;
-import po.CommodityPO;
 import po.InventoryPO;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
-import state.ReceiptType;
-import vo.CommodityVO;
 import vo.InventoryVO;
-import vo.receiptvo.InventoryExportReceiptVO;
-import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
@@ -42,7 +34,7 @@ public class InventoryTrans {
 		}
 	}
 
-	public static InventoryImportReceiptVO convertPOtoVO(InventoryImportReceiptPO po) {
+	/*public static InventoryImportReceiptVO convertPOtoVO(InventoryImportReceiptPO po) {
 		if(po==null)
 			return null;
 		else {
@@ -82,7 +74,7 @@ public class InventoryTrans {
 		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(po.getID(), ReceiptType.OUTSTOCK,po.getDestination(), po.getDepture(), po.getExpressType(),po.getTransferID(),
 				po.getCommoditiyID(), po.getArea(), po.getRow() ,po.getFrame(), po.getPosition());
 				return vo;
-	}
+	}*/
 	
 	public static ArrayList<InventoryVO> convertInventoryPOstoVOs(ArrayList<InventoryPO> pos) {
 		ArrayList<InventoryVO> vos = new ArrayList<InventoryVO>();
@@ -102,7 +94,7 @@ public class InventoryTrans {
 		return pos;
 	}
 
-	public static ArrayList<InventoryImportReceiptVO> convertInventoryImportReceiptPOstoVOs(
+	/*public static ArrayList<InventoryImportReceiptVO> convertInventoryImportReceiptPOstoVOs(
 			ArrayList<InventoryImportReceiptPO> pos) {
 		ArrayList<InventoryImportReceiptVO> vos = new ArrayList<InventoryImportReceiptVO>();
 		for (InventoryImportReceiptPO po : pos) {
@@ -110,5 +102,5 @@ public class InventoryTrans {
 			vos.add(vo);
 		}
 		return vos;
-	}
+	}*/
 }

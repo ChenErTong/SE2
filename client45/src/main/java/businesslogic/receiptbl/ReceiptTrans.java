@@ -17,7 +17,6 @@ import po.receiptpo.orderreceiptpo.LoadingListPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import po.receiptpo.orderreceiptpo.TransferOrderPO;
 import state.CommodityState;
-import state.ExpressType;
 import state.PayBillItem;
 import state.ReceiptType;
 import vo.CommodityVO;
@@ -266,32 +265,24 @@ public class ReceiptTrans {
 	public static ReceiptVO convertSpecialPOtoVO(InventoryExportReceiptPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
-		String destination = po.getDestination();
-		String depture = po.getDepture();
-		ExpressType expressType = po.getExpressType();
 		String transferID = po.getTransferID();
-		String commoditiesID = po.getCommoditiyID();
+		CommodityVO commodityVO = OrderTrans.convertPOtoVO(po.getCommodityPO());
 		int area = po.getArea();
 		int row =po.getRow();
 		int frame = po.getFrame();
 		int position = po.getPosition();
-		return new InventoryExportReceiptVO(
-				id, type, destination, depture, expressType, transferID, commoditiesID, area,row,frame,position);
+		return new InventoryExportReceiptVO(id, type, transferID, commodityVO, area, row, frame, position);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(InventoryExportReceiptVO vo){
 		String ID = vo.ID;
 		ReceiptType type = vo.type;
-		String destination = vo.destination;
-		String depture = vo.depture;
-		ExpressType expressType = vo.expressType;
-		String transferID = vo.TransferID;
-		String commoditiesID = vo.CommoditiesID;
-		int area= vo.area;
-		int row =vo.row;
+		String transferID = vo.transferID;
+		CommodityPO commodityPO = OrderTrans.convertVOtoPO(vo.commodityVO);
+		int area=  vo.area;
+		int row = vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		return new InventoryExportReceiptPO(
-				ID, type, destination, depture, expressType, transferID, commoditiesID, area,row,frame,position);
+		return new InventoryExportReceiptPO(ID, type, transferID, commodityPO, area, row, frame, position);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(InventoryImportReceiptPO po){
 		String id = po.getID();

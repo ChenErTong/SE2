@@ -15,7 +15,6 @@ import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
-import state.ExpressType;
 import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -121,33 +120,21 @@ public class Inventory {
 		String ID = receiptInfo.getExportID();
 		return ID;
 	}
-	//生成出库单 //转运同时自动出库
-	public InventoryExportReceiptVO minusCommodities(String ID, String ImportID, ExpressType Transfer) throws RemoteException {
-		/*InventoryImportReceiptPO importPo = receiptInfo.findImport(ImportID);
-		int area = importPo.getArea();
-		int row= importPo.getRow();
-		int frame = importPo.getFrame();
-		int position = importPo.getPosition();
-		ArrayList<InventoryPO> pos = inventoryData.find();
-		InventoryPO inventorypoFind = null;
-		for (InventoryPO inventoryPO : pos) {
-			if(isValid(inventoryPO,area,row,frame,position)){
-				inventorypoFind=inventoryPO;
-				break;
-			}
-		}
-		String depture = importPo.getDepture();
-		String TransferID = receiptInfo.getTransferID();
-		String destination = importPo.getDestination();
-		String Commodities = importPo.getCommoditiesID();
-		InventoryExportReceiptPO po = new InventoryExportReceiptPO(ID, ReceiptType.OUTSTOCK, destination, depture,
-				Transfer, TransferID, Commodities, area,row,frame,position);
-		InventoryExportReceiptVO voExport=InventoryTrans.convertPOtoVO(po);
-//		inventorypoFind.setEmptyOrFull("empty");
-		//TODO
-		inventoryData.modify(inventorypoFind);*/
-//		return voExport;
-		return null;
+	//生成出库单
+	public InventoryExportReceiptVO minusCommodities(String transferID, int area,int row,int frame,int position) throws RemoteException {
+		//通过中转中心的id获取inventoryPO
+		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
+		//修改库存
+		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		CommodityPO commodityPO=commos[area][row][frame][position];
+		commos[area][row][frame][position]=null;
+		inventoryPO.setCommos(commos);
+		inventoryData.modify(inventoryPO);
+		//添加出库单
+		String id = receiptInfo.getExportID();
+		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(id, ReceiptType.OUTSTOCK, transferID, OrderTrans.convertPOtoVO(commodityPO), area, row, frame, position);
+		receiptInfo.add(vo);
+		return vo;
 	}
 	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
 	    	return receiptInfo.add(exportReceipt);
