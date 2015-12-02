@@ -32,7 +32,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(250,60,90,30,"成立日期",18,true));
 		fields[0] = new MyJTextField(340,60,140,30);
-		fields[0].setText(GetDate.getTime());
+		fields[0].setText(GetDate.getDate());
 		this.add(fields[0]);
 		
 	//	this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
@@ -80,7 +80,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 
 	public void setUneditable() {
 		fields[0].setEditable(false);
-		organizationType.setEditable(false);
+		organizationType.setEnabled(false);
 		provincesBox.setEditable(false);
 		citiesBox.setEditable(false);
 		address.setEditable(false);
