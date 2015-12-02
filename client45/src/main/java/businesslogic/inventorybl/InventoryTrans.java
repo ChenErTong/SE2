@@ -1,35 +1,75 @@
 package businesslogic.inventorybl;
 
 import java.util.ArrayList;
+
+import businesslogic.orderbl.OrderTrans;
+import po.CommodityPO;
 import po.InventoryPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import state.ReceiptType;
+import vo.CommodityVO;
 import vo.InventoryVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
-		InventoryPO po = new InventoryPO(vo.ID, vo.area, vo.row, vo.frame, vo.position, vo.isEmpty,vo.transferID);
-		return po;
+		if(vo==null)
+			return null;
+		else{
+			String id = vo.ID;
+			int area = vo.commodities.length;
+			int row = vo.commodities[0].length;
+			int frame = vo.commodities[0][0].length;
+			int position = vo.commodities[0][0][0].length;
+			String transferID = vo.transferID;
+			return new InventoryPO(id, area, row, frame, position, transferID);
+		}
 	}
 
 	public static InventoryVO convertPOtoVO(InventoryPO po) {
-		InventoryVO vo = new InventoryVO(po.getArea(), po.getRow(), po.getFrame(), po.getPosition(),po.getTransferID());
-		return vo;
+		if(po==null)
+			return null;
+		else{
+			String id = po.getID();
+			int area = po.getCommos().length;
+			int row = po.getCommos()[0].length;
+			int frame = po.getCommos()[0][0].length;
+			int position = po.getCommos()[0][0][0].length;
+			String transferID = po.getTransferID();
+			return new InventoryVO(id, area, row, frame, position, transferID);
+		}
 	}
 
 	public static InventoryImportReceiptVO convertPOtoVO(InventoryImportReceiptPO po) {
-		InventoryImportReceiptVO vo = new InventoryImportReceiptVO(po.getID(), ReceiptType.INSTOCK,po.getDepture(),
-				po.getDestination(),po.getCommoditiesID(),po.getArea(),po.getRow(),po.getFrame(),po.getPosition());
-		return vo;
+		if(po==null)
+			return null;
+		else {
+			String id = po.getID();
+			ReceiptType type = po.getReceiptType();
+			CommodityVO commodityVO = OrderTrans.convertPOtoVO(po.getCommodityPO());
+			int area = po.getArea();
+			int row = po.getRow();
+			int frame = po.getFrame();
+			int position = po.getPosition();
+			return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position);
+		}
 	}
 	
 	public static InventoryImportReceiptPO convertVOtoPO(InventoryImportReceiptVO vo) {
-		InventoryImportReceiptPO po = new InventoryImportReceiptPO(vo.ID, ReceiptType.INSTOCK,vo.depture,
-		vo.destination,vo.CommoditiesID,vo.area, vo.row ,vo.frame, vo.position);
-		return po;
+		if(vo==null)
+			return null;
+		else {
+			String ID = vo.ID;
+			ReceiptType type = vo.type;
+			CommodityPO commodityPO = OrderTrans.convertVOtoPO(vo.commodityVO);
+			int area = vo.area;
+			int row = vo.row;
+			int frame = vo.frame;
+			int position = vo.position;
+			return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position);
+		}
 	}
 	
 	

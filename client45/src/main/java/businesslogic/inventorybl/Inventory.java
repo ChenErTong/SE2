@@ -15,9 +15,6 @@ import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
-import po.receiptpo.InventoryExportReceiptPO;
-import po.receiptpo.InventoryImportReceiptPO;
-import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import state.ExpressType;
 import state.ReceiptCondition;
 import state.ReceiptType;
@@ -166,27 +163,26 @@ public class Inventory {
 		String ID = receiptInfo.getImportID();
 		return ID;
 	}
-
-	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now) throws RemoteException {
-		//TODO
-		/*		int exArea = before.area;
-		int exRow = before.row;
-		int exFrame = before.frame;
-		int exPosition = before.position;
-		int afArea = now.area;
-		int afRow = now.row;
-		int afFrame = now.frame;
-		int afPosition = now.position;
-		AdjustReceiptVO vo = new AdjustReceiptVO(ID, ReceiptType.TAKINGSTOCK, exArea,exRow,exFrame,exPosition,afArea,afRow,afFrame,afPosition);
-		InventoryPO beforePO = InventoryTrans.convertVOtoPO(before);
-		InventoryPO afterPO = InventoryTrans.convertVOtoPO(now);
-		//TODO
-//		beforePO.setEmptyOrFull("empty");
-//		afterPO.setEmptyOrFull("full");
-		inventoryData.modify(beforePO);
-		inventoryData.modify(afterPO);
-		receiptInfo.add(vo);*/
-		return ResultMessage.SUCCESS;
+	
+	public InventoryVO getInventory(String transferID) throws RemoteException{
+		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
+		InventoryVO inventoryVO  = InventoryTrans.convertPOtoVO(inventoryPO);
+		return inventoryVO;
+	}
+	
+	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition) throws RemoteException {
+		//生成库存调整单
+		String adjustID = receiptInfo.getAdjustID();
+		AdjustReceiptVO vo = new AdjustReceiptVO(adjustID, ReceiptType.TAKINGSTOCK, exArea,exRow,exFrame,exPosition,afArea,afRow,afFrame,afPosition);
+		receiptInfo.add(vo);
+		// 修改库存
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		CommodityPO adjustCommodity = commos[exArea][exRow][exFrame][exPosition];
+		commos[afArea][afRow][afFrame][afPosition] = adjustCommodity;
+		commos[exArea][exRow][exFrame][exPosition]=null;
+		inventory.setCommos(commos);
+		return inventoryData.modify(inventory);
 	}
 	/*private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
 		ArrayList<InventoryPO> POs = inventoryData.find();

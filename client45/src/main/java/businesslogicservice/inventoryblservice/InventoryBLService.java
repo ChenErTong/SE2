@@ -6,7 +6,6 @@ import state.ExpressType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
-import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -87,6 +86,6 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public ResultMessage adjust(String ID, InventoryVO before, InventoryVO now);
+	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition);
 
 }

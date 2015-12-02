@@ -2,6 +2,8 @@ package businesslogic.receiptbl;
 
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderTrans;
+import po.CommodityPO;
 import po.receiptpo.AdjustReceiptPO;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.InventoryExportReceiptPO;
@@ -18,6 +20,7 @@ import state.CommodityState;
 import state.ExpressType;
 import state.PayBillItem;
 import state.ReceiptType;
+import vo.CommodityVO;
 import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryExportReceiptVO;
@@ -293,27 +296,24 @@ public class ReceiptTrans {
 	public static ReceiptVO convertSpecialPOtoVO(InventoryImportReceiptPO po){
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
-		String destination = po.getDestination();
-		String depture = po.getDepture();
-		String commoditiesID = po.getCommoditiesID();
+		CommodityPO commodity = po.getCommodityPO();
+		CommodityVO commodityVO = OrderTrans.convertPOtoVO(commodity);
 		int area = po.getArea();
 		int row =po.getRow();
 		int frame = po.getFrame();
 		int position = po.getPosition();
-		return new InventoryImportReceiptVO(id, type, depture, destination, commoditiesID,area,row,frame,position);
+		return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position);
 	}
 	
 	public static ReceiptPO convertSpecialVOtoPO(InventoryImportReceiptVO vo){
 		String ID = vo.ID;
 		ReceiptType type = vo.type;
-		String destination = vo.destination;
-		String depture = vo.depture;
-		String commoditiesID = vo.CommoditiesID;
+		CommodityPO commodityPO = OrderTrans.convertVOtoPO(vo.commodityVO);
 		int area = vo.area;
 		int row =vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		return new InventoryImportReceiptPO(ID, type, depture, destination, commoditiesID, area, row, frame, position);
+		return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position);
 	}
 	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){

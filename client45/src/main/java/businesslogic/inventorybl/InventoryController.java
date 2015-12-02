@@ -9,7 +9,6 @@ import state.ExpressType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
-import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -125,9 +124,9 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public ResultMessage adjust(String ID ,InventoryVO before, InventoryVO now) {
+	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition) {
 		try {
-			return InventoryBL.adjust(ID ,before, now);
+			return InventoryBL.adjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
