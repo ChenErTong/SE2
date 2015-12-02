@@ -1,5 +1,7 @@
 package po;
 
+import state.UserIdentity;
+
 /**
  * 用户持久化对象
  * @author zsq
@@ -18,7 +20,7 @@ public class UserPO extends PersistentObject{
 	/**密码*/
 	private String password;
 	/**用户身份*/
-	private String iden;
+	private UserIdentity iden;
 	/**联系电话*/
 	private String phoneNumber;
 
@@ -39,7 +41,7 @@ public class UserPO extends PersistentObject{
 	 * @param address 用户地址
 	 * @return 
 	 */
-	public UserPO(String id,String password,String userName,String phoneNumber,String iden,String authority,String address){
+	public UserPO(String id,String password,String userName,String phoneNumber,UserIdentity iden,String authority,String address){
 		super(id);
 		this.id = id;
 		this.password = password;
@@ -67,7 +69,7 @@ public class UserPO extends PersistentObject{
 		return this.password;
 	}
 
-	public String getIden() {
+	public UserIdentity getIden() {
 		return this.iden;
 	}
 

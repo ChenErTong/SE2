@@ -1,7 +1,5 @@
 package po;
 
-import vo.CommodityVO;
-
 public class InventoryPositionPO extends PersistentObject{
 		/**
 		 * 

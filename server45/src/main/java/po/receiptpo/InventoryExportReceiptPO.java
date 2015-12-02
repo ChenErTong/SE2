@@ -1,6 +1,6 @@
 package po.receiptpo;
 
-import state.ExpressType;
+import po.CommodityPO;
 import state.ReceiptType;
 
 public class InventoryExportReceiptPO extends ReceiptPO{
@@ -9,54 +9,33 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 		 *      **/
 		
 	private static final long serialVersionUID = 1L;
-	/**目的地**/
-	private String destination;
-	private String depture;
-	/**装运形式**/
-	private ExpressType expressType;
-	private String TransferID;
-	private String CommoditiyID;
+	private String transferID;
+	private CommodityPO commodityPO;
 	private int area;
 	private int row;
 	private int frame;
 	private int position;
-	
-	public InventoryExportReceiptPO(String ID, ReceiptType type,String destination, String depture, ExpressType expressType, String transferID,
-			String CommoditiyID, int area, int row, int frame, int position) {
+	public InventoryExportReceiptPO(String ID, ReceiptType type, String transferID, CommodityPO commodityPO, int area,
+			int row, int frame, int position) {
 		super(ID, type);
-		this.destination = destination;
-		this.depture = depture;
-		this.expressType=expressType;
-		this.TransferID = transferID;
-		this.CommoditiyID = CommoditiyID;
+		this.transferID = transferID;
+		this.commodityPO = commodityPO;
 		this.area = area;
 		this.row = row;
-		this.frame =frame;
-		this.position =position;
-	}
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-	public String getDepture() {
-		return depture;
-	}
-	public void setDepture(String depture) {
-		this.depture = depture;
-	}
-	public ExpressType getExpressType() {
-		return expressType;
-	}
-	public void setExpressType(ExpressType expressType) {
-		this.expressType = expressType;
+		this.frame = frame;
+		this.position = position;
 	}
 	public String getTransferID() {
-		return TransferID;
+		return transferID;
 	}
 	public void setTransferID(String transferID) {
-		TransferID = transferID;
+		this.transferID = transferID;
+	}
+	public CommodityPO getCommodityPO() {
+		return commodityPO;
+	}
+	public void setCommodityPO(CommodityPO commodityPO) {
+		this.commodityPO = commodityPO;
 	}
 	public int getArea() {
 		return area;
@@ -81,12 +60,6 @@ public class InventoryExportReceiptPO extends ReceiptPO{
 	}
 	public void setPosition(int position) {
 		this.position = position;
-	}
-	public String getCommoditiyID() {
-		return CommoditiyID;
-	}
-	public void setCommoditiyID(String commoditiyID) {
-		CommoditiyID = commoditiyID;
 	}
 	
 	

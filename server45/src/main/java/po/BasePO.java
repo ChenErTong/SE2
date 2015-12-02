@@ -46,6 +46,11 @@ public class BasePO extends PersistentObject{
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "BasePO [cityFrom=" + cityFrom + ", cityTo=" + cityTo + ", distance=" + distance + ", price=" + price
+				+ ", ID=" + ID + ", date=" + date + "]";
+	}
 	
 	
 	
