@@ -59,12 +59,13 @@ public class Inventory {
 	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate) throws RemoteException {
 		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
 		InventoryVO inventoryVO = InventoryTrans.convertPOtoVO(inventoryPO);
-		//通过receiptInfo得到一段时间内入库单和出库单的数量
-		int importNumber=receiptInfo.getImportNumber(beginDate, endDate);
-		int exportNumber = receiptInfo.getExportNumber(beginDate, endDate);
-		int sum = importNumber+exportNumber;
+		//通过receiptInfo得到一段时间内入库单和出库单
+		ArrayList<InventoryImportReceiptVO> importReceipts = receiptInfo.showInDateByType(beginDate, endDate, ReceiptType.INSTOCK);
+		ArrayList<InventoryExportReceiptVO> exportReceipts = receiptInfo.showInDateByType(beginDate, endDate, ReceiptType.OUTSTOCK);
+		//获得仓库中商品位置
+		ArrayList<InventoryPositionVO> commoditiesInInventory = this.getCommoditiesInInventory(transferID);
 		//新建库存查看VO
-		InventoryViewVO viewVO = new InventoryViewVO(importNumber,exportNumber,sum, inventoryVO);
+		InventoryViewVO viewVO = new InventoryViewVO(exportReceipts, importReceipts, commoditiesInInventory, inventoryVO);
 		return viewVO;
 	}
 	
