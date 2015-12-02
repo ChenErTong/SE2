@@ -60,5 +60,6 @@ public interface UserBLService extends BLService{
 	 */
 	public UserIdentity login(LoginInfo loginInfo);
 	public ResultMessage updateAdmin(String oldPassword,String newPassword);
+	public ArrayList<UserVO> showUser(UserIdentity userIdentity);
 	
 }

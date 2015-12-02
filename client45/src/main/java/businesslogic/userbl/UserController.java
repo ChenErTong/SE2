@@ -88,4 +88,16 @@ public class UserController implements UserBLService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<UserVO> showUser(UserIdentity userIdentity) {
+		try {
+			return userBL.showUser(userIdentity);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+
 }
