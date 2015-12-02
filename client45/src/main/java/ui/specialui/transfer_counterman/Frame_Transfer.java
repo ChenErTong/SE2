@@ -4,15 +4,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
-import businesslogic.transferbl.TransferController;
 import businesslogicservice.transferblservice.TransferBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.inventory.Frame_Inventory;
 import ui.specialui.transfer_counterman.car_loading.CarCommodity;
 import ui.specialui.transfer_counterman.car_loading.CarLoading;
 import ui.specialui.transfer_counterman.plane_loading.PlaneCommodity;
@@ -90,12 +87,6 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			subPanel = new TransferReceiveManage(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 
-		}else if(e.getActionCommand().equals("InventoryManage")){
-			//进入仓库管理界面
-			new Frame_Inventory(this.ID);
-			this.removeAll();
-			this.dispose();
-
 		}else if(e.getActionCommand().equals("jumpToCommodityForCar")){
 			//进入汽车装运管理货物输入界面
 			if(this.jumpToCommodityForCar()){
@@ -161,12 +152,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("produceArrivalList")){
 			//生成到达单
-			if(((TransferReceiveManage)subPanel).produceArrivalList()){
+			if(((TransferReceiveManage)subPanel).produceArrivalList(this)){
 				new MyNotification(this, "成功生成到达单", Color.GREEN);
-				subPanel.setVisible(false);
-				this.remove(subPanel);
-				//TODO
-				//到达单显示界面
+				((TransferReceiveManage)subPanel).refresh();
 			}else{
 				new MyNotification(this, "请完成中转到达单信息填写", Color.RED);
 			}

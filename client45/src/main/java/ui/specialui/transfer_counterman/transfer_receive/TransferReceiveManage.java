@@ -1,9 +1,15 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
+import java.util.ArrayList;
+
+import state.CommodityState;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.transfer_counterman.Frame_Transfer;
+import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.transferblservice.TransferBLService;
 /**
  * 中转接收管理界面
  * @author czw
@@ -29,12 +35,21 @@ public class TransferReceiveManage extends MyJPanel{
 		this.add(produceArrivalList);
 	}
 
-	public boolean produceArrivalList() {
+	public boolean produceArrivalList(Frame_Transfer frame) {
 		String[] data = arrivalCommodity.getData();
 		if(data == null) return false;
 		//TODO
 		//到达单生成步骤
-		
+		TransferBLService transferController = ControllerFactory.getTransferController();
+		ArrayList<String> order = new ArrayList<String>();
+		order.add(data[0]);
+		TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), order);
+		transferController.save(arrivalList);
+		transferController.submit(arrivalList);
 		return true;
+	}
+
+	public void refresh() {
+		arrivalCommodity.refresh();
 	}
 }

@@ -54,7 +54,10 @@ public class Base {
 
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
 		BasePO basePO = BaseTrans.convertVOtoPO(vo);
-		return baseData.modify(basePO);
+		System.out.println(basePO);
+		ResultMessage message = baseData.modify(basePO);
+		System.out.println(message);
+		return message;
 	}
 
 	public ArrayList<BaseVO> show() throws RemoteException {

@@ -52,6 +52,9 @@ public class PersistentObject implements Serializable{
 		this.date = date;
 	}
 
+	public PersistentObject() {
+	}
+
 	
 	
 	

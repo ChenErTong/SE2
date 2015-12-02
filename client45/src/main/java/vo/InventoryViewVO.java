@@ -30,7 +30,6 @@ public class InventoryViewVO {
 		this.exportNumber = exportNumber;
 		this.importNumber = importNumber;
 		this.num = num;
-		Location = location;
 	}
 
 }
