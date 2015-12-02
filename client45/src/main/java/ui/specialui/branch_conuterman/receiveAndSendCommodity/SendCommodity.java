@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.organizationblservice.OrganizationBLService;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
@@ -38,7 +39,7 @@ public class SendCommodity extends MyJPanel{
 		this.add(arrivalList);
 		this.add(new MyJLabel(520, 580, 115, 23, "可选快递员", 18, true));
 		
-		this.setCourier();
+		this.setCourier(frame);
 		
 		MyJButton produceDeliveryList = new MyJButton(583, 630, 115, 23,
 				"生成派件单", 18);
@@ -47,17 +48,10 @@ public class SendCommodity extends MyJPanel{
 		this.add(produceDeliveryList);
 	}
 
-	private void setCourier(){
+	private void setCourier(Frame_Branch frame){
 		//快递员
-		/**
-		 * TODO 这里要输入branchID来查找相应的快递员
-		 * 这个方法已经写过了，在organizationBL里面
-		 * 方法名是getAccountByOrganizationID
-		 * 参数是transferID或branchID
-		 * 你要查营业厅的就把营业厅的ID传进去
-		 * @author Ann
-		 */
-		ArrayList<AccountVO> couriers = branchController.getAllCouriers();
+		OrganizationBLService organizationController = ControllerFactory.getOrganizationController();
+		ArrayList<AccountVO> couriers = organizationController.getAccountByOrganizationID(frame.getID().substring(0, 6));
 		String[] courierInfo = null;
 		if(couriers.size() > 0){
 			courierInfo = new String[couriers.size()];

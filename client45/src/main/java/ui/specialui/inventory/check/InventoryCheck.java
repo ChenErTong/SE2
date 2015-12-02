@@ -3,6 +3,9 @@ package ui.specialui.inventory.check;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.GetDate;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -45,7 +48,7 @@ public class InventoryCheck extends MyJPanel{
 		MyJButton search = new MyJButton(790, 103, 60, 25, "查询", 18);
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(InventoryCheck.this.searchWithinGap()){
+				if(InventoryCheck.this.searchWithinGap(frame)){
 					
 				}else{
 					new MyNotification(frame, "请正确输入时间", Color.RED);
@@ -59,8 +62,9 @@ public class InventoryCheck extends MyJPanel{
 	 * 搜索时间范围内的库存信息，时间输入正确返回true，错误返回false
 	 * @return
 	 */
-	private boolean searchWithinGap() {
-		//TODO
+	private boolean searchWithinGap(Frame_Inventory frame) {
+		InventoryBLService inventoryController = ControllerFactory.getInventoryController();
+		inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
 		return false;		
 	}
 }
