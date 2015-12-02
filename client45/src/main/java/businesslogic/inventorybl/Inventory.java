@@ -26,7 +26,7 @@ import vo.InventoryViewVO;
 import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-//TODO 要发生较大改动！！！！！！！
+// 要发生较大改动！！！！！！！
 //虽然和初衷不一样，但是果然发生了超大改动
 /**
  * 
@@ -190,30 +190,6 @@ public class Inventory {
 		inventory.setCommos(commos);
 		return inventoryData.modify(inventory);
 	}
-	/*private ArrayList<InventoryVO> getInventoryPOsInDate(String begin,String end) throws RemoteException{
-		ArrayList<InventoryPO> POs = inventoryData.find();
-		ArrayList<InventoryVO> vos = new ArrayList<>();
-		for (InventoryPO inventoryPO : POs) {
-			if(inDate(inventoryPO, begin, end)){
-				InventoryVO vo  = InventoryTrans.convertPOtoVO(inventoryPO);
-				vos.add(vo);
-			}
-		}
-		return vos;
-	}*/
-	/*private boolean inDate(InventoryPO po, String beginDate, String endDate) {
-		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
-			return true;
-		return false;
-	}
-
-	
-	private boolean isValid(InventoryPO po,int area,int row,int frame,int position){
-		if(po.getArea()==area&&po.getRow()==row&&po.getFrame()==frame&&po.getPosition()==position){
-			return true;
-		}
-		return false;
-	}*/
 	
 	public double inventoryUseRate(String transferID) throws RemoteException{
 		double positionUsed=0;

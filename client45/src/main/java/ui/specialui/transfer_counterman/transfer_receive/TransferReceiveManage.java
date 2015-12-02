@@ -1,15 +1,13 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
-import java.util.ArrayList;
-
+import businesslogic.ControllerFactory;
+import businesslogicservice.transferblservice.TransferBLService;
 import state.CommodityState;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
-import businesslogic.ControllerFactory;
-import businesslogicservice.transferblservice.TransferBLService;
 /**
  * 中转接收管理界面
  * @author czw
@@ -41,9 +39,13 @@ public class TransferReceiveManage extends MyJPanel{
 		//TODO
 		//到达单生成步骤
 		TransferBLService transferController = ControllerFactory.getTransferController();
-		ArrayList<String> order = new ArrayList<String>();
-		order.add(data[0]);
-		TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), order);
+		/*ArrayList<String> order = new ArrayList<String>();
+		order.add(data[0]);*/
+		/**
+		 * 我把这里的接口改成单个commodity了
+		 * @author Ann
+		 */
+		TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), data[0]);
 		transferController.save(arrivalList);
 		transferController.submit(arrivalList);
 		return true;

@@ -132,5 +132,5 @@ public interface TransferBLService extends BLService {
 	 */
 	public TransferArrivalListVO receiptList(String transferID,
 			String departure, String destination, CommodityState state,
-			ArrayList<String> orders);
+			String orders);
 }
