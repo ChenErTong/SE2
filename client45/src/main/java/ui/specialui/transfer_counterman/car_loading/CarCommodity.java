@@ -2,10 +2,7 @@ package ui.specialui.transfer_counterman.car_loading;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.branchblservice.BranchBLService;
-import businesslogicservice.orderblservice.OrderBLService;
+import java.util.ArrayList;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -13,9 +10,11 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.specialui.transfer_counterman.Frame_Transfer;
-import ui.specialui.transfer_counterman.plane_loading.PlaneCommodity;
 import vo.CommodityVO;
 import vo.OrderVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 
 public class CarCommodity extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -93,9 +92,12 @@ public class CarCommodity extends MyJPanel {
 	 */
 	private void setOrdersID() {
 		BranchBLService branchController = ControllerFactory.getBranchController();
-		for (String orderID : branchController.getAllOrderNumber()) {
-			orderSelected.addRow(new String[]{orderID});
-		};		
+		ArrayList<String> ordersID = branchController.getAllOrderNumber();
+		if(ordersID != null){
+			for (String orderID : ordersID) {
+				orderSelected.addRow(new String[]{orderID});
+			};	
+		}	
 	}
 	/**
 	 * 得到所有被选中的订单号

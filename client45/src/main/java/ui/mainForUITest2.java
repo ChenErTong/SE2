@@ -4,7 +4,9 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import ui.specialui.courier.Frame_Courier;
 import ui.specialui.inventory.Frame_Inventory;
+import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class mainForUITest2 {
 	public static void main(String[] args) {
@@ -19,8 +21,8 @@ public class mainForUITest2 {
 		
 //		new Frame_Branch("0");
 		
-//		new	Frame_Transfer("0");
+		new	Frame_Transfer("0");
 		
-		new Frame_Inventory("0");
+//		new Frame_Inventory("0");
 	}
 }

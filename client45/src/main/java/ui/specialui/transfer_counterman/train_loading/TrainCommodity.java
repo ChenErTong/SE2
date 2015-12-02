@@ -2,6 +2,7 @@ package ui.specialui.transfer_counterman.train_loading;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
@@ -94,9 +95,12 @@ public class TrainCommodity extends MyJPanel {
 	 */
 	private void setOrdersID() {
 		BranchBLService branchController = ControllerFactory.getBranchController();
-		for (String orderID : branchController.getAllOrderNumber()) {
-			orderSelected.addRow(new String[]{orderID});
-		};		
+		ArrayList<String> ordersID = branchController.getAllOrderNumber();
+		if(ordersID != null){
+			for (String orderID : ordersID) {
+				orderSelected.addRow(new String[]{orderID});
+			};	
+		}	
 	}
 	
 	/**

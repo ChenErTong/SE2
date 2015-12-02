@@ -3,7 +3,11 @@ package ui.specialui.inventory.import_;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ListSelectionModel;
+
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -19,10 +23,13 @@ public class CargoImport extends MyJPanel {
 	private MyJComboBox[] position;
 	private MyJTable commodities;
 	private MyJTable importList;
+	private InventoryBLService inventoryController;
 	
 	public CargoImport(Frame_Inventory frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		
+		inventoryController  = ControllerFactory.getInventoryController();
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
 		
@@ -79,6 +86,7 @@ public class CargoImport extends MyJPanel {
 		for(int i = 0; i < 4; i ++){
 			blankPos[i] = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		}
+//		inventoryController.
 		return blankPos;
 	}
 }
