@@ -21,5 +21,4 @@ public class InventoryPositionVO extends ValueObject {
 		this.position = position;
 		this.commodity=commodity;
 	}
-
 }
