@@ -20,6 +20,7 @@ import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
+import vo.InventoryPositionVO;
 import vo.InventoryVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.AdjustReceiptVO;
@@ -65,12 +66,30 @@ public class Inventory {
 		return viewVO;
 	}
 	
-
-	public InventoryCheckVO checkRecord(String enddate) throws RemoteException {
-		ArrayList<InventoryPO> pos = inventoryData.find();
-		ArrayList<InventoryVO> VOs =InventoryTrans.convertInventoryPOstoVOs(pos);
+	//重写
+	public InventoryCheckVO checkRecord(String transferID,String enddate) throws RemoteException {
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
+		int inventoryArea = commos.length;
+		int inventoryRow= commos[0].length;
+		int inventoryFrame = commos[0][0].length;
+		int inventoryPosition = commos[0][0][0].length;
+		for (int area= 0; area <inventoryArea ; area++) {
+			for (int row = 0; row < inventoryRow; row++) {
+				for (int frame = 0; frame < inventoryFrame; frame++) {
+					for (int position = 0; position < inventoryPosition; position++) {
+						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
+						if(commodity!=null){
+							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position, commodity);
+							commosInInventory.add(commodityPosition);
+						}
+					}
+				}
+			}
+		}
 		String lotNum = inventoryData.getLotID();
-		InventoryCheckVO checkVO = new InventoryCheckVO(VOs, lotNum);
+		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum);
 		return checkVO;
 	}
 

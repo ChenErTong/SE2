@@ -13,15 +13,15 @@ import java.util.Date;
 public class InventoryCheckVO {
 
 	/** 商品列表 */
-	public ArrayList<InventoryVO> receipts;
+	public ArrayList<InventoryPositionVO> commos;
 	/** 批次 */
 	public String date;
 	/** 批号 */
 	public String lotNum;
 	
-	public InventoryCheckVO(ArrayList<InventoryVO> vOs, String lotNum) {
+	public InventoryCheckVO(ArrayList<InventoryPositionVO> commos, String lotNum) {
 		super();
-		this.receipts = vOs;
+		this.commos = commos;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");

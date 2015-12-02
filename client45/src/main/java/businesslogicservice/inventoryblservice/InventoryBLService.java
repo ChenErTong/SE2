@@ -8,26 +8,28 @@ import vo.InventoryCheckVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-
+/**
+ * @version Dec 2,2015
+ * @author Ann
+ *
+ */
 public interface InventoryBLService {
 	/**
-	 * @author lxl
-	 * @version Oct 23,2015
-	 **/
-
-	/**
-	 * 系统显示此时间段内的出入库数量、金额、库存位置
-	 * 
-	 * @throws RemoteException
-	 **/
+	 * 库存查看
+	 * 查看一段时间内某个中转中心的入库单数量 出库单数量
+	 * @param transferID 中转中心ID
+	 * @param beginDate 开始时间
+	 * @param endDate 结束时间
+	 * @return 库存查看VO(里面有库存)
+	 */
 	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate);
 
 	/**
 	 * 显示截至盘点当日时间的库存快照
 	 * 
 	 * @throws RemoteException
-	 **/
-	public InventoryCheckVO checkRecord(String date);
+	 */
+	public InventoryCheckVO checkRecord(String transferId,String date);
 
 	/* 入库 */
 	/**
