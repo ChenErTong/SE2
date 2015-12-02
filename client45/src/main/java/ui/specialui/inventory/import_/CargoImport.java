@@ -88,6 +88,6 @@ public class CargoImport extends MyJPanel {
 		for(int i = 0; i < 4; i ++){
 			position[i].reset(blankPos[i]);
 		}
-		return blankPos;
+//		return blankPos;
 	}
 }

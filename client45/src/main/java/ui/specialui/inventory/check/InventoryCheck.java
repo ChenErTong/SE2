@@ -15,6 +15,7 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
+import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 
 public class InventoryCheck extends MyJPanel{
@@ -43,7 +44,7 @@ public class InventoryCheck extends MyJPanel{
 		
 		inventoryInfo = new MyJTable(new String[]{"入库总数", "出库总数", "库存数量"}, false);
 		this.add(new MyJScrollPane(415, 170, 450, 45, inventoryInfo));
-		commodityInfo = new MyJTable(new String[]{"订单编号", "入库日期", "目的地", "仓库存放位置"}, false);
+		commodityInfo = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
 		this.add(new MyJScrollPane(415, 215, 450, 450, commodityInfo));
 		
 		MyJButton search = new MyJButton(790, 103, 60, 25, "查询", 18);
@@ -70,8 +71,26 @@ public class InventoryCheck extends MyJPanel{
 		InventoryViewVO inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
 		if(inventoryView == null) return false;
 		
-		inventoryInfo.addRow(new String[]{Integer.toString(inventoryView.importNumber), Integer.toString(inventoryView.exportNumber), Integer.toString(inventoryView.num)});
-		// TODO 得到时间段内出入库单据
+		String importNum = "";
+		if(inventoryView.importReceipts != null){
+			importNum = Integer.toString(inventoryView.importReceipts.size());
+		}
+		
+		String exportNum = "";
+		if(inventoryView.exportReceipts != null){
+			exportNum = Integer.toString(inventoryView.exportReceipts.size());
+		}
+		
+		String commodityNum = "";
+		if(inventoryView.commodityInInventory != null){
+			commodityNum = Integer.toString(inventoryView.commodityInInventory.size());
+			for (InventoryPositionVO commodity : inventoryView.commodityInInventory) {
+				String position = Integer.toString(commodity.area) + "区" + Integer.toString(commodity.row) + "排" + Integer.toString(commodity.frame) + "架" + Integer.toString(commodity.position) + "位";
+				commodityInfo.addRow(new String[]{commodity.commodity.ID, commodity.commodity.commodityType, position});
+			}
+		}
+		inventoryInfo.addRow(new String[]{importNum, exportNum, commodityNum});
+
 		return true;		
 	}
 }

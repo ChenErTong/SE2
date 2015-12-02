@@ -22,9 +22,6 @@ public class InventoryViewVO {
 	public ArrayList<InventoryImportReceiptVO> importReceipts;
 	/** 库存数量 **/
 	public ArrayList<InventoryPositionVO> commodityInInventory;
-	
-	//这个是不是可以不要了。。。
-	public InventoryVO inventory;
 
 	public InventoryViewVO(ArrayList<InventoryExportReceiptVO> exportReceipts,
 			ArrayList<InventoryImportReceiptVO> importReceipts, ArrayList<InventoryPositionVO> commodityInInventory,
@@ -32,8 +29,5 @@ public class InventoryViewVO {
 		this.exportReceipts = exportReceipts;
 		this.importReceipts = importReceipts;
 		this.commodityInInventory = commodityInInventory;
-		this.inventory = inventory;
 	}
-
-
 }
