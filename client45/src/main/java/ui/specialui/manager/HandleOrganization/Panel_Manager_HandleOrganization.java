@@ -659,7 +659,7 @@ private void searchPanel(FrameManager frame) {
 	private void deleteOrganization() {
 		controller = ControllerFactory.getOrganizationController();
 		OrganizationVO vo =organizationPool.get(table.getSelectedRow());
-		System.out.println(vo.organizationType);
+		System.out.println(vo.toString());
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
 		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(organizationPool.get(table.getSelectedRow()).organizationID);
 						if(rsg.equals(ResultMessage.SUCCESS)){

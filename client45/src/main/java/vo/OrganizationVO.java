@@ -23,6 +23,11 @@ public class OrganizationVO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
 	}
+	@Override
+	public String toString() {
+		return " organizationID=" + organizationID + ", date=" + date + ", number=" + number + ", address=" + address
+				+ ", organizationType=" + organizationType;
+	}
 	
 	
 

@@ -55,7 +55,8 @@ public class Organization {
 
 	public String getBranchID(String city)throws RemoteException  {
 		String cityCode = CityTrans.getCodeByCity(city);
-		return branchData.getID(cityCode);
+		String ID = branchData.getID(cityCode);
+		return ID;
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
