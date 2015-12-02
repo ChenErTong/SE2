@@ -2,10 +2,14 @@ package businesslogic.branchbl;
 
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountTrans;
+import businesslogic.facilitybl.FacilityTrans;
 import po.BranchPO;
 import po.FacilityPO;
 import po.accountpo.AccountPO;
 import vo.BranchVO;
+import vo.FacilityVO;
+import vo.accountvo.AccountVO;
 
 public class BranchTrans {
 	public static BranchPO convertVOtoPO(BranchVO vo) {
@@ -15,8 +19,8 @@ public class BranchTrans {
 		String ID = vo.id;
 		String address = vo.address;
 		String date = vo.date;
-		ArrayList<AccountPO> accounts = vo.accounts;
-		ArrayList<FacilityPO> facilities = vo.facilities;
+		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(vo.accounts);
+		ArrayList<FacilityPO> facilities = FacilityTrans.convertVOstoPOs(vo.facilities);
 		return new BranchPO(ID, address, date, accounts, facilities);
 	}
 
@@ -27,8 +31,8 @@ public class BranchTrans {
 		String id = po.getID();
 		String date = po.getDate();
 		String address = po.getAddress();
-		ArrayList<AccountPO> accounts = po.getAccounts();
-		ArrayList<FacilityPO> facilities = po.getFacilities();
+		ArrayList<AccountVO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
+		ArrayList<FacilityVO> facilities = FacilityTrans.convertFacilityPOstoVOs(po.getFacilities());
 		return new BranchVO(id, date, address, accounts, facilities);
 	}
 

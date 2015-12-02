@@ -2,9 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
-import po.InventoryPO;
-import po.accountpo.AccountPO;
 import state.OrganizationType;
+import vo.accountvo.AccountVO;
 
 public class TransferVO extends OrganizationVO {
 	
@@ -17,21 +16,25 @@ public class TransferVO extends OrganizationVO {
 	/**
 	 * 员工信息
 	 */
-	public ArrayList<AccountPO> accounts;
+	public ArrayList<AccountVO> accounts;
 	
 	/**
 	 * 仓库信息
 	 */
-	public ArrayList<InventoryPO> inventories;
+	public ArrayList<InventoryVO> inventories;
 
-	public TransferVO(String organizationID, String address,String date, ArrayList<AccountPO> accounts,
-			ArrayList<InventoryPO> inventories) {
+	public TransferVO(String organizationID, String address,String date, ArrayList<AccountVO> accounts,
+			ArrayList<InventoryVO> inventories) {
 		super(organizationID, address, accounts.size(),OrganizationType.TRANSFER);
-		//this.accounts = accounts;
-		//	this.inventories = inventories;
-		accounts = new ArrayList<AccountPO>();
-		inventories = new ArrayList<InventoryPO>();
+		this.accounts = new ArrayList<AccountVO>();
+		this.inventories = new ArrayList<InventoryVO>();
 	}
+
+	public TransferVO(String organizationID, String address, OrganizationType organizationType) {
+		super(organizationID, address,0, organizationType);
+	}
+	
+	
 
 	
 }

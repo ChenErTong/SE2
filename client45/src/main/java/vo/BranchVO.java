@@ -2,9 +2,8 @@ package vo;
 
 import java.util.ArrayList;
 
-import po.FacilityPO;
-import po.accountpo.AccountPO;
 import state.OrganizationType;
+import vo.accountvo.AccountVO;
 
 public class BranchVO extends OrganizationVO{
 	/**
@@ -23,26 +22,28 @@ public class BranchVO extends OrganizationVO{
 	/**
 	 * 员工信息
 	 */
-	public ArrayList<AccountPO> accounts;
+	public ArrayList<AccountVO> accounts;
 	
 	/**
 	 * 所属车辆信息
 	 */
-	public ArrayList<FacilityPO> facilities;
+	public ArrayList<FacilityVO> facilities;
 	
 	public String branchID;
 
-	public BranchVO(String id, String date, String address, ArrayList<AccountPO> accounts,
-			ArrayList<FacilityPO> facilities) {
+	public BranchVO(String id, String date, String address, ArrayList<AccountVO> accounts,
+			ArrayList<FacilityVO> facilities) {
 		super(id, address, accounts.size(),OrganizationType.BRANCH);
 		this.id = id;
 		this.date = date;
 		this.address = address;
-		//this.accounts = accounts;
-		//this.facilities = facilities;
-		accounts = new ArrayList<AccountPO> ();
-		facilities = new ArrayList<FacilityPO>();
+		this.accounts = new ArrayList<AccountVO> ();
+		this.facilities = new ArrayList<FacilityVO>();
 	}
 
+	public BranchVO(String organizationID, String address, OrganizationType organizationType) {
+		super(organizationID, address, 0, organizationType);
+	}
+	
 	
 }

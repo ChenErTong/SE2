@@ -2,10 +2,14 @@ package businesslogic.transferbl;
 
 import java.util.ArrayList;
 
+import businesslogic.accountbl.AccountTrans;
+import businesslogic.inventorybl.InventoryTrans;
 import po.InventoryPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
+import vo.InventoryVO;
 import vo.TransferVO;
+import vo.accountvo.AccountVO;
 
 public class TransferTrans {
 	public static TransferPO convertVOtoPO(TransferVO vo) {
@@ -15,8 +19,8 @@ public class TransferTrans {
 		String ID = vo.organizationID;
 		String address = vo.address;
 		String date = vo.date;
-		ArrayList<AccountPO> accounts = vo.accounts;
-		ArrayList<InventoryPO> inventoryPOs = vo.inventories;
+		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(vo.accounts);
+		ArrayList<InventoryPO> inventoryPOs = InventoryTrans.convertInventoryVOstoPOs(vo.inventories);
 		return new TransferPO(ID, address, date, accounts, inventoryPOs);
 	}
 
@@ -27,8 +31,8 @@ public class TransferTrans {
 		String id = po.getID();
 		String date = po.getDate();
 		String address = po.getAddress();
-		ArrayList<AccountPO> accounts = po.getAccounts();
-		ArrayList<InventoryPO> inventorys = po.getInventories();
+		ArrayList<AccountVO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
+		ArrayList<InventoryVO> inventorys = InventoryTrans.convertInventoryPOstoVOs(po.getInventories());
 		return new TransferVO(id, address, date, accounts, inventorys);
 	}
 
