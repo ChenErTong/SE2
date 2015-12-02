@@ -3,11 +3,14 @@ package businesslogic.inventorybl;
  * @author LIUXUANLIN
  */
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import businesslogicservice.inventoryblservice.InventoryBLService;
+import po.CommodityPO;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
+import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -133,7 +136,7 @@ public class InventoryController implements InventoryBLService {
 	}
 
 	@Override
-	public double inventoryAlarm(String transferID) {
+	public double inventoryAlarmRate(String transferID) {
 		try {
 			return InventoryBL.inventoryUseRate(transferID);
 		} catch (RemoteException e) {
@@ -145,5 +148,35 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public void exportToExcel(InventoryCheckVO vo) {
 		InventoryBL.exportToExcel(vo);
+	}
+
+	@Override
+	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) {
+		try {
+			return InventoryBL.getCommoditiesInInventory(transferID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) {
+		try {
+			return InventoryBL.getEmptyPositionsInList(transferID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) {
+		try {
+			return InventoryBL.getEmptyPositionsInArray(transferID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

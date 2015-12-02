@@ -70,26 +70,8 @@ public class Inventory {
 	
 	//重写
 	public InventoryCheckVO checkRecord(String transferID,String enddate) throws RemoteException {
-		InventoryPO inventory = this.findInventoryByTransferID(transferID);
-		CommodityPO[][][][] commos = inventory.getCommos();
-		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
-		int inventoryArea = commos.length;
-		int inventoryRow= commos[0].length;
-		int inventoryFrame = commos[0][0].length;
-		int inventoryPosition = commos[0][0][0].length;
-		for (int area= 0; area <inventoryArea ; area++) {
-			for (int row = 0; row < inventoryRow; row++) {
-				for (int frame = 0; frame < inventoryFrame; frame++) {
-					for (int position = 0; position < inventoryPosition; position++) {
-						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
-						if(commodity!=null){
-							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position, commodity);
-							commosInInventory.add(commodityPosition);
-						}
-					}
-				}
-			}
-		}
+		ArrayList<InventoryPositionVO> commosInInventory = this.getCommoditiesInInventory(transferID);
+		//TODO 重写getID方法 加参数
 		String lotNum = inventoryData.getLotID();
 		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum,transferID);
 		return checkVO;
@@ -221,6 +203,59 @@ public class Inventory {
 			list.add(position);
 		}
 		ExportExcel.exportExcel(fileName, head, title, list);
+	}
+	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException{
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
+		int inventoryArea = commos.length;
+		int inventoryRow= commos[0].length;
+		int inventoryFrame = commos[0][0].length;
+		int inventoryPosition = commos[0][0][0].length;
+		for (int area= 0; area <inventoryArea ; area++) {
+			for (int row = 0; row < inventoryRow; row++) {
+				for (int frame = 0; frame < inventoryFrame; frame++) {
+					for (int position = 0; position < inventoryPosition; position++) {
+						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
+						if(commodity!=null){
+							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position, commodity);
+							commosInInventory.add(commodityPosition);
+						}
+					}
+				}
+			}
+		}
+		return commosInInventory;
+	}
+	
+	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) throws RemoteException{
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		return commos;
+	}
+	
+	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException{
+		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		CommodityPO[][][][] commos = inventory.getCommos();
+		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
+		int inventoryArea = commos.length;
+		int inventoryRow= commos[0].length;
+		int inventoryFrame = commos[0][0].length;
+		int inventoryPosition = commos[0][0][0].length;
+		for (int area= 0; area <inventoryArea ; area++) {
+			for (int row = 0; row < inventoryRow; row++) {
+				for (int frame = 0; frame < inventoryFrame; frame++) {
+					for (int position = 0; position < inventoryPosition; position++) {
+						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
+						if(commodity==null){
+							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position, commodity);
+							commosInInventory.add(commodityPosition);
+						}
+					}
+				}
+			}
+		}
+		return commosInInventory;
 	}
 }
 

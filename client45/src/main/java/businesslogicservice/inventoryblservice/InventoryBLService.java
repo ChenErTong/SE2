@@ -1,10 +1,13 @@
 package businesslogicservice.inventoryblservice;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+import po.CommodityPO;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
+import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
@@ -88,8 +91,32 @@ public interface InventoryBLService {
 	 * @throws RemoteException
 	 **/
 	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition);
-
-	public double inventoryAlarm(String transferID);
-	
+	/**
+	 * 仓库使用比例
+	 * @param transferID 中转中心编号
+	 * @return 使用比例百分比
+	 */
+	public double inventoryAlarmRate(String transferID);
+	/**
+	 * 将库存盘点的结果导出到excel表格
+	 * @param vo
+	 */
 	public void exportToExcel(InventoryCheckVO vo);
+	/**
+	 * 获得仓库中已有的商品及其位置
+	 * @param transferID 中转中心编号
+	 * @return
+	 */
+	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID);
+	/**
+	 * 获得仓库中的空位置
+	 * 
+	 * 我两个返回值的都写了
+	 * 你想用哪个就用哪个吧
+	 * 
+	 * @param transferID 中转中心编号
+	 * @return 空位置
+	 */
+	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID);
+	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID);
 }
