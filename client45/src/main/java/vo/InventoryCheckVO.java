@@ -19,12 +19,14 @@ public class InventoryCheckVO {
 	/** 批号 */
 	public String lotNum;
 	
-	public InventoryCheckVO(ArrayList<InventoryPositionVO> commos, String lotNum) {
+	public String transferID;
+	
+	public InventoryCheckVO(ArrayList<InventoryPositionVO> commos, String lotNum,String transferID) {
 		super();
 		this.commos = commos;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		this.date = sdf.format(new Date());
 	}
 }

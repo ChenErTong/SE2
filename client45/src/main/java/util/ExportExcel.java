@@ -25,7 +25,7 @@ public class ExportExcel {
 	 * @param listContent EXCEL文件正文数据集合
 	 * @return 系统提示
 	 */
-	public final static String exportExcel(String fileName, String[] Title, List<Object> listContent) {
+	public final static String exportExcel(String fileName, String head,String[] Title, List<Object> listContent) {
 		String result = "系统提示：Excel文件导出成功！";
 		// 以下开始输出到EXCEL
 		try {
@@ -70,15 +70,16 @@ public class ExportExcel {
 			wcf_left.setWrap(false); // 文字是否换行
 
 			/** ***************以下是EXCEL开头大标题，暂时省略********************* */
-			// sheet.mergeCells(0, 0, colWidth, 0);
-			// sheet.addCell(new Label(0, 0, "XX报表", wcf_center));
+			int colWidth=Title.length-1;
+			 sheet.mergeCells(0, 0, colWidth, 0);
+			 sheet.addCell(new Label(0, 0, head, wcf_center));
 			/** ***************以下是EXCEL第一行列标题********************* */
 			for (int i = 0; i < Title.length; i++) {
-				sheet.addCell(new Label(i, 0, Title[i], wcf_center));
+				sheet.addCell(new Label(i, 1, Title[i], wcf_center));
 			}
 			/** ***************以下是EXCEL正文数据********************* */
 			Field[] fields = null;
-			int i = 1;
+			int i = 2;
 			for (Object obj : listContent) {
 				fields = obj.getClass().getDeclaredFields();
 				int j = 0;

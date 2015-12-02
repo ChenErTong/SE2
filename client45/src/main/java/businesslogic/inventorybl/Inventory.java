@@ -8,6 +8,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.receiptbl.ReceiptInfo;
@@ -18,6 +19,7 @@ import po.InventoryPO;
 import state.ReceiptCondition;
 import state.ReceiptType;
 import state.ResultMessage;
+import util.ExportExcel;
 import vo.CommodityVO;
 import vo.InventoryCheckVO;
 import vo.InventoryPositionVO;
@@ -89,7 +91,7 @@ public class Inventory {
 			}
 		}
 		String lotNum = inventoryData.getLotID();
-		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum);
+		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum,transferID);
 		return checkVO;
 	}
 
@@ -209,6 +211,16 @@ public class Inventory {
 		}
 		useRate=positionUsed/(positionUsed+positionNotUsed);
 		return useRate;
+	}
+	public void exportToExcel(InventoryCheckVO vo) {
+		String fileName="output/"+"库存盘点"+vo.lotNum+".xls";
+		String head=vo.transferID+"中转中心库存"+vo.date+"盘点记录";
+		String[] title = {"区号","排号","架号","位号","商品信息"};
+		List<Object> list = new ArrayList<>();
+		for (InventoryPositionVO position : vo.commos) {
+			list.add(position);
+		}
+		ExportExcel.exportExcel(fileName, head, title, list);
 	}
 }
 

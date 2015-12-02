@@ -141,4 +141,9 @@ public class InventoryController implements InventoryBLService {
 		}
 		return 0;
 	}
+
+	@Override
+	public void exportToExcel(InventoryCheckVO vo) {
+		InventoryBL.exportToExcel(vo);
+	}
 }

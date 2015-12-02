@@ -90,4 +90,6 @@ public interface InventoryBLService {
 	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition);
 
 	public double inventoryAlarm(String transferID);
+	
+	public void exportToExcel(InventoryCheckVO vo);
 }

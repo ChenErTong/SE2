@@ -21,4 +21,11 @@ public class CommodityVO extends ValueObject{
 		double weight = volumn / 5000;
 		this.weight = Double.max(this.weight, weight);
 	}
+	@Override
+	public String toString() {
+		return " commodityType=" + commodityType + ", weight=" + weight + ", volumn=" + volumn + ", commodityState="
+				+ commodityState;
+	}
+	
+	
 }
