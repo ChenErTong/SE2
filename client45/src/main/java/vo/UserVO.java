@@ -1,5 +1,7 @@
 package vo;
 
+import state.UserIdentity;
+
 public class UserVO {
 	/** serialVersionUID */
 	public static final long serialVersionUID = 1L;
@@ -13,7 +15,7 @@ public class UserVO {
 	/** 密码 */
 	public String password;
 	/** 用户身份 */
-	public String iden;
+	public UserIdentity iden;
 	/** 联系电话 */
 	public String phoneNumber;
 
@@ -39,7 +41,7 @@ public class UserVO {
 	 * @param address
 	 *            用户地址
 	 */
-	public UserVO(String id, String password, String userName, String phoneNumber, String iden, String authority,
+	public UserVO(String id, String password, String userName, String phoneNumber, UserIdentity iden, String authority,
 			String address) {
 		this.id = id;
 		this.password = password;

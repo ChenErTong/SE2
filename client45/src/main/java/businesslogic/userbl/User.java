@@ -72,7 +72,7 @@ public class User {
 		for (UserPO po : pos) {
 			if (po.getUsername().equals(loginInfo.username)){
 				if (po.getPassword().equals(loginInfo.password)) {
-					return UserIdentity.valueOf(po.getIden());
+					return po.getIden();
 				}else {
 					//密码不正确
 					return null;
@@ -101,5 +101,17 @@ public class User {
 			userData.modify(admin);
 			return ResultMessage.SUCCESS;
 		}
+	}
+	
+	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException{
+		ArrayList<UserPO> pos = userData.find();
+		ArrayList<UserVO> vos = new ArrayList<>();
+		for (UserPO userPO : pos) {
+			if (userPO.getIden()==userIdentity) {
+				UserVO vo = UserTrans.transPOtoVO(userPO);
+				vos.add(vo);
+			}
+		}
+		return vos;
 	}
 }

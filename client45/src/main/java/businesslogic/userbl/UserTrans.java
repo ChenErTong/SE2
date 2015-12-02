@@ -3,6 +3,7 @@ package businesslogic.userbl;
 import java.util.ArrayList;
 
 import po.UserPO;
+import state.UserIdentity;
 import vo.UserVO;
 
 public class UserTrans {
@@ -14,7 +15,7 @@ public class UserTrans {
 		String username = vo.userName;
 		String password = vo.password;
 		String phoneNumber = vo.phoneNumber;
-		String iden = vo.iden;
+		UserIdentity iden = vo.iden;
 		String authority = vo.authority;
 		String address = vo.address;
 		return new UserPO(ID, password, username, phoneNumber, iden, authority, address);
@@ -28,7 +29,7 @@ public class UserTrans {
 		String username = po.getUsername();
 		String password = po.getPassword();
 		String phoneNumber = po.getPhoneNumber();
-		String iden = po.getIden();
+		UserIdentity iden = po.getIden();
 		String authority = po.getAuthority();
 		String address = po.getAddress();
 		return new UserVO(ID, password, username, phoneNumber, iden, authority, address);
