@@ -115,6 +115,7 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("AddSucceed!");
 				this.showAll();
+				addPolicy.refresh();
 				new MyNotification(this,"策略添加成功！",Color.GREEN);
 			}else{
 				new MyNotification(this,"策略添加失败！",Color.RED);
@@ -123,6 +124,7 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();
+				addPolicy.refresh();
 				new MyNotification(this,"策略添加成功！",Color.GREEN);
 			}else{
 				new MyNotification(this,"策略添加失败！",Color.RED);
@@ -131,6 +133,7 @@ public void actionPerformed(ActionEvent e) {/*		String [] employeeList = {"快�
 			ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();
+				addPolicy.refresh();
 				new MyNotification(this,"策略添加成功！",Color.GREEN);
 			}else{
 				new MyNotification(this,"策略添加失败！",Color.RED);
@@ -228,6 +231,7 @@ private void modifyPolicy() {
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("ModifySucceed!");
 		this.showAll();
+		modifyPolicy.refresh();
 		new MyNotification(this,"策略修改成功！",Color.GREEN);		
 	}else{
 		new MyNotification(this,"策略修改失败！",Color.RED);

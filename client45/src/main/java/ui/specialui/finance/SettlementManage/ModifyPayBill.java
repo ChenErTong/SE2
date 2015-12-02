@@ -80,7 +80,13 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		
 	}
 
-
+	public void refresh(){
+		for(int i=0;i<5;i++){
+			fields[i].setText(null);
+		}
+		items.setSelectedItem(null);
+		
+	}
 
 
 

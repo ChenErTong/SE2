@@ -377,6 +377,7 @@ public void showAll(){
 					transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
 			tableModel.addRow(rowData1);
 			organizationPool.add(transferVO.get(i));
+			transferPool.add(transferVO.get(i));
 			
 		}
 		for(int i=0;i<branchVO.size();i++){
@@ -384,6 +385,7 @@ public void showAll(){
 					,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
 			tableModel.addRow(rowData2);
 			organizationPool.add(branchVO.get(i));
+			branchPool.add(branchVO.get(i));
  		}
 	}
 
@@ -410,7 +412,7 @@ public void showAll(){
 			if(data!=null){
 				switch(Integer.parseInt(data)){
 					case 0 : transferVO = controller.showTransfer(); branchVO = controller.showBranch(); break;
-					case 1 : branchVO = controller.showBranch();
+					case 1 : branchVO = controller.showBranch();break;
 					case 2 : transferVO = controller.showTransfer();
 				}
 				for(int i=0;i<transferVO.size();i++){
@@ -418,12 +420,14 @@ public void showAll(){
 							transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
 					tableModel.addRow(rowData1);
 					organizationPool.add(transferVO.get(i));
+					transferPool.add(transferVO.get(i));
 				}
 				for(int i=0;i<branchVO.size();i++){
 					Object[] rowData2 = {branchVO.get(i).organizationID,branchVO.get(i).organizationType,branchVO.get(i).number,branchVO.get(i).date
 							,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
 					tableModel.addRow(rowData2);
 					organizationPool.add(branchVO.get(i));
+					branchPool.add(branchVO.get(i));
 		 		}
 				new MyNotification(this,"共有"+table.getRowCount()+"个机构满足条件！",Color.GREEN);
 				
@@ -442,6 +446,7 @@ public void showAll(){
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
 						this.showAll();
+						organizationDetails.refresh();
 						new MyNotification(this,"新机构添加成功！",Color.GREEN);
 					}else{
 						new MyNotification(this,"新机构添加失败！",Color.RED);
@@ -451,6 +456,7 @@ public void showAll(){
 					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[0]), data[2],data[3], new ArrayList<>(), new ArrayList<>()));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
+						organizationDetails.refresh();
 						new MyNotification(this,"新机构添加成功！",Color.GREEN);
 			
 					}else{
@@ -459,7 +465,6 @@ public void showAll(){
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteOrganization")){
-			//System.out.println("111");
 			table =organizationInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的机构！",Color.RED);
@@ -473,27 +478,23 @@ public void showAll(){
 				new MyNotification(this,"请先选择要修改的机构！",Color.RED);
 			}else{
 				switch(organizationPool.get(table.getSelectedRow()).organizationType){
-					case TRANSFER:Object[] data2 = new String[3];
+					case TRANSFER:Object[] data2 = new String[5];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-						//	data2[0] = organizationID;
 							data2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;
 							data2[1] =  organizationPool.get(table.getSelectedRow()).date;
-							//data2[2] = organizationPool.get(table.getSelectedRow()).number;
-						//	data2[4] = transferPool.get(table.getSelectedRow()).inventories;
-							//data2[5] = transferPool.get(table.getSelectedRow()).accounts;
-							data2[2] =transferPool.get(table.getSelectedRow()).address;
+							data2[2] =transferPool.get(table.getSelectedRow()).address.substring(0, 3);
+							data2[3] = transferPool.get(table.getSelectedRow()).address.substring(3, 6);
+							data2[4] = transferPool.get(table.getSelectedRow()).address.substring(6);
 							String[] data3 = (String[]) data2;
 							organizationDetails.setData(data3);
 					case BRANCH:
-							Object[] data_2 = new String[3];
+							Object[] data_2 = new String[5];
 							organizationID = organizationPool.get(table.getSelectedRow()).organizationID;
-						//	data_2[0] = organizationID;
 							data_2[0] =  organizationPool.get(table.getSelectedRow()).organizationType;
 							data_2[1] =  organizationPool.get(table.getSelectedRow()).date;
-							//data_2[2] = organizationPool.get(table.getSelectedRow()).number;
-					//		data_2[4] = branchPool.get(table.getSelectedRow()).facilities;
-						//	data_2[5] = branchPool.get(table.getSelectedRow()).accounts;
-							data_2[2] =branchPool.get(table.getSelectedRow()).address;
+							data_2[2] =branchPool.get(table.getSelectedRow()).address.substring(0, 3);
+							data_2[3] = branchPool.get(table.getSelectedRow()).address.substring(3, 6);
+							data_2[4] = branchPool.get(table.getSelectedRow()).address.substring(6);
 							String[] data2_2 = (String[]) data_2;
 							organizationDetails.setData(data2_2);
 				}
@@ -503,41 +504,35 @@ public void showAll(){
 			table =organizationInfo.getTable();
 			//System.out.println("111");
 			organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
-		//	if(table.getSelectedRow()==0){
-			//	new MyNotification(this,"请先选择需要修改的机构！",Color.RED);
-			//}else{
 				if(organizationDetails.getData()==null){
 					new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改机构信息！",Color.GREEN);
 					this.modifyOrganization();
 				}
-			//}
 		}
 
 	}
-
-
-	
-
-
 
 	private void modifyOrganization() {
 		controller = ControllerFactory.getOrganizationController();
 		table = organizationInfo.getTable();
 		String[] data = organizationDetails.getData();
+		organizationID =  organizationPool.get(table.getSelectedRow()).organizationID;
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
-		case TRANSFER:ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[0], data[1], null, null));
+		case TRANSFER:ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], null, null));
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							System.out.println("ModifySucceed!");
 							this.showAll();
+							organizationDetails.refresh();
 							new MyNotification(this,"中转中心信息修改成功！",Color.GREEN);		
 						}else{
 							new MyNotification(this,"中转中心信息修改失败！",Color.RED);
 						}break;
-		case BRANCH:ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[0], data[1], null, null));
+		case BRANCH:ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], null, null));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
+						organizationDetails.refresh();
 						new MyNotification(this,"营业厅信息修改成功！",Color.GREEN);
 					}else{
 						new MyNotification(this,"营业厅信息修改失败！",Color.RED);

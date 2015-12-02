@@ -78,6 +78,14 @@ public class AddPayBill extends MyTranslucentPanel{
 		fields[4] .setText(data[5]);
 		
 	}
+	
+	public void refresh(){
+		for(int i=0;i<5;i++){
+			fields[i].setText(null);
+		}
+		items.setSelectedItem(null);
+		
+	}
 	private static final long serialVersionUID = 1L;
 
 }

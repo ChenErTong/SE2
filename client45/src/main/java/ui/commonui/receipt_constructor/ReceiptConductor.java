@@ -285,8 +285,8 @@ String ID = receipt.ID;
 		for(int i=0;i<35;i++){
 			text = text + blank4;
 		}
-		
-		text = text +"出发地： "+receipt.depture+"\n";
+		/**TODO */
+	//	text = text +"出发地： "+receipt.depture+"\n";
 		for(int i=0;i<5;i++){
 			text = text + blank4;
 		}
@@ -294,7 +294,7 @@ String ID = receipt.ID;
 		for(int i=0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text +"到达地： "+receipt.destination+"\n";
+		//text = text +"到达地： "+receipt.destination+"\n";
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
@@ -315,7 +315,7 @@ String ID = receipt.ID;
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text+"货物编号"+receipt.CommoditiesID+"\n";
+	//	text = text+"货物编号"+receipt.CommoditiesID+"\n";
 		return text;
 	}
 

@@ -108,10 +108,11 @@ public void actionPerformed(ActionEvent e) {
 			new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 		}else{
 			ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					System.out.println("AddSucceed!");
-					this.showAll();
-					new MyNotification(this,"常量添加成功！",Color.GREEN);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("AddSucceed!");
+				this.showAll();
+				addBase.refresh();
+				new MyNotification(this,"常量添加成功！",Color.GREEN);
 			}else{
 				new MyNotification(this,"常量添加失败！",Color.RED);
 			}
@@ -197,6 +198,7 @@ public void actionPerformed(ActionEvent e) {
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();
+				modifyBase.refresh();
 				new MyNotification(this,"常量修改成功！",Color.GREEN);		
 			}else{
 				new MyNotification(this,"常量修改失败！",Color.RED);

@@ -151,23 +151,22 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
 			accountID = accountPool.get(table.getSelectedRow()).ID;
-			if(table.getSelectedRow()==0){
-				new MyNotification(this,"请先选择需要修改的账户！",Color.RED);
-			}else{
+		//	if(table.getSelectedRow()==0){
+			//	new MyNotification(this,"请先选择需要修改的账户！",Color.RED);
+			//}else{
 				if(modifyAccountInfo.getData()==null){
 					new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改账户信息！",Color.GREEN);
 					this.modifyAccount();
 				}
-			}
+			//}
 		}else if(e.getActionCommand().equals("ModifyBankAccount")){
 			table = bankAccountPanel.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的账户！",Color.RED);
 			}else{
 				accountID = accountPool.get(table.getSelectedRow()).ID;
-				//System.out.println(accountID);
 				String[] data = new String[3];
 				data[0] = accountID;
 				data[1] = accountPool.get(table.getSelectedRow()).name;
@@ -184,6 +183,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					//System.out.println("AddSucceed!");
 					this.showAll();
+					addBankAccount.refresh();
 					new MyNotification(this,"账户添加成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"账户添加失败！",Color.RED);
@@ -218,11 +218,13 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		table = bankAccountPanel.getTable();
 		String[] data = modifyAccountInfo.getData();
+		accountID = accountPool.get(table.getSelectedRow()).ID;
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 				data[1],Double.parseDouble(data[2]),null));
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
+			modifyAccountInfo.refresh();
 			new MyNotification(this,"账户修改成功！",Color.GREEN);		
 		}else{
 			new MyNotification(this,"账户修改失败！",Color.RED);

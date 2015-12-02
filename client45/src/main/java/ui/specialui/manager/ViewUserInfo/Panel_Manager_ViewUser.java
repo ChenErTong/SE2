@@ -161,6 +161,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
+					addAccount.refresh();
 					new MyNotification(this,"新员工添加成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"新员工添加失败！",Color.RED);
@@ -247,6 +248,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
+			modifyAccount.refresh();
 			new MyNotification(this,"员工修改成功！",Color.GREEN);		
 		}else{
 			new MyNotification(this,"员工修改失败！",Color.RED);

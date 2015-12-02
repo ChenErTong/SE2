@@ -38,8 +38,10 @@ public class BranchVO extends OrganizationVO{
 		this.id = id;
 		this.date = date;
 		this.address = address;
-		this.accounts = accounts;
-		this.facilities = facilities;
+		//this.accounts = accounts;
+		//this.facilities = facilities;
+		accounts = new ArrayList<AccountPO> ();
+		facilities = new ArrayList<FacilityPO>();
 	}
 
 	

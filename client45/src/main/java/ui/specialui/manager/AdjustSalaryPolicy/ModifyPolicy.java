@@ -41,7 +41,9 @@ public class ModifyPolicy extends MyTranslucentPanel{
 	}
 
 	public void refresh() {
-		
+		employeeType.setSelectedItem(null);
+		policyType.setSelectedItem(null);
+		policyRule.setText(null);
 	}
 
 	public String[] getData() {

@@ -90,6 +90,12 @@ public class AddAccount extends MyTranslucentPanel{
 		branchID.setSelectedItem(data[7]);
 	}
 	
+	public void refresh(){
+		branchID.setSelectedItem(null);
+		for(int i=0;i<7;i++){
+			fields[i].setText(null);
+		}
+	}
 
 	private static final long serialVersionUID = 1L;
 

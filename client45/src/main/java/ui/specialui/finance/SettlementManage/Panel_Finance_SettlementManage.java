@@ -161,6 +161,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							System.out.println("Add Succeed!");
 							this.showAll();
+							addPaybill.refresh();
 							new MyNotification(this,"付款单添加成功！",Color.GREEN);
 						}else{
 							new MyNotification(this,"付款单添加失败！",Color.RED);
@@ -170,6 +171,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 						if(rsg1.equals(ResultMessage.SUCCESS)){
 							System.out.println("Add Succeed!");
 							this.showAll();
+							addPaybill.refresh();
 							new MyNotification(this,"付款单添加成功！",Color.GREEN);
 						}else{
 							new MyNotification(this,"付款单添加失败！",Color.RED);
@@ -179,6 +181,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 						if(rsg2.equals(ResultMessage.SUCCESS)){
 							System.out.println("Add Succeed!");
 							this.showAll();
+							addPaybill.refresh();
 							new MyNotification(this,"付款单添加成功！",Color.GREEN);
 						}else{
 							new MyNotification(this,"付款单添加失败！",Color.RED);
@@ -188,6 +191,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 						if(rsg3.equals(ResultMessage.SUCCESS)){
 							System.out.println("Add Succeed!");
 							this.showAll();
+							addPaybill.refresh();
 							new MyNotification(this,"付款单添加成功！",Color.GREEN);
 						}else{
 							new MyNotification(this,"付款单添加失败！",Color.RED);
@@ -259,6 +263,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("Add Succeed!");
 					this.showAll();
+					modifyPaybill.refresh();
 					new MyNotification(this,"付款单修改成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
@@ -268,6 +273,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 				if(rsg1.equals(ResultMessage.SUCCESS)){
 					System.out.println("Add Succeed!");
 					this.showAll();
+					modifyPaybill.refresh();
 					new MyNotification(this,"付款单修改成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
@@ -277,6 +283,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 				if(rsg2.equals(ResultMessage.SUCCESS)){
 					System.out.println("Add Succeed!");
 					this.showAll();
+					modifyPaybill.refresh();
 					new MyNotification(this,"付款单修改成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
@@ -286,6 +293,7 @@ public class Panel_Finance_SettlementManage extends MyJPanel implements ActionLi
 				if(rsg3.equals(ResultMessage.SUCCESS)){
 					System.out.println("Add Succeed!");
 					this.showAll();
+					modifyPaybill.refresh();
 					new MyNotification(this,"付款单修改成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);

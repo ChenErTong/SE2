@@ -211,10 +211,10 @@ public void showAll(){
 			}
 			
 			for(int j = 0; j < avo.inventories.size(); j++){
+				//TODO 
+		//		Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).isEmpty()};
 
-				Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).isEmpty()};
-
-				tableModel4.addRow(rowData);
+//				tableModel4.addRow(rowData);
 			}
 			
 			for(int j = 0;j<avo.bankAccounts.size();j++){
