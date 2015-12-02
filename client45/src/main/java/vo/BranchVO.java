@@ -39,7 +39,7 @@ public class BranchVO extends OrganizationVO{
 	}
 
 	public BranchVO(String organizationID, String address, OrganizationType organizationType) {
-		super(organizationID, address, 0, organizationType);
+		super(organizationID, address, 0, OrganizationType.BRANCH);
 		this.accounts = new ArrayList<AccountVO> ();
 		this.facilities = new ArrayList<FacilityVO>();
 	}
