@@ -7,12 +7,6 @@ import vo.accountvo.AccountVO;
 
 public class TransferVO extends OrganizationVO {
 	
-
-	/**
-	 * 中转中心地址
-	 */
-	public String address;
-	
 	/**
 	 * 员工信息
 	 */
@@ -36,7 +30,5 @@ public class TransferVO extends OrganizationVO {
 		this.inventories = new ArrayList<InventoryVO>();
 	}
 	
-	
-
 	
 }

@@ -60,7 +60,9 @@ public class Organization {
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
+		System.out.println(vo.toString());
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		System.out.println(po.toString());
 		return branchData.add(po);
 	}
 
