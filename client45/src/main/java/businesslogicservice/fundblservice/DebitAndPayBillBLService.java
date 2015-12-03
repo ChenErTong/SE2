@@ -9,7 +9,7 @@ import vo.receiptvo.PaymentBillVO;
 
 /**
  * 负责实现资金管理界面所需要的服务
- * 
+ * @author Ann
  * @author zsq
  * @version Oct 22,2015
  */

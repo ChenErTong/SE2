@@ -14,6 +14,7 @@ import vo.accountvo.AccountVO;
 /**
  * 提供进行公司机构管理界面所需要的服务【Orz感觉这个接口单独放好怪异】
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface OrganizationBLService {

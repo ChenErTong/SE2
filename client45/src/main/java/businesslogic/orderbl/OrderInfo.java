@@ -10,7 +10,11 @@ import po.OrderPO;
 import state.CommodityState;
 import vo.CommodityVO;
 import vo.OrderVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:36:43
+ */
 public class OrderInfo implements OrderInfo_Branch_Transfer{
 	Order order;
 	OrderDataService orderData;

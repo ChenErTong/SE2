@@ -10,7 +10,8 @@ import vo.FacilityVO;
 /**
  * 实现营业厅运输工具管理界面所需要的服务
  * @author czw
- * @version Oct 22,2015
+ * @author Ann
+ * @version 创建时间：2015年10月22日 下午3:41:11
  */
 public interface FacilityBLService extends BLService{	
 	/**

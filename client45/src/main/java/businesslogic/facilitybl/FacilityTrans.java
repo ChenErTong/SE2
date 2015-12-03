@@ -7,7 +7,11 @@ import po.accountpo.DriverPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
 import vo.FacilityVO;
 import vo.accountvo.DriverVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:33:49
+ */
 public class FacilityTrans {
 	public static FacilityPO convertVOtoPO(FacilityVO vo) {
 		if (vo == null)

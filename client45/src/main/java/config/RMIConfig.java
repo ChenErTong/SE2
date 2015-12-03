@@ -2,7 +2,7 @@ package config;
 /**
  * 
  * @author Ann
- *
+ * @version 创建时间：2015年12月3日 下午3:44:40
  */
 public class RMIConfig {
 	public static String HOST ;

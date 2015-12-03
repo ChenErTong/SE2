@@ -5,7 +5,11 @@ import java.util.ArrayList;
 
 import state.ResultMessage;
 import vo.PolicyVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:40:26
+ */
 public interface PolicyBLService {
 	/**
 	 * 显示被查询的成本常量

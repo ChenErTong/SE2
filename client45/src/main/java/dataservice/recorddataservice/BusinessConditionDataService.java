@@ -4,7 +4,11 @@ import java.rmi.RemoteException;
 
 import dataservice.ManageDataService;
 import po.BussinessConditionPO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:46:21
+ */
 public interface BusinessConditionDataService extends ManageDataService<BussinessConditionPO>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "BusinessConditionData";

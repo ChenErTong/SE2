@@ -9,7 +9,8 @@ import vo.BaseVO;
 /**
  * 负责实现公司基础运营常量管理界面提供的服务
  * @author zsq
- *
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:40:04
  */
 public interface BaseBLService extends BLService{
 	/**

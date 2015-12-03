@@ -11,6 +11,7 @@ import vo.UserVO;
 /**
  * 负责实现用户管理界面所需要的服务
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface UserBLService extends BLService{

@@ -10,7 +10,11 @@ import po.accountpo.AccountPO;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.accountvo.AccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:33:20
+ */
 public class BranchTrans {
 	public static BranchPO convertVOtoPO(BranchVO vo) {
 		if (vo == null) {

@@ -13,7 +13,11 @@ import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:37:50
+ */
 public class Receipt  {
 	private ReceiptDataService  receiptData;
 

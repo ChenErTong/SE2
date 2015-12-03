@@ -22,7 +22,11 @@ import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:33:06
+ */
 public class Branch{
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch_Transfer receiptInfo;

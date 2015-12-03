@@ -9,6 +9,7 @@ import po.FacilityPO;
  * 提供营业厅运输工具集体载入、增改改查的服务
  * 
  * @author czw
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface FacilityDataService extends ManageDataService<FacilityPO> {

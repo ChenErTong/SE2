@@ -9,6 +9,7 @@ import po.BankAccountPO;
  * 提供银行账户数据的集体载入、保存和增删改查服务
  * 
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface BankAccountDataService extends ManageDataService<BankAccountPO> {

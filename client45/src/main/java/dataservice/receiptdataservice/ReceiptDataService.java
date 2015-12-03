@@ -13,8 +13,8 @@ import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
  * 提供单据信息的查看、单据修改和单据审批的服务
  * 
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
- * @param <ReceiptPO>
  */
 public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	/** 接口的名称，RMI绑定时候的名称 */

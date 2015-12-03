@@ -23,9 +23,12 @@ import vo.FacilityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:37:13
+ */
 public class Organization {
-	//TODO (可能不需要依赖倒置)
 	private BranchDataService branchData;
 	private TransferDataService transferData;
 	private AccountInfo_Branch_Transfer accountInfo;

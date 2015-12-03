@@ -15,7 +15,11 @@ import state.ExpressType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:36:35
+ */
 public class Order{
 	private OrderDataService orderData;
 	private BaseInfo_Order baseInfo = new BaseInfo();

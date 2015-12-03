@@ -9,9 +9,9 @@ import state.UserIdentity;
 import vo.BaseVO;
 import vo.PolicyVO;
 /**
- * This class is TODO this class is todo
- * @author Ann 
- *
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:32:52
  */
 public class BaseTrans {
 	

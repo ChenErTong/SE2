@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import vo.receiptvo.ExpenseVO;
 import state.ResultMessage;
 import businesslogicservice.BLService;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:42:39
+ */
 public interface ExpenseBLService extends BLService{
 	/**
 	 * 提出创建/新增收款记录时返回该条记录的ID

@@ -1,8 +1,5 @@
 package businesslogic.recordbl;
 
-/**
- * @author LIUXUANLIN
- */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,7 +8,11 @@ import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
-
+/**
+ * @author LIUXUANLIN
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:38:28
+ */
 public class RecordController implements RecordBLService {
 	Record RecordBL = new Record();
 

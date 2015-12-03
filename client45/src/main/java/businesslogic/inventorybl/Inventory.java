@@ -1,8 +1,5 @@
 package businesslogic.inventorybl;
 
-/**
- * @author LIUXUANLIN
- */
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -28,12 +25,10 @@ import vo.InventoryViewVO;
 import vo.receiptvo.AdjustReceiptVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-// 要发生较大改动！！！！！！！
-//虽然和初衷不一样，但是果然发生了超大改动
 /**
- * 
+ * @author LIUXUANLIN
  * @author Ann
- *
+ * @version 创建时间：2015年12月3日 下午3:35:19
  */
 public class Inventory {
 	private InventoryDataService inventoryData;

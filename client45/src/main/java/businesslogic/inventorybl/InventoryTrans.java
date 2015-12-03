@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import po.InventoryPO;
 import vo.InventoryVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:35:38
+ */
 public class InventoryTrans {
 	public static InventoryPO convertVOtoPO(InventoryVO vo) {
 		if(vo==null)

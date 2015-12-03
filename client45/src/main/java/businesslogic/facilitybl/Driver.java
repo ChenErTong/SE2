@@ -12,7 +12,11 @@ import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:33:25
+ */
 public class Driver{
 	private DriverDataService DriverData;
 	

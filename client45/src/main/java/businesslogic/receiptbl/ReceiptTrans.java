@@ -32,7 +32,11 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:38:07
+ */
 public class ReceiptTrans {
 	public static ReceiptPO convertVOtoPO(ReceiptVO vo){
 		if(vo==null)

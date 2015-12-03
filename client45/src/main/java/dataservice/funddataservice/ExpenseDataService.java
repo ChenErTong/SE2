@@ -8,6 +8,7 @@ import po.ExpensePO;
 /**
  * 提供收款信息数据的集体载入、保存和增删改查操作
  * @author zsq
+ * @author Ann
  * @version Oct 23,2015
  */
 @Deprecated

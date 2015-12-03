@@ -14,7 +14,11 @@ import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:37:58
+ */
 public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer {
 	Receipt receipt;
 	ReceiptDataService receiptData;

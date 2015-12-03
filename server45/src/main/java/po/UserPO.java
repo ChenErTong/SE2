@@ -56,8 +56,4 @@ public class UserPO extends PersistentObject{
 		this.password = password;
 	}
 	
-	
-
-
-	
 }

@@ -10,7 +10,11 @@ import vo.FacilityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:37:24
+ */
 public class OrganizationController implements OrganizationBLService {
 	
 	Organization organization = new Organization();
