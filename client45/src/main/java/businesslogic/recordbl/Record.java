@@ -11,7 +11,11 @@ import vo.BussinessOneDayVO;
 import vo.BussinessProcessExportVO;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:38:19
+ */
 public class Record {
 	private DebitAndPayBillShowInfo_Record showInfo;
 	

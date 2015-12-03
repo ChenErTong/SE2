@@ -1,7 +1,4 @@
 package businesslogic.inventorybl;
-/**
- * @author LIUXUANLIN
- */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -14,7 +11,11 @@ import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
-
+/**
+ * @author LIUXUANLIN
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:35:26
+ */
 public class InventoryController implements InventoryBLService {
     Inventory InventoryBL = new Inventory();
 	@Override

@@ -1,14 +1,15 @@
 package businesslogic.accountbl;
-/**
- * @author LIUXUANLIN
- */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
-
+/**
+ * @author LIUXUANLIN
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:31:56
+ */
 public class AccountController implements AccountBLService{
      Account AccountBL = new Account();
 	@Override

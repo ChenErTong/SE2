@@ -9,6 +9,7 @@ import vo.OrderVO;
 /**
  * 实现订单管理界面所需要的服务
  * @author czw
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface OrderBLService extends BLService{

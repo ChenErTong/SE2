@@ -10,7 +10,11 @@ import vo.InventoryVO;
 import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:43:01
+ */
 public interface OpeningStockBLService {
 	/**建立期初账目，持久化更新涉及的对象的数据**/
 	public ResultMessage add(

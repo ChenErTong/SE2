@@ -8,6 +8,7 @@ import po.UserPO;
 /**
  *提供系统用户集体载入、增删改查的服务
  *@author zsq
+ *@author Ann
  *@version Oct 22,2015 
  */
 public interface  UserDataService extends ManageDataService<UserPO> {

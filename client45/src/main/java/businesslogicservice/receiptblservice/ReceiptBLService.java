@@ -10,6 +10,7 @@ import vo.receiptvo.ReceiptVO;
 /**
  * 实现审批单据界面所需要的服务
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface ReceiptBLService {

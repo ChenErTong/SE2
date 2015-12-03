@@ -9,7 +9,11 @@ import businesslogic.organizationbl.AccountInfo_Branch_Transfer;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
 import vo.accountvo.AccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:32:08
+ */
 public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow,AccountInfo_OpeningStock,AccountInfo_Branch_Transfer {
 	Account account;
 	AccountDataService accountData;

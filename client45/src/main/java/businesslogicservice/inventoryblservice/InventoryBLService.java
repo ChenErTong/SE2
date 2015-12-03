@@ -12,9 +12,9 @@ import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 /**
- * @version Dec 2,2015
+ * 
  * @author Ann
- *
+ * @version 创建时间：2015年12月2日 下午3:42:51
  */
 public interface InventoryBLService {
 	/**

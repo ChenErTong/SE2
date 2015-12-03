@@ -14,7 +14,11 @@ import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
 import vo.UserVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:38:54
+ */
 public class User {
 	private UserDataService userData;
 

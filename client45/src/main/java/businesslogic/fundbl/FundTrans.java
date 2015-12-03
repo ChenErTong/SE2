@@ -17,7 +17,11 @@ import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.ExpenseVO;
 import vo.receiptvo.PaymentBillVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:35:08
+ */
 public class FundTrans {
 	public static BankAccountPO convertVOtoPO(BankAccountVO vo) {
 		if (vo == null) {

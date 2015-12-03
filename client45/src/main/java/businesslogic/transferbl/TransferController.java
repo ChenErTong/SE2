@@ -11,7 +11,11 @@ import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:38:40
+ */
 public class TransferController implements TransferBLService{
     Transfer TransferBL = new Transfer();
 	@Override

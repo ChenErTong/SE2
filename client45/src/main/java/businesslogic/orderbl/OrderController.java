@@ -7,7 +7,11 @@ import state.ExpressType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:36:39
+ */
 public class OrderController implements OrderBLService{
     Order orderBL = new Order();
 	@Override

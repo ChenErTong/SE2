@@ -11,10 +11,13 @@ import po.receiptpo.DebitBillPO;
 import state.ReceiptType;
 import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
-import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:34:48
+ */
 public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	DebitAndPayBill debitAndPayBill;
 	DebitAndPayBillDataService debitAndPayBillData;

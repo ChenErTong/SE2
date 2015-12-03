@@ -8,10 +8,11 @@ import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
-     /** @author lxl
-	 *  @version Oct 23,2015
-	 *      **/
-	
+/**
+ * @author LIUXUANLIN
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:43:42
+ */
 public interface RecordBLService {
 /**统计经营情况表成本收益表**/
 	/**符合条件的所有入款单和收款单

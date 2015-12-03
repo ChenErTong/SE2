@@ -1,7 +1,11 @@
 package businesslogic.orderbl;
 
 import java.rmi.RemoteException;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:36:31
+ */
 public interface BaseInfo_Order {
 	/**
 	 * 计算获得单次订单的预计到达日期

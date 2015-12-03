@@ -8,7 +8,11 @@ import businesslogic.organizationbl.FacilityInfo_Branch_Transfer;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import vo.FacilityVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:33:45
+ */
 public class FacilityInfo implements FacilityInfo_OpeningStock,FacilityInfo_Branch_Transfer{
 	Facility facility;
 	FacilityDataService facilityData;

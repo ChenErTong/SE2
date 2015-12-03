@@ -1,7 +1,4 @@
 package businesslogic.fundbl;
-/**
- * @author LIUXUANLIN
- */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 

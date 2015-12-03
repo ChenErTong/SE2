@@ -18,7 +18,11 @@ import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
-
+/**
+ * 
+ * @author Ann
+ * @version 创建时间：2015年12月3日 下午3:34:01
+ */
 public class BankAccount {
 	private BankAccountDataService bankAccountData;
 
