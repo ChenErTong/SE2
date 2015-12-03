@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-import businesslogic.accountbl.AccountController;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
+import state.UserIdentity;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import vo.UserVO;
-import vo.accountvo.AccountVO;
+
 
 
 public class Panel_Admin_Total extends MyJPanel implements ActionListener{
@@ -190,7 +190,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			ArrayList<UserVO> userVO= userController.show();
 			
 			for(int i = 0; i < userVO.size(); i++){
-				String[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,userVO.get(i).iden,userVO.get(i).authority
+				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,userVO.get(i).iden,userVO.get(i).authority
 						,userVO.get(i).phoneNumber,userVO.get(i).address};
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
@@ -204,18 +204,78 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(userDetails.getData()==null){
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 			}else{//String id, String password, String userName, String phoneNumber, String iden, String authority,
-				//String address
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],data[4],data[5],data[6]+data[7]+data[8]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					System.out.println("AddSucceed!");
-					this.showAll();
-					userDetails.refresh();
-					new MyNotification(this,"用户添加成功！",Color.GREEN);
-				
-					
-				}else{
-					new MyNotification(this,"用户添加失败！",Color.RED);
-				}
+				//String address{"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
+				if(data[4].equals("总经理")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("快递员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.COURIER,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("库存管理员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.INVENTORY_MANAGER,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("中转业务员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("营业厅业务员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("财务人员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.FINANCE_MANAGER,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}else if(data[4].equals("管理员")){
+					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.ADMIN,data[5],data[6]+data[7]+data[8]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户添加失败！",Color.RED);
+					}
+				}	
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
 				table = userInfo.getTable();
@@ -223,13 +283,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
-			//	System.out.println(userID);
 				String[] data = new String[9];
 				data[0] = userID;
 				data[1] = userPool.get(table.getSelectedRow()).password;
 				data[2] = userPool.get(table.getSelectedRow()).userName;
 				data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
-				data[4] = userPool.get(table.getSelectedRow()).iden;
+				data[4] = userPool.get(table.getSelectedRow()).iden+"";
 				data[5] = userPool.get(table.getSelectedRow()).authority;
 				data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
 				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
@@ -262,7 +321,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				data[1] = userPool.get(table.getSelectedRow()).password;
 				data[2] = userPool.get(table.getSelectedRow()).userName;
 				data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
-				data[4] = userPool.get(table.getSelectedRow()).iden;
+				data[4] = userPool.get(table.getSelectedRow()).iden+"";
 				data[5] = userPool.get(table.getSelectedRow()).authority;
 				data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
 				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
@@ -272,15 +331,11 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
 			userID= userPool.get(table.getSelectedRow()).id;
-			//if(table.getSelectedRow()==0){
-				//new MyNotification(this,"请先选择需要修改的用户！",Color.RED);
-			//}else{
 				if(userDetails.getData()==null){
 					new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 				}else{
 					new MyNotification(this,"正在修改用户信息！",Color.GREEN);
 					this.modifyUser();
-				//s}
 			}
 		}else if(e.getActionCommand().equals("SearchUser")){
 			table = userInfo.getTable();
@@ -296,23 +351,23 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			
 			// {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 			//--TODO 缺少接口
-		 AccountController	accountController = ControllerFactory.getAccountController();
-			ArrayList<AccountVO> userVO;
+			UserController userController = ControllerFactory.getUserController();
+			ArrayList<UserVO> userVO;
 			String data = userInfo.getData()+"";
 			if(data!=""){
 				switch(Integer.parseInt(data)){
-					case 1 : userVO = accountController.show("总经理");break;
-					case 2 : userVO = accountController.show("快递员");break;
-					case 3 : userVO = accountController.show("中转库存人员");break;
-					case 4 : userVO = accountController.show("中转中心业务员");break;
-					case 5 : userVO = accountController.show("营业厅业务员");break;
-					case 6 : userVO = accountController.show("财务人员");break;
-					case 7 : userVO = accountController.show("管理员");break;
-					default : userVO = accountController.show();break;
+					//case 1 : userVO = userController.
+					//case 2 : userVO =
+					//case 3 : userVO = 
+					//case 4 : userVO =
+					//case 5 : userVO = 
+					//case 6 : userVO = 
+					//case 7 : userVO =
+					//default : userVO = 
 					
 				}
 			
-				for(int i = 0; i < userVO.size(); i++){
+				//for(int i = 0; i < userVO.size(); i++){
 			//	String[] rowData = {userVO.get(i)。,userVO.get(i).userName,userVO.get(i).password,
 				//		userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
 				//	String[] rowData = {userVO.get(i).ID,use}
@@ -325,20 +380,81 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询类型！",Color.RED);
 			}
 		}
-	}
+	
 
 	private void modifyUser() {
 		userController = ControllerFactory.getUserController();
 		table = userInfo.getTable();
 		userID= userPool.get(table.getSelectedRow()).id;
 		String[] data = userDetails.getData();
-		ResultMessage rsg = userController.updateUser(new UserVO(userID,data[0],data[1],data[2],data[3],data[4],data[5]));
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("ModifySucceed!");
-			this.showAll();
-			new MyNotification(this,"用户修改成功！",Color.GREEN);		
-		}else{
-			new MyNotification(this,"用户修改失败！",Color.RED);
+		if(userDetails.getData()==null){
+			new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
+		}else{//String id, String password, String userName, String phoneNumber, String iden, String authority,
+			//String address{"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
+			if(data[4].equals("总经理")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("快递员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.COURIER,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("库存管理员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.INVENTORY_MANAGER,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("中转业务员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("营业厅业务员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("财务人员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.FINANCE_MANAGER,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}else if(data[4].equals("管理员")){
+				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.ADMIN,data[5],data[6]+data[7]+data[8]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}	
 		}
 	}
 
