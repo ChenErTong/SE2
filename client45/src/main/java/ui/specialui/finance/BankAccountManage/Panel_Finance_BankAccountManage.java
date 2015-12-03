@@ -209,6 +209,7 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
+			this.repaint();
 			new MyNotification(this,"账户删除成功！",Color.GREEN);
 		}else{
 			new MyNotification(this,"账户删除失败！",Color.RED);

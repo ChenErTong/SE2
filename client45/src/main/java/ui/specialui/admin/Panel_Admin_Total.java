@@ -24,7 +24,8 @@ import vo.UserVO;
 public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private UserInfo userInfo;
 	private UserDetails userDetails;
-	private MyJButton commonButton;
+	private MyJButton commonButton = new MyJButton(890, 670, 120, 30, "确认添加", 20);;
+	private MyJButton modifyButton = new MyJButton(890, 670, 120, 30, "确认修改", 20);;
 	
 	private MyJTable table;
 	
@@ -69,9 +70,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		userDetails.add(new MyJLabel(230,5,120,30,"新增用户",18,true));
 		
 		this.add(userDetails);
-		
-		
-		commonButton = new MyJButton(890, 670, 120, 30, "确认添加", 20);
+	
 		commonButton.setActionCommand("AddUser");
 		commonButton.addActionListener(this);
 		this.add(commonButton);
@@ -221,11 +220,15 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
 			this.remove(userDetails);
-			
+			this.remove(commonButton);
 			userDetails = new UserDetails();
 			userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
 			this.repaint();
 			this.add(userDetails);
+			
+			modifyButton.setActionCommand("CheckModify");
+			modifyButton.addActionListener(this);
+			this.add(modifyButton);
 			
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
@@ -246,10 +249,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
 				userDetails.setData(data);
 				userDetails.setEnabled(true);
-				commonButton = new MyJButton(890, 670, 150, 30, "修改用户信息", 20);
-				commonButton.setActionCommand("CheckModify");
-				commonButton.addActionListener(this);
-				this.add(commonButton);
 			}
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			table = userInfo.getTable();
@@ -265,7 +264,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("ViewUserInfo")){
 			this.remove(userDetails);
 			this.remove(commonButton);
-		
+			this.remove(modifyButton);
+			
 			userDetails = new UserDetails();
 			userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
 			this.add(userDetails);
