@@ -25,7 +25,7 @@ public class UserTrans {
 		if (po == null) {
 			return null;
 		}
-		String ID = po.getId();
+		String ID = po.getID();
 		String username = po.getUserName();
 		String password = po.getPassword();
 		String phoneNumber = po.getPhoneNumber();

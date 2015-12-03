@@ -10,10 +10,6 @@ import state.UserIdentity;
 public class UserPO extends PersistentObject{
 	/**serialVersionUID*/
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 用户ID
-	 */
-	private String id;
 	/**用户名*/
 	private String userName;
 
@@ -38,9 +34,6 @@ public class UserPO extends PersistentObject{
 		this.authority = authority;
 		this.address = address;
 	}
-	public String getId() {
-		return id;
-	}
 	public String getUserName() {
 		return userName;
 	}
@@ -62,9 +55,5 @@ public class UserPO extends PersistentObject{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-
-
 	
 }
