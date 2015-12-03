@@ -356,23 +356,22 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			String data = userInfo.getData()+"";
 			if(data!=""){
 				switch(Integer.parseInt(data)){
-					//case 1 : userVO = userController.
-					//case 2 : userVO =
-					//case 3 : userVO = 
-					//case 4 : userVO =
-					//case 5 : userVO = 
-					//case 6 : userVO = 
-					//case 7 : userVO =
-					//default : userVO = 
+					case 1 : userVO = userController.showUser(UserIdentity.GENERAL_MANAGER);
+					case 2 : userVO = userController.showUser(UserIdentity.COURIER);
+					case 3 : userVO = userController.showUser(UserIdentity.INVENTORY_MANAGER);
+					case 4 : userVO = userController.showUser(UserIdentity.TRANSFER_CONTERMAN);
+					case 5 : userVO = userController.showUser(UserIdentity.BRANCH_COUNTERMAN);
+					case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);
+					case 7 : userVO =userController.showUser(UserIdentity.ADMIN);
+					default : userVO = userController.show();
 					
 				}
 			
-				//for(int i = 0; i < userVO.size(); i++){
-			//	String[] rowData = {userVO.get(i)。,userVO.get(i).userName,userVO.get(i).password,
-				//		userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
-				//	String[] rowData = {userVO.get(i).ID,use}
-				//tableModel.addRow(rowData);
-				//userPool.add(userVO.get(i));
+				for(int i = 0; i < userVO.size(); i++){
+					Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
+						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
+				tableModel.addRow(rowData);
+				userPool.add(userVO.get(i));
 				System.out.println("SearchSucceed!");
 				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 				}
@@ -380,7 +379,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询类型！",Color.RED);
 			}
 		}
-	
+	}
 
 	private void modifyUser() {
 		userController = ControllerFactory.getUserController();

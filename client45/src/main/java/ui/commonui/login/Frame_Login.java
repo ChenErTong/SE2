@@ -78,7 +78,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 			for(int i=0;i<userController.show().size();i++){
 				if(userController.show().get(i).id.equals(userID)){
 					userName = userController.show().get(i).userName;
-					userIden = userController.show().get(i).iden;
+					iden = userController.show().get(i).iden;
 				}
 				
 			}

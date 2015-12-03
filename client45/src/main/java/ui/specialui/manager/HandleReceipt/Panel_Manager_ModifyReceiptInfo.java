@@ -107,8 +107,8 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		Object[] rowData = {receipt.type,receipt.destination,receipt.depture,receipt.expressType,receipt.TransferID,receipt.CommoditiesID,receipt.area,receipt.row,receipt.frame,receipt.position};
-		tableModel.addRow(rowData);
+	//	Object[] rowData = {receipt.type,receipt.destination,receipt.depture,receipt.expressType,receipt.TransferID,receipt.CommoditiesID,receipt.area,receipt.row,receipt.frame,receipt.position};
+		//tableModel.addRow(rowData);
 		
 	}
 	private void transOrderTable(TransferOrderVO receipt) {
@@ -126,6 +126,7 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		String[] headers = {};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+		//TODO =
 	//	Object[] rowData = {receipt.type,receipt.depture,receipt.destination,receipt.CommoditiesID,receipt.area,receipt.row,receipt.frame,receipt.position};
 		//tableModel.addRow(rowData);
 	}
@@ -244,7 +245,8 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		//	rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.depture,vo.destination,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
-			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.destination,vo.depture,vo.expressType,vo.TransferID,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));
+			//TODO 
+			//rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.destination,vo.depture,vo.expressType,vo.TransferID,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));
 		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
 			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));

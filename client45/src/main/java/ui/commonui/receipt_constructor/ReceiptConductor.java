@@ -209,7 +209,7 @@ public class ReceiptConductor {
 			text = text + blank4;
 		}
 		
-		text = text +"出发地： "+receipt.depture+"\n";
+	//	text = text +"出发地： "+receipt.depture+"\n";
 		for(int i=0;i<5;i++){
 			text = text + blank4;
 		}
@@ -217,7 +217,7 @@ public class ReceiptConductor {
 		for(int i=0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text +"到达地： "+receipt.destination+"\n";
+		//text = text +"到达地： "+receipt.destination+"\n";
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
@@ -238,11 +238,11 @@ public class ReceiptConductor {
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text+"货物编号"+receipt.CommoditiesID+"\n";
+		//text = text+"货物编号"+receipt.CommoditiesID+"\n";
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text + "装运编号" + receipt.TransferID+"\n";
+		//text = text + "装运编号" + receipt.TransferID+"\n";
 		return text;
 	}
 
