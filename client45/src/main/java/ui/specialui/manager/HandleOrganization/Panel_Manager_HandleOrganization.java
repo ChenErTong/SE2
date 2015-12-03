@@ -525,12 +525,10 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 
 	private void deleteOrganization() {
 		controller = ControllerFactory.getOrganizationController();
-
 		table = organizationInfo.getTable();
 		OrganizationVO vo =organizationPool.get(table.getSelectedRow());
-
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
-		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(organizationPool.get(table.getSelectedRow()).organizationID);
+		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(vo.organizationID);
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							this.showAll();
 							this.repaint();
@@ -540,7 +538,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 							this.add(new MyNotification(this,"中转中心删除失败！",Color.RED));
 						}
 						break;
-		case BRANCH:ResultMessage rsg1 = controller.deleteBranch(organizationPool.get(table.getSelectedRow()).organizationID);
+		case BRANCH:ResultMessage rsg1 = controller.deleteBranch(vo.organizationID);
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						System.out.println("DeleteSucceed!");
 						this.showAll();
