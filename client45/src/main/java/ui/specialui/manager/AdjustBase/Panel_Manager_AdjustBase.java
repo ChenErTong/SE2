@@ -212,6 +212,7 @@ public void actionPerformed(ActionEvent e) {
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
+			this.repaint();
 			new MyNotification(this,"常量删除成功！",Color.GREEN);
 		}else{
 			new MyNotification(this,"常量删除失败！",Color.RED);

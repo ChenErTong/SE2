@@ -235,6 +235,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
+			this.repaint();
 			new MyNotification(this,"员工删除成功！",Color.GREEN);
 		}else{
 			new MyNotification(this,"员工删除失败！",Color.RED);

@@ -215,6 +215,7 @@ private void deletePolicy() {
 	if(rsg.equals(ResultMessage.SUCCESS)){
 		System.out.println("DeleteSucceed!");
 		this.showAll();
+		this.repaint();
 		new MyNotification(this,"策略删除成功！",Color.GREEN);
 	}else{
 		new MyNotification(this,"策略删除失败！",Color.RED);
