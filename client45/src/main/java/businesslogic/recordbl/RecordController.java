@@ -1,4 +1,5 @@
 package businesslogic.recordbl;
+
 /**
  * @author LIUXUANLIN
  */
@@ -11,11 +12,11 @@ import vo.BussinessOneDayVO;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
-public class RecordController implements RecordBLService{
-    Record  RecordBL = new Record();
-		
+public class RecordController implements RecordBLService {
+	Record RecordBL = new Record();
+
 	@Override
-	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end)  {
+	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) {
 		try {
 			return RecordBL.bussinessProcess(begin, end);
 		} catch (RemoteException e) {
@@ -25,7 +26,7 @@ public class RecordController implements RecordBLService{
 	}
 
 	@Override
-	public BussinessConditionVO bussinessCondition(String end){
+	public BussinessConditionVO bussinessCondition(String end) {
 		try {
 			return RecordBL.bussinessCondition(end);
 		} catch (RemoteException e) {
@@ -35,9 +36,9 @@ public class RecordController implements RecordBLService{
 	}
 
 	@Override
-	public BussinessOneDayVO bussinessOneDay(String WorkPlace,String date) {
+	public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date) {
 		try {
-			return RecordBL.bussinessOneDay(WorkPlace,date);
+			return RecordBL.bussinessOneDay(WorkPlace, date);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -46,8 +47,12 @@ public class RecordController implements RecordBLService{
 
 	@Override
 	public void exportBussinessProcessToExcel(BussinessProcessVO vo) {
-		 RecordBL.exportBussinessProcessToExcel(vo);
+		RecordBL.exportBussinessProcessToExcel(vo);
 	}
-	
+
+	@Override
+	public void exportBussinessConditionToExcel(BussinessConditionVO vo) {
+		RecordBL.exportBussinessConditionToExcel(vo);
+	}
 
 }

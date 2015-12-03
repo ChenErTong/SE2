@@ -45,8 +45,16 @@ public class Record {
 		for (DebitAndPayBillVO receipt : vo.receipt) {
 			list.add(new BussinessProcessExportVO(receipt));
 		}
-		System.out.println(ExportExcel.exportExcel(fileName, head, title, list));;
-		
+		System.out.println(ExportExcel.exportExcel(fileName, head, title, list));
+	}
+	
+	public void exportBussinessConditionToExcel(BussinessConditionVO vo){
+		String fileName="output/"+"截至"+vo.end+"成本收益报表"+".xls";
+		String head="截至"+vo.end+"成本收益报表";
+		String[] title = {"日期","总收入","总支出","总利润"};
+		List<Object> list = new ArrayList<>();
+		list.add(vo);
+		System.out.println(ExportExcel.exportExcel(fileName, head, title, list));
 	}
 }
 
