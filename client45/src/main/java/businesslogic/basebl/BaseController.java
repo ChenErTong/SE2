@@ -1,4 +1,7 @@
 package businesslogic.basebl;
+/**
+ * @author LIUXUANLIN
+ */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -6,11 +9,7 @@ import businesslogicservice.baseblservice.BaseBLService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:32
- */
+
 public class BaseController implements BaseBLService{
     Base BaseBL = new Base();
 

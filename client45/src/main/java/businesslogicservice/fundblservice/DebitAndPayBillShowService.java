@@ -4,11 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import vo.receiptvo.DebitAndPayBillVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:42:34
- */
+
 public interface DebitAndPayBillShowService {
 	/**
 	 * 返回给界面层显示全部的付款／收款单

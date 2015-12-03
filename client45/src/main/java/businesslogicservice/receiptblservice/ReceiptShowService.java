@@ -13,6 +13,11 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
+/**
+ * 
+ * @author Ann
+ *
+ */
 @Deprecated
 public interface ReceiptShowService {
 	public ArrayList<ReceiptVO> show();

@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import businesslogicservice.BLService;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:41:04
- */
+
 public interface DriverBLService  extends BLService{
 
 	/**

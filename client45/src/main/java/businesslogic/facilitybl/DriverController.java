@@ -6,11 +6,7 @@ import businesslogicservice.facilityblservice.DriverBLService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:33:29
- */
+
 public class DriverController implements DriverBLService{
 	
 	Driver driverBL = new Driver();

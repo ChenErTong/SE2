@@ -5,11 +5,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.DebitAndPayBillShowService;
 import vo.receiptvo.DebitAndPayBillVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:34:42
- */
+
 public class DebitAndPayBillShowController implements DebitAndPayBillShowService {
 
 	DebitAndPayBillShow showBL = new DebitAndPayBillShow();

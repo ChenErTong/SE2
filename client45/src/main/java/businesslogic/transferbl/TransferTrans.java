@@ -10,11 +10,7 @@ import po.accountpo.AccountPO;
 import vo.InventoryVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:38:48
- */
+
 public class TransferTrans {
 	public static TransferPO convertVOtoPO(TransferVO vo) {
 		if (vo == null) {

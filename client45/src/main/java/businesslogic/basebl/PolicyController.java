@@ -6,11 +6,7 @@ import java.util.ArrayList;
 import businesslogicservice.baseblservice.PolicyBLService;
 import state.ResultMessage;
 import vo.PolicyVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:59
- */
+
 public class PolicyController implements PolicyBLService {
 	
 	Policy policyBL = new Policy();

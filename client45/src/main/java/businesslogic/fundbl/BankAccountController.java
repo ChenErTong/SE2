@@ -1,4 +1,7 @@
 package businesslogic.fundbl;
+/**
+ * @author LIUXUANLIN
+ */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -7,11 +10,7 @@ import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:34:06
- */
+
 public class BankAccountController implements BankAccountBLService{
     BankAccount BankAccountBL = new BankAccount();
 	@Override

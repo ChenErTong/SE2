@@ -8,11 +8,7 @@ import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
 import vo.InventoryVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:35:32
- */
+
 public class InventoryInfo implements InventoryInfo_OpeningStock,InventoryInfo_Branch_Transfer{
 	Inventory inventory;
 	InventoryDataService inventoryData;

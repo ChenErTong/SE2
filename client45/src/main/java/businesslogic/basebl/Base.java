@@ -1,5 +1,8 @@
 package businesslogic.basebl;
 
+/**
+ * @author LIUXUANLIN
+ */
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -12,11 +15,7 @@ import po.BasePO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:24
- */
+
 public class Base {
 	private BaseDataService baseData;
 

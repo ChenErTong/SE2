@@ -12,7 +12,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 /**
  * 实现中转中心运输管理界面所需要的服务
- * @author Ann
+ * 
  * @author czw
  * @version Oct 22,2015
  */

@@ -12,11 +12,7 @@ import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:33:33
- */
+
 public class Facility {
 	private FacilityDataService facilityData;
 

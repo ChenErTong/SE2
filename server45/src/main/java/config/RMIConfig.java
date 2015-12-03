@@ -1,8 +1,8 @@
 package config;
 /**
- * rmi的配置类
+ * 
  * @author Ann
- * @version 创建时间：2015年12月3日 下午3:30:23
+ *
  */
 public class RMIConfig {
 	public static String HOST ;

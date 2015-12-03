@@ -10,11 +10,7 @@ import po.OpeningStockPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
 import vo.OpeningStockVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:36:19
- */
+
 public class OpeningStockTrans {
 	public static OpeningStockVO convertPOtoVO(OpeningStockPO po) {
 		if (po == null)

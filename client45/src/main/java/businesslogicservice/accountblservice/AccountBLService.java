@@ -8,11 +8,7 @@ import vo.accountvo.AccountVO;
 
 
 
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:39:54
- */
+
 public interface AccountBLService {
 	/**
 	 * 负责实现总经理需要查看公司各类员工的帐户信息所需要的服务

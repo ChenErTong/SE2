@@ -10,11 +10,7 @@ import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:35:42
- */
+
 public interface ReceiptInfo_Inventory {
 	
 	public <T extends ReceiptVO> ArrayList<T> showInDateByType(String begin,String end,ReceiptType type) throws RemoteException;

@@ -11,11 +11,7 @@ import dataservice.basedataservice.PolicyDataService;
 import po.PolicyPO;
 import state.ResultMessage;
 import vo.PolicyVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:56
- */
+
 public class Policy {
 	private PolicyDataService policyData;
 	public Policy() {

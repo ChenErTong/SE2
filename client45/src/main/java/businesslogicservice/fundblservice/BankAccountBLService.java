@@ -10,14 +10,14 @@ import vo.BankAccountVO;
 
 /**
  * 负责实现公司账户界面所需要的服务
- * 
+ * @author zsq
+ * @version Oct 22, 2015
+ */
+/**
  * 账户管理（账户指的是此家公司的银行账户，仅限最高权限可以查看账户名称和余额。
  * 账号的属性有：名称和金额。余额不可修改，此数据项取决于收款单和付款单。
  * 账户的增删改查包括增加账户、删除账户、修改账户属性和查询账户。
  * 账号的查询可以通过输入关键字进行模糊查找。仅限最高权限可进行这些操作。
- * @author zsq
- * @author Ann
- * @version 创建时间：2015年10月22日 下午3:41:31
  */
 public interface BankAccountBLService extends BLService{
 	/**

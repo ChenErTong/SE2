@@ -16,11 +16,7 @@ import businesslogic.receiptbl.ReceiptController;
 import businesslogic.recordbl.RecordController;
 import businesslogic.transferbl.TransferController;
 import businesslogic.userbl.UserController;
-/**
- * 
- * @author czw
- * @version 创建时间：2015年12月3日 下午3:39:10
- */
+
 public class ControllerFactory {
 	private static FacilityController facilityController = null;
 	private static DriverController driverController = null;

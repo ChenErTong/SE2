@@ -6,11 +6,7 @@ import java.util.ArrayList;
 import state.CommodityState;
 import vo.CommodityVO;
 import vo.OrderVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:37:09
- */
+
 public interface OrderInfo_Branch_Transfer {
 	/**
 	 * 当总经理审批后，修改订单的信息（主要是历史轨迹）

@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import po.UserPO;
 import state.UserIdentity;
 import vo.UserVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:39:03
- */
+
 public class UserTrans {
 	public static UserPO transVOtoPO(UserVO vo) {
 		if (vo == null) {

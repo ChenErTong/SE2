@@ -8,11 +8,7 @@ import state.CommodityState;
 import state.ReceiptType;
 import vo.CommodityVO;
 import vo.OrderVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:36:47
- */
+
 public class OrderTrans {
 	/**
 	 * 

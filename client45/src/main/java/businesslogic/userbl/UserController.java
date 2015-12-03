@@ -9,11 +9,7 @@ import state.UserIdentity;
 import vo.UserVO;
 import dataservice.userdataservice.LoginInfo;
 import businesslogicservice.userblservice.UserBLService;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:38:58
- */
+
 public class UserController implements UserBLService{
 
 	User userBL = new User();

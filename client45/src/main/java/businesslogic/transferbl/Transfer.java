@@ -21,11 +21,7 @@ import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:38:36
- */
+
 public class Transfer {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch_Transfer receiptInfo;

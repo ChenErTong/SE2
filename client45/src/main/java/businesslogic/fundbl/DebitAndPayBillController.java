@@ -1,4 +1,7 @@
 package businesslogic.fundbl;
+/**
+ * @author LIUXUANLIN
+ */
 import java.rmi.RemoteException;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
@@ -6,11 +9,7 @@ import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:34:31
- */
+
 public class DebitAndPayBillController implements DebitAndPayBillBLService{
     DebitAndPayBill DebitAndPayBL = new DebitAndPayBill();
 	@Override

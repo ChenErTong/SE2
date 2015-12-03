@@ -4,11 +4,10 @@ import java.rmi.RemoteException;
 
 import dataservice.ManageDataService;
 import po.InventoryPO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:45:43
- */
+      /** @author lxl
+	 *  @version Oct 23,2015
+	 *      **/
+	
 public interface InventoryDataService extends ManageDataService<InventoryPO>{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "InventoryData";

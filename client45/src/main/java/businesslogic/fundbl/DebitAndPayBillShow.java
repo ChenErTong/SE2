@@ -12,11 +12,7 @@ import po.receiptpo.DebitAndPayBillPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import vo.receiptvo.DebitAndPayBillVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:34:37
- */
+
 public class DebitAndPayBillShow {
 	
 	private DebitAndPayBillDataService debitAndPayBillData;

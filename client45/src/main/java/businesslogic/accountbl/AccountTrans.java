@@ -1,14 +1,13 @@
 package businesslogic.accountbl;
 
+/**
+ * @author LIUXUANLIN
+ */
 import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
 import vo.accountvo.AccountVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:13
- */
+
 public class AccountTrans {
 	public static ArrayList<AccountVO> convertPOstoVOs(ArrayList<AccountPO> POs) {
 		ArrayList<AccountVO> VOs = new ArrayList<AccountVO>();

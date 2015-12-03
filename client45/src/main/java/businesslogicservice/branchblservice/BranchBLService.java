@@ -14,9 +14,9 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 /**
+ * 瀹炵幇钀ヤ笟鍘呰繍杈撶鐞嗙晫闈㈡墍闇�瑕佺殑鏈嶅姟
  * @author czw
- * @author Ann
- * @version 创建时间：2015年10月23日 下午3:40:37
+ * @version Oct 23,2015
  */
 public interface BranchBLService extends BLService{
 	/**

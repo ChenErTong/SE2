@@ -10,11 +10,7 @@ import java.util.GregorianCalendar;
 import businesslogic.orderbl.BaseInfo_Order;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:32:38
- */
+
 public class BaseInfo implements BaseInfo_Order{
 	Base base;
 	BaseDataService baseData;

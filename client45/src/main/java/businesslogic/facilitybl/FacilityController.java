@@ -11,7 +11,7 @@ import vo.FacilityVO;
 /**
  * 
  * @author Ann
- * @version 创建时间：2015年12月3日 下午3:33:38
+ *
  */
 public class FacilityController implements FacilityBLService {
 	

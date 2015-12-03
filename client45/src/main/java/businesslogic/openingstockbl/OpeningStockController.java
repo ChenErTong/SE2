@@ -12,11 +12,7 @@ import vo.InventoryVO;
 import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
-/**
- * 
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:36:15
- */
+
 public class OpeningStockController implements OpeningStockBLService {
 	private OpeningStock OpeningStockBL = new OpeningStock();
 	@Override

@@ -1,4 +1,7 @@
 package businesslogic.branchbl;
+/**
+ * @author LIUXUANLIN
+ */
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,11 +15,7 @@ import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
-/**
- * @author LIUXUANLIN
- * @author Ann
- * @version 创建时间：2015年12月3日 下午3:33:10
- */
+
 public class BranchController implements BranchBLService {
      Branch BranchBL = new Branch();
 	@Override
