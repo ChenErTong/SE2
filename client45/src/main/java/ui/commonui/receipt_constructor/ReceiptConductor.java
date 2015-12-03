@@ -208,46 +208,35 @@ public class ReceiptConductor {
 		for(int i=0;i<35;i++){
 			text = text + blank4;
 		}
-		
-	//	text = text +"出发地： "+receipt.depture+"\n";
+		text = text +"出库区号： "+receipt.area+"区\n";
+	
 		for(int i=0;i<5;i++){
 			text = text + blank4;
 		}
-		
-		for(int i=0;i<9;i++){
-			text = text + blank4;
-		}
-		//text = text +"到达地： "+receipt.destination+"\n";
-		for(int i=0;i<9;i++){
-			text = text +blank4;
-		}
-		text = text +"出库区号： "+receipt.area+"区\n";
-			
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "出库排号:" +receipt.row+ "排\n";
-		for(int i = 0; i < 9; i++){
+		for(int i=0;i<9;i++){
 			text = text + blank4;
 		}
 		text = text+"出库架号："+receipt.frame+"架\n";
-		for(int i = 0;i < 9;i++){
-			text = text+blank4;
+		for(int i=0;i<9;i++){
+			text = text +blank4;
 		}
+		
 		text = text+"出库位号："+receipt.position+"位\n";
-		for(int i = 0;i<9;i++){
+		for(int i = 0; i < 7; i++){
 			text = text + blank4;
 		}
-		//text = text+"货物编号"+receipt.CommoditiesID+"\n";
-		for(int i = 0;i<9;i++){
+		text = text+"中转中心编号： "+receipt.transferID+"\n";
+		for(int i = 0; i < 9; i++){
 			text = text + blank4;
 		}
-		//text = text + "装运编号" + receipt.TransferID+"\n";
+		text = text+"货物信息： "+receipt.commodityVO.commodityType+" "+receipt.commodityVO.commodityState+" "+
+		receipt.commodityVO.weight+" "+receipt.commodityVO.volumn+"\n ";
 		return text;
 	}
 
 	private String writeInstock(InventoryImportReceiptVO receipt) {
-String ID = receipt.ID;
+		String ID = receipt.ID;
 		
 		String text = "";
 		String blank4 = "    ";
@@ -285,17 +274,7 @@ String ID = receipt.ID;
 		for(int i=0;i<35;i++){
 			text = text + blank4;
 		}
-		/**TODO */
-	//	text = text +"出发地： "+receipt.depture+"\n";
 		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
-		
-		for(int i=0;i<9;i++){
-			text = text + blank4;
-		}
-		//text = text +"到达地： "+receipt.destination+"\n";
-		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
 		text = text +"出库区号： "+receipt.area+"区\n";
@@ -315,7 +294,12 @@ String ID = receipt.ID;
 		for(int i = 0;i<9;i++){
 			text = text + blank4;
 		}
-	//	text = text+"货物编号"+receipt.CommoditiesID+"\n";
+		text = text+""+receipt.position+"\n";
+		for(int i=0;i<9;i++){
+			text = text + blank4;
+		}
+		text = text+"货物信息： "+receipt.commodityVO.commodityType+" "+receipt.commodityVO.commodityState+" "+
+				receipt.commodityVO.weight+" "+receipt.commodityVO.volumn+"\n ";
 		return text;
 	}
 
@@ -713,10 +697,7 @@ String ID = receipt.ID;
 		for(int i=0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text +"订单条形码号： "+"\n";
-//		for(int i=0;i<receipt.orders.size();i++){
-	//		text = text+": "+receipt.orders.get(i)+"\n";
-		//}
+		text = text +"订单条形码号： "+receipt.order+"\n";
 		return text;
 	}
 
@@ -884,7 +865,7 @@ String ID = receipt.ID;
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}
-		text = text +"运送轨迹： "+receipt.senderCo+"元\n";
+		text = text +"运送轨迹： "+"\n";
 		for(int i=0;i<receipt.midAddres.size();i++){
 			text = text+": "+receipt.midAddres.get(i)+"\n";
 		}

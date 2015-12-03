@@ -364,16 +364,15 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);
 					case 7 : userVO =userController.showUser(UserIdentity.ADMIN);
 					default : userVO = userController.show();
-					
 				}
 			
 				for(int i = 0; i < userVO.size(); i++){
 					Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
 						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
-				tableModel.addRow(rowData);
-				userPool.add(userVO.get(i));
-				System.out.println("SearchSucceed!");
-				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
+					tableModel.addRow(rowData);
+					userPool.add(userVO.get(i));
+					System.out.println("SearchSucceed!");
+					new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 				}
 			}else{
 					new MyNotification(this,"请选择查询类型！",Color.RED);

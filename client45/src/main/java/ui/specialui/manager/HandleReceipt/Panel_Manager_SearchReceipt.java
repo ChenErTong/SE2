@@ -88,17 +88,6 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	}
 	
 	
-	private void getApprovalData(int index) throws RemoteException{
-	}
-	
-	private void getPassData(int index) throws RemoteException{
-		
-	}
-	
-	private void getFailureData(int index) throws RemoteException{
-		
-	}
-	
 	private void initTable(){
 		ReceiptTableModel tablemodel = new ReceiptTableModel();
 		

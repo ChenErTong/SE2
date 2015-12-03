@@ -353,10 +353,10 @@ private void searchPanel(FrameManager frame) {
 	}
 }
 
-/**
- * 显示所有的机构
- */
-public void showAll(){
+	/**
+	 * 显示所有的机构
+	 */
+	public void showAll(){
 		table = (MyJTable) organizationInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		
@@ -441,26 +441,24 @@ public void showAll(){
 				new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 			}else{
 				if(data[0].equals("营业厅")){
-					//TODO 
-					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[0]),data[0], data[1], null, null));
+					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[3]),data[2]+data[3]+data[4], OrganizationType.BRANCH));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
 						this.showAll();
 						organizationDetails.refresh();
-						new MyNotification(this,"新机构添加成功！",Color.GREEN);
+						new MyNotification(this,"新营业厅添加成功！",Color.GREEN);
 					}else{
-						new MyNotification(this,"新机构添加失败！",Color.RED);
+						new MyNotification(this,"新营业厅添加失败！",Color.RED);
 					}
-				}else{
-					//TODO 
-					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[0]), data[2],data[3], new ArrayList<>(), new ArrayList<>()));
+				}else if(data[0].equals("中转中心")){
+					ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[3]), data[2]+data[3]+data[4],OrganizationType.TRANSFER));
 					if(rsg1.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						organizationDetails.refresh();
-						new MyNotification(this,"新机构添加成功！",Color.GREEN);
+						new MyNotification(this,"新中转中心添加成功！",Color.GREEN);
 			
 					}else{
-						new MyNotification(this,"新机构添加失败！",Color.RED);
+						new MyNotification(this,"新中转中心添加失败！",Color.RED);
 					}	
 				}
 			}
@@ -502,7 +500,6 @@ public void showAll(){
 		
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table =organizationInfo.getTable();
-			//System.out.println("111");
 			organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
 				if(organizationDetails.getData()==null){
 					new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
@@ -519,8 +516,13 @@ public void showAll(){
 		table = organizationInfo.getTable();
 		String[] data = organizationDetails.getData();
 		organizationID =  organizationPool.get(table.getSelectedRow()).organizationID;
+		ArrayList<AccountVO> accounts = new ArrayList<AccountVO>();
+		ArrayList<FacilityVO> facilities = new ArrayList<FacilityVO>();
+		ArrayList<InventoryVO> inventories = new ArrayList<InventoryVO>();
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
-		case TRANSFER:ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], null, null));
+			case TRANSFER:  accounts = controller.getAccountByOrganizationID(organizationID);
+						inventories = controller.getInventoriesByTransferID(organizationID);
+						ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], accounts,inventories));
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							System.out.println("ModifySucceed!");
 							this.showAll();
@@ -529,15 +531,17 @@ public void showAll(){
 						}else{
 							new MyNotification(this,"中转中心信息修改失败！",Color.RED);
 						}break;
-		case BRANCH:ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], null, null));
-					if(rsg1.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						organizationDetails.refresh();
-						new MyNotification(this,"营业厅信息修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"营业厅信息修改失败！",Color.RED);
-					}
-	}
+			case BRANCH: accounts = controller.getAccountByOrganizationID(organizationID);
+					 facilities = controller.getFacilitiesByBranchID(organizationID);
+					 ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], accounts, facilities));
+					 	if(rsg1.equals(ResultMessage.SUCCESS)){
+					 		this.showAll();
+					 		organizationDetails.refresh();
+					 		new MyNotification(this,"营业厅信息修改成功！",Color.GREEN);
+					 	}else{
+					 		new MyNotification(this,"营业厅信息修改失败！",Color.RED);
+					 	}
+		}
 	}
 
 

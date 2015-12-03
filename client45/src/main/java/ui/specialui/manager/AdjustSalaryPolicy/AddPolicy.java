@@ -2,7 +2,6 @@ package ui.specialui.manager.AdjustSalaryPolicy;
 
 import java.awt.Color;
 
-import ui.myui.MyComboBox;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;

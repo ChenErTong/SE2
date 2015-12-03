@@ -7,7 +7,6 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;

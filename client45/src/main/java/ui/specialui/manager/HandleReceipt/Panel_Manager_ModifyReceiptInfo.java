@@ -107,8 +107,8 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-	//	Object[] rowData = {receipt.type,receipt.destination,receipt.depture,receipt.expressType,receipt.TransferID,receipt.CommoditiesID,receipt.area,receipt.row,receipt.frame,receipt.position};
-		//tableModel.addRow(rowData);
+		Object[] rowData = {receipt.type,receipt.transferID,receipt.commodityVO,receipt.area,receipt.row,receipt.frame,receipt.position};
+		tableModel.addRow(rowData);
 		
 	}
 	private void transOrderTable(TransferOrderVO receipt) {
@@ -122,13 +122,13 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		
 	}
 	private void importTable(InventoryImportReceiptVO receipt) {
-		// TODO ReceiptType type, String depture, String destination,String commoditiesID, int a, int b, int c, int d)
+		//  ReceiptType type, String depture, String destination,String commoditiesID, int a, int b, int c, int d)
 		String[] headers = {};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-		//TODO =
-	//	Object[] rowData = {receipt.type,receipt.depture,receipt.destination,receipt.CommoditiesID,receipt.area,receipt.row,receipt.frame,receipt.position};
-		//tableModel.addRow(rowData);
+	
+		Object[] rowData = {receipt.type,receipt.area,receipt.row,receipt.frame,receipt.position,receipt.commodityVO.commodityType,receipt.commodityVO.commodityState,receipt.commodityVO.weight,receipt.commodityVO.volumn};
+		tableModel.addRow(rowData);
 	}
 	private void transferArrivalTable(TransferArrivalListVO receipt) {
 		// ReceiptType type,String transferCenterID, String destination, String departure,CommodityState state, ArrayList<String> orders
@@ -241,12 +241,10 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
 		}else if(billType.equals(ReceiptType.INSTOCK)){
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
-			//TODO 
-		//	rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.depture,vo.destination,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));
+			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
-			//TODO 
-			//rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.destination,vo.depture,vo.expressType,vo.TransferID,vo.CommoditiesID,vo.area,vo.row,vo.frame,vo.position));
+			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.transferID,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
 		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
 			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
