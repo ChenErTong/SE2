@@ -3,11 +3,10 @@ package ui.specialui.inventory.import_;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ListSelectionModel;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -16,14 +15,23 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
+import vo.CommodityVO;
+import vo.InventoryPositionVO;
+import vo.OrderVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 
 public class CargoImport extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
-	private MyJComboBox[] position;
+	private MyJComboBox position;
 	private MyJTable commodities;
 	private MyJTable importList;
 	private InventoryBLService inventoryController;
+	//仓库空余位置
+	private ArrayList<InventoryPositionVO> posVOs;
 	
 	public CargoImport(Frame_Inventory frame) {
 		super(0, 0, 1280, 720);
@@ -43,23 +51,26 @@ public class CargoImport extends MyJPanel {
 		this.add(new MyJScrollPane(550, 150, 580, 370, importList));
 		this.add(new MyJLabel(790, 110, 100, 19, "入库单列表", 18, true));
 		
-		this.add(new MyJLabel(150, 550, 19, 19, "区", 18, true));	
-		this.add(new MyJLabel(229, 550, 19, 19, "排", 18, true));
-		this.add(new MyJLabel(308, 550, 19, 19, "架", 18, true));
-		this.add(new MyJLabel(387, 550, 19, 19, "位", 18, true));
+		this.add(new MyJLabel(180, 550, 76, 19, "可选位置", 18, true));	
 		
-		position = new MyJComboBox[4];
-		this.setBlankPos();
-		for(int i = 0; i < 4; i ++){
-			position[i] = new MyJComboBox(171 + i * 79, 550, 42, 18, null);
-			this.add(position[i]);
-		}
+		position = new MyJComboBox(265 , 547, 142, 25, null);
+		this.add(position);
+		this.setBlankPos(frame);
 		
 		MyJButton produceImportList = new MyJButton(580, 600, 120, 30, "生成入库单", 20);
 		produceImportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(CargoImport.this.produceImportList()){
-					CargoImport.this.setBlankPos();
+				int row = CargoImport.this.produceImportList(frame);
+				if(row != -1){
+					position.removeItemAt(row);
+					posVOs.remove(row);
+					//库存报警
+					double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 4));
+					if(alarmRate < 0.9){
+						new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.GREEN);
+					}else{
+						new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.RED);
+					}
 				}else{
 					new MyNotification(frame, "请选择一件订单", Color.RED);
 				}		
@@ -68,26 +79,46 @@ public class CargoImport extends MyJPanel {
 		this.add(produceImportList);
 	}
 	
-	private boolean produceImportList(){
-		int row = commodities.getSelectedRow();
-		if(row == -1) return false;
-		//TODO 根据选中的订单信息生成入库单
+	/**
+	 * 生成入库单，若为选择货物则返回-1，反之返回选择的空位
+	 * @return
+	 */
+	private int produceImportList(Frame_Inventory frame){
+		int rowOfOrder = commodities.getSelectedRow();
+		if(rowOfOrder == -1) return -1;
 		
+		int rowOfPos = position.getSelectedIndex();
+		//根据选中的订单信息生成入库单
+		String[] commodityInfo = commodities.getData(rowOfOrder);
+		String orderID = commodityInfo[0];
+		String commodityType = commodityInfo[1];
+		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderVO order = orderController.inquireOrder(orderID);
+		CommodityVO commodity = null;
+		for (CommodityVO comm : order.commodities) {
+			if(comm.commodityType.equals(commodityType)){
+				commodity = comm;
+				break;
+			}
+		}
+		InventoryPositionVO pos = posVOs.get(rowOfPos);
+		InventoryImportReceiptVO importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
+		inventoryController.saveImport(importReceipt);
+		inventoryController.submitImport(importReceipt);
 		
 		commodities.removeRow();
-		return true;
+		
+		return rowOfPos;
 	}
 	
-	private void setBlankPos(){
-		String[][] blankPos = new String[4][];
-		//TODO 根据仓库信息返回仓库空位
-		for(int i = 0; i < 4; i ++){
-			blankPos[i] = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	private void setBlankPos(Frame_Inventory frame){
+		ArrayList<InventoryPositionVO> posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		if(posVOs != null){
+			String posInfo = null;
+			for (InventoryPositionVO posVO : posVOs) {
+				posInfo = Integer.toString(posVO.area) + "区" + Integer.toString(posVO.row) + "排" + Integer.toString(posVO.frame) + "架" + Integer.toString(posVO.position) + "位";
+				position.addItem(posInfo);	
+			}
 		}
-//		inventoryController.
-		for(int i = 0; i < 4; i ++){
-			position[i].reset(blankPos[i]);
-		}
-//		return blankPos;
 	}
 }
