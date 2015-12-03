@@ -20,10 +20,10 @@ public class MockOrder extends Order {
 	}
 	
 	public OrderVO inquireOrder(String orderNumber, String senderName){
-		if(this.order.getOrderIdString().equals(orderNumber)&&this.order.getSenderName().equals(senderName)){
+//		if(this.order.getOrderIdString().equals(orderNumber)&&this.order.getSenderName().equals(senderName)){
 //			OrderVO order = new OrderVO(this.order.getSendTime(), this.order.getRecipientTime(), this.order.getMoney());
 //			return order;
-		}
+//		}
 		return null;
 	}
 }
