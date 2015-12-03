@@ -58,7 +58,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.initButton(frame_Admin);
 	}	
 	
-		private void insertPanel(Frame_Admin frame) {
+	private void insertPanel(Frame_Admin frame) {
 		this.removeAll();
 		this.add(userInfo);
 		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
@@ -79,53 +79,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.repaint();
 	}
 
-	private void modifyPanel(Frame_Admin frame) {
-		this.removeAll();
-		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
-		this.add(userInfo);
-		this.initButton(frame);
-		
-	userDetails = new UserDetails();
-		userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
-		this.add(userDetails);
-		
-		commonButton = new MyJButton(890, 670, 150, 30, "修改用户信息", 20);
-		commonButton.setActionCommand("CheckModify");
-		commonButton.addActionListener(this);
-		this.add(commonButton);
-		
-		this.repaint();
-	}
-
-	private void searchPanel(Frame_Admin frame) {
-		
-		this.removeAll();
-		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
-		this.add(userInfo);
-		this.initButton(frame);
-		
-		userDetails = new UserDetails();
-		userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
-		userDetails.setUneditable();
-		this.add(userDetails);
-		
-		this.repaint();
-	}
-
-/*	private void deletePanel(Frame_Admin frame) {
-		
-		this.removeAll();
-		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
-		this.add(userInfo);
-		this.initButton(frame);
-		
-		userDetails = new UserDetails();
-		userDetails.setUneditable();
-		userDetails.add(new MyJLabel(230,5,120,30,"删除用户",18,true));
-		this.add(userDetails);
-		this.repaint();
-	}*/
-
 	private void initButton(Frame_Admin frame) {
 		MyJButton insertButton = new MyJButton(75, 660, 130, 40,
 				"添加用户", 18);
@@ -135,28 +88,17 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				
 			}
 		});
+		insertButton.addActionListener(this);
 		this.add(insertButton);
 
 		MyJButton modifyButton = new MyJButton(205, 660, 130, 40,
 				"修改用户信息", 18);
-		modifyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Total.this.modifyPanel(frame);
-				
-			}
-		});
 		modifyButton.setActionCommand("ModifyUserInfo");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
 		MyJButton searchButton = new MyJButton(335, 660, 130, 40,
 				"查看所选用户", 18);
-		searchButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Total.this.searchPanel(frame);
-				
-			}
-		});
 		searchButton.setActionCommand("ViewUserInfo");
 		searchButton.addActionListener(this);
 		this.add(searchButton);
@@ -278,9 +220,18 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}	
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
-				table = userInfo.getTable();
+			this.remove(userDetails);
+			
+			userDetails = new UserDetails();
+			userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
+			this.repaint();
+			this.add(userDetails);
+			
+			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
+			}else if(table.getSelectedRow()>1){
+				new MyNotification(this,"同时进行信息修改的用户不能超过一个！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				String[] data = new String[9];
@@ -293,31 +244,43 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
 				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
 				data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
-				
-				userDetails = new UserDetails();
-				userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
 				userDetails.setData(data);
-				//userDetails.setUneditable();
-				this.add(userDetails);
-				userDetails.setData(data);
+				userDetails.setEnabled(true);
+				commonButton = new MyJButton(890, 670, 150, 30, "修改用户信息", 20);
+				commonButton.setActionCommand("CheckModify");
+				commonButton.addActionListener(this);
+				this.add(commonButton);
 			}
 		}else if(e.getActionCommand().equals("DeleteUser")){
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的用户！",Color.RED);
+			}else if(table.getSelectedRow()>1){
+				new MyNotification(this,"同时删除的用户不能超过一个！",Color.RED);
 			}else{
 				new MyNotification(this,"正在删除用户！",Color.GREEN);
 				this.deleteUser();
 			
 			}
 		}else if(e.getActionCommand().equals("ViewUserInfo")){
+			this.remove(userDetails);
+			this.remove(commonButton);
+		
+			userDetails = new UserDetails();
+			userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
+			this.add(userDetails);
+			this.repaint();
+		
 			table = userInfo.getTable();
 			if(table.getSelectedColumnCount()==0){
 				new MyNotification(this,"请先选择要查看的用户！",Color.RED);
+			}
+			else if(table.getSelectedRow()>1){
+				new MyNotification(this,"同时进行信息查看的用户不能超过一个！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				String[] data = new String[9];
-				data[0] = userID;
+				data[0] = userPool.get(table.getSelectedRow()).id;
 				data[1] = userPool.get(table.getSelectedRow()).password;
 				data[2] = userPool.get(table.getSelectedRow()).userName;
 				data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
@@ -327,6 +290,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
 				data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
 				userDetails.setData(data);
+				userDetails.setUneditable();
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
@@ -338,7 +302,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					this.modifyUser();
 			}
 		}else if(e.getActionCommand().equals("SearchUser")){
-			//System.out.println("111");
 			table = userInfo.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			int rowCount = table.getRowCount();
@@ -464,6 +427,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			System.out.println("DeleteSucceed!");
 			this.showAll();
 			new MyNotification(this,"用户删除成功！",Color.GREEN);
+			this.repaint();
 		}else{
 			new MyNotification(this,"用户删除失败！",Color.RED);
 		}

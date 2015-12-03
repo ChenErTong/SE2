@@ -80,8 +80,6 @@ public class UserDetails extends MyTranslucentPanel{
 		  
 		//构建中国各大城市的三级联动下拉框
 	    JComboBoxOfChina box = new JComboBoxOfChina();
-	    
-	 
 	    provincesBox = box.getCombobox_privince();
 	    provincesBox.setBounds(130,210,120,30);
 	    provincesBox.setFont(new MyFont(14,true));
@@ -94,15 +92,11 @@ public class UserDetails extends MyTranslucentPanel{
 	    citiesBox.setFont(new MyFont(14,true));
 	    citiesBox.setVisible(true);
 	    this.add(citiesBox);
-	    
-	    //构建区级下拉框
-	    //JComboBox combobox_area = box.getCombobox_area();
-	    //districtsBox = box.getCombobox_area();
-	    //combobox_area.setBounds(100, 150, 150, 30);
-	    //this.add(combobox_area);*/
+	   
 	    address = new MyEmptyTextArea(100,250,410,100);
 	    address.setBackground(Color.WHITE);
 	    this.add(address);
+	
 
 	    
 	}
