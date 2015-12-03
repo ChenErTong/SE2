@@ -26,7 +26,7 @@ public class InventoryCheckVO {
 		this.commos = commos;
 		this.lotNum = lotNum;
 		/**自动生成日期*/
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		this.date = sdf.format(new Date());
 	}
 }

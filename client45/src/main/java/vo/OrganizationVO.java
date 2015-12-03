@@ -19,9 +19,11 @@ public class OrganizationVO {
 		this.organizationID = organizationID;
 		this.address = address;
 		this.number = number;
-	
+		this.organizationType=organizationType;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
 	}
+	
+	
 
 }

@@ -25,7 +25,5 @@ public class CommodityVO extends ValueObject{
 	public String toString() {
 		return " commodityType=" + commodityType + ", weight=" + weight + ", volumn=" + volumn + ", commodityState="
 				+ commodityState;
-	}
-	
-	
+	}	
 }

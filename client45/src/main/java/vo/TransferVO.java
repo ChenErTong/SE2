@@ -31,7 +31,7 @@ public class TransferVO extends OrganizationVO {
 	}
 
 	public TransferVO(String organizationID, String address, OrganizationType organizationType) {
-		super(organizationID, address,0, organizationType);
+		super(organizationID, address,0, OrganizationType.TRANSFER);
 		this.accounts = new ArrayList<AccountVO>();
 		this.inventories = new ArrayList<InventoryVO>();
 	}

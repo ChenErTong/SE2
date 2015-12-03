@@ -28,6 +28,7 @@ public class OrganizationPO extends PersistentObject{
 		this.organizationID = organizationID;
 		this.address = address;
 		this.numberOfPerson=numberOfPerson;
+		this.organizationType=organizationType;
 	}
 	public String getOrganizationID() {
 		return organizationID;

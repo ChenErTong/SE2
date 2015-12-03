@@ -1,5 +1,10 @@
 package vo;
 
+import java.util.ArrayList;
+
+import vo.receiptvo.InventoryExportReceiptVO;
+import vo.receiptvo.InventoryImportReceiptVO;
+
 /**
  * 库存查看
  * （设定一个时间段，
@@ -11,25 +16,24 @@ package vo;
  */
 public class InventoryViewVO {
 
-	/**
-	 * @author lxl
-	 * @version Oct 23,2015
-	 **/
-
 	/** 出库数量 **/
-	public int exportNumber;
+	public ArrayList<InventoryExportReceiptVO> exportReceipts;
 	/** 入库数量） **/
-	public int importNumber;
+	public ArrayList<InventoryImportReceiptVO> importReceipts;
 	/** 库存数量 **/
-	public int num;
+	public ArrayList<InventoryPositionVO> commodityInInventory;
 	
+	//这个是不是可以不要了。。。
 	public InventoryVO inventory;
 
-	public InventoryViewVO(int exportNumber, int importNumber, int num, InventoryVO location) {
-		super();
-		this.exportNumber = exportNumber;
-		this.importNumber = importNumber;
-		this.num = num;
+	public InventoryViewVO(ArrayList<InventoryExportReceiptVO> exportReceipts,
+			ArrayList<InventoryImportReceiptVO> importReceipts, ArrayList<InventoryPositionVO> commodityInInventory,
+			InventoryVO inventory) {
+		this.exportReceipts = exportReceipts;
+		this.importReceipts = importReceipts;
+		this.commodityInInventory = commodityInInventory;
+		this.inventory = inventory;
 	}
+
 
 }

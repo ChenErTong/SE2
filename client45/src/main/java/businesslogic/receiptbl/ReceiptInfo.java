@@ -22,7 +22,7 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 		receipt = new Receipt();
 		receiptData = receipt.getData();
 	}
-	@Deprecated
+	
 	@Override
 	public <T extends ReceiptVO> ArrayList<T> showInDateByType(String begin, String end, ReceiptType type) throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
