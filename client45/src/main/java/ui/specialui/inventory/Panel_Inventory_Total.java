@@ -38,10 +38,5 @@ public class Panel_Inventory_Total extends MyJPanel{
 		CargoExport.setActionCommand("CargoExport");
 		CargoExport.addActionListener(frame);
 		this.add(CargoExport);
-		
-		MyJButton InventoryInitialization = new MyJButton(200, 550, 150, 40, "库存信息初始化", 15);
-		InventoryInitialization.setActionCommand("InventoryInitialization");
-		InventoryInitialization.addActionListener(frame);
-		this.add(InventoryInitialization);
 	}
 }

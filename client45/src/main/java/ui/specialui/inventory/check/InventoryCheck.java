@@ -15,6 +15,7 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
+import vo.InventoryViewVO;
 
 public class InventoryCheck extends MyJPanel{
 	private static final long serialVersionUID = 1L;
@@ -40,7 +41,7 @@ public class InventoryCheck extends MyJPanel{
 		latterDate.setText(GetDate.getDate());
 		this.add(latterDate);
 		
-		inventoryInfo = new MyJTable(new String[]{"入库总数", "出库总数", "库存总数"}, false);
+		inventoryInfo = new MyJTable(new String[]{"入库总数", "出库总数", "库存数量"}, false);
 		this.add(new MyJScrollPane(415, 170, 450, 45, inventoryInfo));
 		commodityInfo = new MyJTable(new String[]{"订单编号", "入库日期", "目的地", "仓库存放位置"}, false);
 		this.add(new MyJScrollPane(415, 215, 450, 450, commodityInfo));
@@ -64,7 +65,13 @@ public class InventoryCheck extends MyJPanel{
 	 */
 	private boolean searchWithinGap(Frame_Inventory frame) {
 		InventoryBLService inventoryController = ControllerFactory.getInventoryController();
-		inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
-		return false;		
+		if((formerDate.getText().equals(""))||(latterDate.getText().equals(""))) return false;
+		
+		InventoryViewVO inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
+		if(inventoryView == null) return false;
+		
+		inventoryInfo.addRow(new String[]{Integer.toString(inventoryView.importNumber), Integer.toString(inventoryView.exportNumber), Integer.toString(inventoryView.num)});
+		// TODO 得到时间段内出入库单据
+		return true;		
 	}
 }

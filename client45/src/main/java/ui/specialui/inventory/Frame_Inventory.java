@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -65,26 +67,7 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 			totalPanel.setVisible(false);
 			subPanel = new CargoExport(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("InventoryInitialization")){
-			MyNotification notification = new MyNotification(this, "库存信息初始化后不可恢复！确认请点击提示板", Color.RED);
-			notification.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent e){
-					if(Frame_Inventory.this.initInventory()){
-						new MyNotification(Frame_Inventory.this, "库存信息初始化成功", Color.GREEN);
-						notification.dispose();
-					}
-				}
-			});
 		}
-	}
-	
-	/**
-	 * TODO 库存信息初始化操作
-	 * @return
-	 */
-	protected boolean initInventory() {
-		// TODO
-		return true;
 	}
 	
 	/**
