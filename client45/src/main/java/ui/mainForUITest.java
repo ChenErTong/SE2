@@ -36,14 +36,14 @@ public class mainForUITest {
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);
 		
-//	Frame_Finance financeFrame = new Frame_Finance(id);
-//
-//	financeFrame.setVisible(true);
+	Frame_Finance financeFrame = new Frame_Finance(id);
+
+	financeFrame.setVisible(true);
 
 	//	Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
 
-	Frame_Admin adminFrame = new Frame_Admin(id);
-		adminFrame.setVisible(true);
+//	Frame_Admin adminFrame = new Frame_Admin(id);
+	//	adminFrame.setVisible(true);
 
 
 
