@@ -69,15 +69,4 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}
 	}
-	
-	/**
-	 * 当提示仓库库存高于预警值后
-	 * 从库存盘点界面直接进入库存分区调整界面
-	 */
-	public void toAdjustZone() {
-		subPanel.setVisible(false);
-		this.remove(subPanel);
-		subPanel =  new InventoryZoneAdjust(this);
-		this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-	}
 }

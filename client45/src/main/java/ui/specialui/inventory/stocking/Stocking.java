@@ -3,10 +3,7 @@ package ui.specialui.inventory.stocking;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.GetDate;
@@ -58,17 +55,8 @@ public class Stocking extends MyJPanel {
 		MyJButton stocking = new MyJButton(580, 600, 120, 30, "盘点", 20);
 		stocking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Stocking.this.snapshot()){
-					new MyNotification(frame, "盘点成功", Color.GREEN);
-				}else{
-					MyNotification notification = new MyNotification(frame, "仓库库存高于预警值\n点击提示板进行库存分区调整", Color.RED);
-					notification.addMouseListener(new MouseAdapter() {
-						public void mouseClicked(MouseEvent e){
-							frame.toAdjustZone();
-							notification.dispose();
-						}		
-					});;
-				}
+				Stocking.this.snapshot();
+				new MyNotification(frame, "盘点成功", Color.GREEN);
 			}
 		});
 		this.add(stocking);

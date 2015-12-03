@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.ListSelectionModel;
 
+import ui.GetDate;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
@@ -103,16 +104,24 @@ public class CargoImport extends MyJPanel {
 		}
 		InventoryPositionVO pos = posVOs.get(rowOfPos);
 		InventoryImportReceiptVO importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
+		String importID = inventoryController.getImportID();
 		inventoryController.saveImport(importReceipt);
 		inventoryController.submitImport(importReceipt);
 		
+		//将入库单添加到入库单列表
+		importList.addRow(new String[]{importID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
+		//将货物从货物列表移除
 		commodities.removeRow();
 		
 		return rowOfPos;
 	}
 	
+	/**
+	 * 得到仓库空余位置
+	 * @param frame
+	 */
 	private void setBlankPos(Frame_Inventory frame){
-		ArrayList<InventoryPositionVO> posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
@@ -120,5 +129,12 @@ public class CargoImport extends MyJPanel {
 				position.addItem(posInfo);	
 			}
 		}
+	}
+	
+	/**
+	 * 设置空余货物列表
+	 */
+	private void setCommodity(){
+		// TODO
 	}
 }
