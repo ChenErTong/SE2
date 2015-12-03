@@ -338,6 +338,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					this.modifyUser();
 			}
 		}else if(e.getActionCommand().equals("SearchUser")){
+			//System.out.println("111");
 			table = userInfo.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			int rowCount = table.getRowCount();
@@ -350,32 +351,30 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			userID = "";
 			
 			// {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
-			//--TODO 缺少接口
 			UserController userController = ControllerFactory.getUserController();
 			ArrayList<UserVO> userVO;
 			String data = userInfo.getData()+"";
 			if(data!=""){
 				switch(Integer.parseInt(data)){
-					case 1 : userVO = userController.showUser(UserIdentity.GENERAL_MANAGER);
-					case 2 : userVO = userController.showUser(UserIdentity.COURIER);
-					case 3 : userVO = userController.showUser(UserIdentity.INVENTORY_MANAGER);
-					case 4 : userVO = userController.showUser(UserIdentity.TRANSFER_CONTERMAN);
-					case 5 : userVO = userController.showUser(UserIdentity.BRANCH_COUNTERMAN);
-					case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);
-					case 7 : userVO =userController.showUser(UserIdentity.ADMIN);
-					default : userVO = userController.show();
+					case 1 : userVO = userController.showUser(UserIdentity.GENERAL_MANAGER);break;
+					case 2 : userVO = userController.showUser(UserIdentity.COURIER);break;
+					case 3 : userVO = userController.showUser(UserIdentity.INVENTORY_MANAGER);break;
+					case 4 : userVO = userController.showUser(UserIdentity.TRANSFER_CONTERMAN);break;
+					case 5 : userVO = userController.showUser(UserIdentity.BRANCH_COUNTERMAN); break;
+					case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);break;
+					case 7 : userVO =userController.showUser(UserIdentity.ADMIN);break;
+					default : userVO = userController.show();break;
 				}
-			
 				for(int i = 0; i < userVO.size(); i++){
 					Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
 						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
 					tableModel.addRow(rowData);
 					userPool.add(userVO.get(i));
 					System.out.println("SearchSucceed!");
-					new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 				}
+				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 			}else{
-					new MyNotification(this,"请选择查询类型！",Color.RED);
+				new MyNotification(this,"请选择查询类型！",Color.RED);
 			}
 		}
 	}
@@ -390,7 +389,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else{//String id, String password, String userName, String phoneNumber, String iden, String authority,
 			//String address{"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
 			if(data[4].equals("总经理")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -399,7 +398,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("快递员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.COURIER,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -408,7 +407,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("库存管理员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.INVENTORY_MANAGER,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -417,7 +416,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("中转业务员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -426,7 +425,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("营业厅业务员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.TRANSFER_CONTERMAN,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -435,7 +434,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("财务人员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.FINANCE_MANAGER,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -444,7 +443,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"用户信息修改失败！",Color.RED);
 				}
 			}else if(data[4].equals("管理员")){
-				ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.ADMIN,data[5],data[6]+data[7]+data[8]));
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();

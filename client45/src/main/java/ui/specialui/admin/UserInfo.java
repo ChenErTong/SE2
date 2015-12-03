@@ -40,7 +40,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userIdentity = new MyJLabel(20,10,120,30, "请选择用户类别",14,true);
 		this.add(userIdentity);
 		
-		userList = new MyJComboBox(140,10,150,30,identity);
+		userList = new MyJComboBox(140,10,180,30,identity);
 		this.add(userList);
 		
 		search = new MyJButton(500,10,90,30,"搜索",14);
