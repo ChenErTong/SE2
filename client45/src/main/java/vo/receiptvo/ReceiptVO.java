@@ -28,8 +28,10 @@ public class ReceiptVO extends ValueObject{
 	public ReceiptVO(String id, ReceiptType type){
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm--dd HH:mm");
-		date = sdf.format(new Date());
-	    type=this.type;
+		this.date = sdf.format(new Date());
+		//跪了
+	    this.type=type;
+	    this.ID=id;
 	}
 
 	public ReceiptVO(String iD) {

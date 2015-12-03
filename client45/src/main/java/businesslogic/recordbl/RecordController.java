@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import businesslogicservice.recordblservice.RecordBLService;
 import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
+import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 
 public class RecordController implements RecordBLService{
@@ -35,18 +36,18 @@ public class RecordController implements RecordBLService{
 
 	@Override
 	public BussinessOneDayVO bussinessOneDay(String WorkPlace,String date) {
-		// TODO Auto-generated method stub
 		try {
 			return RecordBL.bussinessOneDay(WorkPlace,date);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	
-
+	@Override
+	public void exportBussinessProcessToExcel(BussinessProcessVO vo) {
+		 RecordBL.exportBussinessProcessToExcel(vo);
+	}
 	
 
 }

@@ -16,7 +16,6 @@ public class DebitAndPayBillPO extends ReceiptPO {
 
 	private double money;
 
-	private ReceiptType type;
 	private ReceiptState state;
 
 
@@ -31,10 +30,6 @@ public class DebitAndPayBillPO extends ReceiptPO {
 
 	public double getMoney() {
 		return money;
-	}
-
-	public ReceiptType getType() {
-		return type;
 	}
 
 	public ReceiptState getState() {
