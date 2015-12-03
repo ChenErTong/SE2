@@ -23,7 +23,5 @@ public class OrganizationVO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		date = sdf.format(new Date());
 	}
-	
-	
 
 }

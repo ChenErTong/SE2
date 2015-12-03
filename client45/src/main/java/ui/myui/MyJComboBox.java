@@ -21,12 +21,14 @@ public class MyJComboBox extends JComboBox<String> {
 		this.setFont(new MyFont(15));
 		this.setBounds(x, y, width, height);
 		this.setForeground(Color.BLACK);
-		for(int i = 0; i < items.length; i++){
-			this.addItem(items[i]);
+		if(items != null){
+			for(int i = 0; i < items.length; i++){
+				this.addItem(items[i]);
+			}
+			if(items.length > 0){
+				this.setSelectedItem(items[0]);
+			}	
 		}
-		if(items.length > 0){
-			this.setSelectedItem(items[0]);
-		}	
 		this.setMaximumRowCount(4);
 		this.setVisible(true);
 	}

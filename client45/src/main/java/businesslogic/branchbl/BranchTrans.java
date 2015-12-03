@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import businesslogic.accountbl.AccountTrans;
 import businesslogic.facilitybl.FacilityTrans;
-import businesslogic.organizationbl.OrganizationTrans;
 import po.BranchPO;
 import po.FacilityPO;
 import po.accountpo.AccountPO;
-import state.OrganizationType;
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.accountvo.AccountVO;
@@ -18,7 +16,7 @@ public class BranchTrans {
 		if (vo == null) {
 			return null;
 		}
-		String ID = vo.id;
+		String ID = vo.organizationID;
 		String address = vo.address;
 		String date = vo.date;
 		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(vo.accounts);

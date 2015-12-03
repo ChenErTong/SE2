@@ -19,11 +19,6 @@ public class TransferPO extends OrganizationPO{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 中转中心地址
-	 */
-	private String address;
 	
 	/**
 	 * 员工信息
@@ -39,10 +34,6 @@ public class TransferPO extends OrganizationPO{
 		super(id,  address,accounts.size(),OrganizationType.TRANSFER);
 		this.accounts = accounts;
 		this.inventories = inventories;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	public ArrayList<AccountPO> getAccounts() {

@@ -15,12 +15,6 @@ public class BranchPO extends OrganizationPO{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 营业厅地址
-	 */
-	private String address;
-	
 	/**
 	 * 员工信息
 	 */
@@ -32,11 +26,6 @@ public class BranchPO extends OrganizationPO{
 	private ArrayList<FacilityPO> facilities;
 	
 	/**
-	 * TODO 收款信息定义
-	 * private ArrayList<FundPO> fund;
-	 */
-	
-	/**
 	 * 构造器
 	 */
 	public BranchPO(String id, String address, String date, ArrayList<AccountPO> accounts, ArrayList<FacilityPO> facilities) {
@@ -44,11 +33,6 @@ public class BranchPO extends OrganizationPO{
 		this.accounts = accounts;
 		this.facilities = facilities;
 	}
-
-	public String getAddress() {
-		return address;
-	}
-
 	public ArrayList<AccountPO> getAccounts() {
 		return accounts;
 	}
@@ -56,4 +40,6 @@ public class BranchPO extends OrganizationPO{
 	public ArrayList<FacilityPO> getFacilities() {
 		return facilities;
 	}
+	
+	
 }

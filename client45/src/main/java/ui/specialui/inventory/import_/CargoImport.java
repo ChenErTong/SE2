@@ -49,9 +49,9 @@ public class CargoImport extends MyJPanel {
 		this.add(new MyJLabel(387, 550, 19, 19, "位", 18, true));
 		
 		position = new MyJComboBox[4];
-		String[][] blankPos = this.getBlankPos();
+		this.setBlankPos();
 		for(int i = 0; i < 4; i ++){
-			position[i] = new MyJComboBox(171 + i * 79, 550, 42, 18, blankPos[i]);
+			position[i] = new MyJComboBox(171 + i * 79, 550, 42, 18, null);
 			this.add(position[i]);
 		}
 		
@@ -59,10 +59,7 @@ public class CargoImport extends MyJPanel {
 		produceImportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(CargoImport.this.produceImportList()){
-					String[][] blankPos = CargoImport.this.getBlankPos();
-					for(int i = 0; i < 4; i ++){
-						position[i].reset(blankPos[i]);
-					}
+					CargoImport.this.setBlankPos();
 				}else{
 					new MyNotification(frame, "请选择一件订单", Color.RED);
 				}		
@@ -76,17 +73,21 @@ public class CargoImport extends MyJPanel {
 		if(row == -1) return false;
 		//TODO 根据选中的订单信息生成入库单
 		
+		
 		commodities.removeRow();
 		return true;
 	}
 	
-	private String[][] getBlankPos(){
+	private void setBlankPos(){
 		String[][] blankPos = new String[4][];
 		//TODO 根据仓库信息返回仓库空位
 		for(int i = 0; i < 4; i ++){
 			blankPos[i] = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		}
 //		inventoryController.
-		return blankPos;
+		for(int i = 0; i < 4; i ++){
+			position[i].reset(blankPos[i]);
+		}
+//		return blankPos;
 	}
 }

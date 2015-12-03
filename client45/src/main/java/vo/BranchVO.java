@@ -7,19 +7,6 @@ import vo.accountvo.AccountVO;
 
 public class BranchVO extends OrganizationVO{
 	/**
-	 * 编号
-	 */
-	public String id;
-	/**
-	 * 成立时间
-	 */
-	public String date;
-	/**
-	 * 营业厅地址
-	 */
-	public String address;
-	
-	/**
 	 * 员工信息
 	 */
 	public ArrayList<AccountVO> accounts;
@@ -29,8 +16,6 @@ public class BranchVO extends OrganizationVO{
 	 */
 	public ArrayList<FacilityVO> facilities;
 	
-	public String branchID;
-
 	public BranchVO(String id, String date, String address, ArrayList<AccountVO> accounts,
 			ArrayList<FacilityVO> facilities) {
 		super(id, address, accounts.size(),OrganizationType.BRANCH);
@@ -43,6 +28,5 @@ public class BranchVO extends OrganizationVO{
 		this.accounts = new ArrayList<AccountVO> ();
 		this.facilities = new ArrayList<FacilityVO>();
 	}
-	
 	
 }

@@ -441,8 +441,12 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 				new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 			}else{
 				if(data[0].equals("营业厅")){
-					ResultMessage rsg = controller.addBranch(new BranchVO(controller.getBranchID(data[3]),data[2]+data[3]+data[4], 
-							OrganizationType.BRANCH));
+					System.out.println(data[3]+","+data[4]);
+					System.out.println(controller.getBranchID(data[3]));
+					BranchVO branch = new BranchVO(controller.getBranchID(data[3]),data[2]+data[3]+data[4], 
+							OrganizationType.BRANCH);
+					System.out.println(branch.toString());
+					ResultMessage rsg = controller.addBranch(branch);
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						organizationDetails.refresh();
@@ -653,7 +657,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 	private void deleteOrganization() {
 		controller = ControllerFactory.getOrganizationController();
 		OrganizationVO vo =organizationPool.get(table.getSelectedRow());
-		System.out.println(vo.organizationType);
+		System.out.println(vo.toString());
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
 		case TRANSFER:ResultMessage rsg = controller.deleteTransfer(organizationPool.get(table.getSelectedRow()).organizationID);
 						if(rsg.equals(ResultMessage.SUCCESS)){
