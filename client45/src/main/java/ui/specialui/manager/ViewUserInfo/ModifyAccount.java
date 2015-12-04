@@ -13,6 +13,7 @@ public class ModifyAccount extends MyTranslucentPanel{
 	private MyJTextField[] fields ;
 	private MyJComboBox branchID;
 	private OrganizationController controller = ControllerFactory.getOrganizationController();
+	
 	public ModifyAccount() {
 		super(680, 390,550,240);
 		this.initComponent();
@@ -57,13 +58,8 @@ public class ModifyAccount extends MyTranslucentPanel{
 		}
 		branchID = new MyJComboBox(390,170,110,30,branchIDs);
 		this.add(branchID);
-		
-		
-		
 	}
-
-
-
+	
 	public void setUneditable() {
 		for(MyJTextField field: fields){
 			field.setEditable(false);
@@ -99,8 +95,5 @@ public class ModifyAccount extends MyTranslucentPanel{
 			fields[i].setText(null);
 		}
 	}
-
-	
-
 	private static final long serialVersionUID = 1L;
 }

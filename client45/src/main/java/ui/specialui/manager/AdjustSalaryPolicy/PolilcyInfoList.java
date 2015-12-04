@@ -22,6 +22,7 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 	private MyJComboBox policyTypeBox;
 	private MyJButton search;
 	private MyJTable table;
+
 	public PolilcyInfoList(Panel_Manager_AdjustSalaryPolicy handle) {
 		super(50, 100, 620, 560);
 		this.initComponent( handle);
@@ -76,6 +77,7 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		this.add(jsp);
 		
 	}
+	
 	public void setData(String[] data) {
 		employeeTypeBox.setSelectedItem(data[0]);
 		policyTypeBox.setSelectedItem(data[1]);
@@ -91,5 +93,4 @@ public class PolilcyInfoList  extends MyTranslucentPanel{
 		return table;
 	}
 	private static final long serialVersionUID = 1L;
-
 }

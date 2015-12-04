@@ -29,6 +29,9 @@ import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
 
 public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel implements ActionListener{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private MyJComboBox yearBox;
 	private MyJComboBox yearBox_2;
 	private MyJComboBox monthBox;
@@ -38,10 +41,10 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 	private MyJButton check;
 	private MyJTable	table;
 	private MyJButton ExportBusinessTable;
+	
 	public Panel_Manager_BusinessPerformance(FrameManager frame_Manager) {
 		super(80, 100,1120,570+48);
 		this.initComponent(frame_Manager);
-		
 	}
 
 	private void initComponent(FrameManager frame_Manager) {
@@ -102,43 +105,43 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 		this.add(ExportBusinessTable);
 		ExportBusinessTable.setVisible(true);
 		//the table
-			String[] headers = {"单据编号","单据种类","单据内容","单据金额"};
-			table = new MyJTable(headers, false);
-			table.setBackground(new Color(40, 42, 66));
-			table.setForeground(Color.WHITE);
-			table.setFont(new MyFont(14));
-			table.getTableHeader().setResizingAllowed(false);
+		String[] headers = {"单据编号","单据种类","单据内容","单据金额"};
+		table = new MyJTable(headers, false);
+		table.setBackground(new Color(40, 42, 66));
+		table.setForeground(Color.WHITE);
+		table.setFont(new MyFont(14));
+		table.getTableHeader().setResizingAllowed(false);
 			
-			table.getColumnModel().getColumn(0).setPreferredWidth(180);
-			table.getColumnModel().getColumn(0).setMaxWidth(180);
-			table.getColumnModel().getColumn(0).setMinWidth(180);
+		table.getColumnModel().getColumn(0).setPreferredWidth(180);
+		table.getColumnModel().getColumn(0).setMaxWidth(180);
+		table.getColumnModel().getColumn(0).setMinWidth(180);
 			
-			table.getColumnModel().getColumn(1).setPreferredWidth(380);
-			table.getColumnModel().getColumn(1).setMaxWidth(380);
-			table.getColumnModel().getColumn(1).setMinWidth(380);
+		table.getColumnModel().getColumn(1).setPreferredWidth(380);
+		table.getColumnModel().getColumn(1).setMaxWidth(380);
+		table.getColumnModel().getColumn(1).setMinWidth(380);
 			
-			table.getColumnModel().getColumn(2).setPreferredWidth(380);
-			table.getColumnModel().getColumn(2).setMaxWidth(380);
-			table.getColumnModel().getColumn(2).setMinWidth(380);
-			DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-			tcr.setHorizontalAlignment(JLabel.CENTER);
-			table.setDefaultRenderer(Object.class, tcr);
+		table.getColumnModel().getColumn(2).setPreferredWidth(380);
+		table.getColumnModel().getColumn(2).setMaxWidth(380);
+		table.getColumnModel().getColumn(2).setMinWidth(380);
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 									  	
-			JScrollPane jsp=new JScrollPane(table);
-			JTableHeader head = table.getTableHeader();
-			head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-			head.setFont(new MyFont(14));
-			head.setForeground(Color.BLACK);
-			head.setResizingAllowed(false);
+		JScrollPane jsp=new JScrollPane(table);
+		JTableHeader head = table.getTableHeader();
+		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+		head.setFont(new MyFont(14));
+		head.setForeground(Color.BLACK);
+		head.setResizingAllowed(false);
 								
-			jsp.setBounds(20, 118, 1085, 450);
-			jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-			jsp.setOpaque(false);
-			jsp.setBorder(BorderFactory.createEmptyBorder());
-			jsp.setVisible(true);
-			this.add(jsp);
-		
+		jsp.setBounds(20, 118, 1085, 450);
+		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+		jsp.setOpaque(false);
+		jsp.setBorder(BorderFactory.createEmptyBorder());
+		jsp.setVisible(true);
+		this.add(jsp);
 	}
+	
 	/**
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
@@ -166,10 +169,9 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 				return null;
 			}
 		}
-		
 		return data;
-	
 	}
+	
 	private String addZero(String str){
 		if(Integer.parseInt(str) < 10){
 			return "0" + str;
@@ -177,6 +179,7 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 			return str;
 		}
 	}
+	
 	private String yearAddZero(String str){
 		if(Integer.parseInt(str) < 10){
 			return "000" + str;
@@ -192,12 +195,11 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 			}
 		}
 	}
+	
 	public  MyJTable getTable(){
 		return table;
 	}
 
-	
-	private static final long serialVersionUID = 1L;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("ViewBusinessTable")){

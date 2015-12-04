@@ -26,6 +26,7 @@ public class Panel_Manager_ReceiptInfo extends MyTranslucentPanel{
 		ta.setBackground(getBackground());
 		this.add(ta);
 	}
+	
 	public MyEmptyTextArea getTa(){
 		ta = new MyEmptyTextArea(10,60,530,460);
 		ta.setEditable(true);

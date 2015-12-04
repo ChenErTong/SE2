@@ -53,6 +53,11 @@ public class Panel_Manager_Total extends MyJPanel {
 		this.add(ViewIncomeStatement);
 		ViewIncomeStatement.setVisible(true);
 		
+		MyJButton viewLog = new MyJButton(200,650,170,40,"查看系统日志",18);
+		viewLog.setActionCommand("ViewLogMsg");
+		viewLog.addActionListener(frameManager);
+		this.add(viewLog);
+		
 		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",16);
 		Withdraw.setActionCommand("Withdraw");
 		Withdraw.addActionListener(frameManager);

@@ -15,7 +15,6 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 	 private MyJButton cancel;
 	public Panel_Sender_Search(Panel_Sender_Total handle) {
 		super(10, 105,620, 108);
-		// TODO Auto-generated constructor stub
 		this.initComponent(handle);
 	}
 
@@ -35,20 +34,16 @@ public class Panel_Sender_Search extends MyTranslucentPanel{
 		 this.add(search);
 		
 		 cancel = new MyJButton(398,60,90,30,"取消",16);
-		cancel.setActionCommand("CancelSearch");
-		cancel.addActionListener(new ActionListener(){
-
+		 cancel.setActionCommand("CancelSearch");
+		 cancel.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				//清空订单号和寄件人姓名的TextField
 				orderNumberField.setText(null);
 				senderNameField.setText(null);
 			}
-			
 		});
 		this.add(cancel);
-		
 	}
 	
 	public String[] getSenderInfo() {

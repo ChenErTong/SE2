@@ -21,6 +21,8 @@ import ui.myui.MyNotification;
 import vo.accountvo.AccountVO;
 
 public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
+	private static final long serialVersionUID = 1L;
+			
 	private UserInfo userInfo;
 	private AddAccount addAccount;
 	private ModifyAccount modifyAccount;
@@ -31,9 +33,12 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 	private MyJButton modify;
 	private MyJButton deleteButton;
 	private MyJTable table;
+
 	static ArrayList<AccountVO> accountPool;
 	static String accountID = "";
+	
 	private AccountController controller = ControllerFactory.getAccountController();
+
 	public Panel_Manager_ViewUser() {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -41,6 +46,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		accountPool = new ArrayList<AccountVO>();
 		this.showAll();
 	}
+	
 	private void initComponent() {
 		this.add(new MyJLabel(550, 20, 210, 90, "公司员工信息管理", 24, true));
 		addAccount = new AddAccount();
@@ -105,8 +111,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 				accountPool.add(accountVO.get(i));
 			}
 		}
-
-	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Search")){
@@ -188,16 +193,12 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
 			accountID = accountPool.get(table.getSelectedRow()).ID;
-		//	if(table.getSelectedRow()==0){
-			//	new MyNotification(this,"请先选择需要修改的员工！",Color.RED);
-			//}else{
-				if(modifyAccount.getData()==null){
-					new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
-				}else{
-					new MyNotification(this,"正在修改员工信息！",Color.GREEN);
-					this.modifyAccount();
-				}
-			//}
+			if(modifyAccount.getData()==null){
+				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
+			}else{
+				new MyNotification(this,"正在修改员工信息！",Color.GREEN);
+				this.modifyAccount();
+			}
 		}else if(e.getActionCommand().equals("ViewAccount")){
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
@@ -228,6 +229,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		}
 		
 	}
+	
 	private void deleteAccount() {
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
@@ -241,6 +243,7 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 			new MyNotification(this,"员工删除失败！",Color.RED);
 		}
 	}
+	
 	private void modifyAccount() {
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
@@ -254,7 +257,5 @@ public class Panel_Manager_ViewUser extends MyJPanel implements ActionListener{
 		}else{
 			new MyNotification(this,"员工修改失败！",Color.RED);
 		}
-	
 	}
-
 }

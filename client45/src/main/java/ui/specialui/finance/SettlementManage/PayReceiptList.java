@@ -16,10 +16,13 @@ import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class PayReceiptList extends MyTranslucentPanel{
+	private static final long serialVersionUID = 1L;
+	
 	private MyJLabel chooseDate;
 	private MyComboBox dateList;
 	private MyJButton search;
 	private MyJTable table;
+	
 	public PayReceiptList(Panel_Finance_SettlementManage handle) {
 		super(50, 100, 620, 240);
 		this.initComponent(handle);
@@ -44,40 +47,35 @@ public class PayReceiptList extends MyTranslucentPanel{
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
 							
-				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-				tcr.setHorizontalAlignment(JLabel.CENTER);
-				table.setDefaultRenderer(Object.class, tcr);
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 									  	
-				JScrollPane jsp=new JScrollPane(table);
-				JTableHeader head = table.getTableHeader();
-				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-				head.setFont(new MyFont(14));
-				head.setForeground(Color.BLACK);
-				head.setResizingAllowed(false);
+		JScrollPane jsp=new JScrollPane(table);
+		JTableHeader head = table.getTableHeader();
+		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+		head.setFont(new MyFont(14));
+		head.setForeground(Color.BLACK);
+		head.setResizingAllowed(false);
 								
-				jsp.setBounds(15, 50, 590, 180);
-				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-				jsp.setOpaque(false);
-				jsp.setBorder(BorderFactory.createEmptyBorder());
-				jsp.setVisible(true);
-				this.add(jsp);
+		jsp.setBounds(15, 50, 590, 180);
+		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+		jsp.setOpaque(false);
+		jsp.setBorder(BorderFactory.createEmptyBorder());
+		jsp.setVisible(true);
+		this.add(jsp);
 	}
 	public void setData(String data) {
 		dateList.setSelectedItem(data);
-		
 	}
 
 	public String getData() {
 		String  data ;
-	
 		data= (String) dateList.getSelectedItem();
 		return data;
 	}
 	
-	
-	private static final long serialVersionUID = 1L;
 	public MyJTable getTable() {
-	
 		return table;
 	}
 

@@ -8,9 +8,11 @@ import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
 
 public class AddPolicy extends MyTranslucentPanel{
+	
 	private MyJComboBox employeeType;
 	private MyJComboBox policyType;
 	private MyEmptyTextArea policyRule;
+	
 	public AddPolicy() {
 		super(680,100,550,240);
 		this.initComponent();

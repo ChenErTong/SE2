@@ -16,11 +16,13 @@ import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
 public class DebitReceiptList extends MyTranslucentPanel{
+	
 	private MyJLabel chooseBranch;
 	private MyComboBox branchList;
 	private MyComboBox dateList;
 	private MyJButton search;
 	private MyJTable table;
+	
 	public DebitReceiptList(Panel_Finance_CostManagement handle) {
 		super(50, 100, 620, 560);
 		this.initComponent(handle);
@@ -70,6 +72,7 @@ public class DebitReceiptList extends MyTranslucentPanel{
 		jsp.setVisible(true);
 		this.add(jsp);
 	}
+	
 	public void setData(String[] data) {
 		branchList.setSelectedItem(data[0]);
 		dateList.setSelectedItem(data[1]);

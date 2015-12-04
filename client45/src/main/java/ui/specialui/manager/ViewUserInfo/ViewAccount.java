@@ -10,15 +10,17 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class ViewAccount extends MyTranslucentPanel{
+	private static final long serialVersionUID = 1L;
+	
 	private MyJTextField[] fields ;
 	private MyJComboBox branchID;
 	private OrganizationController controller = ControllerFactory.getOrganizationController();
+	
 	public ViewAccount() {
 		super(50, 390,620,240);
 		this.initComponent();
 	}
 
-	private static final long serialVersionUID = 1L;
 	private void initComponent() {
 		this.add(new MyJLabel(240,10,150,30,"查看员工信息",18,true));
 		this.add(new MyJLabel(40,50,90,30,"员工姓名",16,true));
@@ -60,8 +62,6 @@ public class ViewAccount extends MyTranslucentPanel{
 		this.add(branchID);
 	}
 
-
-
 	public void setUneditable() {
 		for(MyJTextField field: fields){
 			field.setEditable(false);
@@ -91,7 +91,5 @@ public class ViewAccount extends MyTranslucentPanel{
 		}
 		branchID.setSelectedItem(data[7]);
 	}
-	
-	
 }
 

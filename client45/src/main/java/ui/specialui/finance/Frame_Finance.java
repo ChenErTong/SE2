@@ -27,15 +27,24 @@ import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_BusinessPerfor
 import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_ViewBusinessPerformance;
 import ui.specialui.finance.ViewIncomeState.Panel_Finance_IncomeState;
 import ui.specialui.finance.ViewIncomeState.Panel_Finance_ViewIncomeStatement;
+import ui.specialui.finance.ViewLogMsg.ViewLogPanel;
 import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
 
 
-
+/**
+ * 实现财务人员财务管理界面的主Frame，负责到具体功能的界面跳转
+ * @version 2015/12/4 16:44
+ * @author zsq
+ *
+ */
 public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+
 	static JTable outputTable;
+
 	private MyJTable output;
+
 	private RecordBLService recordController = ControllerFactory.getRecordController();
 	private Panel_Finance_Total totalPanel;
 	private Panel_Finance_CostManagement costManagePanel;
@@ -43,9 +52,11 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_OpenningStock openningStockPanel;
 	private Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
+
 	private MyJPanel subPanel ;
 	private Panel_Finance_BusinessPerformance businessPerformance;
 	private Panel_Finance_BankAccountManage bankAccountManage;
+	
 	public Frame_Finance(String userID){
 		super(userID);
 		totalPanel = new Panel_Finance_Total(this);
@@ -68,7 +79,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new Panel_Finance_CostManagement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-			
 		}else if(e.getActionCommand().equals("SettlementManage")){
 			//TODO
 			totalPanel.setVisible(false);
@@ -86,8 +96,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			totalPanel.setVisible(false);
 			subPanel = new Panel_Finance_BankAccountManage();
 			this.add(subPanel);
-			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-			
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));	
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			//TODO
 			totalPanel.setVisible(false);
@@ -100,10 +109,15 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new Panel_Finance_ViewIncomeStatement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-		
 		}else if(e.getActionCommand().equals("Withdraw")){
 			totalPanel.setVisible(false);
-		}else if(e.getActionCommand().equals("AddNewStock")){
+		}else if(e.getActionCommand().equals("ViewLogMsg")){
+			totalPanel.setVisible(false);
+			subPanel = new ViewLogPanel(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+		}
+		else if(e.getActionCommand().equals("AddNewStock")){
 			
 		}else if(e.getActionCommand().equals("AddDebitReceipt")){
 			
@@ -128,12 +142,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			if(this.isExport_2()){
 			//	setTable(((Panel_Finance_IncomeState)subPanel).getTable());
 				//this.outputExcel();
-		}
+			}
 		}
 	}
 	
 	/**
-	 * 是否经营情况表
+	 * 是否导出经营情况表
 	 * @return 是否导出成功
 	 * 与bl层连接
 	 */
@@ -144,6 +158,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}
 		return false;
 	}
+	
 	private boolean isExport_2(){
 		switch(((Panel_Finance_ViewIncomeStatement)subPanel).isExport()){
 		case 0:new MyNotification(this,"正在导出成本收益表！",Color.GREEN);return true;
@@ -151,6 +166,11 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		}
 		return false;
 	}
+	/**
+	 * 导出Excel表格的方法
+	 * @author zsq
+	 * @version 2015/11/28 14:20
+	 */
 	public  void outputExcel(){
     	
 		FileDialog fd = new FileDialog(this, "导出至Excel", FileDialog.SAVE);
@@ -164,7 +184,13 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	    	ex.printStackTrace();
 	    }
 	}
-	
+	/**
+	 * 执行导出表格操作
+	 * @param table 要导出的表格
+	 * @param file  存放导出表格的文件
+	 * @throws IOException
+	 * @author zsq 
+	 */
 	public void exportTable(JTable table, File file) throws IOException {
 	       DefaultTableModel model = (DefaultTableModel) table.getModel();
 	       
@@ -197,6 +223,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	       	this.add(new MyNotification(this,"已成功导出！",Color.GREEN));
 	     
 	   }
+	
 	public static void setTable(JTable _table){
 		outputTable = _table;
 		

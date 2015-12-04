@@ -6,10 +6,12 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class ModifyAccountInfo extends MyTranslucentPanel{
+	
 	private MyJComboBox startCityList;
 	private MyJComboBox arrivalCityList;
 	private MyJTextField distances;
 	private MyJTextField price;
+	
 	public ModifyAccountInfo() {
 		super(680,390,580,240);
 		this.initComponent();

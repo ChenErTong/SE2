@@ -7,9 +7,10 @@ import ui.specialui.manager.FrameManager;
 public class Panel_Manager_ViewBusinessPerformance extends MyJPanel{
 
 	private static final long serialVersionUID = 1L;
+	
 	private Panel_Manager_BusinessPerformance businessPerformance;
+	
 	public Panel_Manager_ViewBusinessPerformance(FrameManager frameManager) {
-		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frameManager);
@@ -21,6 +22,7 @@ public class Panel_Manager_ViewBusinessPerformance extends MyJPanel{
 		this.add(businessPerformance);
 	
 	}
+	
 	/**
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出

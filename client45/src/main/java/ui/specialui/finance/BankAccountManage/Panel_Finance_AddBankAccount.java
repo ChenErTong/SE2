@@ -3,14 +3,20 @@ package ui.specialui.finance.BankAccountManage;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-
+/**
+ * 进行银行账户添加的半透明Panel
+ * @author zsq
+ * @version 2015/11/15 23:41
+ */
 public class Panel_Finance_AddBankAccount extends MyTranslucentPanel{
+	private static final long serialVersionUID = 1L;
+
 	private MyJTextField nameField;
 	private MyJTextField balanceField;
+	
 	public Panel_Finance_AddBankAccount() {
 		super(660,100,550,240);
 		this.initComponent();
-		
 	}
 
 	private void initComponent() {
@@ -48,16 +54,12 @@ public class Panel_Finance_AddBankAccount extends MyTranslucentPanel{
 	}
 	
 	public  void setData(String[] data){
-		
 		nameField.setText(data[0]);
 		balanceField.setText(data[1]);
 	}
 
-	private static final long serialVersionUID = 1L;
 	public void refresh() {
 		nameField.setText(null);
 		balanceField.setText(null);
 	}
-
-	
 }

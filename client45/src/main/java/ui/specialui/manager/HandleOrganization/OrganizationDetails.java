@@ -14,6 +14,9 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class OrganizationDetails extends MyTranslucentPanel{
+
+	private static final long serialVersionUID = 1L;
+
 	private MyJTextField[] fields;
 	private MyJComboBox organizationType ;
 	@SuppressWarnings("rawtypes")
@@ -21,6 +24,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	@SuppressWarnings("rawtypes")
 	private JComboBox citiesBox;
 	private MyEmptyTextArea address;
+	
 	public OrganizationDetails() {
 		super(680,100,550,562);
 		this.initComponent();
@@ -35,22 +39,10 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		fields[0].setText(GetDate.getDate());
 		this.add(fields[0]);
 		
-	//	this.add(new MyJLabel(10,100, 90, 30, "机构类型", 18, true));
 		String[] organizationTypes = {"营业厅","中转中心"};
 		organizationType = new MyJComboBox(100,60,140,30,organizationTypes);
 		this.add(organizationType);
-		
-	//	this.add(new MyJLabel(250,100,100,30,"机构人数",18,true));
-		//fields[2] = new MyJTextField(340,100,140,30);
-		//fields[2].setOnlyInteger(11);
-		//this.add(fields[2]);
-	
-		//this.add(new MyJLabel(10, 140, 90, 30, "联系电话",18,true));
-		//fields[3] = new MyJTextField(100,140,150,30);
-		//fields[3].setOnlyInteger(11);
-		//this.add(fields[3]);
-		
-		
+
 		this.add(new MyJLabel(10,100,90,30,"机构地址:",18,true));
 		this.add(new MyJLabel(10,170,90,30,"详细地址:",18,true));
 		this.add(new MyJLabel(100,130,25,30,"省",18,true));
@@ -75,9 +67,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	    address.setBackground(Color.WHITE);
 	    this.add(address);
 	}
-
-	private static final long serialVersionUID = 1L;
-
+	
 	public void setUneditable() {
 		fields[0].setEditable(false);
 		organizationType.setEnabled(false);
@@ -116,6 +106,4 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		}
 		return data;
 	}
-
-
 }

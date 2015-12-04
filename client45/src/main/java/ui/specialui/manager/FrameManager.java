@@ -25,6 +25,7 @@ import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_BusinessPerfor
 import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_ViewBusinessPerformance;
 import ui.specialui.manager.ViewIncomeState.Panel_Manager_IncomeState;
 import ui.specialui.manager.ViewIncomeState.Panel_Manager_ViewIncomeStatement;
+import ui.specialui.manager.ViewLogMsg.ViewLogPanel;
 import ui.specialui.manager.ViewUserInfo.Panel_Manager_ViewUser;
 
 public class FrameManager extends MyJFrame implements ActionListener{
@@ -40,7 +41,9 @@ private static final long serialVersionUID = 1L;
 	private Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
 	private MyJPanel subPanel;
+	
 	static JTable outputTable;
+	
 	public FrameManager(String userID){
 		super(userID);
 		totalPanel = new Panel_Manager_Total(this);
@@ -110,27 +113,12 @@ private static final long serialVersionUID = 1L;
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
 			//TODO
-		}else if(e.getActionCommand().equals("AddOrganization")){
-		//	if(this.addOrganization()){
-				//((Panel_Manager_HandleOrganization)subPanel).refresh();
-			//}
-		}else if(e.getActionCommand().equals("ModifyOrganizationInfomation")){
-			//if(this.modifyOrganizationInfo()){
-				//((Panel_Manager_HandleOrganization)subPanel).refresh();
-			//}
-		}else if(e.getActionCommand().equals("DeleteOrganization")){
-			//if(this.deleteOrganization()){
-				//((Panel_Manager_HandleOrganization)subPanel).refresh();
-			//}
-		}
-		//else if(e.getActionCommand().equals("ModifyReceiptInfo")){
-	
-			//((Panel_Manager_HandleReceipt)(subPanel)).setVisible(false);
-		//	modifyReceiptInfo = new Panel_Manager_ModifyReceiptInfo();
-			//this.add(modifyReceiptInfo);
-			//this.getLayeredPane().add(modifyReceiptInfo,new Integer(Integer.MAX_VALUE));
-	//	}
-		else if(e.getActionCommand().equals("ExportBusinessTable")){
+		}else if(e.getActionCommand().equals("ViewLogMsg")){
+			totalPanel.setVisible(false);
+			subPanel = new ViewLogPanel(this);
+			this.add(subPanel);
+			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((Panel_Manager_BusinessPerformance)subPanel).getTable());
 				this.outputExcel();
@@ -139,7 +127,7 @@ private static final long serialVersionUID = 1L;
 			if(this.isExport_2()){
 				setTable(((Panel_Manager_IncomeState)subPanel).getTable());
 				this.outputExcel();
-		}
+			}
 		}
 	}
 	

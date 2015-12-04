@@ -1,16 +1,14 @@
 package ui.specialui.finance.ViewIncomeState;
 
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.finance.Frame_Finance;
-import ui.specialui.manager.ViewIncomeState.Panel_Manager_IncomeState;
-
 
 public class Panel_Finance_ViewIncomeStatement extends MyJPanel{
 
 	private static final long serialVersionUID = 1L;
 	private Panel_Finance_IncomeState statePanel;
+	
 	public Panel_Finance_ViewIncomeStatement(Frame_Finance frame_Finance) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -21,10 +19,8 @@ public class Panel_Finance_ViewIncomeStatement extends MyJPanel{
 		
 		statePanel = new Panel_Finance_IncomeState(frame_Finance);
 		this.add(statePanel);
-		
-
-
-}
+	}
+	
 	/**
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
@@ -37,5 +33,4 @@ public class Panel_Finance_ViewIncomeStatement extends MyJPanel{
 		}
 		return 1;
 	}
-	
 }

@@ -29,6 +29,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	private MyJComboBox receiptTypeList;
 	private MyJComboBox receiptStateList;
 	private static final long serialVersionUID = 1L;
+	
 	public Panel_Manager_SearchReceipt(Panel_Manager_HandleReceipt handle) {
 		super(30,100, 655, 540);
 		this.initComponent(handle);
@@ -57,34 +58,7 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		
 		receiptStateList = new MyJComboBox(395,10,150,30,receiptType);
 		this.add(receiptStateList);
-		this.initTable();
-		
-		//the table
-		/*String[] headers = {"选择","单据编号","单据种类","单据状态"};
-		MyJTable	table = new MyJTable(headers,false);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-					
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-							  	
-		JScrollPane jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-						
-		jsp.setBounds(10, 50, 630, 485);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
-		this.add(jsp);*/
-		
-		
+		this.initTable();	
 	}
 	
 	
@@ -98,7 +72,6 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);	
 		JTableHeader head = table.getTableHeader();
-	//	head.setForeground(Color.WHITE);
 		head.setBackground(MyColor.getColor());
 		
 		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
@@ -122,19 +95,19 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 		this.add(jsp);	
 	}
 	
- public JTable getTable(){
-	 return table;
- }
- public int[] getData(){
-	int data[] = new int[2];
-	 data[0] = receiptTypeList.getSelectedIndex();
-	 data[1] = receiptStateList.getSelectedIndex();
-	 return data;
- }
-
-public MyJButton getSearch() {
-	return selectButton;
-}
+	 public JTable getTable(){
+		 return table;
+	 }
+	 public int[] getData(){
+		int data[] = new int[2];
+		 data[0] = receiptTypeList.getSelectedIndex();
+		 data[1] = receiptStateList.getSelectedIndex();
+		 return data;
+	 }
+	
+	public MyJButton getSearch() {
+		return selectButton;
+	}
 
 }
 

@@ -14,12 +14,15 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-/*收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。*/
+
 public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
+	private static final long serialVersionUID = 1L;
+	
 	private MyJTextField numberField;
 	private MyJTextField courierField;
 	private MyJTextField dateField;
 	private  MyJTable table;
+	
 	public Panel_Finance_DebitReceiptInfo() {
 		super(680,100,550,240);
 		this.initComponent();
@@ -68,8 +71,6 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		
 	}
 
-	private static final long serialVersionUID = 1L;
-
 	public void setUneditable() {
 		dateField.setEditable(false);
 		numberField.setEditable(false);
@@ -85,8 +86,5 @@ public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
 		dateField.setText((String)data[0]);
 		numberField.setText((String)data[1]);
 		courierField.setText((String)data[2]);
-		//TODO
-		
-		
 	}
 }

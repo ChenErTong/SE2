@@ -19,7 +19,11 @@ import ui.myui.MyNotification;
 
 import vo.BankAccountVO;
 
-
+/**
+ * 负责银行账户管理的Panel，实现对各个按钮的监听和与bl层的连接
+ * @author zsq
+ * @version 2015/11/16 18:50
+ */
 public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionListener{
 	
 	BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
@@ -201,10 +205,10 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 
 	}
 
-	
 	public void deleteAccount(){
 		table = bankAccountPanel.getTable();
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
+		
 		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
@@ -215,11 +219,13 @@ public class Panel_Finance_BankAccountManage extends MyJPanel implements ActionL
 			new MyNotification(this,"账户删除失败！",Color.RED);
 		}
 	}
+	
 	public void modifyAccount(){
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		table = bankAccountPanel.getTable();
 		String[] data = modifyAccountInfo.getData();
 		accountID = accountPool.get(table.getSelectedRow()).ID;
+	
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 				data[1],Double.parseDouble(data[2]),null));
 		if(rsg.equals(ResultMessage.SUCCESS)){

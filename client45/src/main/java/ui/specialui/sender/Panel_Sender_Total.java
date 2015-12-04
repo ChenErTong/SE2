@@ -22,13 +22,17 @@ import vo.OrderVO;
  * @time 2015/11/18 19:34
  */
 public class Panel_Sender_Total extends MyJPanel implements ActionListener{
+	private static final long serialVersionUID = 1L;
+	
 	private Panel_Sender_CommodityInfo commodityPanel ;
 	private Panel_Sender_logisticInfo logisticPanel;
 	private Panel_Sender_Search searchPanel;
 	private MyJTable table_order,table_logistic;
 	private OrderBLService orderController;
+	
 	static ArrayList<OrderVO> orderPool;
 	static String orderID = " ";
+	
 	public Panel_Sender_Total() {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -36,7 +40,6 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent() {
-		
 		commodityPanel = new Panel_Sender_CommodityInfo();
 		logisticPanel = new Panel_Sender_logisticInfo();
 		searchPanel = new Panel_Sender_Search(this);
@@ -45,12 +48,8 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 		this.add(searchPanel);
 		this.add(new MyJLabel(560,30,150,40,"物流信息查询",22,true));
 		orderPool = new ArrayList<OrderVO>();
-		
-		
 	}
-
 	
-	private static final long serialVersionUID = 1L;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("SearchLogisticInfo")){
@@ -147,7 +146,6 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	 * 
 	 */
 	private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
-		// 调用bl的判断是否合法方法即可  TODO
 
 		return false;
 	}

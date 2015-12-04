@@ -7,6 +7,7 @@ import ui.specialui.manager.FrameManager;
 public class Panel_Manager_ViewIncomeStatement extends MyJPanel {
 
 	private Panel_Manager_IncomeState statePanel;
+	
 	public Panel_Manager_ViewIncomeStatement(FrameManager frameManager) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);

@@ -43,6 +43,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  */
 public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
+
 	private ReceiptController receiptController;
 	private Panel_Manager_SearchReceipt searchPanel;
 	private Panel_Manager_ReceiptInfo receiptInfo;
@@ -50,6 +51,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 	static ArrayList<ValueObject> listPool;
 	static ArrayList<ReceiptType> typePool;
 	static int index = -1;
+	
 	ArrayList<ValueObject> passList;
 	ArrayList<ReceiptType> passType;
 	JTable table;
@@ -62,6 +64,7 @@ public class Panel_Manager_HandleReceipt extends MyJPanel implements ActionListe
 	private MyJButton DontPassThisReceipt;
 	private MyJButton ExportReceipt;
 	private MyJButton search;
+	
 	public Panel_Manager_HandleReceipt() {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -424,7 +427,7 @@ private void getApprovalData(int index) throws RemoteException{
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.SUCCESS);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.SUCCESS);
 		
-model = (DefaultTableModel) table.getModel();
+		model = (DefaultTableModel) table.getModel();
 		
 		if(index == 0){
 			for(int i = 1; i <= 10; i++)
@@ -606,8 +609,7 @@ model = (DefaultTableModel) table.getModel();
 			}
 		}
 	}
-private void writeto(String a,String file){
-		
+	private void writeto(String a,String file){
 		try {
 			File filename=new File(file);
 			
@@ -621,14 +623,6 @@ private void writeto(String a,String file){
 			e.printStackTrace();
 		}
 	}
-
-/*private void setCondition(String str){
-	switch(str){
-	case "未通过" : word.setText("单据状态:    " + "未通过");break;
-	case "已通过": word.setText("单据状态:    " + "已通过");break;
-	case "未审批" : word.setText("单据状态:    " + "未审批");break;
-	}*/
-//}
 }
 
 

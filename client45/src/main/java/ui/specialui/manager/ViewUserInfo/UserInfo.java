@@ -19,6 +19,7 @@ public class UserInfo extends MyTranslucentPanel{
 	private MyJButton search ;
 	private MyJComboBox userList;
 	private MyJTable	table;
+	
 	public UserInfo(Panel_Manager_ViewUser handle) {
 		super(50,100,610,240);
 		this.initComponent(handle);
@@ -70,6 +71,7 @@ public class UserInfo extends MyTranslucentPanel{
 		String data = i+"";
 		return data;
 	}
+	
 	public MyJTable getTable(){
 		return table;
 	}

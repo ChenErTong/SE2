@@ -21,16 +21,22 @@ import ui.myui.MyTranslucentPanel;
 import vo.BankAccountVO;
 
 
-
+/**
+ * 查找银行账户的半透明Panel
+ * @author zsq
+ */
 public class Panel_Finance_BankAccount extends MyTranslucentPanel {
 
 	private static final long serialVersionUID = 1L;
+	
 	private MyJComboBox findType;
 	private MyJTextField searchField;
 	private MyJButton searchButton;
 	private   MyJTable	table;
+	
 	static ArrayList<BankAccountVO> accountPool;
 	static String accountID = " ";
+	
 	public Panel_Finance_BankAccount(Panel_Finance_BankAccountManage manage) {
 		super(70,100,550,530);
 		this.initComponent(manage);
@@ -120,9 +126,6 @@ public void refresh() {
 public MyJTable getTable(){
 	return table;
 }
-
-	
-	
 }
 
 	

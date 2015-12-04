@@ -26,14 +26,12 @@ import vo.OpeningStockVO;
 public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	//private Panel_Finance_OpenningStockInfo openningStockInfo;
-	//private MyJButton commonButton;
+	
 	private MyJButton insertButton;
 	private MyJButton searchButton;
 	
 	private MyJTable transferTable,branchTable,employTable,facilityTable,inventoryTable,bankAccountTable;
 	public Panel_Finance_OpenningStock(Frame_Finance frame_Finance) {
-		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Finance);
@@ -42,6 +40,7 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 	private void initComponent(Frame_Finance frame_Finance) {
 		this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
 		this.initButton(frame_Finance);
+		
 		String[] headers = {"机构编号", "成立日期","机构类型","机构人数","机构地址","机构人员信息","仓库/转运工具信息"};
 		transferTable= new MyJTable(headers,true);
 		transferTable.setBackground(new Color(40, 42, 66));
@@ -135,16 +134,8 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 		insertButton = new MyJButton(0, 150, 40, 130,
 				"<html>添<br/>加<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
 		insertButton.addActionListener(this);
-		/*insertButton.addActionListener(new ActionListener() {
-			//public void actionPerformed(ActionEvent e) {
-				Panel_Finance_OpenningStock.this.insertPanel(frame);
-				
-			}
-		});*/
 		this.add(insertButton);
-
-	
-
+		
 		searchButton = new MyJButton(0, 280, 40, 130,
 				"<html>查<br/>看<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
 		searchButton.addActionListener(this);
@@ -152,39 +143,39 @@ public class Panel_Finance_OpenningStock extends MyJPanel implements ActionListe
 	}
 	
 	
-public void showAll(){
-	OpeningStockBLService controller = new OpeningStockController();
-	ArrayList<OpeningStockVO> openingStockVO = controller.show();
-	
-	DefaultTableModel tableModel = (DefaultTableModel)transferTable.getModel();
-	DefaultTableModel tableModel2 = (DefaultTableModel)employTable.getModel();
-	DefaultTableModel tableModel3 = (DefaultTableModel) facilityTable.getModel();
-	DefaultTableModel tableModel4 = (DefaultTableModel) inventoryTable.getModel();
-	DefaultTableModel tableModel5 = (DefaultTableModel) bankAccountTable.getModel();
-	
-	int rowCount = transferTable.getRowCount();
-	int rowCount2 = employTable.getRowCount();
-	int rowCount3 = facilityTable.getRowCount();
-	int rowCount4 = inventoryTable.getRowCount();
-	int rowCount5 = bankAccountTable.getRowCount();
-	for(int i = 0; i < rowCount; i++){
-		tableModel.removeRow(0);
-	}
-	for(int i = 0; i < rowCount2; i++){
-		tableModel2.removeRow(0);
-	}
-	for(int i = 0; i < rowCount3; i++){
-		tableModel3.removeRow(0);
-	}
-	for(int i = 0; i < rowCount4; i++){
-		tableModel4.removeRow(0);
-	}
-	for(int i = 0;i < rowCount5; i++){
+	public void showAll(){
+		OpeningStockBLService controller = new OpeningStockController();
+		ArrayList<OpeningStockVO> openingStockVO = controller.show();
 		
-	}
-	if(openingStockVO  != null){
-		for(int i = 0; i < openingStockVO.size(); i++){
-			OpeningStockVO avo = openingStockVO.get(i);
+		DefaultTableModel tableModel = (DefaultTableModel)transferTable.getModel();
+		DefaultTableModel tableModel2 = (DefaultTableModel)employTable.getModel();
+		DefaultTableModel tableModel3 = (DefaultTableModel) facilityTable.getModel();
+		DefaultTableModel tableModel4 = (DefaultTableModel) inventoryTable.getModel();
+		DefaultTableModel tableModel5 = (DefaultTableModel) bankAccountTable.getModel();
+		
+		int rowCount = transferTable.getRowCount();
+		int rowCount2 = employTable.getRowCount();
+		int rowCount3 = facilityTable.getRowCount();
+		int rowCount4 = inventoryTable.getRowCount();
+		int rowCount5 = bankAccountTable.getRowCount();
+		for(int i = 0; i < rowCount; i++){
+			tableModel.removeRow(0);
+		}
+		for(int i = 0; i < rowCount2; i++){
+			tableModel2.removeRow(0);
+		}
+		for(int i = 0; i < rowCount3; i++){
+			tableModel3.removeRow(0);
+		}
+		for(int i = 0; i < rowCount4; i++){
+			tableModel4.removeRow(0);
+		}
+		for(int i = 0;i < rowCount5; i++){
+			
+		}
+		if(openingStockVO  != null){
+			for(int i = 0; i < openingStockVO.size(); i++){
+				OpeningStockVO avo = openingStockVO.get(i);
 			
 			for(int j = 0; j < avo.transfers.size(); j++){
 				Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
@@ -212,9 +203,9 @@ public void showAll(){
 			
 			for(int j = 0; j < avo.inventories.size(); j++){
 				//TODO 
-		//		Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).isEmpty()};
+				//		Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).isEmpty()};
 
-//				tableModel4.addRow(rowData);
+				//				tableModel4.addRow(rowData);
 			}
 			
 			for(int j = 0;j<avo.bankAccounts.size();j++){
@@ -222,26 +213,24 @@ public void showAll(){
 						avo.bankAccounts.get(j).getMoney()};
 				tableModel5.addRow(rowData);
 			}
-			
 		}
 	}
  }
 
-@Override
-public void actionPerformed(ActionEvent e) {
-	if(e.getSource()==searchButton){
-		this.showAll();
-	}else if(e.getSource()==insertButton){
-		OpeningStockBLService controller = new OpeningStockController();
-		ResultMessage rsg = controller.add();
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			new MyNotification(this,"期初建账成功！",Color.GREEN);
-		}else{
-			new MyNotification(this,"期初建账失败！",Color.RED);
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==searchButton){
+			this.showAll();
+		}else if(e.getSource()==insertButton){
+			OpeningStockBLService controller = new OpeningStockController();
+			ResultMessage rsg = controller.add();
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				new MyNotification(this,"期初建账成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"期初建账失败！",Color.RED);
+			}
 		}
 	}
-	
-}
 }
 
 

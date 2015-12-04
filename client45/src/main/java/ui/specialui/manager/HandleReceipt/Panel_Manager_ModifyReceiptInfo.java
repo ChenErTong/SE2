@@ -35,12 +35,14 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @time 2015/11/18 23:57
  */
 public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implements ActionListener{
-	MyJTable table ;
 	private static MyJButton modify;
 	private MyJButton cancel;
+	
+	MyJTable table ;
 	JTextField textField;
 	ValueObject currentBill;
 	ReceiptType currentType;
+	
 	public Panel_Manager_ModifyReceiptInfo(ReceiptType  type,ValueObject receipt) {
 		super(365,100,550,550);
 		this.currentBill = receipt;
@@ -48,7 +50,6 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		this.setOpaque(false);
 		this.initComponent();
 		initTable(type,receipt);
-	
 	}
 	private void initComponent() {
 		
@@ -63,11 +64,9 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		cancel = new MyJButton(720,600,100,30,"撤销修改",18);
 		cancel.setActionCommand("Cancel");
 		cancel.addActionListener(this);
-		this.add(cancel);
-	
-		
+		this.add(cancel);	
 	}
-	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单*/
+	
 	private void initTable(ReceiptType receiptType, ValueObject receipt){
 		if(receiptType.equals(ReceiptType.ORDER)){
 			orderTable((OrderVO)receipt);
@@ -257,8 +256,5 @@ public class Panel_Manager_ModifyReceiptInfo extends MyTranslucentPanel implemen
 		}else{
 			new MyNotification(this,"单据修改失败",Color.RED);
 		}
-		
-		
 	}
-
 }

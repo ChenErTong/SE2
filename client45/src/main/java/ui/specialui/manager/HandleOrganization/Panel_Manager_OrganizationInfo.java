@@ -24,7 +24,8 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 	 private MyJComboBox organizationType;
 	 private MyJButton search;
 	 private  MyJTable table;
-	public Panel_Manager_OrganizationInfo(Panel_Manager_HandleOrganization handle) {
+	
+	 public Panel_Manager_OrganizationInfo(Panel_Manager_HandleOrganization handle) {
 		super(50, 100, 620, 560);
 		this.initComponent(handle);
 	}
@@ -81,11 +82,6 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 		sixthColum.setMaxWidth(100);
 		sixthColum.setMinWidth(100);
 		
-		//TableColumn  seventhColum = table.getColumnModel().getColumn(6);
-		 //seventhColum.setPreferredWidth(140);
-		 //seventhColum.setMaxWidth(140);
-		 //seventhColum.setMinWidth(140);
-	
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);
@@ -115,6 +111,7 @@ public class Panel_Manager_OrganizationInfo extends MyTranslucentPanel{
 		String data = organizationType.getSelectedIndex()+"";
 		return data;
 	}
+	
 	public MyJTable getTable(){
 		return table;
 	}

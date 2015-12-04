@@ -17,16 +17,18 @@ import ui.myui.MyTranslucentPanel;
 
 
 public class BaseInfoList extends MyTranslucentPanel{
+
 	private MyJComboBox startCityList;
 	private MyJComboBox arrivalCityList;
 	private MyJButton search;
 	private MyJTable table;
+	
 	public BaseInfoList(Panel_Manager_AdjustBase handle) {
 		super(50, 100, 620, 560);
 		this.initComponent( handle);
 	}
+	
 	private void initComponent(Panel_Manager_AdjustBase handle) {
-
 			String [] startCity = {"上海","南京","杭州","广州"};
 			String [] arrivalCity = {"上海","南京","杭州","广州"};
 			this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
@@ -71,7 +73,6 @@ public class BaseInfoList extends MyTranslucentPanel{
 	public void setData(String data[]) {
 		startCityList.setSelectedItem(data[0]);
 		arrivalCityList.setSelectedItem(data[1]);
-	
 	}
 
 	public String []getData() {

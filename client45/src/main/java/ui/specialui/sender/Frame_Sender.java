@@ -18,28 +18,22 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	
-	
 	static ArrayList<OrderVO> orderPool;
 	static String orderID = " ";
 	
 	private Panel_Sender_Total totalPanel ;
 	
-
 	public Frame_Sender(String userID){
 		super(userID);
 		totalPanel = new Panel_Sender_Total();
-		//searchPanel = new Panel_Sender_Search();
 		this.add(totalPanel);
-//	this.add(searchPanel);
 		totalPanel.setVisible(true);
-	//	searchPanel.setVisible(true);
+	
 		this.returnButton.addActionListener(this);
-		//orderPool = new ArrayList<OrderVO>();
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-}
+	}
 }
 

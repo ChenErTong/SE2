@@ -2,9 +2,14 @@ package ui.specialui.finance;
 
 import ui.myui.MyJButton;
 import ui.myui.MyJPanel;
-
+/**
+ * 财务管理界面的主Panel
+ * @author zsq
+ *
+ */
 public class Panel_Finance_Total extends MyJPanel{
 
+	private static final long serialVersionUID = 1L;
 	
 	public Panel_Finance_Total(Frame_Finance frame_Finance) {
 		// TODO Auto-generated constructor stub
@@ -47,12 +52,17 @@ public class Panel_Finance_Total extends MyJPanel{
 		this.add(ViewIncomeStatement);
 		ViewIncomeStatement.setVisible(true);
 		
+		MyJButton viewLog = new MyJButton(200,550,170,40,"查看系统日志",18);
+		viewLog.setActionCommand("ViewLogMsg");
+		viewLog.addActionListener(frame_Finance);
+		this.add(viewLog);
+		
 		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",18);
 		Withdraw.setActionCommand("Withdraw");
 		Withdraw.addActionListener(frame_Finance);
 		this.add(Withdraw);
 	}
-	private static final long serialVersionUID = 1L;
+
 		
 	}
 

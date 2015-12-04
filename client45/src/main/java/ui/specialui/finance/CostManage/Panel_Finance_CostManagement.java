@@ -11,12 +11,14 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.recordbl.RecordController;
+
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
+
 import vo.BussinessOneDayVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
@@ -28,17 +30,19 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 	private DebitReceiptList debitReceiptList;
 	private Panel_Finance_DebitReceiptInfo debitReceiptInfo;
 	private CalAllDebit calAll;
+
 	private MyJButton calButton;
 	private MyJButton viewButton;
 	private MyJTable table;
+	
 	private DebitAndPayBillShowController showController;
 	private RecordController showController_2;
+
 	static ArrayList<DebitBillVO> debitbillPool;
 	static String[] debitbillIDs;
 	static String debitBillID = "";
 	
 	public Panel_Finance_CostManagement(Frame_Finance frame_Finance) {
-		
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Finance);
@@ -95,7 +99,7 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 		}
 	}
 
-@Override
+	@Override
 	public void actionPerformed(ActionEvent e) {/*收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。*/
 		if(e.getActionCommand().equals("ViewDebit")){
 			table = debitReceiptList.getTable();
@@ -116,8 +120,6 @@ public class Panel_Finance_CostManagement extends MyJPanel implements ActionList
 				for(int i = 0; i < rowCount; i++){
 					tableModel.removeRow(0);
 				}
-		
-				
 			}
 		}else if(e.getActionCommand().equals("CalDebit")){
 			table = debitReceiptList.getTable();

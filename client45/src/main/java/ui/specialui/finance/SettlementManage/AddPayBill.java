@@ -7,12 +7,15 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class AddPayBill extends MyTranslucentPanel{
+	
 	private MyJTextField[] fields ;
 	private MyJComboBox items;
+	
 	public AddPayBill() {
 		super(680,100,550,240);
 		this.initComponent();
 	}
+	
 	private void initComponent() {
 		this.add(new MyJLabel(240,10,150,30,"添加付款单",18,true));
 		this.add(new MyJLabel(40,50,90,30,"付款人",16,true));
@@ -44,9 +47,7 @@ public class AddPayBill extends MyTranslucentPanel{
 		fields[4].setEditable(false);
 		this.add(fields[4]);		
 	}
-
-
-
+	
 	public void setUneditable() {
 		for(MyJTextField field: fields){
 			field.setEditable(false);

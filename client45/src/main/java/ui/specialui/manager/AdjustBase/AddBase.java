@@ -6,14 +6,17 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class AddBase extends MyTranslucentPanel{
+	
 	private MyJComboBox startCityList;
 	private MyJComboBox arrivalCityList;
 	private MyJTextField distances;
 	private MyJTextField price;
+
 	public AddBase() {
 		super(680,100,580,240);
 		this.initComponent();
 	}
+	
 	private void initComponent() {
 		this.add(new MyJLabel(240,10,100,30,"添加常量",20,true));
 		this.add(new MyJLabel(25,50,90,30,"出发城市",18,true));
@@ -41,6 +44,7 @@ public class AddBase extends MyTranslucentPanel{
 		price.setOnlyDouble();
 		this.add(price);
 	}
+	
 	public void setUneditable() {
 		startCityList.setEditable(false);
 		arrivalCityList.setEditable(false);
@@ -75,5 +79,4 @@ public class AddBase extends MyTranslucentPanel{
 		return data;
 	}
 	private static final long serialVersionUID = 1L;
-
 }

@@ -57,8 +57,8 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 	static String organizationID= " ";
 
 	OrganizationBLService controller;
-	public Panel_Manager_HandleOrganization(FrameManager frameManager) {
 	
+	public Panel_Manager_HandleOrganization(FrameManager frameManager) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		organizationPool = new ArrayList<OrganizationVO>();
@@ -67,8 +67,6 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		this.initComponent(frameManager);
 		this.showAll();
 	}
-
-	
 
 	private void initComponent(FrameManager frame_Manager) {
 	
@@ -113,14 +111,12 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		this.add(deleteButton);
 	}
 	
-
 	private void insertPanel(FrameManager frame) {
 		this.removeAll();
 		this.add(organizationInfo);
 		this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
 		this.initButton(frame);
 
-	
 		organizationDetails = new OrganizationDetails();
 		organizationDetails.add(new MyJLabel(230,5,120,30,"新增机构",18,true));
 		this.add(organizationDetails);
@@ -166,6 +162,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 			branchPool.add(branchVO.get(i));
  		}
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("SearchOrganization")){
 			table = (MyJTable)organizationInfo.getTable();
@@ -551,8 +548,7 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 					}
 					break;
 		
-		default:
-			break;
+		default:break;
 		}
 		
 	}

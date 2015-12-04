@@ -8,9 +8,11 @@ import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
 
 public class ModifyPolicy extends MyTranslucentPanel{
+	
 	private MyJComboBox employeeType;
 	private MyJComboBox policyType;
 	private MyEmptyTextArea policyRule;
+	
 	public ModifyPolicy() {
 		super(680,390,550,240);
 		this.initComponent();
@@ -32,6 +34,7 @@ public class ModifyPolicy extends MyTranslucentPanel{
 		policyRule.setBackground(Color.WHITE);
 		this.add(policyRule);
 	}
+	
 	public void setData(Object[] data) {
 		if(data!=null){
 			employeeType.setSelectedItem(data[0]);

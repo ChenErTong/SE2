@@ -6,14 +6,16 @@ import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 public class ModifyPayBill extends MyTranslucentPanel{
+	private static final long serialVersionUID = 1L;
+	
 	private MyJTextField[] fields ;
 	private MyJComboBox items;
+	
 	public ModifyPayBill() {
 		super(680, 390,550,240);
 		this.initComponent();
 	}
 
-	private static final long serialVersionUID = 1L;
 	private void initComponent() {
 		this.add(new MyJLabel(240,10,150,30,"修改付款单",18,true));
 		this.add(new MyJLabel(40,50,90,30,"付款人",16,true));
@@ -41,12 +43,8 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		this.add(items);
 		
 		fields[4] = new MyJTextField(380,130,120,30);
-		//fields[4].setText(GetDate.getTime());
-		//fields[4].setEditable(false);
 		this.add(fields[4]);		
 	}
-
-
 
 	public void setUneditable() {
 		for(MyJTextField field: fields){
@@ -87,7 +85,4 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		items.setSelectedItem(null);
 		
 	}
-
-
-
 }

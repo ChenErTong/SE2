@@ -19,13 +19,14 @@ import ui.myui.MyTranslucentPanel;
  */
 public class Panel_Sender_logisticInfo extends MyTranslucentPanel{
 	private MyJTable	table;
+	
 	public Panel_Sender_logisticInfo() {
 		super(630, 105, 647, 605);
 		this.initComponent();
 	}
 
 	private void initComponent() {
-		// TODO Auto-generated method stub
+		
 		MyJLabel title = new MyJLabel(250,10,170,40,"订单物流信息",18,true);
 		this.add(title);
 		
