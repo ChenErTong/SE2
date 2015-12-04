@@ -34,7 +34,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 	private MyJButton check;
 	private MyJTable	table;
 	public Panel_Manager_IncomeState(FrameManager frame_Manager) {
-		super(80, 100,1120,570);
+		super(80, 100,1120,570+48);
 		this.initComponent(frame_Manager);
 		
 	}
@@ -64,28 +64,33 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 		this.add(day);
 	//	MyJLabel day_2 = new MyJLabel(388,75,30,30,"日",16,true);
 		//this.add(day_2);
-		
 		String[] years = {"2015","2014"};
 		yearBox = new MyJComboBox(172,75,90,30,years);
 		this.add(yearBox);
 	//	yearBox_2 = new MyComboBox(172,75,90,30,16,years);
 		//this.add(yearBox_2);
 		
-		String[] months = {"一月","二月"};
+		String[] months = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 		monthBox = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox);
 		//monthBox_2 = new MyComboBox(295,75,90,30,16,months);
 		//this.add(monthBox_2);
-		
-		String[] days = {"01","02"};
+		MyJButton ExportIncomeTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
+		ExportIncomeTable.setActionCommand("ExportIncomeTable");
+		ExportIncomeTable.addActionListener(this);
+		this.add(ExportIncomeTable);
+		ExportIncomeTable.setVisible(true);
+		String[] days = {"01","02","03","04","05","06","07","08","09","10",
+				"11","12","13","14","15","16","17","18","19","20",
+				"21","22","23","24","25","26","27","28","29","30","31"};
 		dayBox = new MyJComboBox(418,75,90,30,days);
 		this.add(dayBox);
-	//	dayBox_2 = new MyComboBox(418,75,90,30,16,days);
+		//dayBox_2 = new MyComboBox(418,75,90,30,16,days);
 		//this.add(dayBox_2);
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
 		check.setActionCommand("ViewIncomState");
-		check.addActionListener(frame_Manager);
+		check.addActionListener(this);
 		this.add(check);
 		
 		//the table
@@ -124,6 +129,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 			jsp.setBorder(BorderFactory.createEmptyBorder());
 			jsp.setVisible(true);
 			this.add(jsp);
+		
 		
 	}
 	/**
@@ -185,7 +191,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==check){
+		if(e.getActionCommand().equals("ViewIncomState")){
 			if(this.getData()==null){
 				new MyNotification(this,"请选择截止日期！",Color.RED);
 			}else{
@@ -211,9 +217,20 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 					String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
 					
 					tableModel.addRow(rowData3);
+					
 				}
 			}
+		}else if(e.getActionCommand().equals("ExportIncomeTable")){
+			int rowCount = table.getRowCount();
+			if(rowCount==0){
+				new MyNotification(this,"导出成本收益表失败！",Color.RED);
+			}else{
+			String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
+			RecordBLService recordController = ControllerFactory.getRecordController();
+			BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+			recordController.exportBussinessConditionToExcel(vo);
 			}
+		}
 	}
 	private static final long serialVersionUID = 1L;
 

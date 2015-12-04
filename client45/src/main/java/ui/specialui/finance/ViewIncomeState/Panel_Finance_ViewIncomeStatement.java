@@ -22,12 +22,7 @@ public class Panel_Finance_ViewIncomeStatement extends MyJPanel{
 		statePanel = new Panel_Finance_IncomeState(frame_Finance);
 		this.add(statePanel);
 		
-		
-		MyJButton ExportIncomeTable = new MyJButton(1040,673,150,40,"导出成本收益表",14);
-		ExportIncomeTable.setActionCommand("ExportIncomeTable");
-		ExportIncomeTable.addActionListener(frame_Finance);
-		this.add(ExportIncomeTable);
-		ExportIncomeTable.setVisible(true);
+
 
 }
 	/**

@@ -12,9 +12,12 @@ import java.io.OutputStreamWriter;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.recordblservice.RecordBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
+import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.BankAccountManage.Panel_Finance_BankAccountManage;
 import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
@@ -32,7 +35,8 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	static JTable outputTable;
-	
+	private MyJTable output;
+	private RecordBLService recordController = ControllerFactory.getRecordController();
 	private Panel_Finance_Total totalPanel;
 	private Panel_Finance_CostManagement costManagePanel;
 	private Panel_Finance_SettlementManage  settleManagePanel;
@@ -40,6 +44,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
 	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
 	private MyJPanel subPanel ;
+	private Panel_Finance_BusinessPerformance businessPerformance;
 	private Panel_Finance_BankAccountManage bankAccountManage;
 	public Frame_Finance(String userID){
 		super(userID);
@@ -110,13 +115,19 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
-				setTable(((Panel_Finance_BusinessPerformance)subPanel).getTable());
-				this.outputExcel();
+				output = businessPerformance.getTable();
+				int rowCount = output.getRowCount();
+				for(int i=0;i<rowCount;i++){
+					//recordController.exportBussinessProcessToExcel(new BusinessProcessVO(output.ro));
+				}
+				//	recordController.
+				//	setTable(((Panel_Finance_BusinessPerformance)subPanel).getTable());
+				//this.outputExcel();
 			}
 		}else if(e.getActionCommand().equals("ExportIncomeTable")){
 			if(this.isExport_2()){
-				setTable(((Panel_Finance_IncomeState)subPanel).getTable());
-				this.outputExcel();
+			//	setTable(((Panel_Finance_IncomeState)subPanel).getTable());
+				//this.outputExcel();
 		}
 		}
 	}

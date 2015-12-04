@@ -38,7 +38,7 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 	private MyJButton check;
 	private MyJTable	table;
 	public Panel_Finance_IncomeState(Frame_Finance frame_Finance) {
-		super(80, 100,1120,570);
+		super(80, 100,1120,570+48);
 		this.initComponent(frame_Finance);
 		
 	}
@@ -75,13 +75,19 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 	//	yearBox_2 = new MyComboBox(172,75,90,30,16,years);
 		//this.add(yearBox_2);
 		
-		String[] months = {"一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
+		String[] months = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 		monthBox = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox);
 		//monthBox_2 = new MyComboBox(295,75,90,30,16,months);
 		//this.add(monthBox_2);
-		
-		String[] days = {"01","02"};
+		MyJButton ExportIncomeTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
+		ExportIncomeTable.setActionCommand("ExportIncomeTable");
+		ExportIncomeTable.addActionListener(this);
+		this.add(ExportIncomeTable);
+		ExportIncomeTable.setVisible(true);
+		String[] days = {"01","02","03","04","05","06","07","08","09","10",
+				"11","12","13","14","15","16","17","18","19","20",
+				"21","22","23","24","25","26","27","28","29","30","31"};
 		dayBox = new MyJComboBox(418,75,90,30,days);
 		this.add(dayBox);
 		//dayBox_2 = new MyComboBox(418,75,90,30,16,days);
@@ -89,7 +95,7 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
 		check.setActionCommand("ViewIncomState");
-		check.addActionListener(frame_Finance);
+		check.addActionListener(this);
 		this.add(check);
 		
 		//the table
@@ -190,7 +196,7 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==check){
+		if(e.getActionCommand().equals("ViewIncomState")){
 			if(this.getData()==null){
 				new MyNotification(this,"请选择截止日期！",Color.RED);
 			}else{
@@ -219,6 +225,16 @@ public class Panel_Finance_IncomeState extends  MyTranslucentPanel implements Ac
 					
 				}
 			}
+		}else if(e.getActionCommand().equals("ExportIncomeTable")){
+			int rowCount = table.getRowCount();
+			if(rowCount==0){
+				new MyNotification(this,"导出成本收益表失败！",Color.RED);
+			}else{
+			String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
+			RecordBLService recordController = ControllerFactory.getRecordController();
+			BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+			recordController.exportBussinessConditionToExcel(vo);
 			}
+		}
 	}
 }

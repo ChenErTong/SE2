@@ -14,7 +14,7 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
-import ui.myui.MyComboBox;
+
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
@@ -37,8 +37,9 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 	private MyJComboBox dayBox_2;
 	private MyJButton check;
 	private MyJTable	table;
+	private MyJButton ExportBusinessTable;
 	public Panel_Manager_BusinessPerformance(FrameManager frame_Manager) {
-		super(80, 100,1120,570);
+		super(80, 100,1120,570+48);
 		this.initComponent(frame_Manager);
 		
 	}
@@ -75,13 +76,15 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 		yearBox_2 = new MyJComboBox(172,75,90,30,years);
 		this.add(yearBox_2);
 		
-		String[] months = {"一月","二月"};
+		String[] months = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 		monthBox = new MyJComboBox(295,40,90,30,months);
 		this.add(monthBox);
 		monthBox_2 = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox_2);
 		
-		String[] days = {"01","02"};
+		String[] days = {"01","02","03","04","05","06","07","08","09","10",
+				"11","12","13","14","15","16","17","18","19","20",
+				"21","22","23","24","25","26","27","28","29","30","31"};
 		dayBox = new MyJComboBox(418,40,90,30,days);
 		this.add(dayBox);
 		dayBox_2 = new MyJComboBox(418,75,90,30,days);
@@ -89,9 +92,15 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 	
 		check = new MyJButton(608,75,90,30,"预览",16);
 		check.setActionCommand("ViewBusinessTable");
-		check.addActionListener(frame_Manager);
+		//check.addActionListener(frame_Finance);
+		check.addActionListener(this);
 		this.add(check);
 		
+		ExportBusinessTable = new MyJButton(1040-80,573,150,40,"导出经营情况表",14);
+		ExportBusinessTable.setActionCommand("ExportBusinessTable");
+		ExportBusinessTable.addActionListener(this);
+		this.add(ExportBusinessTable);
+		ExportBusinessTable.setVisible(true);
 		//the table
 			String[] headers = {"单据编号","单据种类","单据内容","单据金额"};
 			table = new MyJTable(headers, false);
@@ -191,14 +200,15 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 	private static final long serialVersionUID = 1L;
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==check){
+		if(e.getActionCommand().equals("ViewBusinessTable")){
+			System.out.println("111");
 			if(this.getData()==null){
-				new MyNotification(this,"请选择查询日期！",Color.RED);
+				new MyNotification(this,"请输入查看日期区间！",Color.RED);
 			}else{
 				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
 				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
 				RecordBLService recordController = ControllerFactory.getRecordController();
-				ArrayList<DebitAndPayBillVO> vo =recordController.bussinessProcess(beginDate, endDate);
+				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 				
 				DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 				int rowCount = table.getRowCount();
@@ -224,9 +234,19 @@ public class Panel_Manager_BusinessPerformance extends  MyTranslucentPanel imple
 				}else{
 					new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 				}
-				}
-
-	
+			}
+		}else if(e.getActionCommand().equals("ExportBusinessTable")){
+			int rowCount = table.getRowCount();
+			if(rowCount==0){
+				new MyNotification(this,"导出经营情况表失败！",Color.RED);
+			}else{
+				RecordBLService recordController = ControllerFactory.getRecordController();
+				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
+				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
+				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
+				recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
+				new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 			}
 		}
+	}
 }

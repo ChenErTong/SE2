@@ -1,7 +1,5 @@
 package ui.specialui.manager.ViewIncomeState;
 
-
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.manager.FrameManager;
@@ -20,13 +18,6 @@ public class Panel_Manager_ViewIncomeStatement extends MyJPanel {
 		
 		statePanel = new Panel_Manager_IncomeState(frameManager);
 		this.add(statePanel);
-		
-		
-		MyJButton ExportIncomeTable = new MyJButton(1040,673,150,40,"导出成本收益表",14);
-		ExportIncomeTable.setActionCommand("ExportIncomeTable");
-		ExportIncomeTable.addActionListener(frameManager);
-		this.add(ExportIncomeTable);
-		ExportIncomeTable.setVisible(true);
 	}
 
 	private static final long serialVersionUID = 1L;
