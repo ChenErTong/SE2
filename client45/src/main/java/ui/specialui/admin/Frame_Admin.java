@@ -31,42 +31,8 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 			}
-		}else if(e.getActionCommand().equals("AddUser")){
-			//if(this.addUser()){
-				//totalPanel.refresh();
-			//}
-			
-		}else if(e.getActionCommand().equals("DeleteUser")){
-			//TODO
-			//if(this.deleteUser()){
-				//totalPanel.refresh();
-			//}
-	
-		}else if(e.getActionCommand().equals("ModifyUserInformation")){
-			//TODO
-		//	if(this.modifyUserInfo()){
-			//	totalPanel.refresh();
-		//	}
-			
-		}else if(e.getActionCommand().equals("ViewUserInfomation")){
-			//TODO
 		}else if(e.getActionCommand().equals("Withdraw")){
-			//TODO
-		}else if(e.getActionCommand().equals("Add")){
-			//if(this.addUser()){
-				//subPanel.setVisible(false);
-				//this.remove(subPanel);
-				//subPanel = null;
-				//totalPanel.setVisible(true);
-			//}
-		}else if(e.getActionCommand().equals("ModifyUser")){
-			//if(this.modifyUserInfo()){
-				//subPanel.setVisible(false);
-				//this.remove(subPanel);
-				//subPanel = null;
-				//totalPanel.setVisible(true);
-			//}
+			System.exit(0);
 		}
 	}
-	
 }

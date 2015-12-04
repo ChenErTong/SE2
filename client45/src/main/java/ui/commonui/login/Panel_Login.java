@@ -23,6 +23,7 @@ public class Panel_Login extends MyJPanel{
 	private MyJRadioButton keepPassword;
 	private MyJButton login;
 	private MyJButton backout;
+	private MyJButton search;
 	private Frame_Login frame_Login;
 	public Panel_Login(Frame_Login frame_Login) {
 		super(0, 0, 1280, 720);
@@ -35,6 +36,11 @@ public class Panel_Login extends MyJPanel{
 		
 		this.add(new MyJLabel(500, 235, 90, 40,"用户ID",18,true));
 		this.add(new MyJLabel(500,285,90,40,"密码",18,true));
+		
+		search = new MyJButton(590,190,200,40,"物流信息查询入口",18);
+		search.setActionCommand("Search");
+		search.addActionListener(frame_Login);
+		this.add(search);
 		
 		userIdField = new MyJTextField(590, 235, 200, 40);
 		this.add(userIdField);

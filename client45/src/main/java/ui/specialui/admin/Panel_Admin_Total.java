@@ -107,6 +107,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		deleteButton.setActionCommand("DeleteUser");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
+		
+		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",16);
+		Withdraw.setActionCommand("Withdraw");
+		Withdraw.addActionListener(frame);
+		this.add(Withdraw);
+		Withdraw.setVisible(true);
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -332,6 +338,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					userPool.add(userVO.get(i));
 					System.out.println("SearchSucceed!");
 				}
+				this.repaint();
 				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
 			}else{
 				new MyNotification(this,"请选择查询类型！",Color.RED);

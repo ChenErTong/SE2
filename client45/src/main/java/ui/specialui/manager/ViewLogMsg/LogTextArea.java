@@ -1,17 +1,23 @@
 package ui.specialui.manager.ViewLogMsg;
 
 import javax.swing.JScrollPane;
+
 import java.awt.Color;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+
+import ui.GetDate;
 public class LogTextArea extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	
+	private String title;
 	/** 真正的TextArea在这 */
 	private JTextArea textArea;
 
@@ -37,11 +43,7 @@ public class LogTextArea extends JScrollPane{
 	private void addTextArea() {
 		textArea = new JTextArea();
 		textArea.setForeground(Color.WHITE);
-		// 最新的在前面显示
-	/*	for(int i = 0; i < LogMsgController.getCurLogs().size(); i++) {
-			LogMessage log = LogMsgController.getCurLogs().get(i);
-			textArea.append(log.toString() + "\r\n");
-		}*/
+		//TODO 显示logmessage的信息
 		textArea.setLineWrap(true);
 		textArea.setFont(getFont());
 		textArea.setOpaque(false);
@@ -50,29 +52,22 @@ public class LogTextArea extends JScrollPane{
 	}
 
 	private void setBorder() {
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		// title = sdf.format(new Date()); // 初始化标题为当前日期
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		 title = sdf.format(GetDate.getDate()); // 初始化标题为当前日期
 		this.setBorder(null);
-		// this.setBorder(BorderFactory.createTitledBorder(null, title, TitledBorder.CENTER, TitledBorder.TOP, LogUIConfig.TEXT_FONT));
 	}
 
 	public void setTitle(String title) {
-		// this.title = title;
+		this.title = title;
 		this.setBorder(null);
-		// this.setBorder(BorderFactory.createTitledBorder(getBorder(), title, TitledBorder.CENTER, TitledBorder.TOP, LogUIConfig.TEXT_FONT));
 		this.repaint();
 	}
 
 	/**
-	 * 将存放在ArrayList里的LogMessage显示在TextArea中
+	 * 将logmessage显示 TODO 连接bl层
 	 */
 	public void append(ArrayList logs) {
-		if (logs == null) {
-			return;
-		}
-		//for(LogMessage log : logs) {
-			//textArea.append(log.toString() + "\r\n");
-		//}
+		
 	}
 
 	public void append(String text) {

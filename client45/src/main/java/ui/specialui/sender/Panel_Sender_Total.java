@@ -83,25 +83,21 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 						Object[] rowData ={orderVO.orderIdString,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
 						tableModel_1.addRow(rowData);
 						for(int i=0;i<orderVO.midAddres.size();i++){
-						//TODO 
-						Object[] rowData2 = {orderVO.midAddres.get(i)};
-						tableModel_1.addRow(rowData2);
-					}
+							Object[] rowData2 = {orderVO.midAddres.get(i)};
+							tableModel_1.addRow(rowData2);
+						}
 						orderPool.add(orderVO);
-						System.out.println("SearchSucceed!");
-						new MyNotification(this,"共有"+table_order.getRowCount()+"个订单满足查新条件！",Color.GREEN);
 					}
 				}else{
 					new MyNotification(this,"请输入查询信息！",Color.RED);
 				}
 			}
 		}
-		
 	}
+	
 	/**
 	 * 进行查询
 	 * @return 是否进行查询
-	 * TODO 调用bl层
 	 */
 	public  boolean isSearch(){
 		switch((search())){
@@ -109,7 +105,6 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 		case 1: new MyNotification(this, "请填写订单号", Color.RED); break;
 		case 2: new MyNotification(this, "请填写寄件人姓名", Color.RED); break;
 		case 3: new MyNotification(this, "订单号输入错误！", Color.RED); break;
-		case 4: new MyNotification(this, "订单号与收件人姓名不匹配！", Color.RED); break;
 		}	
 		return false ;
 	}
@@ -119,35 +114,19 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	 * @return 
 	 */
 	public int search() {
-		String[] orderNumberInfo = searchPanel.getSenderInfo();
-		String[] senderNameInfo =  searchPanel.getSenderInfo();
-		boolean isLegal = false;
+		String[] string = searchPanel.getSenderInfo();
+		String orderNumberInfo =  string[0];
+		String senderNameInfo = string[1];
 		if(orderNumberInfo == null){
 			return 1;
 		}
 		if(senderNameInfo == null){
 			return 2;
 		}
-		if(orderNumberInfo[0].length()!=11){
+		if(orderNumberInfo.length()!=11){
 			return 3;
-		}
-		if(!(isLegal ==isLegal(orderNumberInfo,senderNameInfo))){
-			return 4;
 		}
 		return 0;
 		
 	}
-	/**
-	 * 判断寄件人姓名和订单号是否匹配
-	 * @param orderNumberInfo
-	 * @param senderNameInfo
-	 * @return 是否匹配
-	 * TODO 调用BL层
-	 * 
-	 */
-	private boolean isLegal(String[] orderNumberInfo, String[] senderNameInfo) {
-
-		return false;
-	}
-
 }
