@@ -18,16 +18,16 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String importPrifix ;
-	String exportPrifix ;
-	String adjustPrifix ;
-	String transferArrialPrifix;
+//	String importPost ;
+//	String exportPost ;
+//	String adjustPost ;
+//	String transferArrialPost;
 	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
-		importPrifix=configReader.getValue("importPrifix");
-		exportPrifix=configReader.getValue("exportPrifix");
-		adjustPrifix=configReader.getValue("adjustPrifix");
-		transferArrialPrifix=configReader.getValue("transferArrialPrifix");
+//		importPost=configReader.getValue("importPost");
+//		exportPost=configReader.getValue("exportPost");
+//		adjustPost=configReader.getValue("adjustPost");
+//		transferArrialPost=configReader.getValue("transferArrialPost");
 	}
 
 	@Override
@@ -37,22 +37,22 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 
 	@Override
 	public String getImportID() throws RemoteException {
-		return importPrifix +super.getID();
+		return  super.getID();
 	}
 
 	@Override
 	public String getExportID() throws RemoteException {
-		return exportPrifix +super.getID();
+		 return  super.getID();
 	}
 
 	@Override
 	public String getAdjustID() throws RemoteException {
-		return adjustPrifix +super.getID();
+		 return  super.getID();
 	}
 	
 	@Override
 	public String getTransferID() throws RemoteException {
-		return transferArrialPrifix +super.getID();
+		  return  super.getID();
 	}
 
 
