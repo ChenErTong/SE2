@@ -38,6 +38,13 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/lib/beautyeye_lnf.jar</systemPath>
     </dependency>
+    <dependency>
+      <groupId>se2</groupId>
+      <artifactId>client45</artifactId>
+      <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/common.jar</systemPath>
+    </dependency>
   </dependencies>
  <build>
 		<plugins>
