@@ -11,6 +11,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJRadioButton;
 import ui.myui.MyJTextField;
+import ui.myui.MyPasswordField;
 /**
  * 登陆界面
  * @author 
@@ -19,12 +20,12 @@ import ui.myui.MyJTextField;
 public class Panel_Login extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 	private MyJTextField userIdField;
-	private MyJTextField passwordField;
+	private MyPasswordField passwordField;
 	private MyJRadioButton keepPassword;
 	private MyJButton login;
 	private MyJButton backout;
 	private MyJButton search;
-	private Frame_Login frame_Login;
+	
 	public Panel_Login(Frame_Login frame_Login) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -45,7 +46,7 @@ public class Panel_Login extends MyJPanel{
 		userIdField = new MyJTextField(590, 235, 200, 40);
 		this.add(userIdField);
 
-		passwordField = new MyJTextField(590, 285, 200, 40);
+		passwordField = new MyPasswordField(590, 285, 200, 40);
 		this.add(passwordField);
 		
 		keepPassword= new MyJRadioButton(620,335,200,30,"记住密码");
