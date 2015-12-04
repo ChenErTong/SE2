@@ -147,6 +147,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else{//String id, String password, String userName, String phoneNumber, String iden, String authority,
 				//String address{"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
 				if(data[4].equals("总经理")){
+					//System.out.println(userController.getID());
 					ResultMessage rsg = userController.addUser(new UserVO(userController.getID(),data[1],data[2],data[3],UserIdentity.GENERAL_MANAGER,data[5],data[6]+data[7]+data[8]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
@@ -233,8 +234,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
-			}else if(table.getSelectedRow()>1){
-				new MyNotification(this,"同时进行信息修改的用户不能超过一个！",Color.RED);
 			}else{
 				userID = userPool.get(table.getSelectedRow()).id;
 				String[] data = new String[9];
@@ -254,8 +253,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			table = userInfo.getTable();
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的用户！",Color.RED);
-			}else if(table.getSelectedRow()>1){
-				new MyNotification(this,"同时删除的用户不能超过一个！",Color.RED);
 			}else{
 				new MyNotification(this,"正在删除用户！",Color.GREEN);
 				this.deleteUser();

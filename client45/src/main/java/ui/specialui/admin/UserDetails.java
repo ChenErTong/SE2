@@ -42,7 +42,7 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
 		ArrayList<String> branchIDs = new ArrayList<String>();
 		branchIDs = controller.getAllBranchNumbers();
-		String[] trans = {};
+		String[] trans = new String[100];
 		for(int i=0;i<branchIDs.size();i++){
 			trans[i] = branchIDs.get(i);
 		}

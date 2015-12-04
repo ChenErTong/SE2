@@ -132,5 +132,9 @@ public class Panel_Manager_SearchReceipt extends MyTranslucentPanel{
 	 return data;
  }
 
+public MyJButton getSearch() {
+	return selectButton;
+}
+
 }
 

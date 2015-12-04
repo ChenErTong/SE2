@@ -498,7 +498,8 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 		switch(organizationPool.get(table.getSelectedRow()).organizationType){
 			case TRANSFER:  accounts = controller.getAccountByOrganizationID(organizationID);
 						inventories = controller.getInventoriesByTransferID(organizationID);
-						ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], accounts,inventories));
+						//ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], accounts,inventories));
+						ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], OrganizationType.TRANSFER));
 						if(rsg.equals(ResultMessage.SUCCESS)){
 							System.out.println("ModifySucceed!");
 							this.showAll();
@@ -509,7 +510,8 @@ public class Panel_Manager_HandleOrganization extends MyJPanel implements Action
 						}break;
 			case BRANCH: accounts = controller.getAccountByOrganizationID(organizationID);
 					 facilities = controller.getFacilitiesByBranchID(organizationID);
-					 ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], accounts, facilities));
+					// ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], accounts, facilities));
+					 ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID,data[2]+data[3]+data[4],OrganizationType.BRANCH));
 					 	if(rsg1.equals(ResultMessage.SUCCESS)){
 					 		this.showAll();
 					 		organizationDetails.refresh();
