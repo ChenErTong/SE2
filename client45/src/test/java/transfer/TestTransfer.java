@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import state.CommodityState;
-import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class TestTransfer {
