@@ -1,6 +1,15 @@
 package state;
 
+public enum ResultMessage {
+	SUCCESS,
+	FAIL,
+	WAIT;
+}
+
+
 /*public class ResultMessage {
+	
+	
 	boolean pass;
 	String message;
 	
@@ -8,12 +17,6 @@ package state;
 		super();
 		this.pass = pass;
 		this.message = message;
-	}*/
-
+	}
 	
-public enum ResultMessage {
-	SUCCESS,
-	FAIL,
-	WAIT;
-}
-
+}*/

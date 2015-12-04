@@ -1,6 +1,7 @@
 package dataservice.funddataservice;
 
-import java.rmi.RemoteException;
+import java.rmi.RemoteException
+;
 
 import dataservice.ManageDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -9,6 +10,7 @@ import state.ReceiptType;
 /**
  * 收款单、付款单的集体载入、保存、查看和修改操作
  * @author zsq
+ * @author Ann
  * @version Oct 22,2015
  */
 public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPayBillPO> {
@@ -29,5 +31,6 @@ public interface DebitAndPayBillDataService extends ManageDataService<DebitAndPa
 	 * @version Oct 22,2015
 	 */
 	public String getID(ReceiptType type)  throws RemoteException;
+
 
 }

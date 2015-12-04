@@ -8,6 +8,7 @@ import po.OrderPO;
 /**
  *提供订单集体载入、增改查的服务
  *@author czw
+ *@author Ann
  *@version Oct 22,2015 
  */
 public interface OrderDataService  extends ManageDataService<OrderPO>{

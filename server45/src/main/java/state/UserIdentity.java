@@ -12,9 +12,10 @@ public enum UserIdentity {
 	FINANCE_MANAGER("财务人员"),
 	BRANCH_COUNTERMAN("营业厅业务员"),
 	TRANSFER_CONTERMAN("中转中心业务员"),
+	DRIVER("司机"),
 	ADMIN("管理员");
 	
-	public final String value;
+	public  final String value;
 
 	UserIdentity(String value) {
 		this.value = value;

@@ -25,7 +25,7 @@ public class DebitAndPayBillData extends ManageData<DebitAndPayBillPO> implement
 
 	@Override
 	public String getID(ReceiptType type) throws RemoteException {
-		if (type == ReceiptType.EXPENSE) return this.getExpenseID();
+		if (type == ReceiptType.DEBIT) return this.getExpenseID();
 		else 			return this.getPayID();
 		
 	}
