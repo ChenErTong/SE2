@@ -18,7 +18,6 @@ public class BussinessConditionVO {
 
 	public BussinessConditionVO(String end, double totalIncome, double totalExpen, double profit) {
 		super();
-
 		this.end = end;
 		this.totalIncome = totalIncome;
 		this.totalExpen = totalExpen;

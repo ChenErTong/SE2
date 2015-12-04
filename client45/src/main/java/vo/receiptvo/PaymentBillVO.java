@@ -10,10 +10,6 @@ import state.ReceiptType;
  */
 public class PaymentBillVO extends DebitAndPayBillVO {
 	/**
-	 * 付款金额
-	 */
-	public double money;
-	/**
 	 * 付款人姓名
 	 */
 	public String payerName;
@@ -33,7 +29,6 @@ public class PaymentBillVO extends DebitAndPayBillVO {
 	public PaymentBillVO(String iD, String date, ReceiptType type, double money, String payerName, String accountID,
 			PayBillItem items, String remarks) {
 		super(iD, type, money);
-		this.date = date;
 		this.payerName = payerName;
 		this.accountID = accountID;
 		this.items = items;

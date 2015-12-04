@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
+import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
      /** @author lxl
 	 *  @version Oct 23,2015
@@ -20,5 +21,7 @@ public interface RecordBLService {
 	public  BussinessConditionVO bussinessCondition(String end) ;
 	
 	 public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date);
+	 
+	 public void exportBussinessProcessToExcel(BussinessProcessVO vo);
 	
 }

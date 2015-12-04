@@ -23,6 +23,7 @@ import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.finance.Frame_Finance;
+import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.PaymentBillVO;
@@ -197,7 +198,7 @@ public class Panel_Finance_BusinessPerformance extends  MyTranslucentPanel imple
 				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
 				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
 				RecordBLService recordController = ControllerFactory.getRecordController();
-				ArrayList<DebitAndPayBillVO> vo = recordController.bussinessProcess(beginDate, endDate);
+				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 				
 				DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 				int rowCount = table.getRowCount();
