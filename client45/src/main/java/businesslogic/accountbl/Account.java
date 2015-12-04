@@ -18,6 +18,7 @@ import vo.accountvo.AccountVO;
  * @version 创建时间：2015年12月3日 下午3:31:26
  */
 public class Account{
+	
 	private AccountDataService accountData;
 	public Account() {
 		accountData=getData();
