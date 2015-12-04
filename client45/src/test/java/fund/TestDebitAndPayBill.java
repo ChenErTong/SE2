@@ -1,12 +1,10 @@
 package fund;
 
-import java.util.HashMap;
-
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import java.util.HashMap;
 
-import vo.receiptvo.DebitAndPayBillVO;
+import org.junit.Test;
 
 public class TestDebitAndPayBill {
 
