@@ -70,7 +70,7 @@ public class SerSaveAndLoad<E> implements Serializable {
 	@SuppressWarnings("unchecked")
 	private void load(){
 		/* 没有该文件夹就创建 */
-		File dataFolder = new File("data");
+		File dataFolder = new File("user");
 		if (!dataFolder.isDirectory()) {
 			dataFolder.mkdirs();
 		}

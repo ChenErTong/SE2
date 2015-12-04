@@ -24,6 +24,9 @@ public class User {
 	private UserDataService userData;
 	public static String currentUserFileName;
 	private SerSaveAndLoad<UserPO> currentUserFile;
+	static{
+		currentUserFileName="user/userdata.ser";
+	}
 	public User() {
 		currentUserFile = new SerSaveAndLoad<>(User.currentUserFileName);
 		try {

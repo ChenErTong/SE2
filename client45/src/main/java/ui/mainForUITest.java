@@ -3,13 +3,8 @@ package ui;
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import ui.commonui.login.Frame_Login;
+
 import ui.specialui.admin.Frame_Admin;
-import ui.specialui.branch_conuterman.Frame_Branch;
-import ui.specialui.courier.Frame_Courier;
-import ui.specialui.finance.Frame_Finance;
-import ui.specialui.manager.FrameManager;
-import ui.specialui.sender.Frame_Sender;
 
 public class mainForUITest {
 	static String id = "123";
@@ -23,8 +18,8 @@ public class mainForUITest {
 			e.printStackTrace();
 		}
 	
-Frame_Login loginFrame = new Frame_Login(id);
-	loginFrame.setVisible(true);
+//Frame_Login loginFrame = new Frame_Login(id);
+//	loginFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
@@ -39,10 +34,10 @@ Frame_Login loginFrame = new Frame_Login(id);
 //	Frame_Finance financeFrame = new Frame_Finance(id);
 //	financeFrame.setVisible(true);
 
-	//	Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
+//		Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
 
-	//Frame_Admin adminFrame = new Frame_Admin(id);
-	//adminFrame.setVisible(true);
+	Frame_Admin adminFrame = new Frame_Admin(id);
+	adminFrame.setVisible(true);
 
 
 
