@@ -1,5 +1,7 @@
 package ui.specialui.inventory;
 
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJButton;
 import ui.myui.MyJPanel;
 
@@ -11,13 +13,15 @@ public class Panel_Inventory_Total extends MyJPanel{
 		this.setOpaque(false);
 		
 		this.initComponent(frame);
+		this.repaint();
 	}
 
 	private void initComponent(Frame_Inventory frame) {
-		MyJButton InventoryCheck = new MyJButton(200, 300, 150, 40, "库存查看", 15);
+		MyButton InventoryCheck = new MyButton(200, 300, 300, 79, InventoryImage.getBUTTON_CHAKAN());
 		InventoryCheck.setActionCommand("InventoryCheck");
 		InventoryCheck.addActionListener(frame);
 		this.add(InventoryCheck);
+		InventoryCheck.repaint();
 		
 		MyJButton Stocking = new MyJButton(200, 350, 150, 40, "库存盘点", 15);
 		Stocking.setActionCommand("Stocking");

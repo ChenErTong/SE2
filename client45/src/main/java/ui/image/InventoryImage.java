@@ -16,7 +16,7 @@ public class InventoryImage {
 	
 	public static ImageIcon[] getBUTTON_CHAKAN(){
 		if(BUTTON_CHAKAN == null){
-			BUTTON_CHAKAN = Images.createImageIcons("image/return_button.png");
+			BUTTON_CHAKAN = Images.createImageIcons("image/button/库存查看.png");
 		}
 		return BUTTON_CHAKAN;
 	}

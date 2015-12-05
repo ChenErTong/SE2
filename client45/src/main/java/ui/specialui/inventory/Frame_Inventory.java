@@ -28,7 +28,7 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 		this.totalPanel = new Panel_Inventory_Total(this);
 		this.add(totalPanel);
 		
-		this.returnButton.addActionListener(this);
+//		this.returnButton.addActionListener(this);
 		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}

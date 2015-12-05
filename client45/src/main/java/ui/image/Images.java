@@ -21,7 +21,7 @@ public class Images {
 	protected static ImageIcon[] createImageIcons(String path){
 		ImageIcon[] icons = new ImageIcon[3];
 		for(int i = 0; i < 3; i++){
-			String[] paths = path.split(".");
+			String[] paths = path.split("\\.");
 			icons[i] = new ImageIcon(paths[0] + Integer.toString(i + 1) + "." + paths[1]);
 		}
 		return icons;
