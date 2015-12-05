@@ -13,6 +13,7 @@ import po.UserPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
+import util.SerSaveAndLoad;
 import vo.UserVO;
 /**
  * 
@@ -21,11 +22,12 @@ import vo.UserVO;
  */
 public class User {
 	private UserDataService userData;
-
+	public static String currentUserFileName;
+	private SerSaveAndLoad<UserPO> currentUserFile;
 	public User() {
+		currentUserFile = new SerSaveAndLoad<>(User.currentUserFileName);
 		try {
-			userData = (UserDataService) Naming
-					.lookup(RMIConfig.PREFIX + UserDataService.NAME);
+			userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (RemoteException e) {
@@ -76,6 +78,7 @@ public class User {
 		for (UserPO po : pos) {
 			if (po.getUserName().equals(loginInfo.username)){
 				if (po.getPassword().equals(loginInfo.password)) {
+					this.currentUserFile.add(po);
 					return po.getIden();
 				}else {
 					//密码不正确

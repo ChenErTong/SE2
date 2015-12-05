@@ -33,11 +33,11 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	static String userID = " ";
 	@SuppressWarnings("unused")
 	private ArrayList<UserVO> userList;
-	private UserController userController ;
+	private UserController userController  = ControllerFactory.getUserController();
 	public Panel_Admin_Total(Frame_Admin frame_Admin)  {
 		super(0, 0, 1280, 720);
 		
-		userController = ControllerFactory.getUserController();
+		//userController = ControllerFactory.getUserController();
 		userPool = new ArrayList<UserVO>();
 		this.setOpaque(false);
 
