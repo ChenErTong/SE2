@@ -82,9 +82,17 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 		return commodityVOs;
 	}
 	@Override
-	public void changeOrderState(String order, String message) throws RemoteException {
+	public boolean changeOrderState(String order, String message) throws RemoteException {
 		OrderPO orderPO = orderData.find(order);
-		addHitoryMessage(orderPO, message);
+		if(orderPO==null){
+			System.out.println("print in package businesslogic.orderbl;");
+			System.out.println("package businesslogic.orderbl;");
+			return false;
+		}
+		else{
+			addHitoryMessage(orderPO, message);
+			return true;
+		}
 	}
 	@Override
 	public void changeOrderState(String order, String message, CommodityState orderState) throws RemoteException {
