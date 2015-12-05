@@ -64,4 +64,17 @@ public class OrderVO extends ValueObject {
 		this.commodities = commodities;
 	}
 
+
+	@Override
+	public String toString() {
+		return " orderIdString=" + orderIdString + ", senderName=" + senderName + ", senderAddress=" + senderAddress
+				+ ", senderTel=" + senderTel + ", senderCo=" + senderCo + ", recipientName=" + recipientName
+				+ ", recipientAddress=" + recipientAddress + ", recipientTel=" + recipientTel + ", recipientCo="
+				+ recipientCo + ", midAddres=" + midAddres + ", sendTime=" + sendTime + ", recipientTime="
+				+ recipientTime + ", money=" + money + ", commodities=" + commodities + ", packType=" + packType
+				+ ", express=" + express;
+	}
+	
+	
+
 }

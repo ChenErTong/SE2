@@ -20,8 +20,8 @@ public class mainForUITest {
 		}
 	
 
-Frame_Login loginFrame = new Frame_Login(id);
-	loginFrame.setVisible(true);
+//Frame_Login loginFrame = new Frame_Login(id);
+//	loginFrame.setVisible(true);
 
 //Frame_Login loginFrame = new Frame_Login(id);
 //	loginFrame.setVisible(true);
@@ -48,7 +48,7 @@ Frame_Login loginFrame = new Frame_Login(id);
 	//   Frame_Finance financeFrame = new Frame_Finance(id);
 	  // financeFrame.setVisible(true);
 
-		Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
+//		Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
 
 
 //	Frame_Admin adminFrame = new Frame_Admin(id);

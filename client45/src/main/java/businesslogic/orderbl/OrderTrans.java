@@ -22,13 +22,13 @@ public class OrderTrans {
 	 */
 	public static OrderPO convertVOtoPO(OrderVO vo) {
 		ArrayList<CommodityPO> pos = convertCommodityVOstoPOs(vo.commodities);
-		return new OrderPO(vo.ID, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
+		return new OrderPO(vo.orderIdString, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
 				vo.senderCo, vo.recipientName, vo.recipientAddress, vo.recipientTel, vo.recipientCo,
 				pos, vo.midAddres, vo.sendTime, vo.recipientTime, vo.money,vo.packType,vo.express);
 	}
 	public static OrderVO convertPOtoVO(OrderPO po) {
 		ArrayList<CommodityVO> vos = convertCommodityPOstoVOs(po.getCommodityPO());
-		return new OrderVO(po.getOrderIdString(), po.getSenderName(), po.getSenderAddress(),
+		return new OrderVO(po.getID(), po.getSenderName(), po.getSenderAddress(),
 				po.getSenderTel(), po.getSenderCo(), po.getRecipientName(), po.getRecipientAddress(),
 				po.getRecipientTel(), po.getRecipientCo(), po.getMidAddres(), po.getSendTime(), po.getRecipientTime(),
 				po.getMoney(),vos,po.getPackType(),po.getExpress());

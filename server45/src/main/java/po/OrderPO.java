@@ -28,7 +28,7 @@ public class OrderPO extends ReceiptPO {
 	
 
 	// 订单号
-	private String orderIdString;
+//	private String orderIdString;
 	// 寄件人姓名、寄件人住址、
 	// 寄件人电话、寄件人单位
 	private String senderName;
@@ -62,7 +62,6 @@ public class OrderPO extends ReceiptPO {
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
 			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
 		super(orderIdString,type);
-		this.orderIdString = orderIdString;
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
 		this.senderTel = senderTel;
@@ -78,14 +77,6 @@ public class OrderPO extends ReceiptPO {
 		this.money = money;
 		this.packType=packType;
 		this.express=express;
-	}
-
-	public String getOrderIdString() {
-		return orderIdString;
-	}
-
-	public void setOrderIdString(String orderIdString) {
-		this.orderIdString = orderIdString;
 	}
 
 	public String getSenderName() {
