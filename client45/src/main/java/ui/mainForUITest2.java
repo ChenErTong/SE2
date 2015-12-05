@@ -19,7 +19,6 @@ public class mainForUITest2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		new Frame_Courier("0");
 
 		String userID = "010000001";
 //		new Frame_Courier("0");
