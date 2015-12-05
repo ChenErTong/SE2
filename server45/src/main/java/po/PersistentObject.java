@@ -25,12 +25,12 @@ public class PersistentObject implements Serializable{
 	protected PersistentObject(String id){
 		/**自动生成日期*/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		date = sdf.format(new Date());
+		this.date = sdf.format(new Date());
 		this.ID = id;
 	}
 
 	public PersistentObject(String iD, String date) {
-		ID = iD;
+		this.ID = iD;
 		this.date = date;
 	}
 

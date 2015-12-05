@@ -12,9 +12,6 @@ public class ReceiptPO extends PersistentObject{
 
 	/**serializableUID*/
 	private static final long serialVersionUID = 1L;
-	
-	/**单据编号，不同的单据具有不同的编号格式**/
-	protected String ID;
 	/**单据状态*/
 	protected ReceiptState receiptState;
 	
@@ -34,7 +31,7 @@ public class ReceiptPO extends PersistentObject{
 	}
 
 	public void setID(String iD) {
-		ID = iD;
+		this.ID = iD;
 	}
 
 	public String getDate() {
@@ -68,9 +65,5 @@ public class ReceiptPO extends PersistentObject{
 	public void setReceiptType(ReceiptType receiptType) {
 		this.receiptType = receiptType;
 	}
-	
-   
-	
-
 
 }
