@@ -1,5 +1,6 @@
 package log;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,7 +9,11 @@ import java.util.Date;
 * @author Ann
 * @version 创建时间：2015年12月4日 下午7:50:07 
 */
-public class LogMessage {
+public class LogMessage implements Serializable{
+	/**
+	 * default version UID
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 使用者姓名
 	 */

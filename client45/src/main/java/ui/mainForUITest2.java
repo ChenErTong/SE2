@@ -9,6 +9,7 @@ import ui.specialui.inventory.Frame_Inventory;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class mainForUITest2 {
+	
 	public static void main(String[] args) {
 		try {
 			UIManager.put("RootPane.setupButtonVisible",false);
@@ -17,12 +18,13 @@ public class mainForUITest2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		String userID = "010000001";
 //		new Frame_Courier("0");
 		
 //		new Frame_Branch("0");
 		
 //		new	Frame_Transfer("0");
 		
-		new Frame_Inventory("0");
+		new Frame_Inventory(userID);
 	}
 }

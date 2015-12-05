@@ -1,10 +1,8 @@
 package po;
 
-import java.io.Serializable;
-
 import state.CommodityState;
 
-public class CommodityPO  implements Serializable{
+public class CommodityPO  extends PersistentObject{
 	/**
 	 * 
 	 */

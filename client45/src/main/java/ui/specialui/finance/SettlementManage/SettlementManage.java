@@ -141,7 +141,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		PaymentBillVO payVO;
 		for(int i = 0; i < paybillVO.size(); i++){
 			payVO = (PaymentBillVO) paybillVO.get(i);
-			Object[] rowData = {payVO.ID,payVO.type,payVO.payerName,payVO.accountID,payVO.items,payVO.remarks};
+			Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.accountID,payVO.items.value,payVO.remarks,payVO.date};
 			tableModel.addRow(rowData);
 			paybillPool.add((PaymentBillVO) paybillVO.get(i));
 		}
@@ -167,10 +167,10 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			if(data!=null){
 				showController.showList(data);
 				for(int i = 0; i < paybillVO.size(); i++){
-					Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items,paybillVO.get(i).remarks};
+					Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 					tableModel.addRow(rowData);
 					paybillPool.add(paybillVO.get(i));
-					new MyNotification(this,"共有"+table.getColumnCount()+"个付款单满足条件！",Color.GREEN);
+					new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
 				}	
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
@@ -291,8 +291,8 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		data[0] = paybillPool.get(table.getSelectedRow()).payerName;
 		data[1] = paybillPool.get(table.getSelectedRow()).money+"";
 		data[2] = paybillPool.get(table.getSelectedRow()).accountID;
-		data[3] = paybillPool.get(table.getSelectedRow()).items;
-		data[4] = paybillPool.get(table.getSelectedRow()).remarks;
+		data[3] = paybillPool.get(table.getSelectedRow()).remarks;
+		data[4] = paybillPool.get(table.getSelectedRow()).items.value;
 		data[5] = paybillPool.get(table.getSelectedRow()).date;
 		return data;
 	}
