@@ -17,30 +17,29 @@ public class Panel_Inventory_Total extends MyJPanel{
 	}
 
 	private void initComponent(Frame_Inventory frame) {
-		MyButton InventoryCheck = new MyButton(200, 300, 250, 66, InventoryImage.getBUTTON_CHAKAN());
+		MyButton InventoryCheck = new MyButton(200, 300, 250, 42, InventoryImage.getBUTTON_CHAKAN());
 		InventoryCheck.setActionCommand("InventoryCheck");
 		InventoryCheck.addActionListener(frame);
 		this.add(InventoryCheck);
-		InventoryCheck.repaint();
 		
-		MyJButton Stocking = new MyJButton(200, 350, 150, 40, "库存盘点", 15);
-		Stocking.setActionCommand("Stocking");
-		Stocking.addActionListener(frame);
-		this.add(Stocking);
-		
-		MyJButton InventoryZoneAdjust = new MyJButton(200, 400, 150, 40, "库存分区调整", 15);
-		InventoryZoneAdjust.setActionCommand("InventoryZoneAdjust");
-		InventoryZoneAdjust.addActionListener(frame);
-		this.add(InventoryZoneAdjust);
-		
-		MyJButton CargoImport = new MyJButton(200, 450, 150, 40, "入库", 15);
-		CargoImport.setActionCommand("CargoImport");
-		CargoImport.addActionListener(frame);
-		this.add(CargoImport);
-		
-		MyJButton CargoExport = new MyJButton(200, 500, 150, 40, "出库", 15);
-		CargoExport.setActionCommand("CargoExport");
-		CargoExport.addActionListener(frame);
-		this.add(CargoExport);
+//		MyJButton Stocking = new MyJButton(200, 350, 150, 40, "库存盘点", 15);
+//		Stocking.setActionCommand("Stocking");
+//		Stocking.addActionListener(frame);
+//		this.add(Stocking);
+//		
+//		MyJButton InventoryZoneAdjust = new MyJButton(200, 400, 150, 40, "库存分区调整", 15);
+//		InventoryZoneAdjust.setActionCommand("InventoryZoneAdjust");
+//		InventoryZoneAdjust.addActionListener(frame);
+//		this.add(InventoryZoneAdjust);
+//		
+//		MyJButton CargoImport = new MyJButton(200, 450, 150, 40, "入库", 15);
+//		CargoImport.setActionCommand("CargoImport");
+//		CargoImport.addActionListener(frame);
+//		this.add(CargoImport);
+//		
+//		MyJButton CargoExport = new MyJButton(200, 500, 150, 40, "出库", 15);
+//		CargoExport.setActionCommand("CargoExport");
+//		CargoExport.addActionListener(frame);
+//		this.add(CargoExport);
 	}
 }

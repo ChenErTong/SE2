@@ -20,7 +20,7 @@ public class CommonImage extends Images{
 	 * TODO
 	 * 测试背景图片
 	 */
-	public static final ImageIcon TEST_BACKGROUND = createImageIcon("image/background_test1.jpg");
+	public static final ImageIcon TEST_BACKGROUND = createImageIcon("image/background_test2.jpg");
 	/**
 	 * 半透明
 	 */
