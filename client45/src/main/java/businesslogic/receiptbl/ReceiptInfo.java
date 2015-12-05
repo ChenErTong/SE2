@@ -91,7 +91,7 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 	}
 	@Override
 	public String getTransferID() throws RemoteException {
-		return receiptData.getTransferID();
+		return receiptData.getTransferArrialID();
 	}
 	@Override
 	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException {

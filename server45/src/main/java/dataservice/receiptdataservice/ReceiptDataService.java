@@ -41,7 +41,10 @@ public interface ReceiptDataService extends ManageDataService<ReceiptPO> {
 	public AdjustReceiptPO findAdjust(String adjustID) throws RemoteException;
 
 	/** 生成transferid **/
-	public String getTransferID() throws RemoteException;
+	public String getTransferArrialID() throws RemoteException;
 	
+	public String getBranchTruckID() throws RemoteException;
+	
+	public String getTransferDeliverID() throws RemoteException;
 
 }

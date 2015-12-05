@@ -22,12 +22,18 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 //	String exportPost ;
 //	String adjustPost ;
 //	String transferArrialPost;
+	int transferArrialIDMaxBit;
+	int branchArrialIDMaxBit;
+	int transferDeliveryIDMaxBit;
 	// poList在Data里,虽然每个Data的继承类都以Data为父类，但他们拥有不同的poList
 	public ReceiptData() throws RemoteException {
 //		importPost=configReader.getValue("importPost");
 //		exportPost=configReader.getValue("exportPost");
 //		adjustPost=configReader.getValue("adjustPost");
 //		transferArrialPost=configReader.getValue("transferArrialPost");
+		transferArrialIDMaxBit = Integer.parseInt(configReader.getValue("transferArrialIDMaxBit"));
+		branchArrialIDMaxBit = Integer.parseInt(configReader.getValue("branchArrialIDMaxBit"));
+		transferDeliveryIDMaxBit=Integer.parseInt(configReader.getValue("transferDeliveryIDMaxBit"));
 	}
 
 	@Override
@@ -35,6 +41,9 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return (TransferArrivalListPO) super.find(id);
 	}
 
+	/**
+	 * TODO merge to one method
+	 */
 	@Override
 	public String getImportID() throws RemoteException {
 		return  super.getID();
@@ -51,8 +60,8 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 	}
 	
 	@Override
-	public String getTransferID() throws RemoteException {
-		  return  super.getID();
+	public String getTransferArrialID() throws RemoteException {
+		  return  super.getID().substring(IDMaxBit-transferArrialIDMaxBit);
 	}
 
 
@@ -69,10 +78,22 @@ public class ReceiptData extends ManageData<ReceiptPO> implements ReceiptDataSer
 		return (AdjustReceiptPO) super.find(adjustID);
 	}
 
+	
+	@Override
+	public String getBranchTruckID() throws RemoteException {
+		return super.getID().substring(IDMaxBit-branchArrialIDMaxBit);
+	}
+
+	@Override
+	public String getTransferDeliverID() throws RemoteException {
+		return super.getID().substring(IDMaxBit-transferDeliveryIDMaxBit);
+	}
+	
 	@Override
 	public void initialFile() {
 		poList=new SerSaveAndLoad<ReceiptPO>("data/"+NAME+".ser");
 		configReader=new XMLReader("config/"+NAME+".xml");
 	}
+
 
 }
