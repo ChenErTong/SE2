@@ -45,23 +45,29 @@ public class OrderTrans {
 		if(po==null)
 			return null;
 		else {
+			String ID = po.getID();
 			String commodityType = po.getCommodityType();
 			double weight = po.getWeight();
 			double volumn = po.getVolumn();
 			CommodityState commodityState = po.getCommodityState();			
-			return new CommodityVO(commodityType, weight, volumn, commodityState);
+			CommodityVO vo = new CommodityVO(commodityType, weight, volumn, commodityState);
+			vo.ID=ID;
+			return vo;
 		}
 	}
 	
-	public static CommodityPO convertVOtoPO(CommodityVO po){
-		if(po==null)
+	public static CommodityPO convertVOtoPO(CommodityVO vo){
+		if(vo==null)
 			return null;
 		else {
-			String commodityType = po.commodityType;
-			double weight = po.weight;
-			double volumn = po.volumn;
-			CommodityState commodityState = po.commodityState;			
-			return new CommodityPO(commodityType, weight, volumn, commodityState);
+			String ID = vo.ID;
+			String commodityType = vo.commodityType;
+			double weight = vo.weight;
+			double volumn = vo.volumn;
+			CommodityState commodityState = vo.commodityState;			
+			CommodityPO po =  new CommodityPO(commodityType, weight, volumn, commodityState);
+			po.setID(ID);
+			return po;
 		}
 	}
 	
