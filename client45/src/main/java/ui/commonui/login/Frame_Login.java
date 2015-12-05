@@ -60,7 +60,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("login")){
 			UserController  userController = ControllerFactory.getUserController();
-			iden = userController.login(new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag));
+			LoginInfo logInfo = new LoginInfo(userIdField.getText(),new String(passwordField.getText()),flag);
+			iden = userController.login(logInfo);
 			String type = "";
 			userID = userIdField.getText();
 			for(int i=0;i<userController.show().size();i++){
