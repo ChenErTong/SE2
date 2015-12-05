@@ -4,7 +4,6 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.specialui.finance.Frame_Finance;
 import ui.specialui.manager.FrameManager;
 
 public class mainForUITest {
@@ -42,8 +41,8 @@ public class mainForUITest {
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);
 		
-	   Frame_Finance financeFrame = new Frame_Finance(id);
-	   financeFrame.setVisible(true);
+//	   Frame_Finance financeFrame = new Frame_Finance(id);
+//	   financeFrame.setVisible(true);
 	//   Frame_Finance financeFrame = new Frame_Finance(id);
 	  // financeFrame.setVisible(true);
 
