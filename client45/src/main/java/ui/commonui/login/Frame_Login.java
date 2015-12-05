@@ -112,6 +112,11 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 			frame_Sender.setVisible(true);
 			new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 			this.setVisible(false);
+		}else if(e.getActionCommand().equals("keep")){
+			flag = true;
+		}else if(e.getActionCommand().equals("delete")){
+			userIdField.setText(null);
+			passwordField.setText(null);
 		}
 	}
 }

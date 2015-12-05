@@ -8,12 +8,12 @@ import javax.swing.JComboBox;
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
 import ui.Config.JComboBoxOfChina;
-
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
+import ui.myui.MyPasswordField;
 import ui.myui.MyTranslucentPanel;
 
 public class UserDetails extends MyTranslucentPanel{
@@ -21,6 +21,7 @@ public class UserDetails extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private MyJTextField[] fields;
+	private MyPasswordField passwordField;
 	private MyJComboBox userIdentityBox;
 	private MyJComboBox branchID;
 	@SuppressWarnings("rawtypes")
@@ -35,11 +36,11 @@ public class UserDetails extends MyTranslucentPanel{
 		this.initComponent();
 	}
 
-
-
 	private void initComponent() {
-		fields = new MyJTextField[3];
+		fields = new MyJTextField[2];
+		
 		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
+		
 		ArrayList<String> branchIDs = new ArrayList<String>();
 		branchIDs = controller.getAllBranchNumbers();
 		String[] trans = new String[100];
@@ -50,17 +51,17 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(branchID);
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
-		fields[0] = new MyJTextField(340,60,140,30);
-		this.add(fields[0]);
+		passwordField = new MyPasswordField(340,60,140,30);
+		this.add(passwordField);
 		
 		this.add(new MyJLabel(10,100, 90, 30, "用户姓名", 18, true));
-		fields[1] = new MyJTextField(100, 100, 140, 30);
-		this.add(fields[1]);
+		fields[0] = new MyJTextField(100, 100, 140, 30);
+		this.add(fields[0]);
 		
 		this.add(new MyJLabel(250,100,100,30,"联系电话",18,true));
-		fields[2] = new MyJTextField(340,100,140,30);
-		fields[2].setOnlyInteger(11);
-		this.add(fields[2]);
+		fields[1] = new MyJTextField(340,100,140,30);
+		fields[1].setOnlyInteger(11);
+		this.add(fields[1]);
 	
 		this.add(new MyJLabel(10, 140, 90, 30, "用户类别",18,true));
 		this.add(new MyJLabel(250, 140, 90, 30, "用户权限",18,true));
@@ -107,6 +108,7 @@ public class UserDetails extends MyTranslucentPanel{
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setEditable(false);
 		}
+		passwordField.setEditable(false);
 		branchID.setEditable(false);
 		userIdentityBox.setEditable(false);
 		userAuthorityBox.setEditable(false);
@@ -118,8 +120,9 @@ public class UserDetails extends MyTranslucentPanel{
 
 	public void setData(String[] data) {
 		branchID.setSelectedItem(data[0]);
+		passwordField.setText(data[1]);
 		for(int i = 0; i < 3; i++){
-			fields[i].setText(data[i+1]);
+			fields[i].setText(data[i+2]);
 		}
 		userIdentityBox.setSelectedItem(data[4]);
 		userAuthorityBox.setSelectedItem(data[5]);
@@ -130,6 +133,7 @@ public class UserDetails extends MyTranslucentPanel{
 
 	public void refresh() {
 		branchID.setSelectedItem(null);
+		passwordField.setText(null);
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setText(null);
 		}
@@ -144,8 +148,9 @@ public class UserDetails extends MyTranslucentPanel{
 	public String[] getData() {
 		String[] data = new String[9];
 		data[0] = (String) branchID.getSelectedItem();
-		for (int i = 0; i < 3; i++) {			
-			if((data[i+1] = fields[i].getText()).equals("")) return null;
+		data[1] = passwordField.getSelectedText();
+		for (int i = 0; i < 2; i++) {			
+			if((data[2+1] = fields[i].getText()).equals("")) return null;
 		}
 		data[4] = (String)userIdentityBox.getSelectedItem();
 		data[5] = (String)userAuthorityBox.getSelectedItem();

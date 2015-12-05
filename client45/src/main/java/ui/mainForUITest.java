@@ -23,15 +23,15 @@ public class mainForUITest {
 			e.printStackTrace();
 		}
 	
-//Frame_Login loginFrame = new Frame_Login(id);
-	//loginFrame.setVisible(true);
+Frame_Login loginFrame = new Frame_Login(id);
+	loginFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
 
 	
-	FrameManager managerFrame = new FrameManager(id);
-	   managerFrame.setVisible(true);
+	//FrameManager managerFrame = new FrameManager(id);
+	  // managerFrame.setVisible(true);
 		
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);
