@@ -52,7 +52,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		super(userID);
 		totalPanel = new Panel_Finance_Total(this);
 		this.add(totalPanel);
-		this.returnButton.addActionListener(this);
+//		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 

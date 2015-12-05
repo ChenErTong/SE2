@@ -36,4 +36,11 @@ public class ReceiptVO extends ValueObject{
 		this.ID = iD;
 	}
 
+	@Override
+	public String toString() {
+		return " ID=" + ID + ", date=" + date + ", type=" + type + ", receiptState=" + receiptState;
+	}
+	
+	
+
 }

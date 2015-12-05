@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import businesslogic.branchbl.ReceiptInfo_Branch;
+import businesslogic.fundbl.ReceiptInfo_DebitAndPayBill;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.transferbl.ReceiptInfo_Transfer;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
@@ -23,7 +25,7 @@ import vo.receiptvo.ReceiptVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:58
  */
-public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer,ReceiptInfo_Transfer,ReceiptInfo_Branch {
+public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer,ReceiptInfo_Transfer,ReceiptInfo_Branch,ReceiptInfo_DebitAndPayBill {
 	Receipt receipt;
 	ReceiptDataService receiptData;
 	public ReceiptInfo() {
@@ -143,5 +145,10 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public ResultMessage add(DebitAndPayBillPO po) throws RemoteException {
+		return receiptData.add(po);
 	}
 }

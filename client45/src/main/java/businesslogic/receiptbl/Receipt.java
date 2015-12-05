@@ -82,9 +82,16 @@ public class Receipt  {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
 		for (ReceiptPO receiptPO : pos) {
-			if(receiptPO.getReceiptType().equals(type)&&receiptPO.getReceiptState().equals(state)){
+//			System.out.println(receiptPO.getID());
+//			System.out.println(receiptPO.getReceiptState());
+			boolean isCorrectType = receiptPO.getReceiptType().equals(type);
+			boolean isCorrectState  = receiptPO.getReceiptState().equals(state);
+			if(isCorrectType)
+				System.out.println("state "+isCorrectState+" "+state);
+			if(isCorrectType&&isCorrectState){
 				@SuppressWarnings("unchecked")
 				T vo = (T) ReceiptTrans.convertPOtoVO(receiptPO);
+				System.out.println(vo.toString());
 				vos.add(vo);
 			}
 		}
