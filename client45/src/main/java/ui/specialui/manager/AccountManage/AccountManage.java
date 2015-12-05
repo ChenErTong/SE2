@@ -162,7 +162,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
 			}else{//String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
 				//String workTime
-				ResultMessage rsg = controller.addBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
+				ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
@@ -215,7 +215,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	private void deleteAccount() {
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
-		ResultMessage rsg = controller.deleteBase(accountPool.get(table.getSelectedRow()).ID);
+		ResultMessage rsg = controller.deleteAccount(accountPool.get(table.getSelectedRow()).ID);
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
@@ -230,7 +230,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
 		String[] data = modifyAccount.getData();
-		ResultMessage rsg = controller.updateBase(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
+		ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],Double.parseDouble(data[4]),data[6],data[7]));
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
