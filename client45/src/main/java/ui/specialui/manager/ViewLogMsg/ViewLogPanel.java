@@ -10,7 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * 负责查看记录日志界面panel的相互跳转
+ * @author zsq
+ * @version 2015/12/05 15:01
+ */
 public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
 	private LogPanel log;

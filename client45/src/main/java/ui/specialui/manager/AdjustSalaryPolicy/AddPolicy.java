@@ -6,7 +6,11 @@ import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
-
+/**
+ * 增加新的薪水策略
+ * @author zsq
+ * @version 2015/12/05 14：01
+ */
 public class AddPolicy extends MyTranslucentPanel{
 	
 	private MyJComboBox employeeType;

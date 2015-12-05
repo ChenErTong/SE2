@@ -40,10 +40,7 @@ import javax.swing.JComboBox;
 	        for (String str : cities) {
 	          model2.addElement(str);
 	        }
-	      //  model3.removeAllElements();
-	       // for (String str : UiConfig_JComboBox.getDistricts(cities.get(0))) {
-	       //   model3.addElement(str);
-	       // }
+	     
 	      }
 	    });
 	    //设置二级数据
@@ -55,17 +52,10 @@ import javax.swing.JComboBox;
 	      public void actionPerformed(ActionEvent evt) {
 	        JComboBox source = (JComboBox) evt.getSource();
 	        String city = (String) source.getSelectedItem();
-	       // List<String> districts = UiConfig_JComboBox.getDistricts(city);
-	        //model3.removeAllElements();
-	        //for (String str : districts) {
-	        //  model3.addElement(str);
-	       // }
+	 
 	      }
 	    });
-	    //设置三级数据
-	  //  for (String str : UiConfig_JComboBox.getDistricts("北京市")) {
-	    //  model3.addElement(str);
-	    //}
+	   
 	    combobox_area = new JComboBox(model3);
 	  }
 

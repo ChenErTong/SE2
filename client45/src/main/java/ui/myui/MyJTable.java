@@ -11,7 +11,6 @@ import javax.swing.table.JTableHeader;
  * 表格类
  * @author zsq
  * @time 2015/11/17 20:04
- * 待修改
  */
 public class MyJTable extends JTable{
 
@@ -20,7 +19,10 @@ public class MyJTable extends JTable{
 	private Boolean isCellEditable;
 	private String[] headers;
 	private String[][] cellData;
-	
+	/**
+	 * @param headers 表格标题
+	 * @param isCellEditable 是否可以对表格内容进行修改
+	 */
 	public MyJTable(String[] headers, boolean isCellEditable){
 		this.isCellEditable = isCellEditable;
 		this.headers = headers;

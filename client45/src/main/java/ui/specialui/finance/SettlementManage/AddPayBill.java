@@ -6,6 +6,11 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
+/**
+ * 添加新的收款单Panel
+ * @author zsq
+ * @version 2015/12/5 9:55
+ */
 public class AddPayBill extends MyTranslucentPanel{
 	
 	private MyJTextField[] fields ;
@@ -24,6 +29,7 @@ public class AddPayBill extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,90,90,30,"付款备注",16,true));
 		this.add(new MyJLabel(40,130,90,30,"付款条目",16,true));
 		this.add(new MyJLabel(290,130,90,30,"付款日期",16,true));
+		
 		fields = new MyJTextField[5];
 		fields[0] = new MyJTextField(130,50,120,30);
 		this.add(fields[0]);

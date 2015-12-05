@@ -12,7 +12,6 @@ public class Panel_Finance_Total extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public Panel_Finance_Total(Frame_Finance frame_Finance) {
-		// TODO Auto-generated constructor stub
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
@@ -62,7 +61,5 @@ public class Panel_Finance_Total extends MyJPanel{
 		Withdraw.addActionListener(frame_Finance);
 		this.add(Withdraw);
 	}
-
-		
-	}
+}
 

@@ -34,7 +34,11 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-
+/**
+ * 查看草稿状态单据的详细内容 
+ * @author zsq
+ * @version 2015/12/02 18:47
+ */
 public class SaveDraftPanel extends MyJPanel implements ActionListener{
 	MyJButton check,export;
 	MyEmptyTextArea ta;
@@ -221,7 +225,11 @@ public class SaveDraftPanel extends MyJPanel implements ActionListener{
 			}
 		}
 	}
-
+/**
+ * 写入文件
+ * @param a 待写入的字符串
+ * @param file 写入的文件名字
+ */
 	private void writeto(String a, String file) {
 		try {
 			File filename=new File(file);

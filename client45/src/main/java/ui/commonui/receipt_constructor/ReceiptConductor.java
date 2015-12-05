@@ -13,7 +13,11 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
-
+/**
+ * 在文本区域显示单据的详细内容
+ * @author zsq
+ * @version 2015/11/31 16:18
+ */
 public class ReceiptConductor {
 	public String writeReceipt(ReceiptType receiptType,ValueObject receipt){
 		

@@ -5,6 +5,11 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
+/**
+ * 添加新的运营成本常量的Panel
+ * @author zsq
+ * @version 2015/12/5 13:15
+ */
 public class AddBase extends MyTranslucentPanel{
 	
 	private MyJComboBox startCityList;

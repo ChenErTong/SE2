@@ -19,7 +19,11 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-
+/**
+ * 查看、显示系统记录日志的Panel
+ * @author zsq
+ * @version 2015/12/05 14:45
+ */
 public class LogPanel extends MyTranslucentPanel{
 	private MyEmptyTextArea ta;
 	private MyJButton search,showAll;
