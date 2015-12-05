@@ -45,13 +45,11 @@ public class MyJFrame extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);
 		
-		this.returnButton = new MyButton(1155, 15, 30, 30);
-		this.returnButton.setMyIcon(CommonImage.TEST_RETURN_BUTTON);
+		this.returnButton = new MyButton(1155, 15, 30, 30, CommonImage.TEST_RETURN_BUTTON);
 		this.returnButton.setActionCommand("return");
 		this.add(this.returnButton);
 		
-		this.minimizeButton = new MyButton(1195, 15, 30, 30);
-		this.minimizeButton.setMyIcon(CommonImage.TEST_MINIMUMIZE_BUTTON);
+		this.minimizeButton = new MyButton(1195, 15, 30, 30, CommonImage.TEST_MINIMUMIZE_BUTTON);
 		this.minimizeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
@@ -59,14 +57,15 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.minimizeButton);
 		
-		this.closeButton = new MyButton(1235, 15, 30, 30);
-		this.closeButton.setMyIcon(CommonImage.TEST_CLOSE_BUTTON);
+		this.closeButton = new MyButton(1235, 15, 30, 30, CommonImage.TEST_CLOSE_BUTTON);
 		this.closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 		this.add(this.closeButton);
+		
+		this.repaint();
 	}
 	
 	protected void setBackground(ImageIcon image){

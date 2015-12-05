@@ -1,20 +1,23 @@
 package ui.specialui.branch_conuterman.facilityInfoManage;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.facilityblservice.FacilityBLService;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import ui.specialui.branch_conuterman.Frame_Branch;
 
 public class FacilityInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField[] fields;
 	
-	public FacilityInfo() {
+	public FacilityInfo(Frame_Branch frame) {
 		super(470, 190, 340, 355);
-		this.initComponent();
+		this.initComponent(frame);
 	}
 	
-	private void initComponent(){
+	private void initComponent(Frame_Branch frame){
 		fields = new MyJTextField[5];
 		this.add(new MyJLabel(78, 42, 60, 25, "车牌号", 18, true));
 		fields[0] = new MyJTextField(150, 40, 130, 30);
@@ -26,6 +29,8 @@ public class FacilityInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(60, 162, 100, 25, "车辆代号", 18, true));
 		fields[2] = new MyJTextField(150, 160, 130, 30);
 		fields[2].setOnlyInteger(9);
+		FacilityBLService facilityController = ControllerFactory.getFacilityController();
+		fields[2].setText(facilityController.getID(frame.getID().substring(0, 6)));
 		
 		this.add(new MyJLabel(60, 222, 100, 25, "发动机号", 18, true));
 		fields[3] = new MyJTextField(150, 220, 130, 30);

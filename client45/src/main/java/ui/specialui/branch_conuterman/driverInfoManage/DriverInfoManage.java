@@ -54,7 +54,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.initButton(frame);
 		id = null;
 		
-		driverInfo = new DriverInfo();
+		driverInfo = new DriverInfo(frame);
 		this.add(driverInfo);
 		
 		commonButton = new MyJButton(580, 600, 120, 30, "添加司机", 20);
@@ -71,7 +71,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "司机信息管理", 30, true));
 		this.initButton(frame);
 		
-		driverInfo = new DriverInfo();
+		driverInfo = new DriverInfo(frame);
 		this.add(driverInfo);
 		
 		this.add(new MyJLabel(415, 110, 100, 40, "司机编号", 20, true));
@@ -92,7 +92,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "司机信息管理", 30, true));
 		this.initButton(frame);
 		
-		driverInfo = new DriverInfo();
+		driverInfo = new DriverInfo(frame);
 		driverInfo.setUneditable();
 		this.add(driverInfo);
 		
@@ -109,7 +109,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "司机信息管理", 30, true));
 		this.initButton(frame);
 		
-		driverInfo = new DriverInfo();
+		driverInfo = new DriverInfo(frame);
 		driverInfo.setUneditable();
 		this.add(driverInfo);
 		
