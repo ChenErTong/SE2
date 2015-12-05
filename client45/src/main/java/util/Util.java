@@ -18,7 +18,7 @@ public class Util {
 		int length = branchID.length();
 		String result[] = new String[2];
 		String branchNumber = branchID.substring(length-3);
-		String cityCode = branchID.substring(0,length-4);
+		String cityCode = branchID.substring(0,length-3);
 		result[0]=cityCode;
 		result[1]=branchNumber;
 		return result;
@@ -32,8 +32,8 @@ public class Util {
 	public static String[] splitTransferID(String transferID){
 		int length = transferID.length();
 		String result[] = new String[2];
-		String transferNumber = transferID.substring(length-2);
-		String cityCode = transferID.substring(0,length-3);
+		String transferNumber = transferID.substring(length-1);
+		String cityCode = transferID.substring(0,length-1);
 		result[0]=cityCode;
 		result[1]=transferNumber;
 		return result;

@@ -59,7 +59,7 @@ public class Organization {
 	public String getBranchID(String city)throws RemoteException  {
 		String cityCode = CityTrans.getCodeByCity(city);
 		String ID = branchData.getID();
-		return cityCode+1+ID;
+		return cityCode+ID;
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
@@ -84,7 +84,7 @@ public class Organization {
 
 	public String getTransferID(String city)throws RemoteException  {
 		String cityCode=CityTrans.getCodeByCity(city);
-		return cityCode+0+transferData.getID();
+		return cityCode+transferData.getID();
 	}
 
 	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {

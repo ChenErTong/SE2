@@ -31,11 +31,20 @@ public class TransferPO extends OrganizationPO{
 	private ArrayList<InventoryPO> inventories;
 
 	public TransferPO(String id, String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
-		super(id,  address,accounts.size(),OrganizationType.TRANSFER);
-		this.accounts = accounts;
-		this.inventories = inventories;
-		//TODO 硬编码
-		this.inventories.add(new InventoryPO("0", 4, 100, 100, 100, id));
+		super(id, address,accounts.size(),OrganizationType.TRANSFER);
+		//TODO
+		if(accounts==null){
+			this.accounts = new ArrayList<>();
+		}
+		else{
+			this.accounts = accounts;
+		}
+		if(inventories==null){
+			this.inventories = new ArrayList<>();
+			this.inventories.add(new InventoryPO("0", 4, 100, 100, 100, id));
+		}else{
+			this.inventories = inventories;
+		}
 	}
 
 	public ArrayList<AccountPO> getAccounts() {

@@ -14,7 +14,6 @@ import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
 import state.CommodityState;
 import state.ConfirmState;
-import state.ReceiptCondition;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;

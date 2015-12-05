@@ -4,9 +4,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.commonui.login.Frame_Login;
-import ui.specialui.admin.Frame_Admin;
-import ui.specialui.courier.Frame_Courier;
+import ui.specialui.manager.FrameManager;
 
 public class mainForUITest {
 	static String id = "123";
@@ -26,12 +24,12 @@ public class mainForUITest {
 //Frame_Login loginFrame = new Frame_Login(id);
 //	loginFrame.setVisible(true);
 
-	Frame_Courier courierFrame = new Frame_Courier(id);
-		courierFrame.setVisible(true);
+//	Frame_Courier courierFrame = new Frame_Courier(id);
+//		courierFrame.setVisible(true);
 
 	
-//	   FrameManager managerFrame = new FrameManager(id);
-//	   managerFrame.setVisible(true);
+	   FrameManager managerFrame = new FrameManager(id);
+	   managerFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);

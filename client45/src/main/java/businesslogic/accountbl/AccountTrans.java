@@ -20,6 +20,9 @@ public class AccountTrans {
 	}
 
 	public static AccountVO convertPOToVO(AccountPO po) {
+		if(po==null){
+			return null;
+		}
 		String ID = po.getID();
 		String duty = po.getDuty();
 		String name = po.getName();
