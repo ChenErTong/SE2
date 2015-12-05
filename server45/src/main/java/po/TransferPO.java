@@ -32,19 +32,9 @@ public class TransferPO extends OrganizationPO{
 
 	public TransferPO(String id, String date, String address, ArrayList<AccountPO> accounts, ArrayList<InventoryPO> inventories) {
 		super(id, address,accounts.size(),OrganizationType.TRANSFER);
-		//TODO
-		if(accounts==null){
-			this.accounts = new ArrayList<>();
-		}
-		else{
 			this.accounts = accounts;
-		}
-		if(inventories==null){
-			this.inventories = new ArrayList<>();
-			this.inventories.add(new InventoryPO("0", 4, 100, 100, 100, id));
-		}else{
 			this.inventories = inventories;
-		}
+			this.inventories.add(new InventoryPO("0", 4, 100, 100, 100, id));
 	}
 
 	public ArrayList<AccountPO> getAccounts() {
