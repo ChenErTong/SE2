@@ -9,10 +9,12 @@ import java.util.List;
 
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.receiptbl.ReceiptInfo;
+import businesslogic.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
+import po.TransferPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -33,8 +35,10 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class Inventory {
 	private InventoryDataService inventoryData;
 	private ReceiptInfo_Inventory receiptInfo;
+	private TransferInfo_Inventory transferInfo;
 	public Inventory() {
 		receiptInfo = new ReceiptInfo();
+		transferInfo = new TransferInfo();
 		inventoryData = getData();
 	}
 	public InventoryDataService getData(){
@@ -99,12 +103,14 @@ public class Inventory {
 	 * @throws RemoteException
 	 */
     private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
-		ArrayList<InventoryPO> inventorys = inventoryData.find();
-		for (InventoryPO inventoryPO : inventorys) {
-			if(inventoryPO.getTransferID().equals(transferID))
-				return inventoryPO;
-		}
-		return null;
+    	TransferPO transferPO = transferInfo.getTransfer(transferID);
+    	return transferPO.getInventories().get(0);
+//		ArrayList<InventoryPO> inventorys = inventoryData.find();
+//		for (InventoryPO inventoryPO : inventorys) {
+//			if(inventoryPO.getTransferID().equals(transferID))
+//				return inventoryPO;
+//		}
+//		return null;
 	}
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
 		importReceipt.receiptState=ReceiptState.DRAFT;
