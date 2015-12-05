@@ -60,12 +60,7 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 		String[] months = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 		monthBox = new MyJComboBox(295,75,90,30,months);
 		this.add(monthBox);
-		
-		MyJButton ExportIncomeTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
-		ExportIncomeTable.setActionCommand("ExportIncomeTable");
-		ExportIncomeTable.addActionListener(this);
-		this.add(ExportIncomeTable);
-		ExportIncomeTable.setVisible(true);
+	
 		String[] days = {"01","02","03","04","05","06","07","08","09","10",
 				"11","12","13","14","15","16","17","18","19","20",
 				"21","22","23","24","25","26","27","28","29","30","31"};
@@ -76,6 +71,13 @@ public class Panel_Manager_IncomeState extends  MyTranslucentPanel implements Ac
 		check.setActionCommand("ViewIncomState");
 		check.addActionListener(this);
 		this.add(check);
+		
+		MyJButton ExportIncomeTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
+		ExportIncomeTable.setActionCommand("ExportIncomeTable");
+		ExportIncomeTable.addActionListener(this);
+		this.add(ExportIncomeTable);
+		ExportIncomeTable.setVisible(true);
+		
 		
 		String[] headers = {"序号","科目分类","科目名称","金额"};
 		table = new MyJTable(headers, false);

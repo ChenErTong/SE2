@@ -113,7 +113,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			totalPanel.setVisible(false);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			totalPanel.setVisible(false);
-			subPanel = new ViewLogPanel(this);
+			subPanel = new ViewLogPanel();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}

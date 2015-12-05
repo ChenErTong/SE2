@@ -115,7 +115,7 @@ private static final long serialVersionUID = 1L;
 			//TODO
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			totalPanel.setVisible(false);
-			subPanel = new ViewLogPanel(this);
+			subPanel = new ViewLogPanel();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){

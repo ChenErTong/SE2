@@ -5,7 +5,6 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -20,9 +19,6 @@ public class LogTextArea extends JScrollPane{
 	private String title;
 	/** 真正的TextArea在这 */
 	private JTextArea textArea;
-
-	//	/** 边框标题 */
-	//	private String title;
 
 	public LogTextArea() {
 		this.setOpaque(false);	// 将JScrollPane设置为透明
