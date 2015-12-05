@@ -16,6 +16,7 @@ import dataservice.transferdataservice.TransferDataService;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptCondition;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
@@ -106,11 +107,12 @@ public class Transfer {
 	}
 
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		receipt.receiptCondition=ReceiptCondition.SUBITTED;
+		receipt.receiptState=ReceiptState.APPROVALING;
 		return receiptInfo.modify(receipt);
 	}
 
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+		receipt.receiptState=ReceiptState.DRAFT;
 		return receiptInfo.add(receipt);
 	}
 

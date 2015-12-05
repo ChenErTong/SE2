@@ -13,7 +13,7 @@ import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
-import state.ReceiptCondition;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.ExportExcel;
@@ -107,12 +107,12 @@ public class Inventory {
 		return null;
 	}
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
-    	return receiptInfo.add(importReceipt);
+		importReceipt.receiptState=ReceiptState.DRAFT;
+		return receiptInfo.add(importReceipt);
     }
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		importReceipt.receiptCondition=ReceiptCondition.SUBITTED;
-		receiptInfo.modify(importReceipt);
-		return ResultMessage.SUCCESS;
+		importReceipt.receiptState=ReceiptState.APPROVALING;
+		return receiptInfo.modify(importReceipt);
 	}
     
 	public String getExportID() throws RemoteException {
@@ -136,13 +136,13 @@ public class Inventory {
 		return vo;
 	}
 	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
-	    	return receiptInfo.add(exportReceipt);
+		 exportReceipt.receiptState=ReceiptState.DRAFT;
+		 return receiptInfo.add(exportReceipt);
 	    }
 	 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		exportReceipt.receiptCondition=ReceiptCondition.SUBITTED;
-		receiptInfo.modify(exportReceipt);
-		return ResultMessage.SUCCESS;
+		exportReceipt.receiptState=ReceiptState.APPROVALING;
+		return receiptInfo.modify(exportReceipt);
 	}
 
 	public String getAdjustID() throws RemoteException {

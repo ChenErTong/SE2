@@ -19,8 +19,8 @@ public class mainForUITest {
 			e.printStackTrace();
 		}
 	
-Frame_Login loginFrame = new Frame_Login(id);
-	loginFrame.setVisible(true);
+//Frame_Login loginFrame = new Frame_Login(id);
+//	loginFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
@@ -38,8 +38,8 @@ Frame_Login loginFrame = new Frame_Login(id);
 //		Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
 
 
-//	Frame_Admin adminFrame = new Frame_Admin(id);
-//adminFrame.setVisible(true);
+	Frame_Admin adminFrame = new Frame_Admin(id);
+adminFrame.setVisible(true);
 
 
 
