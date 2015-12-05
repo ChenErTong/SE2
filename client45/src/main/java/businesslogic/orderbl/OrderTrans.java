@@ -22,7 +22,7 @@ public class OrderTrans {
 	 */
 	public static OrderPO convertVOtoPO(OrderVO vo) {
 		ArrayList<CommodityPO> pos = convertCommodityVOstoPOs(vo.commodities);
-		return new OrderPO(vo.orderIdString, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
+		return new OrderPO(vo.ID, ReceiptType.ORDER, vo.senderName, vo.senderAddress, vo.senderTel,
 				vo.senderCo, vo.recipientName, vo.recipientAddress, vo.recipientTel, vo.recipientCo,
 				pos, vo.midAddres, vo.sendTime, vo.recipientTime, vo.money,vo.packType,vo.express);
 	}
