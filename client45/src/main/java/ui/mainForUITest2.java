@@ -26,7 +26,7 @@ public class mainForUITest2 {
 	//new Frame_Courier(userID);
 
 		
-	new Frame_Branch(userID);
+//	new Frame_Branch(userID);
 			//new	Frame_Transfer(userID);
 			//	new Frame_Branch("0");
 		
@@ -39,10 +39,10 @@ public class mainForUITest2 {
 
 		
 
-//		new Frame_Inventory("0");
+		new Frame_Inventory("0");
 
 
-		MyJFrame frame = new Frame_Inventory(userID);
+//		MyJFrame frame = new Frame_Inventory(userID);
 //		frame.repaint();
 //		new Frame_Inventory(userID);
 
