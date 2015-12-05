@@ -76,7 +76,4 @@ public class Panel_Login extends MyJPanel{
 		this.add(backout);
 	}
 	
-	
-		
-	
 }

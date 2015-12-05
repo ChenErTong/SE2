@@ -58,11 +58,12 @@ public class RMIManage {
 				// 本地主机上的远程对象注册表Registry的实例，并指定端口为port
 				// 这一步必不可少（Java默认端口是1099），必不可缺的一步，缺少注册表创建，则无法绑定对象到远程注册表上
 				reg = LocateRegistry.createRegistry(RMIConfig.PORT);
-				String prefix=RMIConfig.PREFIX;
-				/*String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";*/
 				addr = InetAddress.getLocalHost();
 				hostAddr = addr.getHostAddress();
 				hostName = addr.getHostName();
+//				String prefix=RMIConfig.PREFIX;
+				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
+				System.out.println(prefix);
 				
 				//注册Data类
 				Naming.bind(prefix+AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
