@@ -39,4 +39,5 @@ public interface ReceiptInfo_Inventory {
 	
 	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException;
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException;
+	public boolean hasChecked() throws RemoteException;
 }

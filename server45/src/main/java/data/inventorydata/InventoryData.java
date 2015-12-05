@@ -30,31 +30,15 @@ public class InventoryData extends ManageData<InventoryPO> implements InventoryD
 	 */
 	@Override
 	public String getLotID() throws RemoteException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = sdf.format(new Date());
-		return "CHECK"+date;
+		return "CHECK"+date+super.getID();
 	}
-	
-	
-	/*/
-	@Override
-	public ArrayList<InventoryPO> getInventoryPOList(String date) throws RemoteException {
-		ArrayList< InventoryPO> inventories = new ArrayList<>();
-		for (int i = 0; i < poList.size(); i++) {
-			InventoryPO po = poList.get(i);
-			if (po.getDate().compareTo(date)<0) {
-				inventories.add(po);
-			}
-		}
-		return inventories;
-	}*/
 
 	@Override
 	public void initialFile() {
 		poList=new SerSaveAndLoad<InventoryPO>("data/"+NAME+".ser");
 		configReader=new XMLReader("config/"+NAME+".xml");
 	}
-
-	
 
 }

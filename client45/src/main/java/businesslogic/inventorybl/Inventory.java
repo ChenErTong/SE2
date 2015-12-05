@@ -64,10 +64,10 @@ public class Inventory {
 		return viewVO;
 	}
 	
-	//重写
 	public InventoryCheckVO checkRecord(String transferID,String enddate) throws RemoteException {
 		ArrayList<InventoryPositionVO> commosInInventory = this.getCommoditiesInInventory(transferID);
-		//TODO 重写getID方法 加参数
+		if(receiptInfo.hasChecked())
+			return null;
 		String lotNum = inventoryData.getLotID();
 		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum,transferID);
 		return checkVO;
