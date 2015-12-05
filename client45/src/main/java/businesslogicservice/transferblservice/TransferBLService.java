@@ -45,7 +45,7 @@ public interface TransferBLService extends BLService {
 	 * @param id
 	 * @param date
 	 */
-	public TransferOrderVO planeTransfer(String facilityID, String departure,
+	public TransferOrderVO planeTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
 			String date, String id);
 
@@ -66,7 +66,7 @@ public interface TransferBLService extends BLService {
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public TransferOrderVO truckTransfer(String facilityID, String departure,
+	public TransferOrderVO truckTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
 			String date, String id);
 
@@ -89,7 +89,7 @@ public interface TransferBLService extends BLService {
 	 * @param date
 	 * @param id
 	 */
-	public TransferOrderVO trainTransfer(String facilityID, String departure,
+	public TransferOrderVO trainTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
 			String date, String id);
 

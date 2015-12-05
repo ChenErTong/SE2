@@ -34,10 +34,10 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO planeTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.planeTransfer(facilityID, departure, destination, courierName, orders, date, id);
+			return TransferBL.planeTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -45,10 +45,10 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO truckTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.truckTransfer(facilityID, departure, destination, courierName, orders, date, id);
+			return TransferBL.truckTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -56,10 +56,10 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO trainTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) {
 		try {
-			return TransferBL.trainTransfer(facilityID, departure, destination, courierName, orders, date, id);
+			return TransferBL.trainTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

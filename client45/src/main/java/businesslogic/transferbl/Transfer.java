@@ -4,7 +4,11 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import javax.naming.ldap.Rdn;
 
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
@@ -28,7 +32,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  */
 public class Transfer {
 	private OrderInfo_Branch_Transfer orderInfo;
-	private ReceiptInfo_Branch_Transfer receiptInfo;
+	private ReceiptInfo_Transfer receiptInfo;
 	public Transfer() {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
@@ -56,9 +60,12 @@ public class Transfer {
 		return orderInfo.getAllCommodities();
 	}
 
-	public TransferOrderVO planeTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO planeTransfer(String transferID,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) throws RemoteException {
-		String ID = receiptInfo.getID();
+		String ID = receiptInfo.getTransferDeliverID();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateInID = df.format(new Date());
+		ID=transferID+dateInID+ID;
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_PLANE, departure, destination,
 				courierName, orders);
 		vo.date = date;
@@ -69,9 +76,12 @@ public class Transfer {
 		return vo;
 	}
 
-	public TransferOrderVO truckTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO truckTransfer(String transferID,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) throws RemoteException {
-		String ID = receiptInfo.getID();
+		String ID = receiptInfo.getTransferDeliverID();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateInID = df.format(new Date());
+		ID=transferID+dateInID+ID;
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
 				courierName, orders);
 		vo.date = date;
@@ -82,9 +92,12 @@ public class Transfer {
 		return vo;
 	}
 
-	public TransferOrderVO trainTransfer(String facilityID, String departure, String destination, String courierName,
+	public TransferOrderVO trainTransfer(String transferID,String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders, String date, String id) throws RemoteException {
-		String ID = receiptInfo.getID();
+		String ID = receiptInfo.getTransferDeliverID();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateInID = df.format(new Date());
+		ID=transferID+dateInID+ID;
 		TransferOrderVO vo = new TransferOrderVO(ID,facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
 				courierName, orders);
 		vo.date = date;
@@ -106,6 +119,10 @@ public class Transfer {
 
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
 			CommodityState state, String orders) throws RemoteException {
+		String ID = receiptInfo.getTransferArrialID();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateInID = df.format(new Date());
+		ID=transferID+dateInID+ID;
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, orders);
 		//更改VO状态

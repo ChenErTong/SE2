@@ -3,8 +3,10 @@ package businesslogic.receiptbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branchbl.ReceiptInfo_Branch;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
+import businesslogic.transferbl.ReceiptInfo_Transfer;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
@@ -19,7 +21,7 @@ import vo.receiptvo.ReceiptVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:58
  */
-public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer {
+public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer,ReceiptInfo_Transfer,ReceiptInfo_Branch {
 	Receipt receipt;
 	ReceiptDataService receiptData;
 	public ReceiptInfo() {
@@ -108,5 +110,20 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row, frame, position);
 		this.add(importReceiptVO);
 		return importReceiptVO;
+	}
+
+	@Override
+	public String getTransferDeliverID() throws RemoteException {
+		return receiptData.getTransferDeliverID();
+	}
+
+	@Override
+	public String getTransferArrialID() throws RemoteException {
+		return receiptData.getTransferArrialID();
+	}
+
+	@Override
+	public String getBranchTruckID() throws RemoteException {
+		return receiptData.getBranchTruckID();
 	}
 }

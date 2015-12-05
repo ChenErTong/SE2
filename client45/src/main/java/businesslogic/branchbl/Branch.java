@@ -3,11 +3,12 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
-import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
@@ -29,7 +30,7 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  */
 public class Branch{
 	private OrderInfo_Branch_Transfer orderInfo;
-	private ReceiptInfo_Branch_Transfer receiptInfo;
+	private ReceiptInfo_Branch receiptInfo;
 	public Branch() {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
@@ -91,12 +92,7 @@ public class Branch{
 	public BranchArrivalListVO getBranchArrivalList(String departure,CommodityState orderState,
 			OrderVO order) throws RemoteException {
 		 CommodityState state = CommodityState.Complete;
-		 String transferListID=null;
-		 //TODO 
-//		 ArrayList<String> orderIDs = new ArrayList<>();
-//		 for (OrderVO orderVO : order) {
-//			orderIDs.add(orderVO.ID);
-//		}
+		 String transferListID=receiptInfo.getID();
 		 String orderID = order.ID;
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderID);
 		//更改VO状态
@@ -106,7 +102,6 @@ public class Branch{
 	}
 
 	public DeliveryListVO getDeliveryList(String orders, String courierName) throws RemoteException {
-		//TODO
 		String ID = receiptInfo.getID();
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
 		return vo;
@@ -123,7 +118,10 @@ public class Branch{
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, double money) throws RemoteException {
-		String ID = receiptInfo.getID();
+		String ID = receiptInfo.getBranchTruckID();
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateInID = df.format(new Date());
+		ID=branchID+dateInID+ID;
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID,facilityID, courierName,courierName, orders, money);
 		//更改VO状态 TODO
 		orderInfo.changeOrderState(orders, "货物已离开"+destination+"营业厅");
