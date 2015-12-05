@@ -1,9 +1,9 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
-import ui.GetDate;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import util.GetDate;
 
 public class LoadingInfo extends MyTranslucentPanel {
 	private static final long serialVersionUID = 1L;

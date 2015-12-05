@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
-import ui.GetDate;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -15,6 +14,7 @@ import ui.specialui.courier.Frame_Courier;
 import ui.specialui.courier.orderInput.CommodityInfoInput;
 import ui.specialui.courier.orderInput.ReceiverInfoInput;
 import ui.specialui.courier.orderInput.SenderInfoInput;
+import util.GetDate;
 import vo.CommodityVO;
 /**
  * 根据订单信息估计时间与报价

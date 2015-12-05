@@ -1,10 +1,10 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
-import ui.GetDate;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import util.GetDate;
 
 public class ArrivalCommodityInfo extends MyTranslucentPanel {
 	private static final long serialVersionUID = 1L;

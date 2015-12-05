@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import javax.swing.JComboBox;
 
-import ui.GetDate;
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
@@ -12,6 +11,7 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import util.GetDate;
 /**
  * 显示机构详细信息、增加机构、修改机构信息的Panel
  * @author zsq

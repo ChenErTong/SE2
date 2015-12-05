@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import businesslogic.recordbl.RecordController;
 import state.PayBillItem;
 import state.ReceiptType;
-import ui.GetDate;
+import util.GetDate;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;

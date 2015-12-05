@@ -1,10 +1,10 @@
 package ui.specialui.finance.SettlementManage;
 
-import ui.GetDate;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import util.GetDate;
 
 /**
  * 添加新的收款单Panel

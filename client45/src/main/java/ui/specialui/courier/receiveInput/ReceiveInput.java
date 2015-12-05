@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import ui.GetDate;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -12,6 +11,7 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.courier.Frame_Courier;
+import util.GetDate;
 import vo.CommodityVO;
 import vo.OrderVO;
 import vo.accountvo.AccountVO;

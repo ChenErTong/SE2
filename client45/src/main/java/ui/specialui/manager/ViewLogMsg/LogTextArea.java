@@ -12,7 +12,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-import ui.GetDate;
+import util.GetDate;
 /**
  * 负责显示记录日志详细信息的文本框区域
  * @author zsq

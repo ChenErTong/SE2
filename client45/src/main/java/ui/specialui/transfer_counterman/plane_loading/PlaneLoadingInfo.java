@@ -1,9 +1,9 @@
 package ui.specialui.transfer_counterman.plane_loading;
 
-import ui.GetDate;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import util.GetDate;
 
 public class PlaneLoadingInfo extends MyTranslucentPanel {
 	private static final long serialVersionUID = 1L;

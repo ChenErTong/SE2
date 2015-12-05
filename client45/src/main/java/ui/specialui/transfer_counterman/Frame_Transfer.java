@@ -183,8 +183,7 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		//TODO
-		TransferOrderVO transferOrder = transferController.truckTransfer(loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
+		TransferOrderVO transferOrder = transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
 		transferController.save(transferOrder);
 		transferController.submit(transferOrder);
 		return true;
@@ -212,8 +211,7 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		//TODO
-		TransferOrderVO transferOrder = transferController.planeTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+		TransferOrderVO transferOrder = transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 		transferController.save(transferOrder);
 		transferController.submit(transferOrder);
 		return true;
@@ -241,8 +239,7 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		// TODO
-		TransferOrderVO transferOrder = transferController.trainTransfer(loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+		TransferOrderVO transferOrder = transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 		transferController.save(transferOrder);
 		transferController.submit(transferOrder);
 		return true;
