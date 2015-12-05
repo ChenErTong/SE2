@@ -83,6 +83,7 @@ public class OrderInput extends MyJPanel {
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
 		for(int i = 0; i < commodities.length; ++i){
 			commodities[i] = commodityList.get(i);
+			commodities[i].setOrderID(id);
 		}
 		
 		double cost = controller.getCost(commodities, senderInfo[2],
