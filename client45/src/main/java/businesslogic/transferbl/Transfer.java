@@ -8,11 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.naming.ldap.Rdn;
-
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
-import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
