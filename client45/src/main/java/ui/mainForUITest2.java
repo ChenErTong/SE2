@@ -26,19 +26,16 @@ public class mainForUITest2 {
 	//new Frame_Courier(userID);
 
 		
-<<<<<<< HEAD
 	new Frame_Branch(userID);
 			//new	Frame_Transfer(userID);
 			//	new Frame_Branch("0");
 		
 //	new	Frame_Transfer(userID);
-=======
 //	new Frame_Branch(userID);
 //			new	Frame_Transfer(userID);
 			//	new Frame_Branch("0");
 		
 //		new	Frame_Transfer(userID);
->>>>>>> origin/master2
 
 		
 
