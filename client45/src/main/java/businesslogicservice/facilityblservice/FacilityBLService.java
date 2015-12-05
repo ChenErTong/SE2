@@ -51,5 +51,5 @@ public interface FacilityBLService extends BLService{
 	 */
 	public FacilityVO findFacility(String ID);
 	public ArrayList<FacilityVO> findFacility ();
-	
+	public String getID(String branchID);
 }

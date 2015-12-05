@@ -72,4 +72,14 @@ public class FacilityController implements FacilityBLService {
 		return null;
 	}
 
+	@Override
+	public String getID(String branchID) {
+		try {
+			return facilityBL.getID(branchID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

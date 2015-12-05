@@ -48,4 +48,5 @@ public interface DriverBLService  extends BLService{
 	 */
 	public DriverVO findDriver(String ID);
 	public ArrayList<DriverVO> findDriver ();
+	public String getID(String branchID);
 }

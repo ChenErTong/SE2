@@ -11,6 +11,7 @@ import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
+import util.Util;
 import vo.FacilityVO;
 /**
  * 
@@ -65,6 +66,13 @@ public class Facility {
 
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		return facilityData.delete(facility.facilityIdString);
+	}
+	
+	public String getID(String branchID) throws RemoteException{
+		String[] branchMessage = Util.splitBranchID(branchID);
+		String cityCode = branchMessage[0];
+		String branchNumber = branchMessage[1];
+		return cityCode+branchNumber+facilityData.getID();
 	}
 
 }

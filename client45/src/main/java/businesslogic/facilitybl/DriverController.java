@@ -71,6 +71,16 @@ public class DriverController implements DriverBLService{
 		}
 		return null;
 	}
+
+	@Override
+	public String getID(String branchID) {
+		try {
+			return driverBL.getID(branchID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 	
