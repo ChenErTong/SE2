@@ -104,13 +104,10 @@ public class Inventory {
 	 */
     private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
     	TransferPO transferPO = transferInfo.getTransfer(transferID);
+    	if(transferPO==null){
+    		return null;
+    	}
     	return transferPO.getInventories().get(0);
-//		ArrayList<InventoryPO> inventorys = inventoryData.find();
-//		for (InventoryPO inventoryPO : inventorys) {
-//			if(inventoryPO.getTransferID().equals(transferID))
-//				return inventoryPO;
-//		}
-//		return null;
 	}
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
 		importReceipt.receiptState=ReceiptState.DRAFT;
@@ -208,6 +205,9 @@ public class Inventory {
 	}
 	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException{
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		if(inventory==null){
+			return new ArrayList<>();
+		}
 		CommodityPO[][][][] commos = inventory.getCommos();
 		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
 		int inventoryArea = commos.length;

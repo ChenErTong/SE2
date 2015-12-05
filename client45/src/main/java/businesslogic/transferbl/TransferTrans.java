@@ -32,7 +32,7 @@ public class TransferTrans {
 		if (po == null) {
 			return null;
 		}
-		String id = po.getID();
+		String id = po.getOrganizationID();
 		String date = po.getDate();
 		String address = po.getAddress();
 		ArrayList<AccountVO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
