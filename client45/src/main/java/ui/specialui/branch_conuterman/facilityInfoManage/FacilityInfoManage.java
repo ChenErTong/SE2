@@ -55,7 +55,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.initButton(frame);
 		id = null;
 		
-		facilityInfo = new FacilityInfo();
+		facilityInfo = new FacilityInfo(frame);
 		this.add(facilityInfo);
 		
 		commonButton = new MyJButton(580, 600, 120, 30, "添加车辆", 20);
@@ -72,7 +72,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "车辆信息管理", 30, true));
 		this.initButton(frame);
 		
-		facilityInfo = new FacilityInfo();
+		facilityInfo = new FacilityInfo(frame);
 		this.add(facilityInfo);
 		
 		this.add(new MyJLabel(415, 110, 100, 40, "车辆代号", 20, true));
@@ -93,7 +93,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "车辆信息管理", 30, true));
 		this.initButton(frame);
 		
-		facilityInfo = new FacilityInfo();
+		facilityInfo = new FacilityInfo(frame);
 		facilityInfo.setUneditable();
 		this.add(facilityInfo);
 		
@@ -110,7 +110,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(new MyJLabel(550, 30, 210, 45, "车辆信息管理", 30, true));
 		this.initButton(frame);
 		
-		facilityInfo = new FacilityInfo();
+		facilityInfo = new FacilityInfo(frame);
 		facilityInfo.setUneditable();
 		this.add(facilityInfo);
 		

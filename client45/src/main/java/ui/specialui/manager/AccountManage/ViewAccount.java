@@ -54,7 +54,7 @@ public class ViewAccount extends MyTranslucentPanel{
 		fields[6] = new MyJTextField(130,170,120,30);
 		this.add(fields[6]);
 		ArrayList<String> id = controller.getAllBranchNumbers();
-		String[] branchIDs = {};
+		String[] branchIDs = new String[100];
 		for(int i=0;i<id.size();i++){
 			branchIDs[i] = id.get(i);
 		}

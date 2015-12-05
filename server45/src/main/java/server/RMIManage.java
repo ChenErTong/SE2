@@ -61,8 +61,8 @@ public class RMIManage {
 				addr = InetAddress.getLocalHost();
 				hostAddr = addr.getHostAddress();
 				hostName = addr.getHostName();
-//				String prefix=RMIConfig.PREFIX;
-				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
+				String prefix=RMIConfig.PREFIX;
+//				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
 				System.out.println(prefix);
 				
 				//注册Data类

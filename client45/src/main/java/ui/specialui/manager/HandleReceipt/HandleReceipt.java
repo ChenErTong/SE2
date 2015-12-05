@@ -65,7 +65,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	private MyJButton ExportReceipt;
 	private MyJButton search;
 	
-	public HandleReceipt() {
+	public HandleReceipt() throws RemoteException {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent();
@@ -77,7 +77,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		search  = searchPanel.getSearch();
 	}
 	
-	private void initComponent() {
+	private void initComponent() throws RemoteException {
 		this.add(new MyJLabel(550, 20, 210, 90, "公司运营单据处理", 24, true));
 		searchPanel = new SearchReceipt(this);
 		this.add(searchPanel);
@@ -88,6 +88,8 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		this.initButton();	
 		
 		index = -1;
+		
+		this.showAll();
 	}
 	
 	private void initButton(){
@@ -126,6 +128,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		ExportReceipt.addActionListener(this);
 		this.add(ExportReceipt);
 	}
+	
 	
 	public void actionPerformed(ActionEvent events){
 		if(events.getActionCommand().equals("DontPassThisReceipt")){
@@ -609,6 +612,13 @@ private void getApprovalData(int index) throws RemoteException{
 			}
 		}
 	}
+	
+	private void showAll() throws RemoteException{
+		this.getApprovalData(0);
+		this.getPassData(0);
+		this.getFailureData(0);
+	}
+	
 	private void writeto(String a,String file){
 		try {
 			File filename=new File(file);

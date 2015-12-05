@@ -105,7 +105,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			ArrayList<AccountVO> accountVO = controller.show();
 			
 			for(int i = 0; i < accountVO.size(); i++){
-				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
+				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
 						accountVO.get(i).Salary+"",accountVO.get(i).Phone};
 				tableModel.addRow(rowData);
 				accountPool.add(accountVO.get(i));
@@ -133,15 +133,15 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			String data = userInfo.getData();
 			if(data!=null){
 				switch(Integer.parseInt(data)){
-					case 1 : accountVO = controller.show("总经理");
-					case 2 :accountVO = controller.show("快递员");
-					case 3 : accountVO = controller.show("中转库存人员");
-					case 4: accountVO = controller.show("中转中心业务员");
-					case 5 :accountVO = controller.show("营业厅业务员");
-					case 6:accountVO = controller.show("财务人员");
-					case 7:accountVO = controller.show("管理员");
-					case 8:accountVO = controller.show("司机");
-					case 9:accountVO = controller.show("快递员");
+					case 1 : accountVO = controller.show("总经理"); break;
+					case 2 :accountVO = controller.show("快递员"); break;
+					case 3 : accountVO = controller.show("中转库存人员"); break;
+					case 4: accountVO = controller.show("中转中心业务员"); break;
+					case 5 :accountVO = controller.show("营业厅业务员"); break;
+					case 6:accountVO = controller.show("财务人员"); break;
+					case 7:accountVO = controller.show("管理员"); break;
+					case 8:accountVO = controller.show("司机"); break;
+					case 9:accountVO = controller.show("快递员"); break;
 					default : accountVO = controller.show();
 				}
 			

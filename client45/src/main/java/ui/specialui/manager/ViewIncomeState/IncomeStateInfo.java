@@ -21,7 +21,6 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
-import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -31,15 +30,14 @@ import ui.specialui.manager.FrameManager;
 import vo.BussinessConditionVO;
 
 public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListener{
-	
-	private MyJComboBox yearBox;
-	private MyJComboBox monthBox;
-	private MyJComboBox dayBox;
+
 	private MyJButton check;
 	private MyJTable	table;
 	private MyJTextField[] input;
 	private DateLabel[] dateLabel;
 	private JScrollPane jsp;
+	private MyJButton ExportBusinessTable;
+
 	
 	public IncomeStateInfo(FrameManager frame_Manager) {
 		super(80, 100,1120,570+48);
@@ -66,6 +64,12 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		check.setActionCommand("ViewIncomState");
 		check.addActionListener(this);
 		this.add(check);
+		
+		ExportBusinessTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
+		ExportBusinessTable.setActionCommand("ExportIncomeTable");
+		ExportBusinessTable.addActionListener(this);
+		this.add(ExportBusinessTable);
+		ExportBusinessTable.setVisible(true);
 		
 		this.initTable();
 		this.addInput();
@@ -267,7 +271,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			if(rowCount==0){
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
 			}else{
-				String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
+				String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 				RecordBLService recordController = ControllerFactory.getRecordController();
 				BussinessConditionVO vo = recordController.bussinessCondition(endDate);
 				recordController.exportBussinessConditionToExcel(vo);
