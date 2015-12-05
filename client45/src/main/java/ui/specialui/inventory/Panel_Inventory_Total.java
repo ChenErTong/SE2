@@ -17,7 +17,7 @@ public class Panel_Inventory_Total extends MyJPanel{
 	}
 
 	private void initComponent(Frame_Inventory frame) {
-		MyButton InventoryCheck = new MyButton(200, 300, 300, 79, InventoryImage.getBUTTON_CHAKAN());
+		MyButton InventoryCheck = new MyButton(200, 300, 250, 66, InventoryImage.getBUTTON_CHAKAN());
 		InventoryCheck.setActionCommand("InventoryCheck");
 		InventoryCheck.addActionListener(frame);
 		this.add(InventoryCheck);
