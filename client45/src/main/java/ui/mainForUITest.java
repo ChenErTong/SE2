@@ -4,7 +4,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.specialui.admin.Frame_Admin;
+import ui.specialui.finance.Frame_Finance;
 
 public class mainForUITest {
 	static String id = "123";
@@ -14,7 +14,6 @@ public class mainForUITest {
 			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
 			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -31,13 +30,13 @@ public class mainForUITest {
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);
 		
-//	Frame_Finance financeFrame = new Frame_Finance(id);
-//	financeFrame.setVisible(true);
+	Frame_Finance financeFrame = new Frame_Finance(id);
+	financeFrame.setVisible(true);
 
 //		Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
 
-	Frame_Admin adminFrame = new Frame_Admin(id);
-	adminFrame.setVisible(true);
+//	Frame_Admin adminFrame = new Frame_Admin(id);
+//	adminFrame.setVisible(true);
 
 
 
