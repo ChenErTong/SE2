@@ -238,6 +238,9 @@ public class Inventory {
 	
 	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException{
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		if(inventory==null){
+			return new ArrayList<>();
+		}
 		CommodityPO[][][][] commos = inventory.getCommos();
 		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
 		int inventoryArea = commos.length;
