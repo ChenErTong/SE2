@@ -353,7 +353,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private boolean limitIdentity(String iden,String authority){
 		if(iden.equals("总经理")&&(!authority.equals("总经理权限"))){
 			return false;
-		}else if(iden.equals("管理员权限")&&(!authority.equals("管理员权限"))){
+		}else if(iden.equals("管理员")&&(!authority.equals("管理员权限"))){
 			return false;
 		}else if(!iden.equals("总经理")&&(authority.equals("总经理权限"))){
 			return false;

@@ -78,7 +78,7 @@ public class ViewPayBill extends MyTranslucentPanel{
 		for(int i=0;i<4;i++){
 			fields[i].setText((String) data[i]);
 		}
-		items.setSelectedItem(data[4]);
+		items.setSelectedItem((String)data[4]);
 		fields[4] .setText((String) data[5]);
 		
 	}
