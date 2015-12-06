@@ -1,9 +1,12 @@
 package ui.specialui.admin;
 
 import java.awt.Color;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -15,6 +18,7 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
+import ui.specialui.finance.ViewLogMsg.LogTextArea;
 
 /**
  * 用户管理界面查找用户和用户列表的显示Panel
@@ -29,7 +33,8 @@ public class UserInfo extends MyTranslucentPanel{
 	 private MyJComboBox userList;
 	 private MyJButton search;
 	 private MyJTable table;
-	
+	 private JScrollPane jsp;
+	 
 	 public UserInfo(Panel_Admin_Total handle) {
 		super(50, 100, 620, 560);
 		this.initComponent(handle);
@@ -79,7 +84,7 @@ public class UserInfo extends MyTranslucentPanel{
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);
 		
-		JScrollPane jsp=new JScrollPane(table);
+		jsp=new JScrollPane(table);
 		JTableHeader head = table.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 		head.setFont(new MyFont(14));
@@ -106,5 +111,23 @@ public class UserInfo extends MyTranslucentPanel{
 	
 	public MyJTable getTable(){
 		return table;
+	}
+	
+	private class WheelListener implements MouseWheelListener {
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			JScrollBar onlineFriendsBar =  jsp.getHorizontalScrollBar();
+			if (!((onlineFriendsBar.getValue() == onlineFriendsBar.getMinimum() && e.getWheelRotation() <= 0) || (onlineFriendsBar.getValue() == onlineFriendsBar.getMaximum() && e.getWheelRotation() >= 0))) {
+				if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 >= onlineFriendsBar.getMaximum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMaximum());
+				} else if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 <= onlineFriendsBar.getMinimum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMinimum());
+				} else {
+					onlineFriendsBar.setValue(onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement()
+												* e.getUnitsToScroll() * 10);
+				}
+			}
+		}
 	}
 }

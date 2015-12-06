@@ -1,8 +1,11 @@
 package ui.specialui.manager.HandleReceipt;
 
 import java.awt.Color;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -23,6 +26,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 	private MyJButton selectButton;
 	private MyJComboBox receiptTypeList;
 	private MyJComboBox receiptStateList;
+	private JScrollPane jsp;
 	private static final long serialVersionUID = 1L;
 	
 	public SearchReceipt(HandleReceipt handle) {
@@ -81,7 +85,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 		table.getColumnModel().getColumn(2).setMaxWidth(180);
 		table.getColumnModel().getColumn(2).setMinWidth(180);
 		
-		JScrollPane jsp = new JScrollPane(table);
+		jsp = new JScrollPane(table);
 		jsp.setBounds(10, 50, 630, 485);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
@@ -103,5 +107,22 @@ public class SearchReceipt extends MyTranslucentPanel{
 		return selectButton;
 	}
 
+	private class WheelListener implements MouseWheelListener {
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			JScrollBar onlineFriendsBar =  jsp.getHorizontalScrollBar();
+			if (!((onlineFriendsBar.getValue() == onlineFriendsBar.getMinimum() && e.getWheelRotation() <= 0) || (onlineFriendsBar.getValue() == onlineFriendsBar.getMaximum() && e.getWheelRotation() >= 0))) {
+				if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 >= onlineFriendsBar.getMaximum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMaximum());
+				} else if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 <= onlineFriendsBar.getMinimum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMinimum());
+				} else {
+					onlineFriendsBar.setValue(onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement()
+												* e.getUnitsToScroll() * 10);
+				}
+			}
+		}
+	}
 }
 

@@ -3,12 +3,15 @@ package ui.specialui.manager.ViewBusinessPerformance;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -25,7 +28,6 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
-
 import ui.specialui.manager.FrameManager;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
@@ -47,6 +49,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	private MyJButton ExportBusinessTable;
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;
+	private JScrollPane jsp;
 	public BusinessPerformanceInfo(FrameManager frame_Manager) {
 		super(80, 100,1120,570+48);
 		this.initComponent(frame_Manager);
@@ -159,7 +162,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				tcr.setHorizontalAlignment(JLabel.CENTER);
 				table.setDefaultRenderer(Object.class, tcr);
 											  	
-				JScrollPane jsp=new JScrollPane(table);
+				jsp=new JScrollPane(table);
 				JTableHeader head = table.getTableHeader();
 				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 				head.setFont(new MyFont(14));
@@ -319,6 +322,24 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 				recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
 				new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
+			}
+		}
+	}
+	
+	private class WheelListener implements MouseWheelListener {
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			JScrollBar onlineFriendsBar =  jsp.getHorizontalScrollBar();
+			if (!((onlineFriendsBar.getValue() == onlineFriendsBar.getMinimum() && e.getWheelRotation() <= 0) || (onlineFriendsBar.getValue() == onlineFriendsBar.getMaximum() && e.getWheelRotation() >= 0))) {
+				if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 >= onlineFriendsBar.getMaximum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMaximum());
+				} else if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 <= onlineFriendsBar.getMinimum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMinimum());
+				} else {
+					onlineFriendsBar.setValue(onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement()
+												* e.getUnitsToScroll() * 10);
+				}
 			}
 		}
 	}

@@ -1,9 +1,12 @@
 package ui.specialui.sender;
 
 import java.awt.Color;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -19,6 +22,7 @@ import ui.myui.MyTranslucentPanel;
  */
 	public class CommodifyInfo extends MyTranslucentPanel{
 		private MyJTable table;
+		private JScrollPane jsp;
 		public CommodifyInfo() {
 			super(10, 220, 620, 490);
 			this.initComponent();
@@ -38,7 +42,7 @@ import ui.myui.MyTranslucentPanel;
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);
 									  	
-		JScrollPane jsp=new JScrollPane(table);
+		jsp=new JScrollPane(table);
 		JTableHeader head = table.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 		head.setFont(new MyFont(14));
@@ -55,6 +59,23 @@ import ui.myui.MyTranslucentPanel;
 	
 	public MyJTable getTable(){
 		return table;
+	}
+	private class WheelListener implements MouseWheelListener {
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			JScrollBar onlineFriendsBar =  jsp.getHorizontalScrollBar();
+			if (!((onlineFriendsBar.getValue() == onlineFriendsBar.getMinimum() && e.getWheelRotation() <= 0) || (onlineFriendsBar.getValue() == onlineFriendsBar.getMaximum() && e.getWheelRotation() >= 0))) {
+				if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 >= onlineFriendsBar.getMaximum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMaximum());
+				} else if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 <= onlineFriendsBar.getMinimum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMinimum());
+				} else {
+					onlineFriendsBar.setValue(onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement()
+												* e.getUnitsToScroll() * 10);
+				}
+			}
+		}
 	}
 	private static final long serialVersionUID = 1L;
 

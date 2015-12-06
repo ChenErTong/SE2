@@ -63,6 +63,7 @@ public class Panel_Login extends MyJPanel{
 		    public void keyPressed(KeyEvent event){ 
 		    	
 		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
+		    		System.out.println("111");
 		    		login.doClick(); 
 		    	} 
 	    	} 
@@ -76,4 +77,10 @@ public class Panel_Login extends MyJPanel{
 		this.add(backout);
 	}
 	
+	public String[] getData(){
+		String[] data = new String[2];
+		data[0] = userIdField.getText();
+		data[1] = new String(passwordField.getPassword());
+		return data;
+	}
 }

@@ -3,12 +3,15 @@ package ui.specialui.finance.ViewBusinessPerformance;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -47,6 +50,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;
 
+	private JScrollPane jsp;
 	
 	public BusinessPerformanceInfo(Frame_Finance frame_Finance) {
 		super(80, 100,1120,570+48);
@@ -160,7 +164,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				tcr.setHorizontalAlignment(JLabel.CENTER);
 				table.setDefaultRenderer(Object.class, tcr);
 											  	
-				JScrollPane jsp=new JScrollPane(table);
+				jsp=new JScrollPane(table);
 				JTableHeader head = table.getTableHeader();
 				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 				head.setFont(new MyFont(14));
@@ -320,5 +324,25 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			}
 		}
 	}
+	
+	private class WheelListener implements MouseWheelListener {
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			JScrollBar onlineFriendsBar =  jsp.getHorizontalScrollBar();
+			if (!((onlineFriendsBar.getValue() == onlineFriendsBar.getMinimum() && e.getWheelRotation() <= 0) || (onlineFriendsBar.getValue() == onlineFriendsBar.getMaximum() && e.getWheelRotation() >= 0))) {
+				if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 >= onlineFriendsBar.getMaximum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMaximum());
+				} else if (onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement() * e.getUnitsToScroll() * 2 <= onlineFriendsBar.getMinimum()) {
+					onlineFriendsBar.setValue(onlineFriendsBar.getMinimum());
+				} else {
+					onlineFriendsBar.setValue(onlineFriendsBar.getValue() + onlineFriendsBar.getUnitIncrement()
+												* e.getUnitsToScroll() * 10);
+				}
+			}
+		}
+	}
+	
+
 }
 

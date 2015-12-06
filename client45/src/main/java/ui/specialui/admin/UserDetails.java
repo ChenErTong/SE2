@@ -161,7 +161,8 @@ public class UserDetails extends MyTranslucentPanel{
 	public String[] getData() {
 		String[] data = new String[9];
 		data[0] = (String) branchID.getSelectedItem();
-		data[1] = String.valueOf(passwordField.getPassword());
+		data[1] = new String(passwordField.getPassword());
+		System.out.println(data[1]);
 		for (int i = 0; i < 2; i++) {			
 			if((data[2+i] = fields[i].getText()).equals(null)) return null;
 		}
@@ -170,8 +171,8 @@ public class UserDetails extends MyTranslucentPanel{
 		data[6] = (String) provincesBox.getSelectedItem();
 		data[7] = (String) citiesBox.getSelectedItem();
 		data[8] = address.getText();
-		for(int i = 4;i<8;i++){
-			if(data[i].equals(null)) return null;
+		for(int i = 4;i<9;i++){
+			if(data[i].equals("")) return null;
 		}
 		return data;
 	}

@@ -157,6 +157,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			String[] data = userDetails.getData();
 			if(userDetails.getData()==null){
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
+			}else if(this.limitIdentity(data[4], data[5])){
+				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
 			}else{
 				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),data[5],data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
@@ -272,6 +274,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		String[] data = userDetails.getData();
 		if(userDetails.getData()==null){
 			new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
+		}else if(this.limitIdentity(data[4], data[5])){
+			new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
 		}else{
 			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),data[5],data[6]+data[7]+data[8])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
@@ -283,11 +287,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}
 		}
 	}
-/**
- * 判断修改/添加的人员身份
- * @param num
- * @return UserIdentity
- */
+	
+	/**
+	 * 判断修改/添加的人员身份
+	 * @param num
+	 * @return UserIdentity
+	 */
 	private UserIdentity identity(String num){
 		if(num.equals("总经理")){
 			return UserIdentity.GENERAL_MANAGER;
@@ -353,6 +358,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else if(!iden.equals("总经理")&&(authority.equals("总经理权限"))){
 			return false;
 		}else if(!iden.equals("管理员")&&(authority.equals("管理员权限"))){
+			return false;
+		}else if(!iden.equals("财务人员")&&(authority.equals("高级财务权限"))){
 			return false;
 		}
 		return true;
