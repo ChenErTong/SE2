@@ -20,7 +20,7 @@ import vo.accountvo.DriverVO;
  */
 public class Driver{
 	private DriverDataService DriverData;
-	
+	private BranchInfo_Facility branchInfo;
 	public Driver() {
 		try {
 			DriverData = (DriverDataService)Naming.lookup(RMIConfig.PREFIX+DriverDataService.NAME);
@@ -37,15 +37,27 @@ public class Driver{
 	}
 
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException{
+		ResultMessage message = branchInfo.addAccount(driver);
+		if(message==ResultMessage.FAIL){
+			return message;
+		}
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
 		return DriverData.add(driverPO);
 	}
 
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
+		ResultMessage message = branchInfo.deleteAccount(driver);
+		if(message==ResultMessage.FAIL){
+			return message;
+		}
 		return DriverData.delete(driver.ID);
 	}
 
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
+		ResultMessage message = branchInfo.modifyAccount(driver);
+		if(message==ResultMessage.FAIL){
+			return message;
+		}
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
 		return DriverData.modify(driverPO);
 	}

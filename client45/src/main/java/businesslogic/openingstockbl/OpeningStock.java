@@ -72,7 +72,7 @@ public class OpeningStock {
 
 	//可能用不到了
 	public ResultMessage add(ArrayList<TransferVO> transferVOs, ArrayList<BranchVO> branchVOs,
-			ArrayList<AccountVO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
+			ArrayList<AccountPO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
 			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
 		ArrayList<TransferPO> transfers = TransferTrans.convertVOstoPOs(transferVOs);
 		ArrayList<BranchPO> branchs = BranchTrans.convertVOstoPOs(branchVOs);

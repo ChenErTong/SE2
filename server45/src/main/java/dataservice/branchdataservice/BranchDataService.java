@@ -15,5 +15,5 @@ public interface BranchDataService extends ManageDataService<BranchPO> {
 	public static final String NAME = "BranchData";
 
 	public String getID(String cityCode) throws RemoteException;
-
+	public BranchPO find(String branchID) throws RemoteException;
 }

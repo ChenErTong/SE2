@@ -36,12 +36,12 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow,AccountInf
 	}
 
 	@Override
-	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException {
+	public ArrayList<AccountPO> getAccountByOrganizationID(String organizationID) throws RemoteException {
 		ArrayList<AccountPO> pos = accountData.find();
-		ArrayList<AccountVO> vos = new ArrayList<>();
+		ArrayList<AccountPO> vos = new ArrayList<>();
 		for (AccountPO accountPO : pos) {
 			if(accountPO.getOrganizationID().equals(organizationID)){
-				AccountVO vo = AccountTrans.convertPOToVO(accountPO);
+				AccountPO vo = AccountTrans.convertPOToVO(accountPO);
 				vos.add(vo);
 			}
 		}
