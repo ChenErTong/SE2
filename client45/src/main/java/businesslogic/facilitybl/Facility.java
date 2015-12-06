@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
@@ -20,8 +21,9 @@ import vo.FacilityVO;
  */
 public class Facility {
 	private FacilityDataService facilityData;
-
+	private BranchInfo_Facility branchInfo;
 	public Facility() {
+		branchInfo = new BranchInfo();
 		facilityData = getData();
 	}
 
@@ -44,7 +46,9 @@ public class Facility {
 
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		return facilityData.add(facilityPO);
+		if(branchInfo.addCar(facilityPO)==ResultMessage.SUCCESS)
+			return facilityData.add(facilityPO);
+		return ResultMessage.FAIL;
 	}
 
 	public FacilityVO findFacility(String ID) throws RemoteException {
