@@ -65,11 +65,17 @@ public class Facility {
 
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		return facilityData.modify(facilityPO);
+		if(branchInfo.modifyCar(facilityPO)==ResultMessage.SUCCESS){
+			return facilityData.modify(facilityPO);
+		}
+		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
-		return facilityData.delete(facility.facilityIdString);
+		if(branchInfo.deleteCar(facility.branchID, facility.facilityIdString)==ResultMessage.SUCCESS){
+			return facilityData.delete(facility.facilityIdString);
+		}
+		return ResultMessage.FAIL;
 	}
 	
 	public String getID(String branchID) throws RemoteException{

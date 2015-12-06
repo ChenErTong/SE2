@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.facilitydataservice.DriverDataService;
 import po.accountpo.DriverPO;
@@ -20,8 +21,9 @@ import vo.accountvo.DriverVO;
  */
 public class Driver{
 	private DriverDataService DriverData;
-	
+	private BranchInfo_Facility branchInfo;
 	public Driver() {
+		branchInfo = new BranchInfo();
 		try {
 			DriverData = (DriverDataService)Naming.lookup(RMIConfig.PREFIX+DriverDataService.NAME);
 		} catch (MalformedURLException e) {
@@ -38,16 +40,22 @@ public class Driver{
 
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException{
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
-		return DriverData.add(driverPO);
+		if(branchInfo.addAccount(driverPO)==ResultMessage.SUCCESS)
+			return DriverData.add(driverPO);
+		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
-		return DriverData.delete(driver.ID);
+		if(branchInfo.deleteAccount(driver.branchID, driver.ID)==ResultMessage.SUCCESS)
+			return DriverData.delete(driver.ID);
+		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
-		return DriverData.modify(driverPO);
+		if(branchInfo.modifyAccount(driverPO)==ResultMessage.SUCCESS)
+			return DriverData.modify(driverPO);
+		return ResultMessage.FAIL;
 	}
 
 	public ArrayList<DriverVO> findDriver() throws RemoteException {

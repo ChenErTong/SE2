@@ -14,8 +14,8 @@ import state.ResultMessage;
 public interface BranchInfo_Facility {
 	public ResultMessage addCar(FacilityPO driver) throws RemoteException;
 	public ResultMessage modifyCar(FacilityPO driver) throws RemoteException;
-	public ResultMessage deleteCar(FacilityPO driver) throws RemoteException;
+	public ResultMessage deleteCar(String branchID,String ID) throws RemoteException;
 	public ResultMessage addAccount(AccountPO account) throws RemoteException;
 	public ResultMessage modifyAccount(AccountPO account) throws RemoteException;
-	public ResultMessage deleteAccount(AccountPO account) throws RemoteException;
+	public ResultMessage deleteAccount(String branchID,String ID) throws RemoteException;
 }
