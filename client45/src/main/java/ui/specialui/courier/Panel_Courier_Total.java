@@ -1,7 +1,10 @@
 package ui.specialui.courier;
 
-import ui.myui.MyJButton;
+import ui.image.CourierImage;
+import ui.myui.MyButton;
 import ui.myui.MyJPanel;
+import ui.myui.MyLogo;
+import ui.myui.MyTitle;
 /**
  * 快递员主界面
  * @author czw
@@ -14,20 +17,23 @@ public class Panel_Courier_Total extends MyJPanel{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
+		MyLogo.setLogo(this);
+		MyTitle.setTitle(this, "快递员界面", 510, 120, 251, 58);
+		
 		this.initComponent(frame);
 	}
 	private void initComponent(Frame_Courier frame){
-		MyJButton OrderInput = new MyJButton(200, 300, 150, 40, "订单输入", 15);
+		MyButton OrderInput = new MyButton(511, 360, 257, 46, CourierImage.getBUTTON_DINGDAN());
 		OrderInput.setActionCommand("OrderInput");
 		OrderInput.addActionListener(frame);
 		this.add(OrderInput);
 		
-		MyJButton ReceiveInput = new MyJButton(200, 350, 150, 40, "收件信息输入", 15);
+		MyButton ReceiveInput = new MyButton(511, 460, 257, 46, CourierImage.getBUTTON_SHOUJIAN());
 		ReceiveInput.setActionCommand("ReceiveInput");
 		ReceiveInput.addActionListener(frame);
 		this.add(ReceiveInput);
 		
-		MyJButton TimeCostManager = new MyJButton(200, 400, 150, 40, "报价和时间管理", 15);
+		MyButton TimeCostManager = new MyButton(511, 560, 257, 46, CourierImage.getBUTTON_BAOJIASHIJIAN());
 		TimeCostManager.setActionCommand("TimeCostManager");
 		TimeCostManager.addActionListener(frame);
 		this.add(TimeCostManager);

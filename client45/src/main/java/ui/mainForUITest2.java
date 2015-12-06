@@ -1,13 +1,11 @@
 package ui;
 
-import java.awt.Image;
-import java.awt.Toolkit;
-
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.specialui.inventory.Frame_Inventory;
+import ui.specialui.courier.Frame_Courier;
+import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class mainForUITest2 {
 	
@@ -22,7 +20,7 @@ public class mainForUITest2 {
 //		new Frame_Courier("0");
 
 		String userID = "010000001";
-	//new Frame_Courier(userID);
+//	new Frame_Courier(userID);
 
 
 
@@ -35,7 +33,7 @@ public class mainForUITest2 {
 			//new	Frame_Transfer(userID);
 			//	new Frame_Branch("0");
 		
-//	new	Frame_Transfer(userID);
+	new	Frame_Transfer(userID);
 //	new Frame_Branch(userID);
 //			new	Frame_Transfer(userID);
 			//	new Frame_Branch("0");
@@ -45,13 +43,13 @@ public class mainForUITest2 {
 		
 
 
-		Frame_Inventory  is= 	new Frame_Inventory(userID);
-		is.setVisible(true);
+//		Frame_Inventory  is= 	new Frame_Inventory(userID);
+//		is.setVisible(true);
 
 
-		Toolkit tk=Toolkit.getDefaultToolkit();
-		Image image=tk.createImage("image/logo.png"); 
-		is.setIconImage(image);
+//		Toolkit tk=Toolkit.getDefaultToolkit();
+//		Image image=tk.createImage("image/logo.png"); 
+//		is.setIconImage(image);
 
 	//	MyJFrame frame = new Frame_Inventory(userID);
 //		MyJFrame frame = new Frame_Inventory(userID);
