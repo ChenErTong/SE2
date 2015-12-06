@@ -12,7 +12,7 @@ import state.ResultMessage;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:45:49
  */
-public interface OpeningStockDataService extends DataService<OpeningStockPO>{
+public interface OpeningStockDataService extends DataService{
 	/** 接口的名称，RMI绑定时候的名称 */
 	public static final String NAME = "OpeningStockData";
 	/**增加一条po数据**/

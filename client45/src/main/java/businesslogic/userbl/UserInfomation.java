@@ -13,7 +13,7 @@ public class UserInfomation {
 	private UserPO currentUser;
 	private static UserInfomation currentUserInfomation;
 	private UserInfomation(){
-		SerSaveAndLoad<UserPO> currentUserFile = new SerSaveAndLoad<>(User.currentUserFileName);
+		SerSaveAndLoad<UserPO> currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
 		this.currentUser=currentUserFile.get(0);
 	}
 	
@@ -30,5 +30,9 @@ public class UserInfomation {
 	
 	public String getAuthority(){
 		return this.currentUser.getAuthority();
+	}
+	
+	public String getUserName(){
+		return this.currentUser.getUserName();
 	}
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import po.PersistentObject;
 import state.ResultMessage;
 
-public interface ManageDataService<PO extends PersistentObject> extends DataService<PO>{
+public interface ManageDataService<PO extends PersistentObject> extends DataService{
 	public String getID() throws RemoteException;
 	public ArrayList<PO> find()throws RemoteException;
 	public ResultMessage add(PO po)throws RemoteException;

@@ -1,10 +1,8 @@
-package log;
+package po;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import businesslogic.userbl.UserInfomation;
 
 /** 
 * 记录日志的信息类 
@@ -29,10 +27,6 @@ public class LogMessage implements Serializable{
 	 */
 	public String message;
 	
-	
-	public LogMessage(String message) {
-		this(UserInfomation.getInstance().getUserName(), message);
-	}
 	
 	public LogMessage(String userName, String message) {
 		this.userName = userName;

@@ -28,7 +28,7 @@ public class User {
 		currentUserFileName="user/userdata.ser";
 	}
 	public User() {
-		currentUserFile = new SerSaveAndLoad<>(User.currentUserFileName);
+		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
 		try {
 			userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 		} catch (MalformedURLException e) {
