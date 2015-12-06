@@ -241,6 +241,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	 * 添加新策略的决策表
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private int decideTable(String[] data){
 		
 		return 0;

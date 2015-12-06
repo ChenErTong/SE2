@@ -34,6 +34,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Search")){

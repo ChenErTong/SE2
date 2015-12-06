@@ -126,6 +126,7 @@ private void initComponent(BankAccountManage manage) {
 		return table;
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

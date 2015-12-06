@@ -5,12 +5,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.recordbl.RecordController;
 import ui.myui.MyJButton;

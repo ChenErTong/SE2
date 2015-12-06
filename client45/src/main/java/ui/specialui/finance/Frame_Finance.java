@@ -43,6 +43,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	private MyJTable output;
 
+	@SuppressWarnings("unused")
 	private Frame_Login login;
 	private Panel_Finance_Total totalPanel;
 	private MyJPanel subPanel ;

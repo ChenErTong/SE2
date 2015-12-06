@@ -14,7 +14,6 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.specialui.transfer_counterman.Frame_Transfer;
-import ui.specialui.transfer_counterman.train_loading.TrainCommodity;
 import vo.CommodityVO;
 import vo.OrderVO;
 

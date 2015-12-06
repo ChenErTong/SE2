@@ -125,6 +125,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	/**
 	 * 显示所有的机构
 	 */
+	@SuppressWarnings("static-access")
 	public void showAll(){
 		table = (MyJTable) organizationInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -299,6 +300,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 
 	}
 
+	@SuppressWarnings("unused")
 	private void modifyOrganization() {
 		controller = ControllerFactory.getOrganizationController();
 		table = organizationInfo.getTable();
@@ -368,6 +370,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private void initTable(){
 		//库存表格
 		String[] headers = {"库存/转运信息"};

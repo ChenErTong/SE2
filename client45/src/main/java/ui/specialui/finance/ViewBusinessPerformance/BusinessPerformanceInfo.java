@@ -22,7 +22,6 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
-import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -327,6 +326,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 
 public class AnnocementFrame extends JDialog implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static JButton button_Close;
 	AnnocementPanel annocementPanel;
 	public AnnocementFrame(String name){

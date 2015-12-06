@@ -21,6 +21,7 @@ import util.GetDate;
 public class LogTextArea extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
 	private String title;
 	/** 真正的TextArea在这 */
 	private JTextArea textArea;
@@ -67,6 +68,7 @@ public class LogTextArea extends JScrollPane{
 	/**
 	 * 将logmessage显示 TODO 连接bl层
 	 */
+	@SuppressWarnings("rawtypes")
 	public void append(ArrayList logs) {
 		
 	}

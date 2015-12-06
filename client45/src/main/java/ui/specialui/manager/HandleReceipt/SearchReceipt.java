@@ -107,6 +107,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 		return selectButton;
 	}
 
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

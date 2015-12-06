@@ -9,6 +9,7 @@ import javax.swing.WindowConstants;
  * @author zsq
  * 待删除
  */
+@SuppressWarnings("rawtypes")
 public class TestJComboBox {
 	  public static void main(String[] args) {
 	    JFrame j = new JFrame();

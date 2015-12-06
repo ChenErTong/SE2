@@ -148,6 +148,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
 	 */
+	@SuppressWarnings("unused")
 	private int isExport(){
 		int rowCount = 0;
 		rowCount = table.getRowCount();
@@ -279,6 +280,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

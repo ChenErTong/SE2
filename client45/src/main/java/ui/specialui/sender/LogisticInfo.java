@@ -61,6 +61,7 @@ public class LogisticInfo extends MyTranslucentPanel{
 	public MyJTable getTable(){
 		return table;
 	}
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

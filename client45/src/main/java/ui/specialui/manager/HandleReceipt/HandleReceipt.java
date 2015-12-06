@@ -315,6 +315,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		}
 	}
 	
+@SuppressWarnings("unused")
 private void getApprovalData(int index) throws RemoteException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
@@ -415,6 +416,7 @@ private void getApprovalData(int index) throws RemoteException{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void getPassData(int index) throws RemoteException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
@@ -514,6 +516,7 @@ private void getApprovalData(int index) throws RemoteException{
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void getFailureData(int index) throws RemoteException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
