@@ -12,7 +12,7 @@ import po.LogMessage;
 * @version 创建时间：2015年12月6日 下午7:43:51 
 */
 public interface LogDataService extends DataService {
-	public static String NAME = "LOG";
+	public static String NAME = "LogData";
 	public void add(LogMessage message) throws RemoteException;
 	public ArrayList<LogMessage> find() throws RemoteException;
 }

@@ -13,10 +13,20 @@ import po.LogMessage;
 * @version 创建时间：2015年12月6日 下午8:24:12 
 */
 public class LogController implements LogBLService{
-	private Log logBL = new Log();
-	public static void addLog(String message){
+	private Log logBL;
+	private static LogController controller;
+	private LogController() {
+		logBL = new Log();
+	}
+	public static LogController getInstance(){
+		if(controller==null){
+			controller = new LogController();
+		}
+		return controller;
+	}
+	public void addLog(String message){
 		try {
-			Log.addLog(new LogMessage(UserInfomation.getInstance().getUserName(), message));
+			logBL.addLog(new LogMessage(UserInfomation.getInstance().getUserName(), message));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

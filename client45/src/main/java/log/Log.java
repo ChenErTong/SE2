@@ -16,11 +16,8 @@ import po.LogMessage;
 * @version 创建时间：2015年12月5日 下午3:02:26 
 */
 public class Log {
-	private static LogDataService logData;
-	static{
-		logData=getData();
-	}
-	private static LogDataService getData(){
+	private LogDataService logData;
+	private LogDataService getData(){
 		try {
 			return   (LogDataService) Naming.lookup(RMIConfig.PREFIX + LogDataService.NAME);
 		} catch (MalformedURLException e) {
@@ -33,9 +30,10 @@ public class Log {
 		return null;
 	}
 	public Log() {
+		logData=getData();
 	}
 	
-	public static void addLog(LogMessage message) throws RemoteException{
+	public void addLog(LogMessage message) throws RemoteException{
 		logData.add(message);
 	}
 	
