@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import data.Data;
-import data.logdataservice.LogDataService;
+import dataservice.logdataservice.LogDataService;
 import po.LogMessage;
 import util.SerSaveAndLoad;
 
