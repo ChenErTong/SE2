@@ -3,18 +3,21 @@ package ui.specialui.branch_conuterman.driverInfoManage;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+import ui.specialui.branch_conuterman.Frame_Branch;
+import businesslogic.ControllerFactory;
+import businesslogicservice.facilityblservice.DriverBLService;
 
 public class DriverInfo extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField[] fields;
 	
-	public DriverInfo() {
+	public DriverInfo(Frame_Branch frame) {
 		super(300, 190, 680, 355);
-		this.initComponent();
+		this.initComponent(frame);
 	}
 
-	private void initComponent() {
+	private void initComponent(Frame_Branch frame) {
 		fields = new MyJTextField[7];
 		
 		this.add(new MyJLabel(78, 42, 42, 21, "姓名", 18, true));
@@ -37,6 +40,8 @@ public class DriverInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(418, 202, 63, 21, "编号", 18, true));
 		fields[5] = new MyJTextField(470, 200, 150, 30);
+		DriverBLService branchController = ControllerFactory.getDriverController();
+		fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
 		
 		this.add(new MyJLabel(355, 282, 103, 21, "行驶证期限", 18, true));
 		fields[6] = new MyJTextField(470, 280, 150, 30);

@@ -296,9 +296,11 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 							case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
 									      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
 										 tableModel.addRow(rowData);
+										 break;
 							case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;
 									 Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
 									 tableModel.addRow(rowData2);
+									 break;
 							default:
 								break;
 							}
