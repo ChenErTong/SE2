@@ -113,7 +113,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			if(addPolicy.getData()==null){
 				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
 			}else if(data[0].equals("0")&&data[1].equals("2")){
-				ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
+				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					System.out.println("AddSucceed!");
 					this.showAll();
@@ -123,7 +123,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					new MyNotification(this,"策略添加失败！",Color.RED);
 				}
 			}else if(data[0].equals("5")&&data[1].equals("1")){
-				ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
+				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					addPolicy.refresh();
@@ -132,7 +132,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					new MyNotification(this,"策略添加失败！",Color.RED);
 				}
 			}else if(data[0].equals("2")&&data[1].equals("0")){
-				ResultMessage rsg = controller.addBase(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
+				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					addPolicy.refresh();
@@ -210,7 +210,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private void deletePolicy() {
 		table = policyInfoList.getTable();
 		
-		ResultMessage rsg = controller.deleteBase(policyPool.get(table.getSelectedRow()).ID);
+		ResultMessage rsg = controller.deletePolicy(policyPool.get(table.getSelectedRow()).ID);
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("DeleteSucceed!");
 			this.showAll();
@@ -226,7 +226,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		table = policyInfoList.getTable();
 		
 		String[] data = modifyPolicy.getData();
-		ResultMessage rsg = controller.updateBase(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
+		ResultMessage rsg = controller.updatePolicy(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();

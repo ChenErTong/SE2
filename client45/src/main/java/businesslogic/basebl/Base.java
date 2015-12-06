@@ -13,6 +13,7 @@ import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
 /**
+ * 管理公司成本常量
  * @author LIUXUANLIN
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:32:24
@@ -55,9 +56,7 @@ public class Base {
 
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
 		BasePO basePO = BaseTrans.convertVOtoPO(vo);
-		System.out.println(basePO);
 		ResultMessage message = baseData.modify(basePO);
-		System.out.println(message);
 		return message;
 	}
 
@@ -70,8 +69,9 @@ public class Base {
 	public BaseVO find(String id) throws RemoteException {
 		ArrayList<BasePO> pos = baseData.find();
 		for (BasePO basePO : pos) {
-			if(basePO.getID().equals(id))
+			if(basePO.getID().equals(id)){
 				return BaseTrans.convertPOtoVO(basePO);
+			}
 		}
 		return null;
 	}

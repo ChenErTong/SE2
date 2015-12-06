@@ -14,7 +14,9 @@ import vo.PolicyVO;
 public class PolicyController implements PolicyBLService {
 	
 	Policy policyBL = new Policy();
-	@Override
+	/**
+	 * @see PolicyBLService#getID()
+	 */
 	public String getID() {
 		try {
 			return policyBL.getID();
@@ -24,8 +26,10 @@ public class PolicyController implements PolicyBLService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage addBase(PolicyVO vo) {
+	/**
+	 * @see PolicyBLService#addPolicy(PolicyVO)
+	 */
+	public ResultMessage addPolicy(PolicyVO vo) {
 		try {
 			return policyBL.addBase(vo);
 		} catch (RemoteException e) {
@@ -33,9 +37,10 @@ public class PolicyController implements PolicyBLService {
 		}
 		return null;
 	}
-
-	@Override
-	public ResultMessage deleteBase(String ID) {
+	/**
+	 * @see PolicyBLService#deletePolicy(String)
+	 */
+	public ResultMessage deletePolicy(String ID) {
 		try {
 			return policyBL.deleteBase(ID);
 		} catch (RemoteException e) {
@@ -44,8 +49,10 @@ public class PolicyController implements PolicyBLService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage updateBase(PolicyVO vo) {
+	/**
+	 * @see PolicyBLService#updatePolicy(PolicyVO)
+	 */
+	public ResultMessage updatePolicy(PolicyVO vo) {
 		try {
 			return policyBL.updateBase(vo);
 		} catch (RemoteException e) {
@@ -54,7 +61,9 @@ public class PolicyController implements PolicyBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see PolicyBLService#show()
+	 */
 	public ArrayList<PolicyVO> show() {
 		try {
 			return policyBL.show();
@@ -64,7 +73,9 @@ public class PolicyController implements PolicyBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see PolicyBLService#find(String)
+	 */
 	public PolicyVO find(String id) {
 		try {
 			return policyBL.find(id);

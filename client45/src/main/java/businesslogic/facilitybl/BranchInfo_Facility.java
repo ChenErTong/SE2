@@ -2,8 +2,8 @@ package businesslogic.facilitybl;
 
 import java.rmi.RemoteException;
 
+import businesslogic.accountbl.OranizationInfo_Account;
 import po.FacilityPO;
-import po.accountpo.AccountPO;
 import state.ResultMessage;
 
 /** 
@@ -11,11 +11,8 @@ import state.ResultMessage;
 * @author Ann
 * @version 创建时间：2015年12月6日 上午11:43:13 
 */
-public interface BranchInfo_Facility {
+public interface BranchInfo_Facility extends OranizationInfo_Account {
 	public ResultMessage addCar(FacilityPO driver) throws RemoteException;
 	public ResultMessage modifyCar(FacilityPO driver) throws RemoteException;
 	public ResultMessage deleteCar(String branchID,String ID) throws RemoteException;
-	public ResultMessage addAccount(AccountPO account) throws RemoteException;
-	public ResultMessage modifyAccount(AccountPO account) throws RemoteException;
-	public ResultMessage deleteAccount(String branchID,String ID) throws RemoteException;
 }

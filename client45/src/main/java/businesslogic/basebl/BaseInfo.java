@@ -25,7 +25,6 @@ public class BaseInfo implements BaseInfo_Order{
 	/**
 	 * @see BaseInfo_Order#getArrialDateByCities(String, String, String, double)
 	 */
-	@Override
 	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, double transSpeed) throws RemoteException {
 		BasePO po = this.findBaseByCities(cityFrom, cityTo);
 		if(po==null){
