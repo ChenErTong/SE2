@@ -339,10 +339,24 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
 		return data;
 	}
-//	private boolean limitIdentity(String iden,String authority){
-		
-	//	return false;
-	//}
+	/**
+	 * 身份和权限是否匹配
+	 * @param iden
+	 * @param authority
+	 * @return 是否匹配
+	 */
+	private boolean limitIdentity(String iden,String authority){
+		if(iden.equals("总经理")&&(!authority.equals("总经理权限"))){
+			return false;
+		}else if(iden.equals("管理员权限")&&(!authority.equals("管理员权限"))){
+			return false;
+		}else if(!iden.equals("总经理")&&(authority.equals("总经理权限"))){
+			return false;
+		}else if(!iden.equals("管理员")&&(authority.equals("管理员权限"))){
+			return false;
+		}
+		return true;
+	}
 }
 
 	

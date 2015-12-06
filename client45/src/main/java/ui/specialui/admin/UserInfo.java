@@ -50,6 +50,10 @@ public class UserInfo extends MyTranslucentPanel{
 		search.addActionListener(handle);
 		this.add(search);
 		
+		this.initTable();
+	}
+	
+	private void initTable(){
 		String[] headers = {"用户编号", "用户姓名", "用户密码", "用户类别", "用户权限","联系方式","家庭地址"};
 		table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
