@@ -22,7 +22,9 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow,AccountInf
 		accountData = account.getData();
 	}
 	
-	@Override
+	/**
+	 * @see AccountInfo_DebitAndPayBillVOShow#isAccountAMemberOfBranch(String, String)
+	 */
 	public boolean isAccountAMemberOfBranch(String accountID, String branchID) throws RemoteException {
 		AccountPO po = accountData.find(accountID);
 		if(po.getOrganizationID().equals(branchID))
@@ -30,12 +32,16 @@ public class AccountInfo implements AccountInfo_DebitAndPayBillVOShow,AccountInf
 		return false;
 	}
 
-	@Override
+	/**
+	 * @see AccountInfo_OpeningStock#find()
+	 */
 	public ArrayList<AccountPO> find() throws RemoteException {
 		return accountData.find();
 	}
 
-	@Override
+	/**
+	 * @see AccountInfo_Branch_Transfer#getAccountByOrganizationID(String)
+	 */
 	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException {
 		ArrayList<AccountPO> pos = accountData.find();
 		ArrayList<AccountVO> vos = new ArrayList<>();
