@@ -93,6 +93,18 @@ public class DebitAndPayBillShow {
 		return vos;
 	}
 	
+	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException{
+		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
+		ArrayList<DebitAndPayBillVO> vos =new ArrayList<>();
+		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
+			if(debitAndPayBillPO.getDate().compareTo(end)<=0){
+				DebitAndPayBillVO vo = FundTrans.convertPOtoVO(debitAndPayBillPO);
+				vos.add(vo);
+			}
+		}
+		return vos;
+	}
+
 	private ArrayList<DebitAndPayBillVO> show(ArrayList<DebitAndPayBillPO> pos,ReceiptType type,ReceiptState state){
 		ArrayList<DebitAndPayBillVO> vos = new ArrayList<>();
 		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
@@ -100,18 +112,6 @@ public class DebitAndPayBillShow {
 			boolean isCorrectState = debitAndPayBillPO.getReceiptState().equals(state);
 			if(isCorrectType&&isCorrectState){
 				DebitAndPayBillVO vo  =FundTrans.convertPOtoVO(debitAndPayBillPO);
-				vos.add(vo);
-			}
-		}
-		return vos;
-	}
-	
-	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException{
-		ArrayList<DebitAndPayBillPO> pos = debitAndPayBillData.find();
-		ArrayList<DebitAndPayBillVO> vos =new ArrayList<>();
-		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
-			if(debitAndPayBillPO.getDate().compareTo(end)<=0){
-				DebitAndPayBillVO vo = FundTrans.convertPOtoVO(debitAndPayBillPO);
 				vos.add(vo);
 			}
 		}

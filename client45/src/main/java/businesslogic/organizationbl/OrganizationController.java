@@ -19,13 +19,12 @@ public class OrganizationController implements OrganizationBLService {
 	
 	Organization organization = new Organization();
 
-	@Override
-	public ArrayList<BranchVO> showBranch() {
-		try {
-			return organization.showBranch();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+	public String getID() {
+		/**
+		 * @author Ann
+		 */
+		//我觉得没有必要getID
+		// TODO getID
 		return null;
 	}
 
@@ -71,14 +70,23 @@ public class OrganizationController implements OrganizationBLService {
 
 	
 	
-	public ArrayList<TransferVO> showTransfer() {
-
+	@Override
+	public ArrayList<BranchVO> showBranch() {
 		try {
-			return organization.showTransfer();
+			return organization.showBranch();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
 
+	@Override
+	public ArrayList<String> getAllBranchNumbers() {
+		try {
+			return organization.getAllBranchNumbers();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -122,22 +130,14 @@ public class OrganizationController implements OrganizationBLService {
 		return ResultMessage.FAIL;
 	}
 
-	public String getID() {
-		/**
-		 * @author Ann
-		 */
-		//我觉得没有必要getID
-		// TODO getID
-		return null;
-	}
-
-	@Override
-	public ArrayList<String> getAllBranchNumbers() {
+	public ArrayList<TransferVO> showTransfer() {
+	
 		try {
-			return organization.getAllBranchNumbers();
+			return organization.showTransfer();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+	
 		return null;
 	}
 

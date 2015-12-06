@@ -61,15 +61,6 @@ public class Branch{
 		return orderInfo.getAllCommodities();
 	}
 	/**
-	 * 获得所有的订单
-	 * @author Ann
-	 * @return
-	 * @throws RemoteException
-	 */
-	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
-		return orderInfo.getAllOrders();
-	}
-	/**
 	 * 获取所有的订单号
 	 * @return
 	 * @throws RemoteException
@@ -128,6 +119,16 @@ public class Branch{
 		orderInfo.changeOrderState(orders, "货物已离开"+destination+"营业厅");
 		receiptInfo.add(vo);
 		return vo;
+	}
+
+	/**
+	 * 获得所有的订单
+	 * @author Ann
+	 * @return
+	 * @throws RemoteException
+	 */
+	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
+		return orderInfo.getAllOrders();
 	}
 
 }

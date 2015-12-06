@@ -52,11 +52,6 @@ public class Organization {
 		}
 	}
 
-	public ArrayList<BranchVO> showBranch() throws RemoteException {
-		ArrayList<BranchPO> branchPOs = branchData.find();
-		return BranchTrans.convertPOstoVOs(branchPOs);
-	}
-
 	public String getBranchID(String city)throws RemoteException  {
 		String cityCode = CityTrans.getCodeByCity(city);
 		String ID = branchData.getID();
@@ -78,9 +73,18 @@ public class Organization {
 		return branchData.modify(po);
 	}
 
-	public ArrayList<TransferVO> showTransfer()throws RemoteException  {
-		ArrayList<TransferPO> pos = transferData.find();
-		return TransferTrans.convertPOstoVOs(pos);
+	public ArrayList<BranchVO> showBranch() throws RemoteException {
+		ArrayList<BranchPO> branchPOs = branchData.find();
+		return BranchTrans.convertPOstoVOs(branchPOs);
+	}
+
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+		ArrayList<BranchPO> pos = branchData.find();
+		ArrayList<String> branchNumbers = new ArrayList<>();
+		for (BranchPO branchPO : pos) {
+			branchNumbers.add(branchPO.getOrganizationID());
+		}
+		return branchNumbers;
 	}
 
 	public String getTransferID(String city)throws RemoteException  {
@@ -105,15 +109,11 @@ public class Organization {
 		return transferData.modify(transferPO);
 	}
 	
-	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
-		ArrayList<BranchPO> pos = branchData.find();
-		ArrayList<String> branchNumbers = new ArrayList<>();
-		for (BranchPO branchPO : pos) {
-			branchNumbers.add(branchPO.getOrganizationID());
-		}
-		return branchNumbers;
+	public ArrayList<TransferVO> showTransfer()throws RemoteException  {
+		ArrayList<TransferPO> pos = transferData.find();
+		return TransferTrans.convertPOstoVOs(pos);
 	}
-	
+
 	public ArrayList<AccountVO> getAccountsByOrganizationID(String organizationID) throws RemoteException{
 		return accountInfo.getAccountByOrganizationID(organizationID);
 	}

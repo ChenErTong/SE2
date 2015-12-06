@@ -52,11 +52,6 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 		BussinessConditionVO vo = new BussinessConditionVO(endDate, income, expense, profit);
 		return vo;
 	}
-	private boolean inDate(DebitAndPayBillPO po, String beginDate, String endDate) {
-		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
-			return true;
-		return false;
-	}
 	@Override
 	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException {
 		AccountInfo_DebitAndPayBillVOShow accountInfo = new AccountInfo();
@@ -74,6 +69,11 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 			}
 		}
 		return new BussinessOneDayVO(debits, income);
+	}
+	private boolean inDate(DebitAndPayBillPO po, String beginDate, String endDate) {
+		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
+			return true;
+		return false;
 	}
 	
 
