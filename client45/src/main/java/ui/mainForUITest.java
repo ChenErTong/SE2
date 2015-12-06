@@ -6,8 +6,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ui.commonui.login.Frame_Login;
 import ui.specialui.admin.Frame_Admin;
-import ui.specialui.finance.Frame_Finance;
-import ui.specialui.manager.FrameManager;
+import ui.specialui.courier.Frame_Courier;
 
 public class mainForUITest {
 	static String id = "123";
@@ -21,12 +20,18 @@ public class mainForUITest {
 		}
 	
 
-Frame_Login loginFrame = new Frame_Login(id);
-	loginFrame.setVisible(true);
+//Frame_Login loginFrame = new Frame_Login(id);
+//	loginFrame.setVisible(true);
 
 //Frame_Login loginFrame = new Frame_Login(id);
 //	loginFrame.setVisible(true);
 
+	Frame_Courier courierFrame = new Frame_Courier(id);
+		courierFrame.setVisible(true);
+
+	
+//	   FrameManager managerFrame = new FrameManager(id);
+//	   managerFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
@@ -38,12 +43,20 @@ Frame_Login loginFrame = new Frame_Login(id);
 	//Frame_Branch branchFrame = new Frame_Branch();
 		//branchFrame.setVisible(true);
 		
+//	   Frame_Finance financeFrame = new Frame_Finance(id);
+//	   financeFrame.setVisible(true);
 	//   Frame_Finance financeFrame = new Frame_Finance(id);
 	  // financeFrame.setVisible(true);
 
-		Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
+//		Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
 
 
+<<<<<<< HEAD
+=======
+//	Frame_Admin adminFrame = new Frame_Admin(id);
+//adminFrame.setVisible(true);
+
+>>>>>>> origin/master2
 
 
 	//Frame_Finance financeFrame = new Frame_Finance();
@@ -57,6 +70,6 @@ Frame_Login loginFrame = new Frame_Login(id);
 //		financeFrame.setVisible(true);
 
 //Frame_Sender senderFrame = new Frame_Sender(id);
-	//	senderFrame.setVisible(true);
+//		senderFrame.setVisible(true);
 	}
 }

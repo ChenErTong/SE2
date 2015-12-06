@@ -79,7 +79,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 					if(orderVO==null){
 						new MyNotification(this,"没有相应的订单！",Color.RED);
 					}else{
-						Object[] rowData ={orderVO.orderIdString,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
+						Object[] rowData ={orderVO.ID,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
 						tableModel_1.addRow(rowData);
 						for(int i=0;i<orderVO.midAddres.size();i++){
 							Object[] rowData2 = {orderVO.midAddres.get(i)};

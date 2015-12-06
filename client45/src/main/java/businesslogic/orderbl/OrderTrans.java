@@ -28,7 +28,7 @@ public class OrderTrans {
 	}
 	public static OrderVO convertPOtoVO(OrderPO po) {
 		ArrayList<CommodityVO> vos = convertCommodityPOstoVOs(po.getCommodityPO());
-		return new OrderVO(po.getOrderIdString(), po.getSenderName(), po.getSenderAddress(),
+		return new OrderVO(po.getID(), po.getSenderName(), po.getSenderAddress(),
 				po.getSenderTel(), po.getSenderCo(), po.getRecipientName(), po.getRecipientAddress(),
 				po.getRecipientTel(), po.getRecipientCo(), po.getMidAddres(), po.getSendTime(), po.getRecipientTime(),
 				po.getMoney(),vos,po.getPackType(),po.getExpress());

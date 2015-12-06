@@ -7,7 +7,6 @@ import state.PackageType;
 
 public class OrderVO extends ValueObject {
 	// 订单号
-	public String orderIdString;
 	// 寄件人姓名、寄件人住址、
 	// 寄件人电话、寄件人单位
 	public String senderName;
@@ -37,7 +36,7 @@ public class OrderVO extends ValueObject {
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
 			String recipientName, String recipientAddress, String recipientTel, String recipientCo, ArrayList<String> midAddres,
 			String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
-		this.orderIdString = orderIdString;
+		super(orderIdString);
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
 		this.senderTel = senderTel;
@@ -63,5 +62,18 @@ public class OrderVO extends ValueObject {
 				recipientTel, recipientCo, midAddres, sendTime, recipientTime, money, packType, express);
 		this.commodities = commodities;
 	}
+
+
+	@Override
+	public String toString() {
+		return " orderIdString=" + ID + ", senderName=" + senderName + ", senderAddress=" + senderAddress
+				+ ", senderTel=" + senderTel + ", senderCo=" + senderCo + ", recipientName=" + recipientName
+				+ ", recipientAddress=" + recipientAddress + ", recipientTel=" + recipientTel + ", recipientCo="
+				+ recipientCo + ", midAddres=" + midAddres + ", sendTime=" + sendTime + ", recipientTime="
+				+ recipientTime + ", money=" + money + ", commodities=" + commodities + ", packType=" + packType
+				+ ", express=" + express;
+	}
+	
+	
 
 }

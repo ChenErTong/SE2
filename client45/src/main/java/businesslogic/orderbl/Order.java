@@ -47,7 +47,11 @@ public class Order{
 
 
 	public ResultMessage addOrder(OrderVO order) throws RemoteException {
-			return orderData.add(OrderTrans.convertVOtoPO(order));
+		System.out.println(order.toString());
+		OrderPO po = OrderTrans.convertVOtoPO(order);
+		System.out.println("---------------------------------");
+		System.out.println(po.getID());
+		return orderData.add(po);
 	}
 
 
