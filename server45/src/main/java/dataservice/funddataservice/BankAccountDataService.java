@@ -22,4 +22,5 @@ public interface BankAccountDataService extends ManageDataService<BankAccountPO>
 	 *
 	 */
 	public String getID() throws RemoteException;
+	public BankAccountPO find(String bankAccountID) throws RemoteException;
 }

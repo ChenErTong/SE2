@@ -95,7 +95,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public ResultMessage delete(String ID) {
 		try {
 			return DebitAndPayBL.delete(ID);
@@ -103,7 +103,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService{
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 
 }

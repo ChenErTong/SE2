@@ -2,6 +2,7 @@ package businesslogic.fundbl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 /**
  * @author LIUXUANLIN
  */
@@ -67,6 +68,23 @@ public class BankAccount {
 
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		return bankAccountData.modify(FundTrans.convertVOtoPO(vo));
+	}
+	
+	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
+		BankAccountPO po = bankAccountData.find(accountID);
+		BigDecimal oldmoney = new BigDecimal(po.getMoney());
+		if(oldmoney.compareTo(money)>=0)
+			oldmoney=oldmoney.subtract(money);
+		po.setMoney(oldmoney.doubleValue());
+		return bankAccountData.modify(po);
+	}
+	
+	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
+		BankAccountPO po = bankAccountData.find(accountID);
+		BigDecimal oldmoney = new BigDecimal(po.getMoney());
+		oldmoney=oldmoney.add(money);
+		po.setMoney(oldmoney.doubleValue());
+		return bankAccountData.modify(po);
 	}
 
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {

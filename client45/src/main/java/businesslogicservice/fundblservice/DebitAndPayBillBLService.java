@@ -88,7 +88,7 @@ public interface DebitAndPayBillBLService {
 	 */
 	public ResultMessage updateDraft(DebitAndPayBillVO vo);
 	
-	public ResultMessage delete(String ID);
+//	public ResultMessage delete(String ID);
 
 
 }

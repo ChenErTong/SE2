@@ -11,7 +11,6 @@ import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.transferbl.ReceiptInfo_Transfer;
 import dataservice.receiptdataservice.ReceiptDataService;
-import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
@@ -86,10 +85,10 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 		ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 		return receiptData.add(po);
 	}
-	@Override
-	public ResultMessage add(DebitAndPayBillPO po) throws RemoteException {
-		return receiptData.add(po);
-	}
+	/*
+	 * @Override public ResultMessage add(DebitAndPayBillPO po) throws
+	 * RemoteException { return receiptData.add(po); }
+	 */
 
 	@Override
 	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
