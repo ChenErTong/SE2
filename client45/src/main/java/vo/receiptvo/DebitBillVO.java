@@ -1,5 +1,6 @@
 package vo.receiptvo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.ReceiptType;
@@ -13,7 +14,7 @@ public class DebitBillVO extends DebitAndPayBillVO {
 	public String courierID;
 	public ArrayList<String> orderNumbers;
 	
-	public DebitBillVO(String id, ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers, String date) {
+	public DebitBillVO(String id, ReceiptType type,String courierID,BigDecimal money,ArrayList<String> orderNumbers, String date) {
 		super(id,type,money);
 		this.courierID=courierID;
 		this.orderNumbers=orderNumbers;

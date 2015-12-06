@@ -1,5 +1,6 @@
 package businesslogic.fundbl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -70,7 +71,7 @@ public class FundTrans {
 			String id=po.getID();
 			ReceiptType type = po.getReceiptType();
 			String courierID = po.getCourierID();
-			double money = po.getMoney();
+			BigDecimal money = po.getMoney();
 			ArrayList<String> orderNumbers=po.getOrderNumbers();
 			String date = po.getDate();
 			return new DebitBillVO(id, type, courierID, money, orderNumbers, date);
@@ -84,7 +85,7 @@ public class FundTrans {
 			String id=vo.ID;
 			ReceiptType type = vo.type;
 			String courierID = vo.courierID;
-			double money = vo.money;
+			BigDecimal money = vo.money;
 			ArrayList<String> orderNumbers=vo.orderNumbers;
 			String date = vo.date;
 			return new DebitBillPO(id, type, courierID, money, orderNumbers, date);
@@ -98,7 +99,7 @@ public class FundTrans {
 			String iD=po.getID();
 			String date = po.getDate();
 			ReceiptType type = po.getReceiptType();
-			double money = po.getMoney();
+			BigDecimal money = po.getMoney();
 			String payerName = po.getPayerName();
 			String accountID = po.getAccountID();
 			PayBillItem items = po.getPayBillItem();
@@ -113,7 +114,7 @@ public class FundTrans {
 		else {
 			String ID=vo.ID;
 			ReceiptType type = vo.type;
-			double money =vo.money;
+			BigDecimal money =vo.money;
 			String payerName = vo.payerName;
 			String accountID = vo.accountID;
 			PayBillItem items =vo.items;

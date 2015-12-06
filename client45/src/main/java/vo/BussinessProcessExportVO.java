@@ -1,5 +1,6 @@
 package vo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.PayBillItem;
@@ -11,7 +12,7 @@ import vo.receiptvo.PaymentBillVO;
 public class BussinessProcessExportVO {
 	public String ID;
 	public String date;
-	public double money;
+	public BigDecimal money;
 	public ReceiptType type;
 	//debit
 	public String courierID;

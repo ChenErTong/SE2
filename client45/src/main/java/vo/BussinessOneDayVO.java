@@ -1,5 +1,6 @@
 package vo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import vo.receiptvo.DebitBillVO;
@@ -7,10 +8,10 @@ import vo.receiptvo.DebitBillVO;
 public class BussinessOneDayVO {
 	
 	public ArrayList<DebitBillVO> DebitBills;
-	public double earnings;
-	public BussinessOneDayVO(ArrayList<DebitBillVO> debitBills, double earnings) {
+	public BigDecimal earnings;
+	public BussinessOneDayVO(ArrayList<DebitBillVO> debitBills, BigDecimal earnings) {
 		super();
-		DebitBills = debitBills;
+		this.DebitBills = debitBills;
 		this.earnings = earnings;
 	}
 	

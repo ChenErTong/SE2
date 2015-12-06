@@ -4,6 +4,7 @@ package ui.specialui.finance.CostManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -133,7 +134,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CalDebit")){
 			table = debitReceiptList.getTable();
-			double earnings=0.0;
+			BigDecimal earnings=new BigDecimal(0);
 			if(table.getSelectedRowCount()==0){
 				new MyNotification(this,"请先选择要合计的收款单！",Color.RED);
 			}else{

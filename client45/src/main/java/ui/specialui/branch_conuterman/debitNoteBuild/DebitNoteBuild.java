@@ -3,6 +3,7 @@ package ui.specialui.branch_conuterman.debitNoteBuild;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import state.ReceiptType;
 import ui.myui.MyEmptyTextArea;
@@ -105,13 +106,13 @@ public class DebitNoteBuild extends MyJPanel{
 		String[] lines = text.split("\n");
 		String[] infos;
 		ArrayList<String> orderID = new ArrayList<String>();
-		double money = 0.0;
+		BigDecimal money = new BigDecimal(0);
 		String date = null;
 		String courierID = lines[0].substring(6);
 		for (int i = 1; i < lines.length; ++i) {
 			infos = lines[i].split("\t");
 			orderID.add(infos[0].substring(5));
-			money += Double.parseDouble(infos[1].substring(3));
+			money=money.add(new BigDecimal(infos[1].substring(3)));
 			date = infos[2].substring(5);
 		}
 		DebitAndPayBillBLService controller = ControllerFactory.getDebitAndPayBillController();

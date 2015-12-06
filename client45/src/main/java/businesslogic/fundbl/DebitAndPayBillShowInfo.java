@@ -1,5 +1,6 @@
 package businesslogic.fundbl;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -40,15 +41,15 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	@Override
 	public BussinessConditionVO getBussinessCondition(String endDate) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
-		double income = 0;
-		double expense = 0;
-		double profit = 0;
+		BigDecimal income = new BigDecimal(0);
+		BigDecimal expense = new BigDecimal(0);
+		BigDecimal profit =new BigDecimal(0);
 		for (DebitAndPayBillPO debitAndPayBillPO : POs) {
 			ReceiptType type =debitAndPayBillPO.getReceiptType();
-			if(type==ReceiptType.DEBIT)	expense+=debitAndPayBillPO.getMoney();
-			else if(type==ReceiptType.PAY)	profit+=debitAndPayBillPO.getMoney();
+			if(type==ReceiptType.DEBIT)	expense=expense.add(debitAndPayBillPO.getMoney());
+			else if(type==ReceiptType.PAY)	profit=profit.add(debitAndPayBillPO.getMoney());
 		}
-		profit = income - expense;
+		profit = income.subtract(expense);
 		BussinessConditionVO vo = new BussinessConditionVO(endDate, income, expense, profit);
 		return vo;
 	}
@@ -56,13 +57,13 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException {
 		AccountInfo_DebitAndPayBillVOShow accountInfo = new AccountInfo();
 		ArrayList<DebitBillVO> debits = new ArrayList<>();
-		double income = 0;
+		BigDecimal income = new BigDecimal(0);
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
 		for (DebitAndPayBillPO debitAndPayBillPO : POs) {
 			if(debitAndPayBillPO.getDate().equals(date)&&debitAndPayBillPO.getReceiptType()==ReceiptType.DEBIT){
 				DebitBillPO po = (DebitBillPO)debitAndPayBillPO;
 				if(accountInfo.isAccountAMemberOfBranch(po.getCourierID(), branch)){
-					income+=debitAndPayBillPO.getMoney();
+					income =income.add(debitAndPayBillPO.getMoney());
 					DebitBillVO vo = FundTrans.convertDebitPOtoDebitVO(po);
 					debits.add(vo);
 				}

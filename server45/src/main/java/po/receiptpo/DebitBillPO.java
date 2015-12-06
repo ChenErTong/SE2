@@ -1,5 +1,6 @@
 package po.receiptpo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.ReceiptType;
@@ -20,7 +21,7 @@ public class DebitBillPO extends DebitAndPayBillPO {
 	private ArrayList<String> orderNumbers;
 	private String date;
 	
-	public DebitBillPO(String id,ReceiptType type,String courierID,double money,ArrayList<String> orderNumbers, String date) {
+	public DebitBillPO(String id,ReceiptType type,String courierID,BigDecimal money,ArrayList<String> orderNumbers, String date) {
 		super(id, type, money);
 		this.courierID=courierID;
 		this.orderNumbers=orderNumbers;
