@@ -97,7 +97,9 @@ public class DebitAndPayBillShow {
 	private ArrayList<DebitAndPayBillVO> show(ArrayList<DebitAndPayBillPO> pos,ReceiptType type,ReceiptState state){
 		ArrayList<DebitAndPayBillVO> vos = new ArrayList<>();
 		for (DebitAndPayBillPO debitAndPayBillPO : pos) {
-			if(debitAndPayBillPO.getReceiptType().equals(type)&&debitAndPayBillPO.getState().equals(state)){
+			boolean isCorrectType = debitAndPayBillPO.getReceiptType().equals(type);
+			boolean isCorrectState = debitAndPayBillPO.getReceiptState().equals(state);
+			if(isCorrectType&&isCorrectState){
 				DebitAndPayBillVO vo  =FundTrans.convertPOtoVO(debitAndPayBillPO);
 				vos.add(vo);
 			}

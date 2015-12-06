@@ -6,7 +6,6 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import ui.specialui.admin.Frame_Admin;
 import ui.specialui.finance.Frame_Finance;
-import ui.specialui.manager.FrameManager;
 
 public class mainForUITest {
 	static String id = "123";
@@ -16,7 +15,6 @@ public class mainForUITest {
 			BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
 			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -37,6 +35,7 @@ public class mainForUITest {
 	//financeFrame.setVisible(true);
 
 //		Frame_Admin adminFrame = new Frame_Admin();	adminFrame.setVisible(true);
+
 
 	Frame_Admin adminFrame = new Frame_Admin(id);
 adminFrame.setVisible(true);

@@ -11,6 +11,7 @@ import dataservice.facilitydataservice.DriverDataService;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
+import util.Util;
 import vo.accountvo.DriverVO;
 /**
  * 
@@ -37,7 +38,6 @@ public class Driver{
 
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException{
 		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
-		System.out.println(driverPO.getID());
 		return DriverData.add(driverPO);
 	}
 
@@ -58,12 +58,16 @@ public class Driver{
 	}
 	
 	public DriverVO findDriver(String ID) throws RemoteException {
-		System.out.println(DriverData==null);
 		DriverPO driverPO = DriverData.find(ID);
 		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
 		return driverVO;
-
 	}
-
+	
+	public String getID(String branchID) throws RemoteException{
+		String[] branchMessage = Util.splitBranchID(branchID);
+		String cityCode = branchMessage[0];
+		String branchNumber = branchMessage[1];
+		return cityCode+branchNumber+DriverData.getID();
+	}
 
 }
