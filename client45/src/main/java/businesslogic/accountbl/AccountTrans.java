@@ -10,16 +10,16 @@ import vo.accountvo.AccountVO;
  * @version 创建时间：2015年12月3日 下午3:32:13
  */
 public class AccountTrans {
-	public static ArrayList<AccountPO> convertPOstoVOs(ArrayList<AccountPO> POs) {
-		ArrayList<AccountPO> VOs = new ArrayList<AccountPO>();
+	public static ArrayList<AccountVO> convertPOstoVOs(ArrayList<AccountPO> POs) {
+		ArrayList<AccountVO> VOs = new ArrayList<AccountVO>();
 		for (po.accountpo.AccountPO po : POs) {
-			AccountPO vo = convertPOToVO(po);
+			AccountVO vo = convertPOToVO(po);
 			VOs.add(vo);
 		}
 		return VOs;
 	}
 
-	public static AccountPO convertPOToVO(AccountPO po) {
+	public static AccountVO convertPOToVO(AccountPO po) {
 		if(po==null){
 			return null;
 		}
@@ -32,11 +32,11 @@ public class AccountTrans {
 		double salary = po.getSalary();
 		String workTime = po.getWorkTime();
 		String branchID = po.getOrganizationID();
-		AccountPO vo = new AccountPO(ID, duty, name, birthday, IDCard, phone, salary, workTime,branchID);
+		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime,branchID);
 		return vo;
 	}
 
-	public static AccountPO convertVOtoPO(AccountPO vo) {
+	public static AccountPO convertVOtoPO(AccountVO vo) {
 		if (vo == null)
 			return null;
 		else {
@@ -52,20 +52,20 @@ public class AccountTrans {
 		}
 	}
 
-	public static ArrayList<AccountPO> convertVOstoPOs(ArrayList<AccountPO> vos) {
+	public static ArrayList<AccountPO> convertVOstoPOs(ArrayList<AccountVO> vos) {
 		ArrayList<AccountPO> pos = new ArrayList<>();
-		for (AccountPO vo : vos) {
+		for (AccountVO vo : vos) {
 			AccountPO po = convertVOtoPO(vo);
 			pos.add(po);
 		}
 		return pos;
 	}
 	
-	public static ArrayList<AccountPO> convertPOstoVOsByDuty(ArrayList<AccountPO> pos,String duty){
-		ArrayList<AccountPO> vos = new ArrayList<AccountPO>();
+	public static ArrayList<AccountVO> convertPOstoVOsByDuty(ArrayList<AccountPO> pos,String duty){
+		ArrayList<AccountVO> vos = new ArrayList<AccountVO>();
 		for (po.accountpo.AccountPO po : pos) {
 			if(po.getDuty().equals(duty)){
-				AccountPO vo = convertPOToVO(po);
+				AccountVO vo = convertPOToVO(po);
 				vos.add(vo);
 			}
 		}

@@ -35,7 +35,7 @@ public class TransferTrans {
 		String id = po.getOrganizationID();
 		String date = po.getDate();
 		String address = po.getAddress();
-		ArrayList<AccountPO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
+		ArrayList<AccountVO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
 		ArrayList<InventoryVO> inventorys = InventoryTrans.convertInventoryPOstoVOs(po.getInventories());
 		return new TransferVO(id, address, date, accounts, inventorys);
 	}

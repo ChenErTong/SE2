@@ -37,10 +37,10 @@ public class Account{
 		return null;
 	}
 
-	public ArrayList<AccountPO> show() throws RemoteException {
+	public ArrayList<AccountVO> show() throws RemoteException {
 		return AccountTrans.convertPOstoVOs(accountData.find());
 	}
-	public ArrayList<AccountPO> show(String duty) throws RemoteException {
+	public ArrayList<AccountVO> show(String duty) throws RemoteException {
 		ArrayList<AccountPO> pos = accountData.find();
 		return AccountTrans.convertPOstoVOsByDuty(pos, duty);
 	}
@@ -48,18 +48,18 @@ public class Account{
 	public String getID() throws RemoteException{
 		return accountData.getID();
 	}
-	public ResultMessage addAccount(AccountPO vo) throws RemoteException{
+	public ResultMessage addAccount(AccountVO vo) throws RemoteException{
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		return accountData.add(po);
 	}
 	public ResultMessage deleteAccount(String ID) throws RemoteException{
 		return accountData.delete(ID);
 	}
-	public ResultMessage updateAccount(AccountPO vo) throws RemoteException{
+	public ResultMessage updateAccount(AccountVO vo) throws RemoteException{
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		return accountData.modify(po);
 	}
-	public AccountPO find(String id) throws RemoteException{
+	public AccountVO find(String id) throws RemoteException{
 		AccountPO po = accountData.find(id);
 		return AccountTrans.convertPOToVO(po);
 	}

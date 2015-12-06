@@ -35,7 +35,7 @@ public class BranchTrans {
 		String id = po.getID();
 		String date = po.getDate();
 		String address = po.getAddress();
-		ArrayList<AccountPO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
+		ArrayList<AccountVO> accounts = AccountTrans.convertPOstoVOs(po.getAccounts());
 		ArrayList<FacilityVO> facilities = FacilityTrans.convertFacilityPOstoVOs(po.getFacilities());
 		return new BranchVO(id, date, address, accounts, facilities);
 	}
