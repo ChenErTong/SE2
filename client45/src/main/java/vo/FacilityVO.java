@@ -50,7 +50,7 @@ public class FacilityVO {
 	 * @param engineCode 发动机号
 	 * @param vehicleIdentificationNumber 车牌号
 	 */
-	public FacilityVO(String managerId,	ArrayList<LoadingListPO> deliverHistory, String facilityIdString, String dateString, String bottomCode, String engineCode, String vehicleIdentificationNumber,String branchID) {
+	public FacilityVO(String managerId,ArrayList<LoadingListPO> deliverHistory, String facilityIdString, String dateString, String bottomCode, String engineCode, String vehicleIdentificationNumber,String branchID) {
 		this.managerId = managerId;
 		this.deliverHistory = deliverHistory;
 		this.facilityIdString = facilityIdString;

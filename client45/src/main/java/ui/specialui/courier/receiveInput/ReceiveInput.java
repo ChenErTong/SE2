@@ -133,7 +133,7 @@ public class ReceiveInput extends MyJPanel{
 
 		AccountVO account = accountController.find(frame_Courier.getID());
 		account.ordersID.add(order.ID);
-		accountController.updateBase(account);
+		accountController.updateAccount(account);
 		order.recipientTime = time;
 		order.recipientName = name;
 		//更新订单信息

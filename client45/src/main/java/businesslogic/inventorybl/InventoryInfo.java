@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
+import businesslogic.transferbl.InventoryInfo_Transfer;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
 import vo.InventoryVO;
@@ -13,7 +14,7 @@ import vo.InventoryVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:35:32
  */
-public class InventoryInfo implements InventoryInfo_OpeningStock,InventoryInfo_Branch_Transfer{
+public class InventoryInfo implements InventoryInfo_OpeningStock,InventoryInfo_Branch_Transfer,InventoryInfo_Transfer{
 	Inventory inventory;
 	InventoryDataService inventoryData;
 	public InventoryInfo() {
@@ -35,6 +36,11 @@ public class InventoryInfo implements InventoryInfo_OpeningStock,InventoryInfo_B
 			}
 		}
 		return null;
+	}
+	@Override
+	public InventoryVO getTransferInitialInventory(String transferID) throws RemoteException {
+		InventoryVO vo = new InventoryVO(inventoryData.getID(), 4, 100, 100, 100, transferID);
+		return vo;
 	}
 
 }

@@ -48,14 +48,14 @@ public class Account{
 	public String getID() throws RemoteException{
 		return accountData.getID();
 	}
-	public ResultMessage addBase(AccountVO vo) throws RemoteException{
+	public ResultMessage addAccount(AccountVO vo) throws RemoteException{
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		return accountData.add(po);
 	}
-	public ResultMessage deleteBase(String ID) throws RemoteException{
+	public ResultMessage deleteAccount(String ID) throws RemoteException{
 		return accountData.delete(ID);
 	}
-	public ResultMessage updateBase(AccountVO vo) throws RemoteException{
+	public ResultMessage updateAccount(AccountVO vo) throws RemoteException{
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		return accountData.modify(po);
 	}

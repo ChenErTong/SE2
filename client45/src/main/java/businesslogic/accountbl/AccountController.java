@@ -41,27 +41,27 @@ public class AccountController implements AccountBLService{
 		return null;
 	}
 	@Override
-	public ResultMessage addBase(AccountVO vo) {
+	public ResultMessage addAccount(AccountVO vo) {
 		try {
-			return AccountBL.addBase(vo);
+			return AccountBL.addAccount(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	@Override
-	public ResultMessage deleteBase(String ID) {
+	public ResultMessage deleteAccount(String ID) {
 		try {
-			return AccountBL.deleteBase(ID);
+			return AccountBL.deleteAccount(ID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	@Override
-	public ResultMessage updateBase(AccountVO vo) {
+	public ResultMessage updateAccount(AccountVO vo) {
 		try {
-			return AccountBL.updateBase(vo);
+			return AccountBL.updateAccount(vo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

@@ -10,6 +10,7 @@ import businesslogic.accountbl.AccountInfo;
 import businesslogic.branchbl.BranchTrans;
 import businesslogic.facilitybl.FacilityInfo;
 import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.transferbl.InventoryInfo_Transfer;
 import businesslogic.transferbl.TransferTrans;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
@@ -33,7 +34,7 @@ public class Organization {
 	private TransferDataService transferData;
 	private AccountInfo_Branch_Transfer accountInfo;
 	private FacilityInfo_Branch_Transfer facilityInfo;
-	private InventoryInfo_Branch_Transfer inventoryInfo;
+	private InventoryInfo_Transfer inventoryInfo;
 
 	public Organization() {
 		accountInfo = new AccountInfo();
@@ -59,7 +60,7 @@ public class Organization {
 	public String getBranchID(String city)throws RemoteException  {
 		String cityCode = CityTrans.getCodeByCity(city);
 		String ID = branchData.getID();
-		return cityCode+1+ID;
+		return cityCode+ID;
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
@@ -84,10 +85,12 @@ public class Organization {
 
 	public String getTransferID(String city)throws RemoteException  {
 		String cityCode=CityTrans.getCodeByCity(city);
-		return cityCode+0+transferData.getID();
+		return cityCode+transferData.getID();
 	}
 
 	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {
+		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(vo.organizationID);
+		vo.inventories.add(inventoryVO);
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
 		return transferData.add(transferPO);
 	}

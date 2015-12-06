@@ -29,7 +29,6 @@ public class MyJTable extends JTable{
 		cellData = null;
 
 		this.setCellEditable();
-		
 		this.setBackground(new Color(0, 0, 0, 0.3f));
 		this.setForeground(Color.WHITE);
 		this.setFont(new MyFont(14));

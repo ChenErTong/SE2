@@ -32,9 +32,9 @@ public interface AccountBLService {
 	public ArrayList<AccountVO> show() ;
 	public ArrayList<AccountVO> show(String duty);
 	public String getID();
-	public ResultMessage addBase(AccountVO vo);
-	public ResultMessage deleteBase(String ID);
-	public ResultMessage updateBase(AccountVO vo);
+	public ResultMessage addAccount(AccountVO vo);
+	public ResultMessage deleteAccount(String ID);
+	public ResultMessage updateAccount(AccountVO vo);
 	public AccountVO find(String id);
 }
 

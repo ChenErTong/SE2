@@ -20,7 +20,7 @@ public interface OrderInfo_Branch_Transfer {
 	 * @throws RemoteException 
 	 */
 	public void changeOrderState(ArrayList<String> orders,String message) throws RemoteException;
-	public void changeOrderState(String order,String message) throws RemoteException;
+	public boolean changeOrderState(String order,String message) throws RemoteException;
 	public void changeOrderState(String order,String message,CommodityState orderState) throws RemoteException;
 	public void changeOrderState(ArrayList<String> orders,String message,CommodityState orderState) throws RemoteException;
 	public ArrayList<OrderVO> getAllOrders() throws RemoteException;

@@ -22,6 +22,7 @@ public class PlaneCommodity extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private MyJTable orderSelected;
+	private MyJTable orderList;
 	
 	public PlaneCommodity(Frame_Transfer frame){
 		super(0, 0, 1280, 720);
@@ -50,7 +51,7 @@ public class PlaneCommodity extends MyJPanel {
 		this.add(new MyJScrollPane(690, 150, 340, 370, orderSelected));		
 		
 		//所有的订单的列表
-		MyJTable orderList = new MyJTable(new String[]{"所有订单"}, false);
+		orderList = new MyJTable(new String[]{"所有订单"}, false);
 		orderList.addMouseListener(new MouseAdapter() {
 			public void mouseMoved(MouseEvent e) {  
 				int row = orderList.rowAtPoint(e.getPoint());
@@ -97,7 +98,7 @@ public class PlaneCommodity extends MyJPanel {
 		ArrayList<String> ordersID = branchController.getAllOrderNumber();
 		if(ordersID != null){
 			for (String orderID : ordersID) {
-				orderSelected.addRow(new String[]{orderID});
+				orderList.addRow(new String[]{orderID});
 			};	
 		}	
 	}

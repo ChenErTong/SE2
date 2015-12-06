@@ -5,8 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.RenderingHints.Key;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -19,8 +20,9 @@ import javax.swing.JButton;
 public class MyButton extends JButton {
 	private static final long serialVersionUID = 1L;
 
+//	private Image[] images;
 	private Image image;
-
+	
 	/**
 	 * @param x
 	 *            横坐标
@@ -31,7 +33,7 @@ public class MyButton extends JButton {
 	 * @param height
 	 *            高度
 	 */
-	public MyButton(int x, int y, int width, int height) {
+	public MyButton(int x, int y, int width, int height) {		
 		this.setBounds(x, y, width, height);
 		this.setBorder(null);
 		this.setContentAreaFilled(false);
@@ -49,19 +51,39 @@ public class MyButton extends JButton {
 	 *            高度
 	 */
 	@SuppressWarnings("static-access")
-	public MyButton(int x, int y, int width, int height, ImageIcon icon) {
+	public MyButton(int x, int y, int width, int height, ImageIcon[] icons) {
 		this(x, y, width, height);
-		image = icon.getImage().getScaledInstance(this.getWidth(),
-				this.getHeight(), icon.getImage().SCALE_DEFAULT);
+		Image[] images = new Image[3];
+		for(int i = 0; i < 3; i++){
+			images[i] = icons[i].getImage().getScaledInstance(this.getWidth(),
+					this.getHeight(), icons[i].getImage().SCALE_DEFAULT);
+		}
+		image = images[0];
+		this.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				image = images[2];
+				MyButton.this.repaint();
+			}
+			public void mouseExited(MouseEvent e) {
+				image = images[0];
+				MyButton.this.repaint();
+			}
+			public void mouseEntered(MouseEvent e) {
+				image = images[1];
+				MyButton.this.repaint();
+			}
+		});
 	}
 
 	public void paintComponent(Graphics g){
+		this.repaint();
 		Graphics2D g2d = (Graphics2D) g;
 		HashMap<Key, Object> mapH = new HashMap<Key, Object>();
 		//色差
 		mapH.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
 		//抗锯齿	
-		mapH.put(RenderingHints.KEY_TEXT_ANTIALIASING,   RenderingHints.VALUE_TEXT_ANTIALIAS_GASP );
+		mapH.put(RenderingHints.KEY_TEXT_ANTIALIASING,   RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
+		mapH.put(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
 		//呈现质量开关		
 		mapH.put(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY); 
 		//抖动形状

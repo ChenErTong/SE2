@@ -25,6 +25,4 @@ public class CommonImage extends Images{
 	 * 半透明
 	 */
 	public static final Image TEST_HALFOPAQUE = createImage("image/半透明.png");
-
-
 }

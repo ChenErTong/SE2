@@ -123,8 +123,9 @@ public class Transfer {
 		ID=transferID+dateInID+ID;
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, orders);
-		//更改VO状态
-		orderInfo.changeOrderState(orders, "货物已到达"+destination+"中转中心");
+		//更改VO状态 TODO 一堆
+		if(!orderInfo.changeOrderState(orders, "货物已到达"+destination+"中转中心"))
+			return null;
 		receiptInfo.add(vo);
 		return vo;
 	}

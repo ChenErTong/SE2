@@ -42,18 +42,13 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		
 		this.returnButton.addActionListener(this);
 		
-		this.setBackground(CommonImage.TEST_BACKGROUND);
-	}
-	
-	public Frame_Transfer(boolean isGradualSetup) {
-		super(false);
-		
-		this.totalPanel = new Panel_Transfer_Total(this);
-		this.add(totalPanel);
-		
-		this.returnButton.addActionListener(this);
+		this.validate();
+		this.repaint();
 		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
+		
+		this.validate();
+		this.repaint();
 	}
 
 	@Override
