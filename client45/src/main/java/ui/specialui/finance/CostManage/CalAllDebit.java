@@ -3,6 +3,11 @@ package ui.specialui.finance.CostManage;
 import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
 
+/**
+ * 显示收款单合计结果的Panel
+ * @author zsq
+ * @version 2015/11/30 23:44
+ */
 public class CalAllDebit extends MyTranslucentPanel{
 
 	public CalAllDebit() {

@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
+
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
@@ -16,6 +17,11 @@ import ui.myui.MyJTextField;
 import ui.myui.MyPasswordField;
 import ui.myui.MyTranslucentPanel;
 
+/**
+ * 显示用户详细信息的Panel，根据不同的场景可作为添加用户、修改用户信息、查看用户信息的Panel.
+ * @author zsq
+ * @version 2015/12/4 23:01
+ */
 public class UserDetails extends MyTranslucentPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -24,13 +30,12 @@ public class UserDetails extends MyTranslucentPanel{
 	private MyPasswordField passwordField;
 	private MyJComboBox userIdentityBox;
 	private MyJComboBox branchID;
-	@SuppressWarnings("rawtypes")
-	private JComboBox provincesBox;
-	@SuppressWarnings("rawtypes")
-	private JComboBox citiesBox;
+	private JComboBox<?> provincesBox;
+	private JComboBox<?> citiesBox;
 	private MyJComboBox userAuthorityBox;
 	private MyEmptyTextArea address;
 	private OrganizationController controller = ControllerFactory.getOrganizationController();
+	
 	public UserDetails() {
 		super(680,100,550,562);
 		this.initComponent();
@@ -75,7 +80,7 @@ public class UserDetails extends MyTranslucentPanel{
 		userIdentityBox = new MyJComboBox(100,140,150,30,identity);
 		this.add(userIdentityBox);
 		
-		String [] authority = {"管理员权限","总经理权限","普通员工权限","高级财务权限"};
+		String [] authority = {"总经理权限","普通员工权限","管理员权限","高级财务权限"};
 		userAuthorityBox = new MyJComboBox(340,140,150,30,authority);
 		this.add(userAuthorityBox);
 		  
@@ -96,14 +101,12 @@ public class UserDetails extends MyTranslucentPanel{
 	   
 	    address = new MyEmptyTextArea(100,250,410,100);
 	    address.setBackground(Color.WHITE);
-	    this.add(address);
-	
-
-	    
+	    this.add(address);   
 	}
-
-
-
+	
+	/**
+	 * 设置此panel不可编辑
+	 */
 	public void setUneditable() {
 		for (MyJTextField myJTextField : fields) {
 			myJTextField.setEditable(false);
@@ -117,11 +120,15 @@ public class UserDetails extends MyTranslucentPanel{
 		address.setEditable(false);
 		
 	}
-
+	
+	/**
+	 * 设置Panel各组件的值
+	 * @param data 
+	 */
 	public void setData(String[] data) {
 		branchID.setSelectedItem(data[0]);
 		passwordField.setText(data[1]);
-		for(int i = 0; i < 3; i++){
+		for(int i = 0; i < 2; i++){
 			fields[i].setText(data[i+2]);
 		}
 		userIdentityBox.setSelectedItem(data[4]);
@@ -130,7 +137,10 @@ public class UserDetails extends MyTranslucentPanel{
 		citiesBox.setSelectedItem(data[7]);
 		address.setText(data[8]);	
 	}
-
+	
+	/**
+	 * 清空所有组件
+	 */
 	public void refresh() {
 		branchID.setSelectedItem(null);
 		passwordField.setText(null);
@@ -142,15 +152,18 @@ public class UserDetails extends MyTranslucentPanel{
 		provincesBox.setSelectedItem(null);
 		citiesBox.setSelectedItem(null);
 		address.setText(null);
-		
 	}
 
+	/**
+	 * 获得Panel内用户输入的各项信息
+	 * @return String[] 
+	 */
 	public String[] getData() {
 		String[] data = new String[9];
 		data[0] = (String) branchID.getSelectedItem();
-		data[1] = passwordField.getSelectedText();
+		data[1] = String.valueOf(passwordField.getPassword());
 		for (int i = 0; i < 2; i++) {			
-			if((data[2+1] = fields[i].getText()).equals("")) return null;
+			if((data[2+i] = fields[i].getText()).equals(null)) return null;
 		}
 		data[4] = (String)userIdentityBox.getSelectedItem();
 		data[5] = (String)userAuthorityBox.getSelectedItem();
@@ -158,9 +171,8 @@ public class UserDetails extends MyTranslucentPanel{
 		data[7] = (String) citiesBox.getSelectedItem();
 		data[8] = address.getText();
 		for(int i = 4;i<8;i++){
-			if(data[i].equals("")) return null;
+			if(data[i].equals(null)) return null;
 		}
 		return data;
 	}
-
 }

@@ -24,9 +24,9 @@ import vo.OrderVO;
 public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
-	private Panel_Sender_CommodityInfo commodityPanel ;
-	private Panel_Sender_logisticInfo logisticPanel;
-	private Panel_Sender_Search searchPanel;
+	private CommodifyInfo commodityPanel ;
+	private LogisticInfo logisticPanel;
+	private SearchOrder searchPanel;
 	private MyJTable table_order,table_logistic;
 	private OrderBLService orderController;
 	
@@ -40,9 +40,9 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent() {
-		commodityPanel = new Panel_Sender_CommodityInfo();
-		logisticPanel = new Panel_Sender_logisticInfo();
-		searchPanel = new Panel_Sender_Search(this);
+		commodityPanel = new CommodifyInfo();
+		logisticPanel = new LogisticInfo();
+		searchPanel = new SearchOrder(this);
 		this.add(commodityPanel);
 		this.add(logisticPanel);
 		this.add(searchPanel);
@@ -71,7 +71,6 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 				orderPool.clear();
 				orderID = "";
 				
-				//根据orderID查找 {"订单号","寄件人","收件人","费用","预计到达时间"};
 				orderController = ControllerFactory.getOrderController();
 				OrderVO orderVO;
 				String[] data = searchPanel.getSenderInfo();

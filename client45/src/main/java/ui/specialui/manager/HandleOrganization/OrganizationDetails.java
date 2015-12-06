@@ -12,7 +12,11 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-
+/**
+ * 显示机构详细信息、增加机构、修改机构信息的Panel
+ * @author zsq
+ * @version 2015/12/05 15:30
+ */
 public class OrganizationDetails extends MyTranslucentPanel{
 
 	private static final long serialVersionUID = 1L;

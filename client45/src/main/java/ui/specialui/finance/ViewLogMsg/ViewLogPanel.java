@@ -11,7 +11,11 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * 负责监听和panel转换的总Panel
+ * @author zsq
+ * @version 2015/12/5 12:00
+ */
 public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;

@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+/**
+ * 负责显示系统log日志的滚动条区域
+ * @author zsq
+ * @version 2015/12/5 17:00
+ */
 public class LogTextArea extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	

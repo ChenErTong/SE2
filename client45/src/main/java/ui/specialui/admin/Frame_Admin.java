@@ -7,7 +7,11 @@ import java.awt.event.ActionListener;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
-
+/**
+ * 管理员用户管理界面的主Frame
+ * @author zsq
+ * @version 2015/12/4 23:20
+ */
 public class Frame_Admin extends MyJFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;

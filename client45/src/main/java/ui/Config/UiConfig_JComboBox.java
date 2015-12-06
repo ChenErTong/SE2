@@ -18,7 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 /**
- * 解析uiconfig包里面的省市区xml文件【此版XML文件还待修改】
+ * 解析uiconfig包里面的省市区xml文件
  * @author zsq
  * @time 2015/11/21 14:20
  */

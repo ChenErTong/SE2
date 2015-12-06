@@ -11,11 +11,13 @@ import javax.swing.JCheckBox;
 public class MyCheckBox extends JCheckBox{
 
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * @param x 宽度
+	 * @param y 高度
+	 */
 	public MyCheckBox(int x,int y){
 		this.setBounds(x, y, 30, 30);
 		this.setOpaque(false);
-		
 		this.setVisible(true);
 	}
 }

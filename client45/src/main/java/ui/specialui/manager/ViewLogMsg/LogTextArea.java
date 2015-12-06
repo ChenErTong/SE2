@@ -13,6 +13,11 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import ui.GetDate;
+/**
+ * 负责显示记录日志详细信息的文本框区域
+ * @author zsq
+ * @version 2015/12/05 15:14
+ */
 public class LogTextArea extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	

@@ -13,8 +13,8 @@ import ui.myui.MyJRadioButton;
 import ui.myui.MyJTextField;
 import ui.myui.MyPasswordField;
 /**
- * 登陆界面
- * @author 
+ * 登陆界面 Panel
+ * @author  zsq
  * @time 下午4:08:40
  */
 public class Panel_Login extends MyJPanel{

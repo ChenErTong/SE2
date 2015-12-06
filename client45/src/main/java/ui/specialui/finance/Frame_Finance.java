@@ -12,23 +12,19 @@ import java.io.OutputStreamWriter;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.recordblservice.RecordBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
-import ui.specialui.finance.BankAccountManage.Panel_Finance_BankAccountManage;
-import ui.specialui.finance.CostManage.Panel_Finance_CostManagement;
-import ui.specialui.finance.OpenningStock.Panel_Finance_OpenningStock;
-import ui.specialui.finance.SettlementManage.Panel_Finance_SettlementManage;
-import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_BusinessPerformance;
-import ui.specialui.finance.ViewBusinessPerformance.Panel_Finance_ViewBusinessPerformance;
-import ui.specialui.finance.ViewIncomeState.Panel_Finance_IncomeState;
-import ui.specialui.finance.ViewIncomeState.Panel_Finance_ViewIncomeStatement;
+import ui.specialui.finance.BankAccountManage.BankAccountManage;
+import ui.specialui.finance.CostManage.CostManagement;
+import ui.specialui.finance.OpenningStock.OpenningStockManage;
+import ui.specialui.finance.SettlementManage.SettlementManage;
+import ui.specialui.finance.ViewBusinessPerformance.BusinessPerformanceInfo;
+import ui.specialui.finance.ViewBusinessPerformance.ViewBusinessPerformance;
+import ui.specialui.finance.ViewIncomeState.ViewIncomeState;
 import ui.specialui.finance.ViewLogMsg.ViewLogPanel;
-import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
 
 
 /**
@@ -45,17 +41,9 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	private MyJTable output;
 
-	private RecordBLService recordController = ControllerFactory.getRecordController();
 	private Panel_Finance_Total totalPanel;
-	private Panel_Finance_CostManagement costManagePanel;
-	private Panel_Finance_SettlementManage  settleManagePanel;
-	private Panel_Finance_OpenningStock openningStockPanel;
-	private Panel_Finance_ViewBusinessPerformance viewBusinessPerformance;
-	private Panel_Finance_ViewIncomeStatement viewIncomeStatement;
-
 	private MyJPanel subPanel ;
-	private Panel_Finance_BusinessPerformance businessPerformance;
-	private Panel_Finance_BankAccountManage bankAccountManage;
+	private BusinessPerformanceInfo businessPerformance;
 	
 	public Frame_Finance(String userID){
 		super(userID);
@@ -76,37 +64,32 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CostManage")){
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_CostManagement(this);
+			subPanel = new CostManagement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("SettlementManage")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_SettlementManage(this);
+			subPanel = new SettlementManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("OpenningStock")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_OpenningStock(this);
+			subPanel = new OpenningStockManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("BankAccountManage")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_BankAccountManage();
+			subPanel = new BankAccountManage();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));	
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_ViewBusinessPerformance(this);
+			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Finance_ViewIncomeStatement(this);
+			subPanel = new ViewIncomeState(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
@@ -116,17 +99,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new ViewLogPanel();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-		}
-		else if(e.getActionCommand().equals("AddNewStock")){
-			
-		}else if(e.getActionCommand().equals("AddDebitReceipt")){
-			
-		}else if(e.getActionCommand().equals("ModifyDebitReceipt")){
-			
-		}else if(e.getActionCommand().equals("CalculateAllDebit")){
-			
-		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
-			
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				output = businessPerformance.getTable();
@@ -152,7 +124,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	 * 与bl层连接
 	 */
 	private boolean isExport(){
-		switch(((Panel_Finance_ViewBusinessPerformance)subPanel).isExport()){
+		switch(((ViewBusinessPerformance)subPanel).isExport()){
 		case 0:new MyNotification(this,"正在导出经营情况表！",Color.GREEN);return true;
 		case 1:new MyNotification(this,"导出经营情况表失败！",Color.RED);break;
 		}
@@ -160,7 +132,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	}
 	
 	private boolean isExport_2(){
-		switch(((Panel_Finance_ViewIncomeStatement)subPanel).isExport()){
+		switch(((ViewIncomeState)subPanel).isExport()){
 		case 0:new MyNotification(this,"正在导出成本收益表！",Color.GREEN);return true;
 		case 1:new MyNotification(this,"导出成本收益表失败！",Color.RED);break;
 		}

@@ -1,6 +1,5 @@
 package ui.specialui.admin;
 
-
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
@@ -8,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
@@ -16,23 +16,25 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
-
-
+/**
+ * 用户管理界面查找用户和用户列表的显示Panel
+ * @author zsq
+ * @version 2015/12/5 23:21
+ */
 public class UserInfo extends MyTranslucentPanel{
+	
 	private static final long serialVersionUID = 1L;
 	
 	 private MyJLabel userIdentity;
 	 private MyJComboBox userList;
 	 private MyJButton search;
 	 private MyJTable table;
-	public UserInfo(Panel_Admin_Total handle) {
 	
+	 public UserInfo(Panel_Admin_Total handle) {
 		super(50, 100, 620, 560);
-		
 		this.initComponent(handle);
 	}
 
-	
 	private void initComponent(Panel_Admin_Total handle){
 	
 		String [] identity = {"所有用户","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员"};
@@ -48,19 +50,31 @@ public class UserInfo extends MyTranslucentPanel{
 		search.addActionListener(handle);
 		this.add(search);
 		
-		//the table
 		String[] headers = {"用户编号", "用户姓名", "用户密码", "用户类别", "用户权限","联系方式","家庭地址"};
-		 table = new MyJTable(headers,false);
+		table = new MyJTable(headers,false);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
 		table.setFont(new MyFont(14));
 
-				
+		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
+		firsetColumn.setPreferredWidth(80);
+		firsetColumn.setMaxWidth(80);
+		firsetColumn.setMinWidth(80);
+		
+		TableColumn secondColumn = table.getColumnModel().getColumn(1);
+		secondColumn.setPreferredWidth(80);
+		secondColumn.setMaxWidth(80);
+		secondColumn.setMinWidth(80);
+		
+		TableColumn thirdColumn = table.getColumnModel().getColumn(2);
+		thirdColumn.setPreferredWidth(100);
+		thirdColumn.setMinWidth(100);
+		thirdColumn.setMaxWidth(100);
+		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(Object.class, tcr);
 		
-			  	
 		JScrollPane jsp=new JScrollPane(table);
 		JTableHeader head = table.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
@@ -74,13 +88,10 @@ public class UserInfo extends MyTranslucentPanel{
 		jsp.setBorder(BorderFactory.createEmptyBorder());
 		jsp.setVisible(true);
 		this.add(jsp);
-		
-		
 	}
 	
 	public void setData(String data) {
 		userList.setSelectedItem(data);
-		
 	}
 
 	public int  getData() {
@@ -88,9 +99,8 @@ public class UserInfo extends MyTranslucentPanel{
 		data = userList.getSelectedIndex();
 		return data;
 	}
+	
 	public MyJTable getTable(){
 		return table;
 	}
-
-	
 }

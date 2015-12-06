@@ -16,7 +16,12 @@ public class MyEmptyTextArea extends JTextArea{
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	/**
+	 * @param x 横坐标
+	 * @param y 纵坐标
+	 * @param width 宽度
+	 * @param height 高度
+	 */
 	public MyEmptyTextArea(int x, int y, int width, int height){
 		this.setBounds(x, y, width, height);
 		this.setVisible(true);

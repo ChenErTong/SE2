@@ -16,30 +16,28 @@ import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
-import ui.specialui.manager.AdjustBase.Panel_Manager_AdjustBase;
-import ui.specialui.manager.AdjustSalaryPolicy.Panel_Manager_AdjustSalaryPolicy;
-import ui.specialui.manager.HandleOrganization.Panel_Manager_HandleOrganization;
-import ui.specialui.manager.HandleReceipt.Panel_Manager_HandleReceipt;
-import ui.specialui.manager.HandleReceipt.Panel_Manager_ModifyReceiptInfo;
-import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_BusinessPerformance;
-import ui.specialui.manager.ViewBusinessPerformance.Panel_Manager_ViewBusinessPerformance;
-import ui.specialui.manager.ViewIncomeState.Panel_Manager_IncomeState;
-import ui.specialui.manager.ViewIncomeState.Panel_Manager_ViewIncomeStatement;
+import ui.specialui.manager.AccountManage.AccountManage;
+import ui.specialui.manager.AdjustBase.AdjustBase;
+import ui.specialui.manager.AdjustSalaryPolicy.AdjustSalaryPolicy;
+import ui.specialui.manager.HandleOrganization.HandleOrganization;
+import ui.specialui.manager.HandleReceipt.HandleReceipt;
+import ui.specialui.manager.HandleReceipt.ModifyReceiptInfo;
+import ui.specialui.manager.ViewBusinessPerformance.BusinessPerformanceInfo;
+import ui.specialui.manager.ViewBusinessPerformance.ViewBusinessPerformance;
+import ui.specialui.manager.ViewIncomeState.IncomeStateInfo;
+import ui.specialui.manager.ViewIncomeState.ViewIncomeStatement;
 import ui.specialui.manager.ViewLogMsg.ViewLogPanel;
-import ui.specialui.manager.ViewUserInfo.Panel_Manager_ViewUser;
-
+/**
+ * 总经理主界面Frame，负责进入各个功能
+ * @author zsq
+ * @version 2015/12/05 16:10
+ */
 public class FrameManager extends MyJFrame implements ActionListener{
-private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Panel_Manager_Total totalPanel;
-	private Panel_Manager_HandleReceipt handleReceipt;
-	private Panel_Manager_HandleOrganization handleOrganization;
-	private Panel_Manager_AdjustBase adjustBase;
-	private Panel_Manager_AdjustSalaryPolicy adjustSalaryPolicy;
-	private Panel_Manager_ViewUser viewUser;
-	private Panel_Manager_ViewIncomeStatement viewIncomeStatement;
-	private Panel_Manager_ViewBusinessPerformance viewBusinessPerformance;
-	private Panel_Manager_ModifyReceiptInfo modifyReceiptInfo;
+	private ModifyReceiptInfo modifyReceiptInfo;
 	private MyJPanel subPanel;
 	
 	static JTable outputTable;
@@ -66,53 +64,43 @@ private static final long serialVersionUID = 1L;
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
-				
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_HandleReceipt();
+			subPanel = new HandleReceipt();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("HandleOrganization")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_HandleOrganization(this);
+			subPanel = new HandleOrganization(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("AdjustBase")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_AdjustBase(this);
+			subPanel = new AdjustBase(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-			
 		}else if(e.getActionCommand().equals("AdjustSalaryPolicy")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_AdjustSalaryPolicy(this);
+			subPanel = new AdjustSalaryPolicy(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewUser")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_ViewUser();
+			subPanel = new AccountManage();
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_ViewIncomeStatement(this);
+			subPanel = new ViewIncomeStatement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-			
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
-			//TODO
 			totalPanel.setVisible(false);
-			subPanel = new Panel_Manager_ViewBusinessPerformance(this);
+			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
-			//TODO
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			totalPanel.setVisible(false);
 			subPanel = new ViewLogPanel();
@@ -120,12 +108,12 @@ private static final long serialVersionUID = 1L;
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
-				setTable(((Panel_Manager_BusinessPerformance)subPanel).getTable());
+				setTable(((BusinessPerformanceInfo)subPanel).getTable());
 				this.outputExcel();
 			}
 		}else if(e.getActionCommand().equals("ExportIncomeTable")){
 			if(this.isExport_2()){
-				setTable(((Panel_Manager_IncomeState)subPanel).getTable());
+				setTable(((IncomeStateInfo)subPanel).getTable());
 				this.outputExcel();
 			}
 		}
@@ -137,14 +125,14 @@ private static final long serialVersionUID = 1L;
 	 * 与bl层连接
 	 */
 	private boolean isExport(){
-		switch(((Panel_Manager_ViewBusinessPerformance)subPanel).isExport()){
+		switch(((ViewBusinessPerformance)subPanel).isExport()){
 		case 0:new MyNotification(this,"正在导出经营情况表！",Color.GREEN);return true;
 		case 1:new MyNotification(this,"导出经营情况表失败！",Color.RED);break;
 		}
 		return false;
 	}
 	private boolean isExport_2(){
-		switch(((Panel_Manager_ViewIncomeStatement)subPanel).isExport()){
+		switch(((ViewIncomeStatement)subPanel).isExport()){
 		case 0:new MyNotification(this,"正在导出成本收益表！",Color.GREEN);return true;
 		case 1:new MyNotification(this,"导出成本收益表失败！",Color.RED);break;
 		}
