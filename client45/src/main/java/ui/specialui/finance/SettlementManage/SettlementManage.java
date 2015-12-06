@@ -24,7 +24,6 @@ import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.PaymentBillVO;
 
 /**
- * TODO 添加方法、switch case部分待重构
  * 财务人员实现付款单增删改查Panel
  * @author zsq
  * @version 2015/12/5 10：20

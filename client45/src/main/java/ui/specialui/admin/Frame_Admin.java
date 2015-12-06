@@ -4,6 +4,8 @@ package ui.specialui.admin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.commonui.login.Frame_Login;
+import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -17,6 +19,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private MyJPanel subPanel;
 	private Panel_Admin_Total totalPanel;
+	
 	public Frame_Admin(String userID){
 		super(userID);
 		totalPanel = new Panel_Admin_Total(this);
@@ -36,7 +39,9 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 				totalPanel.setVisible(true);
 			}
 		}else if(e.getActionCommand().equals("Withdraw")){
-			System.exit(0);
+			Frame_Login login = new Frame_Login(ID);
+			subPanel = new Panel_Login(login);
+			subPanel.setVisible(true);
 		}
 	}
 }

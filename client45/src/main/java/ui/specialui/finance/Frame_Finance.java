@@ -12,6 +12,8 @@ import java.io.OutputStreamWriter;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import ui.commonui.login.Frame_Login;
+import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -41,6 +43,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 
 	private MyJTable output;
 
+	private Frame_Login login;
 	private Panel_Finance_Total totalPanel;
 	private MyJPanel subPanel ;
 	private BusinessPerformanceInfo businessPerformance;
@@ -93,7 +96,10 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
-			totalPanel.setVisible(false);
+			Frame_Login login = new Frame_Login(ID);
+			subPanel = new Panel_Login(login);
+			subPanel.setVisible(true);
+			
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			totalPanel.setVisible(false);
 			subPanel = new ViewLogPanel();
