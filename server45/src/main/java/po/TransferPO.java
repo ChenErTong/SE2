@@ -34,6 +34,8 @@ public class TransferPO extends OrganizationPO{
 		super(id,  address,accounts.size(),OrganizationType.TRANSFER);
 		this.accounts = accounts;
 		this.inventories = inventories;
+		//TODO 硬编码
+		this.inventories.add(new InventoryPO("0", 4, 100, 100, 100, id));
 	}
 
 	public ArrayList<AccountPO> getAccounts() {

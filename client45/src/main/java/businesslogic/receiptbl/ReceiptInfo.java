@@ -1,7 +1,9 @@
 package businesslogic.receiptbl;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.branchbl.ReceiptInfo_Branch;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
@@ -125,5 +127,21 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 	@Override
 	public String getBranchTruckID() throws RemoteException {
 		return receiptData.getBranchTruckID();
+	}
+
+	@Override
+	public boolean hasChecked() throws RemoteException {
+		ArrayList<ReceiptPO> receipts = receiptData.find();
+		for (ReceiptPO receiptPO : receipts) {
+			String ID = receiptPO.getID();
+			if(ID.startsWith("CHECK")){
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				String date = sdf.format(new Date());
+				if(ID.substring(5).startsWith(date)){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

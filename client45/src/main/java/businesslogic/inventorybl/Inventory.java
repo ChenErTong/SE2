@@ -9,11 +9,13 @@ import java.util.List;
 
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.receiptbl.ReceiptInfo;
+import businesslogic.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
-import state.ReceiptCondition;
+import po.TransferPO;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.ExportExcel;
@@ -33,8 +35,10 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class Inventory {
 	private InventoryDataService inventoryData;
 	private ReceiptInfo_Inventory receiptInfo;
+	private TransferInfo_Inventory transferInfo;
 	public Inventory() {
 		receiptInfo = new ReceiptInfo();
+		transferInfo = new TransferInfo();
 		inventoryData = getData();
 	}
 	public InventoryDataService getData(){
@@ -64,10 +68,10 @@ public class Inventory {
 		return viewVO;
 	}
 	
-	//重写
 	public InventoryCheckVO checkRecord(String transferID,String enddate) throws RemoteException {
 		ArrayList<InventoryPositionVO> commosInInventory = this.getCommoditiesInInventory(transferID);
-		//TODO 重写getID方法 加参数
+		if(receiptInfo.hasChecked())
+			return null;
 		String lotNum = inventoryData.getLotID();
 		InventoryCheckVO checkVO = new InventoryCheckVO(commosInInventory, lotNum,transferID);
 		return checkVO;
@@ -99,20 +103,22 @@ public class Inventory {
 	 * @throws RemoteException
 	 */
     private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
-		ArrayList<InventoryPO> inventorys = inventoryData.find();
-		for (InventoryPO inventoryPO : inventorys) {
-			if(inventoryPO.getTransferID().equals(transferID))
-				return inventoryPO;
-		}
-		return null;
+    	TransferPO transferPO = transferInfo.getTransfer(transferID);
+    	return transferPO.getInventories().get(0);
+//		ArrayList<InventoryPO> inventorys = inventoryData.find();
+//		for (InventoryPO inventoryPO : inventorys) {
+//			if(inventoryPO.getTransferID().equals(transferID))
+//				return inventoryPO;
+//		}
+//		return null;
 	}
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException{
-    	return receiptInfo.add(importReceipt);
+		importReceipt.receiptState=ReceiptState.DRAFT;
+		return receiptInfo.add(importReceipt);
     }
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		importReceipt.receiptCondition=ReceiptCondition.SUBITTED;
-		receiptInfo.modify(importReceipt);
-		return ResultMessage.SUCCESS;
+		importReceipt.receiptState=ReceiptState.APPROVALING;
+		return receiptInfo.modify(importReceipt);
 	}
     
 	public String getExportID() throws RemoteException {
@@ -136,13 +142,13 @@ public class Inventory {
 		return vo;
 	}
 	 public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException{
-	    	return receiptInfo.add(exportReceipt);
+		 exportReceipt.receiptState=ReceiptState.DRAFT;
+		 return receiptInfo.add(exportReceipt);
 	    }
 	 
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		exportReceipt.receiptCondition=ReceiptCondition.SUBITTED;
-		receiptInfo.modify(exportReceipt);
-		return ResultMessage.SUCCESS;
+		exportReceipt.receiptState=ReceiptState.APPROVALING;
+		return receiptInfo.modify(exportReceipt);
 	}
 
 	public String getAdjustID() throws RemoteException {
