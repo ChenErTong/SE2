@@ -1,5 +1,6 @@
 package businesslogic.accountbl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.accountpo.AccountPO;
@@ -33,7 +34,7 @@ public class AccountTrans {
 		String birthday = po.getBirthDay();
 		String IDCard = po.getIDCard();
 		String phone = po.getPhone();
-		double salary = po.getSalary();
+		BigDecimal salary = po.getSalary();
 		String workTime = po.getWorkTime();
 		String branchID = po.getOrganizationID();
 		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, branchID);
@@ -50,7 +51,7 @@ public class AccountTrans {
 			String birthDay = vo.BirthDay;
 			String IDCard = vo.IDCard;
 			String phone = vo.Phone;
-			double salary = vo.Salary;
+			BigDecimal salary = vo.Salary;
 			String workTime = vo.WorkTime;
 			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime);
 		}

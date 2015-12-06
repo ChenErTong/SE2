@@ -1,5 +1,6 @@
 package vo.accountvo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class AccountVO {
@@ -18,13 +19,13 @@ public class AccountVO {
 	/**营业厅编号*/
 	public String branchID;
 	/** 工资情况 **/
-	public double Salary;
+	public BigDecimal Salary;
 	/** 任职时间 **/
 	public String WorkTime;
 	/**每日完成的订单编号**/
 	public ArrayList<String> ordersID;
 
-	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
+	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
 			String workTime,String branchID) {
 		this.ID = ID;
 		this.Duty = duty;
