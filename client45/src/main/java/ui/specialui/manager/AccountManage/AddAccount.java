@@ -52,7 +52,7 @@ public class AddAccount extends MyTranslucentPanel{
 		this.add(fields[6]);
 		
 		ArrayList<String> id = controller.getAllBranchNumbers();
-		String[] branchIDs = {};
+		String[] branchIDs = new String[100];
 		for(int i=0;i<id.size();i++){
 			branchIDs[i] = id.get(i);
 		}

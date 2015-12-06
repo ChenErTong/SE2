@@ -52,7 +52,7 @@ public class ModifyAccount extends MyTranslucentPanel{
 		this.add(fields[6]);
 		
 		ArrayList<String> id = controller.getAllBranchNumbers();
-		String[] branchIDs = {};
+		String[] branchIDs = new String[100];
 		for(int i=0;i<id.size();i++){
 			branchIDs[i] = id.get(i);
 		}
@@ -86,7 +86,7 @@ public class ModifyAccount extends MyTranslucentPanel{
 		for(int i=0;i<7;i++){
 			fields[i].setText(data[i]);
 		}
-	branchID.setSelectedItem(data[7]);
+		branchID.setSelectedItem(data[7]);
 	}
 	
 	public void refresh(){

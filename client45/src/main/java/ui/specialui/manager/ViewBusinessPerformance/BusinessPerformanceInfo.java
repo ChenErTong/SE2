@@ -37,13 +37,7 @@ import vo.receiptvo.PaymentBillVO;
 public class BusinessPerformanceInfo extends  MyTranslucentPanel implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
-	
-	private MyJComboBox yearBox;
-	private MyJComboBox yearBox_2;
-	private MyJComboBox monthBox;
-	private MyJComboBox monthBox_2;
-	private MyJComboBox dayBox;
-	private MyJComboBox dayBox_2;
+
 	private MyJButton check;
 	private MyJTable	table;
 	private MyJButton ExportBusinessTable;
@@ -93,7 +87,6 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		ExportBusinessTable.setActionCommand("ExportBusinessTable");
 		ExportBusinessTable.addActionListener(this);
 		this.add(ExportBusinessTable);
-		ExportBusinessTable.setVisible(true);
 		
 		this.initTable();
 		this.addInput();
@@ -195,7 +188,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			data[i] = input[i].getText();
 		}
 		for(int i=0;i<6;i++){
-			if(data[i].equals(null)){
+			if(data[i].equals("")){
 				return null;
 			}
 		}
@@ -294,31 +287,36 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 							
 							DebitAndPayBillVO dpo = vo.get(i);//{"单据编号","单据种类","单据内容","单据金额","生成时间”};
 							switch(dpo.type){
-							case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
-									      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
-										 tableModel.addRow(rowData);
-							case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;
-									 Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
-									 tableModel.addRow(rowData2);
+								case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
+									      	Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
+									      	tableModel.addRow(rowData);break;
+								case PAY: PaymentBillVO pb = (PaymentBillVO) dpo;
+											Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
+											tableModel.addRow(rowData2);break;
 							default:
 								break;
 							}
 						}
 					}else{
+						System.out.println("111");
 						new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 					}
-				}else{
+			}else{
+					System.out.println("222");
 					new MyNotification(this,"输入的日期参数不合法！",Color.RED);
 				}
 			}
+			
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			int rowCount = table.getRowCount();
 			if(rowCount==0){
 				new MyNotification(this,"导出经营情况表失败！",Color.RED);
 			}else{
 				RecordBLService recordController = ControllerFactory.getRecordController();
-				String beginDate = yearAddZero((String) yearBox.getSelectedItem()) + addZero((String) monthBox.getSelectedItem()) + addZero((String) dayBox.getSelectedItem());
-				String endDate = yearAddZero((String)yearBox_2.getSelectedItem()) + addZero((String)monthBox_2.getSelectedItem()) + addZero((String)dayBox_2.getSelectedItem());
+				String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
+				System.out.println(beginDate);
+				String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
+				System.out.println(endDate);
 				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 				recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
 				new MyNotification(this,"经营情况表导出成功！",Color.GREEN);

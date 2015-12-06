@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.rmi.RemoteException;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -69,7 +70,12 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
 			totalPanel.setVisible(false);
-			subPanel = new HandleReceipt();
+			try {
+				subPanel = new HandleReceipt();
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("HandleOrganization")){

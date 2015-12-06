@@ -105,7 +105,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			ArrayList<AccountVO> accountVO = controller.show();
 			
 			for(int i = 0; i < accountVO.size(); i++){
-				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
+				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
 						accountVO.get(i).Salary+"",accountVO.get(i).Phone};
 				tableModel.addRow(rowData);
 				accountPool.add(accountVO.get(i));
