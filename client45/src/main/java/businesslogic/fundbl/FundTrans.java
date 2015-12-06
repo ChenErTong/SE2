@@ -42,7 +42,7 @@ public class FundTrans {
 		} else {
 			String ID = vo.ID;
 			String workshop = vo.workshop;
-			double money = vo.money;
+			BigDecimal money = vo.money;
 			String address = vo.address;
 			return new ExpensePO(ID, workshop, money, address);
 		}

@@ -1,5 +1,7 @@
 package po;
 
+import java.math.BigDecimal;
+
 /**
  * 财务人员进行收款信息汇总时所需要的收款信息,包括收款日期、收款单位、收款人、收款方、收款金额、收款地点
  * @author zsq
@@ -14,11 +16,11 @@ public class ExpensePO extends PersistentObject{
 	/**收款单位*/
 	private String workshop;
 	/**收款金额*/
-	private double money;
+	private BigDecimal money;
 	/**收款地点*/
 	private String address;
 	
-	public ExpensePO(String ID,String workshop,double money,String address){
+	public ExpensePO(String ID,String workshop,BigDecimal money,String address){
 		super(ID);
 		this.ID = ID;
 		this.workshop = workshop;
@@ -37,10 +39,10 @@ public class ExpensePO extends PersistentObject{
 	public void setWorkshop(String workshop) {
 		this.workshop = workshop;
 	}
-	public double getMoney() {
+	public BigDecimal getMoney() {
 		return money;
 	}
-	public void setMoney(double money) {
+	public void setMoney(BigDecimal money) {
 		this.money = money;
 	}
 
