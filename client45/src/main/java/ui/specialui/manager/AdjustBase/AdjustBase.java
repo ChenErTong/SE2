@@ -196,7 +196,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		if(modifyBase.getData()==null){
 			new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 		}
-		if(!this.isTheSameCity(data)){
+		if(this.isTheSameCity(data)){
 			new MyNotification(this,"出发城市和到达城市不能相同！",Color.RED);
 		}
 		if((!this.isLegal(data[3]))||(!this.isLegal(data[2]))){
@@ -256,7 +256,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	}
 
 	private boolean isLegal(String num){
-		if(!this.isDigit(num)){
+		if(this.isDigit(num)){
 			return false;
 		}else{
 			if(Double.parseDouble(num)<0){

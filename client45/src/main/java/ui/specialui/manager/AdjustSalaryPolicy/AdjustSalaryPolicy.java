@@ -100,7 +100,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		ArrayList<PolicyVO> policyVO =  controller.show();
 		
 		for(int i = 0; i < policyVO.size(); i++){
-			Object[] rowData = {policyVO.get(i).userIdentity,policyVO.get(i).salaryPolicy,policyVO.get(i).remark};
+			Object[] rowData = {policyVO.get(i).userIdentity.value,policyVO.get(i).salaryPolicy.value,policyVO.get(i).remark};
 			tableModel.addRow(rowData);
 			policyPool.add(policyVO.get(i));	
 		}
