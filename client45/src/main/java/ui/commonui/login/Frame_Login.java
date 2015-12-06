@@ -119,9 +119,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 			this.setVisible(false);
 		}else if(e.getActionCommand().equals("keep")){
 			flag = true;
-		}else if(e.getActionCommand().equals("delete")){
-			userIdField.setText(null);
-			passwordField.setText(null);
 		}
 	}
 }

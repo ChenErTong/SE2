@@ -38,7 +38,7 @@ public class MyPasswordField extends JPasswordField {
 		
 		//调整文本起始位置
 		this.setPreferredSize(new Dimension(200, 25));
-		Border empty = new EmptyBorder(0, 20, 0, 0);
+		Border empty = new EmptyBorder(0, 10, 0, 0);
 		CompoundBorder border = new CompoundBorder(this.getBorder(), empty);
 		this.setBorder(border);
 		
