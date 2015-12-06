@@ -1,10 +1,10 @@
 package ui;
 
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import ui.commonui.login.Frame_Login;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import ui.specialui.courier.Frame_Courier;
 import ui.specialui.inventory.Frame_Inventory;
@@ -23,7 +23,8 @@ public class mainForUITest2 {
 		
 		String userID = "010000001";
 
-		new Frame_Inventory(userID);
+		new Frame_Login(userID);
+//		new Frame_Inventory(userID);
 //		new Frame_Transfer(userID);
 //		new Frame_Courier(userID);
 //		new Frame_Branch(userID);
