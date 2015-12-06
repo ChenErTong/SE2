@@ -1,4 +1,4 @@
-package log;
+package businesslogic.logbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

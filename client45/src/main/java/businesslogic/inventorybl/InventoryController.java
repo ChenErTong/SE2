@@ -2,8 +2,8 @@ package businesslogic.inventorybl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.inventoryblservice.InventoryBLService;
-import log.LogController;
 import po.CommodityPO;
 import state.ResultMessage;
 import vo.CommodityVO;
