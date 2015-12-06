@@ -1,5 +1,6 @@
 package po.receiptpo.orderreceiptpo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.ReceiptType;
@@ -21,10 +22,10 @@ public class LoadingListPO extends  OrderReceiptPO{
 	private String carID;
 	private String monitorName;
 	private String courierName;
-	private double money;
+	private BigDecimal money;
 
 	public LoadingListPO(String ID, ReceiptType type, String branchID, String transferNumber, String distination,
-			String carID, String monitorName, String courierName, ArrayList<String> orders, double money) {
+			String carID, String monitorName, String courierName, ArrayList<String> orders, BigDecimal money) {
 		super(ID, type,orders );
 		this.branchID = branchID;
 		this.transferNumber = transferNumber;
@@ -59,11 +60,11 @@ public class LoadingListPO extends  OrderReceiptPO{
 		return courierName;
 	}
 
-	public double getMoney() {
+	public BigDecimal getMoney() {
 		return money;
 	}
 
-	public void setMoney(double money) {
+	public void setMoney(BigDecimal money) {
 		this.money = money;
 	}
 	

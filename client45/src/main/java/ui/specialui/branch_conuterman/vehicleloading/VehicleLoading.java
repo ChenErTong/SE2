@@ -3,6 +3,7 @@ package ui.specialui.branch_conuterman.vehicleloading;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
@@ -110,12 +111,12 @@ public class VehicleLoading extends MyJPanel {
 	
 	public LoadingListVO produceLoadingList(){
 		String[] loadingInfo;
-		double cost;
+		BigDecimal cost;
 		if((loadingInfo = this.loadingInfo.getInfo())== null){
 			new MyNotification(this, "请完成装车信息填写", Color.RED);
 			return null;	
 		}
-		if((cost = Double.parseDouble(deliveryCost.getText())) <= 0){
+		if((cost = new BigDecimal(deliveryCost.getText())).compareTo(new BigDecimal(0))<=0){
 			new MyNotification(this, "运费应大于0元", Color.RED);
 			return null;
 		}

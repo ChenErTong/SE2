@@ -1,5 +1,6 @@
 package vo.receiptvo.orderreceiptvo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.ReceiptType;
@@ -17,10 +18,10 @@ public class LoadingListVO extends OrderReceiptVO{
 	public String carID;
 	public String monitorName;
 	public String courierName;
-	public double money;
+	public BigDecimal money;
 	
 	public LoadingListVO(String id, ReceiptType type, String branchID, String transferNumber,
-			String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, double money) {
+			String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, BigDecimal money) {
 		super(id, type, orders);
 		this.branchID = branchID;
 		this.transferNumber = transferNumber;

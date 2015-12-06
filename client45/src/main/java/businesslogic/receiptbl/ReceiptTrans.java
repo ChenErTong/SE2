@@ -1,5 +1,6 @@
 package businesslogic.receiptbl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.OrderTrans;
@@ -143,7 +144,7 @@ public class ReceiptTrans {
 		String monitorName = po.getMonitorName();
 		ArrayList<String> orders = po.getOrders();
 		String courierName = po.getCourierName();
-		double money = po.getMoney();
+		BigDecimal money = po.getMoney();
 		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(LoadingListVO vo){
@@ -156,7 +157,7 @@ public class ReceiptTrans {
 		String monitorName = vo.monitorName;
 		ArrayList<String> orders = vo.orders;
 		String courierName = vo.courierName;
-		double money =vo.money;
+		BigDecimal money =vo.money;
 		return new LoadingListPO(ID, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){

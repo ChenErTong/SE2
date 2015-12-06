@@ -1,5 +1,6 @@
 package businesslogicservice.branchblservice;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -86,5 +87,5 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, double money);
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, BigDecimal money);
 }

@@ -1,4 +1,5 @@
 package businesslogic.branchbl;
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -92,7 +93,7 @@ public class BranchController implements BranchBLService {
 
 	@Override
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders, double money) {
+			ArrayList<String> orders, BigDecimal money) {
 		try {
 			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
 		} catch (RemoteException e) {

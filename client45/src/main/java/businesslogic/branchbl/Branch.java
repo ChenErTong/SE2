@@ -1,4 +1,5 @@
 package businesslogic.branchbl;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -109,7 +110,7 @@ public class Branch{
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders, double money) throws RemoteException {
+			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 		String ID = receiptInfo.getBranchTruckID();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		String dateInID = df.format(new Date());
