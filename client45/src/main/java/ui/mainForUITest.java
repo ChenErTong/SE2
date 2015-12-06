@@ -44,9 +44,6 @@ Frame_Login loginFrame = new Frame_Login(id);
 		Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
 
 
-	Frame_Admin adminFrame = new Frame_Admin(id);
-adminFrame.setVisible(true);
-
 
 
 	//Frame_Finance financeFrame = new Frame_Finance();
