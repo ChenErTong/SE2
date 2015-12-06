@@ -3,6 +3,7 @@ package ui.specialui.finance.BankAccountManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -186,7 +187,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 			}else{
 				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
-						data[1],Double.parseDouble(data[2]),null));
+						data[1],new BigDecimal(data[2]),null));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					addBankAccount.refresh();
@@ -259,7 +260,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 		}
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
-				data[1],Double.parseDouble(data[2]),null));
+				data[1],new BigDecimal(data[2]),null));
 		if(rsg.equals(ResultMessage.SUCCESS)){
 			System.out.println("ModifySucceed!");
 			this.showAll();
