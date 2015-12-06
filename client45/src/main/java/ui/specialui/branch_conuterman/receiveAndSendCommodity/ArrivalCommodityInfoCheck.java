@@ -2,6 +2,7 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import state.CommodityState;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
@@ -37,8 +38,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		this.setOpaque(false);
 
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
-
-		orders = new MyJTable(new String[] { "送达订单编号" }, false);
+		
+		orders = new MyJTable(new String[]{"送达订单编号"}, false);
 		orders.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				//双击显示订单详细信息

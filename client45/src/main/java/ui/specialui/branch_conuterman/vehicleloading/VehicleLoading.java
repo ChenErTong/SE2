@@ -39,6 +39,7 @@ public class VehicleLoading extends MyJPanel {
 
 		String[] orderId = new String[]{"订单编号"};
 		ordersID = new MyJTable(orderId, false);
+		
 		this.add(new MyJLabel(690, 150, 100, 25, "订单编号", 18, true));
 		MyJTextField orderID = new MyJTextField(780, 150, 150, 30);
 		this.add(orderID);
