@@ -32,13 +32,13 @@ public class MyPasswordField extends JPasswordField {
 	public MyPasswordField(int x, int y, int width, int height){
 		this.setBounds(x, y, width, height);
 		this.setOpaque(false);
-		this.setForeground(Color.BLACK);
+		this.setForeground(Color.WHITE);
 		this.setVisible(true);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
 		//调整文本起始位置
 		this.setPreferredSize(new Dimension(200, 25));
-		Border empty = new EmptyBorder(0, 10, 0, 0);
+		Border empty = new EmptyBorder(0, 14, 0, 0);
 		CompoundBorder border = new CompoundBorder(this.getBorder(), empty);
 		this.setBorder(border);
 		
