@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import log.logdataservice.LogDataService;
+import data.logdataservice.LogDataService;
 import po.LogMessage;
 import util.SerSaveAndLoad;
 
@@ -36,7 +36,7 @@ public class LogData extends UnicastRemoteObject implements LogDataService {
 
 	@Override
 	public void initialFile() throws RemoteException {
-		log = new SerSaveAndLoad<>(NAME);
+		log = new SerSaveAndLoad<>("data/"+NAME+".ser");
 	}
 
 }

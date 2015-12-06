@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import config.RMIConfig;
-import log.logdataservice.LogDataService;
 import po.LogMessage;
 
 /** 

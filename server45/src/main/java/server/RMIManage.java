@@ -20,8 +20,8 @@ import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
 import data.funddata.BankAccountData;
 import data.funddata.DebitAndPayBillData;
-import data.funddata.ExpenseData;
 import data.inventorydata.InventoryData;
+import data.logdata.LogData;
 import data.openingstockdata.OpeningStockData;
 import data.orderdata.OrderData;
 import data.organizationdata.OrganizationData;
@@ -30,7 +30,6 @@ import data.recorddata.BusinessConditionData;
 import data.recorddata.BusinessProcessData;
 import data.transferdata.TransferData;
 import data.userdata.UserData;
-import log.logdata.LogData;
 
 public class RMIManage {
 	private Remote reg;

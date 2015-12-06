@@ -1,4 +1,4 @@
-package log.logdataservice;
+package dataservice.logdataservice;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

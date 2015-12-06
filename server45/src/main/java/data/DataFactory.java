@@ -11,6 +11,7 @@ import data.facilitydata.FacilityData;
 import data.funddata.BankAccountData;
 import data.funddata.DebitAndPayBillData;
 import data.inventorydata.InventoryData;
+import data.logdata.LogData;
 import data.openingstockdata.OpeningStockData;
 import data.orderdata.OrderData;
 import data.organizationdata.OrganizationData;
@@ -20,7 +21,6 @@ import data.recorddata.BusinessProcessData;
 import data.transferdata.TransferData;
 import data.userdata.UserData;
 import dataservice.DataService;
-import log.logdata.LogData;
 
 public class DataFactory {
 	public static DataService createDataService(String name) throws RemoteException {
