@@ -1,5 +1,6 @@
 package businesslogic.userbl;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -29,6 +30,8 @@ public class User {
 	}
 	public User() {
 		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
+		File file = new File(currentUserFileName);
+		file.deleteOnExit();
 		try {
 			userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 		} catch (MalformedURLException e) {
@@ -77,6 +80,9 @@ public class User {
 	 * @version Nov 29,2015
 	 */
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
+		/*if(loginInfo.username.equals("admin")&&loginInfo.password.equals("admin")){
+			return UserIdentity.ADMIN;
+		}*/
 		ArrayList<UserPO> pos = userData.find();
 		for (UserPO po : pos) {
 			if (po.getUserName().equals(loginInfo.username)){

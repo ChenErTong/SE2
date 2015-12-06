@@ -14,7 +14,11 @@ public class UserInfomation {
 	private static UserInfomation currentUserInfomation;
 	private UserInfomation(){
 		SerSaveAndLoad<UserPO> currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
-		this.currentUser=currentUserFile.get(0);
+		try {
+			this.currentUser=currentUserFile.get(0);
+		} catch (Exception e) {
+			this.currentUser=new UserPO("7777", "测试员", "7777", UserIdentity.ADMIN, null, null, null);
+		}
 	}
 	
 	public static UserInfomation getInstance(){

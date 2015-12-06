@@ -3,6 +3,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.inventoryblservice.InventoryBLService;
+import log.LogController;
 import po.CommodityPO;
 import state.ResultMessage;
 import vo.CommodityVO;
@@ -51,6 +52,7 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position)  {
 		try {
+			LogController.addLog("入库");
 			return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -60,6 +62,7 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public InventoryExportReceiptVO minusCommodities(String transferID, int area,int row,int frame,int position) {
 		try {
+			LogController.addLog("出库");
 			return InventoryBL.minusCommodities(transferID, area, row, frame, position);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -70,6 +73,7 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition) {
 		try {
+			LogController.addLog("库存调整");
 			return InventoryBL.adjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -80,6 +84,7 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate)  {
 		try {
+			LogController.addLog("库存查看");
 			return InventoryBL.viewInventory(transferID,beginDate, endDate);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -90,6 +95,7 @@ public class InventoryController implements InventoryBLService {
 	@Override
 	public InventoryCheckVO checkRecord(String transferID,String date){
 		try {
+			LogController.addLog("库存盘点");
 			return InventoryBL.checkRecord(transferID,date);
 		} catch (RemoteException e) {
 			e.printStackTrace();

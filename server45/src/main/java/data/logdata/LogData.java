@@ -1,9 +1,9 @@
 package data.logdata;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+import data.Data;
 import data.logdataservice.LogDataService;
 import po.LogMessage;
 import util.SerSaveAndLoad;
@@ -13,7 +13,7 @@ import util.SerSaveAndLoad;
 * @author Ann
 * @version 创建时间：2015年12月6日 下午7:59:08 
 */
-public class LogData extends UnicastRemoteObject implements LogDataService {
+public class LogData extends Data implements LogDataService {
 
 	/**
 	 * 
