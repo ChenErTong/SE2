@@ -3,6 +3,7 @@ package ui.specialui.manager.AdjustBase;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -114,7 +115,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			if((!this.isLegal(data[3]))||(!this.isLegal(data[2]))){
 				new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 			}else{
-				ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
+				ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					addBase.refresh();
@@ -203,7 +204,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 		}else{
 			ResultMessage rsg = controller.updateBase(new BaseVO(basePool.get(table.getSelectedRow()).ID,data[0],
-					data[1],Double.parseDouble(data[2]),Double.parseDouble(data[3])));
+					data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();

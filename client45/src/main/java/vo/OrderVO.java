@@ -1,5 +1,6 @@
 package vo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.ExpressType;
@@ -25,7 +26,8 @@ public class OrderVO extends ValueObject {
 	public String sendTime;
 	public String recipientTime;
 	// 费用
-	public double money;
+	public BigDecimal money;
+	
 	public ArrayList<CommodityVO> commodities;
 	// 包装类型
 	public PackageType packType;
@@ -35,7 +37,7 @@ public class OrderVO extends ValueObject {
 
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
 			String recipientName, String recipientAddress, String recipientTel, String recipientCo, ArrayList<String> midAddres,
-			String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
+			String sendTime, String recipientTime, BigDecimal money, PackageType packType,ExpressType express) {
 		super(orderIdString);
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -56,7 +58,7 @@ public class OrderVO extends ValueObject {
 
 	public OrderVO(String orderIdString, String senderName, String senderAddress, String senderTel, String senderCo,
 			String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<String> midAddres, String sendTime, String recipientTime, double money,
+			ArrayList<String> midAddres, String sendTime, String recipientTime, BigDecimal money,
 			ArrayList<CommodityVO> commodities, PackageType packType, ExpressType express) {
 		this(orderIdString, senderName, senderAddress, senderTel, senderCo, recipientName, recipientAddress,
 				recipientTel, recipientCo, midAddres, sendTime, recipientTime, money, packType, express);

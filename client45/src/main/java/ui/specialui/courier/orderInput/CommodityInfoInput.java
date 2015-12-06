@@ -2,6 +2,7 @@ package ui.specialui.courier.orderInput;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import state.CommodityState;
@@ -127,7 +128,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		}
 		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		for(int i = 0; i < data.length; i++){
-			commodities.add(new CommodityVO(data[i][0], Double.parseDouble(data[i][1]), Double.parseDouble(data[i][2]), CommodityState.Complete));
+			commodities.add(new CommodityVO(data[i][0], new BigDecimal(data[i][1]), new BigDecimal(data[i][2]), CommodityState.Complete));
 		}
 		return commodities;
 	}

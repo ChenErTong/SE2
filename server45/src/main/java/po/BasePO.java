@@ -1,5 +1,7 @@
 package po;
 
+import java.math.BigDecimal;
+
 /**
  * 公司基本晕运营常量，包括职工薪水策略、城市距离、运输单价
  * @author zsq
@@ -13,9 +15,9 @@ public class BasePO extends PersistentObject{
 	private static final long serialVersionUID = 1L;
 	private String cityFrom;
 	private String cityTo;
-	private double distance;
-	private double price;
-	public BasePO(String id, String cityFrom, String cityTo, double distance, double price) {
+	private BigDecimal distance;
+	private BigDecimal price;
+	public BasePO(String id, String cityFrom, String cityTo, BigDecimal distance, BigDecimal price) {
 		super(id);
 		this.cityFrom = cityFrom;
 		this.cityTo = cityTo;
@@ -34,16 +36,16 @@ public class BasePO extends PersistentObject{
 	public void setCityTo(String cityTo) {
 		this.cityTo = cityTo;
 	}
-	public double getDistance() {
+	public BigDecimal getDistance() {
 		return distance;
 	}
-	public void setDistance(double distance) {
+	public void setDistance(BigDecimal distance) {
 		this.distance = distance;
 	}
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	@Override

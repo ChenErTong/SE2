@@ -1,5 +1,6 @@
 package businesslogic.basebl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.BasePO;
@@ -24,8 +25,8 @@ public class BaseTrans {
 			String iD = po.getID();
 			String cityFrom = po.getCityFrom();
 			String cityTo = po.getCityTo();
-			double distance = po.getDistance();
-			double price = po.getPrice();
+			BigDecimal distance = po.getDistance();
+			BigDecimal price = po.getPrice();
 			return new BaseVO(iD, cityFrom, cityTo, distance, price);
 		}
 	}
@@ -67,8 +68,8 @@ public class BaseTrans {
 			String id = vo.ID;
 			String cityFrom = vo.cityFrom;
 			String cityTo = vo.cityTo;
-			double distance = vo.distance;
-			double price = vo.price;
+			BigDecimal distance = vo.distance;
+			BigDecimal price = vo.price;
 			return new BasePO(id, cityFrom, cityTo, distance, price);
 		}
 	}

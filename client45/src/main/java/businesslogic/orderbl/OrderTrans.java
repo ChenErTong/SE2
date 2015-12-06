@@ -1,5 +1,6 @@
 package businesslogic.orderbl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.CommodityPO;
@@ -53,8 +54,8 @@ public class OrderTrans {
 		else {
 			String ID = po.getID();
 			String commodityType = po.getCommodityType();
-			double weight = po.getWeight();
-			double volumn = po.getVolumn();
+			BigDecimal weight = po.getWeight();
+			BigDecimal volumn = po.getVolumn();
 			CommodityState commodityState = po.getCommodityState();			
 			CommodityVO vo = new CommodityVO(commodityType, weight, volumn, commodityState);
 			vo.ID=ID;
@@ -68,8 +69,8 @@ public class OrderTrans {
 		else {
 			String ID = vo.ID;
 			String commodityType = vo.commodityType;
-			double weight = vo.weight;
-			double volumn = vo.volumn;
+			BigDecimal weight = vo.weight;
+			BigDecimal volumn = vo.volumn;
 			CommodityState commodityState = vo.commodityState;			
 			CommodityPO po =  new CommodityPO(commodityType, weight, volumn, commodityState);
 			po.setID(ID);

@@ -1,5 +1,6 @@
 package businesslogic.orderbl;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 
 import state.ExpressType;
@@ -26,7 +27,7 @@ public interface BaseInfo_Order {
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, double transSpeed)
+	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, BigDecimal transSpeed)
 			throws RemoteException;
 
 	/**
@@ -45,6 +46,6 @@ public interface BaseInfo_Order {
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public double getArrialPriceByCities(String cityFrom, String cityTo, double weight, double priceConstant)
+	public BigDecimal getArrialPriceByCities(String cityFrom, String cityTo, BigDecimal weight, BigDecimal priceConstant)
 			throws RemoteException;
 }

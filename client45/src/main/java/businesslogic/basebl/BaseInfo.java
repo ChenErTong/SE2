@@ -1,5 +1,6 @@
 package businesslogic.basebl;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,14 +26,14 @@ public class BaseInfo implements BaseInfo_Order{
 	/**
 	 * @see BaseInfo_Order#getArrialDateByCities(String, String, String, double)
 	 */
-	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, double transSpeed) throws RemoteException {
+	public String getArrialDateByCities(String cityFrom, String cityTo, String begindate, BigDecimal transSpeed) throws RemoteException {
 		BasePO po = this.findBaseByCities(cityFrom, cityTo);
 		if(po==null){
 			System.out.println("No Data In BasePO from "+cityFrom+" To "+cityTo);
 			return getArrialDate(begindate,3);
 		}else{
-			double days = po.getDistance()/1000*transSpeed;
-			return getArrialDate(begindate, (int)Math.ceil(days));
+			BigDecimal days = po.getDistance().divide(new BigDecimal(1000)).multiply(transSpeed);
+			return getArrialDate(begindate, (int)Math.ceil(days.doubleValue()));
 		}
 	}
 	
@@ -70,18 +71,18 @@ public class BaseInfo implements BaseInfo_Order{
 	 * @see BaseInfo_Order#getArrialPriceByCities(String, String, double, double)
 	 */
 	@Override
-	public double getArrialPriceByCities(String cityFrom, String cityTo, double weight, double priceConstant) throws RemoteException {
+	public BigDecimal getArrialPriceByCities(String cityFrom, String cityTo, BigDecimal weight, BigDecimal priceConstant) throws RemoteException {
 		BasePO po = this.findBaseByCities(cityFrom, cityTo);
-		double distance;
+		BigDecimal distance;
 		if(po==null)
-			distance= 1000;
+			distance= new BigDecimal(1000);
 		else
 			distance = po.getDistance();
-		double price = this.getPrice(distance,weight,priceConstant);
+		BigDecimal price = this.getPrice(distance,weight,priceConstant);
 		return price;
 	}
-	private double getPrice(double distance, double weight, double priceConstant) {
-		return distance/1000*weight*priceConstant;
+	private BigDecimal getPrice(BigDecimal distance, BigDecimal weight, BigDecimal priceConstant) {
+		return distance.divide(new BigDecimal(1000)).multiply(weight).multiply(priceConstant);
 	}
 	
 	/*public static void main(String[] args) {

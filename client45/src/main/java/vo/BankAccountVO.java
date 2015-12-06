@@ -8,6 +8,7 @@ public class BankAccountVO{
 	/**账户名称*/
 	public String name;
 	/**账户余额*/
+	
 	public double money;
 	/**账户属性*/
 	public String level;

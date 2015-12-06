@@ -2,8 +2,11 @@ package order;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import org.junit.Test;
+
 import state.CommodityState;
 import state.ResultMessage;
 import vo.CommodityVO;
@@ -12,9 +15,9 @@ import vo.OrderVO;
 public class TestOrder {
 	@Test
 	public void testOrder() {
-		CommodityVO commmodity1 = new CommodityVO("iphone", 0.5, 0.002, CommodityState.Complete);
-		CommodityVO commmodity2 = new CommodityVO("ipad", 1, 0.008, CommodityState.Complete);
-		CommodityVO commmodity3 = new CommodityVO("ipad mini", 0.75, 0.004, CommodityState.Complete);
+		CommodityVO commmodity1 = new CommodityVO("iphone", new BigDecimal(0.5), new BigDecimal(0.002), CommodityState.Complete);
+		CommodityVO commmodity2 = new CommodityVO("ipad", new BigDecimal(1), new BigDecimal(0.008), CommodityState.Complete);
+		CommodityVO commmodity3 = new CommodityVO("ipad mini", new BigDecimal(0.75), new BigDecimal(0.004), CommodityState.Complete);
 		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		commodities.add(commmodity1);
 		commodities.add(commmodity2);
