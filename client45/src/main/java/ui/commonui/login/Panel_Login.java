@@ -43,7 +43,7 @@ public class Panel_Login extends MyJPanel{
 		this.add(new MyJLabel(450, 388, 90, 40,"用户ID",18,true));
 		this.add(new MyJLabel(450,443,90,40,"密码",18,true));
 		
-		search = new MyButton(20,675,200,30, LoginImage.getBUTTON_LOGISTIC());
+		search = new MyButton(15,15,35,35, LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("Search");
 		search.addActionListener(frame_Login);
 		this.add(search);
