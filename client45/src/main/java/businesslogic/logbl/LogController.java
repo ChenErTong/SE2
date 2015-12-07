@@ -15,7 +15,7 @@ import po.LogMessage;
 public class LogController implements LogBLService{
 	private Log logBL;
 	private static LogController controller;
-	private LogController() {
+	public LogController() {
 		logBL = new Log();
 	}
 	public static LogController getInstance(){

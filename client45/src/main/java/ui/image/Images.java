@@ -18,7 +18,7 @@ public class Images {
 	 * @param path三张图片的地址，例如"xxx.png"，则三张图片名称分别为"xxx1.png"、"xxx2.png"、"xxx3.png"
 	 * @return
 	 */
-	protected static ImageIcon[] createImageIcons(String path){
+	public static ImageIcon[] createImageIcons(String path){
 		ImageIcon[] icons = new ImageIcon[3];
 		for(int i = 0; i < 3; i++){
 			String[] paths = path.split("\\.");

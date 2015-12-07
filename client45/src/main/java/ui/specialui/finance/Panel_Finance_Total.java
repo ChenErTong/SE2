@@ -1,6 +1,6 @@
 package ui.specialui.finance;
 
-import ui.image.FinanceImage;
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyJPanel;
 import ui.myui.MyLogo;

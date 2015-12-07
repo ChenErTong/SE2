@@ -19,8 +19,9 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -41,7 +42,8 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	private MyJComboBox yearBox;
 	private MyJComboBox monthBox;
 	private MyJComboBox dayBox;
-	private MyJButton check;
+	private MyButton check;
+	private MyButton exportIncome;
 	private MyJTable	table;
 	
 	private MyJTextField[] input;
@@ -68,10 +70,15 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		MyJLabel day = new MyJLabel(388,75,30,30,"日",16,true);
 		this.add(day);
 	
-		check = new MyJButton(608,75,90,30,"预览",16);
+		check = new MyButton(608,75,120,30,FinanceImage.getBUTTON_VIEW());
 		check.setActionCommand("ViewIncomState");
 		check.addActionListener(this);
 		this.add(check);
+		
+		exportIncome = new MyButton(1040-80,573,150,30,FinanceImage.getBUTTON_EXPORTINCOME());
+		exportIncome.setActionCommand("ExportIncomeState");
+		exportIncome.addActionListener(this);
+		this.add(exportIncome);
 		
 		this.initTable();
 		this.addInput();

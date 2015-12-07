@@ -13,8 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.openingstockbl.OpeningStockController;
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
 import state.ResultMessage;
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -30,8 +31,8 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	private MyJButton insertButton;
-	private MyJButton searchButton;
+	private MyButton insertButton;
+	private MyButton searchButton;
 	
 	private MyJTable transferTable,employTable,facilityTable,inventoryTable,bankAccountTable;
 	
@@ -139,13 +140,13 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(Frame_Finance frame) {
-		insertButton = new MyJButton(0, 150, 40, 130,
-				"<html>添<br/>加<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
+		insertButton = new MyButton(0, 150, 40, 130,
+				FinanceImage.getBUTTON_ADDSTOCK());
 		insertButton.addActionListener(this);
 		this.add(insertButton);
 		
-		searchButton = new MyJButton(0, 280, 40, 130,
-				"<html>查<br/>看<br/>期<br/>初<br/>账<br/>目<br/></html>", 18);
+		searchButton = new MyButton(0, 280, 40, 130,
+				FinanceImage.getBUTTON_VIEWSTOCK());
 		searchButton.addActionListener(this);
 		this.add(searchButton);
 	}

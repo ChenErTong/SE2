@@ -9,7 +9,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import businesslogic.ControllerFactory;
+import businesslogic.logbl.LogController;
+import po.LogMessage;
 
 /**
  * 负责监听和panel转换的总Panel
@@ -23,6 +28,8 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	private LogPanel log;
 	private MyEmptyTextArea logText;
 	
+	private LogController logController = ControllerFactory.getLogController();
+
 	public ViewLogPanel() {
 		super(0,0,1280,720);
 		this.setOpaque(false);
@@ -55,17 +62,17 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					String day = data[2];
 					day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 					String date = year + month + day;
-				//	ArrayList<LogMessage> logs = LogMsgController.getLogsByDate(date);
-					//logText.setText("");
-					//logText.append(logs);
-					//logText.setTitle(date);
+					ArrayList<LogMessage> logs = logController.show();
+					logText.setText("");
+					for(int i=0;i<logs.size();i++){
+						logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
+						logText.append("\n");
+					}
+				
 				}
 			}else if(e.getActionCommand().equals("ShowAll")){
 				logText.setText("");
-				//	for(int i = LogMsgController.logFilesName.length - 1; i >= 0; i--) {
-				///	ArrayList<LogMessage> logs = LogMsgController.getLogsByDate(LogMsgController.logFilesName[i]);
-				//	logText.append(logs);
-				//}
+				ArrayList<LogMessage> logs = logController.show();
 			}
 		}
 	}

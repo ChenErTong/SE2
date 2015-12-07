@@ -13,8 +13,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -33,7 +34,7 @@ public class SearchBankAccount extends MyTranslucentPanel {
 	
 	private MyJComboBox findType;
 	private MyJTextField searchField;
-	private MyJButton searchButton;
+	private MyButton searchButton;
 	private   MyJTable	table;
 	private JScrollPane jsp;
 	
@@ -56,7 +57,7 @@ private void initComponent(BankAccountManage manage) {
 	findType = new MyJComboBox(10,40,120,30,types);
 	this.add(findType);
 	
-	searchButton = new MyJButton(480,40,60,30,"搜索",16);
+	searchButton = new MyButton(420,40,120,30,FinanceImage.getBUTTON_SEARCH());
 	searchButton.setActionCommand("SearchBankAccount");
 	searchButton.addActionListener(manage);
 	this.add(searchButton);

@@ -2,9 +2,11 @@
  * @author
  * @version
  */
-package ui.image;
+package ui.image.FinanceImage;
 
 import javax.swing.ImageIcon;
+
+import ui.image.Images;
 
 /**
  * @author zsq
@@ -31,7 +33,20 @@ import javax.swing.ImageIcon;
 			private static ImageIcon[] BUTTON_VIEWDEBIT = null;
 			//搜索
 			private static ImageIcon[] BUTTON_SEARCH = null;
-			
+			//查看所选收款单
+			private static ImageIcon[] BUTTON_VIEWPAY = null;
+			//删除收款单
+			private static ImageIcon[] BUTTON_MODIFYPAY = null;
+			//查看期初建账
+			private static ImageIcon[] BUTTON_VIEWSTOCK = null;
+			//新增期初建账
+			private static ImageIcon[] BUTTON_ADDSTOCK = null;
+			//预览
+			private static ImageIcon[] BUTTON_VIEW = null;
+			//导出经营情况表
+			private static ImageIcon[] BUTTON_EXPORTBUSINESS = null;
+			//导出成本收益表
+			private static ImageIcon[] BUTTON_EXPORTINCOME = null;
 			
 			public static ImageIcon[] getBUTTON_JIESUAN(){
 				if(BUTTON_JIESUAN == null){
@@ -84,7 +99,7 @@ import javax.swing.ImageIcon;
 			
 			public static ImageIcon[] getButton_HEJISHOUKUAN(){
 				if(BUTTON_HEJISHOUKUAN==null){
-					BUTTON_HEJISHOUKUAN = Images.createImageIcons("image/button/合计收款.png");
+					BUTTON_HEJISHOUKUAN = Images.createImageIcons("image/button/合计收款单.png");
 				}
 				return BUTTON_HEJISHOUKUAN;
 			}
@@ -98,8 +113,57 @@ import javax.swing.ImageIcon;
 			
 			public static ImageIcon[] getBUTTON_SEARCH(){
 				if(BUTTON_SEARCH==null){
-					BUTTON_SEARCH = Images.createImageIcons("image/button/搜索。png");
+					BUTTON_SEARCH = Images.createImageIcons("image/button/搜索.png");
 				}
 				return BUTTON_SEARCH;
 			}
-}
+			
+			public static ImageIcon[] getBUTTON_VIEWPAY(){
+				if(BUTTON_VIEWPAY==null){
+					BUTTON_VIEWPAY = Images.createImageIcons("image/button/查看付款单.png");
+				}
+				return BUTTON_VIEWPAY;
+			}
+			
+			public static ImageIcon[] getBUTTON_MODIFYPAY(){
+				if(BUTTON_MODIFYPAY==null){
+					BUTTON_MODIFYPAY = Images.createImageIcons("image/button/修改付款单.png");
+				}
+				return BUTTON_MODIFYPAY;
+			}
+			
+			public static ImageIcon[] getBUTTON_VIEWSTOCK(){
+				if(BUTTON_VIEWSTOCK==null){
+					BUTTON_VIEWSTOCK = Images.createImageIcons("image/button/查看期初建账.png");
+				}
+				return BUTTON_VIEWSTOCK;
+			}
+			
+			public static ImageIcon[] getBUTTON_ADDSTOCK(){
+				if(BUTTON_ADDSTOCK==null){
+					BUTTON_ADDSTOCK = Images.createImageIcons("image/button/期初建账.png");
+				}
+				return BUTTON_ADDSTOCK;
+			}
+			
+			public static ImageIcon[] getBUTTON_VIEW(){
+				if(BUTTON_VIEW==null){
+					BUTTON_VIEW = Images.createImageIcons("image/button/预览.png");
+				}
+				return BUTTON_VIEW;
+			}
+			
+			public static ImageIcon[] getBUTTON_EXPORTBUSINESS(){
+				if(BUTTON_EXPORTBUSINESS==null){
+					BUTTON_EXPORTBUSINESS = Images.createImageIcons("image/button/导出经营.png");
+				}
+				return BUTTON_EXPORTBUSINESS;
+			}
+			
+			public static ImageIcon[] getBUTTON_EXPORTINCOME(){
+				if(BUTTON_EXPORTINCOME==null){
+					BUTTON_EXPORTINCOME = Images.createImageIcons("image/button/导出成本.png");
+				}
+				return BUTTON_EXPORTINCOME;
+			}
+}			

@@ -95,6 +95,7 @@ public class LogPanel extends MyTranslucentPanel{
 	private void initButton(ViewLogPanel panel){
 		search = new MyJButton(534,10,70,30,"搜索",18);
 		showAll = new MyJButton(0,0,0,0,"显示全部",18);
+		
 		search.setActionCommand("Search");
 		search.addActionListener(panel);
 		
@@ -156,5 +157,9 @@ public class LogPanel extends MyTranslucentPanel{
 	
 	public MyEmptyTextArea getText(){
 		return  ta;
+	}
+	
+	public MyJTable getTable(){
+		return table;
 	}
 }

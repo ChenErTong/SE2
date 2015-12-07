@@ -20,8 +20,9 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -42,9 +43,9 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	
 	private static final long serialVersionUID = 1L;
 
-	private MyJButton check;
+	private MyButton check;
 	private MyJTable	table;
-	private MyJButton ExportBusinessTable;
+	private MyButton ExportBusinessTable;
 
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;
@@ -85,12 +86,12 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	
 		this.addInput();
 	
-		check = new MyJButton(608,75,90,30,"预览",16);
+		check = new MyButton(608,75,120,30,FinanceImage.getBUTTON_VIEW());
 		check.setActionCommand("ViewBusinessTable");
 		check.addActionListener(this);
 		this.add(check);
 		
-		ExportBusinessTable = new MyJButton(1040-80,573,150,40,"导出经营情况表",14);
+		ExportBusinessTable = new MyButton(1040-80,573,150,30,FinanceImage.getBUTTON_EXPORTBUSINESS());
 		ExportBusinessTable.setActionCommand("ExportBusinessTable");
 		ExportBusinessTable.addActionListener(this);
 		this.add(ExportBusinessTable);

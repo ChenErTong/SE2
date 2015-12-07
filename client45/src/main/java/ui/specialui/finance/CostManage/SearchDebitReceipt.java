@@ -11,9 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -28,7 +29,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 	private MyJLabel chooseBranch;
 	private MyComboBox branchList;
 	private MyComboBox dateList;
-	private MyJButton search;
+	private MyButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
 	
@@ -50,7 +51,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		dateList = new MyComboBox(330,10,150,30,14,dates);
 		this.add(dateList);
 		
-		search = new MyJButton(490,10,90,30,"搜索",14);
+		search = new MyButton(490,10,120,30,FinanceImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchDebitReceipt");
 		search.addActionListener(handle);
 		this.add(search);

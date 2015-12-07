@@ -15,7 +15,9 @@ import businesslogic.fundbl.DebitAndPayBillShowController;
 import state.PayBillItem;
 import state.ReceiptType;
 import state.ResultMessage;
-import ui.myui.MyJButton;
+import ui.image.FinanceImage.BankAccountImage;
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -37,10 +39,10 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 	private AddPayBill addPaybill;
 	private ModifyPayBill modifyPaybill;
 	private ViewPayBill viewPaybill;
-	private MyJButton viewButton;
-	private MyJButton modifyButton;
-	private MyJButton add;
-	private MyJButton modify;
+	private MyButton viewButton;
+	private MyButton modifyButton;
+	private MyButton add;
+	private MyButton modify;
 	private MyJTable table;
 	
 	DebitAndPayBillShowController showController;
@@ -73,22 +75,22 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		viewPaybill = new ViewPayBill();
 		this.add(viewPaybill);
 		
-		viewButton = new MyJButton(150,346,150,30,"查看所选收款单",16);
+		viewButton = new MyButton(150,346,180,30,FinanceImage.getBUTTON_VIEWPAY());
 		viewButton.setActionCommand("ViewPayBill");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		
-		modifyButton = new MyJButton(350,346,150,30,"修改所选收款单",16);
+		modifyButton = new MyButton(350,346,180,30,FinanceImage.getBUTTON_MODIFYPAY());
 		modifyButton.setActionCommand("ModifyPayReceipt");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
-		add = new MyJButton(868,346,120,30,"确认添加",16);	
+		add = new MyButton(868,346,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("AddPayReceipt");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyJButton(868,640,120,30,"确认修改",16);	
+		modify= new MyButton(868,640,120,30,BankAccountImage.getBUTTON_CONFIRM());	
 		modify.setActionCommand("ConfirmModify");
 		modify.addActionListener(this);
 		this.add(modify);

@@ -10,6 +10,7 @@ import businesslogic.fundbl.BankAccountController;
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.inventorybl.InventoryController;
+import businesslogic.logbl.LogController;
 import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
 import businesslogic.receiptbl.ReceiptController;
@@ -22,6 +23,7 @@ import businesslogic.userbl.UserController;
  * @version 创建时间：2015年12月3日 下午3:39:10
  */
 public class ControllerFactory {
+	private static LogController logController = null;
 	private static FacilityController facilityController = null;
 	private static DriverController driverController = null;
 	private static UserController userController = null;
@@ -117,5 +119,10 @@ public class ControllerFactory {
 	public static TransferController getTransferController() {
 		if(transferController == null) transferController = new TransferController();
 		return transferController;
+	}
+
+	public static LogController getLogController() {
+		if(logController == null) logController = new LogController();
+		return logController;
 	}
 }

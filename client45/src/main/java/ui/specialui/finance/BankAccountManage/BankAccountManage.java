@@ -12,7 +12,8 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import state.FindTypeAccount;
 import state.ResultMessage;
-import ui.myui.MyJButton;
+import ui.image.FinanceImage.BankAccountImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -32,10 +33,10 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 	private SearchBankAccount bankAccountPanel;
 	private AddBankAccount addBankAccount;
 	private ModifyBankAccount modifyAccountInfo;
-	private MyJButton deleteButton;
-	private MyJButton modifyButton;
-	private MyJButton add;
-	private MyJButton modify;
+	private MyButton deleteButton;
+	private MyButton modifyButton;
+	private MyButton add;
+	private MyButton modify;
 	private MyJTable table;
 	
 	/**
@@ -66,23 +67,23 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		modifyAccountInfo = new ModifyBankAccount();
 		this.add(modifyAccountInfo);
 		
-		deleteButton = new MyJButton(150,640,180,30,"删除所选账户",16);
+		deleteButton = new MyButton(150,640,120,30,BankAccountImage.getBUTTON_DELETE());
 		deleteButton.setActionCommand("DeleteBankAccount");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyJButton(350,640,180,30,"修改所选账户信息",16);
+		modifyButton = new MyButton(350,640,120,30,BankAccountImage.getBUTTON_MODIFY());
 		modifyButton.setActionCommand("ModifyBankAccount");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
 		
-		add = new MyJButton(868,346,120,30,"确认添加",16);	
+		add = new MyButton(868,346,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("AddBankAccount");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyJButton(868,640,120,30,"确认修改",16);	
+		modify= new MyButton(868,640,120,30,BankAccountImage.getBUTTON_CONFIRM());	
 		modify.setActionCommand("ConfirmModify");
 		modify.addActionListener(this);
 		this.add(modify);

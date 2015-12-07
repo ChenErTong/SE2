@@ -12,7 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.recordbl.RecordController;
-import ui.myui.MyJButton;
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -35,8 +36,8 @@ public class CostManagement extends MyJPanel implements ActionListener{
 	private DebitReceiptInfo debitReceiptInfo;
 	private CalAllDebit calAll;
 
-	private MyJButton calButton;
-	private MyJButton viewButton;
+	private MyButton calButton;
+	private MyButton viewButton;
 	private MyJTable table;
 	
 	private DebitAndPayBillShowController showController;
@@ -64,12 +65,12 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		calAll = new CalAllDebit();
 		this.add(calAll);
 		
-		calButton = new MyJButton(150,660,180,30,"合计收款单",16);
+		calButton = new MyButton(150,660,180,30,FinanceImage.getButton_HEJISHOUKUAN());
 		calButton.setActionCommand("CalDebit");
 		calButton.addActionListener(this);
 		this.add(calButton);
 		
-		viewButton = new MyJButton(350,660,180,30,"查看所选收款单",16);
+		viewButton = new MyButton(350,660,180,30,FinanceImage.getBUTTON_VIEWDEBIT());
 		viewButton.setActionCommand("ViewDebit");
 		viewButton.addActionListener(this);
 		this.add(viewButton);

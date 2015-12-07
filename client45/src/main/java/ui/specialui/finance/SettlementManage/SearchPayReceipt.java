@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
@@ -28,7 +30,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 	
 	private MyJLabel chooseDate;
 	private MyComboBox dateList;
-	private MyJButton search;
+	private MyButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
 	
@@ -45,7 +47,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 		dateList = new MyComboBox(140,10,150,30,14,dates);
 		this.add(dateList);
 		
-		search = new MyJButton(470,10,90,30,"搜索",14);
+		search = new MyButton(470,10,120,30,FinanceImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchPayReceipt");
 		search.addActionListener(handle);
 		this.add(search);
