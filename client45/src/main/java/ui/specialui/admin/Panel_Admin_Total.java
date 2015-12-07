@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
+import state.UserAuthority;
 import state.UserIdentity;
 import ui.image.AdminImage;
 import ui.myui.MyButton;
@@ -164,7 +165,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else if(this.limitIdentity(data[4], data[5])){
 				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
 			}else{
-				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),data[5],data[6]+data[7]+data[8])));
+				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					userDetails.refresh();
@@ -281,7 +282,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}else if(this.limitIdentity(data[4], data[5])){
 			new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
 		}else{
-			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),data[5],data[6]+data[7]+data[8])));
+			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();
 				userDetails.refresh();
@@ -316,6 +317,19 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		return null;
 	}
 	
+	private UserAuthority authority(String authority){
+		if(authority.equals(UserAuthority.ADVANCE_FINANCE.value)){
+			return UserAuthority.ADVANCE_FINANCE;
+		}else if(authority.equals(UserAuthority.COMMONLEVEL.value)){
+			return UserAuthority.COMMONLEVEL;
+		}else if(authority.equals(UserAuthority.HIGHESTLEVEL.value)){
+			return UserAuthority.HIGHESTLEVEL;
+		}else if(authority.equals(UserAuthority.MANAGER_LEVEL.value)){
+			return UserAuthority.MANAGER_LEVEL;
+		}
+		return null;
+	}
+	
 	private void deleteUser() {
 		table = userInfo.getTable();
 		userController = ControllerFactory.getUserController();
@@ -342,7 +356,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		data[2] = userPool.get(table.getSelectedRow()).userName;
 		data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
 		data[4] = userPool.get(table.getSelectedRow()).iden+"";
-		data[5] = userPool.get(table.getSelectedRow()).authority;
+		data[5] = userPool.get(table.getSelectedRow()).authority.value;
 		data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
 		data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
 		data[8] = userPool.get(table.getSelectedRow()).address.substring(6);

@@ -1,5 +1,6 @@
 package vo;
 
+import state.UserAuthority;
 import state.UserIdentity;
 
 public class UserVO {
@@ -20,7 +21,7 @@ public class UserVO {
 	public String phoneNumber;
 
 	/** 用户权限 */
-	public String authority;
+	public UserAuthority authority;
 	/** 地址 */
 	public String address;
 
@@ -41,7 +42,7 @@ public class UserVO {
 	 * @param address
 	 *            用户地址
 	 */
-	public UserVO(String id, String password, String userName, String phoneNumber, UserIdentity iden, String authority,
+	public UserVO(String id, String password, String userName, String phoneNumber, UserIdentity iden, UserAuthority authority,
 			String address) {
 		this.id = id;
 		this.password = password;

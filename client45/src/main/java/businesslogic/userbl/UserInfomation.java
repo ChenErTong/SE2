@@ -1,6 +1,7 @@
 package businesslogic.userbl;
 
 import po.UserPO;
+import state.UserAuthority;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
 
@@ -32,7 +33,7 @@ public class UserInfomation {
 		return this.currentUser.getIden();
 	}
 	
-	public String getAuthority(){
+	public UserAuthority getAuthority(){
 		return this.currentUser.getAuthority();
 	}
 	

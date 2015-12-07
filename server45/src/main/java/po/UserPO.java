@@ -1,5 +1,6 @@
 package po;
 
+import state.UserAuthority;
 import state.UserIdentity;
 
 /**
@@ -21,10 +22,10 @@ public class UserPO extends PersistentObject{
 	private String phoneNumber;
 
 	/**用户权限*/
-	private String  authority;
+	private UserAuthority  authority;
 	/**地址*/
 	private String address;
-	public UserPO(String id, String userName, String password, UserIdentity iden, String phoneNumber, String authority,
+	public UserPO(String id, String userName, String password, UserIdentity iden, String phoneNumber, UserAuthority authority,
 			String address) {
 		super(id);
 		this.userName = userName;
@@ -46,7 +47,7 @@ public class UserPO extends PersistentObject{
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public String getAuthority() {
+	public UserAuthority getAuthority() {
 		return authority;
 	}
 	public String getAddress() {

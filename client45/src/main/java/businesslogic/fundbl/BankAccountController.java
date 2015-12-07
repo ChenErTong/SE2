@@ -23,8 +23,8 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public String getID() {
 		try {
-			return BankAccountBL.getID();
 			
+			return BankAccountBL.getID();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
