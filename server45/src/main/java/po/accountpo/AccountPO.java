@@ -1,5 +1,6 @@
 package po.accountpo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.PersistentObject;
@@ -26,7 +27,7 @@ public class AccountPO extends PersistentObject{
 	/**手机号**/ 
 	private String Phone;
 	/**工资情况**/
-	private double Salary;
+	private BigDecimal Salary;
 	/**任职时间**/
 	private String WorkTime;
 	/**营业厅or中转中心编号*/
@@ -34,7 +35,7 @@ public class AccountPO extends PersistentObject{
 	/**每日完成的订单编号**/
 	private ArrayList<String> ordersID;
 	
-	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, double salary,
+	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
 			String workTime) {
 		super(ID);
 		this.Duty = duty;
@@ -88,11 +89,11 @@ public class AccountPO extends PersistentObject{
 		Phone = phone;
 	}
 
-	public double getSalary() {
+	public BigDecimal getSalary() {
 		return Salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(BigDecimal salary) {
 		Salary = salary;
 	}
 

@@ -1,5 +1,7 @@
 package po.accountpo;
 
+import java.math.BigDecimal;
+
 public class DriverPO extends AccountPO{
 
 	/**
@@ -7,7 +9,7 @@ public class DriverPO extends AccountPO{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String carID;
-	public DriverPO(String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
+	public DriverPO(String ID, String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
 			String workTime,String carID) {
 		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime);
 		this.carID = carID;

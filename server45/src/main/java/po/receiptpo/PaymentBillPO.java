@@ -1,5 +1,7 @@
 package po.receiptpo;
 
+import java.math.BigDecimal;
+
 import state.PayBillItem;
 import state.ReceiptType;
 
@@ -29,7 +31,7 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 	
 	private PayBillItem payBillItem;
 
-	public PaymentBillPO(String ID, String date ,ReceiptType type, double money, String payerName, PayBillItem items,
+	public PaymentBillPO(String ID, String date ,ReceiptType type, BigDecimal money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
 		super(ID, type, money);
 		this.date = date;
@@ -39,7 +41,7 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 		this.remarks=remarks;
 	}
 	
-	public PaymentBillPO(String ID  ,ReceiptType type, double money, String payerName, PayBillItem items,
+	public PaymentBillPO(String ID  ,ReceiptType type, BigDecimal money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
 		super(ID, type, money);
 		this.payerName=payerName;

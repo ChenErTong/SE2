@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman.driverInfoManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+
 import businesslogic.ControllerFactory;
 import businesslogic.facilitybl.DriverController;
 import ui.myui.MyJButton;
@@ -194,7 +196,7 @@ public class DriverInfoManage extends MyJPanel {
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
 		//TODO ui麻烦看一下 branchID可以在organizationbl里拿到（getAllBranchNumbers）
-		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], 0.0, data[6], data[3], id.substring(0, 6));
+		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], new BigDecimal(0), data[6], data[3], id.substring(0, 6));
 		System.out.println(driver.ID+"--print in ui");
 		driverController.addDriver(driver);
 		driverController.confirmOperation();

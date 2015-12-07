@@ -29,7 +29,7 @@ public interface PolicyBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage addBase(PolicyVO vo);
+	public ResultMessage addPolicy(PolicyVO vo);
 	/**
 	 * 删除一个常量
 	 * @param ID
@@ -38,7 +38,7 @@ public interface PolicyBLService {
 	 * @throws RemoteException 
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteBase(String ID);
+	public ResultMessage deletePolicy(String ID);
 	/**
 	 * 更新一条成本常量信息
 	 * @param vo BaseVO
@@ -47,7 +47,7 @@ public interface PolicyBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage updateBase(PolicyVO vo);
+	public ResultMessage updatePolicy(PolicyVO vo);
 	/**
 	 * 返回base城市距离，价格常量
 	 * @return

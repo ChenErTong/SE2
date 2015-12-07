@@ -1,5 +1,6 @@
 package output;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class TestExcel {
 		String head = "test报表";
 		List<Object> expenses = new ArrayList<Object>();
 		for (int i = 0; i < 80; i++) {
-			ExpenseVO vo = new ExpenseVO(i+"", "南京", i*100, "南京");
+			ExpenseVO vo = new ExpenseVO(i+"", "南京", new BigDecimal(i*100), "南京");
 			expenses.add(vo);
 		}
 		String fileName = "output/testExcel.xls";

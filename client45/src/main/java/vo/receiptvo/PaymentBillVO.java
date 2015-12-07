@@ -1,5 +1,7 @@
 package vo.receiptvo;
 
+import java.math.BigDecimal;
+
 import state.PayBillItem;
 import state.ReceiptType;
 
@@ -26,7 +28,7 @@ public class PaymentBillVO extends DebitAndPayBillVO {
 	 */
 	public String remarks;
 
-	public PaymentBillVO(String iD, String date, ReceiptType type, double money, String payerName, String accountID,
+	public PaymentBillVO(String iD, String date, ReceiptType type, BigDecimal money, String payerName, String accountID,
 			PayBillItem items, String remarks) {
 		super(iD, type, money);
 		this.payerName = payerName;

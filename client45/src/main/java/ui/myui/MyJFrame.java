@@ -1,17 +1,23 @@
 package ui.myui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import ui.image.CommonImage;
+
+import com.sun.awt.AWTUtilities;
 /**
  * Frame的总类，定义位置，大小，启动动画
  * @author czw
  * @time 2015年11月15日下午4:11:17
  */
+@SuppressWarnings("restriction")
 public class MyJFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
@@ -45,6 +51,13 @@ public class MyJFrame extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);
 		
+		//设置圆角
+		AWTUtilities.setWindowShape(this, new RoundRectangle2D.Double(0.0D,
+				0.0D, 1280, 720, 8.0D, 8.0D));
+		//小图标
+		this.setIconImage(CommonImage.getLOGO().getImage());
+		
+		//通用按钮
 		this.returnButton = new MyButton(1155, 15, 30, 30, CommonImage.getBUTTON_RETURN());
 		this.returnButton.setActionCommand("return");
 		this.add(this.returnButton);

@@ -17,10 +17,9 @@ public class CommonImage extends Images{
 	 */
 	public static ImageIcon[] BUTTON_RETURN = null;
 	/**
-	 * TODO
 	 * 测试背景图片
 	 */
-	public static final ImageIcon TEST_BACKGROUND = createImageIcon("image/background_test2.jpg");
+	public static final ImageIcon TEST_BACKGROUND = createImageIcon("image/background1.jpg");
 	/**
 	 * 半透明
 	 */
@@ -33,6 +32,14 @@ public class CommonImage extends Images{
 	 * 主界面文字
 	 */
 	private static ImageIcon TITLE = null;
+	/**
+	 * 文本框选中
+	 */
+	private static Image TEXTFIELD_SELECTED = null;
+	/**
+	 * 文本框未选中
+	 */
+	private static Image TEXTFIELD_UNSELECTED = null;
 	
 	public static ImageIcon[] getBUTTON_CLOSE(){
 		if(BUTTON_CLOSE == null){
@@ -65,5 +72,19 @@ public class CommonImage extends Images{
 	public static ImageIcon getTITLE(String title){
 		TITLE = createImageIcon("image/" + title + ".png");
 		return TITLE;
+	}
+	
+	public static Image getTEXTFIELD_SELECTED(){
+		if(TEXTFIELD_SELECTED == null){
+			TEXTFIELD_SELECTED = createImage("image/文本框选中.png");
+		}
+		return TEXTFIELD_SELECTED;
+	}
+	
+	public static Image getTEXTFIELD_UNSELECTED(){
+		if(TEXTFIELD_UNSELECTED == null){
+			TEXTFIELD_UNSELECTED = createImage("image/文本框未选中.png");
+		}
+		return TEXTFIELD_UNSELECTED;
 	}
 }

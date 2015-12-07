@@ -40,6 +40,11 @@ public class BranchPO extends OrganizationPO{
 	public ArrayList<FacilityPO> getFacilities() {
 		return facilities;
 	}
-	
+	public void setAccounts(ArrayList<AccountPO> accounts) {
+		this.accounts = accounts;
+	}
+	public void setFacilities(ArrayList<FacilityPO> facilities) {
+		this.facilities = facilities;
+	}
 	
 }

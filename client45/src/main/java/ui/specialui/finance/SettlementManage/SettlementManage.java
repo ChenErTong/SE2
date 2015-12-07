@@ -4,6 +4,7 @@ package ui.specialui.finance.SettlementManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -184,7 +185,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"输入的付款金额不合法！",Color.RED);
 			}else{
 				ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,Double.parseDouble(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
+						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					addPaybill.refresh();
@@ -308,7 +309,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			new MyNotification(this,"付款金额输入不合法！",Color.RED);
 		}else{
 			ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,Double.parseDouble(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
+					PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();
 				addPaybill.refresh();

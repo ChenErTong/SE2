@@ -1,5 +1,6 @@
 package businesslogic.facilitybl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.FacilityPO;
@@ -64,7 +65,7 @@ public class FacilityTrans {
 			String birthDay = vo.BirthDay;
 			String IDCard = vo.IDCard;
 			String phone = vo.Phone;
-			double salary = vo.Salary;
+			BigDecimal salary = vo.Salary;
 			String workTime = vo.WorkTime;
 			String carID = vo.carID;
 			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID);
@@ -81,7 +82,7 @@ public class FacilityTrans {
 			String birthDay = po.getBirthDay();
 			String IDCard = po.getIDCard();
 			String phone = po.getPhone();
-			double salary = po.getSalary();
+			BigDecimal salary = po.getSalary();
 			String workTime = po.getWorkTime();
 			String carID = po.getCarID();
 			String branchID = po.getOrganizationID();

@@ -1,5 +1,6 @@
 package businesslogicservice.fundblservice;
 
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -61,4 +62,8 @@ public interface BankAccountBLService extends BLService{
 	 * @throws RemoteException 
 	 */
 	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type) ;
+	
+	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money);
+	
+	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money);
 }

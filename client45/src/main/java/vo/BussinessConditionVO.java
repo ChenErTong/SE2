@@ -1,5 +1,7 @@
 package vo;
 
+import java.math.BigDecimal;
+
 public class BussinessConditionVO {
 
 	/**
@@ -10,13 +12,13 @@ public class BussinessConditionVO {
 	/** 结束时间 */
 	public String end;
 	/** 收入 **/
-	public double totalIncome;
+	public BigDecimal totalIncome;
 	/** 支出 **/
-	public double totalExpen;
+	public BigDecimal totalExpen;
 	/** 利润 */
-	public double profit;
+	public BigDecimal profit;
 
-	public BussinessConditionVO(String end, double totalIncome, double totalExpen, double profit) {
+	public BussinessConditionVO(String end, BigDecimal totalIncome, BigDecimal totalExpen, BigDecimal profit) {
 		super();
 		this.end = end;
 		this.totalIncome = totalIncome;

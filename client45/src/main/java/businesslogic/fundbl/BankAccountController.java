@@ -1,4 +1,5 @@
 package businesslogic.fundbl;
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -74,6 +75,26 @@ public class BankAccountController implements BankAccountBLService{
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
 		try {
 			return BankAccountBL.find(keywords, type);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) {
+		try {
+			return BankAccountBL.subtractMoneyInBankAccount(accountID, money);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage addMoneyInBankAccount(String accountID, BigDecimal money) {
+		try {
+			return BankAccountBL.addMoneyInBankAccount(accountID, money);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

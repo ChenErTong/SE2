@@ -1,4 +1,5 @@
 package businesslogic.branchbl;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -61,15 +62,6 @@ public class Branch{
 		return orderInfo.getAllCommodities();
 	}
 	/**
-	 * 获得所有的订单
-	 * @author Ann
-	 * @return
-	 * @throws RemoteException
-	 */
-	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
-		return orderInfo.getAllOrders();
-	}
-	/**
 	 * 获取所有的订单号
 	 * @return
 	 * @throws RemoteException
@@ -118,7 +110,7 @@ public class Branch{
 	}
 
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders, double money) throws RemoteException {
+			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 		String ID = receiptInfo.getBranchTruckID();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		String dateInID = df.format(new Date());
@@ -128,6 +120,16 @@ public class Branch{
 		orderInfo.changeOrderState(orders, "货物已离开"+destination+"营业厅");
 		receiptInfo.add(vo);
 		return vo;
+	}
+
+	/**
+	 * 获得所有的订单
+	 * @author Ann
+	 * @return
+	 * @throws RemoteException
+	 */
+	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
+		return orderInfo.getAllOrders();
 	}
 
 }

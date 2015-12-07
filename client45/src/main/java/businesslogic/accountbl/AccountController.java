@@ -1,18 +1,23 @@
 package businesslogic.accountbl;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
+
 /**
  * @author LIUXUANLIN
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:31:56
  */
-public class AccountController implements AccountBLService{
-     Account AccountBL = new Account();
-	@Override
+public class AccountController implements AccountBLService {
+	Account AccountBL = new Account();
+
+	/**
+	 * @see AccountBLService#show()
+	 */
 	public ArrayList<AccountVO> show() {
 		try {
 			return AccountBL.show();
@@ -21,7 +26,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	@Override
+
+	/**
+	 * @see AccountBLService#show(String)
+	 */
 	public ArrayList<AccountVO> show(String duty) {
 		try {
 			return AccountBL.show(duty);
@@ -30,8 +38,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	
-	@Override
+
+	/**
+	 * @see AccountBLService#getID()
+	 */
 	public String getID() {
 		try {
 			return AccountBL.getID();
@@ -40,7 +50,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	@Override
+
+	/**
+	 * @see AccountBLService#addAccount(AccountVO)
+	 */
 	public ResultMessage addAccount(AccountVO vo) {
 		try {
 			return AccountBL.addAccount(vo);
@@ -49,7 +62,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	@Override
+
+	/**
+	 * @see AccountBLService#deleteAccount(String)
+	 */
 	public ResultMessage deleteAccount(String ID) {
 		try {
 			return AccountBL.deleteAccount(ID);
@@ -58,7 +74,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	@Override
+
+	/**
+	 * @see AccountBLService#updateAccount(AccountVO)
+	 */
 	public ResultMessage updateAccount(AccountVO vo) {
 		try {
 			return AccountBL.updateAccount(vo);
@@ -67,7 +86,10 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	@Override
+
+	/**
+	 * @see AccountBLService#find(String)
+	 */
 	public AccountVO find(String id) {
 		try {
 			return AccountBL.find(id);
@@ -76,7 +98,5 @@ public class AccountController implements AccountBLService{
 		}
 		return null;
 	}
-	
-	
 
 }

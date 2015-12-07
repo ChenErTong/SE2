@@ -43,20 +43,6 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 		}
 	}
 	
-	private void updateOrderState(OrderPO orderPO, CommodityState orderState) throws RemoteException {
-		ArrayList<CommodityPO> commos = orderPO.getCommodityPO();
-		for (CommodityPO commodityPO : commos) {
-			commodityPO.setCommodityState(orderState);
-		}
-		orderPO.setCommodityPO(commos);
-		orderData.modify(orderPO);
-	}
-	private void addHitoryMessage(OrderPO order,String message) throws RemoteException{
-		ArrayList<String> historyMessage = order.getMidAddres();
-		historyMessage.add(message);
-		order.setMidAddres(historyMessage);
-		orderData.modify(order);
-	}
 	@Override
 	public ArrayList<OrderVO> getAllOrders() throws RemoteException {
 		ArrayList<OrderPO> orderPOs = orderData.find();
@@ -99,5 +85,19 @@ public class OrderInfo implements OrderInfo_Branch_Transfer{
 		OrderPO orderPO = orderData.find(order);
 		addHitoryMessage(orderPO, message);
 		updateOrderState(orderPO,orderState);
+	}
+	private void updateOrderState(OrderPO orderPO, CommodityState orderState) throws RemoteException {
+		ArrayList<CommodityPO> commos = orderPO.getCommodityPO();
+		for (CommodityPO commodityPO : commos) {
+			commodityPO.setCommodityState(orderState);
+		}
+		orderPO.setCommodityPO(commos);
+		orderData.modify(orderPO);
+	}
+	private void addHitoryMessage(OrderPO order,String message) throws RemoteException{
+		ArrayList<String> historyMessage = order.getMidAddres();
+		historyMessage.add(message);
+		order.setMidAddres(historyMessage);
+		orderData.modify(order);
 	}
 }
