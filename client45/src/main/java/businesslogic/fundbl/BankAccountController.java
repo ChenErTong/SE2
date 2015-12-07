@@ -3,10 +3,12 @@ import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
+import state.UserAuthority;
 import vo.BankAccountVO;
 /**
  * @author LIUXUANLIN
@@ -23,8 +25,9 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public String getID() {
 		try {
-			
-			return BankAccountBL.getID();
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.getID();
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -34,7 +37,9 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public ArrayList<BankAccountVO> show() {
 		try {
-			return BankAccountBL.show();
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.show();
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -44,7 +49,10 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public ResultMessage add(BankAccountVO vo) {
 		try {
-			return BankAccountBL.add(vo);
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.add(vo);
+			}
+			return ResultMessage.FAIL;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -54,7 +62,10 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public ResultMessage delete(String ID) {
 		try {
-			return BankAccountBL.delete(ID);
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.delete(ID);
+			}
+			return ResultMessage.FAIL;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -64,7 +75,10 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public ResultMessage update(BankAccountVO vo) {
 		try {
-			return BankAccountBL.update(vo);
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.update(vo);
+			}
+			return ResultMessage.FAIL;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -74,7 +88,9 @@ public class BankAccountController implements BankAccountBLService{
 	@Override
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) {
 		try {
-			return BankAccountBL.find(keywords, type);
+			if(this.isCorrectAuthority()){
+				return BankAccountBL.find(keywords, type);
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -99,6 +115,11 @@ public class BankAccountController implements BankAccountBLService{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private boolean isCorrectAuthority(){
+		UserAuthority authority = UserInfomation.getInstance().getAuthority();
+		return authority==UserAuthority.ADVANCE_FINANCE||authority==UserAuthority.MANAGER_LEVEL;
 	}
 
 }
