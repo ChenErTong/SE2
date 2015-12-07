@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
 		
 		public static ImageIcon[] getBUTTON_APPROVE(){
 			if(BUTTON_APPROVE == null){
-				BUTTON_APPROVE= Images.createImageIcons("image/button/单据审批.png");
+				BUTTON_APPROVE= Images.createImageIcons("image/button/单据处理.png");
 			}
 			return BUTTON_APPROVE;
 		}
@@ -41,7 +41,7 @@ import javax.swing.ImageIcon;
 		
 		public static ImageIcon[] getBUTTON_BASE(){
 			if(BUTTON_BASE == null){
-				BUTTON_BASE = Images.createImageIcons("image/button/运营常量.png");
+				BUTTON_BASE = Images.createImageIcons("image/button/成本常量.png");
 			}
 			return BUTTON_BASE;
 		}
@@ -62,21 +62,21 @@ import javax.swing.ImageIcon;
 		
 		public static ImageIcon[] getButton_JINGYING(){
 			if(BUTTON_JINGYING==null){
-				BUTTON_JINGYING = Images.createImageIcons("image/button/经营情况。png");
+				BUTTON_JINGYING = Images.createImageIcons("image/button/经营情况表.png");
 			}
 			return BUTTON_JINGYING;
 		}
 		
 		public static ImageIcon[] getButton_CHENGBEN(){
 			if(BUTTON_CHENGBEN==null){
-				BUTTON_CHENGBEN = Images.createImageIcons("image/button/成本收益.png");
+				BUTTON_CHENGBEN = Images.createImageIcons("image/button/成本收益表.png");
 			}
 			return BUTTON_CHENGBEN;
 		}
 		
 		public static ImageIcon[] getButton_LOG(){
 			if(BUTTON_LOG==null){
-				BUTTON_LOG = Images.createImageIcons("image/button/系统日志.png");
+				BUTTON_LOG = Images.createImageIcons("image/button/记录日志.png");
 			}
 			return BUTTON_LOG;
 		}
