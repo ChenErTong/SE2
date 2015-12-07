@@ -29,7 +29,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		super(userID);
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
-		this.returnButton.addActionListener(this);
+	//	this.returnButton.addActionListener(this);
 		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
