@@ -99,6 +99,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		return table;
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

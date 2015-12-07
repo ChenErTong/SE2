@@ -83,6 +83,7 @@ public class SearchAccount extends MyTranslucentPanel{
 	}
 
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

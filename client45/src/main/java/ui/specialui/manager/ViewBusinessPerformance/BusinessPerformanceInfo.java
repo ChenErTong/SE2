@@ -22,7 +22,6 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
-import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -173,6 +172,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	 * 是否进行报表导出
 	 * @return 返回0则导出。返回1则不导出
 	 */
+	@SuppressWarnings("unused")
 	private int isExport(){
 		int rowCount = 0;
 		rowCount = table.getRowCount();
@@ -325,6 +325,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

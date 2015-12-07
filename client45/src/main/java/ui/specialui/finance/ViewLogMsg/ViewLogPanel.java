@@ -35,6 +35,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 		this.add(log);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Search")){

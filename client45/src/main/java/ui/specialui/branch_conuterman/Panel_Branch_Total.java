@@ -1,7 +1,6 @@
 package ui.specialui.branch_conuterman;
 
 import ui.myui.MyJButton;
-import ui.myui.MyJComboBox;
 import ui.myui.MyJPanel;
 
 public class Panel_Branch_Total extends MyJPanel{

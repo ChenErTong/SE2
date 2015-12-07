@@ -134,6 +134,7 @@ public class CargoImport extends MyJPanel {
 	/**
 	 * 设置空余货物列表
 	 */
+	@SuppressWarnings("unused")
 	private void setCommodity(){
 		// TODO
 	}

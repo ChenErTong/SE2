@@ -7,11 +7,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.myui.MyJFrame;
-import ui.specialui.branch_conuterman.Frame_Branch;
-import ui.specialui.courier.Frame_Courier;
 import ui.specialui.inventory.Frame_Inventory;
-import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class mainForUITest2 {
 	
@@ -48,8 +44,10 @@ public class mainForUITest2 {
 
 		
 
+
 		Frame_Inventory  is= 	new Frame_Inventory(userID);
 		is.setVisible(true);
+
 
 		Toolkit tk=Toolkit.getDefaultToolkit();
 		Image image=tk.createImage("image/logo.png"); 

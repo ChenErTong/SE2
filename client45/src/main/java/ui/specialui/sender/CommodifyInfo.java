@@ -60,6 +60,7 @@ import ui.myui.MyTranslucentPanel;
 	public MyJTable getTable(){
 		return table;
 	}
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override

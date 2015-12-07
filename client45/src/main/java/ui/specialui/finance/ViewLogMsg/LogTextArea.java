@@ -71,6 +71,7 @@ public class LogTextArea extends JScrollPane{
 	/**
 	 * 将存放在ArrayList里的LogMessage显示在TextArea中
 	 */
+	@SuppressWarnings("rawtypes")
 	public void append(ArrayList logs) {
 		if (logs == null) {
 			return;

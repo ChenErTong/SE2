@@ -1,11 +1,7 @@
 package ui.specialui.inventory;
 
-import javax.swing.JLabel;
-
-import ui.image.CommonImage;
 import ui.image.InventoryImage;
 import ui.myui.MyButton;
-import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyLogo;
 import ui.myui.MyTitle;

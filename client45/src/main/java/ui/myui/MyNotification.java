@@ -87,6 +87,7 @@ public class MyNotification extends JDialog implements Runnable{
 		Thread t = new Thread(this);
 		t.start();
 	}
+	@SuppressWarnings("restriction")
 	public MyNotification(JFrame frame, String text, Color color) {
 		super(frame);
 		this.setUndecorated(true);

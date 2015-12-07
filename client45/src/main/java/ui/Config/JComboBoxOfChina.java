@@ -11,7 +11,9 @@ import javax.swing.JComboBox;
  * @author zsq
  * @time 2015/11/21 14:35
  */
-	public class JComboBoxOfChina {
+@SuppressWarnings({"rawtypes","unchecked","unused"})
+public class JComboBoxOfChina {
+	
 	
 	private JComboBox combobox_privince;
 	
@@ -23,7 +25,9 @@ import javax.swing.JComboBox;
 	  private DefaultComboBoxModel model2 = new DefaultComboBoxModel();
 	  private DefaultComboBoxModel model3 = new DefaultComboBoxModel();
 	  
-	  public JComboBoxOfChina() {
+	  
+	
+	public JComboBoxOfChina() {
 	    //设置省市区三级联动数据
 	        //设置第一级数据，从xml里面获取数据
 	    for(String str : UiConfig_JComboBox.getProvinces()) {

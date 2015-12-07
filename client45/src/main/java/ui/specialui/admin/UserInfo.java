@@ -19,7 +19,6 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewLogMsg.LogTextArea;
 
 /**
  * 用户管理界面查找用户和用户列表的显示Panel
@@ -114,6 +113,7 @@ public class UserInfo extends MyTranslucentPanel{
 		return table;
 	}
 	
+	@SuppressWarnings("unused")
 	private class WheelListener implements MouseWheelListener {
 
 		@Override
