@@ -40,4 +40,15 @@ public class Log {
 	public ArrayList<LogMessage> show() throws RemoteException{
 		return logData.find();
 	}
+	
+	public ArrayList<LogMessage> show(String date) throws RemoteException{
+		ArrayList<LogMessage> message = this.show();
+		ArrayList<LogMessage> messageInDate = new ArrayList<>();
+		for (LogMessage logMessage : message) {
+			if(logMessage.time.startsWith(date)){
+				messageInDate.add(logMessage);
+			}
+		}
+		return messageInDate;
+	}
 }

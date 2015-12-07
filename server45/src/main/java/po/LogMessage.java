@@ -32,7 +32,7 @@ public class LogMessage implements Serializable{
 		this.userName = userName;
 		this.message = message;
 		/* 自动生成时间 */
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 		this.time = sdf.format(new Date());
 	}
 	

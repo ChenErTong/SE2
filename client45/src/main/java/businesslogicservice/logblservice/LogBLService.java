@@ -11,4 +11,5 @@ import po.LogMessage;
 */
 public interface LogBLService {
 	public ArrayList<LogMessage> show(); 
+	public ArrayList<LogMessage> showInDate(String date);
 }

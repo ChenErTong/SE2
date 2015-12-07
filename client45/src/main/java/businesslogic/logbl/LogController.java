@@ -41,4 +41,13 @@ public class LogController implements LogBLService{
 		}
 		return null;
 	}
+	@Override
+	public ArrayList<LogMessage> showInDate(String date) {
+		try {
+			return logBL.show(date);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
