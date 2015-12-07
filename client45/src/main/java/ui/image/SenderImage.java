@@ -18,14 +18,14 @@ public class SenderImage {
 	
 	public static ImageIcon[] getBUTTON_SEARCH(){
 		if(BUTTON_SEARCH==null){
-			BUTTON_SEARCH = Images.createImageIcons("image/button/搜索。png");
+			BUTTON_SEARCH = Images.createImageIcons("image/button/查询.png");
 		}
 		return BUTTON_SEARCH;
 	}
 	
 	public static ImageIcon[] getBUTTON_QUXIAO(){
 		if(BUTTON_QUXIAO==null){
-			BUTTON_QUXIAO = Images.createImageIcons("image/button/取消。png");
+			BUTTON_QUXIAO = Images.createImageIcons("image/button/取消.png");
 		}
 		return BUTTON_QUXIAO;
 	}

@@ -90,7 +90,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	 * @param frame
 	 */
 	private void initButton(Frame_Admin frame) {
-		MyButton insertButton = new MyButton(75, 660, 130, 40,AdminImage.getBUTTON_ADDUSER());
+		MyButton insertButton = new MyButton(75, 660, 120, 30,AdminImage.getBUTTON_ADDUSER());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Admin_Total.this.insertPanel(frame);
@@ -99,17 +99,17 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		insertButton.addActionListener(this);
 		this.add(insertButton);
 
-		MyButton modifyButton = new MyButton(205, 660, 130, 40,AdminImage.getBUTTON_MODIFY());
+		MyButton modifyButton = new MyButton(205, 660,  120, 30,AdminImage.getBUTTON_MODIFY());
 		modifyButton.setActionCommand("ModifyUserInfo");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
-		MyButton searchButton = new MyButton(335, 660, 130, 40,AdminImage.getBUTTON_VIEWUSER());
+		MyButton searchButton = new MyButton(335, 660,  120, 30,AdminImage.getBUTTON_VIEWUSER());
 		searchButton.setActionCommand("ViewUserInfo");
 		searchButton.addActionListener(this);
 		this.add(searchButton);
 
-		MyButton deleteButton = new MyButton(465,  660, 130, 40,AdminImage.getBUTTON_DELETEUSER());
+		MyButton deleteButton = new MyButton(465,  660,  120, 30,AdminImage.getBUTTON_DELETEUSER());
 		deleteButton.setActionCommand("DeleteUser");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);

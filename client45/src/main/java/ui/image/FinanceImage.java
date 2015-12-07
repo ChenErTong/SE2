@@ -49,35 +49,35 @@ import javax.swing.ImageIcon;
 			
 			public static ImageIcon[] getBUTTON_BANK(){
 				if(BUTTON_BANK == null){
-					BUTTON_BANK = Images.createImageIcons("image/button/银行账户.png");
+					BUTTON_BANK = Images.createImageIcons("image/button/银行账户管理.png");
 				}
 				return BUTTON_BANK;
 			}
 			
 			public static ImageIcon[] getBUTTON_QICHU(){
 				if(BUTTON_QICHU == null){
-					BUTTON_QICHU = Images.createImageIcons("image/button/期初建账.png");
+					BUTTON_QICHU = Images.createImageIcons("image/button/期初建账管理.png");
 				}
 				return BUTTON_QICHU;
 			}
 			
 			public static ImageIcon[] getButton_JINGYING(){
 				if(BUTTON_JINGYING==null){
-					BUTTON_JINGYING = Images.createImageIcons("image/button/经营情况。png");
+					BUTTON_JINGYING = Images.createImageIcons("image/button/经营情况表.png");
 				}
 				return BUTTON_JINGYING;
 			}
 			
 			public static ImageIcon[] getButton_CHENGBEN(){
 				if(BUTTON_CHENGBEN==null){
-					BUTTON_CHENGBEN = Images.createImageIcons("image/button/成本收益.png");
+					BUTTON_CHENGBEN = Images.createImageIcons("image/button/成本收益表.png");
 				}
 				return BUTTON_CHENGBEN;
 			}
 			
 			public static ImageIcon[] getButton_LOG(){
 				if(BUTTON_LOG==null){
-					BUTTON_LOG = Images.createImageIcons("image/button/系统日志.png");
+					BUTTON_LOG = Images.createImageIcons("image/button/记录日志.png");
 				}
 				return BUTTON_LOG;
 			}

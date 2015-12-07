@@ -1,7 +1,4 @@
-/**
- * @author
- * @version
- */
+
 package ui.image;
 
 import javax.swing.ImageIcon;
@@ -10,7 +7,7 @@ import javax.swing.ImageIcon;
 	 * @author zsq
 	 *
 	 */
-	public class AdminImage {
+		public class AdminImage {
 			//添加用户
 			private static ImageIcon[] BUTTON_ADDUSER = null;
 			//修改用户
@@ -63,7 +60,7 @@ import javax.swing.ImageIcon;
 			
 			public static ImageIcon[] getBUTTON_CONFIRMADD(){
 				if(BUTTON_CONFIRMADD==null){
-					BUTTON_CONFIRMADD = Images.createImageIcons("image/button/确认添加。png");
+					BUTTON_CONFIRMADD = Images.createImageIcons("image/button/确认添加.png");
 				}
 				return BUTTON_CONFIRMADD;
 			}
@@ -75,4 +72,4 @@ import javax.swing.ImageIcon;
 				return BUTTON_CONFIRMMODIFY;
 			}
 			
-}
+		}

@@ -50,7 +50,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userList = new MyJComboBox(140,10,180,30,identity);
 		this.add(userList);
 		
-		search = new MyButton(500,10,90,30,AdminImage.getBUTTON_SEARCH());
+		search = new MyButton(500,10,120,30,AdminImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchUser");
 		search.addActionListener(handle);
 		this.add(search);

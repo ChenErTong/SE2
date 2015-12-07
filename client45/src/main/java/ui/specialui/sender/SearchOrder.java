@@ -3,7 +3,8 @@ package ui.specialui.sender;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import ui.myui.MyJButton;
+import ui.image.SenderImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -16,8 +17,8 @@ import ui.myui.MyTranslucentPanel;
 public class SearchOrder extends MyTranslucentPanel{
 	 private MyJTextField orderNumberField;
 	 private MyJTextField senderNameField;
-	 private MyJButton search;
-	 private MyJButton cancel;
+	 private MyButton search;
+	 private MyButton cancel;
 	
 	 public SearchOrder(Panel_Sender_Total handle) {
 		super(10, 105,620, 108);
@@ -35,12 +36,12 @@ public class SearchOrder extends MyTranslucentPanel{
 		senderNameField = new MyJTextField(185, 55, 200, 40);
 		this.add(senderNameField);
 		
-		 search = new MyJButton(398,10,90,30,"查询",16);
+		 search = new MyButton(398,10,90,30,SenderImage.getBUTTON_SEARCH());
 		 search.setActionCommand("SearchLogisticInfo");
 		 search.addActionListener(handle);
 		 this.add(search);
 		
-		 cancel = new MyJButton(398,60,90,30,"取消",16);
+		 cancel = new MyButton(398,60,90,30,SenderImage.getBUTTON_QUXIAO());
 		 cancel.setActionCommand("CancelSearch");
 		 cancel.addActionListener(new ActionListener(){
 			@Override
@@ -50,6 +51,7 @@ public class SearchOrder extends MyTranslucentPanel{
 			}
 		});
 		this.add(cancel);
+		this.repaint();
 	}
 	
 	public String[] getSenderInfo() {
