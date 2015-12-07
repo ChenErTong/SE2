@@ -49,8 +49,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 		super(userID);
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
-		//TODO return button is null
-//		this.returnButton.addActionListener(this);
+		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}
 
@@ -74,7 +73,6 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			try {
 				subPanel = new HandleReceipt();
 			} catch (RemoteException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			this.add(subPanel);

@@ -1,6 +1,7 @@
 package ui.specialui.finance;
 
-import ui.myui.MyJButton;
+import ui.image.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyJPanel;
 /**
  * 财务管理界面的主Panel
@@ -15,51 +16,51 @@ public class Panel_Finance_Total extends MyJPanel{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
-		MyJButton CostManage = new MyJButton(200, 250, 150, 40,"结算管理",18);
+		MyButton CostManage = new MyButton(200, 250, 150, 40,FinanceImage.getBUTTON_JIESUAN());
 		CostManage.setActionCommand("CostManage");
 		CostManage.addActionListener(frame_Finance);
 		this.add(CostManage);
 		CostManage.setVisible(true);
 		
-		MyJButton SettlementManage = new MyJButton(200,300,150,40,"成本管理",18);
+		MyButton SettlementManage = new MyButton(200,300,150,40,FinanceImage.getBUTTON_COST());
 		SettlementManage.setActionCommand("SettlementManage");
 		SettlementManage.addActionListener(frame_Finance);
 		this.add(SettlementManage);
 		SettlementManage.setVisible(true);
 		
-		MyJButton BankAccountManage = new MyJButton(200,350,150,40,"银行账户管理",18);
+		MyButton BankAccountManage = new MyButton(200,350,150,40,FinanceImage.getBUTTON_BANK());
 		BankAccountManage.setActionCommand("BankAccountManage");
 		BankAccountManage.addActionListener(frame_Finance);
 		this.add(BankAccountManage);
 		BankAccountManage.setVisible(true);
 		
-		MyJButton OpenningStock = new MyJButton(200, 400, 150, 40,"期初账目管理",18);
+		MyButton OpenningStock = new MyButton(200, 400, 150, 40,FinanceImage.getBUTTON_QICHU());
 		OpenningStock.setActionCommand("OpenningStock");
 		OpenningStock.addActionListener(frame_Finance);
 		this.add(OpenningStock);
 		OpenningStock.setVisible(true);
 		
-		MyJButton ViewBusinessPerformance = new MyJButton(200,450,150,40,"查看经营情况表",18);
+		MyButton ViewBusinessPerformance = new MyButton(200,450,150,40,FinanceImage.getButton_JINGYING());
 		ViewBusinessPerformance.setActionCommand("ViewBusinessPerformance");
 		ViewBusinessPerformance.addActionListener(frame_Finance);
 		this.add(ViewBusinessPerformance);
 		ViewBusinessPerformance.setVisible(true);
 		
-		MyJButton ViewIncomeStatement = new MyJButton(200, 500, 150, 40,"查看成本收益表",18);
+		MyButton ViewIncomeStatement = new MyButton(200, 500, 150, 40,FinanceImage.getButton_CHENGBEN());
 		ViewIncomeStatement.setActionCommand("ViewIncomeStatement");
 		ViewIncomeStatement.addActionListener(frame_Finance);
 		this.add(ViewIncomeStatement);
 		ViewIncomeStatement.setVisible(true);
 		
-		MyJButton viewLog = new MyJButton(200,550,170,40,"查看系统日志",18);
+		MyButton viewLog = new MyButton(200,550,170,40,FinanceImage.getButton_LOG());
 		viewLog.setActionCommand("ViewLogMsg");
 		viewLog.addActionListener(frame_Finance);
 		this.add(viewLog);
 		
-		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",18);
-		Withdraw.setActionCommand("Withdraw");
-		Withdraw.addActionListener(frame_Finance);
-		this.add(Withdraw);
+	//	MyButton Withdraw = new MyButton(1120,55,150,40,"注销登录",18);
+		//Withdraw.setActionCommand("Withdraw");
+		//Withdraw.addActionListener(frame_Finance);
+		//this.add(Withdraw);
 	}
 }
 

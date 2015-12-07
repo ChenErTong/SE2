@@ -11,7 +11,8 @@ import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
 import state.UserIdentity;
-import ui.myui.MyJButton;
+import ui.image.AdminImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -30,8 +31,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	
 	private UserInfo userInfo;
 	private UserDetails userDetails;
-	private MyJButton commonButton = new MyJButton(890, 670, 120, 30, "确认添加", 20);;
-	private MyJButton modifyButton = new MyJButton(890, 670, 120, 30, "确认修改", 20);;
+	private MyButton commonButton = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMADD());
+	private MyButton modifyButton = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMMODIFY());
 	private MyJTable table;
 	
 	/**
@@ -89,8 +90,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	 * @param frame
 	 */
 	private void initButton(Frame_Admin frame) {
-		MyJButton insertButton = new MyJButton(75, 660, 130, 40,
-				"添加用户", 18);
+		MyButton insertButton = new MyButton(75, 660, 130, 40,AdminImage.getBUTTON_ADDUSER());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Admin_Total.this.insertPanel(frame);
@@ -99,29 +99,26 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		insertButton.addActionListener(this);
 		this.add(insertButton);
 
-		MyJButton modifyButton = new MyJButton(205, 660, 130, 40,
-				"修改用户信息", 18);
+		MyButton modifyButton = new MyButton(205, 660, 130, 40,AdminImage.getBUTTON_MODIFY());
 		modifyButton.setActionCommand("ModifyUserInfo");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(335, 660, 130, 40,
-				"查看所选用户", 18);
+		MyButton searchButton = new MyButton(335, 660, 130, 40,AdminImage.getBUTTON_VIEWUSER());
 		searchButton.setActionCommand("ViewUserInfo");
 		searchButton.addActionListener(this);
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(465,  660, 130, 40,
-				"删除用户", 18);
+		MyButton deleteButton = new MyButton(465,  660, 130, 40,AdminImage.getBUTTON_DELETEUSER());
 		deleteButton.setActionCommand("DeleteUser");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		MyJButton Withdraw = new MyJButton(1120,55,150,40,"注销登录",16);
-		Withdraw.setActionCommand("Withdraw");
-		Withdraw.addActionListener(frame);
-		this.add(Withdraw);
-		Withdraw.setVisible(true);
+	//	MyButton Withdraw = new MyButton(1120,55,150,40,"注销登录",16);
+		//Withdraw.setActionCommand("Withdraw");
+		//Withdraw.addActionListener(frame);
+		//this.add(Withdraw);
+		//Withdraw.setVisible(true);
 	}
 	
 	/**
