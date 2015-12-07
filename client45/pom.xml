@@ -7,7 +7,7 @@
     <artifactId>SE2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  
+
   <artifactId>client45</artifactId>
   <packaging>jar</packaging>
 
