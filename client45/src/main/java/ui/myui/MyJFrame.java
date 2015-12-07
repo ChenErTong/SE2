@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import ui.image.CommonImage;
 /**
@@ -45,25 +46,25 @@ public class MyJFrame extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);
 		
-//		this.returnButton = new MyButton(1155, 15, 30, 30, CommonImage.TEST_RETURN_BUTTON);
-//		this.returnButton.setActionCommand("return");
-//		this.add(this.returnButton);
-//		
-//		this.minimizeButton = new MyButton(1195, 15, 30, 30, CommonImage.TEST_MINIMUMIZE_BUTTON);
-//		this.minimizeButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
-//			}
-//		});
-//		this.add(this.minimizeButton);
-//		
-//		this.closeButton = new MyButton(1235, 15, 30, 30, CommonImage.TEST_CLOSE_BUTTON);
-//		this.closeButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				System.exit(0);
-//			}
-//		});
-//		this.add(this.closeButton);
+		this.returnButton = new MyButton(1155, 15, 30, 30, CommonImage.getBUTTON_RETURN());
+		this.returnButton.setActionCommand("return");
+		this.add(this.returnButton);
+		
+		this.minimizeButton = new MyButton(1195, 15, 30, 30, CommonImage.getBUTTON_MINIMUMIZE());
+		this.minimizeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		this.add(this.minimizeButton);
+		
+		this.closeButton = new MyButton(1235, 15, 30, 30, CommonImage.getBUTTON_CLOSE());
+		this.closeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		this.add(this.closeButton);
 		
 		this.repaint();
 	}

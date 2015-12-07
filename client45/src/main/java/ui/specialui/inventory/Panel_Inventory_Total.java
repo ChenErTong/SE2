@@ -1,9 +1,14 @@
 package ui.specialui.inventory;
 
+import javax.swing.JLabel;
+
+import ui.image.CommonImage;
 import ui.image.InventoryImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
+import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyLogo;
+import ui.myui.MyTitle;
 
 public class Panel_Inventory_Total extends MyJPanel{
 	private static final long serialVersionUID = 1L;
@@ -13,32 +18,35 @@ public class Panel_Inventory_Total extends MyJPanel{
 		this.setOpaque(false);
 		
 		this.initComponent(frame);
+		
+		MyLogo.setLogo(this);
+		MyTitle.setTitle(this, "中转中心仓库管理员界面", 450, 100, 387, 148);
+		
 		this.repaint();
 	}
 
 	private void initComponent(Frame_Inventory frame) {
-		MyButton InventoryCheck = new MyButton(200, 300, 250, 66, InventoryImage.getBUTTON_CHAKAN());
+		MyButton InventoryCheck = new MyButton(511, 340, 257, 46, InventoryImage.getBUTTON_CHAKAN());
 		InventoryCheck.setActionCommand("InventoryCheck");
 		InventoryCheck.addActionListener(frame);
 		this.add(InventoryCheck);
-		InventoryCheck.repaint();
 		
-		MyJButton Stocking = new MyJButton(200, 350, 150, 40, "库存盘点", 15);
+		MyButton Stocking = new MyButton(511, 410, 257, 46, InventoryImage.getBUTTON_PANDIAN());
 		Stocking.setActionCommand("Stocking");
 		Stocking.addActionListener(frame);
 		this.add(Stocking);
 		
-		MyJButton InventoryZoneAdjust = new MyJButton(200, 400, 150, 40, "库存分区调整", 15);
+		MyButton InventoryZoneAdjust = new MyButton(511, 480, 257, 46, InventoryImage.getBUTTON_FENQUTIAOZHENG());
 		InventoryZoneAdjust.setActionCommand("InventoryZoneAdjust");
 		InventoryZoneAdjust.addActionListener(frame);
 		this.add(InventoryZoneAdjust);
 		
-		MyJButton CargoImport = new MyJButton(200, 450, 150, 40, "入库", 15);
+		MyButton CargoImport = new MyButton(511, 550, 257, 46, InventoryImage.getBUTTON_RUKU());
 		CargoImport.setActionCommand("CargoImport");
 		CargoImport.addActionListener(frame);
 		this.add(CargoImport);
 		
-		MyJButton CargoExport = new MyJButton(200, 500, 150, 40, "出库", 15);
+		MyButton CargoExport = new MyButton(511, 620, 257, 46, InventoryImage.getBUTTON_CHUKU());
 		CargoExport.setActionCommand("CargoExport");
 		CargoExport.addActionListener(frame);
 		this.add(CargoExport);

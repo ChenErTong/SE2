@@ -1,17 +1,10 @@
 package ui.specialui.inventory;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
-import ui.myui.MyNotification;
 import ui.specialui.inventory.check.InventoryCheck;
 import ui.specialui.inventory.export.CargoExport;
 import ui.specialui.inventory.import_.CargoImport;
@@ -28,7 +21,7 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 		this.totalPanel = new Panel_Inventory_Total(this);
 		this.add(totalPanel);
 		
-//		this.returnButton.addActionListener(this);
+		this.returnButton.addActionListener(this);
 		
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 	}

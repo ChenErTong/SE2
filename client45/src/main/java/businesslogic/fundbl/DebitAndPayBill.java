@@ -5,6 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -23,9 +24,11 @@ import vo.receiptvo.PaymentBillVO;
  */
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
+	private ReceiptInfo_DebitAndPayBill receiptInfo;
 
 	public DebitAndPayBill() {
 		debitAndPayBillData=getData();
+		receiptInfo = new ReceiptInfo();
 	}
 	
 	public DebitAndPayBillDataService getData(){
@@ -63,12 +66,14 @@ public class DebitAndPayBill {
 	public ResultMessage addDebitBill(DebitBillVO vo)
 			throws RemoteException {
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
-		return debitAndPayBillData.add(po);
+		debitAndPayBillData.add(po);
+		return receiptInfo.add(po);
 	}
 
 	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException {
 		PaymentBillPO po = FundTrans.convertVOtoPO(vo);
-		return debitAndPayBillData.add(po);
+		debitAndPayBillData.add(po);
+		return receiptInfo.add(po);
 	}
 
 	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
