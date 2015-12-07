@@ -30,7 +30,7 @@ public class FundTrans {
 		} else {
 			String ID = vo.ID;
 			String name = vo.name;
-			double money = vo.money;
+			BigDecimal money = vo.money;
 			String level = vo.level;
 			return new BankAccountPO(ID, name, money, level);
 		}

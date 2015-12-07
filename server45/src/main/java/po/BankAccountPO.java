@@ -1,5 +1,6 @@
 package po;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,12 +19,12 @@ public class BankAccountPO extends PersistentObject{
 	/**账户名称*/
 	private String name;
 	/**账户余额*/
-	private double money;
+	private BigDecimal money;
 	/**账户属性*/
 	private String level;
  
 	
-	public BankAccountPO(String ID,String name,double money,String level){
+	public BankAccountPO(String ID,String name,BigDecimal money,String level){
 		super(ID);
 		this.name = name;
 		this.money = money;
@@ -51,7 +52,7 @@ public class BankAccountPO extends PersistentObject{
 
 	
 
-	public double getMoney() {
+	public BigDecimal getMoney() {
 		return money;
 	}
 	
@@ -59,7 +60,7 @@ public class BankAccountPO extends PersistentObject{
 		return money+"";
 	}
 
-	public void setMoney(double money) {
+	public void setMoney(BigDecimal money) {
 		this.money = money;
 	}
 	

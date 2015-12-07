@@ -20,8 +20,8 @@ import data.facilitydata.DriverData;
 import data.facilitydata.FacilityData;
 import data.funddata.BankAccountData;
 import data.funddata.DebitAndPayBillData;
-import data.funddata.ExpenseData;
 import data.inventorydata.InventoryData;
+import data.logdata.LogData;
 import data.openingstockdata.OpeningStockData;
 import data.orderdata.OrderData;
 import data.organizationdata.OrganizationData;
@@ -73,7 +73,7 @@ public class RMIManage {
 				Naming.bind(prefix+FacilityData.NAME, DataFactory.createDataService(FacilityData.NAME));
 				Naming.bind(prefix+DebitAndPayBillData.NAME, DataFactory.createDataService(DebitAndPayBillData.NAME));
 				Naming.bind(prefix+BankAccountData.NAME, DataFactory.createDataService(BankAccountData.NAME));
-				Naming.bind(prefix+ExpenseData.NAME, DataFactory.createDataService(ExpenseData.NAME));
+//				Naming.bind(prefix+ExpenseData.NAME, DataFactory.createDataService(ExpenseData.NAME));
 				Naming.bind(prefix+InventoryData.NAME, DataFactory.createDataService(InventoryData.NAME));
 				Naming.bind(prefix+OpeningStockData.NAME, DataFactory.createDataService(OpeningStockData.NAME));
 				Naming.bind(prefix+OrderData.NAME, DataFactory.createDataService(OrderData.NAME));
@@ -84,6 +84,7 @@ public class RMIManage {
 				Naming.bind(prefix+TransferData.NAME, DataFactory.createDataService(TransferData.NAME));
 				Naming.bind(prefix+UserData.NAME, DataFactory.createDataService(UserData.NAME));
 				Naming.bind(prefix+DriverData.NAME, DataFactory.createDataService(DriverData.NAME));
+				Naming.bind(prefix+LogData.NAME, DataFactory.createDataService(LogData.NAME));
 				System.out.println("注册完成！");
 			} catch (RemoteException e) {
 				e.printStackTrace();

@@ -62,11 +62,11 @@ public class VehicleLoading extends MyJPanel {
 		MyJButton calculateCost = new MyJButton(472, 560, 138, 23, "计算运费/元", 18);
 		calculateCost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double cost = VehicleLoading.this.calculateCost();
-				if(cost == 0.0){
+				BigDecimal cost = VehicleLoading.this.calculateCost();
+				if(cost.compareTo(new BigDecimal(0))==0){
 					new MyNotification(frame, "无订单信息", Color.RED);
-				}else if(cost > 0){
-					deliveryCost.setText(Double.toString(cost));
+				}else if(cost.compareTo(new BigDecimal(0)) > 0){
+					deliveryCost.setText(cost+"");
 				}
 			}
 		});
@@ -93,18 +93,18 @@ public class VehicleLoading extends MyJPanel {
 	 * @param orderID
 	 * @return
 	 */
-	private double calculateCost(){
-		double cost = 0.0;
+	private BigDecimal calculateCost(){
+		BigDecimal cost = new BigDecimal(0);
 		String[][] data = ordersID.getData();
-		if(ordersID == null) return 0.0;
+		if(ordersID == null) return new BigDecimal(0);
 		OrderBLService order_info = ControllerFactory.getOrderController();
 		for (int i = 0; i < data.length; i++) {
 			OrderVO order = order_info.inquireOrder(data[i][0]);
 			if(order == null){
 				new MyNotification(this, "不存在订单号\n" + data[i][0], Color.RED);
-				return -1;
+				return new BigDecimal(-1);
 			}
-			cost += order.money;
+			cost=cost.add(order.money);
 		}
 		return cost;
 	}

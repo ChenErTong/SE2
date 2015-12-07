@@ -1,14 +1,17 @@
 package vo;
 
+import java.math.BigDecimal;
+
 import state.CommodityState;
 
 public class CommodityVO extends ValueObject{
 	public String commodityType;
-	public double weight;
-	public double volumn;
+	public BigDecimal weight;
+	public BigDecimal volumn;
+	
 	public CommodityState commodityState;
 	
-	public CommodityVO(String commodityType, double weight, double volumn, CommodityState commodityState) {
+	public CommodityVO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState) {
 		this.commodityType = commodityType;
 		this.weight = weight;
 		this.volumn = volumn;
@@ -18,8 +21,8 @@ public class CommodityVO extends ValueObject{
 	 * 进行重量矫正
 	 */
 	public void correctWeight(){
-		double weight = volumn / 5000;
-		this.weight = Double.max(this.weight, weight);
+		BigDecimal weight = volumn.divide(new BigDecimal(5000));
+		this.weight = this.weight.compareTo(weight)>0?this.weight:weight;
 	}
 	@Override
 	public String toString() {

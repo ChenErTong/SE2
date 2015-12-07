@@ -1,5 +1,7 @@
 package po;
 
+import java.math.BigDecimal;
+
 import state.CommodityState;
 
 public class CommodityPO  extends PersistentObject{
@@ -8,11 +10,11 @@ public class CommodityPO  extends PersistentObject{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String commodityType;
-	private double weight;
-	private double volumn;
+	private BigDecimal weight;
+	private BigDecimal volumn;
 	private CommodityState commodityState;
 	
-	public CommodityPO(String commodityType, double weight, double volumn, CommodityState commodityState) {
+	public CommodityPO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState) {
 		this.commodityType = commodityType;
 		this.weight = weight;
 		this.volumn = volumn;
@@ -27,19 +29,19 @@ public class CommodityPO  extends PersistentObject{
 		this.commodityType = commodityType;
 	}
 
-	public double getWeight() {
+	public BigDecimal getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(BigDecimal weight) {
 		this.weight = weight;
 	}
 
-	public double getVolumn() {
+	public BigDecimal getVolumn() {
 		return volumn;
 	}
 
-	public void setVolumn(double volumn) {
+	public void setVolumn(BigDecimal volumn) {
 		this.volumn = volumn;
 	}
 

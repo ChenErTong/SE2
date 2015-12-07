@@ -1,5 +1,6 @@
 package businesslogic.orderbl;
 
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -81,18 +82,18 @@ public class Order{
 		return orderData.getID();
 	}
 
-	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
+	public BigDecimal getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) throws RemoteException {
-		double weight = 0;
+		BigDecimal weight = new BigDecimal(0);
 		for (CommodityVO commodityVO : commodityList) {
-			weight+=commodityVO.weight;
+			weight=weight.add(commodityVO.weight);
 		}
-		double priceConstant = expressType.priceConstant;
+		BigDecimal priceConstant = expressType.priceConstant;
 		return baseInfo.getArrialPriceByCities(senderAddress, receiverAddress, weight, priceConstant);
 	}
 
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,String begindate) throws RemoteException {
-		double transSpeed = expressType.speed;
+		BigDecimal transSpeed = expressType.speed;
 		return baseInfo.getArrialDateByCities(senderAddress, receiverAddress, begindate, transSpeed);
 	}
 

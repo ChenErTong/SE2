@@ -1,4 +1,4 @@
-package log;
+package po;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -26,6 +26,7 @@ public class LogMessage implements Serializable{
 	 * 日志信息
 	 */
 	public String message;
+	
 	
 	public LogMessage(String userName, String message) {
 		this.userName = userName;

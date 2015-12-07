@@ -1,4 +1,5 @@
 package businesslogic.orderbl;
+import java.math.BigDecimal;
 import java.rmi.RemoteException;
 
 import businesslogicservice.orderblservice.OrderBLService;
@@ -45,14 +46,14 @@ public class OrderController implements OrderBLService{
 	}
 
 	@Override
-	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
+	public BigDecimal getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) {
 		try {
 			return orderBL.getCost(commodityList, senderAddress, receiverAddress, expressType);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return new BigDecimal(0);
 	}
 
 	@Override

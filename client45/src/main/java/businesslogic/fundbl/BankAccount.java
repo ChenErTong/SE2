@@ -72,18 +72,18 @@ public class BankAccount {
 	
 	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
 		BankAccountPO po = bankAccountData.find(accountID);
-		BigDecimal oldmoney = new BigDecimal(po.getMoney());
+		BigDecimal oldmoney = po.getMoney();
 		if(oldmoney.compareTo(money)>=0)
 			oldmoney=oldmoney.subtract(money);
-		po.setMoney(oldmoney.doubleValue());
+		po.setMoney(oldmoney);
 		return bankAccountData.modify(po);
 	}
 	
 	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
 		BankAccountPO po = bankAccountData.find(accountID);
-		BigDecimal oldmoney = new BigDecimal(po.getMoney());
+		BigDecimal oldmoney = po.getMoney();
 		oldmoney=oldmoney.add(money);
-		po.setMoney(oldmoney.doubleValue());
+		po.setMoney(oldmoney);
 		return bankAccountData.modify(po);
 	}
 

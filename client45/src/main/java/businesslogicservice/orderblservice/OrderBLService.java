@@ -1,5 +1,7 @@
 package businesslogicservice.orderblservice;
 
+import java.math.BigDecimal;
+
 import businesslogicservice.BLService;
 import state.ExpressType;
 import state.ResultMessage;
@@ -67,7 +69,7 @@ public interface OrderBLService extends BLService{
 	 * @param senderAddress 始发地（省+空格+市+空格+详细地址）
 	 * @param commodityList 货物数组，每个货物都有自己的重量
 	 */
-	public double getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress, ExpressType expressType);
+	public BigDecimal getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress, ExpressType expressType);
 
 	/**
 	 * @param senderAddress 始发地（省+空格+市+空格+详细地址）

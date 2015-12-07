@@ -1,6 +1,7 @@
 package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
@@ -86,7 +87,7 @@ public class OrderInput extends MyJPanel {
 			commodities[i].setOrderID(id);
 		}
 		
-		double cost = controller.getCost(commodities, senderInfo[2],
+		BigDecimal cost = controller.getCost(commodities, senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());

@@ -68,9 +68,9 @@ public class SerSaveAndLoad<E> implements Serializable {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void load(){
+	private void load(String folderName){
 		/* 没有该文件夹就创建 */
-		File dataFolder = new File("data");
+		File dataFolder = new File(folderName);
 		if (!dataFolder.isDirectory()) {
 			dataFolder.mkdirs();
 		}
@@ -120,7 +120,10 @@ public class SerSaveAndLoad<E> implements Serializable {
 		}
 	}
 	public SerSaveAndLoad(String fileName) {
+		this("data", fileName);
+	}
+	public SerSaveAndLoad(String folderName,String fileName) {
 		this.fileName = fileName;
-		this.load();
+		this.load(folderName);
 	}
 }

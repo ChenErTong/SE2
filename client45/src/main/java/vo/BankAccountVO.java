@@ -1,5 +1,6 @@
 package vo;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class BankAccountVO{
@@ -8,13 +9,14 @@ public class BankAccountVO{
 	/**账户名称*/
 	public String name;
 	/**账户余额*/
-	public double money;
+	
+	public BigDecimal money;
 	/**账户属性*/
 	public String level;
 	/**账户创建时间,系统自动计算得到*/
 	public String date;
 	
-	public BankAccountVO(String ID,String name,double money,String level){
+	public BankAccountVO(String ID,String name,BigDecimal money,String level){
 		this.ID=ID;
 		this.name = name;
 		this.money = money;

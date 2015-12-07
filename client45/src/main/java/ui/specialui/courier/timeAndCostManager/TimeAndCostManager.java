@@ -1,6 +1,7 @@
 package ui.specialui.courier.timeAndCostManager;
 
 import java.awt.Color;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
@@ -86,7 +87,7 @@ public class TimeAndCostManager extends MyJPanel{
 			commodities[i] = commodityList.get(i);
 		}
 		
-		double cost = controller.getCost(commodities, senderInfo[2],
+		BigDecimal cost = controller.getCost(commodities, senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 		String arrivalDate = controller.getArrivalDate(senderInfo[2],
 				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());

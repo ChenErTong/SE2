@@ -1,5 +1,6 @@
 package po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
@@ -49,7 +50,7 @@ public class OrderPO extends ReceiptPO {
 	private String sendTime;
 	private String recipientTime;
 	// 费用
-	private double money;
+	private BigDecimal money;
 	private ReceiptState state;
 	// 包装类型
 	private PackageType packType;
@@ -60,7 +61,7 @@ public class OrderPO extends ReceiptPO {
 
 	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
-			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, double money, PackageType packType,ExpressType express) {
+			ArrayList<CommodityPO> commodityPO, ArrayList<String> midAddres, String sendTime, String recipientTime, BigDecimal money, PackageType packType,ExpressType express) {
 		super(orderIdString,type);
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;
@@ -169,11 +170,11 @@ public class OrderPO extends ReceiptPO {
 		this.recipientTime = recipientTime;
 	}
 
-	public double getMoney() {
+	public BigDecimal getMoney() {
 		return money;
 	}
 
-	public void setMoney(double money) {
+	public void setMoney(BigDecimal money) {
 		this.money = money;
 	}
 	
