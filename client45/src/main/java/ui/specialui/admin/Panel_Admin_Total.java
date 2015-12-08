@@ -16,7 +16,9 @@ import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
+import ui.myui.MyLogo;
 import ui.myui.MyNotification;
+import ui.myui.MyTitle;
 import vo.UserVO;
 
 /**
@@ -46,13 +48,18 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	public Panel_Admin_Total(Frame_Admin frame_Admin)  {
 		super(0, 0, 1280, 720);
 		userPool = new ArrayList<UserVO>();
-		this.setOpaque(false);
+
 		this.initComponent(frame_Admin);
+		this.setOpaque(false);
+		
+		MyLogo.setLogo(this);
+		MyTitle.setTitle(this, "管理员界面", 480, 0, 306, 142);
+	
 		this.showAll();
 	}
 	
 	private void initComponent(Frame_Admin frame_Admin){
-		this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
+	//	this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
 	
 		userInfo = new UserInfo(this);
 		this.add(userInfo);

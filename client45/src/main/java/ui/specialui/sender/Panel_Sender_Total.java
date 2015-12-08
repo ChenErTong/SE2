@@ -13,6 +13,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
+import ui.myui.MyTitle;
 import vo.OrderVO;
 
 
@@ -32,10 +33,11 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	
 	static ArrayList<OrderVO> orderPool;
 	static String orderID = " ";
-	
+
 	public Panel_Sender_Total() {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
+		MyTitle.setTitle(this, "物流查询界面", 480, 0, 306, 142);
 		this.initComponent();
 	}
 
@@ -46,7 +48,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 		this.add(commodityPanel);
 		this.add(logisticPanel);
 		this.add(searchPanel);
-		this.add(new MyJLabel(560,30,150,40,"物流信息查询",22,true));
+	//	this.add(new MyJLabel(560,30,150,40,"物流信息查询",22,true));
 		orderPool = new ArrayList<OrderVO>();
 	}
 	

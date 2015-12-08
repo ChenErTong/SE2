@@ -157,6 +157,10 @@ public class LogPanel extends MyTranslucentPanel{
 	public MyEmptyTextArea getText(){
 		return  ta;
 	}
+	
+	public MyJTable getTable() {
+		return table;
+	}
 }
 
 
