@@ -1,5 +1,6 @@
 package businesslogicservice.openingstockblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ResultMessage;
@@ -23,9 +24,9 @@ public interface OpeningStockBLService {
 	ArrayList< AccountVO>clients1,
 	ArrayList< FacilityVO > clients2,
 	ArrayList< InventoryVO > clients3,
-	ArrayList< BankAccountVO > accounts);
+	ArrayList< BankAccountVO > accounts) throws RemoteException;
 	/**查找到该期初账目**/
-	public ResultMessage add();
-	public ResultMessage find (int id);
-	public ArrayList<OpeningStockVO> show();
+	public ResultMessage add() throws RemoteException;
+//	public ResultMessage find (int id);
+	public ArrayList<OpeningStockVO> show() throws RemoteException;
 }

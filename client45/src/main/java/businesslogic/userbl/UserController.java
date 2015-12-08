@@ -28,7 +28,7 @@ public class UserController implements UserBLService{
 	}
 
 	@Override
-	public ArrayList<UserVO> show() {
+	public ArrayList<UserVO> show() throws RemoteException {
 		try {
 			return userBL.show();
 		} catch (RemoteException e) {
@@ -38,73 +38,38 @@ public class UserController implements UserBLService{
 	}
 
 	@Override
-	public String getID() {
-		try {
+	public String getID() throws RemoteException {
 			return userBL.getID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage addUser(UserVO vo) {
-		try {
+	public ResultMessage addUser(UserVO vo) throws RemoteException {
 			return userBL.addUser(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage deleteUser(UserVO vo) {
-		try {
+	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
 			return userBL.deleteUser(vo.id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage updateUser(UserVO vo) {
-		try {
+	public ResultMessage updateUser(UserVO vo) throws RemoteException {
 			return userBL.updateUser(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public UserIdentity login(LoginInfo loginInfo) {
-		try {
+	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 			return userBL.login(loginInfo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage updateAdmin(String oldPassword, String newPassword) {
-		try {
+	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
 			return userBL.updateAdmin(oldPassword, newPassword);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<UserVO> showUser(UserIdentity userIdentity) {
-		try {
+	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException {
 			return userBL.showUser(userIdentity);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
 	

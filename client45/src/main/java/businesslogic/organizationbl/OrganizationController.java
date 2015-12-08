@@ -24,151 +24,78 @@ public class OrganizationController implements OrganizationBLService {
 		 * @author Ann
 		 */
 		//我觉得没有必要getID
-		// TODO getID
 		return null;
 	}
 
 	@Override
-	public String getBranchID(String city) {
-		try {
+	public String getBranchID(String city) throws RemoteException {
 			return organization.getBranchID(city);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage addBranch(BranchVO vo) {
-		try {
+	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
 			return organization.addBranch(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage deleteBranch(String organizationID) {
-		try {
+	public ResultMessage deleteBranch(String organizationID)  throws RemoteException{
 			return organization.deleteBranch(organizationID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage updateBranch(BranchVO vo) {
-		try {
+	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
 			return organization.updateBranch(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 	
 	
 	@Override
-	public ArrayList<BranchVO> showBranch() {
-		try {
+	public ArrayList<BranchVO> showBranch() throws RemoteException {
 			return organization.showBranch();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<String> getAllBranchNumbers() {
-		try {
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
 			return organization.getAllBranchNumbers();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public String getTransferID(String city) {
-		try {
+	public String getTransferID(String city)  throws RemoteException{
 			return organization.getTransferID(city);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage addTransfer(TransferVO vo) {
-		try {
+	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
 			return organization.addTransfer(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage deleteTransfer(String organizationID) {
-		try {
+	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
 			return organization.deleteTransfer(organizationID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
 	@Override
-	public ResultMessage updateTransfer(TransferVO vo) {
-		try {
+	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 			return organization.updateTransfer(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
 	}
 
-	public ArrayList<TransferVO> showTransfer() {
-	
-		try {
+	public ArrayList<TransferVO> showTransfer() throws RemoteException {
 			return organization.showTransfer();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	
-		return null;
 	}
 
 	@Override
-	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) {
-		try {
+	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException {
 			return organization.getAccountsByOrganizationID(organizationID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) {
-		try {
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException {
 			return organization.getFacilitiesByBranchID(branchID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) {
-		try {
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID)  throws RemoteException{
 			return organization.getInventoriesByTransferID(transferID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
 

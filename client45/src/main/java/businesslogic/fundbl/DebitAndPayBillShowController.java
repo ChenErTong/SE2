@@ -13,67 +13,37 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 
 	DebitAndPayBillShow showBL = new DebitAndPayBillShow();
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPay() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
 			return showBL.showPay();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showExpense() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
 			return showBL.showExpense();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayApproving() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException {
 			return showBL.showPayApproving();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseApproving() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException {
 			return showBL.showExpenseApproving();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayPass() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException {
 			return showBL.showPayPass();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showExpensePass() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
 			return showBL.showExpensePass();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayFailure() {
+	public ArrayList<DebitAndPayBillVO> showPayFailure()  throws RemoteException{
 		try {
 			return showBL.showPayFailure();
 		} catch (RemoteException e) {
@@ -83,7 +53,7 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseFailure() {
+	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException {
 		try {
 			return showBL.showExpenseFailure();
 		} catch (RemoteException e) {
@@ -93,33 +63,18 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayDraft() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showPayDraft()  throws RemoteException{
 			return showBL.showPayDraft();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showExpenseDraft() {
-		try {
+	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
 			return showBL.showExpenseDraft();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showList(String end) {
-		try {
+	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException {
 			return showBL.showList(end);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 }

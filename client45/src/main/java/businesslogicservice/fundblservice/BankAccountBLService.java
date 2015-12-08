@@ -27,30 +27,30 @@ public interface BankAccountBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public String getID();
+	public String getID() throws RemoteException;
 	/**
 	 * 显示当前公司的全部银行账户
 	 * @return 全部银行账户的ArrayList
 	 */
-	public ArrayList<BankAccountVO> show();
+	public ArrayList<BankAccountVO> show() throws RemoteException;
 	/**
 	 * 添加银行账户
 	 * @param vo BankAccoutVO
 	 * @return  处理结果
 	 */
-	public ResultMessage add(BankAccountVO vo);
+	public ResultMessage add(BankAccountVO vo) throws RemoteException;
 	/**
 	 * 根据账户ID删除账户
 	 * @param ID
 	 * @return 处理结果
 	 */
-	public ResultMessage delete(String ID);
+	public ResultMessage delete(String ID) throws RemoteException;
 	/**
 	 * 更新账户信息
 	 * @param vo BankAccoutVO
 	 * @return 处理信息
 	 */
-	public ResultMessage update(BankAccountVO vo);
+	public ResultMessage update(BankAccountVO vo) throws RemoteException;
 	/**
 	 * 进行关键字模糊查询
 	 * @param keywords
@@ -61,9 +61,9 @@ public interface BankAccountBLService extends BLService{
 	 * @param <FindTypeAccout>
 	 * @throws RemoteException 
 	 */
-	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type) ;
+	public ArrayList<BankAccountVO> find(String keywords,FindTypeAccount type)  throws RemoteException;
 	
-	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money);
+	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException;
 	
-	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money);
+	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException;
 }

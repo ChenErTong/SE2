@@ -1,5 +1,6 @@
 package businesslogicservice.receiptblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ReceiptState;
@@ -23,7 +24,7 @@ public interface ReceiptBLService {
 	 * @version Oct 22,2015
 	 * @return 处理信息
 	 */
-	public ResultMessage updateReceipt(ReceiptVO receiptVO);
+	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException;
 	
 	/**
 	 * 通过单据审批
@@ -33,7 +34,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return 处理信息
 	 */
-	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs);
+	public ResultMessage passReceipt(ArrayList<ReceiptVO>VOs) throws RemoteException;
 	
 	/**
 	 * 不通过单据审批
@@ -43,7 +44,7 @@ public interface ReceiptBLService {
 	 * @param receiptTypes，单据类型
 	 * @return
 	 */
-	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs);
+	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO>VOs) throws RemoteException;
 	
 	/**
 	 * 查看单据内容，根据单据的状态进行区分：等待审核的单据、通过审核的单据、未通过审核的单据
@@ -52,5 +53,5 @@ public interface ReceiptBLService {
 	 * @param receiptStates，单据状态
 	 * @return 处理信息
 	 */
-	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state);
+	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException;
 }

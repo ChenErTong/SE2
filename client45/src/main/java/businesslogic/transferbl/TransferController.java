@@ -24,77 +24,42 @@ public class TransferController implements TransferBLService{
 	}
 
 	@Override
-	public ArrayList<CommodityVO> getAllCommodities() {
-		try {
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 			return TransferBL.getAllCommodities();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public TransferOrderVO planeTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders, String date, String id) {
-		try {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 			return TransferBL.planeTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public TransferOrderVO truckTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders, String date, String id) {
-		try {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 			return TransferBL.truckTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public TransferOrderVO trainTransfer(String transfer,String facilityID, String departure, String destination, String courierName,
-			ArrayList<String> orders, String date, String id) {
-		try {
+			ArrayList<String> orders, String date, String id) throws RemoteException {
 			return TransferBL.trainTransfer(transfer,facilityID, departure, destination, courierName, orders, date, id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptVO receipt) {
-		try {
+	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
 			return TransferBL.submit(receipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage save(ReceiptVO receipt) {
-		try {
+	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
 			return TransferBL.save(receipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public TransferArrivalListVO receiptList(String transferID,
 			String departure, String destination, CommodityState state,
-			String orders) {
-		try {
+			String orders) throws RemoteException {
 			return TransferBL.receiptList(transferID, departure, destination, state, orders);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 }

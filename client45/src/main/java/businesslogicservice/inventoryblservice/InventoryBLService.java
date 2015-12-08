@@ -11,6 +11,7 @@ import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
+
 /**
  * 
  * @author Ann
@@ -18,21 +19,24 @@ import vo.receiptvo.InventoryImportReceiptVO;
  */
 public interface InventoryBLService {
 	/**
-	 * 库存查看
-	 * 查看一段时间内某个中转中心的入库单数量 出库单数量
-	 * @param transferID 中转中心ID
-	 * @param beginDate 开始时间
-	 * @param endDate 结束时间
+	 * 库存查看 查看一段时间内某个中转中心的入库单数量 出库单数量
+	 * 
+	 * @param transferID
+	 *            中转中心ID
+	 * @param beginDate
+	 *            开始时间
+	 * @param endDate
+	 *            结束时间
 	 * @return 库存查看VO(里面有库存)
 	 */
-	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate);
+	public InventoryViewVO viewInventory(String transferID, String beginDate, String endDate) throws RemoteException;
 
 	/**
 	 * 显示截至盘点当日时间的库存快照
 	 * 
 	 * @throws RemoteException
 	 */
-	public InventoryCheckVO checkRecord(String transferId,String date);
+	public InventoryCheckVO checkRecord(String transferId, String date) throws RemoteException;
 
 	/* 入库 */
 	/**
@@ -40,21 +44,22 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public String getImportID();
+	public String getImportID() throws RemoteException;
 
 	/**
 	 * 选择进行入库的货物添加信息到进货单
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position);
+	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
+			int frame, int position) throws RemoteException;
 
 	/** 选择并添加相应的数据（订单托运编号、入库日期、目的地、区号、排号、架号、位号）到进货单中生成进货单PO **/
 
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt);
+	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
 
 	/** 单据被提交发送给经理进行审批 **/
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt);
+	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
 
 	/* 出库 */
 	/**
@@ -62,20 +67,21 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public String getExportID();
+	public String getExportID() throws RemoteException;
 
 	/**
 	 * 选择进行出库的货物添加信息到出库单
 	 * 
 	 * @throws RemoteException
 	 **/
-	public InventoryExportReceiptVO minusCommodities(String transferID, int area,int row,int frame,int position);
+	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
+			throws RemoteException;
 
 	/** 选择并添加相应的数据（订单托运编号、出库日期、目的地、装运形式、中转单编号）到出库单中生成出库单PO **/
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt);
+	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
 
 	/** 单据被提交发送给经理进行审 **/
-	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt);
+	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
 
 	/* 调整 */
 	/**
@@ -83,40 +89,51 @@ public interface InventoryBLService {
 	 * 
 	 * @throws RemoteException
 	 **/
-	public String getAdjustID();
+	public String getAdjustID() throws RemoteException;
 
 	/**
 	 * 输入被调整货物的订单托运编号、原先区号、排号、架号、位号及调整后的区号、排号、架号、位号
 	 * 
 	 * @throws RemoteException
 	 **/
-	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition);
+	public ResultMessage adjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
+			int afRow, int afFrame, int afPosition) throws RemoteException;
+
 	/**
 	 * 仓库使用比例
-	 * @param transferID 中转中心编号
+	 * 
+	 * @param transferID
+	 *            中转中心编号
 	 * @return 使用比例百分比
 	 */
-	public double inventoryAlarmRate(String transferID);
+	public double inventoryAlarmRate(String transferID) throws RemoteException;
+
 	/**
 	 * 将库存盘点的结果导出到excel表格
+	 * 
 	 * @param vo
 	 */
-	public void exportToExcel(InventoryCheckVO vo);
+	public void exportToExcel(InventoryCheckVO vo) throws RemoteException;
+
 	/**
 	 * 获得仓库中已有的商品及其位置
-	 * @param transferID 中转中心编号
+	 * 
+	 * @param transferID
+	 *            中转中心编号
 	 * @return
 	 */
-	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID);
+	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException;
+
 	/**
 	 * 获得仓库中的空位置
 	 * 
-	 * 我两个返回值的都写了
-	 * 你想用哪个就用哪个吧
+	 * 我两个返回值的都写了 你想用哪个就用哪个吧
 	 * 
-	 * @param transferID 中转中心编号
+	 * @param transferID
+	 *            中转中心编号
 	 * @return 空位置
 	 */
-	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID);
-	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID);
+	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException;
+
+	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) throws RemoteException;
 }

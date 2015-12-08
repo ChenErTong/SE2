@@ -1,5 +1,6 @@
 package businesslogicservice.userblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
@@ -20,14 +21,14 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<UserVO> show();
+	public ArrayList<UserVO> show() throws RemoteException;
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getID();
+	public String getID() throws RemoteException;
 	/**
 	 * 添加一位用户
 	 * @param vo UserVO
@@ -35,7 +36,7 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addUser(UserVO vo);
+	public ResultMessage addUser(UserVO vo) throws RemoteException;
 	/**
 	 * 删除一位用户
 	 * @param vo
@@ -43,7 +44,7 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteUser(UserVO vo);
+	public ResultMessage deleteUser(UserVO vo) throws RemoteException;
 	/**
 	 * 更新一位用户信息
 	 * @param vo UserVo
@@ -51,7 +52,7 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage updateUser(UserVO vo);
+	public ResultMessage updateUser(UserVO vo) throws RemoteException;
 	/**
 	 * 验证用户登录
 	 * @param loginInfo
@@ -59,8 +60,8 @@ public interface UserBLService extends BLService{
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public UserIdentity login(LoginInfo loginInfo);
-	public ResultMessage updateAdmin(String oldPassword,String newPassword);
-	public ArrayList<UserVO> showUser(UserIdentity userIdentity);
+	public UserIdentity login(LoginInfo loginInfo) throws RemoteException;
+	public ResultMessage updateAdmin(String oldPassword,String newPassword) throws RemoteException;
+	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException;
 	
 }

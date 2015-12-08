@@ -26,23 +26,13 @@ public class BranchController implements BranchBLService {
 	}
 
 	@Override
-	public ArrayList<CommodityVO> getAllCommodities() {
-		try {
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 			return BranchBL.getAllCommodities();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ArrayList<String> getAllOrderNumber()  {
-		try {
+	public ArrayList<String> getAllOrderNumber() throws RemoteException {
 			return BranchBL.getAllOrderNumber();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
@@ -62,53 +52,28 @@ public class BranchController implements BranchBLService {
 	}*/
 
 	@Override
-	public DeliveryListVO getDeliveryList( String  orders, String courierName) {
-		try {
+	public DeliveryListVO getDeliveryList( String  orders, String courierName) throws RemoteException {
 			return BranchBL.getDeliveryList(orders, courierName);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage submit(ReceiptVO receipt) {
-		try {
+	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
 			return BranchBL.submit(receipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage save(ReceiptVO receipt)  {
-		try {
+	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
 			return BranchBL.save(receipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
-			ArrayList<String> orders, BigDecimal money) {
-		try {
+			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) {
-		try {
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) throws RemoteException {
 			return BranchBL.getBranchArrivalList(departure,state, orders);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 }

@@ -18,9 +18,9 @@ public interface DebitAndPayBillShowService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ArrayList<DebitAndPayBillVO> showPay();
+	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException;
 
-	public ArrayList<DebitAndPayBillVO> showExpense();
+	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException;
 
 	/**
 	 * 返回给界面层显示全部在审核的付款／收款单
@@ -30,9 +30,9 @@ public interface DebitAndPayBillShowService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayApproving();
+	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException;
 
-	public ArrayList<DebitAndPayBillVO> showExpenseApproving();
+	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException;
 
 	/**
 	 * 返回给界面层显示全部通过审核的付款／收款单
@@ -42,9 +42,9 @@ public interface DebitAndPayBillShowService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayPass();
+	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException;
 
-	public ArrayList<DebitAndPayBillVO> showExpensePass();
+	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException;
 
 	/**
 	 * 返回给界面层显示全部没有通过审批的付款／收款单
@@ -54,9 +54,9 @@ public interface DebitAndPayBillShowService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayFailure();
+	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException;
 
-	public ArrayList<DebitAndPayBillVO> showExpenseFailure();
+	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException;
 
 	/**
 	 * 返回给界面层显示全部草稿状态的付款／收款单
@@ -66,9 +66,9 @@ public interface DebitAndPayBillShowService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ArrayList<DebitAndPayBillVO> showPayDraft();
+	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException;
 
-	public ArrayList<DebitAndPayBillVO> showExpenseDraft();
+	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException;
 	
-	public ArrayList<DebitAndPayBillVO> showList(String end);
+	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException;
 }

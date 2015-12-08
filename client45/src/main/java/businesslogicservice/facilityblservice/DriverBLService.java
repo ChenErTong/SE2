@@ -1,5 +1,6 @@
 package businesslogicservice.facilityblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
@@ -19,7 +20,7 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addDriver(DriverVO driver);
+	public ResultMessage addDriver(DriverVO driver) throws RemoteException;
 	
 	/**
 	 * 删除车辆
@@ -28,7 +29,7 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage deleteDriver (DriverVO driver);
+	public ResultMessage deleteDriver (DriverVO driver) throws RemoteException;
 	
 	/**
 	 * 修改车辆信息
@@ -37,7 +38,7 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage modifyDriver (DriverVO driver);
+	public ResultMessage modifyDriver (DriverVO driver) throws RemoteException;
 
 	/**
 	 * 根据车辆编号查找车辆信息
@@ -46,7 +47,7 @@ public interface DriverBLService  extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public DriverVO findDriver(String ID);
-	public ArrayList<DriverVO> findDriver ();
-	public String getID(String branchID);
+	public DriverVO findDriver(String ID) throws RemoteException;
+	public ArrayList<DriverVO> findDriver () throws RemoteException;
+	public String getID(String branchID) throws RemoteException;
 }

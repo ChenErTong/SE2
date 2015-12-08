@@ -22,7 +22,7 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public String getID();
+	public String getID() throws RemoteException;
 	/**
 	 * 添加一个常量
 	 * @param vo BaseVO
@@ -31,7 +31,7 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage addBase(BaseVO vo);
+	public ResultMessage addBase(BaseVO vo) throws RemoteException;
 	/**
 	 * 删除一个常量
 	 * @param ID
@@ -40,7 +40,7 @@ public interface BaseBLService extends BLService{
 	 * @throws RemoteException 
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteBase(String ID);
+	public ResultMessage deleteBase(String ID) throws RemoteException;
 	/**
 	 * 更新一条成本常量信息
 	 * @param vo BaseVO
@@ -49,18 +49,18 @@ public interface BaseBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage updateBase(BaseVO vo);
+	public ResultMessage updateBase(BaseVO vo) throws RemoteException;
 	/**
 	 * 返回base城市距离，价格常量
 	 * @return
 	 * @author Ann
 	 */
-	public ArrayList<BaseVO> show();
+	public ArrayList<BaseVO> show() throws RemoteException;
 	/**
 	 * 根据ID返回相应城市价格常量
 	 * @param id
 	 * @return
 	 * @author Ann
 	 */
-	public BaseVO find(String id);
+	public BaseVO find(String id) throws RemoteException;
 }

@@ -1,4 +1,5 @@
 package businesslogic.inventorybl;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,175 +13,101 @@ import vo.InventoryPositionVO;
 import vo.InventoryViewVO;
 import vo.receiptvo.InventoryExportReceiptVO;
 import vo.receiptvo.InventoryImportReceiptVO;
+
 /**
  * @author LIUXUANLIN
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:35:26
  */
 public class InventoryController implements InventoryBLService {
-    Inventory InventoryBL = new Inventory();
+	Inventory InventoryBL = new Inventory();
+
 	@Override
-	public String getImportID()  {
-		try {
-			return InventoryBL.getImportID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public String getImportID() throws RemoteException {
+		return InventoryBL.getImportID();
 	}
 
 	@Override
-	public String getExportID() {
-		try {
-			return InventoryBL.getExportID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public String getExportID() throws RemoteException {
+		return InventoryBL.getExportID();
 	}
 
 	@Override
-	public String getAdjustID()  {
-		try {
-			return InventoryBL.getAdjustID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public String getAdjustID() throws RemoteException {
+		return InventoryBL.getAdjustID();
 	}
 
 	@Override
-	public InventoryImportReceiptVO addCommodities(String transferID,CommodityVO commodity, int area ,int row,int frame,int position)  {
-		try {
-			LogController.getInstance().addLog("入库");
-			return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	@Override
-	public InventoryExportReceiptVO minusCommodities(String transferID, int area,int row,int frame,int position) {
-		try {
-			LogController.getInstance().addLog("出库");
-			return InventoryBL.minusCommodities(transferID, area, row, frame, position);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
+			int frame, int position) throws RemoteException {
+		LogController.getInstance().addLog("入库");
+		return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
 	}
 
 	@Override
-	public ResultMessage adjust(String transferID, int exArea,int exRow,int exFrame,int exPosition, int afArea,int afRow,int afFrame,int afPosition) {
-		try {
-			LogController.getInstance().addLog("库存调整");
-			return InventoryBL.adjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
+			throws RemoteException {
+		LogController.getInstance().addLog("出库");
+		return InventoryBL.minusCommodities(transferID, area, row, frame, position);
 	}
 
 	@Override
-	public InventoryViewVO viewInventory(String transferID,String beginDate, String endDate)  {
-		try {
-			LogController.getInstance().addLog("库存查看");
-			return InventoryBL.viewInventory(transferID,beginDate, endDate);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage adjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
+			int afRow, int afFrame, int afPosition) throws RemoteException {
+		LogController.getInstance().addLog("库存调整");
+		return InventoryBL.adjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
 	}
 
 	@Override
-	public InventoryCheckVO checkRecord(String transferID,String date){
-		try {
-			LogController.getInstance().addLog("库存盘点");
-			return InventoryBL.checkRecord(transferID,date);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public InventoryViewVO viewInventory(String transferID, String beginDate, String endDate) throws RemoteException {
+		LogController.getInstance().addLog("库存查看");
+		return InventoryBL.viewInventory(transferID, beginDate, endDate);
 	}
 
 	@Override
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) {
-		 try {
-			InventoryBL.saveImport(importReceipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public InventoryCheckVO checkRecord(String transferID, String date) throws RemoteException {
+		LogController.getInstance().addLog("库存盘点");
+		return InventoryBL.checkRecord(transferID, date);
 	}
 
 	@Override
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) {
-		 try {
-			InventoryBL.saveExport(exportReceipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
+		return InventoryBL.saveImport(importReceipt);
 	}
 
 	@Override
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) {
-		try {
-			return InventoryBL.submitImport(importReceipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
+		return InventoryBL.saveExport(exportReceipt);
 	}
 
 	@Override
-	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) {
-		try {
-			return InventoryBL.submitExport(exportReceipt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
+		return InventoryBL.submitImport(importReceipt);
 	}
 
 	@Override
-	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) {
-		try {
-			return InventoryBL.getCommoditiesInInventory(transferID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
+		return InventoryBL.submitExport(exportReceipt);
 	}
 
 	@Override
-	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) {
-		try {
-			return InventoryBL.getEmptyPositionsInList(transferID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException {
+		return InventoryBL.getCommoditiesInInventory(transferID);
 	}
 
 	@Override
-	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) {
-		try {
-			return InventoryBL.getEmptyPositionsInArray(transferID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException {
+		return InventoryBL.getEmptyPositionsInList(transferID);
 	}
 
 	@Override
-	public double inventoryAlarmRate(String transferID) {
-		try {
-			return InventoryBL.inventoryUseRate(transferID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return 0;
+	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) throws RemoteException {
+		return InventoryBL.getEmptyPositionsInArray(transferID);
+	}
+
+	@Override
+	public double inventoryAlarmRate(String transferID) throws RemoteException {
+		return InventoryBL.inventoryUseRate(transferID);
 	}
 
 	@Override

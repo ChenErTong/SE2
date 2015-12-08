@@ -1,5 +1,6 @@
 package businesslogicservice.organizationblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ResultMessage;
@@ -19,14 +20,14 @@ import vo.accountvo.AccountVO;
  */
 public interface OrganizationBLService {
 	
-	public ArrayList<BranchVO> showBranch();
+	public ArrayList<BranchVO> showBranch() throws RemoteException;
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getBranchID(String city);
+	public String getBranchID(String city) throws RemoteException;
 	/**
 	 * 添加一个机构
 	 * @param vo OrganizationVO
@@ -34,7 +35,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addBranch(BranchVO vo);
+	public ResultMessage addBranch(BranchVO vo) throws RemoteException;
 	/**
 	 * 删除一个机构
 	 * @param organizationID
@@ -42,7 +43,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @veersion Oct 22,2015
 	 */
-	public ResultMessage deleteBranch(String organizationID);
+	public ResultMessage deleteBranch(String organizationID) throws RemoteException;
 	/**
 	 * 更新一个机构的信息
 	 * @param vo OrganizationVO
@@ -50,20 +51,20 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage updateBranch(BranchVO vo);
+	public ResultMessage updateBranch(BranchVO vo) throws RemoteException;
 	/**
 	 * @return 全部的系统用户
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<TransferVO> showTransfer();
+	public ArrayList<TransferVO> showTransfer() throws RemoteException;
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
 	 * @return 
 	 * @author zsq 
 	 * @version Oct 22,2015
 	 */
-	public String getTransferID(String city);
+	public String getTransferID(String city) throws RemoteException;
 	/**
 	 * 添加一个机构
 	 * @param vo OrganizationVO
@@ -71,7 +72,7 @@ public interface OrganizationBLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage addTransfer(TransferVO vo);
+	public ResultMessage addTransfer(TransferVO vo) throws RemoteException;
 	/**
 	 * 删除一个机构
 	 * @param organizationID
@@ -80,7 +81,7 @@ public interface OrganizationBLService {
 	 * @veersion Oct 22,2015
 	 */
 
-	public ResultMessage deleteTransfer(String organizationID);
+	public ResultMessage deleteTransfer(String organizationID) throws RemoteException;
 
 	/**
 	 * 更新一个机构的信息
@@ -90,14 +91,14 @@ public interface OrganizationBLService {
 	 * @version Oct 22,2015
 	 */
 
-	public ResultMessage updateTransfer(TransferVO vo);
+	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException;
 	/**
 	 * 获得所有的营业厅编号
 	 * @author Ann
 	 */
-	public ArrayList<String> getAllBranchNumbers();
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException;
 	//branch和transfer都调这一个方法
-	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID);
-	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID);
-	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID);
+	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException;
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException;
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException;
 }

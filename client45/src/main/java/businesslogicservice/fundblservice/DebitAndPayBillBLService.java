@@ -22,7 +22,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public String getPayID();
+	public String getPayID() throws RemoteException;
 
 	/**
 	 * 得到收款单的ID
@@ -32,7 +32,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public String getExpenseID();
+	public String getExpenseID() throws RemoteException;
 
 	/**
 	 * 根据ID精确查找账单
@@ -44,7 +44,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public DebitAndPayBillVO find(String ID);
+	public DebitAndPayBillVO find(String ID) throws RemoteException;
 
 	/**
 	 * 建立新的收款单（付款单），单据类型在前面的getID方法已经得到
@@ -54,7 +54,7 @@ public interface DebitAndPayBillBLService {
 	 */
 
 	// 建立收款单
-	public ResultMessage addDebitBill(DebitBillVO vo);
+	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException;
 	
 	// 建立付款单
 	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException;
@@ -65,7 +65,7 @@ public interface DebitAndPayBillBLService {
 	 * @return 是否成功
 	 * @throws RemoteException
 	 */
-	public ResultMessage submit(DebitAndPayBillVO vo);
+	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException;
 
 	/**
 	 * 保存成草稿状态
@@ -75,7 +75,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ResultMessage save(DebitAndPayBillVO vo);
+	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException;
 
 	/**
 	 * 修改草稿状态
@@ -86,7 +86,7 @@ public interface DebitAndPayBillBLService {
 	 * @version Oct 22,2015
 	 * @throws RemoteException
 	 */
-	public ResultMessage updateDraft(DebitAndPayBillVO vo);
+	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException;
 	
 //	public ResultMessage delete(String ID);
 

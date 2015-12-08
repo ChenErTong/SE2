@@ -26,41 +26,25 @@ public class OpeningStockController implements OpeningStockBLService {
 			ArrayList<AccountVO> accountVOs, 
 			ArrayList<FacilityVO> facilityVOs, 
 			ArrayList<InventoryVO> inventoryVOs,
-			ArrayList<BankAccountVO> bankAccountVOs) {
-		try {
+			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
 			return OpeningStockBL.add(transferVOs, branchVOs, accountVOs, facilityVOs, inventoryVOs, bankAccountVOs);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
-	@Override
-	public ResultMessage find(int id) {
-		// TODO 查找
-		return null;
-	}
+//	@Override
+//	public ResultMessage find(int id) throws RemoteException {
+//		// TODO 查找
+//		return null;
+//	}
 
 	@Override
-	public ArrayList<OpeningStockVO> show() {
-		try {
+	public ArrayList<OpeningStockVO> show() throws RemoteException {
 			return OpeningStockBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
-	public ResultMessage add() {
-		try {
+	public ResultMessage add() throws RemoteException {
 			ResultMessage resultMessage =  OpeningStockBL.add();
-			System.out.println(resultMessage);
 			return resultMessage;
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 }

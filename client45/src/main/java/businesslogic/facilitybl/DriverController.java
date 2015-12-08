@@ -15,12 +15,12 @@ public class DriverController implements DriverBLService{
 	
 	Driver driverBL = new Driver();
 	@Override
-	public ConfirmState confirmOperation() {
+	public ConfirmState confirmOperation(){
 		return driverBL.confirmOperation();
 	}
 
 	@Override
-	public ResultMessage addDriver(DriverVO driver) {
+	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.addDriver(driver);
 		} catch (RemoteException e) {
@@ -30,7 +30,7 @@ public class DriverController implements DriverBLService{
 	}
 
 	@Override
-	public ResultMessage deleteDriver(DriverVO driver) {
+	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.deleteDriver(driver);
 		} catch (RemoteException e) {
@@ -40,7 +40,7 @@ public class DriverController implements DriverBLService{
 	}
 
 	@Override
-	public ResultMessage modifyDriver(DriverVO driver) {
+	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.modifyDriver(driver);
 		} catch (RemoteException e) {
@@ -52,7 +52,7 @@ public class DriverController implements DriverBLService{
 	
 
 	@Override
-	public ArrayList<DriverVO> findDriver() {
+	public ArrayList<DriverVO> findDriver() throws RemoteException {
 		ArrayList<DriverVO> vos=null;
 		try {
 			vos = driverBL.findDriver();
@@ -63,7 +63,7 @@ public class DriverController implements DriverBLService{
 	}
 	
 	@Override
-	public DriverVO findDriver(String ID) {
+	public DriverVO findDriver(String ID) throws RemoteException {
 		try {
 			return driverBL.findDriver(ID);
 		} catch (RemoteException e) {
@@ -73,7 +73,7 @@ public class DriverController implements DriverBLService{
 	}
 
 	@Override
-	public String getID(String branchID) {
+	public String getID(String branchID) throws RemoteException {
 		try {
 			return driverBL.getID(branchID);
 		} catch (RemoteException e) {
@@ -81,9 +81,6 @@ public class DriverController implements DriverBLService{
 		}
 		return null;
 	}
-	
-	
-	
 	
 
 }

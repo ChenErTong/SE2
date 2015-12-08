@@ -22,7 +22,7 @@ public interface FacilityBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage addFacility(FacilityVO facility);
+	public ResultMessage addFacility(FacilityVO facility) throws RemoteException;
 	
 	/**
 	 * 删除车辆
@@ -31,7 +31,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage deleteFacility (FacilityVO facility);
+	public ResultMessage deleteFacility (FacilityVO facility) throws RemoteException;
 	
 	/**
 	 * 修改车辆信息
@@ -40,7 +40,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage modifyFacility (FacilityVO facility);
+	public ResultMessage modifyFacility (FacilityVO facility) throws RemoteException;
 
 	/**
 	 * 根据车辆编号查找车辆信息
@@ -49,7 +49,7 @@ public interface FacilityBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 22,2015
 	 */
-	public FacilityVO findFacility(String ID);
-	public ArrayList<FacilityVO> findFacility ();
-	public String getID(String branchID);
+	public FacilityVO findFacility(String ID) throws RemoteException;
+	public ArrayList<FacilityVO> findFacility () throws RemoteException;
+	public String getID(String branchID) throws RemoteException;
 }

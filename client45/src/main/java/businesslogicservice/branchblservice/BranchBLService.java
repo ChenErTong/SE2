@@ -27,7 +27,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ArrayList<CommodityVO> getAllCommodities () ;
+	public ArrayList<CommodityVO> getAllCommodities () throws RemoteException;
 	
 	/**
 	 * 寰楀埌鎵�鏈夎鍗曞彿
@@ -36,7 +36,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ArrayList<String> getAllOrderNumber() ;
+	public ArrayList<String> getAllOrderNumber() throws RemoteException;
 	
 	/**
 	 * 根据数据生成到达单保存到数据库并返回（我不知道到达单编号有什么用所以删掉了，如果别的用例需要编号你们可以补上）
@@ -46,7 +46,7 @@ public interface BranchBLService extends BLService{
 	 * @return
 	 */
 //	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders);
-	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders);
+	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) throws RemoteException;
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟
 	 * @return 钀ヤ笟鍘呮淳浠跺崟
@@ -55,7 +55,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public DeliveryListVO getDeliveryList(String order, String courierName);
+	public DeliveryListVO getDeliveryList(String order, String courierName) throws RemoteException;
 	
 	/**
 	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�
@@ -65,7 +65,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage submit(ReceiptVO receipt) ;
+	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
 	
 	/**
 	 * 淇濆瓨鍗曟嵁
@@ -75,7 +75,7 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 22,2015
 	 * @throws RemoteException 
 	 */
-	public ResultMessage save(ReceiptVO receipt) ;
+	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
 	
 	/**
 	 * @return 瑁呰溅鍗�
@@ -87,5 +87,5 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, BigDecimal money);
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, BigDecimal money) throws RemoteException;
 }

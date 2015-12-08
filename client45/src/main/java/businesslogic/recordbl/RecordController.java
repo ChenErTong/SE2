@@ -17,7 +17,7 @@ public class RecordController implements RecordBLService {
 	Record RecordBL = new Record();
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) {
+	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end)  throws RemoteException{
 		try {
 			return RecordBL.bussinessProcess(begin, end);
 		} catch (RemoteException e) {
@@ -27,7 +27,7 @@ public class RecordController implements RecordBLService {
 	}
 
 	@Override
-	public BussinessConditionVO bussinessCondition(String end) {
+	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
 		try {
 			return RecordBL.bussinessCondition(end);
 		} catch (RemoteException e) {
@@ -37,7 +37,7 @@ public class RecordController implements RecordBLService {
 	}
 
 	@Override
-	public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date) {
+	public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date)  throws RemoteException{
 		try {
 			return RecordBL.bussinessOneDay(WorkPlace, date);
 		} catch (RemoteException e) {

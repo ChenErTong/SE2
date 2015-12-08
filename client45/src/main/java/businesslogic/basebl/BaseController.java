@@ -26,73 +26,43 @@ public class BaseController implements BaseBLService {
 	/**
 	 * @see BaseBLService#getID()
 	 */
-	public String getID() {
-		try {
+	public String getID() throws RemoteException {
 			return BaseBL.getID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see BaseBLService#addBase(BaseVO)
 	 */
-	public ResultMessage addBase(BaseVO vo) {
-		try {
+	public ResultMessage addBase(BaseVO vo) throws RemoteException {
 			return BaseBL.addBase(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see BaseBLService#deleteBase(String)
 	 */
-	public ResultMessage deleteBase(String ID) {
-		try {
+	public ResultMessage deleteBase(String ID) throws RemoteException {
 			return BaseBL.deleteBase(ID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see BaseBLService#updateBase(BaseVO)
 	 */
-	public ResultMessage updateBase(BaseVO vo) {
-		try {
+	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
 			return BaseBL.updateBase(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see BaseBLService#show()
 	 */
-	public ArrayList<BaseVO> show() {
-		try {
+	public ArrayList<BaseVO> show() throws RemoteException {
 			return BaseBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see BaseBLService#find(String)
 	 */
-	public BaseVO find(String id) {
-		try {
+	public BaseVO find(String id) throws RemoteException {
 			return BaseBL.find(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 }

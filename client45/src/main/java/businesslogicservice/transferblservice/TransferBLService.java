@@ -1,5 +1,6 @@
 package businesslogicservice.transferblservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.BLService;
@@ -24,7 +25,7 @@ public interface TransferBLService extends BLService {
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public ArrayList<CommodityVO> getAllCommodities();
+	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException;
 
 	/**
 	 * 自动计算运费 生成飞机转运中转单
@@ -47,7 +48,7 @@ public interface TransferBLService extends BLService {
 	 */
 	public TransferOrderVO planeTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
-			String date, String id);
+			String date, String id) throws RemoteException;
 
 	/**
 	 * 自动计算运费 生成汽车转运中转单
@@ -68,7 +69,7 @@ public interface TransferBLService extends BLService {
 	 */
 	public TransferOrderVO truckTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
-			String date, String id);
+			String date, String id) throws RemoteException;
 
 	/**
 	 * 自动计算运费 生成火车转运中转单
@@ -91,7 +92,7 @@ public interface TransferBLService extends BLService {
 	 */
 	public TransferOrderVO trainTransfer(String transfer,String facilityID, String departure,
 			String destination, String courierName, ArrayList<String> orders,
-			String date, String id);
+			String date, String id) throws RemoteException;
 
 	/**
 	 * 提交单据给总经理进行审批
@@ -102,7 +103,7 @@ public interface TransferBLService extends BLService {
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage submit(ReceiptVO receipt);
+	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
 
 	/**
 	 * 保存单据
@@ -113,7 +114,7 @@ public interface TransferBLService extends BLService {
 	 * @author czw
 	 * @version Oct 22,2015
 	 */
-	public ResultMessage save(ReceiptVO receipt);
+	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
 
 	/**
 	 * 生成中转中心到达单 申请入库
@@ -132,5 +133,5 @@ public interface TransferBLService extends BLService {
 	 */
 	public TransferArrivalListVO receiptList(String transferID,
 			String departure, String destination, CommodityState state,
-			String orders);
+			String orders) throws RemoteException;
 }

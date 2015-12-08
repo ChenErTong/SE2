@@ -18,85 +18,50 @@ public class AccountController implements AccountBLService {
 	/**
 	 * @see AccountBLService#show()
 	 */
-	public ArrayList<AccountVO> show() {
-		try {
-			return AccountBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ArrayList<AccountVO> show() throws RemoteException {
+		return AccountBL.show();
 	}
 
 	/**
 	 * @see AccountBLService#show(String)
 	 */
-	public ArrayList<AccountVO> show(String duty) {
-		try {
-			return AccountBL.show(duty);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ArrayList<AccountVO> show(String duty) throws RemoteException {
+		return AccountBL.show(duty);
 	}
 
 	/**
 	 * @see AccountBLService#getID()
 	 */
-	public String getID() {
-		try {
-			return AccountBL.getID();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public String getID() throws RemoteException {
+		return AccountBL.getID();
 	}
 
 	/**
 	 * @see AccountBLService#addAccount(AccountVO)
 	 */
-	public ResultMessage addAccount(AccountVO vo) {
-		try {
-			return AccountBL.addAccount(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
+		return AccountBL.addAccount(vo);
 	}
 
 	/**
 	 * @see AccountBLService#deleteAccount(String)
 	 */
-	public ResultMessage deleteAccount(String ID) {
-		try {
-			return AccountBL.deleteAccount(ID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage deleteAccount(String ID) throws RemoteException {
+		return AccountBL.deleteAccount(ID);
 	}
 
 	/**
 	 * @see AccountBLService#updateAccount(AccountVO)
 	 */
-	public ResultMessage updateAccount(AccountVO vo) {
-		try {
-			return AccountBL.updateAccount(vo);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
+		return AccountBL.updateAccount(vo);
 	}
 
 	/**
 	 * @see AccountBLService#find(String)
 	 */
-	public AccountVO find(String id) {
-		try {
-			return AccountBL.find(id);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public AccountVO find(String id) throws RemoteException {
+		return AccountBL.find(id);
 	}
 
 }
