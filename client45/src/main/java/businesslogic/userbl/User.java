@@ -91,6 +91,7 @@ public class User {
 		return null;
 	}
 	/**
+	 * 更改用户密码
 	 * @param oldPassword，旧密码
 	 * @param newPassword，新密码
 	 * @return 处理信息
