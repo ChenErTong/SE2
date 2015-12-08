@@ -30,7 +30,9 @@ public class UserController implements UserBLService {
 		return userBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#show()
+	 */
 	public ArrayList<UserVO> show() throws RemoteException {
 		try {
 			return userBL.show();
@@ -40,37 +42,51 @@ public class UserController implements UserBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#getID()
+	 */
 	public String getID() throws RemoteException {
 		return userBL.getID();
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#addUser(UserVO)
+	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
 		return userBL.addUser(vo);
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#deleteUser(UserVO)
+	 */
 	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
 		return userBL.deleteUser(vo.id);
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#updateUser(UserVO)
+	 */
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
 		return userBL.updateUser(vo);
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#login(LoginInfo)
+	 */
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
 		return userBL.login(loginInfo);
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#updateAdmin(String, String)
+	 */
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
 		return userBL.updateAdmin(oldPassword, newPassword);
 	}
 
-	@Override
+	/**
+	 * @see UserBLService#showUser(UserIdentity)
+	 */
 	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException {
 		return userBL.showUser(userIdentity);
 	}
