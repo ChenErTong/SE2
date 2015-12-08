@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.accountbl.BranchInfo_Account;
+import businesslogic.accountbl.OranizationInfo_Account;
 import businesslogic.accountbl.TransferInfo_Account;
 import businesslogic.facilitybl.BranchInfo_Facility;
 import businesslogic.openingstockbl.BranchInfo_OpeningStock;
@@ -28,12 +29,16 @@ public class BranchInfo
 		branchData = branch.getData();
 	}
 
-	@Override
+	/**
+	 * @see BranchInfo_OpeningStock#find()
+	 */
 	public ArrayList<BranchPO> find() throws RemoteException {
 		return branchData.find();
 	}
 
-	@Override
+	/**
+	 * @see BranchInfo_Facility#addCar(FacilityPO)
+	 */
 	public ResultMessage addCar(FacilityPO car) throws RemoteException {
 		BranchPO branch = branchData.find(car.getBranchID());
 		ArrayList<FacilityPO> cars = branch.getFacilities();
@@ -42,7 +47,9 @@ public class BranchInfo
 		return branchData.add(branch);
 	}
 
-	@Override
+	/**
+	 * @see BranchInfo_Facility#modifyCar(FacilityPO)
+	 */
 	public ResultMessage modifyCar(FacilityPO car) throws RemoteException {
 		BranchPO branch = branchData.find(car.getBranchID());
 		ArrayList<FacilityPO> cars = branch.getFacilities();
@@ -55,7 +62,9 @@ public class BranchInfo
 		return branchData.add(branch);
 	}
 
-	@Override
+	/**
+	 * @see BranchInfo_Facility#deleteCar(String, String)
+	 */
 	public ResultMessage deleteCar(String branchID, String ID) throws RemoteException {
 		BranchPO branch = branchData.find(branchID);
 		ArrayList<FacilityPO> cars = branch.getFacilities();
@@ -68,7 +77,9 @@ public class BranchInfo
 		return branchData.add(branch);
 	}
 
-	@Override
+	/**
+	 * @see OranizationInfo_Account#addAccount(AccountPO)
+	 */
 	public ResultMessage addAccount(AccountPO account) throws RemoteException {
 		BranchPO branch = branchData.find(account.getOrganizationID());
 		ArrayList<AccountPO> accounts = branch.getAccounts();
@@ -77,7 +88,9 @@ public class BranchInfo
 		return branchData.add(branch);
 	}
 
-	@Override
+	/**
+	 * @see OranizationInfo_Account#modifyAccount(AccountPO)
+	 */
 	public ResultMessage modifyAccount(AccountPO account) throws RemoteException {
 		BranchPO branch = branchData.find(account.getOrganizationID());
 		ArrayList<AccountPO> accounts = branch.getAccounts();
@@ -90,7 +103,9 @@ public class BranchInfo
 		return branchData.add(branch);
 	}
 
-	@Override
+	/**
+	 * @see OranizationInfo_Account#deleteAccount(String, String)
+	 */
 	public ResultMessage deleteAccount(String branchID, String ID) throws RemoteException {
 		BranchPO branch = branchData.find(branchID);
 		ArrayList<AccountPO> accounts = branch.getAccounts();

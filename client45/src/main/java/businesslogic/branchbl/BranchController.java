@@ -25,23 +25,27 @@ public class BranchController implements BranchBLService {
 		return BranchBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#getAllCommodities()
+	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 			return BranchBL.getAllCommodities();
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#getAllOrderNumber()
+	 */
 	public ArrayList<String> getAllOrderNumber() throws RemoteException {
 			return BranchBL.getAllOrderNumber();
 	}
 
-	/**
-	 * 根据数据生成到达单保存到数据库并返回（我不知道到达单编号有什么用所以删掉了，如果别的用例需要编号你们可以补上）
-	 * @param transferListID 到达单编号
-	 * @param departure 营业厅离开点
-	 * @param order 到达的订单对象
-	 * @return
-	 */
+//	/**
+//	 * 根据数据生成到达单保存到数据库并返回（我不知道到达单编号有什么用所以删掉了，如果别的用例需要编号你们可以补上）
+//	 * @param transferListID 到达单编号
+//	 * @param departure 营业厅离开点
+//	 * @param order 到达的订单对象
+//	 * @return
+//	 */
 	/*public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state,  OrderVO  orders) {
 		try {
 			return BranchBL.getBranchArrivalList(departure,state, orders);
@@ -51,28 +55,38 @@ public class BranchController implements BranchBLService {
 		return null;
 	}*/
 
-	@Override
+	/**
+	 * @see BranchBLService#getDeliveryList(String, String)
+	 */
 	public DeliveryListVO getDeliveryList( String  orders, String courierName) throws RemoteException {
 			return BranchBL.getDeliveryList(orders, courierName);
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#submit(ReceiptVO)
+	 */
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
 			return BranchBL.submit(receipt);
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#save(ReceiptVO)
+	 */
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
 			return BranchBL.save(receipt);
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#truckDeliver(String, String, String, String, ArrayList, BigDecimal)
+	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 			return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
 	}
 
-	@Override
+	/**
+	 * @see BranchBLService#getBranchArrivalList(String, CommodityState, OrderVO)
+	 */
 	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) throws RemoteException {
 			return BranchBL.getBranchArrivalList(departure,state, orders);
 	}

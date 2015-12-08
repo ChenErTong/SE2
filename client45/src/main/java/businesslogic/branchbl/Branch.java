@@ -54,23 +54,18 @@ public class Branch{
 		return ConfirmState.CONFIRM;
 	}
 	/**
-	 * 得到所有的VO
-	 * @return
-	 * @throws RemoteException
+	 * 得到所有的商品
+	 * @author Ann
+	 * @return ArrayList<CommodityVO>型，所有的商品
+	 * @throws RemoteException 远程异常
 	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 		return orderInfo.getAllCommodities();
 	}
 	/**
 	 * 获取所有的订单号
-	 * @return
-	 * @throws RemoteException
-	 */
-	/**
-	 * @author Ann
-	 * TODO 要重写
-	 * @return
-	 * @throws RemoteException
+	 * @return ArrayList<String>型，所有订单的编号
+	 * @throws RemoteException 远程异常
 	 */
 	public ArrayList<String> getAllOrderNumber() throws RemoteException {
 		ArrayList<OrderVO> orderVOs = getAllOrders();
@@ -80,35 +75,67 @@ public class Branch{
 		}
 		return orderNumbers;
 	}
-
-	public BranchArrivalListVO getBranchArrivalList(String departure,CommodityState orderState,
+	/**
+	 * 生成营业厅到达单
+	 * @param departure String型，营业厅地址
+	 * @param orderState CommodityState型，订单状态
+	 * @param order OrderVO型，订单
+	 * @return BranchArrivalListVO型，营业厅到达单
+	 * @throws RemoteException 远程异常
+	 */
+	public BranchArrivalListVO getBranchArrivalList(String departure,CommodityState state,
 			OrderVO order) throws RemoteException {
-		 CommodityState state = CommodityState.Complete;
 		 String transferListID=receiptInfo.getID();
 		 String orderID = order.ID;
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID, departure, state, orderID);
 		//更改VO状态
-		orderInfo.changeOrderState(orderID,  "货物已到达" + departure + "营业厅",orderState);
+		orderInfo.changeOrderState(orderID,  "货物已到达" + departure + "营业厅",state);
 		receiptInfo.add(vo);
 		return vo;
 	}
-
-	public DeliveryListVO getDeliveryList(String orders, String courierName) throws RemoteException {
+	/**
+	 * 生成订单派送单（派件单）
+	 * @param order String型，订单编号
+	 * @param courierName String型，快递员姓名
+	 * @return DeliveryListVO型，派件单
+	 * @throws RemoteException 远程异常
+	 */
+	public DeliveryListVO getDeliveryList(String order, String courierName) throws RemoteException {
 		String ID = receiptInfo.getID();
-		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, orders, courierName);
+		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, order, courierName);
 		return vo;
 	}
-
+	/**
+	 * 提交单据
+	 * @param receipt ReceiptVO型，单据
+	 * @return ResultMessage型，结果
+	 * @throws RemoteException 远程异常
+	 */
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
 		receipt.receiptState=ReceiptState.APPROVALING;
 		return receiptInfo.modify(receipt);
 	}
-
+	/**
+	 * 保存草稿
+	 * @param receipt ReceiptVO型，单据
+	 * @return ResultMessage型，保存结果
+	 * @throws RemoteException 远程异常
+	 */
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
 		receipt.receiptState=ReceiptState.DRAFT;
 		return  receiptInfo.add(receipt);
 	}
-
+	/**
+	 * 生成营业厅装车单
+	 * @param branchID String型，营业厅编号
+	 * @param destination String型，转送地址
+	 * @param facilityID String型，车辆编号
+	 * @param courierName String型，监装员、押运员姓名
+	 * @param orders ArrayList<String>型，订单列表
+	 * @param money BigDecimal型，运送价格
+	 * @return  LoadingListVO型，营业厅装车单
+	 * @throws RemoteException 远程异常
+	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 		String ID = receiptInfo.getBranchTruckID();
@@ -125,8 +152,8 @@ public class Branch{
 	/**
 	 * 获得所有的订单
 	 * @author Ann
-	 * @return
-	 * @throws RemoteException
+	 * @return ArrayList<OrderVO>型，订单列表
+	 * @throws RemoteException 远程异常
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
 		return orderInfo.getAllOrders();
