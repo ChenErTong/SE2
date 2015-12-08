@@ -8,6 +8,7 @@ import po.accountpo.DriverPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
 import vo.FacilityVO;
 import vo.accountvo.DriverVO;
+
 /**
  * 
  * @author Ann
@@ -26,7 +27,7 @@ public class FacilityTrans {
 			String VIN = vo.vehicleIdentificationNumber;
 			ArrayList<LoadingListPO> deliverHistory = vo.deliverHistory;
 			String branchID = vo.branchID;
-			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber, VIN,branchID);
+			return new FacilityPO(ID, manageID, date, deliverHistory, bottomCode, engineNumber, VIN, branchID);
 		}
 	}
 
@@ -42,7 +43,7 @@ public class FacilityTrans {
 			String VIN = po.getVehicleIdentificationNumber();
 			ArrayList<LoadingListPO> deliverHistory = po.getDeliverHistory();
 			String branchID = po.getBranchID();
-			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber, VIN,branchID);
+			return new FacilityVO(manageID, deliverHistory, ID, date, bottomCode, engineNumber, VIN, branchID);
 		}
 	}
 
@@ -86,7 +87,7 @@ public class FacilityTrans {
 			String workTime = po.getWorkTime();
 			String carID = po.getCarID();
 			String branchID = po.getOrganizationID();
-			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID,branchID);
+			return new DriverVO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID, branchID);
 		}
 	}
 

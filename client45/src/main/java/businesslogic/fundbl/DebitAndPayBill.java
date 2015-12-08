@@ -57,10 +57,11 @@ public class DebitAndPayBill {
 		DebitAndPayBillPO PO = debitAndPayBillData.find(ID);
 		return FundTrans.convertPOtoVO(PO);
 	}
-	
-	/*public ResultMessage delete(String ID) throws RemoteException {
-		return debitAndPayBillData.delete(ID);
-	}*/
+
+	/*
+	 * public ResultMessage delete(String ID) throws RemoteException { return
+	 * debitAndPayBillData.delete(ID); }
+	 */
 
 	// 建立收款单
 	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException {
@@ -78,24 +79,24 @@ public class DebitAndPayBill {
 	}
 
 	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
-		vo.receiptState=ReceiptState.APPROVALING;
+		vo.receiptState = ReceiptState.APPROVALING;
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		po.setReceiptState(ReceiptState.APPROVALING);
-		if(receiptInfo.modify(vo)==ResultMessage.SUCCESS)
+		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
 			return debitAndPayBillData.modify(po);
 		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
-		if(receiptInfo.add(vo)==ResultMessage.SUCCESS)
+		if (receiptInfo.add(vo) == ResultMessage.SUCCESS)
 			return debitAndPayBillData.add(po);
 		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
-		if(receiptInfo.modify(vo)==ResultMessage.SUCCESS)
+		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
 			return debitAndPayBillData.modify(po);
 		return ResultMessage.FAIL;
 	}

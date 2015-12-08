@@ -14,37 +14,51 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 
 	DebitAndPayBillShow showBL = new DebitAndPayBillShow();
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showPay()
+	 */
 	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
 		return showBL.showPay();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showExpense()
+	 */
 	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
 		return showBL.showExpense();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showPayApproving()
+	 */
 	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException {
 		return showBL.showPayApproving();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showExpenseApproving()
+	 */
 	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException {
 		return showBL.showExpenseApproving();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showPayPass()
+	 */
 	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException {
 		return showBL.showPayPass();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showExpensePass()
+	 */
 	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
 		return showBL.showExpensePass();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showPayFailure()
+	 */
 	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException {
 		try {
 			return showBL.showPayFailure();
@@ -54,7 +68,9 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showExpenseFailure()
+	 */
 	public ArrayList<DebitAndPayBillVO> showExpenseFailure() throws RemoteException {
 		try {
 			return showBL.showExpenseFailure();
@@ -64,17 +80,23 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showPayDraft()
+	 */
 	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException {
 		return showBL.showPayDraft();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showExpenseDraft()
+	 */
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
 		return showBL.showExpenseDraft();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillShowService#showList(String)
+	 */
 	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException {
 		return showBL.showList(end);
 	}

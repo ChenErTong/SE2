@@ -16,42 +16,58 @@ import vo.receiptvo.PaymentBillVO;
 public class DebitAndPayBillController implements DebitAndPayBillBLService {
 	DebitAndPayBill DebitAndPayBL = new DebitAndPayBill();
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#getPayID()
+	 */
 	public String getPayID() throws RemoteException {
 		return DebitAndPayBL.getPayID();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#getExpenseID()
+	 */
 	public String getExpenseID() throws RemoteException {
 		return DebitAndPayBL.getExpenseID();
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#find(String)
+	 */
 	public DebitAndPayBillVO find(String ID) throws RemoteException {
 		return DebitAndPayBL.find(ID);
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#addDebitBill(DebitBillVO)
+	 */
 	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException {
 		return DebitAndPayBL.addDebitBill(vo);
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#addPayBill(PaymentBillVO)
+	 */
 	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException {
 		return DebitAndPayBL.addPayBill(vo);
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#submit(DebitAndPayBillVO)
+	 */
 	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
 		return DebitAndPayBL.submit(vo);
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#save(DebitAndPayBillVO)
+	 */
 	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
 		return DebitAndPayBL.save(vo);
 	}
 
-	@Override
+	/**
+	 * @see DebitAndPayBillBLService#updateDraft(DebitAndPayBillVO)
+	 */
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
 		return DebitAndPayBL.updateDraft(vo);
 	}

@@ -25,7 +25,9 @@ public class BankAccountController implements BankAccountBLService {
 		return BankAccountBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#getID()
+	 */
 	public String getID() throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.getID();
@@ -33,7 +35,9 @@ public class BankAccountController implements BankAccountBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#show()
+	 */
 	public ArrayList<BankAccountVO> show() throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.show();
@@ -41,7 +45,9 @@ public class BankAccountController implements BankAccountBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#add(BankAccountVO)
+	 */
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.add(vo);
@@ -49,7 +55,9 @@ public class BankAccountController implements BankAccountBLService {
 		return ResultMessage.FAIL;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#delete(String)
+	 */
 	public ResultMessage delete(String ID) throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.delete(ID);
@@ -57,7 +65,9 @@ public class BankAccountController implements BankAccountBLService {
 		return ResultMessage.FAIL;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#update(BankAccountVO)
+	 */
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.update(vo);
@@ -65,7 +75,9 @@ public class BankAccountController implements BankAccountBLService {
 		return ResultMessage.FAIL;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#find(String, FindTypeAccount)
+	 */
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.find(keywords, type);
@@ -73,16 +85,25 @@ public class BankAccountController implements BankAccountBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#subtractMoneyInBankAccount(String, BigDecimal)
+	 */
 	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
 		return BankAccountBL.subtractMoneyInBankAccount(accountID, money);
 	}
 
-	@Override
+	/**
+	 * @see BankAccountBLService#addMoneyInBankAccount(String, BigDecimal)
+	 */
 	public ResultMessage addMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
 		return BankAccountBL.addMoneyInBankAccount(accountID, money);
 	}
 
+	/**
+	 * 判断当前用户的权限是否可以进行高级操作
+	 * 
+	 * @return boolean型，判断结构
+	 */
 	private boolean isCorrectAuthority() {
 		UserAuthority authority = UserInfomation.getInstance().getAuthority();
 		return authority == UserAuthority.ADVANCE_FINANCE || authority == UserAuthority.MANAGER_LEVEL;
