@@ -11,6 +11,14 @@ public class CourierImage {
 	private static ImageIcon[] BUTTON_BAOJIASHIJIAN = null;
 	//生成订单按钮
 	private static ImageIcon[] BUTTON_SHENGCHENGDINGDAN = null;
+	//添加货物按钮
+	private static ImageIcon[] BUTTON_TIANJIAHUOWU = null;
+	//删除选中货物按钮
+	private static ImageIcon[] BUTTON_SHANCHUHUOWU = null;
+	//清空货物按钮
+	private static ImageIcon[] BUTTON_QINGKONGHUOWU = null;
+	//生成收件单按钮
+	private static ImageIcon[] BUTTON_SHOUJIANDAN = null;
 	
 	public static ImageIcon[] getBUTTON_DINGDAN() {
 		if (BUTTON_DINGDAN == null) {
@@ -40,5 +48,33 @@ public class CourierImage {
 			BUTTON_SHENGCHENGDINGDAN = Images.createImageIcons("image/button/生成订单.png");
 		}
 		return BUTTON_SHENGCHENGDINGDAN;
+	}
+	
+	public static ImageIcon[] getBUTTON_TIANJIAHUOWU() {
+		if (BUTTON_TIANJIAHUOWU == null) {
+			BUTTON_TIANJIAHUOWU = Images.createImageIcons("image/button/添加货物.png");
+		}
+		return BUTTON_TIANJIAHUOWU;
+	}
+	
+	public static ImageIcon[] getBUTTON_SHANCHUHUOWU() {
+		if (BUTTON_SHANCHUHUOWU == null) {
+			BUTTON_SHANCHUHUOWU = Images.createImageIcons("image/button/删除选中货物.png");
+		}
+		return BUTTON_SHANCHUHUOWU;
+	}
+	
+	public static ImageIcon[] getBUTTON_QINGKONGHUOWU() {
+		if (BUTTON_QINGKONGHUOWU == null) {
+			BUTTON_QINGKONGHUOWU = Images.createImageIcons("image/button/清空货物.png");
+		}
+		return BUTTON_QINGKONGHUOWU;
+	}
+	
+	public static ImageIcon[] getBUTTON_SHOUJIANDAN() {
+		if (BUTTON_SHOUJIANDAN == null) {
+			BUTTON_SHOUJIANDAN = Images.createImageIcons("image/button/生成收件单.png");
+		}
+		return BUTTON_SHOUJIANDAN;
 	}
 }

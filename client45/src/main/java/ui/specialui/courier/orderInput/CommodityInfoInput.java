@@ -4,9 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
 import state.CommodityState;
-import ui.myui.MyJButton;
+import ui.image.CourierImage;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJRadioButton;
@@ -105,7 +105,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		MyJScrollPane jsp = new MyJScrollPane(50, 340, 460, 135, commodityList);
 		this.add(jsp);
 		
-		MyJButton addCommodity = new MyJButton(50, 300, 110, 20, "添加货物", 15);
+		MyButton addCommodity = new MyButton(50, 300, 110, 25, CourierImage.getBUTTON_TIANJIAHUOWU());
 		addCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				String[] data = new String[3];
@@ -122,7 +122,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		});
 		this.add(addCommodity);
 		
-		MyJButton deleteCommodity = new MyJButton(180, 300, 110, 20, "删除选中货物", 15);
+		MyButton deleteCommodity = new MyButton(180, 300, 110, 25, CourierImage.getBUTTON_SHANCHUHUOWU());
 		deleteCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				commodityList.removeRow();
@@ -130,7 +130,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		});
 		this.add(deleteCommodity);
 		
-		MyJButton clearCommodity = new MyJButton(310, 300, 110, 20, "清空货物", 15);
+		MyButton clearCommodity = new MyButton(310, 300, 110, 25, CourierImage.getBUTTON_QINGKONGHUOWU());
 		clearCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				commodityList.clear();

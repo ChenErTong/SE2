@@ -3,11 +3,9 @@ package ui.specialui.courier.orderInput;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
 import state.ExpressType;
 import state.PackageType;
 import ui.image.CourierImage;
-import ui.image.InventoryImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;

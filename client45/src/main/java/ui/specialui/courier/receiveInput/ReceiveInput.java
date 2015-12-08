@@ -3,9 +3,10 @@ package ui.specialui.courier.receiveInput;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import ui.image.CourierImage;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
@@ -80,7 +81,7 @@ public class ReceiveInput extends MyJPanel{
 		receiveDate.setText(GetDate.getTime());
 		this.add(receiveDate);
 		
-		MyJButton checkOrderID = new MyJButton(490, 115, 60, 30, "查询", 20);
+		MyButton checkOrderID = new MyButton(490, 115, 35,35, LoginImage.getBUTTON_LOGISTIC());
 		checkOrderID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!ReceiveInput.this.searchOrder(checkBoard.getText())){
@@ -92,7 +93,7 @@ public class ReceiveInput extends MyJPanel{
 		});
 		this.add(checkOrderID);
 		
-		MyJButton confirm = new MyJButton(900, 330, 110, 40, "生成收件单", 18);
+		MyButton confirm = new MyButton(900, 330, 111, 25, CourierImage.getBUTTON_SHOUJIANDAN());
 		confirm.setActionCommand("produceReceiveList");
 		confirm.addActionListener(frame);
 		this.add(confirm);
