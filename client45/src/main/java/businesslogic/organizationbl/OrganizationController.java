@@ -28,71 +28,100 @@ public class OrganizationController implements OrganizationBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getBranchID(String)
+	 */
 	public String getBranchID(String city) throws RemoteException {
 		return organization.getBranchID(city);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#addBranch(BranchVO)
+	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
 		return organization.addBranch(vo);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#deleteBranch(String)
+	 */
 	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
 		return organization.deleteBranch(organizationID);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#updateBranch(BranchVO)
+	 */
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
 		return organization.updateBranch(vo);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#showBranch()
+	 */
 	public ArrayList<BranchVO> showBranch() throws RemoteException {
 		return organization.showBranch();
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getAllBranchNumbers()
+	 */
 	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
 		return organization.getAllBranchNumbers();
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getTransferID(String)
+	 */
 	public String getTransferID(String city) throws RemoteException {
 		return organization.getTransferID(city);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#addTransfer(TransferVO)
+	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
 		return organization.addTransfer(vo);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#deleteTransfer(String)
+	 */
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
 		return organization.deleteTransfer(organizationID);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#updateTransfer(TransferVO)
+	 */
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 		return organization.updateTransfer(vo);
 	}
 
+	/**
+	 * @see OrganizationBLService#showTransfer()
+	 */
 	public ArrayList<TransferVO> showTransfer() throws RemoteException {
 		return organization.showTransfer();
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getAccountByOrganizationID(String)
+	 */
 	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException {
 		return organization.getAccountsByOrganizationID(organizationID);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getFacilitiesByBranchID(String)
+	 */
 	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException {
 		return organization.getFacilitiesByBranchID(branchID);
 	}
 
-	@Override
+	/**
+	 * @see OrganizationBLService#getInventoriesByTransferID(String)
+	 */
 	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException {
 		return organization.getInventoriesByTransferID(transferID);
 	}

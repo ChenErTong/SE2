@@ -92,10 +92,10 @@ public class Organization {
 		return cityCode+transferData.getID();
 	}
 
-	public ResultMessage addTransfer(TransferVO vo)throws RemoteException  {
-		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(vo.organizationID);
-		vo.inventories.add(inventoryVO);
-		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+	public ResultMessage addTransfer(TransferVO transfer)throws RemoteException  {
+		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transfer.organizationID);
+		transfer.inventories.add(inventoryVO);
+		TransferPO transferPO = TransferTrans.convertVOtoPO(transfer);
 		return transferData.add(transferPO);
 	}
 
