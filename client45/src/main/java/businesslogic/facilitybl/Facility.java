@@ -14,6 +14,7 @@ import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
 import vo.FacilityVO;
+
 /**
  * 
  * @author Ann
@@ -22,6 +23,7 @@ import vo.FacilityVO;
 public class Facility {
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
+
 	public Facility() {
 		branchInfo = new BranchInfo();
 		facilityData = getData();
@@ -46,7 +48,7 @@ public class Facility {
 
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		if(branchInfo.addCar(facilityPO)==ResultMessage.SUCCESS)
+		if (branchInfo.addCar(facilityPO) == ResultMessage.SUCCESS)
 			return facilityData.add(facilityPO);
 		return ResultMessage.FAIL;
 	}
@@ -65,24 +67,34 @@ public class Facility {
 
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		if(branchInfo.modifyCar(facilityPO)==ResultMessage.SUCCESS){
+		if (branchInfo.modifyCar(facilityPO) == ResultMessage.SUCCESS) {
 			return facilityData.modify(facilityPO);
 		}
 		return ResultMessage.FAIL;
 	}
 
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
-		if(branchInfo.deleteCar(facility.branchID, facility.facilityIdString)==ResultMessage.SUCCESS){
+		if (branchInfo.deleteCar(facility.branchID, facility.facilityIdString) == ResultMessage.SUCCESS) {
 			return facilityData.delete(facility.facilityIdString);
 		}
 		return ResultMessage.FAIL;
 	}
-	
-	public String getID(String branchID) throws RemoteException{
+
+	/**
+	 * 根据营业厅编号获取新增车辆编号
+	 * 
+	 * @see Util#splitBranchID(String)
+	 * @param branchID
+	 *            营业厅编号
+	 * @return String型，车辆编号
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public String getID(String branchID) throws RemoteException {
 		String[] branchMessage = Util.splitBranchID(branchID);
 		String cityCode = branchMessage[0];
 		String branchNumber = branchMessage[1];
-		return cityCode+branchNumber+facilityData.getID();
+		return cityCode + branchNumber + facilityData.getID();
 	}
 
 }

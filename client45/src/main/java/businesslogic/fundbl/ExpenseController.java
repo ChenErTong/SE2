@@ -1,4 +1,5 @@
 package businesslogic.fundbl;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -6,14 +7,17 @@ import businesslogicservice.fundblservice.ExpenseBLService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.receiptvo.ExpenseVO;
+
 /**
  * 此类禁止用，用了给组里说
+ * 
  * @author Ann
  *
  */
 @Deprecated
-public class ExpenseController implements ExpenseBLService{
-    Expense ExpenseBL = new Expense();
+public class ExpenseController implements ExpenseBLService {
+	Expense ExpenseBL = new Expense();
+
 	@Override
 	public ConfirmState confirmOperation() {
 		return ExpenseBL.confirmOperation();

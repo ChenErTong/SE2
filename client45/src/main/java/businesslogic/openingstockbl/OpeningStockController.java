@@ -12,6 +12,7 @@ import vo.InventoryVO;
 import vo.OpeningStockVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
+
 /**
  * 
  * @author Ann
@@ -19,32 +20,29 @@ import vo.accountvo.AccountVO;
  */
 public class OpeningStockController implements OpeningStockBLService {
 	private OpeningStock OpeningStockBL = new OpeningStock();
+
 	@Override
-	public ResultMessage add(
-			ArrayList<TransferVO> transferVOs, 
-			ArrayList<BranchVO> branchVOs,
-			ArrayList<AccountVO> accountVOs, 
-			ArrayList<FacilityVO> facilityVOs, 
-			ArrayList<InventoryVO> inventoryVOs,
+	public ResultMessage add(ArrayList<TransferVO> transferVOs, ArrayList<BranchVO> branchVOs,
+			ArrayList<AccountVO> accountVOs, ArrayList<FacilityVO> facilityVOs, ArrayList<InventoryVO> inventoryVOs,
 			ArrayList<BankAccountVO> bankAccountVOs) throws RemoteException {
-			return OpeningStockBL.add(transferVOs, branchVOs, accountVOs, facilityVOs, inventoryVOs, bankAccountVOs);
+		return OpeningStockBL.add(transferVOs, branchVOs, accountVOs, facilityVOs, inventoryVOs, bankAccountVOs);
 	}
 
-//	@Override
-//	public ResultMessage find(int id) throws RemoteException {
-//		// TODO 查找
-//		return null;
-//	}
+	// @Override
+	// public ResultMessage find(int id) throws RemoteException {
+	// // TODO 查找
+	// return null;
+	// }
 
 	@Override
 	public ArrayList<OpeningStockVO> show() throws RemoteException {
-			return OpeningStockBL.show();
+		return OpeningStockBL.show();
 	}
 
 	@Override
 	public ResultMessage add() throws RemoteException {
-			ResultMessage resultMessage =  OpeningStockBL.add();
-			return resultMessage;
+		ResultMessage resultMessage = OpeningStockBL.add();
+		return resultMessage;
 	}
 
 }

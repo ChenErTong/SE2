@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.DebitAndPayBillShowService;
 import vo.receiptvo.DebitAndPayBillVO;
+
 /**
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:34:42
@@ -12,38 +13,39 @@ import vo.receiptvo.DebitAndPayBillVO;
 public class DebitAndPayBillShowController implements DebitAndPayBillShowService {
 
 	DebitAndPayBillShow showBL = new DebitAndPayBillShow();
+
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
-			return showBL.showPay();
+		return showBL.showPay();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpense() throws RemoteException {
-			return showBL.showExpense();
+		return showBL.showExpense();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayApproving() throws RemoteException {
-			return showBL.showPayApproving();
+		return showBL.showPayApproving();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpenseApproving() throws RemoteException {
-			return showBL.showExpenseApproving();
+		return showBL.showExpenseApproving();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showPayPass() throws RemoteException {
-			return showBL.showPayPass();
+		return showBL.showPayPass();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpensePass() throws RemoteException {
-			return showBL.showExpensePass();
+		return showBL.showExpensePass();
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayFailure()  throws RemoteException{
+	public ArrayList<DebitAndPayBillVO> showPayFailure() throws RemoteException {
 		try {
 			return showBL.showPayFailure();
 		} catch (RemoteException e) {
@@ -63,18 +65,18 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 	}
 
 	@Override
-	public ArrayList<DebitAndPayBillVO> showPayDraft()  throws RemoteException{
-			return showBL.showPayDraft();
+	public ArrayList<DebitAndPayBillVO> showPayDraft() throws RemoteException {
+		return showBL.showPayDraft();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException {
-			return showBL.showExpenseDraft();
+		return showBL.showExpenseDraft();
 	}
 
 	@Override
 	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException {
-			return showBL.showList(end);
+		return showBL.showList(end);
 	}
 
 }

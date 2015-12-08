@@ -8,13 +8,15 @@ import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.ReceiptVO;
+
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:54
  */
-public class ReceiptController implements ReceiptBLService{
-    Receipt ReceiptBL = new Receipt();
+public class ReceiptController implements ReceiptBLService {
+	Receipt ReceiptBL = new Receipt();
+
 	@Override
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
 		try {
@@ -26,7 +28,7 @@ public class ReceiptController implements ReceiptBLService{
 	}
 
 	@Override
-	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs)  throws RemoteException{
+	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
 		try {
 			return ReceiptBL.passReceipt(VOs);
 		} catch (RemoteException e) {

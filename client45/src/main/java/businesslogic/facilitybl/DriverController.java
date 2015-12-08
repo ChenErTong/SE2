@@ -6,20 +6,24 @@ import businesslogicservice.facilityblservice.DriverBLService;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
+
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:33:29
  */
-public class DriverController implements DriverBLService{
-	
+public class DriverController implements DriverBLService {
+
 	Driver driverBL = new Driver();
+
 	@Override
-	public ConfirmState confirmOperation(){
+	public ConfirmState confirmOperation() {
 		return driverBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see DriverBLService#addDriver(DriverVO)
+	 */
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.addDriver(driver);
@@ -29,7 +33,9 @@ public class DriverController implements DriverBLService{
 		return ResultMessage.FAIL;
 	}
 
-	@Override
+	/**
+	 * @see DriverBLService#deleteDriver(DriverVO)
+	 */
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.deleteDriver(driver);
@@ -39,7 +45,9 @@ public class DriverController implements DriverBLService{
 		return ResultMessage.FAIL;
 	}
 
-	@Override
+	/**
+	 * @see DriverBLService#modifyDriver(DriverVO)
+	 */
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
 		try {
 			return driverBL.modifyDriver(driver);
@@ -49,11 +57,11 @@ public class DriverController implements DriverBLService{
 		return ResultMessage.FAIL;
 	}
 
-	
-
-	@Override
+	/**
+	 * @see DriverBLService#findDriver()
+	 */
 	public ArrayList<DriverVO> findDriver() throws RemoteException {
-		ArrayList<DriverVO> vos=null;
+		ArrayList<DriverVO> vos = null;
 		try {
 			vos = driverBL.findDriver();
 		} catch (RemoteException e) {
@@ -61,8 +69,10 @@ public class DriverController implements DriverBLService{
 		}
 		return vos;
 	}
-	
-	@Override
+
+	/**
+	 * @see DriverBLService#findDriver(String)
+	 */
 	public DriverVO findDriver(String ID) throws RemoteException {
 		try {
 			return driverBL.findDriver(ID);
@@ -72,7 +82,9 @@ public class DriverController implements DriverBLService{
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see DriverBLService#getID(String)
+	 */
 	public String getID(String branchID) throws RemoteException {
 		try {
 			return driverBL.getID(branchID);
@@ -81,6 +93,5 @@ public class DriverController implements DriverBLService{
 		}
 		return null;
 	}
-	
 
 }

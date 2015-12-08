@@ -71,11 +71,11 @@ public class Driver{
 		return driverVO;
 	}
 	/**
-	 * 根据营业厅编号获取新增车辆编号
+	 * 根据营业厅编号获取新增司机编号
 	 * @see Util#splitBranchID(String)
 	 * @param branchID 营业厅编号
-	 * @return String型，车辆编号
-	 * @throws RemoteException 
+	 * @return String型，司机辆编号
+	 * @throws RemoteException  远程异常
 	 */
 	public String getID(String branchID) throws RemoteException{
 		String[] branchMessage = Util.splitBranchID(branchID);

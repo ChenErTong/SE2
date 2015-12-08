@@ -10,93 +10,91 @@ import vo.FacilityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
+
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:24
  */
 public class OrganizationController implements OrganizationBLService {
-	
+
 	Organization organization = new Organization();
 
 	public String getID() {
 		/**
 		 * @author Ann
 		 */
-		//我觉得没有必要getID
+		// 我觉得没有必要getID
 		return null;
 	}
 
 	@Override
 	public String getBranchID(String city) throws RemoteException {
-			return organization.getBranchID(city);
+		return organization.getBranchID(city);
 	}
 
 	@Override
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
-			return organization.addBranch(vo);
+		return organization.addBranch(vo);
 	}
 
 	@Override
-	public ResultMessage deleteBranch(String organizationID)  throws RemoteException{
-			return organization.deleteBranch(organizationID);
+	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
+		return organization.deleteBranch(organizationID);
 	}
 
 	@Override
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
-			return organization.updateBranch(vo);
+		return organization.updateBranch(vo);
 	}
 
-	
-	
 	@Override
 	public ArrayList<BranchVO> showBranch() throws RemoteException {
-			return organization.showBranch();
+		return organization.showBranch();
 	}
 
 	@Override
 	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
-			return organization.getAllBranchNumbers();
+		return organization.getAllBranchNumbers();
 	}
 
 	@Override
-	public String getTransferID(String city)  throws RemoteException{
-			return organization.getTransferID(city);
+	public String getTransferID(String city) throws RemoteException {
+		return organization.getTransferID(city);
 	}
 
 	@Override
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
-			return organization.addTransfer(vo);
+		return organization.addTransfer(vo);
 	}
 
 	@Override
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
-			return organization.deleteTransfer(organizationID);
+		return organization.deleteTransfer(organizationID);
 	}
 
 	@Override
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
-			return organization.updateTransfer(vo);
+		return organization.updateTransfer(vo);
 	}
 
 	public ArrayList<TransferVO> showTransfer() throws RemoteException {
-			return organization.showTransfer();
+		return organization.showTransfer();
 	}
 
 	@Override
 	public ArrayList<AccountVO> getAccountByOrganizationID(String organizationID) throws RemoteException {
-			return organization.getAccountsByOrganizationID(organizationID);
+		return organization.getAccountsByOrganizationID(organizationID);
 	}
 
 	@Override
 	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException {
-			return organization.getFacilitiesByBranchID(branchID);
+		return organization.getFacilitiesByBranchID(branchID);
 	}
 
 	@Override
-	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID)  throws RemoteException{
-			return organization.getInventoriesByTransferID(transferID);
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException {
+		return organization.getInventoriesByTransferID(transferID);
 	}
-	
 
 }

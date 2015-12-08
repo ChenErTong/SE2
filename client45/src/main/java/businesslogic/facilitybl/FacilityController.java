@@ -22,32 +22,44 @@ public class FacilityController implements FacilityBLService {
 		return facilityBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#addFacility(FacilityVO)
+	 */
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 		return facilityBL.addFacility(facility);
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#deleteFacility(FacilityVO)
+	 */
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		return facilityBL.deleteFacility(facility);
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#modifyFacility(FacilityVO)
+	 */
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
 		return facilityBL.modifyFacility(facility);
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#findFacility()
+	 */
 	public ArrayList<FacilityVO> findFacility() throws RemoteException {
 		return facilityBL.findFacility();
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#findFacility(String)
+	 */
 	public FacilityVO findFacility(String ID) throws RemoteException {
 		return facilityBL.findFacility(ID);
 	}
 
-	@Override
+	/**
+	 * @see FacilityBLService#getID(String)
+	 */
 	public String getID(String branchID) throws RemoteException {
 		return facilityBL.getID(branchID);
 	}
