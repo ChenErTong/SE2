@@ -1,5 +1,9 @@
 package businesslogic;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
 import businesslogic.accountbl.AccountController;
 import businesslogic.basebl.BaseController;
 import businesslogic.basebl.PolicyController;
@@ -51,7 +55,7 @@ public class ControllerFactory {
 		return driverController;
 	}
 
-	public static UserController getUserController(){
+	public static UserController getUserController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(userController == null) userController = new UserController();
 		return userController;
 	}

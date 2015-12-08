@@ -1,5 +1,8 @@
 package user;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.ResultMessage;
@@ -9,6 +12,10 @@ import vo.UserVO;
 import businesslogic.userbl.User;
 
 public class MockUser extends User {
+	public MockUser() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	String ID;
 	String username;
 	String password;

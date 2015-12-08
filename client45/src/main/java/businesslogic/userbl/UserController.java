@@ -1,5 +1,7 @@
 package businesslogic.userbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -16,7 +18,10 @@ import businesslogicservice.userblservice.UserBLService;
  */
 public class UserController implements UserBLService{
 
-	User userBL = new User();
+	User userBL;
+	public UserController() throws MalformedURLException, RemoteException, NotBoundException {
+		userBL = new User();
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		return userBL.confirmOperation();
