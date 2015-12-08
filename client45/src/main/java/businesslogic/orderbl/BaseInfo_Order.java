@@ -46,6 +46,6 @@ public interface BaseInfo_Order {
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public BigDecimal getArrialPriceByCities(String cityFrom, String cityTo, BigDecimal weight, BigDecimal priceConstant)
-			throws RemoteException;
+	public BigDecimal getArrialPriceByCities(String cityFrom, String cityTo, BigDecimal weight,
+			BigDecimal priceConstant) throws RemoteException;
 }

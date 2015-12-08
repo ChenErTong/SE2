@@ -10,6 +10,7 @@ import po.OpeningStockPO;
 import po.TransferPO;
 import po.accountpo.AccountPO;
 import vo.OpeningStockVO;
+
 /**
  * 
  * @author Ann
@@ -31,8 +32,8 @@ public class OpeningStockTrans {
 			return new OpeningStockVO(ID, date, transfers, branchs, accounts, facilities, inventories, bankAccounts);
 		}
 	}
-	
-	public static ArrayList<OpeningStockVO> convertPOstoVOs(ArrayList<OpeningStockPO> pos){
+
+	public static ArrayList<OpeningStockVO> convertPOstoVOs(ArrayList<OpeningStockPO> pos) {
 		ArrayList<OpeningStockVO> vos = new ArrayList<OpeningStockVO>();
 		for (OpeningStockPO po : pos) {
 			OpeningStockVO vo = convertPOtoVO(po);
