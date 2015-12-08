@@ -17,7 +17,9 @@ import vo.receiptvo.DebitAndPayBillVO;
 public class RecordController implements RecordBLService {
 	Record RecordBL = new Record();
 
-	@Override
+	/**
+	 * @see RecordBLService#bussinessProcess(String, String)
+	 */
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
 		try {
 			return RecordBL.bussinessProcess(begin, end);
@@ -27,7 +29,9 @@ public class RecordController implements RecordBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see RecordBLService#bussinessCondition(String)
+	 */
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
 		try {
 			return RecordBL.bussinessCondition(end);
@@ -37,7 +41,9 @@ public class RecordController implements RecordBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see RecordBLService#bussinessOneDay(String, String)
+	 */
 	public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date) throws RemoteException {
 		try {
 			return RecordBL.bussinessOneDay(WorkPlace, date);
@@ -47,12 +53,16 @@ public class RecordController implements RecordBLService {
 		return null;
 	}
 
-	@Override
+	/**
+	 * @see RecordBLService#exportBussinessProcessToExcel(BussinessProcessVO)
+	 */
 	public void exportBussinessProcessToExcel(BussinessProcessVO vo) {
 		RecordBL.exportBussinessProcessToExcel(vo);
 	}
 
-	@Override
+	/**
+	 * @see RecordBLService#exportBussinessConditionToExcel(BussinessConditionVO)
+	 */
 	public void exportBussinessConditionToExcel(BussinessConditionVO vo) {
 		RecordBL.exportBussinessConditionToExcel(vo);
 	}
