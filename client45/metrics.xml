@@ -68,8 +68,8 @@
          <Value name="OrderVO" source ="OrderVO.java" package ="vo" value ="16" inrange="false"/>
          <Value name="OrderVO" source ="OrderVO.java" package ="vo" value ="15" inrange="false"/>
          <Value name="DriverVO" source ="DriverVO.java" package ="vo.accountvo" value ="10" inrange="false"/>
-         
-         <Value name="AdjustReceiptVO" source ="AdjustReceiptVO.java" package ="vo.receiptvo" value ="10" inrange="false"><Value name="LoadingListVO" source="LoadingListVO.java" package="vo.receiptvo.orderreceiptvo" value="10" inrange="false" /></Value>
+         <Value name="LoadingListVO" source ="LoadingListVO.java" package ="vo.receiptvo.orderreceiptvo" value ="10" inrange="false"/>
+         <Value name="AdjustReceiptVO" source ="AdjustReceiptVO.java" package ="vo.receiptvo" value ="10" inrange="false"/>
          <Value name="adjust" source ="Inventory.java" package ="businesslogic.inventorybl" value ="9" inrange="false"/>
          <Value name="adjust" source ="InventoryController.java" package ="businesslogic.inventorybl" value ="9" inrange="false"/>
          <Value name="AccountVO" source ="AccountVO.java" package ="vo.accountvo" value ="9" inrange="false"/>
