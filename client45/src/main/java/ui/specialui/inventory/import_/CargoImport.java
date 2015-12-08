@@ -3,11 +3,13 @@ package ui.specialui.inventory.import_;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.ListSelectionModel;
 
-import ui.myui.MyJButton;
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -58,21 +60,25 @@ public class CargoImport extends MyJPanel {
 		this.add(position);
 		this.setBlankPos(frame);
 		
-		MyJButton produceImportList = new MyJButton(580, 600, 120, 30, "生成入库单", 20);
+		MyButton produceImportList = new MyButton(584, 600, 111, 33, InventoryImage.getBUTTON_RUKUDAN());
 		produceImportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = CargoImport.this.produceImportList(frame);
-				if(row != -1){
+				if(row > -1){
 					position.removeItemAt(row);
 					posVOs.remove(row);
 					//库存报警
-					double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 4));
-					if(alarmRate < 0.9){
-						new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.GREEN);
-					}else{
-						new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.RED);
+					try {
+						double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 4));
+						if(alarmRate < 0.9){
+							new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.GREEN);
+						}else{
+							new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.RED);
+						}
+					} catch (RemoteException e1) {
+						new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 					}
-				}else{
+				}else if(row == -1){
 					new MyNotification(frame, "请选择一件订单", Color.RED);
 				}		
 			}
@@ -94,7 +100,13 @@ public class CargoImport extends MyJPanel {
 		String orderID = commodityInfo[0];
 		String commodityType = commodityInfo[1];
 		OrderBLService orderController = ControllerFactory.getOrderController();
-		OrderVO order = orderController.inquireOrder(orderID);
+		OrderVO order = null;
+		try {
+			order = orderController.inquireOrder(orderID);
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return -2;
+		}
 		CommodityVO commodity = null;
 		for (CommodityVO comm : order.commodities) {
 			if(comm.commodityType.equals(commodityType)){
@@ -103,10 +115,22 @@ public class CargoImport extends MyJPanel {
 			}
 		}
 		InventoryPositionVO pos = posVOs.get(rowOfPos);
-		InventoryImportReceiptVO importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
-		String importID = inventoryController.getImportID();
-		inventoryController.saveImport(importReceipt);
-		inventoryController.submitImport(importReceipt);
+		InventoryImportReceiptVO importReceipt;
+		try {
+			importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
+		} catch (RemoteException e1) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return -2;
+		}
+		String importID;
+		try {
+			importID = inventoryController.getImportID();
+			inventoryController.saveImport(importReceipt);
+			inventoryController.submitImport(importReceipt);
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return -2;
+		}
 		
 		//将入库单添加到入库单列表
 		importList.addRow(new String[]{importID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
@@ -121,7 +145,12 @@ public class CargoImport extends MyJPanel {
 	 * @param frame
 	 */
 	private void setBlankPos(Frame_Inventory frame){
-		posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		try {
+			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
@@ -129,13 +158,5 @@ public class CargoImport extends MyJPanel {
 				position.addItem(posInfo);	
 			}
 		}
-	}
-	
-	/**
-	 * 设置空余货物列表
-	 */
-	@SuppressWarnings("unused")
-	private void setCommodity(){
-		// TODO
 	}
 }

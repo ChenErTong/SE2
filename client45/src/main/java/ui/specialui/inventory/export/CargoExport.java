@@ -3,11 +3,13 @@ package ui.specialui.inventory.export;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.ListSelectionModel;
 
-import ui.myui.MyJButton;
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -53,14 +55,13 @@ public class CargoExport extends MyJPanel {
 		
 		this.setInventory(frame);
 		
-		MyJButton produceExportList = new MyJButton(580, 600, 120, 30, "生成出库单", 20);
+		MyButton produceExportList = new MyButton(584, 600, 111, 33, InventoryImage.getBUTTON_CHUKUDAN());
 		produceExportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(CargoExport.this.produceExportList(frame)){
-					//TODO
-				}else{
+				int result = CargoExport.this.produceExportList(frame);
+				if(result == 1){
 					new MyNotification(frame, "请选择一件订单", Color.RED);
-				}		
+				}	
 			}
 		});
 		this.add(produceExportList);
@@ -71,7 +72,13 @@ public class CargoExport extends MyJPanel {
 	 * @param frame
 	 */
 	private void setInventory(Frame_Inventory frame){
-		ArrayList<InventoryPositionVO> commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+		ArrayList<InventoryPositionVO> commodities = null;
+		try {
+			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		if(commodities != null){
 			for (InventoryPositionVO commodity : commodities) {
 				String position = Integer.toString(commodity.area) + "区" + Integer.toString(commodity.row) + "排" + Integer.toString(commodity.frame) + "架" + Integer.toString(commodity.position) + "位";
@@ -80,21 +87,27 @@ public class CargoExport extends MyJPanel {
 		}
 	}
 	
-	private boolean produceExportList(Frame_Inventory frame) {
+	private int produceExportList(Frame_Inventory frame) {
 		int row = commodities.getSelectedRow();
-		if(row == -1) return false;
-		//TODO 根据选中的订单信息生成出库单
+		if(row == -1) return 1;
+
 		String[] commodityInfo = commodities.getData(row);
 		String position = commodityInfo[2];	
-		InventoryExportReceiptVO exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 4), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
-		String id = inventoryController.getExportID();
-		//将数据加入出库单列表
-		exportList.addRow(new String[]{id, commodityInfo[0], commodityInfo[1], GetDate.getDate(), (String) transport.getSelectedItem()});
-		//将货物从仓库列表中移除
-		commodities.removeRow();
-		//存储数据
-		inventoryController.saveExport(exportReceipt);
-		inventoryController.submitExport(exportReceipt);
-		return true;
+		InventoryExportReceiptVO exportReceipt;
+		try {
+			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 4), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
+			String id = inventoryController.getExportID();
+			//将数据加入出库单列表
+			exportList.addRow(new String[]{id, commodityInfo[0], commodityInfo[1], GetDate.getDate(), (String) transport.getSelectedItem()});
+			//将货物从仓库列表中移除
+			commodities.removeRow();
+			//存储数据
+			inventoryController.saveExport(exportReceipt);
+			inventoryController.submitExport(exportReceipt);
+			return 0;
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return 2;
+		}
 	}
 }

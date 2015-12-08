@@ -3,11 +3,10 @@ package ui.specialui.inventory.stocking;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.inventoryblservice.InventoryBLService;
-import ui.myui.MyJButton;
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
@@ -17,6 +16,8 @@ import ui.specialui.inventory.Frame_Inventory;
 import util.GetDate;
 import vo.InventoryCheckVO;
 import vo.InventoryPositionVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
 
 public class Stocking extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -44,20 +45,22 @@ public class Stocking extends MyJPanel {
 	
 		this.refreshCondition(frame);
 		
-		MyJButton refresh = new MyJButton(765, 126, 100, 20, "刷新状态", 18);
+		MyButton refresh = new MyButton(765, 126, 34, 34, InventoryImage.getBUTTON_REFRESH());
 		refresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Stocking.this.refreshCondition(frame);
-				new MyNotification(frame, "刷新成功", Color.GREEN);
+				if(Stocking.this.refreshCondition(frame)){
+					new MyNotification(frame, "刷新成功", Color.GREEN);
+				}
 			}
 		});
 		this.add(refresh);
 		
-		MyJButton stocking = new MyJButton(580, 600, 120, 30, "盘点", 20);
+		MyButton stocking = new MyButton(584, 600, 111, 33, InventoryImage.getBUTTON_PD());
 		stocking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Stocking.this.snapshot();
-				new MyNotification(frame, "盘点成功", Color.GREEN);
+				if(Stocking.this.snapshot()){
+					new MyNotification(frame, "盘点成功", Color.GREEN);
+				}
 			}
 		});
 		this.add(stocking);
@@ -70,14 +73,24 @@ public class Stocking extends MyJPanel {
 	 */
 	private boolean snapshot() {
 		if(inventoryCheck == null) return false;
-		inventoryController.exportToExcel(inventoryCheck);
+		try {
+			inventoryController.exportToExcel(inventoryCheck);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return false;
+		}
 		inventoryCheck = null;
 		return true;
 	}
 	
 	//刷新库存信息
-	private void refreshCondition(Frame_Inventory frame) {
-		inventoryCheck = inventoryController.checkRecord(frame.getID().substring(0, 4), GetDate.getDate());
+	private boolean refreshCondition(Frame_Inventory frame) {
+		try {
+			inventoryCheck = inventoryController.checkRecord(frame.getID().substring(0, 4), GetDate.getDate());
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return false;
+		}
 		String point = inventoryCheck.date + inventoryCheck.lotNum;
 		formerPoint.setText(point);
 		ArrayList<InventoryPositionVO> commodities = inventoryCheck.commos;
@@ -87,5 +100,6 @@ public class Stocking extends MyJPanel {
 				inventoryCondition.addRow(new String[]{commodity.commodity.ID, commodity.commodity.commodityType, position});
 			}
 		}
+		return true;
 	}
 }

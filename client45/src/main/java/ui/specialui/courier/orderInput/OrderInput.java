@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
 import state.PackageType;
-import ui.myui.MyJButton;
+import ui.image.CourierImage;
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -16,6 +16,8 @@ import ui.specialui.courier.Frame_Courier;
 import util.GetDate;
 import vo.CommodityVO;
 import vo.OrderVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.orderblservice.OrderBLService;
 
 public class OrderInput extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +46,7 @@ public class OrderInput extends MyJPanel {
 		commodities = new CommodityInfoInput();
 		this.add(commodities);
 
-		MyJButton confirm = new MyJButton(560, 640, 110, 40, "生成订单", 18);
+		MyButton confirm = new MyButton(584, 640, 111, 333, CourierImage.getBUTTON_SHENGCHENGDINGDAN());
 		confirm.setActionCommand("produceOrder");
 		confirm.addActionListener(frame);
 		this.add(confirm);

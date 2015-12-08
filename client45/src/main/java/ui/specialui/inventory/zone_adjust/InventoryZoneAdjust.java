@@ -3,13 +3,11 @@ package ui.specialui.inventory.zone_adjust;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import javax.swing.ListSelectionModel;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.inventoryblservice.InventoryBLService;
-import ui.myui.MyJButton;
+import ui.image.InventoryImage;
+import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -18,6 +16,8 @@ import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.inventory.Frame_Inventory;
 import vo.InventoryPositionVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.inventoryblservice.InventoryBLService;
 /**
  * 仓库库存调整界面
  * @author czw
@@ -53,14 +53,15 @@ public class InventoryZoneAdjust extends MyJPanel {
 		this.add(position);
 		this.setBlankPos(frame);
 		
-		MyJButton modifyImportList = new MyJButton(575, 600, 120, 30, "确认调整", 20);
+		MyButton modifyImportList = new MyButton(584, 600, 111, 33, InventoryImage.getBUTTON_TIAOZHENG());
 		modifyImportList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(InventoryZoneAdjust.this.modifyImportList(frame)){
+				int result = InventoryZoneAdjust.this.modifyImportList(frame);
+				if(result == 0){
 					new MyNotification(frame, "订单分区调整成功", Color.GREEN);
-				}else{
+				}else if(result == 1){
 					new MyNotification(frame, "请选择一件订单", Color.RED);
-				}		
+				}
 			}
 		});
 		this.add(modifyImportList);
@@ -71,7 +72,12 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * @param frame
 	 */
 	private void setBlankPos(Frame_Inventory frame) {
-		posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		try {
+			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
@@ -85,7 +91,13 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * 设置仓库中货物列表
 	 */
 	private void setImportList(Frame_Inventory frame){
-		ArrayList<InventoryPositionVO> commoditiesExisted = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+		ArrayList<InventoryPositionVO> commoditiesExisted;
+		try {
+			commoditiesExisted = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		if(commoditiesExisted != null){
 			String pos = null;
 			for (InventoryPositionVO inventoryPositionVO : commoditiesExisted) {
@@ -100,9 +112,9 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * @param frame
 	 * @return
 	 */
-	private boolean modifyImportList(Frame_Inventory frame) {
+	private int modifyImportList(Frame_Inventory frame) {
 		int rowOfImport = importList.getSelectedRow();
-		if(rowOfImport == -1) return false;
+		if(rowOfImport == -1) return 1;
 		String[] commodity = importList.getData(rowOfImport);
 		String expos = commodity[3];
 		//得到货物当前位置
@@ -114,7 +126,12 @@ public class InventoryZoneAdjust extends MyJPanel {
 		int rowOfPos = position.getSelectedIndex();
 		InventoryPositionVO afpos = posVOs.get(rowOfPos);
 		String afpos_string = position.getItemAt(rowOfPos);
-		inventoryController.adjust(frame.getID().substring(0, 4), posBefore[0], posBefore[1], posBefore[2], posBefore[3], afpos.area, afpos.row, afpos.frame, afpos.position);
+		try {
+			inventoryController.adjust(frame.getID().substring(0, 4), posBefore[0], posBefore[1], posBefore[2], posBefore[3], afpos.area, afpos.row, afpos.frame, afpos.position);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return 2;
+		}
 		
 		//调整位置下拉框中选项
 		position.removeItemAt(rowOfPos);
@@ -132,6 +149,6 @@ public class InventoryZoneAdjust extends MyJPanel {
 		importList.removeRow();
 		importList.addRow(new String[]{commodity[0], commodity[1], commodity[2], afpos_string});
 
-		return true;
+		return 0;
 	}
 }

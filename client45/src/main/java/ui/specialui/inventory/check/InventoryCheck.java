@@ -3,12 +3,12 @@ package ui.specialui.inventory.check;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
@@ -52,9 +52,7 @@ public class InventoryCheck extends MyJPanel{
 		MyButton search = new MyButton(795, 96, 35,35, LoginImage.getBUTTON_LOGISTIC());
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(InventoryCheck.this.searchWithinGap(frame)){
-					
-				}else{
+				if(!InventoryCheck.this.searchWithinGap(frame)){
 					new MyNotification(frame, "请正确输入时间", Color.RED);
 				}
 			}
@@ -70,7 +68,14 @@ public class InventoryCheck extends MyJPanel{
 		InventoryBLService inventoryController = ControllerFactory.getInventoryController();
 		if((formerDate.getText().equals(""))||(latterDate.getText().equals(""))) return false;
 		
-		InventoryViewVO inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
+		InventoryViewVO inventoryView = null;
+		try {
+			System.out.println(inventoryController == null);
+			inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		if(inventoryView == null) return false;
 		
 		String importNum = "";

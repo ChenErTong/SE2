@@ -9,7 +9,9 @@ public class CourierImage {
 	private static ImageIcon[] BUTTON_SHOUJIAN = null;
 	// 报价和时间管理
 	private static ImageIcon[] BUTTON_BAOJIASHIJIAN = null;
-
+	//生成订单按钮
+	private static ImageIcon[] BUTTON_SHENGCHENGDINGDAN = null;
+	
 	public static ImageIcon[] getBUTTON_DINGDAN() {
 		if (BUTTON_DINGDAN == null) {
 			BUTTON_DINGDAN = Images
@@ -31,5 +33,12 @@ public class CourierImage {
 			BUTTON_BAOJIASHIJIAN = Images.createImageIcons("image/button/报价和时间管理.png");
 		}
 		return BUTTON_BAOJIASHIJIAN;
+	}
+	
+	public static ImageIcon[] getBUTTON_SHENGCHENGDINGDAN() {
+		if (BUTTON_SHENGCHENGDINGDAN == null) {
+			BUTTON_SHENGCHENGDINGDAN = Images.createImageIcons("image/button/生成订单.png");
+		}
+		return BUTTON_SHENGCHENGDINGDAN;
 	}
 }
