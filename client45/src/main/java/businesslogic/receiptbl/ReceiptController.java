@@ -17,44 +17,32 @@ import vo.receiptvo.ReceiptVO;
 public class ReceiptController implements ReceiptBLService {
 	Receipt ReceiptBL = new Receipt();
 
-	@Override
+	/**
+	 * @see ReceiptBLService#updateReceipt(ReceiptVO)
+	 */
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
-		try {
-			return ReceiptBL.updateReceipt(receiptVO);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return ReceiptBL.updateReceipt(receiptVO);
 	}
 
-	@Override
+	/**
+	 * @see ReceiptBLService#passReceipt(ArrayList)
+	 */
 	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
-		try {
-			return ReceiptBL.passReceipt(VOs);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		return ReceiptBL.passReceipt(VOs);
 	}
 
-	@Override
+	/**
+	 * @see ReceiptBLService#dontPassReceipt(ArrayList)
+	 */
 	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
-		try {
-			return ReceiptBL.dontPassReceipt(VOs);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		return ReceiptBL.dontPassReceipt(VOs);
 	}
 
-	@Override
+	/**
+	 * @see ReceiptBLService#show(ReceiptType, ReceiptState)
+	 */
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type, ReceiptState state) throws RemoteException {
-		try {
-			return ReceiptBL.show(type, state);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return ReceiptBL.show(type, state);
 	}
 
 }

@@ -19,68 +19,97 @@ import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import vo.receiptvo.ReceiptVO;
+
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:58
  */
-public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Transfer,ReceiptInfo_Transfer,ReceiptInfo_Branch,ReceiptInfo_DebitAndPayBill {
+public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Transfer, ReceiptInfo_Transfer,
+		ReceiptInfo_Branch, ReceiptInfo_DebitAndPayBill {
 	Receipt receipt;
 	ReceiptDataService receiptData;
+
 	public ReceiptInfo() {
 		receipt = new Receipt();
 		receiptData = receipt.getData();
 	}
-	
-	@Override
+
+	/**
+	 * @see ReceiptInfo_Branch_Transfer#getID()
+	 */
 	public String getID() throws RemoteException {
 		return receiptData.getID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#getImportID()
+	 */
 	public String getImportID() throws RemoteException {
 		return receiptData.getImportID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#getExportID()
+	 */
 	public String getExportID() throws RemoteException {
 		return receiptData.getExportID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#getAdjustID()
+	 */
 	public String getAdjustID() throws RemoteException {
 		return receiptData.getAdjustID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#getTransferID()
+	 */
 	public String getTransferID() throws RemoteException {
 		return receiptData.getTransferArrialID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Transfer#getTransferDeliverID()
+	 */
 	public String getTransferDeliverID() throws RemoteException {
 		return receiptData.getTransferDeliverID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Transfer#getTransferArrialID()
+	 */
 	public String getTransferArrialID() throws RemoteException {
 		return receiptData.getTransferArrialID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Branch#getBranchTruckID()
+	 */
 	public String getBranchTruckID() throws RemoteException {
 		return receiptData.getBranchTruckID();
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#getImportNumber(String, String)
+	 */
 	public int getImportNumber(String begin, String end) throws RemoteException {
 		return this.getReceiptNum(ReceiptType.INSTOCK);
 	}
-	@Override
+
+	/**
+	 * @see ReceiptInfo_Inventory#getExportNumber(String, String)
+	 */
 	public int getExportNumber(String begin, String end) throws RemoteException {
 		return this.getReceiptNum(ReceiptType.OUTSTOCK);
 	}
-	@Override
+
+	/**
+	 * @see ReceiptInfo_Inventory#add(ReceiptVO)
+	 * @see ReceiptInfo_Branch_Transfer#add(ReceiptVO)
+	 * @see ReceiptInfo_DebitAndPayBill#add(ReceiptVO)
+	 */
 	public ResultMessage add(ReceiptVO vo) throws RemoteException {
 		ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 		return receiptData.add(po);
@@ -90,34 +119,51 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 	 * RemoteException { return receiptData.add(po); }
 	 */
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory
+	 */
 	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
 			throws RemoteException {
 		String id = this.getImportID();
-		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row, frame, position);
+		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row,
+				frame, position);
 		this.add(importReceiptVO);
 		return importReceiptVO;
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#modify(ReceiptVO)
+	 * @see ReceiptInfo_Branch_Transfer#modify(ReceiptVO)
+	 * @see ReceiptInfo_DebitAndPayBill#modify(ReceiptVO)
+	 */
 	public ResultMessage modify(ReceiptVO vo) throws RemoteException {
 		ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 		return receiptData.add(po);
 	}
-	@Override
+
+	/**
+	 * @see ReceiptInfo_Inventory#findTransferArrivalList(String)
+	 */
 	public TransferArrivalListPO findTransferArrivalList(String id) throws RemoteException {
 		return receiptData.findTransferArrivalList(id);
 	}
-	@Override
+
+	/**
+	 * @see ReceiptInfo_Inventory#findImport(String)
+	 */
 	public InventoryImportReceiptPO findImport(String importID) throws RemoteException {
 		return receiptData.findImport(importID);
 	}
-	@Override
-	public <T extends ReceiptVO> ArrayList<T> showInDateByType(String begin, String end, ReceiptType type) throws RemoteException {
+
+	/**
+	 * @see ReceiptInfo_Inventory#showInDateByType(String, String, ReceiptType)
+	 */
+	public <T extends ReceiptVO> ArrayList<T> showInDateByType(String begin, String end, ReceiptType type)
+			throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
 		for (ReceiptPO receiptPO : pos) {
-			if(receiptPO.getReceiptType().equals(type)&&inDate(receiptPO, begin, end)){
+			if (receiptPO.getReceiptType().equals(type) && inDate(receiptPO, begin, end)) {
 				@SuppressWarnings("unchecked")
 				T vo = (T) ReceiptTrans.convertPOtoVO(receiptPO);
 				vos.add(vo);
@@ -126,15 +172,17 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 		return vos;
 	}
 
-	@Override
+	/**
+	 * @see ReceiptInfo_Inventory#hasChecked()
+	 */
 	public boolean hasChecked() throws RemoteException {
 		ArrayList<ReceiptPO> receipts = receiptData.find();
 		for (ReceiptPO receiptPO : receipts) {
 			String ID = receiptPO.getID();
-			if(ID.startsWith("CHECK")){
+			if (ID.startsWith("CHECK")) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 				String date = sdf.format(new Date());
-				if(ID.substring(5).startsWith(date)){
+				if (ID.substring(5).startsWith(date)) {
 					return true;
 				}
 			}
@@ -142,17 +190,37 @@ public class ReceiptInfo implements ReceiptInfo_Inventory,ReceiptInfo_Branch_Tra
 		return false;
 	}
 
+	/**
+	 * 判断单据是否在指定日期内
+	 * 
+	 * @param po
+	 *            ReceiptPO型，单据持久化对象
+	 * @param beginDate
+	 *            String型，开始日期
+	 * @param endDate
+	 *            String型，结束日期
+	 * @return boolean型，判断结果
+	 */
 	private boolean inDate(ReceiptPO po, String beginDate, String endDate) {
 		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
 			return true;
 		return false;
 	}
 
-	private int getReceiptNum(ReceiptType type) throws RemoteException{
-		int sum=0;
+	/**
+	 * 获得某类型单据的数量
+	 * 
+	 * @param type
+	 *            ReceiptType型，单据类型
+	 * @return int型，单据数量
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	private int getReceiptNum(ReceiptType type) throws RemoteException {
+		int sum = 0;
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		for (ReceiptPO receiptPO : pos) {
-			if(receiptPO.getReceiptType()==type)
+			if (receiptPO.getReceiptType() == type)
 				++sum;
 		}
 		return sum;
