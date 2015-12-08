@@ -10,30 +10,38 @@ import dataservice.transferdataservice.TransferDataService;
 import po.TransferPO;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
+
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:38:44
  */
-public class TransferInfo implements TransferInfo_OpeningStock,TransferInfo_Inventory,TransferInfo_Account{
+public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inventory, TransferInfo_Account {
 	Transfer transfer;
 	TransferDataService transferData;
+
 	public TransferInfo() {
 		transfer = new Transfer();
 		transferData = transfer.getData();
-	}	
-
-	@Override
-	public ArrayList<TransferPO> find() throws RemoteException {
-		return  transferData.find();
 	}
 
-	@Override
+	/**
+	 * @see TransferInfo_OpeningStock#find()
+	 */
+	public ArrayList<TransferPO> find() throws RemoteException {
+		return transferData.find();
+	}
+
+	/**
+	 * @see TransferInfo_Inventory#getTransfer(String)
+	 */
 	public TransferPO getTransfer(String transferID) throws RemoteException {
 		return transferData.find(transferID);
 	}
 
-	@Override
+	/**
+	 * @see TransferInfo_Account#addAccount(AccountPO)
+	 */
 	public ResultMessage addAccount(AccountPO account) throws RemoteException {
 		TransferPO transfer = transferData.find(account.getOrganizationID());
 		ArrayList<AccountPO> accounts = transfer.getAccounts();
@@ -42,7 +50,9 @@ public class TransferInfo implements TransferInfo_OpeningStock,TransferInfo_Inve
 		return transferData.add(transfer);
 	}
 
-	@Override
+	/**
+	 * @see TransferInfo_Account#modifyAccount(AccountPO)
+	 */
 	public ResultMessage modifyAccount(AccountPO account) throws RemoteException {
 		TransferPO transfer = transferData.find(account.getOrganizationID());
 		ArrayList<AccountPO> accounts = transfer.getAccounts();
@@ -54,7 +64,10 @@ public class TransferInfo implements TransferInfo_OpeningStock,TransferInfo_Inve
 		transfer.setAccounts(accounts);
 		return transferData.add(transfer);
 	}
-	@Override
+
+	/**
+	 * @see TransferInfo_Account#deleteAccount(String, String)
+	 */
 	public ResultMessage deleteAccount(String transferID, String ID) throws RemoteException {
 		TransferPO transfer = transferData.find(transferID);
 		ArrayList<AccountPO> accounts = transfer.getAccounts();

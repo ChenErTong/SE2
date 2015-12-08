@@ -25,40 +25,58 @@ public class TransferController implements TransferBLService {
 		return TransferBL.confirmOperation();
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#getAllCommodities()
+	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 		return TransferBL.getAllCommodities();
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#planeTransfer(String, String, String, String,
+	 *      String, ArrayList, String, String)
+	 */
 	public TransferOrderVO planeTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
 		return TransferBL.planeTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#truckTransfer(String, String, String, String,
+	 *      String, ArrayList, String, String)
+	 */
 	public TransferOrderVO truckTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
 		return TransferBL.truckTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#trainTransfer(String, String, String, String,
+	 *      String, ArrayList, String, String)
+	 */
 	public TransferOrderVO trainTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
 		return TransferBL.trainTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#submit(ReceiptVO)
+	 */
 	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
 		return TransferBL.submit(receipt);
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#save(ReceiptVO)
+	 */
 	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
 		return TransferBL.save(receipt);
 	}
 
-	@Override
+	/**
+	 * @see TransferBLService#receiptList(String, String, String,
+	 *      CommodityState, String)
+	 */
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
 			CommodityState state, String orders) throws RemoteException {
 		return TransferBL.receiptList(transferID, departure, destination, state, orders);
