@@ -69,24 +69,56 @@ public class BankAccount {
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		return bankAccountData.modify(FundTrans.convertVOtoPO(vo));
 	}
-	
-	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
+
+	/**
+	 * 减少银行账户中的金额
+	 * 
+	 * @param accountID
+	 *            String型，银行账户编号
+	 * @param money
+	 *            BigDecimal型，金额
+	 * @return ResultMessage型，扣款是否成功
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
 		BankAccountPO po = bankAccountData.find(accountID);
 		BigDecimal oldmoney = po.getMoney();
-		if(oldmoney.compareTo(money)>=0)
-			oldmoney=oldmoney.subtract(money);
-		po.setMoney(oldmoney);
-		return bankAccountData.modify(po);
-	}
-	
-	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException{
-		BankAccountPO po = bankAccountData.find(accountID);
-		BigDecimal oldmoney = po.getMoney();
-		oldmoney=oldmoney.add(money);
+		if (oldmoney.compareTo(money) >= 0)
+			oldmoney = oldmoney.subtract(money);
 		po.setMoney(oldmoney);
 		return bankAccountData.modify(po);
 	}
 
+	/**
+	 * 添加银行账户中的金额
+	 * 
+	 * @param String型，银行账户编号
+	 * @param money
+	 *            BigDecimal型，金额
+	 * @return ResultMessage型，添加是否成功
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public ResultMessage addMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
+		BankAccountPO po = bankAccountData.find(accountID);
+		BigDecimal oldmoney = po.getMoney();
+		oldmoney = oldmoney.add(money);
+		po.setMoney(oldmoney);
+		return bankAccountData.modify(po);
+	}
+
+	/**
+	 * 模糊查找账户
+	 * 
+	 * @param keywords
+	 *            String型，关键字
+	 * @param type
+	 *            FindTypeAccount型，查找类型
+	 * @return ArrayList<BankAccountVO>型，符合条件的账户
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ArrayList<BankAccountVO> find(String keywords, FindTypeAccount type) throws RemoteException {
 		ArrayList<BankAccountPO> pos = this.findByType(keywords, type);
 		ArrayList<BankAccountVO> vos = FundTrans.convertBankAccountPOstoVOs(pos);
@@ -105,8 +137,7 @@ public class BankAccount {
 	 * @param keywords
 	 *            关键字
 	 * @param type
-	 *            查找类型，包括ID，帐户名，余额 
-	 *            type为NULL时进行模糊查询
+	 *            查找类型，包括ID，帐户名，余额 type为NULL时进行模糊查询
 	 * @return 符合条件的BankAccountPO数组
 	 * @throws RemoteException
 	 */
