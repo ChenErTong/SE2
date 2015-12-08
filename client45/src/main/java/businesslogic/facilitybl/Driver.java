@@ -70,7 +70,13 @@ public class Driver{
 		DriverVO driverVO = FacilityTrans.convertPOtoVO(driverPO);
 		return driverVO;
 	}
-	
+	/**
+	 * 根据营业厅编号获取新增车辆编号
+	 * @see Util#splitBranchID(String)
+	 * @param branchID 营业厅编号
+	 * @return String型，车辆编号
+	 * @throws RemoteException 
+	 */
 	public String getID(String branchID) throws RemoteException{
 		String[] branchMessage = Util.splitBranchID(branchID);
 		String cityCode = branchMessage[0];
