@@ -5,11 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.branchblservice.BranchBLService;
-import businesslogicservice.orderblservice.OrderBLService;
-import ui.myui.MyJButton;
+import ui.image.BranchImage;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
@@ -19,6 +17,9 @@ import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.OrderVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.orderblservice.OrderBLService;
 
 public class VehicleLoading extends MyJPanel {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +45,7 @@ public class VehicleLoading extends MyJPanel {
 		this.add(new MyJLabel(690, 150, 100, 25, "订单编号", 18, true));
 		MyJTextField orderID = new MyJTextField(780, 150, 150, 30);
 		this.add(orderID);
-		MyJButton addOrder = new MyJButton(950, 150, 70, 30, "添加", 18);
+		MyButton addOrder = new MyButton(950, 150, 66, 33, BranchImage.getBUTTON_TIANJIA());
 		addOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VehicleLoading.this.addOrderID(orderID.getText());
@@ -59,7 +60,7 @@ public class VehicleLoading extends MyJPanel {
 		deliveryCost.setText("0.0");
 		this.add(deliveryCost);
 		
-		MyJButton calculateCost = new MyJButton(472, 560, 138, 23, "计算运费/元", 18);
+		MyButton calculateCost = new MyButton(472, 560, 116, 25, BranchImage.getBUTTON_JISUAN());
 		calculateCost.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BigDecimal cost = VehicleLoading.this.calculateCost();
@@ -72,7 +73,7 @@ public class VehicleLoading extends MyJPanel {
 		});
 		this.add(calculateCost);
 		
-		MyJButton produceLoadingList = new MyJButton(583, 630, 115, 23, "生成装车单", 18);
+		MyButton produceLoadingList = new MyButton(584, 630, 111, 33, TransferImage.getBUTTON_ZHUANGCHEDAN());
 		produceLoadingList.setActionCommand("produceLoadingList");
 		produceLoadingList.addActionListener(frame);
 		this.add(produceLoadingList);

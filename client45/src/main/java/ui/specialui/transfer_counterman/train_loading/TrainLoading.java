@@ -2,7 +2,6 @@ package ui.specialui.transfer_counterman.train_loading;
 
 import ui.image.TransferImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.transfer_counterman.Frame_Transfer;

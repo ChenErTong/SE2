@@ -2,7 +2,6 @@ package ui.specialui.branch_conuterman.vehicleloading;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;

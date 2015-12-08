@@ -2,7 +2,6 @@ package ui.specialui.branch_conuterman.facilityInfoManage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.facilityblservice.FacilityBLService;
 import ui.myui.MyJLabel;

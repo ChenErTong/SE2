@@ -4,8 +4,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import state.CommodityState;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -62,8 +63,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		commodityState = new MyJComboBox(650, 555, 115, 30, commodityStates);	
 		this.add(commodityState);
 		
-		MyJButton produceArrivalList = new MyJButton(583, 630, 115, 23,
-				"生成到达单", 18);
+		MyButton produceArrivalList = new MyButton(584, 630, 111, 33,
+				TransferImage.getBUTTON_DAODADAN());
 		produceArrivalList.setActionCommand("produceArrivalList");
 		produceArrivalList.addActionListener(frame);
 		this.add(produceArrivalList);

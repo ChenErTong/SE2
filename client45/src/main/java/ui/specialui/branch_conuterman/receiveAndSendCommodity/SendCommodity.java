@@ -2,17 +2,18 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
 import java.util.ArrayList;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.branchblservice.BranchBLService;
-import businesslogicservice.organizationblservice.OrganizationBLService;
+import ui.image.BranchImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.accountvo.AccountVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
+import businesslogicservice.organizationblservice.OrganizationBLService;
 /**
  * 派发货物界面
  * @author czw
@@ -41,8 +42,8 @@ public class SendCommodity extends MyJPanel{
 		
 		this.setCourier(frame);
 		
-		MyJButton produceDeliveryList = new MyJButton(583, 630, 115, 23,
-				"生成派件单", 18);
+		MyButton produceDeliveryList = new MyButton(584, 630, 111, 33,
+				BranchImage.getBUTTON_PAIJIANDAN());
 		produceDeliveryList.setActionCommand("produceDeliveryList");
 		produceDeliveryList.addActionListener(frame);
 		this.add(produceDeliveryList);
