@@ -1,6 +1,7 @@
 package ui.specialui.transfer_counterman.car_loading;
 
-import ui.myui.MyJButton;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.transfer_counterman.Frame_Transfer;
@@ -19,7 +20,7 @@ public class CarLoading extends MyJPanel{
 		carLoadingInfo = new CarLoadingInfo();
 		this.add(carLoadingInfo);
 		
-		MyJButton jumpToCommodity = new MyJButton(571, 600, 150, 30, "确认装运信息", 20);
+		MyButton jumpToCommodity = new MyButton(584, 600, 111, 33, TransferImage.getBUTTON_ZHUANGYUNXINXI());
 		jumpToCommodity.setActionCommand("jumpToCommodityForCar");
 		jumpToCommodity.addActionListener(frame);
 		this.add(jumpToCommodity);

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -72,7 +74,7 @@ public class TrainCommodity extends MyJPanel {
 		});
 		this.add(new MyJScrollPane(250, 150, 340, 370, orderList));
 		
-		MyJButton TransferOrder = new MyJButton(571, 600, 150, 30, "生成装车单", 20);
+		MyButton TransferOrder = new MyButton(584, 600, 111, 33, TransferImage.getBUTTON_ZHUANGCHEDAN());
 		TransferOrder.setActionCommand("TransferOrderForTrain");
 		TransferOrder.addActionListener(frame);
 		this.add(TransferOrder);

@@ -1,13 +1,14 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.transferblservice.TransferBLService;
 import state.CommodityState;
-import ui.myui.MyJButton;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.transferblservice.TransferBLService;
 /**
  * 中转接收管理界面
  * @author czw
@@ -27,7 +28,7 @@ public class TransferReceiveManage extends MyJPanel{
 		arrivalCommodity = new ArrivalCommodityInfo();
 		this.add(arrivalCommodity);
 		
-		MyJButton produceArrivalList = new MyJButton(565, 600, 150, 30, "生成到达单", 20);
+		MyButton produceArrivalList = new MyButton(584, 600, 111, 33, TransferImage.getBUTTON_DAODADAN());
 		produceArrivalList.setActionCommand("produceArrivalList");
 		produceArrivalList.addActionListener(frame);
 		this.add(produceArrivalList);

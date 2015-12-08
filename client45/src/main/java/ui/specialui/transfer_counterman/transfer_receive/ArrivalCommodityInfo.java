@@ -2,7 +2,6 @@ package ui.specialui.transfer_counterman.transfer_receive;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;

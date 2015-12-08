@@ -3,8 +3,10 @@ package ui.specialui.transfer_counterman.car_loading;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
@@ -69,7 +71,7 @@ public class CarCommodity extends MyJPanel {
 		});
 		this.add(new MyJScrollPane(250, 150, 340, 370, orderList));
 		
-		MyJButton TransferOrder = new MyJButton(571, 600, 150, 30, "生成装车单", 20);
+		MyButton TransferOrder = new MyButton(584, 600, 111, 33, TransferImage.getBUTTON_ZHUANGCHEDAN());
 		TransferOrder.setActionCommand("TransferOrderForCar");
 		TransferOrder.addActionListener(frame);
 		this.add(TransferOrder);

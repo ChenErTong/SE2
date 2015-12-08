@@ -1,5 +1,7 @@
 package ui.specialui.transfer_counterman.plane_loading;
 
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -19,7 +21,7 @@ public class PlaneLoading extends MyJPanel {
 		planeLoadingInfo = new PlaneLoadingInfo();
 		this.add(planeLoadingInfo);
 		
-		MyJButton jumpToCommodity = new MyJButton(571, 600, 150, 30, "确认装运信息", 20);
+		MyButton jumpToCommodity = new MyButton(584, 600, 111, 33, TransferImage.getBUTTON_ZHUANGYUNXINXI());
 		jumpToCommodity.setActionCommand("jumpToCommodityForPlane");
 		jumpToCommodity.addActionListener(frame);
 		this.add(jumpToCommodity);
