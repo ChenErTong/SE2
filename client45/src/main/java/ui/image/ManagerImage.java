@@ -25,6 +25,50 @@ import javax.swing.ImageIcon;
 		//系统日志
 		private static ImageIcon[] BUTTON_LOG = null;
 		
+		//查看单据
+		private static ImageIcon[] BUTTON_VIEWBILL = null;
+		//批量审批
+		private static ImageIcon[]  BUTTON_APPROVEALL = null;
+		//修改单据
+		private static ImageIcon[] BUTTON_MODIFYBILL = null;
+		//通过单据
+		private static ImageIcon[] BUTTON_PASSBILL = null;
+		//不通过单据
+		private static ImageIcon[] BUTTON_DONTPASS = null;
+		//导出单据
+		private static ImageIcon[]  BUTTON_EXPORTBILL = null;
+		
+		//添加机构
+		private static ImageIcon[] BUTTON_ADDOR = null;
+		//查看机构
+		private static ImageIcon[] BUTTON_VIEWOR = null;
+		//删除机构
+		private static ImageIcon[] BUTTON_DELETEOR = null;
+		//修改机构
+		private static ImageIcon[] BUTTON_MODIFYOR = null;
+		
+		//删除常量
+		private static ImageIcon[] BUTTON_DELETEBASE = null;
+		//修改常量
+		private static ImageIcon[] BUTTON_MODIFYBASE = null;
+		
+		//删除策略
+		private static ImageIcon[] BUTTON_DELETEPOLICY = null;
+		//修改策略
+		private static ImageIcon[] BUTTON_MODIFYPOLICY = null;
+		
+		//查看员工
+		private static ImageIcon[] BUTTON_VIEWACCOUNT = null;
+		//删除员工
+		private static ImageIcon[] BUTTON_DELETEACCOUNT = null;
+		//修改员工
+		private static ImageIcon[] BUTTON_MODIFYACCOUNT = null;
+		
+		//确认添加
+		private static ImageIcon[] BUTTON_CONFIRMADD = null;
+		//确认修改
+		private static ImageIcon[] BUTTON_CONFIRMMODIFY = null;
+		
 		public static ImageIcon[] getBUTTON_APPROVE(){
 			if(BUTTON_APPROVE == null){
 				BUTTON_APPROVE= Images.createImageIcons("image/button/单据处理.png");
@@ -79,5 +123,140 @@ import javax.swing.ImageIcon;
 				BUTTON_LOG = Images.createImageIcons("image/button/记录日志.png");
 			}
 			return BUTTON_LOG;
+		}
+		
+		public static ImageIcon[] getButton_VIEWBILL(){
+			if(BUTTON_VIEWBILL==null){
+				BUTTON_VIEWBILL = Images.createImageIcons("image/button/查看单据.png");
+			}
+			return BUTTON_VIEWBILL;
+		}
+		
+		public static ImageIcon[] getBUTTON_APPROVEALL(){
+			if(BUTTON_APPROVEALL==null){
+				BUTTON_APPROVEALL = Images.createImageIcons("image/button/批量审批.png");
+			}
+			return BUTTON_APPROVEALL;
+		}
+		
+		public static ImageIcon[] getBUTTON_MODIFYBILL(){
+			if(BUTTON_MODIFYBILL==null){
+				BUTTON_MODIFYBILL = Images.createImageIcons("image/button/修改单据.png");
+			}
+			return BUTTON_MODIFYBILL;
+		}
+		
+		public static ImageIcon[] getBUTTON_PASSBILL(){
+			if(BUTTON_PASSBILL==null){
+				BUTTON_PASSBILL = Images.createImageIcons("image/button/通过单据.png");
+			}
+			return BUTTON_PASSBILL;
+		}
+		
+		public static ImageIcon[] getBUTTON_DONTPASS(){
+			if(BUTTON_DONTPASS==null){
+				BUTTON_DONTPASS = Images.createImageIcons("image/button/不通过单据.png");
+			}
+			return BUTTON_DONTPASS;
+		}
+		
+		public static ImageIcon[] getBUTTON_EXPORTBILL(){
+			if(BUTTON_EXPORTBILL==null){
+				BUTTON_EXPORTBILL = Images.createImageIcons("image/button/导出单据.png");
+			}
+			return BUTTON_EXPORTBILL;
+		}
+
+		public static ImageIcon[] getBUTTON_ADDOR(){
+			if(BUTTON_ADDOR==null){
+				BUTTON_ADDOR = Images.createImageIcons("image/button/添加机构.png");
+			}
+			return BUTTON_ADDOR;
+		}
+		
+		public static ImageIcon[] getBUTTON_VIEWOR(){
+			if(BUTTON_VIEWOR==null){
+				BUTTON_VIEWOR = Images.createImageIcons("image/button/查看机构.png");
+			}
+			return BUTTON_VIEWOR;
+		}
+		
+		public static ImageIcon[] getBUTTON_DELETEOR(){
+			if(BUTTON_DELETEOR==null){
+				BUTTON_DELETEOR = Images.createImageIcons("image/button/删除机构.png");
+			}
+			return BUTTON_DELETEOR;
+		}
+		
+		public static ImageIcon[] getBUTTON_MODIFYOR(){
+			if(BUTTON_MODIFYOR==null){
+				BUTTON_MODIFYOR = Images.createImageIcons("image/button/修改机构.png");
+			}
+			return BUTTON_MODIFYOR;
+		}
+		
+	
+
+		public static ImageIcon[] getBUTTON_DELETEBASE(){
+			if(BUTTON_DELETEBASE==null){
+				BUTTON_DELETEBASE = Images.createImageIcons("image/button/删除常量.png");
+			}
+			return BUTTON_DELETEBASE;
+		}
+		
+		public static ImageIcon[] getBUTTON_MODIFYBASE(){
+			if(BUTTON_MODIFYBASE==null){
+				BUTTON_MODIFYBASE = Images.createImageIcons("image/button/修改常量.png");
+			}
+			return BUTTON_MODIFYBASE;
+		}
+		
+		public static ImageIcon[] getBUTTON_MODIFYPOLICY(){
+			if(BUTTON_MODIFYPOLICY==null){
+				BUTTON_MODIFYPOLICY = Images.createImageIcons("image/button/修改策略.png");
+			}
+			return BUTTON_MODIFYPOLICY;
+		}
+		
+		public static ImageIcon[] getBUTTON_DELETEPOLICY(){
+			if(BUTTON_DELETEPOLICY==null){
+				BUTTON_DELETEPOLICY = Images.createImageIcons("image/button/删除策略.png");
+			}
+			return BUTTON_DELETEPOLICY;
+		}
+
+		public static ImageIcon[] getBUTTON_VIEWACCOUNT(){
+			if(BUTTON_VIEWACCOUNT==null){
+				BUTTON_VIEWACCOUNT = Images.createImageIcons("image/button/查看员工.png");
+			}
+			return BUTTON_VIEWACCOUNT;
+		}
+		
+		public static ImageIcon[] getBUTTON_MODIFYACCOUNT(){
+			if(BUTTON_MODIFYACCOUNT==null){
+				BUTTON_MODIFYACCOUNT = Images.createImageIcons("image/button/修改员工.png");
+			}
+			return BUTTON_MODIFYACCOUNT;
+		}
+		
+		public static ImageIcon[] getBUTTON_DELETEACCOUNT(){
+			if(BUTTON_DELETEACCOUNT==null){
+				BUTTON_DELETEACCOUNT = Images.createImageIcons("image/button/删除员工.png");
+			}
+			return BUTTON_DELETEACCOUNT;
+		}
+		
+		public static ImageIcon[] getBUTTON_CONFIRMADD(){
+			if(BUTTON_CONFIRMADD==null){
+				BUTTON_CONFIRMADD = Images.createImageIcons("image/button/确认添加.png");
+			}
+			return BUTTON_DELETEACCOUNT;
+		}
+
+		public static ImageIcon[] getBUTTON_CONFIRMMODIFY(){
+			if(BUTTON_CONFIRMMODIFY==null){
+				BUTTON_CONFIRMMODIFY = Images.createImageIcons("image/button/确认修改.png");
+			}
+			return BUTTON_CONFIRMMODIFY;
 		}
 }

@@ -19,6 +19,8 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyFont;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
@@ -36,7 +38,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	private MyJTextField[] input;
 	private DateLabel[] dateLabel;
 	private JScrollPane jsp;
-	private MyJButton ExportBusinessTable;
+	private MyButton ExportBusinessTable;
 
 	
 	public IncomeStateInfo(FrameManager frame_Manager) {
@@ -65,7 +67,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		check.addActionListener(this);
 		this.add(check);
 		
-		ExportBusinessTable = new MyJButton(1040-80,573,150,40,"导出成本收益表",14);
+		ExportBusinessTable = new MyButton(1040-80,573,150,40,FinanceImage.getBUTTON_EXPORTINCOME());
 		ExportBusinessTable.setActionCommand("ExportIncomeTable");
 		ExportBusinessTable.addActionListener(this);
 		this.add(ExportBusinessTable);

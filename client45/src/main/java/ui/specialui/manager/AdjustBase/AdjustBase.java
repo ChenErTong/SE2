@@ -11,7 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogicservice.baseblservice.BaseBLService;
 import state.ResultMessage;
-import ui.myui.MyJButton;
+import ui.image.ManagerImage;
+import ui.image.FinanceImage.BankAccountImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -31,10 +33,10 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private AddBase addBase;
 	private ModifyAccountInfo modifyBase;
 	private SearchBaseInfo baseInfo;
-	private MyJButton add;
-	private MyJButton modify;
-	private MyJButton deleteButton;
-	private MyJButton modifyButton;
+	private MyButton add;
+	private MyButton modify;
+	private MyButton deleteButton;
+	private MyButton modifyButton;
 	private MyJTable table;
 	private BaseBLService controller = ControllerFactory.getBaseController();
 
@@ -57,22 +59,22 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new SearchBaseInfo(this);
 		this.add(baseInfo);
-		deleteButton = new MyJButton(150,660,180,30,"删除所选常量",16);
+		deleteButton = new MyButton(150,660,150,30,ManagerImage.getBUTTON_DELETEBASE());
 		deleteButton.setActionCommand("DeleteBase");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyJButton(350,660,180,30,"修改所选常量信息",16);
+		modifyButton = new MyButton(350,660,150,30,ManagerImage.getBUTTON_MODIFYBASE());
 		modifyButton.setActionCommand("ModifyBase");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 	
-		add = new MyJButton(880,346,120,30,"确认添加",16);	
+		add = new MyButton(880,346,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyJButton(880,640,120,30,"确认修改",16);	
+		modify= new MyButton(880,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

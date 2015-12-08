@@ -12,9 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.accountbl.AccountController;
 import businesslogicservice.accountblservice.AccountBLService;
-
 import state.ResultMessage;
-import ui.myui.MyJButton;
+import ui.image.ManagerImage;
+import ui.image.FinanceImage.BankAccountImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -28,11 +29,11 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	private AddAccount addAccount;
 	private ModifyAccount modifyAccount;
 	private ViewAccount viewAccount;
-	private MyJButton viewButton;
-	private MyJButton modifyButton;
-	private MyJButton add;
-	private MyJButton modify;
-	private MyJButton deleteButton;
+	private MyButton viewButton;
+	private MyButton modifyButton;
+	private MyButton add;
+	private MyButton modify;
+	private MyButton deleteButton;
 	private MyJTable table;
 
 	static ArrayList<AccountVO> accountPool;
@@ -57,27 +58,27 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		viewAccount = new ViewAccount();
 		this.add(viewAccount);
 		
-		viewButton = new MyJButton(100,346,150,30,"查看所选员工",16);
+		viewButton = new MyButton(100,346,150,40,ManagerImage.getBUTTON_VIEWACCOUNT());
 		viewButton.setActionCommand("ViewAccount");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		
-		modifyButton = new MyJButton(270,346,150,30,"修改员工信息",16);
+		modifyButton = new MyButton(270,346,150,40,ManagerImage.getBUTTON_MODIFYACCOUNT());
 		modifyButton.setActionCommand("ModifyAccountInfo");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
-		deleteButton = new MyJButton(440,346,150,30,"删除所选员工",16);
+		deleteButton = new MyButton(440,346,150,40,ManagerImage.getBUTTON_DELETEACCOUNT());
 		deleteButton.setActionCommand("DeleteAccount");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		add = new MyJButton(910,346,120,30,"确认添加",16);	
+		add = new MyButton(910,346,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyJButton(910,640,120,30,"确认修改",16);	
+		modify= new MyButton(910,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

@@ -15,11 +15,12 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
-
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import ui.commonui.receipt_constructor.ReceiptConductor;
+import ui.image.ManagerImage;
+import ui.myui.MyButton;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -57,12 +58,12 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	JTable table;
 	DefaultTableModel model;
 	
-	private MyJButton ViewReceiptInfo;
-	private MyJButton PassSelectedReceipts;
-	private MyJButton ModifyReceiptInfo;
-	private MyJButton PassThisReceipt;
-	private MyJButton DontPassThisReceipt;
-	private MyJButton ExportReceipt;
+	private MyButton ViewReceiptInfo;
+	private MyButton PassSelectedReceipts;
+	private MyButton ModifyReceiptInfo;
+	private MyButton PassThisReceipt;
+	private MyButton DontPassThisReceipt;
+	private MyButton ExportReceipt;
 	private MyJButton search;
 	
 	public HandleReceipt() throws RemoteException {
@@ -93,37 +94,37 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(){
-		ViewReceiptInfo = new MyJButton(85, 650, 150, 40,"查看当前所选单据",14);
+		ViewReceiptInfo = new MyButton(85, 650, 150, 40,ManagerImage.getBUTTON_VIEWACCOUNT());
 		ViewReceiptInfo.setActionCommand("ViewReceiptInfo");
 		ViewReceiptInfo.addActionListener(this);
 		this.add(ViewReceiptInfo);
 		ViewReceiptInfo.setVisible(true);
 		
-		PassSelectedReceipts = new MyJButton(255, 650, 150, 40,"通过所有选中单据",14);
+		PassSelectedReceipts = new MyButton(255, 650, 150, 40,ManagerImage.getBUTTON_APPROVEALL());
 		PassSelectedReceipts.setActionCommand("PassSelectedReceipts");
 		PassSelectedReceipts.addActionListener(this);
 		this.add(PassSelectedReceipts);
 		PassSelectedReceipts.setVisible(true);
 		
-		ModifyReceiptInfo = new MyJButton(425, 650, 150, 40,"修改单据内容",14);
+		ModifyReceiptInfo = new MyButton(425, 650, 150, 40,ManagerImage.getBUTTON_MODIFYBILL());
 		
 		ModifyReceiptInfo.setActionCommand("ModifyReceiptInfo");
 		ModifyReceiptInfo.addActionListener(this);
 		this.add(ModifyReceiptInfo);
 		ModifyReceiptInfo.setVisible(true);
 		
-		PassThisReceipt = new MyJButton(705,650,150,40,"通过此单据",14);
+		PassThisReceipt = new MyButton(705,650,150,40,ManagerImage.getBUTTON_PASSBILL());
 		PassThisReceipt.setActionCommand("PassThisReceipt");
 		PassThisReceipt.addActionListener(this);
 		this.add(PassThisReceipt);
 		PassThisReceipt.setVisible(true);
 		
-		DontPassThisReceipt = new MyJButton(875, 650, 150, 40,"不通过此单据",14);
+		DontPassThisReceipt = new MyButton(875, 650, 150, 40,ManagerImage.getBUTTON_DONTPASS());
 		DontPassThisReceipt.setActionCommand("DontPassThisReceipt");
 		DontPassThisReceipt.addActionListener(this);
 		this.add(DontPassThisReceipt);
 		
-		ExportReceipt = new MyJButton(1045, 650, 150, 40,"导出单据",14);
+		ExportReceipt = new MyButton(1045, 650, 150, 40,ManagerImage.getBUTTON_EXPORTBILL());
 		ExportReceipt.setActionCommand("ExportReceipt");
 		ExportReceipt.addActionListener(this);
 		this.add(ExportReceipt);

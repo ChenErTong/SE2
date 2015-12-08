@@ -10,11 +10,12 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.baseblservice.PolicyBLService;
-
 import state.ResultMessage;
 import state.SalaryPolicy;
 import state.UserIdentity;
-import ui.myui.MyJButton;
+import ui.image.ManagerImage;
+import ui.image.FinanceImage.BankAccountImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -33,10 +34,10 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private AddPolicy addPolicy;
 	private ModifyPolicy modifyPolicy;
 
-	private MyJButton add;
-	private MyJButton modify;
-	private MyJButton deleteButton;
-	private MyJButton modifyButton;
+	private MyButton add;
+	private MyButton modify;
+	private MyButton deleteButton;
+	private MyButton modifyButton;
 	private MyJTable table;
 	
 	private PolicyBLService controller = ControllerFactory.getPolicyController();
@@ -61,22 +62,22 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		policyInfoList = new SearchPolicyInfo(this);
 		this.add(policyInfoList);
 		policyPool = new ArrayList<PolicyVO>();
-		deleteButton = new MyJButton(150,660,180,30,"删除所选策略",16);
+		deleteButton = new MyButton(150,660,150,40,ManagerImage.getBUTTON_DELETEPOLICY());
 		deleteButton.setActionCommand("DeletePolicy");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyJButton(350,660,180,30,"修改所选策略信息",16);
+		modifyButton = new MyButton(350,660,150,40,ManagerImage.getBUTTON_MODIFYPOLICY());
 		modifyButton.setActionCommand("ModifyPolicy");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 	
-		add = new MyJButton(880,346,120,30,"确认添加",16);	
+		add = new MyButton(880,346,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyJButton(880,640,120,30,"确认修改",16);	
+		modify= new MyButton(880,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

@@ -13,17 +13,17 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.organizationblservice.OrganizationBLService;
-
 import state.OrganizationType;
 import state.ResultMessage;
+import ui.image.ManagerImage;
+import ui.image.FinanceImage.BankAccountImage;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
-
 import vo.BranchVO;
 import vo.FacilityVO;
 import vo.InventoryVO;
@@ -38,14 +38,15 @@ import vo.accountvo.AccountVO;
 public class HandleOrganization extends MyJPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
-	private MyJButton commonButton = new MyJButton(890, 670, 120, 30, "添加机构", 20);
-	private MyJButton modifyButton = new MyJButton(890,670,120,30,"确认修改",20);
+	private MyButton commonButton ;
+	private MyButton modifyButton ;
+
 	private SearchOrganizationInfo organizationInfo;
 	private OrganizationDetails organizationDetails;
 
 	private MyJTable table;
 	
-	static MyJButton check;
+	static MyButton check;
 	static ArrayList<OrganizationVO> organizationPool;
 	static ArrayList<TransferVO> transferPool;
 	static ArrayList<BranchVO> branchPool;
@@ -77,7 +78,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(FrameManager frame) {
-		MyJButton insertButton = new MyJButton(55, 660, 130, 40,"添加机构",16);
+		MyButton insertButton = new MyButton(55, 660, 150, 40,ManagerImage.getBUTTON_ADDOR());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HandleOrganization.this.insertPanel(frame);
@@ -86,21 +87,21 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		});
 		this.add(insertButton);
 
-		MyJButton modifyButton = new MyJButton(200,660,130,40,
-				"修改所选机构", 16);
+		MyButton modifyButton = new MyButton(200,660,150,40,
+				ManagerImage.getBUTTON_MODIFYOR());
 		
 		modifyButton.setActionCommand("ModifyOrganizationInformation");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(345,660,150,40,
-				"查看所选机构信息", 16);
+		MyButton searchButton = new MyButton(350,660,150,40,
+				ManagerImage.getBUTTON_VIEWOR());
 		searchButton.setActionCommand("ViewOrganization");
 		searchButton.addActionListener(this);
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(510,660,130,40,
-				"删除所选机构", 16);
+		MyButton deleteButton = new MyButton(500,660,150,40,
+				ManagerImage.getBUTTON_DELETEOR());
 		deleteButton.setActionCommand("DeleteOrganization");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
@@ -115,7 +116,8 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		organizationDetails = new OrganizationDetails();
 		organizationDetails.add(new MyJLabel(230,5,120,30,"新增机构",18,true));
 		this.add(organizationDetails);
-	
+		
+		commonButton = new MyButton(890, 670, 120, 30, BankAccountImage.getBUTTON_ADD());
 		commonButton.setActionCommand("AddOrganization");
 		commonButton.addActionListener(this);
 		this.add(commonButton);
@@ -254,6 +256,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				this.add(organizationDetails);
 				
 				this.remove(commonButton);
+				modifyButton = new MyButton(890,670,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());
 				modifyButton.setActionCommand("CheckModify");
 				modifyButton.addActionListener(this);
 				this.add(modifyButton);

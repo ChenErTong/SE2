@@ -25,8 +25,8 @@ public class mainForUITest {
 
 
 	
-	//   FrameManager managerFrame = new FrameManager(id);
-	 //  managerFrame.setVisible(true);
+	   FrameManager managerFrame = new FrameManager(id);
+	   managerFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
@@ -41,8 +41,8 @@ public class mainForUITest {
 
 
 
-		Frame_Finance financeFrame = new Frame_Finance("0");
-		financeFrame.setVisible(true);
+	//	Frame_Finance financeFrame = new Frame_Finance("0");
+		//financeFrame.setVisible(true);
 
 //Frame_Sender senderFrame = new Frame_Sender(id);
 //		senderFrame.setVisible(true);
