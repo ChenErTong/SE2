@@ -22,95 +22,131 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class InventoryController implements InventoryBLService {
 	Inventory InventoryBL = new Inventory();
 
-	@Override
+	/**
+	 * @see InventoryBLService#getImportID()
+	 */
 	public String getImportID() throws RemoteException {
 		return InventoryBL.getImportID();
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#getExportID()
+	 */
 	public String getExportID() throws RemoteException {
 		return InventoryBL.getExportID();
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#getAdjustID()
+	 */
 	public String getAdjustID() throws RemoteException {
 		return InventoryBL.getAdjustID();
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#addCommodities(String, CommodityVO, int, int,
+	 *      int, int)
+	 */
 	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
 			int frame, int position) throws RemoteException {
 		LogController.getInstance().addLog("入库");
 		return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#minusCommodities(String, int, int, int, int)
+	 */
 	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
 			throws RemoteException {
 		LogController.getInstance().addLog("出库");
 		return InventoryBL.minusCommodities(transferID, area, row, frame, position);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#adjust(String, int, int, int, int, int, int, int,
+	 *      int)
+	 */
 	public ResultMessage adjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
 			int afRow, int afFrame, int afPosition) throws RemoteException {
 		LogController.getInstance().addLog("库存调整");
 		return InventoryBL.adjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#viewInventory(String, String, String)
+	 */
 	public InventoryViewVO viewInventory(String transferID, String beginDate, String endDate) throws RemoteException {
 		LogController.getInstance().addLog("库存查看");
 		return InventoryBL.viewInventory(transferID, beginDate, endDate);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#checkRecord(String, String)
+	 */
 	public InventoryCheckVO checkRecord(String transferID, String date) throws RemoteException {
 		LogController.getInstance().addLog("库存盘点");
 		return InventoryBL.checkRecord(transferID, date);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#saveImport(InventoryImportReceiptVO)
+	 */
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		return InventoryBL.saveImport(importReceipt);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#saveExport(InventoryExportReceiptVO)
+	 */
 	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		return InventoryBL.saveExport(exportReceipt);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#submitImport(InventoryImportReceiptVO)
+	 */
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		return InventoryBL.submitImport(importReceipt);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#submitExport(InventoryExportReceiptVO)
+	 */
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		return InventoryBL.submitExport(exportReceipt);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#getCommoditiesInInventory(String)
+	 */
 	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException {
 		return InventoryBL.getCommoditiesInInventory(transferID);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#getEmptyPositionsInList(String)
+	 */
 	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException {
 		return InventoryBL.getEmptyPositionsInList(transferID);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#getEmptyPositionsInArray(String)
+	 */
 	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) throws RemoteException {
-		return InventoryBL.getEmptyPositionsInArray(transferID);
+		return InventoryBL.getPositionsInArray(transferID);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#inventoryAlarmRate(String)
+	 */
 	public double inventoryAlarmRate(String transferID) throws RemoteException {
 		return InventoryBL.inventoryUseRate(transferID);
 	}
 
-	@Override
+	/**
+	 * @see InventoryBLService#exportToExcel(InventoryCheckVO)
+	 */
 	public void exportToExcel(InventoryCheckVO vo) {
 		InventoryBL.exportToExcel(vo);
 	}

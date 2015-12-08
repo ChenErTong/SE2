@@ -57,6 +57,15 @@ public class Inventory {
 		return null;
 	}
 
+	/**
+	 * 根据中转中心的编号获得中转中心的仓库
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @return InventoryVO型，仓库
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public InventoryVO getInventory(String transferID) throws RemoteException {
 		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
 		InventoryVO inventoryVO = InventoryTrans.convertPOtoVO(inventoryPO);
@@ -78,7 +87,25 @@ public class Inventory {
 		return ID;
 	}
 
-	// 生成入库单
+	/**
+	 * 生成入库单
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @param commodity
+	 *            CommodityVO型，货物
+	 * @param area
+	 *            int型， 区号
+	 * @param row
+	 *            int型，排号
+	 * @param frame
+	 *            int型，架号
+	 * @param position
+	 *            int型，位号
+	 * @return InventoryImportReceiptVO型，仓库入库单
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
 			int frame, int position) throws RemoteException {
 		// 修改仓库信息
@@ -94,7 +121,23 @@ public class Inventory {
 		return receiptInfo.addImportReceipt(commodity, area, row, frame, position);
 	}
 
-	// 生成出库单
+	/**
+	 * 生成仓库出库单
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @param area
+	 *            int型， 区号
+	 * @param row
+	 *            int型，排号
+	 * @param frame
+	 *            int型，架号
+	 * @param position
+	 *            int型，位号
+	 * @return InventoryExportReceiptVO型，仓库出库单
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
 			throws RemoteException {
 		// 通过中转中心的id获取inventoryPO
@@ -113,6 +156,31 @@ public class Inventory {
 		return vo;
 	}
 
+	/**
+	 * 生成库存调整单（保存到出数据中）
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @param exArea
+	 *            int型，调整前区
+	 * @param exRow
+	 *            int型，调整前排
+	 * @param exFrame
+	 *            int型，调整前架
+	 * @param exPosition
+	 *            int型，调整前位
+	 * @param afArea
+	 *            int型，调整后区
+	 * @param afRow
+	 *            int型，调整后排
+	 * @param afFrame
+	 *            int型，调整后架
+	 * @param afPosition
+	 *            int型，调整后位
+	 * @return ResultMessage型，调整是否成功
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ResultMessage adjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
 			int afRow, int afFrame, int afPosition) throws RemoteException {
 		// 生成库存调整单
@@ -130,6 +198,19 @@ public class Inventory {
 		return inventoryData.modify(inventory);
 	}
 
+	/**
+	 * 生成库存查看单 （查看开始日期到结束日期的出库入库数量和现在的库存）
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @param beginDate
+	 *            String型，开始日期
+	 * @param endDate
+	 *            String型，结束日期
+	 * @return InventoryViewVO型，库存查看单
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public InventoryViewVO viewInventory(String transferID, String beginDate, String endDate) throws RemoteException {
 		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
 		InventoryVO inventoryVO = InventoryTrans.convertPOtoVO(inventoryPO);
@@ -146,7 +227,18 @@ public class Inventory {
 		return viewVO;
 	}
 
-	public InventoryCheckVO checkRecord(String transferID, String enddate) throws RemoteException {
+	/**
+	 * 生成库存盘点单
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @param date
+	 *            String型，盘点日期
+	 * @return InventoryCheckVO型，库存盘点单
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public InventoryCheckVO checkRecord(String transferID, String date) throws RemoteException {
 		ArrayList<InventoryPositionVO> commosInInventory = this.getCommoditiesInInventory(transferID);
 		if (receiptInfo.hasChecked())
 			return null;
@@ -155,26 +247,71 @@ public class Inventory {
 		return checkVO;
 	}
 
+	/**
+	 * 保存入库单为草稿
+	 * 
+	 * @param importReceipt
+	 *            InventoryImportReceiptVO型，入库单
+	 * @return ResultMessage型，保存结果
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		importReceipt.receiptState = ReceiptState.DRAFT;
 		return receiptInfo.add(importReceipt);
 	}
 
+	/**
+	 * 保存出库单为草稿
+	 * 
+	 * @param exportReceipt
+	 *            InventoryExportReceiptVO型，出库单
+	 * @return ResultMessage型，保存结果
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		exportReceipt.receiptState = ReceiptState.DRAFT;
 		return receiptInfo.add(exportReceipt);
 	}
 
+	/**
+	 * 提交入库单
+	 * 
+	 * @param exportReceipt
+	 *            InventoryImportReceiptVO型，入库单
+	 * @return ResultMessage型，提交结果
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		importReceipt.receiptState = ReceiptState.APPROVALING;
 		return receiptInfo.modify(importReceipt);
 	}
 
+	/**
+	 * 提交出库单
+	 * 
+	 * @param exportReceipt
+	 *            InventoryImportReceiptVO型，出库单
+	 * @return ResultMessage型，提交结果
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		exportReceipt.receiptState = ReceiptState.APPROVALING;
 		return receiptInfo.modify(exportReceipt);
 	}
 
+	/**
+	 * 获得仓库中的所有商品
+	 * 
+	 * @param transferID
+	 *            中转中心编号
+	 * @return ArrayList<InventoryPositionVO>型，所有商品列表
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ArrayList<InventoryPositionVO> getCommoditiesInInventory(String transferID) throws RemoteException {
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
 		if (inventory == null) {
@@ -182,15 +319,21 @@ public class Inventory {
 		}
 		CommodityPO[][][][] commos = inventory.getCommos();
 		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
+		// 总区数
 		int inventoryArea = commos.length;
+		// 总排数
 		int inventoryRow = commos[0].length;
+		// 总架数
 		int inventoryFrame = commos[0][0].length;
+		// 总位数
 		int inventoryPosition = commos[0][0][0].length;
 		for (int area = 0; area < inventoryArea; area++) {
 			for (int row = 0; row < inventoryRow; row++) {
 				for (int frame = 0; frame < inventoryFrame; frame++) {
 					for (int position = 0; position < inventoryPosition; position++) {
+						// 获得商品值对象（Value Object）
 						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
+						// 如果在该位置有商品，则添加到结果列表中
 						if (commodity != null) {
 							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position,
 									commodity);
@@ -203,28 +346,53 @@ public class Inventory {
 		return commosInInventory;
 	}
 
-	public CommodityPO[][][][] getEmptyPositionsInArray(String transferID) throws RemoteException {
+	/**
+	 * 获得所有位置
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @return CommodityPO[][][][]型，仓库中的所有商品四维数组
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public CommodityPO[][][][] getPositionsInArray(String transferID) throws RemoteException {
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
 		CommodityPO[][][][] commos = inventory.getCommos();
 		return commos;
 	}
 
+	/**
+	 * 获得仓库中的所有空位置
+	 * 
+	 * @param transferID
+	 *            中转中心编号
+	 * @return ArrayList<InventoryPositionVO>型，所有空位置列表
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException {
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
+		// 如果中转中心没有仓库，返回空列表
 		if (inventory == null) {
 			return new ArrayList<>();
 		}
 		CommodityPO[][][][] commos = inventory.getCommos();
 		ArrayList<InventoryPositionVO> commosInInventory = new ArrayList<>();
+		// 总区数
 		int inventoryArea = commos.length;
+		// 总排数
 		int inventoryRow = commos[0].length;
+		// 总架数
 		int inventoryFrame = commos[0][0].length;
+		// 总位数
 		int inventoryPosition = commos[0][0][0].length;
 		for (int area = 0; area < inventoryArea; area++) {
 			for (int row = 0; row < inventoryRow; row++) {
 				for (int frame = 0; frame < inventoryFrame; frame++) {
 					for (int position = 0; position < inventoryPosition; position++) {
+						// 获得商品值对象（Value Object）
 						CommodityVO commodity = OrderTrans.convertPOtoVO(commos[area][row][frame][position]);
+						// 如果在该位置没有商品，则添加到结果列表中
 						if (commodity == null) {
 							InventoryPositionVO commodityPosition = new InventoryPositionVO(area, row, frame, position,
 									commodity);
@@ -237,9 +405,21 @@ public class Inventory {
 		return commosInInventory;
 	}
 
+	/**
+	 * 获取仓库使用率
+	 * 
+	 * @param transferID
+	 *            String型，中转中心编号
+	 * @return double型，仓库使用率
+	 * @throws RemoteException
+	 *             远程异常
+	 */
 	public double inventoryUseRate(String transferID) throws RemoteException {
+		// 正在使用的仓库位置个数
 		double positionUsed = 0;
+		// 不在使用的仓库位置个数
 		double positionNotUsed = 0;
+		// 仓库使用率
 		double useRate = 0;
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
 		CommodityPO[][][][] commos = inventory.getCommos();
@@ -259,6 +439,12 @@ public class Inventory {
 		return useRate;
 	}
 
+	/**
+	 * 将仓库盘点结果输出到excel文件
+	 * 
+	 * @param vo
+	 *            库存盘点值对象（Value Object）
+	 */
 	public void exportToExcel(InventoryCheckVO vo) {
 		String fileName = "output/" + "库存盘点" + vo.lotNum + ".xls";
 		String head = vo.transferID + "中转中心库存" + vo.date + "盘点记录";
@@ -274,8 +460,10 @@ public class Inventory {
 	 * 通过中转中心的ID编号查找相应的仓库
 	 * 
 	 * @param transferID
-	 * @return
+	 *            String型，中转中心编号
+	 * @return InventoryPO型，仓库持久化对象
 	 * @throws RemoteException
+	 *             远程异常
 	 */
 	private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
 		TransferPO transferPO = transferInfo.getTransfer(transferID);
