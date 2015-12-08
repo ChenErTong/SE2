@@ -19,6 +19,8 @@ public class CourierImage {
 	private static ImageIcon[] BUTTON_QINGKONGHUOWU = null;
 	//生成收件单按钮
 	private static ImageIcon[] BUTTON_SHOUJIANDAN = null;
+	//时间与报价管理按钮
+	private static ImageIcon[] BUTTON_JISUAN = null;
 	
 	public static ImageIcon[] getBUTTON_DINGDAN() {
 		if (BUTTON_DINGDAN == null) {
@@ -69,6 +71,13 @@ public class CourierImage {
 			BUTTON_QINGKONGHUOWU = Images.createImageIcons("image/button/清空货物.png");
 		}
 		return BUTTON_QINGKONGHUOWU;
+	}
+	
+	public static ImageIcon[] getBUTTON_JISUAN() {
+		if (BUTTON_JISUAN == null) {
+			BUTTON_JISUAN = Images.createImageIcons("image/button/计算时间与报价.png");
+		}
+		return BUTTON_JISUAN;
 	}
 	
 	public static ImageIcon[] getBUTTON_SHOUJIANDAN() {

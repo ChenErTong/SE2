@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.image.LoginImage;

@@ -3,11 +3,9 @@ package ui.specialui.courier.timeAndCostManager;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.orderblservice.OrderBLService;
 import state.ExpressType;
-import ui.myui.MyJButton;
+import ui.image.CourierImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -17,6 +15,8 @@ import ui.specialui.courier.orderInput.ReceiverInfoInput;
 import ui.specialui.courier.orderInput.SenderInfoInput;
 import util.GetDate;
 import vo.CommodityVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.orderblservice.OrderBLService;
 /**
  * 根据订单信息估计时间与报价
  * @author czw
@@ -49,7 +49,7 @@ public class TimeAndCostManager extends MyJPanel{
 		commodities = new CommodityInfoInput();
 		this.add(commodities);
 		
-		MyJButton confirm = new MyJButton(527, 640, 180, 40, "计算时间与报价", 18);
+		MyButton confirm = new MyButton(527, 640, 137, 33, CourierImage.getBUTTON_JISUAN());
 		confirm.setActionCommand("calculateTimeCost");
 		confirm.addActionListener(frame);
 		this.add(confirm);
