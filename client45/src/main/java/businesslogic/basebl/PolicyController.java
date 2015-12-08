@@ -54,8 +54,8 @@ public class PolicyController implements PolicyBLService {
 	/**
 	 * @see PolicyBLService#find(String)
 	 */
-	public PolicyVO find(String id) throws RemoteEx throws RemoteExceptionception {
-			return policyBL.find(id);
+	public PolicyVO find(String id) throws RemoteException {
+		return policyBL.find(id);
 	}
 
 }
