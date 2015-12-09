@@ -34,7 +34,7 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 	private JScrollPane jsp;
 	
 	public SearchBaseInfo(AdjustBase handle) {
-		super(50, 100, 620, 560);
+		super(50, 100-30, 620, 560-27);
 		this.initComponent( handle);
 	}
 	

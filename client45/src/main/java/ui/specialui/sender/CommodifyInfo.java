@@ -24,7 +24,7 @@ import ui.myui.MyTranslucentPanel;
 		private MyJTable table;
 		private JScrollPane jsp;
 		public CommodifyInfo() {
-			super(10, 220, 620, 490);
+			super(10, 220, 600, 490);
 			this.initComponent();
 		}
 
@@ -49,7 +49,7 @@ import ui.myui.MyTranslucentPanel;
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 								
-		jsp.setBounds(10, 50, 610, 430);
+		jsp.setBounds(5, 50, 610-20, 430);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());

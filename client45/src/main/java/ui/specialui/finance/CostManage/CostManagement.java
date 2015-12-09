@@ -57,7 +57,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
-		this.add(new MyJLabel(530, 20, 250, 90, "公司运营结算管理", 24, true));
+		this.add(new MyJLabel(515, 20, 300, 40, "公司运营结算管理", 30, true));
 		debitReceiptList = new SearchDebitReceipt(this);
 		this.add(debitReceiptList);
 		
@@ -68,21 +68,23 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		calAll = new CalAllDebit();
 		this.add(calAll);
 		
-		calButton = new MyButton(150,660,180,30,FinanceImage.getButton_HEJISHOUKUAN());
+		calButton = new MyButton(150,660-30,180,30,FinanceImage.getButton_HEJISHOUKUAN());
 		calButton.setActionCommand("CalDebit");
 		calButton.addActionListener(this);
 		this.add(calButton);
 		
-		viewButton = new MyButton(350,660,180,30,FinanceImage.getBUTTON_VIEWDEBIT());
+		viewButton = new MyButton(350,660-30,180,30,FinanceImage.getBUTTON_VIEWDEBIT());
 		viewButton.setActionCommand("ViewDebit");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		debitbillPool = new ArrayList<DebitBillVO>();
 	}
+	
 	/**
 	 * 显示所有的收款单 
 	 */
 	public void showAll(){
+		
 		table = debitReceiptList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		

@@ -18,7 +18,7 @@ public class AddBankAccount extends MyTranslucentPanel implements ActionListener
 	private MyJTextField balanceField;
 	
 	public AddBankAccount() {
-		super(660,100,550,240);
+		super(660,70,550,240);
 		this.initComponent();
 	}
 

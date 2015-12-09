@@ -50,7 +50,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userList = new MyJComboBox(140,10,180,30,identity);
 		this.add(userList);
 		
-		search = new MyButton(500,10,120,30,AdminImage.getBUTTON_SEARCH());
+		search = new MyButton(450,10,120,30,AdminImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchUser");
 		search.addActionListener(handle);
 		this.add(search);
@@ -76,9 +76,9 @@ public class UserInfo extends MyTranslucentPanel{
 		secondColumn.setMinWidth(80);
 		
 		TableColumn thirdColumn = table.getColumnModel().getColumn(2);
-		thirdColumn.setPreferredWidth(100);
-		thirdColumn.setMinWidth(100);
-		thirdColumn.setMaxWidth(100);
+		thirdColumn.setPreferredWidth(80);
+		thirdColumn.setMinWidth(80);
+		thirdColumn.setMaxWidth(80);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);

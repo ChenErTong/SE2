@@ -16,7 +16,7 @@ public class ModifyAccountInfo extends MyTranslucentPanel{
 	private MyJTextField price;
 	
 	public ModifyAccountInfo() {
-		super(680,390,580,240);
+		super(680,390-30,580,240);
 		this.initComponent();
 	}
 

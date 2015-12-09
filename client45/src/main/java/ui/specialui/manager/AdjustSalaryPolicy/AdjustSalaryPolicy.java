@@ -52,7 +52,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent(FrameManager frameManager) {
-		this.add(new MyJLabel(530, 20, 250, 90, "公司职员薪水策略制定", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司职员薪水策略制定", 30, true));
 		
 		addPolicy = new AddPolicy();
 		this.add(addPolicy);
@@ -62,22 +62,22 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		policyInfoList = new SearchPolicyInfo(this);
 		this.add(policyInfoList);
 		policyPool = new ArrayList<PolicyVO>();
-		deleteButton = new MyButton(150,660,150,40,ManagerImage.getBUTTON_DELETEPOLICY());
+		deleteButton = new MyButton(150,660-30-27,150,40,ManagerImage.getBUTTON_DELETEPOLICY());
 		deleteButton.setActionCommand("DeletePolicy");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyButton(350,660,150,40,ManagerImage.getBUTTON_MODIFYPOLICY());
+		modifyButton = new MyButton(350,660-30-27,150,40,ManagerImage.getBUTTON_MODIFYPOLICY());
 		modifyButton.setActionCommand("ModifyPolicy");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 	
-		add = new MyButton(880,346,120,30,BankAccountImage.getBUTTON_ADD());	
+		add = new MyButton(880,346-30,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyButton(880,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
+		modify= new MyButton(880,640-30,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

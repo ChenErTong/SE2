@@ -19,7 +19,7 @@ public class ViewIncomeState extends MyJPanel{
 		this.initComponent(frame_Finance);
 	}
 	private void initComponent(Frame_Finance frame_Finance) {
-		this.add(new MyJLabel(550, 20, 210, 90, "查看成本收益表", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "查看成本收益表", 30, true));
 		
 		statePanel = new IncomeStateInfo(frame_Finance);
 		this.add(statePanel);

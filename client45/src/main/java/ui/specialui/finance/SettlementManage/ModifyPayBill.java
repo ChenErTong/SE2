@@ -20,7 +20,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 	private MyJComboBox items;
 	
 	public ModifyPayBill() {
-		super(680, 390,550,240);
+		super(680, 390-30,550+20,240);
 		this.initComponent();
 	}
 

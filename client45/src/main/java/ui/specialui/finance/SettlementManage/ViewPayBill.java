@@ -16,7 +16,7 @@ public class ViewPayBill extends MyTranslucentPanel{
 	private MyJComboBox items;
 
 	public ViewPayBill() {
-		super(50, 390,620,240);
+		super(30, 390-30,620,240);
 		this.initComponent();
 	}
 	

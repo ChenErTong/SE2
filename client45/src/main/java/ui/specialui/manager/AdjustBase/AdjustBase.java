@@ -50,7 +50,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	}
 	
 	private void initComponent(FrameManager frameManager) {
-		this.add(new MyJLabel(530, 20, 250, 90, "公司成本常量制定", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司成本常量制定", 30, true));
 		addBase = new AddBase();
 		this.add(addBase);
 		modifyBase = new ModifyAccountInfo();
@@ -59,22 +59,22 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new SearchBaseInfo(this);
 		this.add(baseInfo);
-		deleteButton = new MyButton(150,660,150,40,ManagerImage.getBUTTON_DELETEBASE());
+		deleteButton = new MyButton(150,660-30-27,150,40,ManagerImage.getBUTTON_DELETEBASE());
 		deleteButton.setActionCommand("DeleteBase");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyButton(350,660,150,40,ManagerImage.getBUTTON_MODIFYBASE());
+		modifyButton = new MyButton(350,660-30-27,150,40,ManagerImage.getBUTTON_MODIFYBASE());
 		modifyButton.setActionCommand("ModifyBase");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 	
-		add = new MyButton(880,346,120,30,BankAccountImage.getBUTTON_ADD());	
+		add = new MyButton(880,346-30,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyButton(880,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
+		modify= new MyButton(880,640-30,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

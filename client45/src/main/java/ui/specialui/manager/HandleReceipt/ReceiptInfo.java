@@ -12,7 +12,7 @@ public class ReceiptInfo extends MyTranslucentPanel{
 	private MyEmptyTextArea ta;
 
 	public ReceiptInfo() {
-		super(700, 100, 550, 540);
+		super(700, 100-30, 550, 540);
 		this.initComponent();
 	}
 	

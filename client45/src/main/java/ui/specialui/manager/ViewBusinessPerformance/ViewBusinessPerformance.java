@@ -17,7 +17,7 @@ public class ViewBusinessPerformance extends MyJPanel{
 	}
 
 	private void initComponent(FrameManager frameManager) {
-		this.add(new MyJLabel(550, 20, 210, 90, "查看经营情况表", 24, true));
+		this.add(new MyJLabel(550, 20, 300, 40, "查看经营情况表", 30, true));
 		businessPerformance = new BusinessPerformanceInfo(frameManager);
 		this.add(businessPerformance);
 	

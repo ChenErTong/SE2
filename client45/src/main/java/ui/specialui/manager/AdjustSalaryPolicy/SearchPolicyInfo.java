@@ -35,7 +35,7 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 	private MyJTextField policyID;
 	
 	public SearchPolicyInfo(AdjustSalaryPolicy handle) {
-		super(50, 100, 620, 560);
+		super(50, 100-30, 620, 560-27);
 		this.initComponent( handle);
 	}
 

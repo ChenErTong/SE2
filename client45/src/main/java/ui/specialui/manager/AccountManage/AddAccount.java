@@ -17,7 +17,7 @@ public class AddAccount extends MyTranslucentPanel{
 	private OrganizationController controller = ControllerFactory.getOrganizationController();
 
 	public AddAccount() {
-		super(680,100,550,240);
+		super(680,70,550,240);
 		this.initComponent();
 	}
 	private void initComponent() {

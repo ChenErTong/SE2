@@ -30,7 +30,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public SearchReceipt(HandleReceipt handle) {
-		super(30,100, 655, 540);
+		super(30,100-30, 655, 540);
 		this.initComponent(handle);
 	}
 

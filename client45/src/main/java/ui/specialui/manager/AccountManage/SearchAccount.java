@@ -24,7 +24,7 @@ public class SearchAccount extends MyTranslucentPanel{
 	private MyJTable	table;
 	private JScrollPane jsp;
 	public SearchAccount(AccountManage handle) {
-		super(50,100,610,240);
+		super(50,100-30,610,240);
 		this.initComponent(handle);
 	}
 

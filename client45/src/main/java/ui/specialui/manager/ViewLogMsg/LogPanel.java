@@ -34,7 +34,7 @@ public class LogPanel extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public LogPanel(ViewLogPanel handle) {
-		super(50, 100, 1180, 600);
+		super(50, 100-30, 1180, 600);
 		this.addInput();
 		this.initButton(handle);
 		this.initTable();

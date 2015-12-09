@@ -22,7 +22,7 @@ public class ViewBusinessPerformance extends MyJPanel{
 	}
 	
 	private void initComponent(Frame_Finance frame_Finance) {
-		this.add(new MyJLabel(540,40,200,40,"查看经营情况表",24,true));
+		this.add(new MyJLabel(530,20,300,40,"查看经营情况表",30,true));
 		businessPerformance = new BusinessPerformanceInfo(frame_Finance);
 		this.add(businessPerformance);
 	}

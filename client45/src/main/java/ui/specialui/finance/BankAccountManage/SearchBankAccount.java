@@ -44,7 +44,7 @@ public class SearchBankAccount extends MyTranslucentPanel {
 	static String accountID = " ";
 	
 	public SearchBankAccount(BankAccountManage manage) {
-		super(70,100,550,530);
+		super(70,70,550,530);
 		this.initComponent(manage);
 }
 

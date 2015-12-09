@@ -50,7 +50,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	}
 	
 	private void initComponent() {
-		this.add(new MyJLabel(550, 20, 210, 90, "公司员工信息管理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司员工信息管理", 30, true));
 		addAccount = new AddAccount();
 		this.add(addAccount);
 		modifyAccount = new ModifyAccount();
@@ -58,27 +58,27 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		viewAccount = new ViewAccount();
 		this.add(viewAccount);
 		
-		viewButton = new MyButton(100,346,150,40,ManagerImage.getBUTTON_VIEWACCOUNT());
+		viewButton = new MyButton(100,346-30,150,40,ManagerImage.getBUTTON_VIEWACCOUNT());
 		viewButton.setActionCommand("ViewAccount");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		
-		modifyButton = new MyButton(270,346,150,40,ManagerImage.getBUTTON_MODIFYACCOUNT());
+		modifyButton = new MyButton(270,346-30,150,40,ManagerImage.getBUTTON_MODIFYACCOUNT());
 		modifyButton.setActionCommand("ModifyAccountInfo");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
-		deleteButton = new MyButton(440,346,150,40,ManagerImage.getBUTTON_DELETEACCOUNT());
+		deleteButton = new MyButton(440,346-30,150,40,ManagerImage.getBUTTON_DELETEACCOUNT());
 		deleteButton.setActionCommand("DeleteAccount");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		add = new MyButton(910,346,120,30,BankAccountImage.getBUTTON_ADD());	
+		add = new MyButton(910,346-30,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("CheckAdd");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyButton(910,640,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
+		modify= new MyButton(910,640-30,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());	
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);

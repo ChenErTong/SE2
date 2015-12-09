@@ -30,7 +30,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 	private MyEmptyTextArea address;
 	
 	public OrganizationDetails() {
-		super(680,100,550,562);
+		super(680,100-30,550,562);
 		this.initComponent();
 	}
 

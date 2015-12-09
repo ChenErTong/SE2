@@ -26,7 +26,7 @@ public class ModifyBankAccount extends MyTranslucentPanel implements ActionListe
 	static String accountID = " ";
 	
 	public ModifyBankAccount() {
-		super(660,390,550,240);
+		super(660,390-30,550,240);
 		this.initComponent();
 	}
 

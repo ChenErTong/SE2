@@ -43,7 +43,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 		}
 
 	private void initComponent() {
-		this.add(new MyJLabel(560, 20, 210, 90, "系统操作日志查看", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "系统操作日志查看", 30, true));
 		log = new LogPanel(this);
 		this.add(log);
 		messagePool = new ArrayList<LogMessage>();

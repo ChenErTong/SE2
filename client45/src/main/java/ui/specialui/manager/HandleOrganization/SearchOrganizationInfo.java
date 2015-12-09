@@ -33,7 +33,7 @@ public class SearchOrganizationInfo extends MyTranslucentPanel{
 	 private  MyJTable table;
 	 private JScrollPane jsp;
 	 public SearchOrganizationInfo(HandleOrganization handle) {
-		super(50, 100, 620, 560);
+		super(50, 100-30, 620, 560);
 		this.initComponent(handle);
 	}
 	

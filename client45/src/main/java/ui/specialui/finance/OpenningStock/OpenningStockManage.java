@@ -43,7 +43,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
-		this.add(new MyJLabel(530, 20, 250, 90, "公司期初建账管理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司期初建账管理", 30, true));
 		this.initButton(frame_Finance);
 		
 		this.initTable();
@@ -104,35 +104,35 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		bankAccountTable.setDefaultRenderer(Object.class, tcr4);
 		
 		JScrollPane jsp = new JScrollPane(transferTable);
-		jsp.setBounds(80, 90, 1085,  512/5+16);
+		jsp.setBounds(185/2, 90-30, 1085,  512/5+16);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setVisible(true);
 		this.add(jsp);
 		
 		JScrollPane jsp2 = new JScrollPane(employTable);
-		jsp2.setBounds(80, 90+ (512/5)*1 + 10+16, 1085, 512/5+16 );
+		jsp2.setBounds(185/2, 90+ (512/5)*1 + 10+16-30, 1085, 512/5+16 );
 		jsp2.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp2.setOpaque(false);
 		jsp2.setVisible(true);
 		this.add(jsp2);
 		
 		JScrollPane jsp3 = new JScrollPane(facilityTable);
-		jsp3.setBounds(80, 90 + (512/5)*2 + 20+16*2, 1085, 512/5+16 );
+		jsp3.setBounds(185/2, 90 + (512/5)*2 + 20+16*2-30, 1085, 512/5+16 );
 		jsp3.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp3.setOpaque(false);
 		jsp3.setVisible(true);
 		this.add(jsp3);
 		
 		JScrollPane jsp4 = new JScrollPane(inventoryTable);
-		jsp4.setBounds(80, 90 + (512/5)*3 + 30 +16*3,1085, 512/5+16);
+		jsp4.setBounds(185/2, 90 + (512/5)*3 + 30 +16*3-30,1085, 512/5+16);
 		jsp4.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp4.setOpaque(false);
 		jsp4.setVisible(true);
 		this.add(jsp4);
 		
 		JScrollPane jsp5 = new JScrollPane(bankAccountTable);
-		jsp5.setBounds(80, 90+(512/5)*4+40+16*3+10, 1085, 512/5+16);
+		jsp5.setBounds(185/2, 90+(512/5)*4+40+16*3+10-30, 1085, 512/5+16);
 		jsp5.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp5.setOpaque(false);
 		jsp5.setVisible(true);

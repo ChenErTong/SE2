@@ -44,7 +44,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	ReceiptType currentType;
 	
 	public ModifyReceiptInfo(ReceiptType  type,ValueObject receipt) {
-		super(365,100,550,550);
+		super(365,100-30,550,550);
 		this.currentBill = receipt;
 		this.currentType = type;
 		this.setOpaque(false);
@@ -56,12 +56,12 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		MyJLabel title = new MyJLabel(580, 40, 170, 50, "修改单据数据", 24, true);
 		this.add(title);
 		
-		modify = new MyJButton(475,600,100,30,"保存修改",18);
+		modify = new MyJButton(475,600-30,100,30,"保存修改",18);
 		modify.setActionCommand("Modify");
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		cancel = new MyJButton(720,600,100,30,"撤销修改",18);
+		cancel = new MyJButton(720,600-30,100,30,"撤销修改",18);
 		cancel.setActionCommand("Cancel");
 		cancel.addActionListener(this);
 		this.add(cancel);	

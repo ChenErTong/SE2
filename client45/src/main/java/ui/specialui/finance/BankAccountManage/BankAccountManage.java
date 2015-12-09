@@ -57,7 +57,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent() {
-		this.add(new MyJLabel(540,40,200,30,"银行账户管理",24,true));
+		this.add(new MyJLabel(530,20,300,40,"银行账户管理",30,true));
 		bankAccountPanel = new SearchBankAccount(this);
 
 		this.add(bankAccountPanel);
@@ -67,23 +67,23 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		modifyAccountInfo = new ModifyBankAccount();
 		this.add(modifyAccountInfo);
 		
-		deleteButton = new MyButton(150,640,120,30,BankAccountImage.getBUTTON_DELETE());
+		deleteButton = new MyButton(150,640-30,120,30,BankAccountImage.getBUTTON_DELETE());
 		deleteButton.setActionCommand("DeleteBankAccount");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyButton(350,640,120,30,BankAccountImage.getBUTTON_MODIFY());
+		modifyButton = new MyButton(350,640-30,120,30,BankAccountImage.getBUTTON_MODIFY());
 		modifyButton.setActionCommand("ModifyBankAccount");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
 		
-		add = new MyButton(868,346,120,30,BankAccountImage.getBUTTON_ADD());	
+		add = new MyButton(868,346-30,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("AddBankAccount");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyButton(868,640,120,30,BankAccountImage.getBUTTON_CONFIRM());	
+		modify= new MyButton(868,640-30,120,30,BankAccountImage.getBUTTON_CONFIRM());	
 		modify.setActionCommand("ConfirmModify");
 		modify.addActionListener(this);
 		this.add(modify);

@@ -18,7 +18,7 @@ public class Panel_Manager_Total extends MyJPanel {
 		this.setOpaque(false);
 		
 		MyLogo.setLogo(this);
-		MyTitle.setTitle(this, "总公司总经理界面", 450-70, 100, 387, 148);
+		MyTitle.setTitle(this, "总公司总经理界面", 535, 100, 387, 148);
 		
 		
 		MyButton HandleReceipt = new MyButton(551, 200+10+8+18+5+20, 257, 46,ManagerImage.getBUTTON_APPROVE());;

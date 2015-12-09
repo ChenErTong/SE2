@@ -15,7 +15,7 @@ public class ViewIncomeStatement extends MyJPanel {
 	}
 
 	private void initComponent(FrameManager frameManager) {
-		this.add(new MyJLabel(550, 20, 210, 90, "查看成本收益表", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "查看成本收益表", 30, true));
 		
 		statePanel = new IncomeStateInfo(frameManager);
 		this.add(statePanel);

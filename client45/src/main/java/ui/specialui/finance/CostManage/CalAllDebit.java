@@ -11,7 +11,7 @@ import ui.myui.MyTranslucentPanel;
 public class CalAllDebit extends MyTranslucentPanel{
 
 	public CalAllDebit() {
-		super(710,390+30,550,240);
+		super(710,390-20,550,240+20);
 		this.add(new MyJLabel(240,10,150,30,"合计信息",18,true));
 	}
 

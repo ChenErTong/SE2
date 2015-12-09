@@ -53,7 +53,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	private JScrollPane jsp;
 	
 	public BusinessPerformanceInfo(Frame_Finance frame_Finance) {
-		super(80, 100,1120,570+48);
+		super(80, 70,1120,570+48);
 		this.initComponent(frame_Finance);
 		
 	}
@@ -91,7 +91,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		check.addActionListener(this);
 		this.add(check);
 		
-		ExportBusinessTable = new MyButton(1040-80,573,150,30,FinanceImage.getBUTTON_EXPORTBUSINESS());
+		ExportBusinessTable = new MyButton(1040-80-5,573,150,30,FinanceImage.getBUTTON_EXPORTBUSINESS());
 		ExportBusinessTable.setActionCommand("ExportBusinessTable");
 		ExportBusinessTable.addActionListener(this);
 		this.add(ExportBusinessTable);

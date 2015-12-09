@@ -42,7 +42,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 
 	
 	public IncomeStateInfo(FrameManager frame_Manager) {
-		super(80, 100,1120,570+48);
+		super(80, 100-30,1120,570+48);
 		this.initComponent(frame_Manager);
 		
 	}
@@ -67,7 +67,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		check.addActionListener(this);
 		this.add(check);
 		
-		ExportBusinessTable = new MyButton(1040-80,573,150,40,FinanceImage.getBUTTON_EXPORTINCOME());
+		ExportBusinessTable = new MyButton(1040-80-5,573,150,30,FinanceImage.getBUTTON_EXPORTINCOME());
 		ExportBusinessTable.setActionCommand("ExportIncomeTable");
 		ExportBusinessTable.addActionListener(this);
 		this.add(ExportBusinessTable);

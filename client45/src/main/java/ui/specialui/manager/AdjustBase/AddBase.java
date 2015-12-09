@@ -21,7 +21,7 @@ public class AddBase extends MyTranslucentPanel{
 	private MyJTextField price;
 
 	public AddBase() {
-		super(680,100,580,240);
+		super(680,70,580,240);
 		this.initComponent();
 	}
 	

@@ -39,28 +39,28 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 	private MyJTextField[] input;
 	
 	public SearchPayReceipt(SettlementManage handle) {
-		super(30, 100, 630, 240);
+		super(30, 100-30, 620, 240);
 		this.initComponent(handle);
 	}
 
 	private void initComponent(SettlementManage handle) {
-		chooseDate = new MyJLabel(20,10,120,30,"请填写日期",14,true);
+		chooseDate = new MyJLabel(20,10,90,30,"请填写日期",14,true);
 		this.add(chooseDate);
 		
-		MyJLabel year = new MyJLabel(142,10,30,30,"年",16,true);
+		MyJLabel year = new MyJLabel(142-30,10,30,30,"年",16,true);
 		this.add(year);
 		
-		MyJLabel month = new MyJLabel(265,10,30,30,"月",16,true);
+		MyJLabel month = new MyJLabel(265-30,10,30,30,"月",16,true);
 		this.add(month);
 		
-		MyJLabel day = new MyJLabel(388,10,30,30,"日",16,true);
+		MyJLabel day = new MyJLabel(388-30,10,30,30,"日",16,true);
 		this.add(day);
 		
 	//	String[] dates = {""};
 		//dateList = new MyComboBox(140,10,150,30,14,dates);
 		//this.add(dateList);
 		
-		search = new MyButton(508,10,120,30,FinanceImage.getBUTTON_SEARCH());
+		search = new MyButton(508-30+5,10,120,30,FinanceImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchPayReceipt");
 		search.addActionListener(handle);
 		this.add(search);
@@ -90,7 +90,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 		for(int i = 0; i < dateLabel.length; i++) {
 			dateLabel[i] = new DateLabel(date_s[i]);
 			sdf[i] = new SimpleDateFormat(dateFormat[i]);
-			input[i] = new MyJTextField(172+i*123,10,90,30);
+			input[i] = new MyJTextField(172+i*123-30,10,90,30);
 			input[i].setText(sdf[i].format(curDate));
 			input[i].setFont(getFont());
 			input[i].setHorizontalAlignment(JTextField.CENTER);

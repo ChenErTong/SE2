@@ -66,7 +66,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 
 	private void initComponent(FrameManager frame_Manager) {
 	
-		this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司机构信息管理", 30, true));
 		
 		organizationInfo= new SearchOrganizationInfo(this);
 		this.add(organizationInfo);
@@ -78,7 +78,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(FrameManager frame) {
-		MyButton insertButton = new MyButton(55, 660, 150, 40,ManagerImage.getBUTTON_ADDOR());
+		MyButton insertButton = new MyButton(55, 660-30, 150, 40,ManagerImage.getBUTTON_ADDOR());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HandleOrganization.this.insertPanel(frame);
@@ -87,20 +87,20 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		});
 		this.add(insertButton);
 
-		MyButton modifyButton = new MyButton(200,660,150,40,
+		MyButton modifyButton = new MyButton(205,660-30,150,40,
 				ManagerImage.getBUTTON_MODIFYOR());
 		
 		modifyButton.setActionCommand("ModifyOrganizationInformation");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 
-		MyButton searchButton = new MyButton(350,660,150,40,
+		MyButton searchButton = new MyButton(355,660-30,150,40,
 				ManagerImage.getBUTTON_VIEWOR());
 		searchButton.setActionCommand("ViewOrganization");
 		searchButton.addActionListener(this);
 		this.add(searchButton);
 
-		MyButton deleteButton = new MyButton(500,660,150,40,
+		MyButton deleteButton = new MyButton(505,660-30,150,40,
 				ManagerImage.getBUTTON_DELETEOR());
 		deleteButton.setActionCommand("DeleteOrganization");
 		deleteButton.addActionListener(this);
@@ -110,14 +110,14 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	private void insertPanel(FrameManager frame) {
 		this.removeAll();
 		this.add(organizationInfo);
-		this.add(new MyJLabel(550, 20, 210, 90, "公司机构信息管理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司机构信息管理", 30, true));
 		this.initButton(frame);
 
 		organizationDetails = new OrganizationDetails();
 		organizationDetails.add(new MyJLabel(230,5,120,30,"新增机构",18,true));
 		this.add(organizationDetails);
 		
-		commonButton = new MyButton(890, 670, 120, 30, BankAccountImage.getBUTTON_ADD());
+		commonButton = new MyButton(890, 670-30, 120, 30, BankAccountImage.getBUTTON_ADD());
 		commonButton.setActionCommand("AddOrganization");
 		commonButton.addActionListener(this);
 		this.add(commonButton);

@@ -79,7 +79,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	}
 	
 	private void initComponent() throws RemoteException {
-		this.add(new MyJLabel(550, 20, 210, 90, "公司运营单据处理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司运营单据处理", 30, true));
 		searchPanel = new SearchReceipt(this);
 		this.add(searchPanel);
 		
@@ -94,37 +94,37 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(){
-		ViewReceiptInfo = new MyButton(85, 650, 150, 40,ManagerImage.getBUTTON_VIEWACCOUNT());
+		ViewReceiptInfo = new MyButton(85, 650-30, 150, 40,ManagerImage.getBUTTON_VIEWACCOUNT());
 		ViewReceiptInfo.setActionCommand("ViewReceiptInfo");
 		ViewReceiptInfo.addActionListener(this);
 		this.add(ViewReceiptInfo);
 		ViewReceiptInfo.setVisible(true);
 		
-		PassSelectedReceipts = new MyButton(255, 650, 150, 40,ManagerImage.getBUTTON_APPROVEALL());
+		PassSelectedReceipts = new MyButton(255, 650-30, 150, 40,ManagerImage.getBUTTON_APPROVEALL());
 		PassSelectedReceipts.setActionCommand("PassSelectedReceipts");
 		PassSelectedReceipts.addActionListener(this);
 		this.add(PassSelectedReceipts);
 		PassSelectedReceipts.setVisible(true);
 		
-		ModifyReceiptInfo = new MyButton(425, 650, 150, 40,ManagerImage.getBUTTON_MODIFYBILL());
+		ModifyReceiptInfo = new MyButton(425, 650-30, 150, 40,ManagerImage.getBUTTON_MODIFYBILL());
 		
 		ModifyReceiptInfo.setActionCommand("ModifyReceiptInfo");
 		ModifyReceiptInfo.addActionListener(this);
 		this.add(ModifyReceiptInfo);
 		ModifyReceiptInfo.setVisible(true);
 		
-		PassThisReceipt = new MyButton(705,650,150,40,ManagerImage.getBUTTON_PASSBILL());
+		PassThisReceipt = new MyButton(705,650-30,150,40,ManagerImage.getBUTTON_PASSBILL());
 		PassThisReceipt.setActionCommand("PassThisReceipt");
 		PassThisReceipt.addActionListener(this);
 		this.add(PassThisReceipt);
 		PassThisReceipt.setVisible(true);
 		
-		DontPassThisReceipt = new MyButton(875, 650, 150, 40,ManagerImage.getBUTTON_DONTPASS());
+		DontPassThisReceipt = new MyButton(875, 650-30, 150, 40,ManagerImage.getBUTTON_DONTPASS());
 		DontPassThisReceipt.setActionCommand("DontPassThisReceipt");
 		DontPassThisReceipt.addActionListener(this);
 		this.add(DontPassThisReceipt);
 		
-		ExportReceipt = new MyButton(1045, 650, 150, 40,ManagerImage.getBUTTON_EXPORTBILL());
+		ExportReceipt = new MyButton(1045, 650-30, 150, 40,ManagerImage.getBUTTON_EXPORTBILL());
 		ExportReceipt.setActionCommand("ExportReceipt");
 		ExportReceipt.addActionListener(this);
 		this.add(ExportReceipt);

@@ -77,7 +77,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
 		
-		login = new MyButton(571,580,137,30,LoginImage.getBUTTON_LOGIN());
+		login = new MyButton(571+85/2,580,137,30,LoginImage.getBUTTON_LOGIN());
 		login.setActionCommand("login");
 		login.registerKeyboardAction(this, 
 		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 

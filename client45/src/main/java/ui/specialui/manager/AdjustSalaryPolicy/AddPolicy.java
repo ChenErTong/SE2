@@ -18,7 +18,7 @@ public class AddPolicy extends MyTranslucentPanel{
 	private MyEmptyTextArea policyRule;
 	
 	public AddPolicy() {
-		super(680,100,550,240);
+		super(680,100-30,550,240);
 		this.initComponent();
 	}
 

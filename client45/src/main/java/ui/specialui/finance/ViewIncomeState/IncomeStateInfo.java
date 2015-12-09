@@ -51,7 +51,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	private JScrollPane jsp;
 	
 	public IncomeStateInfo(Frame_Finance frame_Finance) {
-		super(80, 100,1120,570+48);
+		super(80, 70,1120,570+48);
 		this.initComponent(frame_Finance);
 	}
 
@@ -75,7 +75,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		check.addActionListener(this);
 		this.add(check);
 		
-		exportIncome = new MyButton(1040-80,573,150,30,FinanceImage.getBUTTON_EXPORTINCOME());
+		exportIncome = new MyButton(1040-80-5,573,150,30,FinanceImage.getBUTTON_EXPORTINCOME());
 		exportIncome.setActionCommand("ExportIncomeState");
 		exportIncome.addActionListener(this);
 		this.add(exportIncome);

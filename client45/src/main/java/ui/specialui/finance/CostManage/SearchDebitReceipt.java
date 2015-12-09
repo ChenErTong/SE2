@@ -43,7 +43,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 	private MyJTextField[] input;
 	
 	public SearchDebitReceipt(CostManagement handle) {
-		super(20, 100, 680, 560);
+		super(20, 70, 680, 560);
 		this.initComponent(handle);
 	}
 

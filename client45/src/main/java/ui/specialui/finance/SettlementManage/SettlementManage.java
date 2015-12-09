@@ -64,7 +64,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
-		this.add(new MyJLabel(530, 20, 250, 90, "公司运营成本管理", 24, true));
+		this.add(new MyJLabel(530, 20, 300, 40, "公司运营成本管理", 30, true));
 
 		payReceiptList = new SearchPayReceipt(this);
 		this.add(payReceiptList);
@@ -78,22 +78,22 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		viewPaybill = new ViewPayBill();
 		this.add(viewPaybill);
 		
-		viewButton = new MyButton(150,346,180,30,FinanceImage.getBUTTON_VIEWPAY());
+		viewButton = new MyButton(150,346-30,180,30,FinanceImage.getBUTTON_VIEWPAY());
 		viewButton.setActionCommand("ViewPayBill");
 		viewButton.addActionListener(this);
 		this.add(viewButton);
 		
-		modifyButton = new MyButton(350,346,180,30,FinanceImage.getBUTTON_MODIFYPAY());
+		modifyButton = new MyButton(350,346-30,180,30,FinanceImage.getBUTTON_MODIFYPAY());
 		modifyButton.setActionCommand("ModifyPayReceipt");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
 		
-		add = new MyButton(868,346,120,30,BankAccountImage.getBUTTON_ADD());	
+		add = new MyButton(868+10,346-30,120,30,BankAccountImage.getBUTTON_ADD());	
 		add.setActionCommand("AddPayReceipt");
 		add.addActionListener(this);
 		this.add(add);
 		
-		modify= new MyButton(868,640,120,30,BankAccountImage.getBUTTON_CONFIRM());	
+		modify= new MyButton(868+10,640-30,120,30,BankAccountImage.getBUTTON_CONFIRM());	
 		modify.setActionCommand("ConfirmModify");
 		modify.addActionListener(this);
 		this.add(modify);

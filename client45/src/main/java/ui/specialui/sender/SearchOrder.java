@@ -21,7 +21,7 @@ public class SearchOrder extends MyTranslucentPanel{
 	 private MyButton cancel;
 	
 	 public SearchOrder(Panel_Sender_Total handle) {
-		super(10, 105,620, 108);
+		super(10, 105,600, 108);
 		this.initComponent(handle);
 	 }
 
