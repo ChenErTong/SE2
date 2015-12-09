@@ -55,14 +55,14 @@ public class ReceiverInfoInput extends MyTranslucentPanel{
 	    JComboBoxOfChina box = new JComboBoxOfChina();
 	    province = box.getCombobox_privince();
 	    province.setFont(new MyFont(15));
-	    province.setBounds(100, 144, 81, 20);
+	    province.setBounds(100, 144, 81, 30);
 	    this.add(province);
 		city = box.getCombobox_city();
 	    city.setFont(new MyFont(15));
-	    city.setBounds(190, 144, 81, 20);
+	    city.setBounds(190, 144, 81, 30);
 	    this.add(city);
 		
-	    AddressField = new MyJTextField(280, 142, 170, 30);
+	    AddressField = new MyJTextField(280, 144, 170, 30);
 	    AddressField.addActionListener(new ActionListener(){
 
 			@Override
