@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -99,13 +100,18 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		
 		showController = ControllerFactory.getDebitAndPayBillShowController();
 		
-		 ArrayList<DebitAndPayBillVO> debitbillVO = showController.showExpense();
-		 DebitBillVO debitVO;
-		for(int i = 0; i < debitbillVO.size(); i++){
-			debitVO = ( DebitBillVO) debitbillVO.get(i);
-			Object[] rowData = {debitVO.ID,debitVO.date,debitVO.courierID,debitVO.money,debitVO.orderNumbers};
-			tableModel.addRow(rowData);
-			debitbillPool.add((DebitBillVO) debitbillVO.get(i));
+		 try {
+			ArrayList<DebitAndPayBillVO> debitbillVO = showController.showExpense();
+			 DebitBillVO debitVO;
+			for(int i = 0; i < debitbillVO.size(); i++){
+				debitVO = ( DebitBillVO) debitbillVO.get(i);
+				Object[] rowData = {debitVO.ID,debitVO.date,debitVO.courierID,debitVO.money,debitVO.orderNumbers};
+				tableModel.addRow(rowData);
+				debitbillPool.add((DebitBillVO) debitbillVO.get(i));
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -144,13 +150,18 @@ public class CostManagement extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount()==0){
 				new MyNotification(this,"请先选择要合计的收款单！",Color.RED);
 			}else{
-				showController_2 = ControllerFactory.getRecordController();
-				String[] data = debitReceiptList.getData();
-				BussinessOneDayVO debitbillVO ;
-				if(data!=null){
-					debitbillVO =  showController_2.bussinessOneDay(data[0],data[1]);
-					earnings = debitbillVO.earnings;
-					calAll.init(earnings+"");
+				try {
+					showController_2 = ControllerFactory.getRecordController();
+					String[] data = debitReceiptList.getData();
+					BussinessOneDayVO debitbillVO ;
+					if(data!=null){
+						debitbillVO =  showController_2.bussinessOneDay(data[0],data[1]);
+						earnings = debitbillVO.earnings;
+						calAll.init(earnings+"");
+					}
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("SearchDebitReceipt")){
@@ -179,11 +190,16 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 				String date = year + month + day;
 				
-				debitbillVO=showController_2.bussinessOneDay(data[0], date);
-					Object[] rowData = {debitbillVO.DebitBills};
-					tableModel.addRow(rowData);
-					System.out.println("SearchSucceed!");
-					new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+				try {
+					debitbillVO=showController_2.bussinessOneDay(data[0], date);
+						Object[] rowData = {debitbillVO.DebitBills};
+						tableModel.addRow(rowData);
+						System.out.println("SearchSucceed!");
+						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络连接！",Color.RED);
+					e1.printStackTrace();
+				}
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
 			}

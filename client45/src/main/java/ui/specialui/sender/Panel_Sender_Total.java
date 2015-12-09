@@ -3,13 +3,13 @@ package ui.specialui.sender;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
-
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -77,17 +77,21 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 				OrderVO orderVO;
 				String[] data = searchPanel.getSenderInfo();
 				if(data!=null){
-					orderVO = orderController.inquireOrder(data[0], data[1]);
-					if(orderVO==null){
-						new MyNotification(this,"没有相应的订单！",Color.RED);
-					}else{
-						Object[] rowData ={orderVO.ID,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
-						tableModel_1.addRow(rowData);
-						for(int i=0;i<orderVO.midAddres.size();i++){
-							Object[] rowData2 = {orderVO.midAddres.get(i)};
-							tableModel_1.addRow(rowData2);
+					try {
+						orderVO = orderController.inquireOrder(data[0], data[1]);
+						if(orderVO==null){
+							new MyNotification(this,"没有相应的订单！",Color.RED);
+						}else{
+							Object[] rowData ={orderVO.ID,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
+							tableModel_1.addRow(rowData);
+							for(int i=0;i<orderVO.midAddres.size();i++){
+								Object[] rowData2 = {orderVO.midAddres.get(i)};
+								tableModel_1.addRow(rowData2);
+							}
+							orderPool.add(orderVO);
 						}
-						orderPool.add(orderVO);
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
 					}
 				}else{
 					new MyNotification(this,"请输入查询信息！",Color.RED);

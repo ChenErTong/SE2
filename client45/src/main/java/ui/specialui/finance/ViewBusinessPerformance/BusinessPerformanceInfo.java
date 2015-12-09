@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -280,33 +281,38 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 					String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 					String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
 					RecordBLService recordController = ControllerFactory.getRecordController();
-					ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
-					
-					DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-					int rowCount = table.getRowCount();
-					for(int i = 0; i < rowCount; i++){
-						tableModel.removeRow(0);
-					}
-					
-					if (vo!=null){
-						for(int i=0;i<vo.size();i++){
-							
-							DebitAndPayBillVO dpo = vo.get(i);//{"单据编号","单据种类","单据内容","单据金额","生成时间”};
-							switch(dpo.type){
-							case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
-									      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
-										 tableModel.addRow(rowData);
-										 break;
-							case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;
-									 Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
-									 tableModel.addRow(rowData2);
-									 break;
-							default:
-								break;
-							}
+					try {
+						ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
+						
+						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+						int rowCount = table.getRowCount();
+						for(int i = 0; i < rowCount; i++){
+							tableModel.removeRow(0);
 						}
-					}else{
-						new MyNotification(this,"未找到符合条件的单据！",Color.RED);
+						
+						if (vo!=null){
+							for(int i=0;i<vo.size();i++){
+								
+								DebitAndPayBillVO dpo = vo.get(i);//{"单据编号","单据种类","单据内容","单据金额","生成时间”};
+								switch(dpo.type){
+								case DEBIT: DebitBillVO db = (DebitBillVO) dpo;
+										      Object rowData[] = {db.ID,db.type," 收款人ID： "+db.courierID+" "+" 订单编号列表： "+db.orderNumbers,db.money,db.date};
+											 tableModel.addRow(rowData);
+											 break;
+								case PAY:PaymentBillVO pb = (PaymentBillVO) dpo;
+										 Object rowData2[] = {pb.ID,pb.type," 付款人： "+pb.payerName+" 付款账号： "+pb.accountID+" 付款条目： "+pb.items+" 备注   "+pb.remarks,pb.date};
+										 tableModel.addRow(rowData2);
+										 break;
+								default:
+									break;
+								}
+							}
+						}else{
+							new MyNotification(this,"未找到符合条件的单据！",Color.RED);
+						}
+					} catch (RemoteException e1) {
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						e1.printStackTrace();
 					}
 				}else{
 					new MyNotification(this,"输入的日期参数不合法！",Color.RED);
@@ -320,9 +326,14 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				RecordBLService recordController = ControllerFactory.getRecordController();
 				String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 				String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
-				ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
-				recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
-				new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
+				try {
+					ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
+					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
+					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				}
 			}
 		}
 	}

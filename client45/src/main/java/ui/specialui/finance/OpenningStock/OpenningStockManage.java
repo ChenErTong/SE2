@@ -3,6 +3,7 @@ package ui.specialui.finance.OpenningStock;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -156,7 +157,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	 */
 	public void showAll(){
 		OpeningStockBLService controller = new OpeningStockController();
-		ArrayList<OpeningStockVO> openingStockVO = controller.show();
+	
 		
 		DefaultTableModel tableModel = (DefaultTableModel)transferTable.getModel();
 		DefaultTableModel tableModel2 = (DefaultTableModel)employTable.getModel();
@@ -184,47 +185,54 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		for(int i = 0;i < rowCount5; i++){
 			
 		}
-		if(openingStockVO  != null){
-			for(int i = 0; i < openingStockVO.size(); i++){
-				OpeningStockVO avo = openingStockVO.get(i);
-			
-			for(int j = 0; j < avo.transfers.size(); j++){
-				Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
-						, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress(),
-						avo.transfers.get(j).getAccounts(),avo.transfers.get(j).getInventories()};
-				tableModel.addRow(rowData);
+		
+		try {
+			ArrayList<OpeningStockVO> openingStockVO = controller.show();
+			if(openingStockVO  != null){
+				for(int i = 0; i < openingStockVO.size(); i++){
+					OpeningStockVO avo = openingStockVO.get(i);
+				
+				for(int j = 0; j < avo.transfers.size(); j++){
+					Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
+							, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress(),
+							avo.transfers.get(j).getAccounts(),avo.transfers.get(j).getInventories()};
+					tableModel.addRow(rowData);
+				}
+				for(int j = 0;j<avo.branchs.size();j++){
+					Object[] rowData = {avo.branchs.get(j).getOrganizationID(),avo.date,avo.branchs.get(j).getOrganizationType(),avo.branchs.get(j).getNumberOfPerson(),avo.branchs.get(j).getAddress(),avo.branchs.get(j).getAccounts(),
+							avo.branchs.get(j).getFacilities()};
+					tableModel.addRow(rowData);
+				}
+				
+				for(int j = 0; j < avo.accounts.size(); j++){
+					Object[] rowData = {avo.accounts.get(j).getID(), avo.date, avo.accounts.get(j).getName(),
+							avo.accounts.get(j).getDuty(), avo.accounts.get(j).getWorkTime()};
+					tableModel2.addRow(rowData);
+				}
+				
+				for(int j = 0; j < avo.facilities.size(); j++){
+					Object[] rowData = {avo.facilities.get(j).getID(), avo.date, avo.facilities.get(j).getDate(), avo.facilities.get(j).getVehicleIdentificationNumber(), 
+						avo.facilities.get(j).getDeliverHistory()};
+					tableModel3.addRow(rowData);
+				}
+				
+				for(int j = 0; j < avo.inventories.size(); j++){
+					//TODO 
+					Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).getTransferID()};
+					tableModel4.addRow(rowData);
+				}
+				
+				for(int j = 0;j<avo.bankAccounts.size();j++){
+					Object[] rowData = {avo.bankAccounts.get(j).getID(),avo.date,avo.bankAccounts.get(j).getName(),
+							avo.bankAccounts.get(j).getMoney()};
+					tableModel5.addRow(rowData);
+				}
 			}
-			for(int j = 0;j<avo.branchs.size();j++){
-				Object[] rowData = {avo.branchs.get(j).getOrganizationID(),avo.date,avo.branchs.get(j).getOrganizationType(),avo.branchs.get(j).getNumberOfPerson(),avo.branchs.get(j).getAddress(),avo.branchs.get(j).getAccounts(),
-						avo.branchs.get(j).getFacilities()};
-				tableModel.addRow(rowData);
-			}
-			
-			for(int j = 0; j < avo.accounts.size(); j++){
-				Object[] rowData = {avo.accounts.get(j).getID(), avo.date, avo.accounts.get(j).getName(),
-						avo.accounts.get(j).getDuty(), avo.accounts.get(j).getWorkTime()};
-				tableModel2.addRow(rowData);
-			}
-			
-			for(int j = 0; j < avo.facilities.size(); j++){
-				Object[] rowData = {avo.facilities.get(j).getID(), avo.date, avo.facilities.get(j).getDate(), avo.facilities.get(j).getVehicleIdentificationNumber(), 
-					avo.facilities.get(j).getDeliverHistory()};
-				tableModel3.addRow(rowData);
-			}
-			
-			for(int j = 0; j < avo.inventories.size(); j++){
-				//TODO 
-				Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).getTransferID()};
-				tableModel4.addRow(rowData);
-			}
-			
-			for(int j = 0;j<avo.bankAccounts.size();j++){
-				Object[] rowData = {avo.bankAccounts.get(j).getID(),avo.date,avo.bankAccounts.get(j).getName(),
-						avo.bankAccounts.get(j).getMoney()};
-				tableModel5.addRow(rowData);
-			}
+}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
-	}
  }
 
 	@Override
@@ -233,11 +241,16 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 			this.showAll();
 		}else if(e.getSource()==insertButton){
 			OpeningStockBLService controller = new OpeningStockController();
-			ResultMessage rsg = controller.add();
-			if(rsg.equals(ResultMessage.SUCCESS)){
-				new MyNotification(this,"期初建账成功！",Color.GREEN);
-			}else{
-				new MyNotification(this,"期初建账失败！",Color.RED);
+			try {
+				ResultMessage rsg = controller.add();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"期初建账成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"期初建账失败！",Color.RED);
+				}
+			} catch (RemoteException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e1.printStackTrace();
 			}
 		}
 	}

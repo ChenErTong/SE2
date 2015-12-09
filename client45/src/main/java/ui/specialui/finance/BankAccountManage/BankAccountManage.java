@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -107,13 +108,18 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			accountID = "";
 			
 			BankAccountBLService controller = ControllerFactory.getBankAccountController();
-			ArrayList<BankAccountVO> bankAccountVO = controller.show();
-			
-			for(int i = 0; i < bankAccountVO.size(); i++){
-				String[] rowData = {bankAccountVO.get(i).ID,
-						bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
-				tableModel.addRow(rowData);
-				accountPool.add(bankAccountVO.get(i));
+			try {
+				ArrayList<BankAccountVO> bankAccountVO = controller.show();
+				
+				for(int i = 0; i < bankAccountVO.size(); i++){
+					String[] rowData = {bankAccountVO.get(i).ID,
+							bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
+					tableModel.addRow(rowData);
+					accountPool.add(bankAccountVO.get(i));
+				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
 		}
 
@@ -138,20 +144,25 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			ArrayList<BankAccountVO> bankAccountVO;
 			String[] data = bankAccountPanel.getData();
 			if(data!=null){
-				switch(Integer.parseInt(data[0])){
-					case 0 : bankAccountVO = controller.find(data[1], null);break;
-					case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
-					case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
-					default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
-				}
-			
-				for(int i = 0; i < bankAccountVO.size(); i++){
-				String[] rowData = {bankAccountVO.get(i).ID, 
-						bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
-				tableModel.addRow(rowData);
-				accountPool.add(bankAccountVO.get(i));
-				System.out.println("SearchSucceed!");
-				new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN);
+				try {
+					switch(Integer.parseInt(data[0])){
+						case 0 : bankAccountVO = controller.find(data[1], null);break;
+						case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
+						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
+						default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
+					}
+
+					for(int i = 0; i < bankAccountVO.size(); i++){
+					String[] rowData = {bankAccountVO.get(i).ID, 
+							bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
+					tableModel.addRow(rowData);
+					accountPool.add(bankAccountVO.get(i));
+					System.out.println("SearchSucceed!");
+					new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}	
 				}else {
 					new MyNotification(this,"请输入查询关键字！",Color.RED);
@@ -187,20 +198,23 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}else if(this.isLegal(data[2])){
 				new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 			}else{
-				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
-						data[1],new BigDecimal(data[2]),null));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
-					if(rsg_2.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						addBankAccount.refresh();
-						new MyNotification(this,"账户添加成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"账户添加失败！",Color.RED);
-					}
+				try {
+					ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
+							data[1],new BigDecimal(data[2]),null));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
+						if(rsg_2.equals(ResultMessage.SUCCESS)){
+							this.showAll();
+							addBankAccount.refresh();
+							new MyNotification(this,"账户添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"账户添加失败！",Color.RED);
+						}
 
-				}else{
-					new MyNotification(this,"账户添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteBankAccount")){
@@ -235,14 +249,19 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		table = bankAccountPanel.getTable();
 		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		
-		ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("DeleteSucceed!");
-			this.showAll();
-			this.repaint();
-			new MyNotification(this,"账户删除成功！",Color.GREEN);
-		}else{
-			new MyNotification(this,"账户删除失败！",Color.RED);
+		try {
+			ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("DeleteSucceed!");
+				this.showAll();
+				this.repaint();
+				new MyNotification(this,"账户删除成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"账户删除失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 	
@@ -254,19 +273,24 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		if(this.isLegal(data[2])){
 			new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 		}
-		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
-				data[1],new BigDecimal(data[2]),null));
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
-			if(rsg_2.equals(ResultMessage.SUCCESS)){
-				this.showAll();
-				modifyAccountInfo.refresh();
-				new MyNotification(this,"账户修改成功！",Color.GREEN);
+		try {
+			ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
+					data[1],new BigDecimal(data[2]),null));
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
+				if(rsg_2.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					modifyAccountInfo.refresh();
+					new MyNotification(this,"账户修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"账户修改失败！",Color.RED);
+				}
 			}else{
 				new MyNotification(this,"账户修改失败！",Color.RED);
 			}
-		}else{
-			new MyNotification(this,"账户修改失败！",Color.RED);
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 }

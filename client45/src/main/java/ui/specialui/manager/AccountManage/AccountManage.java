@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -104,13 +105,18 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			accountID = "";
 			
 			AccountBLService controller = ControllerFactory.getAccountController();
-			ArrayList<AccountVO> accountVO = controller.show();
-			
-			for(int i = 0; i < accountVO.size(); i++){
-				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
-						accountVO.get(i).Salary+"",accountVO.get(i).Phone};
-				tableModel.addRow(rowData);
-				accountPool.add(accountVO.get(i));
+			ArrayList<AccountVO> accountVO;
+			try {
+				accountVO = controller.show();
+				for(int i = 0; i < accountVO.size(); i++){
+					String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
+							accountVO.get(i).Salary+"",accountVO.get(i).Phone};
+					tableModel.addRow(rowData);
+					accountPool.add(accountVO.get(i));
+				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
 		}
 	
@@ -134,26 +140,32 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			ArrayList<AccountVO> accountVO;
 			String data = userInfo.getData();
 			if(data!=null){
-				switch(Integer.parseInt(data)){
-					case 1 : accountVO = controller.show("总经理"); break;
-					case 2 :accountVO = controller.show("快递员"); break;
-					case 3 : accountVO = controller.show("中转库存人员"); break;
-					case 4: accountVO = controller.show("中转中心业务员"); break;
-					case 5 :accountVO = controller.show("营业厅业务员"); break;
-					case 6:accountVO = controller.show("财务人员"); break;
-					case 7:accountVO = controller.show("管理员"); break;
-					case 8:accountVO = controller.show("司机"); break;
-					case 9:accountVO = controller.show("快递员"); break;
-					default : accountVO = controller.show();
-				}
-			
-				for(int i = 0; i < accountVO.size(); i++){
-				String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
-						accountVO.get(i).Salary+"",accountVO.get(i).Phone,accountVO.get(i).ordersID.toString()};
-				tableModel.addRow(rowData);
-				accountPool.add(accountVO.get(i));
-				System.out.println("SearchSucceed!");
-					new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
+				
+				try {
+					switch(Integer.parseInt(data)){
+						case 1 : accountVO = controller.show("总经理"); break;
+						case 2 :accountVO = controller.show("快递员"); break;
+						case 3 : accountVO = controller.show("中转库存人员"); break;
+						case 4: accountVO = controller.show("中转中心业务员"); break;
+						case 5 :accountVO = controller.show("营业厅业务员"); break;
+						case 6:accountVO = controller.show("财务人员"); break;
+						case 7:accountVO = controller.show("管理员"); break;
+						case 8:accountVO = controller.show("司机"); break;
+						case 9:accountVO = controller.show("快递员"); break;
+						default : accountVO = controller.show();
+					}
+
+					for(int i = 0; i < accountVO.size(); i++){
+					String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
+							accountVO.get(i).Salary+"",accountVO.get(i).Phone,accountVO.get(i).ordersID.toString()};
+					tableModel.addRow(rowData);
+					accountPool.add(accountVO.get(i));
+					System.out.println("SearchSucceed!");
+						new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}	
 				}else {
 					new MyNotification(this,"请选择员工类型！",Color.RED);
@@ -162,16 +174,20 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			String[] data = addAccount.getData();
 			if(addAccount.getData()==null){
 				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
-			}else{//String ID, String duty, String name, String birthDay, String IDCard, String phone, double salary,
-				//String workTime
-				ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					System.out.println("AddSucceed!");
-					this.showAll();
-					addAccount.refresh();
-					new MyNotification(this,"新员工添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"新员工添加失败！",Color.RED);
+			}else{
+				try {
+					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						addAccount.refresh();
+						new MyNotification(this,"新员工添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"新员工添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyAccountInfo")){
@@ -217,29 +233,41 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	private void deleteAccount() {
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
-		ResultMessage rsg = controller.deleteAccount(accountPool.get(table.getSelectedRow()).ID);
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("DeleteSucceed!");
-			this.showAll();
-			this.repaint();
-			new MyNotification(this,"员工删除成功！",Color.GREEN);
-		}else{
-			new MyNotification(this,"员工删除失败！",Color.RED);
+		ResultMessage rsg;
+		try {
+			rsg = controller.deleteAccount(accountPool.get(table.getSelectedRow()).ID);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("DeleteSucceed!");
+				this.showAll();
+				this.repaint();
+				new MyNotification(this,"员工删除成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"员工删除失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
+		
 	}
 	
 	private void modifyAccount() {
 		table = userInfo.getTable();
 		AccountController controller = ControllerFactory.getAccountController();
 		String[] data = modifyAccount.getData();
-		ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("ModifySucceed!");
-			this.showAll();
-			modifyAccount.refresh();
-			new MyNotification(this,"员工修改成功！",Color.GREEN);		
-		}else{
-			new MyNotification(this,"员工修改失败！",Color.RED);
+		try {
+			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("ModifySucceed!");
+				this.showAll();
+				modifyAccount.refresh();
+				new MyNotification(this,"员工修改成功！",Color.GREEN);		
+			}else{
+				new MyNotification(this,"员工修改失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 	

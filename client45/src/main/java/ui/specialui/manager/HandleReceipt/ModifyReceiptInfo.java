@@ -3,6 +3,7 @@ package ui.specialui.manager.HandleReceipt;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -61,7 +62,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		cancel = new MyJButton(720,600-30,100,30,"撤销修改",18);
+		cancel = new MyJButton(720,600,100,30,"撤销修改",18);
 		cancel.setActionCommand("Cancel");
 		cancel.addActionListener(this);
 		this.add(cancel);	
@@ -202,14 +203,20 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 				table.getCellEditor().stopCellEditing();
 				new MyNotification(this,"正在修改单据！",Color.RED);
 			}
-			finish(currentType);
+			try {
+				finish(currentType);
+			} catch (RemoteException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e1.printStackTrace();
+			}
 		}else if(e.getActionCommand().equals("Cancel")){
 			
 		}
 	}
 	
-	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单*/
-	private void finish(ReceiptType billType) {
+	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单
+	 * @throws RemoteException */
+	private void finish(ReceiptType billType) throws RemoteException {
 		ReceiptBLService controller = ControllerFactory.getReceiptController();
 		ResultMessage rm = null;
 		if(billType.equals(ReceiptType.ORDER)){

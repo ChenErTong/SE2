@@ -1,7 +1,9 @@
 package ui.specialui.manager.AccountManage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
@@ -9,6 +11,7 @@ import businesslogic.organizationbl.OrganizationController;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 
 public class AddAccount extends MyTranslucentPanel{
@@ -119,13 +122,19 @@ public class AddAccount extends MyTranslucentPanel{
 		fields[6] = new MyJTextField(130,170,120,30);
 		this.add(fields[6]);
 		
-		ArrayList<String> id = controller.getAllBranchNumbers();
-		String[] branchIDs = new String[100];
-		for(int i=0;i<id.size();i++){
-			branchIDs[i] = id.get(i);
+		String[] branchIDs;
+		try {
+			ArrayList<String> id = controller.getAllBranchNumbers();
+			branchIDs = new String[100];
+			for(int i=0;i<id.size();i++){
+				branchIDs[i] = id.get(i);
+				branchID = new MyJComboBox(390,170,110,30,branchIDs);
+				this.add(branchID);
+			}
+		} catch (RemoteException e1) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e1.printStackTrace();
 		}
-		branchID = new MyJComboBox(390,170,110,30,branchIDs);
-		this.add(branchID);
 	}
 
 	public void setUneditable() {

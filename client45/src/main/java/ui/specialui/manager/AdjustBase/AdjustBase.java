@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -95,12 +96,17 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		
 		basePool.clear();
 		baseID = "";
-		ArrayList<BaseVO> baseVO = controller.show();
-		
-		for(int i = 0; i < baseVO.size(); i++){
-			String[] rowData = {baseVO.get(i).cityFrom,baseVO.get(i).cityTo,baseVO.get(i).distance+"km",baseVO.get(i).price+"元/km"};
-			tableModel.addRow(rowData);
-			basePool.add(baseVO.get(i));
+		try {
+			ArrayList<BaseVO> baseVO = controller.show();
+			
+			for(int i = 0; i < baseVO.size(); i++){
+				String[] rowData = {baseVO.get(i).cityFrom,baseVO.get(i).cityTo,baseVO.get(i).distance+"km",baseVO.get(i).price+"元/km"};
+				tableModel.addRow(rowData);
+				basePool.add(baseVO.get(i));
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 	
@@ -117,13 +123,18 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			if((!this.isLegal(data[3]))||(!this.isLegal(data[2]))){
 				new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 			}else{
-				ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					addBase.refresh();
-					new MyNotification(this,"常量添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"常量添加失败！",Color.RED);
+				try {
+					ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						addBase.refresh();
+						new MyNotification(this,"常量添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"常量添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteBase")){
@@ -180,10 +191,15 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 					default :// baseVO = controller.find();break;
 				}*/
 				
-				BaseVO baseVO = controller.find(data);
-				String [] rowData = {baseVO.cityFrom,baseVO.cityTo,baseVO.distance+"",baseVO.price+""};
-				tableModel.addRow(rowData);
-				basePool.add(baseVO);
+				try {
+					BaseVO baseVO = controller.find(data);
+					String [] rowData = {baseVO.cityFrom,baseVO.cityTo,baseVO.distance+"",baseVO.price+""};
+					tableModel.addRow(rowData);
+					basePool.add(baseVO);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				}
 			
 			/*	for(int i = 0; i <baseVO.size(); i++){
 				String[] rowData = {};
@@ -211,29 +227,39 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		if((!this.isLegal(data[3]))||(!this.isLegal(data[2]))){
 			new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 		}else{
-			ResultMessage rsg = controller.updateBase(new BaseVO(basePool.get(table.getSelectedRow()).ID,data[0],
-					data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
-			if(rsg.equals(ResultMessage.SUCCESS)){
-				System.out.println("ModifySucceed!");
-				this.showAll();
-				modifyBase.refresh();
-				new MyNotification(this,"常量修改成功！",Color.GREEN);		
-			}else{
-				new MyNotification(this,"常量修改失败！",Color.RED);
+			try {
+				ResultMessage rsg = controller.updateBase(new BaseVO(basePool.get(table.getSelectedRow()).ID,data[0],
+						data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					System.out.println("ModifySucceed!");
+					this.showAll();
+					modifyBase.refresh();
+					new MyNotification(this,"常量修改成功！",Color.GREEN);		
+				}else{
+					new MyNotification(this,"常量修改失败！",Color.RED);
+				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
 		}
 	}
 	private void deleteBase() {
 		table =  baseInfo.getTable();
 		
-		ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).ID);
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("DeleteSucceed!");
-			this.showAll();
-			this.repaint();
-			new MyNotification(this,"常量删除成功！",Color.GREEN);
-		}else{
-			new MyNotification(this,"常量删除失败！",Color.RED);
+		try {
+			ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).ID);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("DeleteSucceed!");
+				this.showAll();
+				this.repaint();
+				new MyNotification(this,"常量删除成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"常量删除失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 	/**

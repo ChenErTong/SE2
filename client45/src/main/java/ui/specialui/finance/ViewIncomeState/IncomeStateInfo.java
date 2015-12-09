@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -253,26 +254,31 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				if(this.isLegal()){
 					String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 					RecordBLService recordController = ControllerFactory.getRecordController();
-					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
-					
-					DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-					int rowCount = table.getRowCount();
-					for(int i = 0; i < rowCount; i++){
-						tableModel.removeRow(0);
-					}
-					if(vo!=null){
-						String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
-								"总收入", String.format("%.2f", vo.totalIncome) + "元"};
-						tableModel.addRow(rowData);
+					try {
+						BussinessConditionVO vo = recordController.bussinessCondition(endDate);
 						
-						String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","总支出",String.format("%.2f", vo.totalExpen)+"元"};
-						
-						tableModel.addRow(rowData2);
-						
-						String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
-						
-						tableModel.addRow(rowData3);
-						
+						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+						int rowCount = table.getRowCount();
+						for(int i = 0; i < rowCount; i++){
+							tableModel.removeRow(0);
+						}
+						if(vo!=null){
+							String[] rowData = {String.valueOf(table.getRowCount() + 1), "收入类",
+									"总收入", String.format("%.2f", vo.totalIncome) + "元"};
+							tableModel.addRow(rowData);
+							
+							String[] rowData2 = {String.valueOf(table.getRowCount()+1),"支出类","总支出",String.format("%.2f", vo.totalExpen)+"元"};
+							
+							tableModel.addRow(rowData2);
+							
+							String[] rowData3 = {String.valueOf(table.getRowCount()+1),"利润类","总利润",String.format("%.2f", vo.profit)+"元"};
+							
+							tableModel.addRow(rowData3);
+							
+						}
+					} catch (RemoteException e1) {
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						e1.printStackTrace();
 					}
 				}
 			}
@@ -283,8 +289,13 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			}else{
 				String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
 				RecordBLService recordController = ControllerFactory.getRecordController();
-				BussinessConditionVO vo = recordController.bussinessCondition(endDate);
-				recordController.exportBussinessConditionToExcel(vo);
+				try {
+					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+					recordController.exportBussinessConditionToExcel(vo);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				}
 			}
 		}
 	}

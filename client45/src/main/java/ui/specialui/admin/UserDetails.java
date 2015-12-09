@@ -3,6 +3,7 @@ package ui.specialui.admin;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.myui.MyPasswordField;
 import ui.myui.MyTranslucentPanel;
 
@@ -47,14 +49,19 @@ public class UserDetails extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
 		
-		ArrayList<String> branchIDs = new ArrayList<String>();
-		branchIDs = controller.getAllBranchNumbers();
-		String[] trans = new String[100];
-		for(int i=0;i<branchIDs.size();i++){
-			trans[i] = branchIDs.get(i);
+		try {
+			ArrayList<String> branchIDs = new ArrayList<String>();
+			branchIDs = controller.getAllBranchNumbers();
+			String[] trans = new String[100];
+			for(int i=0;i<branchIDs.size();i++){
+				trans[i] = branchIDs.get(i);
+			}
+			branchID = new MyJComboBox(110,60,130,30,trans);
+			this.add(branchID);
+		} catch (RemoteException e1) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e1.printStackTrace();
 		}
-		branchID = new MyJComboBox(110,60,130,30,trans);
-		this.add(branchID);
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
 		passwordField = new MyPasswordField(340,60,140,30);

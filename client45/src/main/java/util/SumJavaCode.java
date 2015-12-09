@@ -20,7 +20,7 @@ public class SumJavaCode {
 
 	public static void main(String[] args) {
 		SumJavaCode sjc = new SumJavaCode();
-		File f = new File("E:/program/Git/SE2/client45/src/main/java/ui");
+		File f = new File("D:/SE2/client45");
 		System.out.println(f.getName());
 		sjc.treeFile(f);
 		System.out.println("空行" + whiteLines);

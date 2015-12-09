@@ -141,11 +141,16 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				ArrayList<ReceiptType> dontPassType =  new ArrayList<ReceiptType>();
 				dontPassList.add((ReceiptVO)listPool.get(index));
 				dontPassType.add(typePool.get(index));
-				ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
-				if(rm.equals(ResultMessage.FAIL)){
-					new MyNotification(this,"不通过单据失败！",Color.RED);
-				}else{
-					search.doClick();
+				try {
+					ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
+					if(rm.equals(ResultMessage.FAIL)){
+						new MyNotification(this,"不通过单据失败！",Color.RED);
+					}else{
+						search.doClick();
+					}
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}else if(events.getActionCommand().equals("PassThisReceipt")){
@@ -164,16 +169,21 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 					passType.add(typePool.get(index));
 					PassList.add((ReceiptVO)listPool.get(index));
 					
-					ResultMessage rsg = receiptController.passReceipt(PassList);
-					if(rsg.equals(ResultMessage.FAIL)){
-						new MyNotification(this,"单据审批失败！",Color.RED);
-					}else{
-						search.doClick();
-						index = -1;
-						//ta.setText("");
-						//word.setText("单据状态:    ");
-						new MyNotification(this,"单据审批成功！",Color.GREEN);
-							
+					try {
+						ResultMessage rsg = receiptController.passReceipt(PassList);
+						if(rsg.equals(ResultMessage.FAIL)){
+							new MyNotification(this,"单据审批失败！",Color.RED);
+						}else{
+							search.doClick();
+							index = -1;
+							//ta.setText("");
+							//word.setText("单据状态:    ");
+							new MyNotification(this,"单据审批成功！",Color.GREEN);
+								
+						}
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}
@@ -212,12 +222,18 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请先选择需要进行审批的单据！",Color.RED);
 				}else{
 					receiptController= ControllerFactory.getReceiptController();
-					ResultMessage rm = receiptController.passReceipt(PassList);
-					
-					if(rm.equals(ResultMessage.FAIL)){
-						new MyNotification(this,"单据批量审批失败",Color.RED);
+					try {
+						ResultMessage rm = receiptController.passReceipt(PassList);
+						
+						if(rm.equals(ResultMessage.FAIL)){
+							new MyNotification(this,"单据批量审批失败",Color.RED);
+						}else{
+							new MyNotification(this,"单据批量审批成功！",Color.GREEN);
+						}
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-					new MyNotification(this,"单据批量审批成功！",Color.GREEN);
 				}
 			}else{
 				new MyNotification(this,"只可对未审批的单据进行审批!",Color.RED);

@@ -102,11 +102,11 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 				try {
 					userController = ControllerFactory.getUserController();
 				} catch (MalformedURLException e1) {
-					new MyNotification(this,"数据导入失败！",Color.RED);
+					new MyNotification(this,"客户端文件丢失！",Color.RED);
 					//e1.printStackTrace();
 					return;
 				} catch (RemoteException e1) {
-					new MyNotification(this,"网络中断，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					//e1.printStackTrace();
 					return;
 				} catch (NotBoundException e1) {
@@ -115,14 +115,24 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 					return;
 				}
 				
-				iden = userController.login(new LoginInfo(data[0],data[1],flag));
+				try {
+					iden = userController.login(new LoginInfo(data[0],data[1],flag));
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				}
 				String type = "";
 				userID = data[0];
-				for(int i=0;i<userController.show().size();i++){
-					if(userController.show().get(i).id.equals(userID)){
-						userName = userController.show().get(i).userName;
-						iden = userController.show().get(i).iden;
+				try {
+					for(int i=0;i<userController.show().size();i++){
+						if(userController.show().get(i).id.equals(userID)){
+							userName = userController.show().get(i).userName;
+							iden = userController.show().get(i).iden;
+						}
 					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 				if(iden==null){
 					new MyNotification(this,"用户名或密码填写错误！",Color.RED);

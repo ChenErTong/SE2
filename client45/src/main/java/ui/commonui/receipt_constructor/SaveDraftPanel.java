@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
@@ -89,108 +90,185 @@ public class SaveDraftPanel extends MyJPanel implements ActionListener{
 		if(MyJFrame.frameName.equals("Frame_Branch")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
 			
-			ArrayList<BranchArrivalListVO> list = receiptController.show(ReceiptType.BRANCH_ARRIVAL, ReceiptState.DRAFT);
-			if(list != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.BRANCH_ARRIVAL);
-					billPool.add(list.get(i));
+			ArrayList<BranchArrivalListVO> list;
+			try {
+				list = receiptController.show(ReceiptType.BRANCH_ARRIVAL, ReceiptState.DRAFT);
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
+						str = str + list.get(i).ID + ";";
+						typePool.add(ReceiptType.BRANCH_ARRIVAL);
+						billPool.add(list.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			}
-			ArrayList<DeliveryListVO> list_2 = receiptController.show(ReceiptType.BRANCH_DELIVER, ReceiptState.DRAFT);
-			if(list_2 != null){
-				for(int i = 0; i < list_2.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.BRANCH_DELIVER);
-					billPool.add(list.get(i));
+	
+			ArrayList<DeliveryListVO> list_2;
+			try {
+				list_2 = receiptController.show(ReceiptType.BRANCH_DELIVER, ReceiptState.DRAFT);
+				if(list_2 != null){
+					for(int i = 0; i < list_2.size(); i++){
+						str = str + list_2.get(i).ID + ";";
+						typePool.add(ReceiptType.BRANCH_DELIVER);
+						billPool.add(list_2.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
-			ArrayList<LoadingListVO> list_3 = receiptController.show(ReceiptType.BRANCH_TRUCK, ReceiptState.DRAFT);
-			if(list_3 != null){
-				for(int i = 0; i < list_3.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.BRANCH_TRUCK);
-					billPool.add(list.get(i));
+		
+			ArrayList<LoadingListVO> list_3;
+			try {
+				list_3 = receiptController.show(ReceiptType.BRANCH_TRUCK, ReceiptState.DRAFT);
+				if(list_3 != null){
+					for(int i = 0; i < list_3.size(); i++){
+						str = str + list_3.get(i).ID + ";";
+						typePool.add(ReceiptType.BRANCH_TRUCK);
+						billPool.add(list_3.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
-			ArrayList<DebitBillVO> list_4 = receiptController.show(ReceiptType.DEBIT, ReceiptState.DRAFT);
-			if(list_4!=null){
-				for(int i = 0;i<list_4.size();i++){
-					str = str+list.get(i).ID+";";
-					typePool.add(ReceiptType.DEBIT);
-					billPool.add(list.get(i));
+			
+			ArrayList<DebitBillVO> list_4;
+			try {
+				list_4 = receiptController.show(ReceiptType.DEBIT, ReceiptState.DRAFT);
+				if(list_4!=null){
+					for(int i = 0;i<list_4.size();i++){
+						str = str+list_4.get(i).ID+";";
+						typePool.add(ReceiptType.DEBIT);
+						billPool.add(list_4.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
+	
 		}else if(MyJFrame.frameName.equals("Frame_Courier")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
 			
-			ArrayList<RecipientConfirmReceiptVO> list = receiptController.show(ReceiptType.CONFIRM, ReceiptState.DRAFT);
-			if(list != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.CONFIRM);
-					billPool.add(list.get(i));
+			ArrayList<RecipientConfirmReceiptVO> list;
+			try {
+				list = receiptController.show(ReceiptType.CONFIRM, ReceiptState.DRAFT);
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
+						str = str + list.get(i).ID + ";";
+						typePool.add(ReceiptType.CONFIRM);
+						billPool.add(list.get(i));
+					}
 				}
+				
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
+
 			
-			ArrayList<ReceiptVO>  list_2= receiptController.show(ReceiptType.ORDER, ReceiptState.DRAFT);
-			if(list_2 != null){
-				for(int i = 0; i < list_2.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.ORDER);
-					billPool.add(list.get(i));
+			ArrayList<ReceiptVO> list_2;
+			try {
+				list_2 = receiptController.show(ReceiptType.ORDER, ReceiptState.DRAFT);
+				if(list_2 != null){
+					for(int i = 0; i < list_2.size(); i++){
+						str = str + list_2.get(i).ID + ";";
+						typePool.add(ReceiptType.ORDER);
+						billPool.add(list_2.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
+		
 		}else if(MyJFrame.frameName.equals("Frame_Finance")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
 			
-			ArrayList<PaymentBillVO> list = receiptController.show(ReceiptType.PAY, ReceiptState.DRAFT);
-			if(list != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.PAY);
-					billPool.add(list.get(i));
+			ArrayList<PaymentBillVO> list;
+			try {
+				list = receiptController.show(ReceiptType.PAY, ReceiptState.DRAFT);
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
+						str = str + list.get(i).ID + ";";
+						typePool.add(ReceiptType.PAY);
+						billPool.add(list.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
+			
 		}else if(MyJFrame.frameName.equals("Frame_Inventory")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
 			
-			ArrayList<InventoryImportReceiptVO> list = receiptController.show(ReceiptType.INSTOCK, ReceiptState.DRAFT);
-			if(list != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.INSTOCK);
-					billPool.add(list.get(i));
+			ArrayList<InventoryImportReceiptVO> list;
+			try {
+				list = receiptController.show(ReceiptType.INSTOCK, ReceiptState.DRAFT);
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
+						str = str + list.get(i).ID + ";";
+						typePool.add(ReceiptType.INSTOCK);
+						billPool.add(list.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
+			}
+	
+			
+			ArrayList<InventoryExportReceiptVO> list_2;
+			try {
+				list_2 = receiptController.show(ReceiptType.OUTSTOCK, ReceiptState.DRAFT);
+				if(list_2 != null){
+					for(int i = 0; i < list_2.size(); i++){
+						str = str + list_2.get(i).ID + ";";
+						typePool.add(ReceiptType.OUTSTOCK);
+						billPool.add(list_2.get(i));
+					}
+				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
 			
-			ArrayList<InventoryExportReceiptVO> list_2 = receiptController.show(ReceiptType.OUTSTOCK, ReceiptState.DRAFT);
-			if(list_2 != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.OUTSTOCK);
-					billPool.add(list.get(i));
-				}
-			}
 		}else if(MyJFrame.frameName.equals("Frame_Transfer")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
 			
-			ArrayList<TransferArrivalListVO> list = receiptController.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.DRAFT);
-			if(list != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.TRANS_ARRIVAL);
-					billPool.add(list.get(i));
+			ArrayList<TransferArrivalListVO> list;
+			try {
+				list = receiptController.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.DRAFT);
+				if(list != null){
+					for(int i = 0; i < list.size(); i++){
+						str = str + list.get(i).ID + ";";
+						typePool.add(ReceiptType.TRANS_ARRIVAL);
+						billPool.add(list.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
-			ArrayList<TransferOrderVO> list_2 = receiptController.show(ReceiptType.TRANS_PLANE, ReceiptState.DRAFT);
-			if(list_2 != null){
-				for(int i = 0; i < list.size(); i++){
-					str = str + list.get(i).ID + ";";
-					typePool.add(ReceiptType.TRANS_PLANE);
-					billPool.add(list.get(i));
+			
+			ArrayList<TransferOrderVO> list_2;
+			try {
+				list_2 = receiptController.show(ReceiptType.TRANS_PLANE, ReceiptState.DRAFT);
+				if(list_2 != null){
+					for(int i = 0; i < list_2.size(); i++){
+						str = str + list_2.get(i).ID + ";";
+						typePool.add(ReceiptType.TRANS_PLANE);
+						billPool.add(list_2.get(i));
+					}
 				}
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
+			
 			
 		}
 		if(typePool.size() != 0){

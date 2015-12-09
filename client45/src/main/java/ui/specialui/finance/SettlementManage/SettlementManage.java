@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -132,13 +133,18 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		paybillID = "";
 		
 		showController = ControllerFactory.getDebitAndPayBillShowController();
-		ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
-		PaymentBillVO payVO;
-		for(int i = 0; i < paybillVO.size(); i++){
-			payVO = (PaymentBillVO) paybillVO.get(i);
-			Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.accountID,payVO.items.value,payVO.remarks,payVO.date};
-			tableModel.addRow(rowData);
-			paybillPool.add((PaymentBillVO) paybillVO.get(i));
+		try {
+			ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
+			PaymentBillVO payVO;
+			for(int i = 0; i < paybillVO.size(); i++){
+				payVO = (PaymentBillVO) paybillVO.get(i);
+				Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.accountID,payVO.items.value,payVO.remarks,payVO.date};
+				tableModel.addRow(rowData);
+				paybillPool.add((PaymentBillVO) paybillVO.get(i));
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 
@@ -170,12 +176,17 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				String day = data[2];
 				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 				String date = year + month + day;
-				showController.showList(date);
-				for(int i = 0; i < paybillVO.size(); i++){
-					Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
-					tableModel.addRow(rowData);
-					paybillPool.add(paybillVO.get(i));
-					new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+				try {
+					showController.showList(date);
+					for(int i = 0; i < paybillVO.size(); i++){
+						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
+						tableModel.addRow(rowData);
+						paybillPool.add(paybillVO.get(i));
+						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}	
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
@@ -188,22 +199,27 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			}else if(!this.isLegal(data[1])){
 				new MyNotification(this,"输入的付款金额不合法！",Color.RED);
 			}else{
-				ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					BankAccountController bankController = ControllerFactory.getBankAccountController();
-					ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
-					if(rsg_2.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						addPaybill.refresh();
-						new MyNotification(this,"付款单添加成功！",Color.GREEN);
+				try {
+					ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
+							PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						BankAccountController bankController = ControllerFactory.getBankAccountController();
+						ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
+						if(rsg_2.equals(ResultMessage.SUCCESS)){
+							this.showAll();
+							addPaybill.refresh();
+							new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						}else{
+							new MyNotification(this,"该账户无法完成付款！",Color.RED);
+							new MyNotification(this,"付款单添加失败！",Color.RED);
+						}
+						
 					}else{
-						new MyNotification(this,"该账户无法完成付款！",Color.RED);
 						new MyNotification(this,"付款单添加失败！",Color.RED);
 					}
-					
-				}else{
-					new MyNotification(this,"付款单添加失败！",Color.RED);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyPayReceipt")){
@@ -304,21 +320,26 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		}else if(!this.isLegal(data[1])){
 			new MyNotification(this,"付款金额输入不合法！",Color.RED);
 		}else{
-			ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
-			if(rsg.equals(ResultMessage.SUCCESS)){
-				BankAccountController bankController = ControllerFactory.getBankAccountController();
-				ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
-				if(rsg_2.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					modifyPaybill.refresh();
-					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+			try {
+				ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
+						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					BankAccountController bankController = ControllerFactory.getBankAccountController();
+					ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
+					if(rsg_2.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						modifyPaybill.refresh();
+						new MyNotification(this,"付款单修改成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"该账户无法完成付款！",Color.RED);
+						new MyNotification(this,"付款单修改失败！",Color.RED);
+					}
 				}else{
-					new MyNotification(this,"该账户无法完成付款！",Color.RED);
 					new MyNotification(this,"付款单修改失败！",Color.RED);
 				}
-			}else{
-				new MyNotification(this,"付款单修改失败！",Color.RED);
+			} catch (RemoteException e) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e.printStackTrace();
 			}
 		}
 	}
