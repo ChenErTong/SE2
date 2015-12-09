@@ -47,6 +47,11 @@ import ui.specialui.transfer_counterman.Frame_Transfer;
  * @author zsq
  * @time 2015/12/08 10:51:01
  */
+/**
+ * 捕获网络连接异常
+ * @author zsq
+ *  @time 2015/12/08 18:48:05
+ */
 
 @SuppressWarnings("unused")
 public class Frame_Login extends MyJFrame implements ActionListener{
@@ -98,15 +103,15 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 					userController = ControllerFactory.getUserController();
 				} catch (MalformedURLException e1) {
 					new MyNotification(this,"数据导入失败！",Color.RED);
-					e1.printStackTrace();
+					//e1.printStackTrace();
 					return;
 				} catch (RemoteException e1) {
 					new MyNotification(this,"网络中断，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					//e1.printStackTrace();
 					return;
 				} catch (NotBoundException e1) {
 					new MyNotification(this,"请检查服务器是否正常工作！",Color.RED);
-					e1.printStackTrace();
+					//e1.printStackTrace();
 					return;
 				}
 				
