@@ -2,7 +2,6 @@ package ui.specialui.branch_conuterman;
 
 import ui.image.BranchImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
 import ui.myui.MyJPanel;
 import ui.myui.MyLogo;
 import ui.myui.MyTitle;

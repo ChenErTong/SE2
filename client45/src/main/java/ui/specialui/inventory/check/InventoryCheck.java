@@ -48,7 +48,7 @@ public class InventoryCheck extends MyJPanel{
 		commodityInfo = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
 		this.add(new MyJScrollPane(415, 215, 450, 450, commodityInfo));
 		
-		MyButton search = new MyButton(795, 96, 35,35, LoginImage.getBUTTON_LOGISTIC());
+		MyButton search = new MyButton(795, 96, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!InventoryCheck.this.searchWithinGap(frame)){

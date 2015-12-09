@@ -4,8 +4,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import businesslogic.ControllerFactory;
-import businesslogic.facilitybl.FacilityController;
+import ui.image.BranchImage;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -13,6 +14,8 @@ import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.FacilityVO;
+import businesslogic.ControllerFactory;
+import businesslogic.facilitybl.FacilityController;
 /**
  * 车辆信息管理界面
  * @author czw
@@ -22,9 +25,9 @@ public class FacilityInfoManage extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private FacilityInfo facilityInfo;
-	private MyJButton commonButton;
+	private MyButton commonButton;
+	private MyButton searchFacility;
 	private MyJTextField facilityId;
-	private MyJButton searchFacility;
 	private String id;
 	private FacilityController facilityController;
 	private FacilityVO facility;
@@ -37,7 +40,7 @@ public class FacilityInfoManage extends MyJPanel {
 		
 		facilityId = new MyJTextField(510, 115, 250, 30);
 		facilityId.setOnlyInteger(9);
-		searchFacility = new MyJButton(770, 115, 60, 30, "查询", 20);
+		searchFacility = new MyButton(770, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		searchFacility.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!FacilityInfoManage.this.searchFacility(facilityId.getText())){
@@ -58,7 +61,7 @@ public class FacilityInfoManage extends MyJPanel {
 		facilityInfo = new FacilityInfo(frame);
 		this.add(facilityInfo);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "添加车辆", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_TIANJIACHELIANG_HORIZONTAL());
 		commonButton.setActionCommand("addFacility");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -79,7 +82,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(facilityId);
 		this.add(searchFacility);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "修改车辆", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_XIUGAICHELIANG_HORIZONTAL());
 		commonButton.setActionCommand("modifyFacility");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -118,7 +121,7 @@ public class FacilityInfoManage extends MyJPanel {
 		this.add(facilityId);
 		this.add(searchFacility);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "删除车辆", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_SHANCHUCHELIANG_HORIZONTAL());
 		commonButton.setActionCommand("deleteFacility");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -127,8 +130,8 @@ public class FacilityInfoManage extends MyJPanel {
 	}
 
 	private void initButton(Frame_Branch frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 110,
-				"<html>添<br/>加<br/>车<br/>辆<br/></html>", 18);
+		MyButton insertButton = new MyButton(0, 150, 33, 111,
+				BranchImage.getBUTTON_TIANJIACHELIANG_VERTICAL());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FacilityInfoManage.this.insertPanel(frame);
@@ -137,8 +140,8 @@ public class FacilityInfoManage extends MyJPanel {
 		});
 		this.add(insertButton);
 
-		MyJButton modifyButton = new MyJButton(0, 260, 40, 110,
-				"<html>修<br/>改<br/>车<br/>辆<br/></html>", 18);
+		MyButton modifyButton = new MyButton(0, 261, 33, 111,
+				BranchImage.getBUTTON_XIUGAICHELIANG_VERTICAL());
 		modifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FacilityInfoManage.this.modifyPanel(frame);
@@ -147,8 +150,8 @@ public class FacilityInfoManage extends MyJPanel {
 		});
 		this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(0, 370, 40, 110,
-				"<html>查<br/>看<br/>车<br/>辆<br/></html>", 18);
+		MyButton searchButton = new MyButton(0, 372, 33, 111,
+				BranchImage.getBUTTON_CHAXUNCHELIANG_VERTICAL());
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FacilityInfoManage.this.searchPanel(frame);
@@ -157,8 +160,8 @@ public class FacilityInfoManage extends MyJPanel {
 		});
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(0, 480, 40, 110,
-				"<html>删<br/>除<br/>车<br/>辆<br/></html>", 18);
+		MyButton deleteButton = new MyButton(0, 483, 33, 111,
+				BranchImage.getBUTTON_SHANCHUCHELIANG_VERTICAL());
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FacilityInfoManage.this.deletePanel(frame);

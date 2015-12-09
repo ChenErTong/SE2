@@ -4,16 +4,17 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
-
-import businesslogic.ControllerFactory;
-import businesslogic.facilitybl.DriverController;
-import ui.myui.MyJButton;
+import ui.image.BranchImage;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.accountvo.DriverVO;
+import businesslogic.ControllerFactory;
+import businesslogic.facilitybl.DriverController;
 /**
  * 车辆信息管理界面
  * @author czw
@@ -23,9 +24,9 @@ public class DriverInfoManage extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private DriverInfo driverInfo;
-	private MyJButton commonButton;
+	private MyButton commonButton;
+	private MyButton searchDriver;
 	private MyJTextField driverId;
-	private MyJButton searchDriver;
 	private String id;
 	private DriverController driverController;
 	private DriverVO driver;
@@ -38,7 +39,7 @@ public class DriverInfoManage extends MyJPanel {
 		
 		driverId = new MyJTextField(510, 115, 250, 30);
 		driverId.setOnlyInteger(9);
-		searchDriver = new MyJButton(770, 115, 60, 30, "查询", 20);
+		searchDriver = new MyButton(770, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		searchDriver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!DriverInfoManage.this.searchDriver(driverId.getText())){
@@ -59,7 +60,7 @@ public class DriverInfoManage extends MyJPanel {
 		driverInfo = new DriverInfo(frame);
 		this.add(driverInfo);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "添加司机", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_TIANJIASIJI_HORIZONTAL());
 		commonButton.setActionCommand("addDriver");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -80,7 +81,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(driverId);
 		this.add(searchDriver);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "修改司机", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_XIUGAISIJI_HORIZONTAL());
 		commonButton.setActionCommand("modifyDriver");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -119,7 +120,7 @@ public class DriverInfoManage extends MyJPanel {
 		this.add(driverId);
 		this.add(searchDriver);
 		
-		commonButton = new MyJButton(580, 600, 120, 30, "删除司机", 20);
+		commonButton = new MyButton(584, 600, 111, 33, BranchImage.getBUTTON_SHANCHUSIJI_HORIZONTAL());
 		commonButton.setActionCommand("deleteDriver");
 		commonButton.addActionListener(frame);
 		this.add(commonButton);
@@ -128,8 +129,8 @@ public class DriverInfoManage extends MyJPanel {
 	}
 
 	private void initButton(Frame_Branch frame) {
-		MyJButton insertButton = new MyJButton(0, 150, 40, 110,
-				"<html>添<br/>加<br/>司<br/>机<br/></html>", 18);
+		MyButton insertButton = new MyButton(0, 150, 33, 111,
+				BranchImage.getBUTTON_TIANJIASIJI_VERTICAL());
 		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DriverInfoManage.this.insertPanel(frame);
@@ -138,8 +139,8 @@ public class DriverInfoManage extends MyJPanel {
 		});
 		this.add(insertButton);
 
-		MyJButton modifyButton = new MyJButton(0, 260, 40, 110,
-				"<html>修<br/>改<br/>司<br/>机<br/></html>", 18);
+		MyButton modifyButton = new MyButton(0, 261, 33, 111,
+				BranchImage.getBUTTON_XIUGAISIJI_VERTICAL());
 		modifyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DriverInfoManage.this.modifyPanel(frame);
@@ -148,8 +149,8 @@ public class DriverInfoManage extends MyJPanel {
 		});
 		this.add(modifyButton);
 
-		MyJButton searchButton = new MyJButton(0, 370, 40, 110,
-				"<html>查<br/>看<br/>司<br/>机<br/></html>", 18);
+		MyButton searchButton = new MyButton(0, 372, 33, 111,
+				BranchImage.getBUTTON_CHAXUNSIJI_VERTICAL());
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DriverInfoManage.this.searchPanel(frame);
@@ -158,8 +159,8 @@ public class DriverInfoManage extends MyJPanel {
 		});
 		this.add(searchButton);
 
-		MyJButton deleteButton = new MyJButton(0, 480, 40, 110,
-				"<html>删<br/>除<br/>司<br/>机<br/></html>", 18);
+		MyButton deleteButton = new MyButton(0, 483, 33, 111,
+				BranchImage.getBUTTON_SHANCHUSIJI_VERTICAL());
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DriverInfoManage.this.deletePanel(frame);

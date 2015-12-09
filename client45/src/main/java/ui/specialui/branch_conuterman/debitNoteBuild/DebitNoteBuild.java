@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import state.ReceiptType;
+import ui.image.BranchImage;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
@@ -29,7 +31,7 @@ public class DebitNoteBuild extends MyJPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField courierId;
-	private MyJButton searchCourier;
+	private MyButton searchCourier;
 	private MyEmptyTextArea courierBill;
 	
 	public DebitNoteBuild(Frame_Branch frame){
@@ -42,7 +44,7 @@ public class DebitNoteBuild extends MyJPanel{
 		courierId = new MyJTextField(500, 115, 250, 30);
 		courierId.setOnlyInteger(9);
 		this.add(courierId);
-		searchCourier = new MyJButton(760, 115, 60, 30, "查询", 20);
+		searchCourier = new MyButton(760, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		searchCourier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!DebitNoteBuild.this.searchCourier(courierId.getText())){
@@ -56,8 +58,8 @@ public class DebitNoteBuild extends MyJPanel{
 		courierBill = new MyEmptyTextArea(410, 190, 440, 405);
 		this.add(courierBill);
 		
-		MyJButton produceDebitNote = new MyJButton(575, 630, 115, 23,
-				"生成收款单", 18);
+		MyButton produceDebitNote = new MyButton(575, 630, 111, 33,
+				BranchImage.getBUTTON_SKD());
 		produceDebitNote.setActionCommand("produceDebitNote");
 		produceDebitNote.addActionListener(frame);
 		this.add(produceDebitNote);
