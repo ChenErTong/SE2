@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -14,9 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-
 import ui.image.LoginImage;
-import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
@@ -25,7 +22,6 @@ import ui.myui.MyJTextField;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 import vo.BankAccountVO;
-
 
 /**
  * 查找银行账户的半透明Panel

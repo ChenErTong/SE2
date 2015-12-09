@@ -1,19 +1,11 @@
 package ui.myui;
 
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
-import java.io.File;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import ui.image.CommonImage;
-
 import com.sun.awt.AWTUtilities;
 /**
  * Frame的总类，定义位置，大小，启动动画

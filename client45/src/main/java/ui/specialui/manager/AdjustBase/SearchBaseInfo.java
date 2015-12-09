@@ -14,7 +14,6 @@ import javax.swing.table.JTableHeader;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyFont;
-
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -28,7 +27,9 @@ import ui.myui.MyTranslucentPanel;
  */
 public class SearchBaseInfo extends MyTranslucentPanel{
 
+	@SuppressWarnings("unused")
 	private MyJComboBox startCityList;
+	@SuppressWarnings("unused")
 	private MyJComboBox arrivalCityList;
 	private MyJTextField baseID;
 	private MyButton search;

@@ -7,9 +7,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import javax.swing.table.DefaultTableModel;
-
 import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
@@ -17,12 +15,10 @@ import state.UserAuthority;
 import state.UserIdentity;
 import ui.image.AdminImage;
 import ui.image.CommonImage;
-import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
-import ui.myui.MyLogo;
 import ui.myui.MyNotification;
 import ui.myui.MyTitle;
 import vo.UserVO;

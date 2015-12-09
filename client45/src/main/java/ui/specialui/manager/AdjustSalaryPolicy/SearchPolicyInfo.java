@@ -14,7 +14,6 @@ import javax.swing.table.JTableHeader;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyFont;
-
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -27,7 +26,9 @@ import ui.myui.MyTranslucentPanel;
  */
 public class SearchPolicyInfo  extends MyTranslucentPanel{
 
+	@SuppressWarnings("unused")
 	private MyJLabel employeeType;
+	@SuppressWarnings("unused")
 	private MyJLabel policyType;
 	private MyJComboBox employeeTypeBox;
 	private MyJComboBox policyTypeBox;
