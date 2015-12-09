@@ -1,5 +1,7 @@
 package ui.commonui.login;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -49,6 +51,17 @@ public class Panel_Login extends MyJPanel{
 		this.add(search);
 		
 		userIdField = new MyJTextField(535, 385, 210, 45);
+		userIdField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==userIdField){
+					passwordField.requestFocus();
+				}
+				
+			}
+			
+		});
 		userIdField.setOnlyInteger(9);
 		this.add(userIdField);
 
@@ -69,7 +82,7 @@ public class Panel_Login extends MyJPanel{
 		    public void keyPressed(KeyEvent event){ 
 		    	
 		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
-		    		System.out.println("111");
+		    	//	System.out.println("111");
 		    		login.doClick(); 
 		    	} 
 	    	} 

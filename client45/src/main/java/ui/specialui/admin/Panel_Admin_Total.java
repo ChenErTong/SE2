@@ -162,9 +162,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			String[] data = userDetails.getData();
 			if(userDetails.getData()==null){
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-			}else if(this.limitIdentity(data[4], data[5])){
-				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-			}else{
+			}//else if(this.limitIdentity(data[4], data[5])){
+				//new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
+			//}
+			else{
 				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					this.showAll();
@@ -279,9 +280,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		String[] data = userDetails.getData();
 		if(userDetails.getData()==null){
 			new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-		}else if(this.limitIdentity(data[4], data[5])){
-			new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-		}else{
+		}//else if(this.limitIdentity(data[4], data[5])){
+			//new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
+		//}
+		else{
 			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				this.showAll();

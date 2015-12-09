@@ -1,5 +1,8 @@
 package ui.specialui.finance.SettlementManage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -7,7 +10,7 @@ import ui.myui.MyTranslucentPanel;
 import util.GetDate;
 
 /**
- * 添加新的收款单Panel
+ * 添加新的付款单Panel
  * @author zsq
  * @version 2015/12/5 9:55
  */
@@ -32,13 +35,46 @@ public class AddPayBill extends MyTranslucentPanel{
 		
 		fields = new MyJTextField[5];
 		fields[0] = new MyJTextField(130,50,120,30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[0]);
 		
 		fields[1] = new MyJTextField(380,50,120,30);
+		fields[1].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[2].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[1]);
 		
 		fields[2] = new MyJTextField(130,90,120,30);
 		fields[2].setOnlyInteger(19);
+		fields[2].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[2]){
+					fields[3].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[2]);
 		
 		fields[3] = new MyJTextField(380,90,120,30);
@@ -53,6 +89,7 @@ public class AddPayBill extends MyTranslucentPanel{
 		fields[4].setEditable(false);
 		this.add(fields[4]);		
 	}
+	
 	
 	public void setUneditable() {
 		for(MyJTextField field: fields){

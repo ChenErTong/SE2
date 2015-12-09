@@ -1,5 +1,8 @@
 package ui.specialui.finance.SettlementManage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -32,13 +35,46 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		
 		fields = new MyJTextField[5];
 		fields[0] = new MyJTextField(130,50,120,30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[0]);
 		
 		fields[1] = new MyJTextField(380,50,120,30);
+		fields[1].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[2].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[1]);
 		
 		fields[2] = new MyJTextField(130,90,120,30);
 		fields[2].setOnlyInteger(19);
+		fields[2].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[3].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[2]);
 		
 		fields[3] = new MyJTextField(380,90,120,30);

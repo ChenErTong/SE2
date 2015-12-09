@@ -1,5 +1,8 @@
 package ui.specialui.manager.AdjustBase;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -42,6 +45,17 @@ public class AddBase extends MyTranslucentPanel{
 		arrivalCityList.setSelectedIndex(0);
 	
 		distances = new MyJTextField(115,140,150,30);
+		distances.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==distances){
+					price.requestFocus();
+				}
+				
+			}
+			
+		});
 		distances.setOnlyDouble();
 		this.add(distances);
 	

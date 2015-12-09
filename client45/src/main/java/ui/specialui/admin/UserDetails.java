@@ -1,13 +1,14 @@
 package ui.specialui.admin;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
-
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
@@ -57,16 +58,39 @@ public class UserDetails extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
 		passwordField = new MyPasswordField(340,60,140,30);
+		passwordField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==passwordField){
+					fields[0].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(passwordField);
 		
 		this.add(new MyJLabel(10,100, 90, 30, "用户姓名", 18, true));
 		fields[0] = new MyJTextField(100, 100, 140, 30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[0]);
 		
 		this.add(new MyJLabel(250,100,100,30,"联系电话",18,true));
 		fields[1] = new MyJTextField(340,100,140,30);
 		fields[1].setOnlyInteger(11);
 		this.add(fields[1]);
+	
 	
 		this.add(new MyJLabel(10, 140, 90, 30, "用户类别",18,true));
 		this.add(new MyJLabel(250, 140, 90, 30, "用户权限",18,true));

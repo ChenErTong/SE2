@@ -1,5 +1,7 @@
 package ui.specialui.manager.AccountManage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
@@ -30,22 +32,88 @@ public class AddAccount extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,170,100,30,"营业厅编号",16,true));
 		fields = new MyJTextField[7];
 		fields[0] = new MyJTextField(130,50,120,30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[0]);
 		
 		fields[1] = new MyJTextField(380,50,120,30);
+		fields[1].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[2].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[1]);
 		
 		fields[2] = new MyJTextField(130,90,120,30);
 		fields[2].setOnlyInteger(19);
+		fields[2].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[2]){
+					fields[3].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[2]);
 		
 		fields[3] = new MyJTextField(380,90,120,30);
+		fields[3].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[3]){
+					fields[4].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[3]);
 		
 		fields[4] = new MyJTextField(130,130,120,30);
+		fields[4].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[4]){
+					fields[5].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[4]);
 		
 		fields[5] = new MyJTextField(380,130,120,30);
+		fields[5].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[5]){
+					fields[6].requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(fields[5]);
 		
 		fields[6] = new MyJTextField(130,170,120,30);

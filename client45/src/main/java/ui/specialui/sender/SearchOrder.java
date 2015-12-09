@@ -31,6 +31,17 @@ public class SearchOrder extends MyTranslucentPanel{
 		
 		 orderNumberField = new MyJTextField(185, 5 ,200, 40);
 		 orderNumberField.setOnlyInteger(10);
+		 orderNumberField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==orderNumberField){
+					senderNameField.requestFocus();
+				}
+				
+			}
+			 
+		 });
 		this.add(orderNumberField);
 		
 		senderNameField = new MyJTextField(185, 55, 200, 40);
