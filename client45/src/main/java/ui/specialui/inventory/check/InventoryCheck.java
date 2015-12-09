@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.inventoryblservice.InventoryBLService;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -47,7 +49,7 @@ public class InventoryCheck extends MyJPanel{
 		commodityInfo = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
 		this.add(new MyJScrollPane(415, 215, 450, 450, commodityInfo));
 		
-		MyJButton search = new MyJButton(790, 103, 60, 25, "查询", 18);
+		MyButton search = new MyButton(795, 96, 35,35, LoginImage.getBUTTON_LOGISTIC());
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(InventoryCheck.this.searchWithinGap(frame)){

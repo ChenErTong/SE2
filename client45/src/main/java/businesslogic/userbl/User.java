@@ -28,19 +28,11 @@ public class User {
 	static{
 		currentUserFileName="user/userdata.ser";
 	}
-	public User() {
+	public User() throws MalformedURLException, RemoteException, NotBoundException {
 		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
 		File file = new File(currentUserFileName);
 		file.deleteOnExit();
-		try {
-			userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+		userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

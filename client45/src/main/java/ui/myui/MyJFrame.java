@@ -1,10 +1,13 @@
 package ui.myui;
 
+import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -58,11 +61,11 @@ public class MyJFrame extends JFrame{
 		this.setIconImage(CommonImage.getLOGO().getImage());
 		
 		//通用按钮
-		this.returnButton = new MyButton(1155, 15, 30, 30, CommonImage.getBUTTON_RETURN());
+		this.returnButton = new MyButton(1155, 15, 32, 32, CommonImage.getBUTTON_RETURN());
 		this.returnButton.setActionCommand("return");
 		this.add(this.returnButton);
 		
-		this.minimizeButton = new MyButton(1195, 15, 30, 30, CommonImage.getBUTTON_MINIMUMIZE());
+		this.minimizeButton = new MyButton(1195, 15, 32, 32, CommonImage.getBUTTON_MINIMUMIZE());
 		this.minimizeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyJFrame.this.setExtendedState(JFrame.ICONIFIED);
@@ -70,7 +73,7 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.minimizeButton);
 		
-		this.closeButton = new MyButton(1235, 15, 30, 30, CommonImage.getBUTTON_CLOSE());
+		this.closeButton = new MyButton(1235, 15, 32, 32, CommonImage.getBUTTON_CLOSE());
 		this.closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);

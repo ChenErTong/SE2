@@ -1,5 +1,10 @@
 package ui;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+
 import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
@@ -22,13 +27,11 @@ public class mainForUITest2 {
 		}
 		
 		String userID = "010000001";
-
-		//new Frame_Login(userID);
-		//new Frame_Inventory(userID);
-		//new Frame_Transfer(userID);
-	//	new Frame_Courier(userID);
-		new Frame_Branch(userID);
-
+		new Frame_Login(userID);
+//		new Frame_Inventory(userID);
+	//	new Frame_Transfer(userID);
+//		new Frame_Courier(userID);
+//		new Frame_Branch(userID);
 
 	}
 }
