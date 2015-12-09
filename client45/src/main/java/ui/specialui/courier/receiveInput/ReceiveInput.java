@@ -3,6 +3,7 @@ package ui.specialui.courier.receiveInput;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import ui.image.CourierImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
@@ -86,8 +87,6 @@ public class ReceiveInput extends MyJPanel{
 			public void actionPerformed(ActionEvent e) {
 				if(!ReceiveInput.this.searchOrder(checkBoard.getText())){
 					new MyNotification(ReceiveInput.this, "不存在该订单号", Color.RED);
-				}else{
-					checkBoard.setText(null);
 				}
 			}
 		});
@@ -108,7 +107,12 @@ public class ReceiveInput extends MyJPanel{
 	 */
 	private boolean searchOrder(String orderID) {
 		OrderBLService orderController = ControllerFactory.getOrderController();
-		order = orderController.inquireOrder(orderID);
+		try {
+			order = orderController.inquireOrder(orderID);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		
 		if(order == null) return false;
 		
@@ -151,13 +155,25 @@ public class ReceiveInput extends MyJPanel{
 		}
 		AccountBLService accountController = ControllerFactory.getAccountController();
 
-		AccountVO account = accountController.find(frame_Courier.getID());
-		account.ordersID.add(order.ID);
-		accountController.updateAccount(account);
+		AccountVO account;
+		try {
+			account = accountController.find(frame_Courier.getID());
+			account.ordersID.add(order.ID);
+			accountController.updateAccount(account);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
+		
 		order.recipientTime = time;
 		order.recipientName = name;
 		//更新订单信息
-		controller.updateOrder(order);
+		try {
+			controller.updateOrder(order);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		return 0;
 	}
 	

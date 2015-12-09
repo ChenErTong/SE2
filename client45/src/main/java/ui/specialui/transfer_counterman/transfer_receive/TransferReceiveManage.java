@@ -1,10 +1,13 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
+import java.awt.Color;
+import java.rmi.RemoteException;
 import state.CommodityState;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import businesslogic.ControllerFactory;
@@ -34,9 +37,9 @@ public class TransferReceiveManage extends MyJPanel{
 		this.add(produceArrivalList);
 	}
 
-	public boolean produceArrivalList(Frame_Transfer frame) {
+	public int produceArrivalList(Frame_Transfer frame) {
 		String[] data = arrivalCommodity.getData();
-		if(data == null) return false;
+		if(data == null) return -1;
 		//TODO
 		//到达单生成步骤
 		TransferBLService transferController = ControllerFactory.getTransferController();
@@ -46,10 +49,16 @@ public class TransferReceiveManage extends MyJPanel{
 		 * 我把这里的接口改成单个commodity了
 		 * @author Ann
 		 */
-		TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), data[0]);
-		transferController.save(arrivalList);
-		transferController.submit(arrivalList);
-		return true;
+		try {
+			TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), data[0]);
+			transferController.save(arrivalList);
+			transferController.submit(arrivalList);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
+		
+		return 0;
 	}
 
 	public void refresh() {

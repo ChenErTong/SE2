@@ -1,10 +1,13 @@
 package ui.specialui.branch_conuterman.driverInfoManage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
+import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import businesslogic.ControllerFactory;
@@ -83,7 +86,11 @@ public class DriverInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(418, 202, 63, 21, "编号", 18, true));
 		fields[5] = new MyJTextField(470, 200, 150, 30);
 		DriverBLService branchController = ControllerFactory.getDriverController();
-		fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
+		try {
+			fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
+		} catch (RemoteException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.add(new MyJLabel(355, 282, 103, 21, "行驶证期限", 18, true));
 		fields[6] = new MyJTextField(470, 280, 150, 30);

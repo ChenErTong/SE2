@@ -2,6 +2,7 @@ package ui.specialui.courier.timeAndCostManager;
 
 import java.awt.Color;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import state.ExpressType;
 import ui.image.CourierImage;
@@ -87,10 +88,17 @@ public class TimeAndCostManager extends MyJPanel{
 			commodities[i] = commodityList.get(i);
 		}
 		
-		BigDecimal cost = controller.getCost(commodities, senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
-		String arrivalDate = controller.getArrivalDate(senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
+		BigDecimal cost = null;
+		String arrivalDate = null;
+		try {
+			cost = controller.getCost(commodities, senderInfo[2],
+					receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+			arrivalDate = controller.getArrivalDate(senderInfo[2],
+					receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
+		} catch (RemoteException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 
 		MyNotification n = new MyNotification(this, "预计到达时间\n" + arrivalDate, Color.GREEN);
 		

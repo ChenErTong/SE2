@@ -3,6 +3,7 @@ package ui.specialui.transfer_counterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
@@ -141,10 +142,11 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("produceArrivalList")){
 			//生成到达单
-			if(((TransferReceiveManage)subPanel).produceArrivalList(this)){
+			int result = ((TransferReceiveManage)subPanel).produceArrivalList(this);
+			if(result == 0){
 				new MyNotification(this, "成功生成到达单", Color.GREEN);
 				((TransferReceiveManage)subPanel).refresh();
-			}else{
+			}else if(result == 1){
 				new MyNotification(this, "请完成中转到达单信息填写", Color.RED);
 			}
 		}
@@ -172,9 +174,16 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder = transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
-		transferController.save(transferOrder);
-		transferController.submit(transferOrder);
+		TransferOrderVO transferOrder;
+		try {
+			transferOrder = transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
+			transferController.save(transferOrder);
+			transferController.submit(transferOrder);	
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return false;
+		}
+		
 		return true;
 	}
 	
@@ -200,9 +209,16 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder = transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
-		transferController.save(transferOrder);
-		transferController.submit(transferOrder);
+		TransferOrderVO transferOrder;
+		try {
+			transferOrder = transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+			transferController.save(transferOrder);
+			transferController.submit(transferOrder);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return false;
+		}
+		
 		return true;
 	}
 	
@@ -228,9 +244,16 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder = transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
-		transferController.save(transferOrder);
-		transferController.submit(transferOrder);
+		TransferOrderVO transferOrder;
+		try {
+			transferOrder = transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
+			transferController.save(transferOrder);
+			transferController.submit(transferOrder);}
+		catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return false;
+		}
+		
 		return true;
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import ui.image.BranchImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
@@ -175,7 +176,12 @@ public class DriverInfoManage extends MyJPanel {
 	 * @param facilityId 
 	 */
 	private boolean searchDriver(String driverId) {	
-		driver = driverController.findDriver(driverId);
+		try {
+			driver = driverController.findDriver(driverId);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		if(driver == null){
 			return false;
 		}		
@@ -196,10 +202,14 @@ public class DriverInfoManage extends MyJPanel {
 	public int addDriver() {
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
-		//TODO ui麻烦看一下 branchID可以在organizationbl里拿到（getAllBranchNumbers）
 		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], new BigDecimal(0), data[6], data[3], id.substring(0, 6));
 		System.out.println(driver.ID+"--print in ui");
-		driverController.addDriver(driver);
+		try {
+			driverController.addDriver(driver);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		driverController.confirmOperation();
 		return 0;
 	}
@@ -217,7 +227,12 @@ public class DriverInfoManage extends MyJPanel {
 		driver.ID = data[5];
 		driver.WorkTime = data[6];
 		
-		driverController.modifyDriver(driver);
+		try {
+			driverController.modifyDriver(driver);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		driverController.confirmOperation();
 		return 0;
 	}
@@ -226,7 +241,12 @@ public class DriverInfoManage extends MyJPanel {
 		if(id == null){
 			return 2;
 		}
-		driverController.deleteDriver(driver);
+		try {
+			driverController.deleteDriver(driver);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		driverController.confirmOperation();
 		return 0;
 	}

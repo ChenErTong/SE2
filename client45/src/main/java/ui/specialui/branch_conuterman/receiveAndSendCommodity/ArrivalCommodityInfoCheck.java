@@ -1,7 +1,9 @@
 package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 
 import state.CommodityState;
 import ui.image.TransferImage;
@@ -12,6 +14,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -72,7 +75,12 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 
 	private void showOrderInfo(String orderId){
 		OrderBLService orderController = ControllerFactory.getOrderController();
-		order = orderController.inquireOrder(orderId);
+		try {
+			order = orderController.inquireOrder(orderId);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		orderInfo.setText("订单编号" + order.ID + "\n");
 		orderInfo.append("寄件人信息：\n");
 		orderInfo.append("姓名：" + order.senderName + "\t");
@@ -99,11 +107,17 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		//未选中任何订单
 		if(row == -1) return 1;
 		//选中订单，将其转化成到达单
-		BranchArrivalListVO arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
-		branchController.save(arrivalList);
-		branchController.submit(arrivalList);
-		row = -1;
-		return 0;
+		BranchArrivalListVO arrivalList;
+		try {
+			arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
+			branchController.save(arrivalList);
+			branchController.submit(arrivalList);
+			row = -1;
+			return 0;
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 	}
 	
 	/**
@@ -112,8 +126,13 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	private void setOrderList(){
 		orders.clear();
 		branchController = ControllerFactory.getBranchController();
-		for (String orderID : branchController.getAllOrderNumber()) {
-			orders.addRow(new String[]{orderID});
+		try {
+			for (String orderID : branchController.getAllOrderNumber()) {
+				orders.addRow(new String[]{orderID});
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
 		}
 	}
 	

@@ -1,13 +1,15 @@
 package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
+import java.awt.Color;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import ui.image.BranchImage;
 import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
 import vo.accountvo.AccountVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
@@ -52,7 +54,13 @@ public class SendCommodity extends MyJPanel{
 	private void setCourier(Frame_Branch frame){
 		//快递员
 		OrganizationBLService organizationController = ControllerFactory.getOrganizationController();
-		ArrayList<AccountVO> couriers = organizationController.getAccountByOrganizationID(frame.getID().substring(0, 6));
+		ArrayList<AccountVO> couriers = null;;
+		try {
+			couriers = organizationController.getAccountByOrganizationID(frame.getID().substring(0, 6));
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		String[] courierInfo = null;
 		if(couriers.size() > 0){
 			courierInfo = new String[couriers.size()];
@@ -73,9 +81,15 @@ public class SendCommodity extends MyJPanel{
 			return 1;
 		}
 		String courierName = courierInfo.split(" ")[1];
-		DeliveryListVO deliveryList = branchController.getDeliveryList(orderID, courierName);
-		branchController.save(deliveryList);
-		branchController.submit(deliveryList);
-		return 0;
+		DeliveryListVO deliveryList;
+		try {
+			deliveryList = branchController.getDeliveryList(orderID, courierName);
+			branchController.save(deliveryList);
+			branchController.submit(deliveryList);
+			return 0;
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 	}
 }

@@ -2,6 +2,7 @@ package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import state.ExpressType;
 import state.PackageType;
@@ -79,7 +80,13 @@ public class OrderInput extends MyJPanel {
 			}
 		}
 
-		String id = controller.getOrderId();
+		String id;
+		try {
+			id = controller.getOrderId();
+		} catch (RemoteException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
 		for(int i = 0; i < commodities.length; ++i){
@@ -87,10 +94,17 @@ public class OrderInput extends MyJPanel {
 			commodities[i].setOrderID(id);
 		}
 		
-		BigDecimal cost = controller.getCost(commodities, senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]));
-		String arrivalDate = controller.getArrivalDate(senderInfo[2],
-				receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
+		BigDecimal cost = null;
+		String arrivalDate = null;;
+		try {
+			cost = controller.getCost(commodities, senderInfo[2],
+					receiverInfo[2], ExpressType.getType(commodityInfo[2]));
+			arrivalDate = controller.getArrivalDate(senderInfo[2],
+					receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
+		} catch (RemoteException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 
 		MyNotification n = new MyNotification(this, "预计到达时间\n" + arrivalDate, Color.GREEN);
 		
@@ -116,7 +130,12 @@ public class OrderInput extends MyJPanel {
 				GetDate.getDate(), arrivalDate, cost, commodityList,
 				PackageType.getType(commodityInfo[1]),
 				ExpressType.getType(commodityInfo[2]));
-		controller.addOrder(order);
+		try {
+			controller.addOrder(order);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		return 0;
 	}
 

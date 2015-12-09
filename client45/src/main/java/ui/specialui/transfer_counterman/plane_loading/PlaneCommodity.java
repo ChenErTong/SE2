@@ -1,7 +1,9 @@
 package ui.specialui.transfer_counterman.plane_loading;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
@@ -13,6 +15,7 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
+import ui.myui.MyNotification;
 import ui.specialui.transfer_counterman.Frame_Transfer;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -78,7 +81,13 @@ public class PlaneCommodity extends MyJPanel {
 	
 	private void showOrder(MyEmptyTextArea orderInfo, String orderId) {
 		OrderBLService orderController = ControllerFactory.getOrderController();
-		OrderVO order = orderController.inquireOrder(orderId);
+		OrderVO order = null;
+		try {
+			order = orderController.inquireOrder(orderId);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		orderInfo.setText("订单编号" + order.ID + "\n");
 		orderInfo.append("货物信息：\n");	
 		for(CommodityVO commodity: order.commodities){
@@ -94,7 +103,13 @@ public class PlaneCommodity extends MyJPanel {
 	 */
 	private void setOrdersID() {	
 		BranchBLService branchController = ControllerFactory.getBranchController();
-		ArrayList<String> ordersID = branchController.getAllOrderNumber();
+		ArrayList<String> ordersID = null;
+		try {
+			ordersID = branchController.getAllOrderNumber();
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		if(ordersID != null){
 			for (String orderID : ordersID) {
 				orderList.addRow(new String[]{orderID});

@@ -3,6 +3,7 @@ package ui.specialui.branch_conuterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
@@ -75,8 +76,13 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			if(loadingList != null){
 				// TODO
 				BranchBLService branchController = ControllerFactory.getBranchController();
-				branchController.save(loadingList);
-				branchController.submit(loadingList);
+				try {
+					branchController.save(loadingList);
+					branchController.submit(loadingList);
+				} catch (RemoteException e1) {
+					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+					return;
+				}
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = new LoadingListUI(loadingList);
@@ -133,7 +139,6 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 				((DriverInfoManage) subPanel).refresh();
 			}
 		}
-		
 	}
 
 	/**

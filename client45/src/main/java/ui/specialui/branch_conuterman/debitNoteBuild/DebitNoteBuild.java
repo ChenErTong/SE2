@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import state.ReceiptType;
 import ui.image.BranchImage;
@@ -22,87 +23,109 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.accountblservice.AccountBLService;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import businesslogicservice.orderblservice.OrderBLService;
+
 /**
  * 收款单建立界面
+ * 
  * @author czw
  * @time 2015年11月22日下午2:20:29
  */
-public class DebitNoteBuild extends MyJPanel{
+public class DebitNoteBuild extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField courierId;
 	private MyButton searchCourier;
 	private MyEmptyTextArea courierBill;
-	
-	public DebitNoteBuild(Frame_Branch frame){
+
+	public DebitNoteBuild(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		
+
 		this.add(new MyJLabel(550, 30, 210, 45, "收款单建立", 30, true));
 		this.add(new MyJLabel(385, 119, 105, 21, "快递员编号", 20, true));
-		
+
 		courierId = new MyJTextField(500, 115, 250, 30);
 		courierId.setOnlyInteger(9);
 		this.add(courierId);
-		searchCourier = new MyButton(760, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
+		searchCourier = new MyButton(760, 115, 35, 35,
+				LoginImage.getBUTTON_LOGISTIC());
 		searchCourier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!DebitNoteBuild.this.searchCourier(courierId.getText())){
+				if (!DebitNoteBuild.this.searchCourier(courierId.getText())) {
 					new MyNotification(frame, "不存在该快递员", Color.RED);
-				}				
+				}
 			}
 		});
 		this.add(searchCourier);
-		
+
 		this.add(new MyJLabel(545, 190, 189, 21, "快递员当日收款信息", 18, true));
 		courierBill = new MyEmptyTextArea(410, 190, 440, 405);
 		this.add(courierBill);
-		
+
 		MyButton produceDebitNote = new MyButton(575, 630, 111, 33,
 				BranchImage.getBUTTON_SKD());
 		produceDebitNote.setActionCommand("produceDebitNote");
 		produceDebitNote.addActionListener(frame);
 		this.add(produceDebitNote);
 	}
-	
+
 	/**
 	 * 清空界面上所有数据
 	 */
-	public void refresh(){
+	public void refresh() {
 		courierId.setText(null);
 		courierBill.setText(null);
 	}
-	
+
 	/**
 	 * 查询快递员
-	 * @param courierId 
+	 * 
+	 * @param courierId
 	 * @return
 	 */
 	private boolean searchCourier(String courierId) {
-		AccountBLService acountController = ControllerFactory.getAccountController();
-		AccountVO account = acountController.find(courierId);
-		if(account == null) return false;
+		AccountBLService acountController = ControllerFactory
+				.getAccountController();
+		AccountVO account = null;
+		try {
+			account = acountController.find(courierId);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
+		if (account == null)
+			return false;
 		courierBill.setText("快递员编号：" + courierId);
-		if(account.ordersID.size() == 0){
+		if (account.ordersID.size() == 0) {
 			courierBill.setText("该快递员当日未收款");
-		}else{
-			OrderBLService orderController = ControllerFactory.getOrderController();
-			OrderVO order;
-			for(int i = 0; i < account.ordersID.size(); ++i){
-				order = orderController.inquireOrder(account.ordersID.get(i));
-				courierBill.append("\n订单编号：" + order.ID + "\t费用：" + order.money + "\t收款日期：" + order.recipientTime);
+		} else {
+			OrderBLService orderController = ControllerFactory
+					.getOrderController();
+
+			try {
+				OrderVO order;
+				for (int i = 0; i < account.ordersID.size(); ++i) {
+					order = orderController.inquireOrder(account.ordersID
+							.get(i));
+					courierBill.append("\n订单编号：" + order.ID + "\t费用："
+							+ order.money + "\t收款日期：" + order.recipientTime);
+				}
+			} catch (RemoteException e) {
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				return true;
 			}
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 建立收款单
+	 * 
 	 * @return
 	 */
 	public int produceDebitNote() {
 		String text = courierBill.getText();
-		if(text.equals("")){
+		if (text.equals("")) {
 			return 1;
 		}
 		String[] lines = text.split("\n");
@@ -114,14 +137,22 @@ public class DebitNoteBuild extends MyJPanel{
 		for (int i = 1; i < lines.length; ++i) {
 			infos = lines[i].split("\t");
 			orderID.add(infos[0].substring(5));
-			money=money.add(new BigDecimal(infos[1].substring(3)));
+			money = money.add(new BigDecimal(infos[1].substring(3)));
 			date = infos[2].substring(5);
 		}
-		DebitAndPayBillBLService controller = ControllerFactory.getDebitAndPayBillController();
-		DebitBillVO debitBillVO = new DebitBillVO(controller.getExpenseID(), ReceiptType.DEBIT, courierID, money, orderID, date);
-		controller.addDebitBill(debitBillVO);
-		controller.save(debitBillVO);
-		controller.submit(debitBillVO);
-		return 0;
+		DebitAndPayBillBLService controller = ControllerFactory
+				.getDebitAndPayBillController();
+		DebitBillVO debitBillVO;
+		try {
+			debitBillVO = new DebitBillVO(controller.getExpenseID(),
+					ReceiptType.DEBIT, courierID, money, orderID, date);
+			controller.addDebitBill(debitBillVO);
+			controller.save(debitBillVO);
+			controller.submit(debitBillVO);
+			return 0;
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return 2;
+		}
 	}
 }

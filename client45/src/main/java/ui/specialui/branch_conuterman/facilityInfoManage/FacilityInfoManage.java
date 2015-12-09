@@ -3,11 +3,11 @@ package ui.specialui.branch_conuterman.facilityInfoManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import ui.image.BranchImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTextField;
@@ -176,7 +176,12 @@ public class FacilityInfoManage extends MyJPanel {
 	 * @param facilityId 
 	 */
 	private boolean searchFacility(String facilityId) {
-		facility = facilityController.findFacility(facilityId);
+		try {
+			facility = facilityController.findFacility(facilityId);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		if(facility == null){
 			return false;
 		}		
@@ -197,7 +202,12 @@ public class FacilityInfoManage extends MyJPanel {
 		if(data == null) return 1;
 		//TODO 此处要添加branchID  branchID可以在organizationbl里拿到（getAllBranchNumbers）
 		facility = new FacilityVO(null, null, data[2], data[4], data[1], data[3], data[0], id.substring(0, 6));
-		facilityController.addFacility(facility);
+		try {
+			facilityController.addFacility(facility);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		facilityController.confirmOperation();
 		return 0;
 	}
@@ -214,7 +224,12 @@ public class FacilityInfoManage extends MyJPanel {
 		facility.facilityIdString=data[2];
 		facility.engineCode=data[3];
 		facility.dateString=data[4];
-		facilityController.modifyFacility(facility);
+		try {
+			facilityController.modifyFacility(facility);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		facilityController.confirmOperation();
 		return 0;
 	}
@@ -223,7 +238,12 @@ public class FacilityInfoManage extends MyJPanel {
 		if(id == null){
 			return 2;
 		}
-		facilityController.deleteFacility(facility);
+		try {
+			facilityController.deleteFacility(facility);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		facilityController.confirmOperation();
 		return 0;
 	}

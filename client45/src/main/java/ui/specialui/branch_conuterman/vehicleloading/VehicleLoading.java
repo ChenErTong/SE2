@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import ui.image.BranchImage;
 import ui.image.TransferImage;
@@ -100,7 +101,13 @@ public class VehicleLoading extends MyJPanel {
 		if(ordersID == null) return new BigDecimal(0);
 		OrderBLService order_info = ControllerFactory.getOrderController();
 		for (int i = 0; i < data.length; i++) {
-			OrderVO order = order_info.inquireOrder(data[i][0]);
+			OrderVO order = null;;
+			try {
+				order = order_info.inquireOrder(data[i][0]);
+			} catch (RemoteException e) {
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				return new BigDecimal(0.0);
+			}
 			if(order == null){
 				new MyNotification(this, "不存在订单号\n" + data[i][0], Color.RED);
 				return new BigDecimal(-1);
@@ -128,6 +135,11 @@ public class VehicleLoading extends MyJPanel {
 		}
 		new MyNotification(this, "成功生成装车单", Color.GREEN);
 		
-		return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
+		try {
+			return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
+		} catch (RemoteException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return null;
+		}
 	}
 }
