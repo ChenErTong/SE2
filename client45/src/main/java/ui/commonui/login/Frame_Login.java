@@ -4,12 +4,19 @@ package ui.commonui.login;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 import dataservice.userdataservice.LoginInfo;
 import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.UserIdentity;
 import ui.image.CommonImage;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -46,6 +53,8 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 	private UserIdentity iden;
 	static String senderID = "123";
 	boolean flag = false;
+	
+	private MyButton login ;
 
 	private Panel_Login totalPanel = new Panel_Login(this);
 	
@@ -54,11 +63,28 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Login(this);
 		this.add(totalPanel);
 		this.setBackground(CommonImage.TEST_BACKGROUND);
+		
+		login = new MyButton(571,580,137,30,LoginImage.getBUTTON_LOGIN());
+		login.setActionCommand("login");
+		login.registerKeyboardAction(this, 
+		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 
+		        JComponent.WHEN_IN_FOCUSED_WINDOW); 
+		login.addKeyListener(new KeyAdapter(){ 
+			
+		    public void keyPressed(KeyEvent event){ 
+		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
+		    		login.doClick(); 
+		    	} 
+	    	} 
+		}); 
+		login.addActionListener(this);
+		totalPanel.add(login);
 	}
+
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("login")){
+		if(e.getSource()==login){
 			String [] data = totalPanel.getData();
 			if(data!=null){
 				UserController  userController = ControllerFactory.getUserController();

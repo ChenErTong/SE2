@@ -72,23 +72,26 @@ public class Panel_Login extends MyJPanel{
 		keepPassword.addActionListener(frame_Login);
 		this.add(keepPassword);
 		
-		login = new MyButton(571,580,137,30,LoginImage.getBUTTON_LOGIN());
+	/*	login = new MyButton(571,580,137,30,LoginImage.getBUTTON_LOGIN());
 		login.setActionCommand("login");
+		System.out.println("111");
 		login.registerKeyboardAction(frame_Login, 
 		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 
 		        JComponent.WHEN_IN_FOCUSED_WINDOW); 
+		System.out.println("112");
 		login.addKeyListener(new KeyAdapter(){ 
 			
 		    public void keyPressed(KeyEvent event){ 
-		    	
+		    	System.out.println("113");
 		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
-		    	//	System.out.println("111");
+		    		System.out.println("114");
 		    		login.doClick(); 
+		    		System.out.println("115");
 		    	} 
 	    	} 
 		}); 
 		login.addActionListener(frame_Login);
-		this.add(login);
+		this.add(login);*/
 	}
 	
 	public String[] getData(){
