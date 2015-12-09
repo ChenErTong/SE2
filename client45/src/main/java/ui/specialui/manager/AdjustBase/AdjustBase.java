@@ -35,7 +35,6 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private SearchBaseInfo baseInfo;
 	private MyButton add;
 	private MyButton modify;
-	//private MyButton deleteButton;
 	private MyButton deleteButton;
 	private MyButton modifyButton;
 	private MyJTable table;
@@ -112,7 +111,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			if(addBase.getData()==null){
 				new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 			}
-			if(!this.isTheSameCity(data)){
+			if(this.isTheSameCity(data)){
 				new MyNotification(this,"出发城市和到达城市不能相同！",Color.RED);
 			}
 			if((!this.isLegal(data[3]))||(!this.isLegal(data[2]))){
@@ -248,32 +247,21 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		}
 		return false;
 	}
-	/**
-	 * 判断一个字符串是否为数字
-	 * @param num
-	 * @return 是否是数字
-	 */
-	private boolean isDigit(String num) {
-		if (num.length() == 0) {
-			return false;
-		}
-		for(int i = 0; i < num.length(); i++) {
-			if (!Character.isDigit(num.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
 
-	private boolean isLegal(String num){
-		if(this.isDigit(num)){
-			return false;
-		}else{
-			if(Double.parseDouble(num)<0){
+	/**
+	 * 判断输入的距离、单价是否合法
+	 * @param num
+	 * @return true为合法，false为不合法
+	 */
+	private boolean isLegal (String num){
+		
+		try{
+			if(BigDecimal.valueOf(Double.parseDouble(num)).compareTo(BigDecimal.ZERO)<0){
 				return false;
 			}
+		}catch(NumberFormatException e){
+			return false;
 		}
-		
 		return true;
 	}
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
+import businesslogic.fundbl.BankAccountController;
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import state.PayBillItem;
@@ -97,35 +98,24 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 	}
 
 	/**
-	 * 判断一个字符串是否为数字
+	 * 判断输入的付款金额是否合法
 	 * @param num
-	 * @return 是否是数字
+	 * @return true为合法，false为不合法
 	 */
-	private boolean isDigit(String num) {
-		if (num.length() == 0) {
-			return false;
-		}
-		for(int i = 0; i < num.length(); i++) {
-			if (!Character.isDigit(num.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private boolean isLegal(String num){
-		if(!this.isDigit(num)){
-			return false;
-		}else{
-			if(Double.parseDouble(num)<0){
-				return false;
-			}
-		}
+	private boolean isLegal (String num){
 		
+		try{
+			if(BigDecimal.valueOf(Double.parseDouble(num)).compareTo(BigDecimal.ZERO)<0){
+				return false;
+			}
+		}catch(NumberFormatException e){
+			return false;
+		}
 		return true;
 	}
+	
 	/**
-	 * 显示所有的收款单
+	 * 显示所有的付款单
 	 */
 	public void showAll(){
 		table = payReceiptList.getTable();
@@ -183,56 +173,26 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			String[] data = addPaybill.getData();
 			if(data==null){
 					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
-			}else if(this.isLegal(data[1])){
+			}else if(!this.isLegal(data[1])){
 				new MyNotification(this,"输入的付款金额不合法！",Color.RED);
 			}else{
 				ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
 						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					addPaybill.refresh();
-					new MyNotification(this,"付款单添加成功！",Color.GREEN);
+					BankAccountController bankController = ControllerFactory.getBankAccountController();
+					ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
+					if(rsg_2.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						addPaybill.refresh();
+						new MyNotification(this,"付款单添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"该账户无法完成付款！",Color.RED);
+						new MyNotification(this,"付款单添加失败！",Color.RED);
+					}
+					
 				}else{
 					new MyNotification(this,"付款单添加失败！",Color.RED);
 				}
-				/*switch(i){//String iD, String date, ReceiptType type, double money, String payerName, String accountID,	PayBillItem items, String remarks
-				case 0:ResultMessage rsg = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.RentMoney,data[3]));
-						if(rsg.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addPaybill.refresh();
-							new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"付款单添加失败！",Color.RED);
-						}
-				case 1:ResultMessage rsg1 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.CARRIGE,data[3]));
-						if(rsg1.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addPaybill.refresh();
-							new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"付款单添加失败！",Color.RED);
-						}
-				case 2:ResultMessage rsg2 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.SALARY,data[3]));
-						if(rsg2.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addPaybill.refresh();
-							new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"付款单添加失败！",Color.RED);
-						}
-				case 3:	ResultMessage rsg3 = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
-						PAY,Double.parseDouble(data[4]),data[0],data[2],PayBillItem.BONUS,data[3]));
-						if(rsg3.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addPaybill.refresh();
-							new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"付款单添加失败！",Color.RED);
-						}*/
-				//}
 			}
 		}else if(e.getActionCommand().equals("ModifyPayReceipt")){
 			table = payReceiptList.getTable();
@@ -307,57 +267,25 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		String[] data = modifyPaybill.getData();
 		if(data==null){
 			new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
-		}else if(this.isLegal(data[1])){
+		}else if(!this.isLegal(data[1])){
 			new MyNotification(this,"付款金额输入不合法！",Color.RED);
 		}else{
 			ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
 					PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
-				this.showAll();
-				addPaybill.refresh();
-				new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				BankAccountController bankController = ControllerFactory.getBankAccountController();
+				ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
+				if(rsg_2.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					modifyPaybill.refresh();
+					new MyNotification(this,"付款单修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"该账户无法完成付款！",Color.RED);
+					new MyNotification(this,"付款单修改失败！",Color.RED);
+				}
 			}else{
 				new MyNotification(this,"付款单修改失败！",Color.RED);
 			}
-		/*	int i = Integer.parseInt(data[4]);
-			switch(i){
-			case 0:ResultMessage rsg = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.RentMoney,data[3]));
-					if(rsg.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						modifyPaybill.refresh();
-						new MyNotification(this,"付款单修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"付款单修改失败！",Color.RED);
-					}
-			case 1:ResultMessage rsg1 = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.CARRIGE,data[3]));
-					if(rsg1.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						modifyPaybill.refresh();
-						new MyNotification(this,"付款单修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"付款单修改失败！",Color.RED);
-					}
-			case 2:ResultMessage rsg2 = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.SALARY,data[3]));
-					if(rsg2.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						modifyPaybill.refresh();
-						new MyNotification(this,"付款单修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"付款单修改失败！",Color.RED);
-					}
-			case 3:	ResultMessage rsg3 = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
-					PAY,Double.parseDouble(data[1]),data[0],data[2],PayBillItem.BONUS,data[3]));
-					if(rsg3.equals(ResultMessage.SUCCESS)){
-						this.showAll();
-						modifyPaybill.refresh();
-						new MyNotification(this,"付款单修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"付款单修改失败！",Color.RED);
-					}
-			}*/
 		}
 	}
 }

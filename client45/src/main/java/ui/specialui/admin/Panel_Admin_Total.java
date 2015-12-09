@@ -34,8 +34,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	
 	private UserInfo userInfo;
 	private UserDetails userDetails;
-	private MyButton commonButton = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMADD());
-	private MyButton modifyButton = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMMODIFY());
+	private MyButton commonButton ;
+	private MyButton modifyButton ;
 	private MyJTable table;
 	
 	/**
@@ -85,7 +85,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		userDetails = new UserDetails();
 		userDetails.add(new MyJLabel(230,5,120,30,"新增用户",18,true));
 		this.add(userDetails);
-	
+		
+		commonButton  = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMADD());
 		commonButton.setActionCommand("AddUser");
 		commonButton.addActionListener(this);
 		this.add(commonButton);
@@ -162,9 +163,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			String[] data = userDetails.getData();
 			if(userDetails.getData()==null){
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-			}//else if(this.limitIdentity(data[4], data[5])){
-				//new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-			//}
+			}else if(!this.limitIdentity(data[4], data[5])){
+				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
+			}
 			else{
 				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
@@ -183,6 +184,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			this.repaint();
 			this.add(userDetails);
 			
+			modifyButton = new MyButton(890, 670, 120, 30,AdminImage.getBUTTON_CONFIRMMODIFY());
 			modifyButton.setActionCommand("CheckModify");
 			modifyButton.addActionListener(this);
 			this.add(modifyButton);
@@ -280,9 +282,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		String[] data = userDetails.getData();
 		if(userDetails.getData()==null){
 			new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-		}//else if(this.limitIdentity(data[4], data[5])){
-			//new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-		//}
+		}else if(!this.limitIdentity(data[4], data[5])){
+			new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
+		}
 		else{
 			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 			if(rsg.equals(ResultMessage.SUCCESS)){
@@ -371,15 +373,15 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	 * @return 是否匹配
 	 */
 	private boolean limitIdentity(String iden,String authority){
-		if(iden.equals("总经理")&&(!authority.equals("总经理权限"))){
+		if(iden.equals("总经理")&&(!(authority.equals("总经理权限")))){
 			return false;
-		}else if(iden.equals("管理员")&&(!authority.equals("管理员权限"))){
+		}else if(iden.equals("管理员")&&(!(authority.equals("管理员权限")))){
 			return false;
-		}else if(!iden.equals("总经理")&&(authority.equals("总经理权限"))){
+		}else if(!(iden.equals("总经理"))&&(authority.equals("总经理权限"))){
 			return false;
-		}else if(!iden.equals("管理员")&&(authority.equals("管理员权限"))){
+		}else if(!(iden.equals("管理员"))&&((authority.equals("管理员权限")))){
 			return false;
-		}else if(!iden.equals("财务人员")&&(authority.equals("高级财务权限"))){
+		}else if(!(iden.equals("财务人员"))&&(authority.equals("高级财务权限"))){
 			return false;
 		}
 		return true;

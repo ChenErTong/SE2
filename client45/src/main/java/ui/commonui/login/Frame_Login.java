@@ -18,7 +18,6 @@ import ui.image.CommonImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyJFrame;
-import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.admin.Frame_Admin;
@@ -40,10 +39,16 @@ import ui.specialui.transfer_counterman.Frame_Transfer;
  * @author zsq
  * @time 2015/11/23 15:14:55
  */
-@SuppressWarnings("unused")
+/**
+ * 添加回车登录
+ * @author zsq
+ * @time 2015/12/08 10:51:01
+ */
 
+@SuppressWarnings("unused")
 public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
+
 	private MyJTextField userIdField;
 	private MyJTextField passwordField;	
 	

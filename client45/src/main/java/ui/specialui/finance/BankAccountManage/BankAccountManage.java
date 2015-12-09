@@ -190,9 +190,15 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 						data[1],new BigDecimal(data[2]),null));
 				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					addBankAccount.refresh();
-					new MyNotification(this,"账户添加成功！",Color.GREEN);
+					ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
+					if(rsg_2.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						addBankAccount.refresh();
+						new MyNotification(this,"账户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"账户添加失败！",Color.RED);
+					}
+
 				}else{
 					new MyNotification(this,"账户添加失败！",Color.RED);
 				}
@@ -209,31 +215,19 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 
 	}
 	/**
-	 * 判断一个字符串是否为数字
+	 * 判断输入的付款金额是否合法
 	 * @param num
-	 * @return 是否是数字
+	 * @return true为合法，false为不合法
 	 */
-	private boolean isDigit(String num) {
-		if (num.length() == 0) {
-			return false;
-		}
-		for(int i = 0; i < num.length(); i++) {
-			if (!Character.isDigit(num.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private boolean isLegal(String num){
-		if(!this.isDigit(num)){
-			return false;
-		}else{
-			if(Double.parseDouble(num)<0){
-				return false;
-			}
-		}
+	private boolean isLegal (String num){
 		
+		try{
+			if(BigDecimal.valueOf(Double.parseDouble(num)).compareTo(BigDecimal.ZERO)<0){
+				return false;
+			}
+		}catch(NumberFormatException e){
+			return false;
+		}
 		return true;
 	}
 	
@@ -263,10 +257,14 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 				data[1],new BigDecimal(data[2]),null));
 		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("ModifySucceed!");
-			this.showAll();
-			modifyAccountInfo.refresh();
-			new MyNotification(this,"账户修改成功！",Color.GREEN);		
+			ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
+			if(rsg_2.equals(ResultMessage.SUCCESS)){
+				this.showAll();
+				modifyAccountInfo.refresh();
+				new MyNotification(this,"账户修改成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"账户修改失败！",Color.RED);
+			}
 		}else{
 			new MyNotification(this,"账户修改失败！",Color.RED);
 		}

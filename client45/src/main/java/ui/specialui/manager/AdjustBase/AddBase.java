@@ -56,11 +56,9 @@ public class AddBase extends MyTranslucentPanel{
 			}
 			
 		});
-		distances.setOnlyDouble();
 		this.add(distances);
 	
 		price = new MyJTextField(375,140,150,30);
-		price.setOnlyDouble();
 		this.add(price);
 	}
 	
