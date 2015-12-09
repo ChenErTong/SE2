@@ -53,7 +53,8 @@ public class AccountTrans {
 			String phone = vo.Phone;
 			BigDecimal salary = vo.Salary;
 			String workTime = vo.WorkTime;
-			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime);
+			String branchID = vo.branchID;
+			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID);
 		}
 	}
 

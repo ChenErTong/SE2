@@ -69,7 +69,8 @@ public class FacilityTrans {
 			BigDecimal salary = vo.Salary;
 			String workTime = vo.WorkTime;
 			String carID = vo.carID;
-			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID);
+			String branchID = vo.branchID;
+			return new DriverPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime, carID,branchID);
 		}
 	}
 

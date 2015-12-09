@@ -36,7 +36,7 @@ public class AccountPO extends PersistentObject{
 	private ArrayList<String> ordersID;
 	
 	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
-			String workTime) {
+			String workTime,String organizationID) {
 		super(ID);
 		this.Duty = duty;
 		this.Name = name;
@@ -45,7 +45,8 @@ public class AccountPO extends PersistentObject{
 		this.Phone = phone;
 		this.Salary = salary;
 		this.WorkTime = workTime;
-		ordersID = new ArrayList<String>();
+		this.organizationID=organizationID;
+		this.ordersID = new ArrayList<String>();
 	}
 
 
