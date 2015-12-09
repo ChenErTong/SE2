@@ -46,7 +46,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 		MyJLabel receiptStateLabel = new MyJLabel(295,10,120,30,"选择单据类别",14,true);
 		this.add(receiptStateLabel);
 		
-		selectButton = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
+		selectButton = new MyButton(395+150+5,10,30,30,LoginImage.getBUTTON_LOGISTIC());
 		selectButton.setActionCommand("SearchReceipt");;
 		selectButton.addActionListener(handle);
 			

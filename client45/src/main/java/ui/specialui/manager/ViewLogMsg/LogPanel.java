@@ -103,7 +103,7 @@ public class LogPanel extends MyTranslucentPanel{
 		//showAll.addActionListener(panel);
 		
 		this.add(search);
-		this.add(showAll);	
+		//this.add(showAll);	
 	}
 	/**
 	 * 初始化表格

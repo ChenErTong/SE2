@@ -65,7 +65,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		MyJLabel day = new MyJLabel(388,75,30,30,"日",16,true);
 		this.add(day);
 		
-		check = new MyButton(608,75,30,30,LoginImage.getBUTTON_LOGISTIC());
+		check = new MyButton(172+3*123+5,75,30,30,LoginImage.getBUTTON_LOGISTIC());
 		check.setActionCommand("ViewIncomState");
 		check.addActionListener(this);
 		this.add(check);

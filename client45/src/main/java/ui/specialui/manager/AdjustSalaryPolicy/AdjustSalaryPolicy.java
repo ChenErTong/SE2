@@ -55,7 +55,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	}
 
 	private void initComponent(FrameManager frameManager) {
-		this.add(new MyJLabel(530, 20, 300, 40, "公司职员薪水策略制定", 30, true));
+		this.add(new MyJLabel(510, 20, 320, 40, "公司职员薪水策略制定", 30, true));
 		
 		addPolicy = new AddPolicy();
 		this.add(addPolicy);

@@ -81,7 +81,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		
 		
 	
-		check = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
+		check = new MyButton(172+3*123+5,75,30,30,LoginImage.getBUTTON_LOGISTIC());
 		check.setActionCommand("ViewBusinessTable");
 		//check.addActionListener(frame_Finance);
 		check.addActionListener(this);

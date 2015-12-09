@@ -46,14 +46,14 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 		//	this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
 		//	this.add(new MyJLabel(270,10,120,30,"选择到达城市",16,true));
 			this.add(new MyJLabel(20,10,180,30,"输入常量ID",16,true));
-			baseID = new MyJTextField(140,10,120,30);
+			baseID = new MyJTextField(140,10,150,30);
 			this.add(baseID);
 		//	startCityList = new MyJComboBox(140,10,120,30,startCity);
 		//	this.add(startCityList);
 	
 			//arrivalCityList = new MyJComboBox(390,10,150,30,arrivalCity);
 			//this.add(arrivalCityList);
-			search = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
+			search = new MyButton(300,10,30,30,LoginImage.getBUTTON_LOGISTIC());
 			search.setActionCommand("SearchBase");
 			search.addActionListener(handle);
 			this.add(search);
@@ -80,7 +80,7 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 						
-		jsp.setBounds(15, 50, 590, 495);
+		jsp.setBounds(15, 50, 590, 495-27);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());

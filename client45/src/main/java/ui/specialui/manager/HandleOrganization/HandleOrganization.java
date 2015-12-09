@@ -305,7 +305,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			table =organizationInfo.getTable();
 			this.remove(organizationDetails);
 			this.remove(commonButton);
-			this.remove(modifyButton);
+		//	this.remove(modifyButton);
 			
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要查看的机构！",Color.RED);

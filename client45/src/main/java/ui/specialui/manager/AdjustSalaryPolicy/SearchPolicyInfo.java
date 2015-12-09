@@ -58,10 +58,10 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 		//this.add(policyTypeBox);
 		
 		this.add(new MyJLabel(20,10,180,30,"输入常量ID",16,true));
-		policyID = new MyJTextField(140,10,120,30);
+		policyID = new MyJTextField(140,10,150,30);
 		this.add(policyID);	
 	
-		search = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
+		search = new MyButton(300,10,30,30,LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("Search");
 		search.addActionListener(handle);
 		this.add(search);
@@ -90,7 +90,7 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 				head.setForeground(Color.BLACK);
 				head.setResizingAllowed(false);
 						
-				jsp.setBounds(15, 50, 590, 495);
+				jsp.setBounds(15, 50, 590, 495-27);
 				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 				jsp.setOpaque(false);
 				jsp.setBorder(BorderFactory.createEmptyBorder());

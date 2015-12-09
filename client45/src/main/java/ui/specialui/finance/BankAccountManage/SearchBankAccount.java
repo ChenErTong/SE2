@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
@@ -68,7 +69,7 @@ private void initComponent(BankAccountManage manage) {
 	findType = new MyJComboBox(10,40,120,30,types);
 	this.add(findType);
 	
-	searchButton = new MyButton(420,40,120,30,FinanceImage.getBUTTON_SEARCH());
+	searchButton = new MyButton(420,40,30,30,LoginImage.getBUTTON_LOGISTIC());
 	searchButton.setActionCommand("SearchBankAccount");
 	searchButton.addActionListener(manage);
 	this.add(searchButton);

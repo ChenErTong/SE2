@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyFont;
@@ -60,7 +61,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 		//dateList = new MyComboBox(140,10,150,30,14,dates);
 		//this.add(dateList);
 		
-		search = new MyButton(508-30+5,10,120,30,FinanceImage.getBUTTON_SEARCH());
+		search = new MyButton(508-30+5,10,30,30,LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("SearchPayReceipt");
 		search.addActionListener(handle);
 		this.add(search);
