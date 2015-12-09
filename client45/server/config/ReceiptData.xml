@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root IDMaxBit="8" transferArrialIDMaxBit="7" transferDeliveryPost="TRANSDELIVER" transferDeliveryIDMaxBit="7" branchDeliveryPost="BRANDELIVER" transferArrialPost="TRANSARRIAL" adjustPost="ADJUST" exportPost="EXPORT" importPost="IMPORT" branchArrialIDMaxBit="5" maxID="00000000"/>
