@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.orderblservice.OrderBLService;
-import ui.myui.MyJLabel;
+
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;

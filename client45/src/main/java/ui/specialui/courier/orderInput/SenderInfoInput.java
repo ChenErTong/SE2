@@ -1,5 +1,8 @@
 package ui.specialui.courier.orderInput;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 
 import ui.Config.JComboBoxOfChina;
@@ -32,6 +35,16 @@ public class SenderInfoInput extends MyTranslucentPanel{
 		this.add(new MyJLabel(50, 186, 40, 20, "单位", 15, true));
 		
 		NameField = new MyJTextField(100, 100, 130, 30);
+		NameField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==NameField){
+					PhoneField.requestFocus();
+				}
+			}
+			
+		});
 		this.add(NameField);
 		
 		PhoneField = new MyJTextField(320, 100, 130, 30);
@@ -49,6 +62,17 @@ public class SenderInfoInput extends MyTranslucentPanel{
 	    this.add(city);
 	   
 		AddressField = new MyJTextField(280, 142, 170, 30);
+		AddressField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==AddressField){
+					OfficeField.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(AddressField);
 		
 		OfficeField = new MyJTextField(100, 183, 350, 30);

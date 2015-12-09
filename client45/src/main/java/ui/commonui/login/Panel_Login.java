@@ -2,15 +2,9 @@ package ui.commonui.login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJRadioButton;
@@ -28,7 +22,6 @@ public class Panel_Login extends MyJPanel{
 	private MyJTextField userIdField;
 	private MyPasswordField passwordField;
 	private MyJRadioButton keepPassword;
-	private MyButton login;
 	private MyButton search;
 	
 	public Panel_Login(Frame_Login frame_Login) {
@@ -71,27 +64,7 @@ public class Panel_Login extends MyJPanel{
 		keepPassword= new MyJRadioButton(645,495,200,30,"记住密码");
 		keepPassword.addActionListener(frame_Login);
 		this.add(keepPassword);
-		
-	/*	login = new MyButton(571,580,137,30,LoginImage.getBUTTON_LOGIN());
-		login.setActionCommand("login");
-		System.out.println("111");
-		login.registerKeyboardAction(frame_Login, 
-		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 
-		        JComponent.WHEN_IN_FOCUSED_WINDOW); 
-		System.out.println("112");
-		login.addKeyListener(new KeyAdapter(){ 
-			
-		    public void keyPressed(KeyEvent event){ 
-		    	System.out.println("113");
-		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
-		    		System.out.println("114");
-		    		login.doClick(); 
-		    		System.out.println("115");
-		    	} 
-	    	} 
-		}); 
-		login.addActionListener(frame_Login);
-		this.add(login);*/
+	
 	}
 	
 	public String[] getData(){

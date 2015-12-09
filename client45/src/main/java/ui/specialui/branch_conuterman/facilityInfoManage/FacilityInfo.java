@@ -1,5 +1,8 @@
 package ui.specialui.branch_conuterman.facilityInfoManage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.facilityblservice.FacilityBLService;
 import ui.myui.MyJLabel;
@@ -21,10 +24,30 @@ public class FacilityInfo extends MyTranslucentPanel{
 		fields = new MyJTextField[5];
 		this.add(new MyJLabel(78, 42, 60, 25, "车牌号", 18, true));
 		fields[0] = new MyJTextField(150, 40, 130, 30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(78, 102, 60, 25, "底盘号", 18, true));
 		fields[1] = new MyJTextField(150, 100, 130, 30);
 		fields[1].setOnlyInteger(9);
+		fields[1].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[3].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(60, 162, 100, 25, "车辆代号", 18, true));
 		fields[2] = new MyJTextField(150, 160, 130, 30);
@@ -35,6 +58,16 @@ public class FacilityInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(60, 222, 100, 25, "发动机号", 18, true));
 		fields[3] = new MyJTextField(150, 220, 130, 30);
 		fields[3].setOnlyInteger(9);
+		fields[3].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[3]){
+					fields[4].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(60, 282, 80, 25, "购买时间", 18, true));
 		fields[4] = new MyJTextField(150, 280, 130, 30);

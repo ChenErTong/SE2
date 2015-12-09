@@ -1,5 +1,8 @@
 package ui.specialui.branch_conuterman.vehicleloading;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -23,20 +26,64 @@ public class LoadingInfo extends MyTranslucentPanel {
 	private void initComponent() {
 		this.add(new MyJLabel(78, 42, 60, 25, "目的地", 18, true));
 		destination = new MyJTextField(150, 40, 130, 30);
+		destination.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==destination){
+					supercargo.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(destination);
 		
 		this.add(new MyJLabel(78, 92, 60, 25, "押运员", 18, true));
 		supercargo = new MyJTextField(150, 90, 130, 30);
+		supercargo.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==supercargo){
+					facilityId.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(supercargo);
 		
 		this.add(new MyJLabel(60, 142, 100, 25, "汽运编号", 18, true));
 		facilityId = new MyJTextField(150, 140, 130, 30);
 		facilityId.setOnlyInteger(9);
+		facilityId.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==facilityId){
+					facilityNumber.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(facilityId);
 		
 		this.add(new MyJLabel(60, 192, 100, 25, "车辆代号", 18, true));
 		facilityNumber = new MyJTextField(150, 190, 130, 30);
 		facilityNumber.setOnlyInteger(9);
+		facilityNumber.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==facilityNumber){
+					branchId.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(facilityNumber);
 		
 		this.add(new MyJLabel(60, 242, 80, 25, "装车日期", 18, true));

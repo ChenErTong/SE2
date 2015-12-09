@@ -1,5 +1,8 @@
 package ui.specialui.branch_conuterman.driverInfoManage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -22,17 +25,56 @@ public class DriverInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(78, 42, 42, 21, "姓名", 18, true));
 		fields[0] = new MyJTextField(130, 40, 100, 30);
+		fields[0].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[0]){
+					fields[1].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(36, 122, 82, 21, "出生日期", 18, true));
 		fields[1] = new MyJTextField(130, 120, 150, 30);
 		fields[1].setForDate();
-		
+		fields[1].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[1]){
+					fields[2].requestFocus();
+				}
+			}
+			
+		});
 		this.add(new MyJLabel(57, 202, 63, 21, "手机号", 18, true));
 		fields[2] = new MyJTextField(130, 200, 150, 30);
 		fields[2].setOnlyInteger(11);
+		fields[2].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[2]){
+					fields[3].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(36, 282, 82, 21, "车辆单位", 18, true));
 		fields[3] = new MyJTextField(130, 280, 190, 30);
+		fields[3].addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==fields[3]){
+					fields[4].requestFocus();
+				}
+			}
+			
+		});
 		
 		this.add(new MyJLabel(376, 122, 82, 21, "身份证号", 18, true));
 		fields[4] = new MyJTextField(470, 120, 150, 30);

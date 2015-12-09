@@ -51,9 +51,28 @@ public class ReceiveInput extends MyJPanel{
 		
 		checkBoard = new MyJTextField(230, 115, 250, 30);
 		checkBoard.setOnlyInteger(10);
+		checkBoard.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==checkBoard){
+					receiveName.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(checkBoard);
 		
 		receiveName = new MyJTextField(900, 210, 150, 30);
+		receiveName.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				receiveDate.requestFocus();
+			}
+			
+		});
 		this.add(receiveName);
 		
 		receiveDate = new MyJTextField(900, 270, 150, 30);

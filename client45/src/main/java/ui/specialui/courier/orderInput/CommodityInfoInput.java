@@ -20,6 +20,9 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField commodityNumField;
+	private MyJTextField commodityWeightField;
+	private MyJTextField commodityVolumnField ;
+
 	private MyJComboBox packKindField;
 	private MyJComboBox deliveryKindField;
 	private MyJRadioButton choseCompareWeight;
@@ -41,6 +44,17 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		
 		commodityNumField = new MyJTextField(130, 100, 50, 30);
 		commodityNumField.setOnlyInteger(3);
+		commodityNumField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==commodityNumField){
+					choseCompareWeight.requestFocus();
+				}
+				
+			}
+		
+		});
 		this.add(commodityNumField);
 		
 		choseCompareWeight = new MyJRadioButton(300, 104, 180, 20, "是否进行重量矫正");
@@ -55,13 +69,35 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		this.add(deliveryKindField);
 		
 		MyJTextField commodityKindField = new MyJTextField(130, 200, 130, 30);
+		commodityKindField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==commodityKindField){
+					commodityVolumnField.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(commodityKindField);
 			
-		MyJTextField commodityVolumnField = new MyJTextField(160, 250, 100, 30);
-		commodityVolumnField.setOnlyDouble();;
+		commodityVolumnField = new MyJTextField(160, 250, 100, 30);
+		commodityVolumnField.setOnlyDouble();
+		commodityVolumnField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==commodityKindField){
+					commodityWeightField.requestFocus();
+				}
+				
+			}
+			
+		});
 		this.add(commodityVolumnField);
 		
-		MyJTextField commodityWeightField = new MyJTextField(400, 250, 110, 30);
+		commodityWeightField = new MyJTextField(400, 250, 110, 30);
 		commodityWeightField.setOnlyDouble();
 		this.add(commodityWeightField);
 		
