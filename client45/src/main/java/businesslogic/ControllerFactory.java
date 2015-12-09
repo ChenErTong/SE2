@@ -125,7 +125,7 @@ public class ControllerFactory {
 		return transferController;
 	}
 
-	public static LogController getLogController() {
+	public static LogController getLogController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(logController == null) logController = new LogController();
 		return logController;
 	}

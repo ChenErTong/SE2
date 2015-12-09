@@ -19,20 +19,11 @@ import po.LogMessage;
 public class Log {
 	private LogDataService logData;
 
-	private LogDataService getData() {
-		try {
-			return (LogDataService) Naming.lookup(RMIConfig.PREFIX + LogDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	private LogDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (LogDataService) Naming.lookup(RMIConfig.PREFIX + LogDataService.NAME);
 	}
 
-	public Log() {
+	public Log() throws MalformedURLException, RemoteException, NotBoundException {
 		logData = getData();
 	}
 

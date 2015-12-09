@@ -1,5 +1,7 @@
 package businesslogic.logbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,13 +20,21 @@ public class LogController implements LogBLService {
 	private Log logBL;
 	private static LogController controller;
 
-	public LogController() {
+	public LogController() throws MalformedURLException, RemoteException, NotBoundException {
 		logBL = new Log();
 	}
 
 	public static LogController getInstance() {
 		if (controller == null) {
-			controller = new LogController();
+			try {
+				controller = new LogController();
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (NotBoundException e) {
+				e.printStackTrace();
+			}
 		}
 		return controller;
 	}
@@ -47,19 +57,14 @@ public class LogController implements LogBLService {
 	/**
 	 * @see LogBLService#show()
 	 */
-	public ArrayList<LogMessage> show() {
-		try {
-			return logBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ArrayList<LogMessage> show() throws RemoteException {
+		return logBL.show();
 	}
 
 	/**
 	 * @see LogBLService#showInDate(String)
 	 */
-	public ArrayList<LogMessage> showInDate(String date) {
+	public ArrayList<LogMessage> showInDate(String date) throws RemoteException {
 		try {
 			return logBL.show(date);
 		} catch (RemoteException e) {
