@@ -1,7 +1,10 @@
 package ui.specialui.transfer_counterman.transfer_receive;
 
 import java.awt.Color;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
 import state.CommodityState;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -42,7 +45,13 @@ public class TransferReceiveManage extends MyJPanel{
 		if(data == null) return -1;
 		//TODO
 		//到达单生成步骤
-		TransferBLService transferController = ControllerFactory.getTransferController();
+		TransferBLService transferController;
+		try {
+			transferController = ControllerFactory.getTransferController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 		/*ArrayList<String> order = new ArrayList<String>();
 		order.add(data[0]);*/
 		/**

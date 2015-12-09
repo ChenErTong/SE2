@@ -3,8 +3,11 @@ package ui.specialui.transfer_counterman.plane_loading;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -80,7 +83,13 @@ public class PlaneCommodity extends MyJPanel {
 	}
 	
 	private void showOrder(MyEmptyTextArea orderInfo, String orderId) {
-		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderBLService orderController;
+		try {
+			orderController = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		OrderVO order = null;
 		try {
 			order = orderController.inquireOrder(orderId);
@@ -102,7 +111,13 @@ public class PlaneCommodity extends MyJPanel {
 	 * 得到所有订单号
 	 */
 	private void setOrdersID() {	
-		BranchBLService branchController = ControllerFactory.getBranchController();
+		BranchBLService branchController;
+		try {
+			branchController = ControllerFactory.getBranchController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		ArrayList<String> ordersID = null;
 		try {
 			ordersID = branchController.getAllOrderNumber();

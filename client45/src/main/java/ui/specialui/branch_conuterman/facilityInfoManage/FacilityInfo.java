@@ -3,7 +3,10 @@ package ui.specialui.branch_conuterman.facilityInfoManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.facilityblservice.FacilityBLService;
 import ui.myui.MyJLabel;
@@ -54,7 +57,14 @@ public class FacilityInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(60, 162, 100, 25, "车辆代号", 18, true));
 		fields[2] = new MyJTextField(150, 160, 130, 30);
 		fields[2].setOnlyInteger(9);
-		FacilityBLService facilityController = ControllerFactory.getFacilityController();
+		
+		FacilityBLService facilityController = null;
+		try {
+			facilityController = ControllerFactory.getFacilityController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
+		
 		try {
 			fields[2].setText(facilityController.getID(frame.getID().substring(0, 6)));
 		} catch (RemoteException e1) {

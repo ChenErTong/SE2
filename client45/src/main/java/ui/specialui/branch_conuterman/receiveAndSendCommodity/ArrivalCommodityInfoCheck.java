@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import state.CommodityState;
@@ -74,7 +76,13 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	}
 
 	private void showOrderInfo(String orderId){
-		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderBLService orderController = null;
+		try {
+			orderController = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		try {
 			order = orderController.inquireOrder(orderId);
 		} catch (RemoteException e) {
@@ -125,7 +133,12 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	 */
 	private void setOrderList(){
 		orders.clear();
-		branchController = ControllerFactory.getBranchController();
+		try {
+			branchController = ControllerFactory.getBranchController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		try {
 			for (String orderID : branchController.getAllOrderNumber()) {
 				orders.addRow(new String[]{orderID});

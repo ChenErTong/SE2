@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import state.ReceiptType;
 import ui.image.BranchImage;
 import ui.image.LoginImage;
@@ -84,8 +87,15 @@ public class DebitNoteBuild extends MyJPanel {
 	 * @return
 	 */
 	private boolean searchCourier(String courierId) {
-		AccountBLService acountController = ControllerFactory
-				.getAccountController();
+		AccountBLService acountController;
+			try {
+				acountController = ControllerFactory
+						.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				return true;
+			}
 		AccountVO account = null;
 		try {
 			account = acountController.find(courierId);
@@ -99,8 +109,15 @@ public class DebitNoteBuild extends MyJPanel {
 		if (account.ordersID.size() == 0) {
 			courierBill.setText("该快递员当日未收款");
 		} else {
-			OrderBLService orderController = ControllerFactory
-					.getOrderController();
+			OrderBLService orderController;
+			try {
+				orderController = ControllerFactory
+						.getOrderController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				return true;
+			}
 
 			try {
 				OrderVO order;
@@ -140,8 +157,14 @@ public class DebitNoteBuild extends MyJPanel {
 			money = money.add(new BigDecimal(infos[1].substring(3)));
 			date = infos[2].substring(5);
 		}
-		DebitAndPayBillBLService controller = ControllerFactory
-				.getDebitAndPayBillController();
+		DebitAndPayBillBLService controller;
+		try {
+			controller = ControllerFactory
+					.getDebitAndPayBillController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return 2;
+		}
 		DebitBillVO debitBillVO;
 		try {
 			debitBillVO = new DebitBillVO(controller.getExpenseID(),

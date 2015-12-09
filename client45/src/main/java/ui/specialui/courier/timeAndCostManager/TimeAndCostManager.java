@@ -2,8 +2,11 @@ package ui.specialui.courier.timeAndCostManager;
 
 import java.awt.Color;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import state.ExpressType;
 import ui.image.CourierImage;
 import ui.myui.MyButton;
@@ -37,7 +40,12 @@ public class TimeAndCostManager extends MyJPanel{
 	public TimeAndCostManager(Frame_Courier frame){
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		controller = ControllerFactory.getOrderController();
+		
+		try {
+			controller = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.add(new MyJLabel(500, 30, 230, 45, "报价与时间管理", 30, true));
 		

@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
@@ -75,7 +77,14 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			LoadingListVO loadingList = ((VehicleLoading) subPanel).produceLoadingList();
 			if(loadingList != null){
 				// TODO
-				BranchBLService branchController = ControllerFactory.getBranchController();
+				BranchBLService branchController;
+				try {
+					branchController = ControllerFactory.getBranchController();
+				} catch (MalformedURLException | RemoteException
+						| NotBoundException e2) {
+					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+					return;
+				}
 				try {
 					branchController.save(loadingList);
 					branchController.submit(loadingList);

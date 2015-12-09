@@ -3,8 +3,11 @@ package ui.specialui.transfer_counterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
 import ui.image.CommonImage;
@@ -36,7 +39,11 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	public Frame_Transfer(String userID) {
 		super(userID);
 		
-		transferController = ControllerFactory.getTransferController();
+		try {
+			transferController = ControllerFactory.getTransferController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.totalPanel = new Panel_Transfer_Total(this);
 		this.add(totalPanel);

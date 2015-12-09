@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
 import ui.image.BranchImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
@@ -36,7 +39,11 @@ public class DriverInfoManage extends MyJPanel {
 	public DriverInfoManage(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		driverController = ControllerFactory.getDriverController();
+		try {
+			driverController = ControllerFactory.getDriverController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		driverId = new MyJTextField(510, 115, 250, 30);
 		driverId.setOnlyInteger(9);

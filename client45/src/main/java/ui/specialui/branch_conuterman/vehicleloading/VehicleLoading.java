@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import ui.image.BranchImage;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -35,7 +38,11 @@ public class VehicleLoading extends MyJPanel {
 
 		this.add(new MyJLabel(550, 30, 210, 45, "车辆装车管理", 30, true));
 		
-		branchController = ControllerFactory.getBranchController();
+		try {
+			branchController = ControllerFactory.getBranchController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		loadingInfo = new LoadingInfo();
 		this.add(loadingInfo);
@@ -99,7 +106,14 @@ public class VehicleLoading extends MyJPanel {
 		BigDecimal cost = new BigDecimal(0);
 		String[][] data = ordersID.getData();
 		if(ordersID == null) return new BigDecimal(0);
-		OrderBLService order_info = ControllerFactory.getOrderController();
+		OrderBLService order_info;
+		try {
+			order_info = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return new BigDecimal(0.0);
+		}
+		
 		for (int i = 0; i < data.length; i++) {
 			OrderVO order = null;;
 			try {

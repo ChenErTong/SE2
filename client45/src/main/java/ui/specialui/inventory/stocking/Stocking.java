@@ -3,8 +3,11 @@ package ui.specialui.inventory.stocking;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import ui.image.InventoryImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
@@ -33,7 +36,11 @@ public class Stocking extends MyJPanel {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 
-		inventoryController = ControllerFactory.getInventoryController();
+		try {
+			inventoryController = ControllerFactory.getInventoryController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.add(new MyJLabel(576, 30, 128, 32, "库存盘点", 30, true));
 		

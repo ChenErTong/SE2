@@ -1,8 +1,11 @@
 package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 
 import java.awt.Color;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import ui.image.BranchImage;
 import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
@@ -32,7 +35,12 @@ public class SendCommodity extends MyJPanel{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 	
-		branchController = ControllerFactory.getBranchController();
+		try {
+			branchController = ControllerFactory.getBranchController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
+		
 		this.orderID = orderID;
 		
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
@@ -53,7 +61,13 @@ public class SendCommodity extends MyJPanel{
 
 	private void setCourier(Frame_Branch frame){
 		//快递员
-		OrganizationBLService organizationController = ControllerFactory.getOrganizationController();
+		OrganizationBLService organizationController;
+		try {
+			organizationController = ControllerFactory.getOrganizationController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return;
+		}
 		ArrayList<AccountVO> couriers = null;;
 		try {
 			couriers = organizationController.getAccountByOrganizationID(frame.getID().substring(0, 6));

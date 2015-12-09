@@ -3,7 +3,10 @@ package ui.specialui.inventory.check;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import ui.image.LoginImage;
@@ -64,7 +67,13 @@ public class InventoryCheck extends MyJPanel{
 	 * @return
 	 */
 	private boolean searchWithinGap(Frame_Inventory frame) {
-		InventoryBLService inventoryController = ControllerFactory.getInventoryController();
+		InventoryBLService inventoryController;
+		try {
+			inventoryController = ControllerFactory.getInventoryController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		if((formerDate.getText().equals(""))||(latterDate.getText().equals(""))) return false;
 		
 		InventoryViewVO inventoryView = null;

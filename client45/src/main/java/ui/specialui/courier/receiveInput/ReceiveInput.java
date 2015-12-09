@@ -3,7 +3,10 @@ package ui.specialui.courier.receiveInput;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+
 import ui.image.CourierImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
@@ -39,7 +42,11 @@ public class ReceiveInput extends MyJPanel{
 	public ReceiveInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		controller = ControllerFactory.getOrderController();
+		try {
+			controller = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		order = null;
 		
 		this.add(new MyJLabel(550, 30, 200, 45, "收件信息输入", 30, true));	
@@ -106,7 +113,13 @@ public class ReceiveInput extends MyJPanel{
 	 * @return 是否查询到订单
 	 */
 	private boolean searchOrder(String orderID) {
-		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderBLService orderController;
+		try {
+			orderController = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return true;
+		}
 		try {
 			order = orderController.inquireOrder(orderID);
 		} catch (RemoteException e) {
@@ -153,7 +166,13 @@ public class ReceiveInput extends MyJPanel{
 		if(orderInfo.getText().equals("")){
 			return 2;
 		}
-		AccountBLService accountController = ControllerFactory.getAccountController();
+		AccountBLService accountController;
+		try {
+			accountController = ControllerFactory.getAccountController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -1;
+		}
 
 		AccountVO account;
 		try {

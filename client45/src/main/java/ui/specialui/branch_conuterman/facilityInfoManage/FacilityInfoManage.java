@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman.facilityInfoManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import ui.image.BranchImage;
@@ -36,7 +38,12 @@ public class FacilityInfoManage extends MyJPanel {
 	public FacilityInfoManage(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		facilityController = ControllerFactory.getFacilityController();
+		
+		try {
+			facilityController = ControllerFactory.getFacilityController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		facilityId = new MyJTextField(510, 115, 250, 30);
 		facilityId.setOnlyInteger(9);

@@ -2,8 +2,11 @@ package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import state.ExpressType;
 import state.PackageType;
 import ui.image.CourierImage;
@@ -32,7 +35,11 @@ public class OrderInput extends MyJPanel {
 	public OrderInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		controller = ControllerFactory.getOrderController();
+		try {
+			controller = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.add(new MyJLabel(550, 30, 150, 45, "订单输入", 30, true));
 

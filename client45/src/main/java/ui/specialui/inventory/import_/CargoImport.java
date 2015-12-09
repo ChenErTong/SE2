@@ -3,6 +3,8 @@ package ui.specialui.inventory.import_;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -40,7 +42,11 @@ public class CargoImport extends MyJPanel {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		
-		inventoryController  = ControllerFactory.getInventoryController();
+		try {
+			inventoryController  = ControllerFactory.getInventoryController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		}
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
 		
@@ -99,7 +105,13 @@ public class CargoImport extends MyJPanel {
 		String[] commodityInfo = commodities.getData(rowOfOrder);
 		String orderID = commodityInfo[0];
 		String commodityType = commodityInfo[1];
-		OrderBLService orderController = ControllerFactory.getOrderController();
+		OrderBLService orderController;
+		try {
+			orderController = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			return -2;
+		}
 		OrderVO order = null;
 		try {
 			order = orderController.inquireOrder(orderID);
