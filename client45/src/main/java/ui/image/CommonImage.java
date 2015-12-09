@@ -55,11 +55,20 @@ public class CommonImage extends Images{
 	/**
 	 * 下拉框选中
 	 */
-	private static Image COMBOBOX_SELECTED = null;
+	private static ImageIcon COMBOBOX_SELECTED = null;
 	/**
 	 *下拉框未选中
 	 */
-	private static Image COMBOBOX_UNSELECTED = null;
+	private static ImageIcon COMBOBOX_UNSELECTED = null;
+	/**
+	 * 下拉框选中
+	 */
+	private static ImageIcon RADIOBUTTON_SELECTED = null;
+	/**
+	 * 下拉框选中
+	 */
+	private static ImageIcon RADIOBUTTON_UNSELECTED = null;
+	
 	
 	public static ImageIcon[] getBUTTON_CLOSE(){
 		if(BUTTON_CLOSE == null){
@@ -115,17 +124,31 @@ public class CommonImage extends Images{
 		return WITHDRAW;
 	}
 	
-	public static Image getCOMBOBOX_SELECTED(){
+	public static ImageIcon getCOMBOBOX_SELECTED(){
 		if(COMBOBOX_SELECTED == null){
-			COMBOBOX_SELECTED = createImage("image/下拉框选中.png");
+			COMBOBOX_SELECTED = createImageIcon("image/下拉框选中.png");
 		}
 		return COMBOBOX_SELECTED;
 	}
 	
-	public static Image  getCOMBOBOX_UNSELECTED(){
+	public static ImageIcon  getCOMBOBOX_UNSELECTED(){
 		if(COMBOBOX_UNSELECTED == null){
-			COMBOBOX_UNSELECTED = createImage("image/下拉框未选中1.png");
+			COMBOBOX_UNSELECTED = createImageIcon("image/下拉框未选中1.png");
 		}
 		return COMBOBOX_UNSELECTED;
+	}
+	
+	public static ImageIcon  getRADIOBUTTON_SELECTED(){
+		if(RADIOBUTTON_SELECTED == null){
+			RADIOBUTTON_SELECTED = createImageIcon("image/单选框选中.png");
+		}
+		return RADIOBUTTON_SELECTED;
+	}
+	
+	public static ImageIcon  getRADIOBUTTON_UNSELECTED(){
+		if(RADIOBUTTON_UNSELECTED == null){
+			RADIOBUTTON_UNSELECTED = createImageIcon("image/单选框未选中.png");
+		}
+		return RADIOBUTTON_UNSELECTED;
 	}
 }

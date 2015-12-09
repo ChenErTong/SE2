@@ -1,9 +1,16 @@
 package ui.myui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.RenderingHints.Key;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.JRadioButton;
+
+import ui.image.CommonImage;
 /**
  * 单选按钮
  * @author zsq
@@ -20,12 +27,14 @@ public class MyJRadioButton extends JRadioButton {
 	 */
 	public MyJRadioButton(int x, int y, int width, int height, String text){
 		this.setFont(new MyFont(15, true));
-		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setBounds(x, y, width, height);
 		this.setForeground(Color.WHITE);
 		this.setContentAreaFilled(false);
 		this.setSelected(false);
 		this.setText(text);
+		this.setIcon(CommonImage.getRADIOBUTTON_UNSELECTED());
+		this.setSelectedIcon(CommonImage.getRADIOBUTTON_SELECTED());
+		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setVisible(true);
 	}
 }
