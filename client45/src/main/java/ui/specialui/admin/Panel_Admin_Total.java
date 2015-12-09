@@ -156,7 +156,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			ArrayList<UserVO> userVO= userController.show();
 			
 			for(int i = 0; i < userVO.size(); i++){
-				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,userVO.get(i).iden.value,userVO.get(i).authority.value
+				System.out.println(userVO);
+				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
+						userVO.get(i).iden.value,
+						userVO.get(i).authority.value
 							,userVO.get(i).phoneNumber,userVO.get(i).address};
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
