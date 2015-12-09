@@ -1,6 +1,8 @@
 package ui.myui;
 
 import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 /**
  * 文本类
@@ -12,6 +14,7 @@ public class MyJLabel extends JLabel{
 
 	public MyJLabel(int x, int y, int width, int height, String text, int fontSize, boolean isBold){
 		this.setBounds(x, y, width, height);
+		this.setBorder(BorderFactory.createEmptyBorder());
 		if(isBold){
 			this.setFont(new MyFont(fontSize, true));
 		}else{

@@ -2,7 +2,9 @@ package ui.myui;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.border.EmptyBorder;
 /**
  * 下拉框组件
  * @author zsq
@@ -20,7 +22,7 @@ public class MyComboBox extends JComboBox<String>{
 	 * @param str 下拉列表集合
 	 */
 	public MyComboBox(int x, int y, int width, int height,int fontSize, String[] str){
-		
+		this.setBorder(BorderFactory.createEmptyBorder());	
 		this.setBounds(x, y, width, height);
 		for(int i = 0; i < str.length; i++)
 			this.addItem(str[i]);
@@ -40,6 +42,7 @@ public class MyComboBox extends JComboBox<String>{
 	 * @param height 高度
 	 */
 	public MyComboBox(int x,int y,int width,int height){
+		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setFont(new MyFont(15));
 		this.setBounds(x, y, width, height);
 		this.setForeground(Color.BLACK);

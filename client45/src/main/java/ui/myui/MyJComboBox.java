@@ -14,6 +14,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.HashMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -78,7 +79,8 @@ public class MyJComboBox extends JComboBox<String> {
 	public MyJComboBox(int x, int y, int width, int height, String []items) {
 		this.setBounds(x, y, width, height);
 		this.setFont(new MyFont(15));
-		//this.setForeground(Color.WHITE);
+		this.setBorder(BorderFactory.createEmptyBorder());
+		
 		if(items != null){
 			for(int i = 0; i < items.length; i++){
 				this.addItem(items[i]);
@@ -89,53 +91,10 @@ public class MyJComboBox extends JComboBox<String> {
 		}
 		this.setVisible(true);
 
-//		// 调整文本起始位置
-//		this.setPreferredSize(new Dimension(180, 25));
-//		Border empty = new EmptyBorder(0, 10, 0, 0);
-//		CompoundBorder border = new CompoundBorder(this.getBorder(), empty);
-//		this.setBorder(border);
-//
-//		this.setOpaque(false);
-//
-//		Image selected = CommonImage.getCOMBOBOX_SELECTED();
-//		Image unselected = CommonImage.getCOMBOBOX_UNSELECTED();
-//		background = unselected;
-//		this.addFocusListener(new FocusListener() {
-//			public void focusLost(FocusEvent e) {
-//				background = unselected;
-//				MyJComboBox.this.repaint();
-//			}
-//
-//			public void focusGained(FocusEvent e) {
-//				background = selected;
-//				MyJComboBox.this.repaint();
-//			}
-//		});
+//		this.set
+		this.setForeground(Color.WHITE);
+		this.setBackground(Color.BLACK);
 	}
-
-//	public void paintComponent(Graphics g) {
-//		Graphics2D g2d = (Graphics2D) g;
-//		HashMap<Key, Object> mapH = new HashMap<Key, Object>();
-//		// 色差
-//		mapH.put(RenderingHints.KEY_ALPHA_INTERPOLATION,
-//				RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-//		// 抗锯齿
-//		mapH.put(RenderingHints.KEY_TEXT_ANTIALIASING,
-//				RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
-//		mapH.put(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
-//		// 呈现质量开关
-//		mapH.put(RenderingHints.KEY_RENDERING,
-//				RenderingHints.VALUE_RENDER_QUALITY);
-//		// 抖动形状
-//		mapH.put(RenderingHints.KEY_DITHERING,
-//				RenderingHints.VALUE_DITHER_ENABLE);
-//		g2d.setRenderingHints(mapH);
-//		g2d.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), 0,
-//				0, background.getWidth(null), background.getHeight(null), null);
-//		super.paintComponent(g);
-//		this.repaint();
-//	}
 	
 	/**
 	 * 重设选项列表中的数据

@@ -1,6 +1,8 @@
 package ui.myui;
 
 import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JRadioButton;
 /**
  * 单选按钮
@@ -18,6 +20,7 @@ public class MyJRadioButton extends JRadioButton {
 	 */
 	public MyJRadioButton(int x, int y, int width, int height, String text){
 		this.setFont(new MyFont(15, true));
+		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setBounds(x, y, width, height);
 		this.setForeground(Color.WHITE);
 		this.setContentAreaFilled(false);
