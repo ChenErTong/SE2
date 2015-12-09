@@ -21,7 +21,7 @@ import state.ResultMessage;
 import ui.commonui.receipt_constructor.ReceiptConductor;
 import ui.image.ManagerImage;
 import ui.myui.MyButton;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -64,7 +64,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	private MyButton PassThisReceipt;
 	private MyButton DontPassThisReceipt;
 	private MyButton ExportReceipt;
-	private MyJButton search;
+	private MyButton search;
 	
 	public HandleReceipt() throws RemoteException {
 		super(0, 0, 1280, 720);

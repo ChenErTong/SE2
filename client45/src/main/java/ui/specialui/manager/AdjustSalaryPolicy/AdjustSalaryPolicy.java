@@ -4,6 +4,7 @@ package ui.specialui.manager.AdjustSalaryPolicy;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -98,12 +99,17 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		policyID = "";
 		
 
-		ArrayList<PolicyVO> policyVO =  controller.show();
-		
-		for(int i = 0; i < policyVO.size(); i++){
-			Object[] rowData = {policyVO.get(i).userIdentity.value,policyVO.get(i).salaryPolicy.value,policyVO.get(i).remark};
-			tableModel.addRow(rowData);
-			policyPool.add(policyVO.get(i));	
+		try {
+			ArrayList<PolicyVO> policyVO =  controller.show();
+			
+			for(int i = 0; i < policyVO.size(); i++){
+				Object[] rowData = {policyVO.get(i).userIdentity.value,policyVO.get(i).salaryPolicy.value,policyVO.get(i).remark};
+				tableModel.addRow(rowData);
+				policyPool.add(policyVO.get(i));	
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 
@@ -114,32 +120,47 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			if(addPolicy.getData()==null){
 				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
 			}else if(data[0].equals("0")&&data[1].equals("2")){
-				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					System.out.println("AddSucceed!");
-					this.showAll();
-					addPolicy.refresh();
-					new MyNotification(this,"策略添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"策略添加失败！",Color.RED);
+				try {
+					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						System.out.println("AddSucceed!");
+						this.showAll();
+						addPolicy.refresh();
+						new MyNotification(this,"策略添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"策略添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}else if(data[0].equals("5")&&data[1].equals("1")){
-				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					addPolicy.refresh();
-					new MyNotification(this,"策略添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"策略添加失败！",Color.RED);
+				try {
+					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						addPolicy.refresh();
+						new MyNotification(this,"策略添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"策略添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}else if(data[0].equals("2")&&data[1].equals("0")){
-				ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					addPolicy.refresh();
-					new MyNotification(this,"策略添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"策略添加失败！",Color.RED);
+				try {
+					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						addPolicy.refresh();
+						new MyNotification(this,"策略添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"策略添加失败！",Color.RED);
+					}
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("DeletePolicy")){
@@ -194,10 +215,15 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					case 2 : //baseVO = controller.find();break;
 					default :// baseVO = controller.find();break;
 				}*/
-				PolicyVO vo = controller.find(data);
-				String [] rowData = {vo.userIdentity+"",vo.salaryPolicy+"",vo.remark};
-				tableModel.addRow(rowData);
-				policyPool.add(vo);
+				try {
+					PolicyVO vo = controller.find(data);
+					String [] rowData = {vo.userIdentity+"",vo.salaryPolicy+"",vo.remark};
+					tableModel.addRow(rowData);
+					policyPool.add(vo);
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				}
 			/*	for(int i = 0; i <policyVO.size(); i++){
 					String[] rowData = {};
 					tableModel.addRow(rowData);
@@ -215,14 +241,19 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private void deletePolicy() {
 		table = policyInfoList.getTable();
 		
-		ResultMessage rsg = controller.deletePolicy(policyPool.get(table.getSelectedRow()).ID);
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("DeleteSucceed!");
-			this.showAll();
-			this.repaint();
-			new MyNotification(this,"策略删除成功！",Color.GREEN);
-		}else{
-			new MyNotification(this,"策略删除失败！",Color.RED);
+		try {
+			ResultMessage rsg = controller.deletePolicy(policyPool.get(table.getSelectedRow()).ID);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("DeleteSucceed!");
+				this.showAll();
+				this.repaint();
+				new MyNotification(this,"策略删除成功！",Color.GREEN);
+			}else{
+				new MyNotification(this,"策略删除失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 		
 	}
@@ -231,14 +262,19 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		table = policyInfoList.getTable();
 		
 		String[] data = modifyPolicy.getData();
-		ResultMessage rsg = controller.updatePolicy(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("ModifySucceed!");
-			this.showAll();
-			modifyPolicy.refresh();
-			new MyNotification(this,"策略修改成功！",Color.GREEN);		
-		}else{
-			new MyNotification(this,"策略修改失败！",Color.RED);
+		try {
+			ResultMessage rsg = controller.updatePolicy(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("ModifySucceed!");
+				this.showAll();
+				modifyPolicy.refresh();
+				new MyNotification(this,"策略修改成功！",Color.GREEN);		
+			}else{
+				new MyNotification(this,"策略修改失败！",Color.RED);
+			}
+		} catch (RemoteException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
 		}
 	}
 	

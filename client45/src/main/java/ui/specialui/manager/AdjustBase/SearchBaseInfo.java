@@ -11,8 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -29,7 +31,7 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 	private MyJComboBox startCityList;
 	private MyJComboBox arrivalCityList;
 	private MyJTextField baseID;
-	private MyJButton search;
+	private MyButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
 	
@@ -51,7 +53,7 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 	
 			//arrivalCityList = new MyJComboBox(390,10,150,30,arrivalCity);
 			//this.add(arrivalCityList);
-			search = new MyJButton(390,10,90,30,"搜索",16);
+			search = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
 			search.setActionCommand("SearchBase");
 			search.addActionListener(handle);
 			this.add(search);

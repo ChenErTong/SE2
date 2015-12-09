@@ -12,9 +12,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -27,7 +29,7 @@ import ui.myui.MyTranslucentPanel;
 public class LogPanel extends MyTranslucentPanel{
 	
 	private MyEmptyTextArea ta;
-	private MyJButton search,showAll;
+	private MyButton search,showAll;
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;
 	private MyJTable table;
@@ -93,8 +95,8 @@ public class LogPanel extends MyTranslucentPanel{
 	 * 添加按钮
 	 */
 	private void initButton(ViewLogPanel panel){
-		search = new MyJButton(534,10,70,30,"搜索",18);
-		showAll = new MyJButton(0,0,0,0,"显示全部",18);
+		search = new MyButton(534,10,35,35,LoginImage.getBUTTON_LOGISTIC());
+	//	showAll = new MyJButton(0,0,0,0,"显示全部",18);
 		
 		search.setActionCommand("Search");
 		search.addActionListener(panel);

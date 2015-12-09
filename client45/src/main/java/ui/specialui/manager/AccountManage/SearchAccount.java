@@ -10,8 +10,10 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -19,7 +21,7 @@ import ui.myui.MyTranslucentPanel;
 
 public class SearchAccount extends MyTranslucentPanel{
 
-	private MyJButton search ;
+	private MyButton search ;
 	private MyJComboBox userList;
 	private MyJTable	table;
 	private JScrollPane jsp;
@@ -34,7 +36,7 @@ public class SearchAccount extends MyTranslucentPanel{
 		MyJLabel userIdentity = new MyJLabel(35,5,120,30, "请选择员工类别",16,true);
 		this.add(userIdentity);
 		
-		search = new MyJButton(350,5,90,30,"搜索",16);
+		search = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("Search");
 		search.addActionListener( handle);
 		this.add(search);

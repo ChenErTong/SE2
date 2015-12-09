@@ -13,7 +13,7 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptType;
 import state.ResultMessage;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -36,8 +36,8 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @time 2015/11/18 23:57
  */
 public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListener{
-	private static MyJButton modify;
-	private MyJButton cancel;
+//	private static MyJButton modify;
+	//private MyJButton cancel;
 	
 	MyJTable table ;
 	JTextField textField;
@@ -57,7 +57,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		MyJLabel title = new MyJLabel(580, 40, 170, 50, "修改单据数据", 24, true);
 		this.add(title);
 		
-		modify = new MyJButton(475,600-30,100,30,"保存修改",18);
+	/*	modify = new MyJButton(475,600-30,100,30,"保存修改",18);
 		modify.setActionCommand("Modify");
 		modify.addActionListener(this);
 		this.add(modify);
@@ -65,7 +65,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		cancel = new MyJButton(720,600,100,30,"撤销修改",18);
 		cancel.setActionCommand("Cancel");
 		cancel.addActionListener(this);
-		this.add(cancel);	
+		this.add(cancel);	*/
 	}
 	
 	private void initTable(ReceiptType receiptType, ValueObject receipt){

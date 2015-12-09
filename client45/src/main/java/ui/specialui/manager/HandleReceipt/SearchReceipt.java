@@ -13,8 +13,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyColor;
-import ui.myui.MyJButton;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyTranslucentPanel;
@@ -23,7 +25,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 	private JTable table;
 	DefaultTableModel model;
 	
-	private MyJButton selectButton;
+	private MyButton selectButton;
 	private MyJComboBox receiptTypeList;
 	private MyJComboBox receiptStateList;
 	private JScrollPane jsp;
@@ -44,7 +46,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 		MyJLabel receiptStateLabel = new MyJLabel(295,10,120,30,"选择单据类别",14,true);
 		this.add(receiptStateLabel);
 		
-		selectButton = new MyJButton(555,10,90,30,"搜索",14);
+		selectButton = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
 		selectButton.setActionCommand("SearchReceipt");;
 		selectButton.addActionListener(handle);
 			
@@ -103,7 +105,7 @@ public class SearchReceipt extends MyTranslucentPanel{
 		 return data;
 	 }
 	
-	public MyJButton getSearch() {
+	public MyButton getSearch() {
 		return selectButton;
 	}
 
