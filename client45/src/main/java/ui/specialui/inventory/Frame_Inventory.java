@@ -23,7 +23,9 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 		
 		this.returnButton.addActionListener(this);
 		
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
+		
+		this.repaint();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

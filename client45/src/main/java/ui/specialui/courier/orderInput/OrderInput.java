@@ -38,7 +38,7 @@ public class OrderInput extends MyJPanel {
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		this.add(new MyJLabel(550, 30, 150, 45, "订单输入", 30, true));
@@ -52,7 +52,7 @@ public class OrderInput extends MyJPanel {
 		commodities = new CommodityInfoInput();
 		this.add(commodities);
 
-		MyButton confirm = new MyButton(584, 640, 111, 333, CourierImage.getBUTTON_SHENGCHENGDINGDAN());
+		MyButton confirm = new MyButton(584, 640, 111, 33, CourierImage.getBUTTON_SHENGCHENGDINGDAN());
 		confirm.setActionCommand("produceOrder");
 		confirm.addActionListener(frame);
 		this.add(confirm);

@@ -62,27 +62,26 @@ public class FacilityInfo extends MyTranslucentPanel{
 		try {
 			facilityController = ControllerFactory.getFacilityController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
-		try {
-			fields[2].setText(facilityController.getID(frame.getID().substring(0, 6)));
-		} catch (RemoteException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		if(facilityController != null){
+			try {
+				fields[2].setText(facilityController.getID(frame.getID().substring(0, 6)));
+			} catch (RemoteException e1) {
+				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			}
 		}
 		
 		this.add(new MyJLabel(60, 222, 100, 25, "发动机号", 18, true));
 		fields[3] = new MyJTextField(150, 220, 130, 30);
 		fields[3].setOnlyInteger(9);
 		fields[3].addActionListener(new ActionListener(){
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==fields[3]){
 					fields[4].requestFocus();
 				}
 			}
-			
 		});
 		
 		this.add(new MyJLabel(60, 282, 80, 25, "购买时间", 18, true));

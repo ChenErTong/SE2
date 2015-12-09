@@ -42,12 +42,12 @@ public class DriverInfoManage extends MyJPanel {
 		try {
 			driverController = ControllerFactory.getDriverController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		driverId = new MyJTextField(510, 115, 250, 30);
 		driverId.setOnlyInteger(9);
-		searchDriver = new MyButton(770, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
+		searchDriver = new MyButton(770, 110, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		searchDriver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!DriverInfoManage.this.searchDriver(driverId.getText())){

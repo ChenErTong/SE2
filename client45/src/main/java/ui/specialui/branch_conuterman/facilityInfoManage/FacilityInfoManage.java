@@ -42,12 +42,12 @@ public class FacilityInfoManage extends MyJPanel {
 		try {
 			facilityController = ControllerFactory.getFacilityController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		facilityId = new MyJTextField(510, 115, 250, 30);
 		facilityId.setOnlyInteger(9);
-		searchFacility = new MyButton(770, 115, 35, 35, LoginImage.getBUTTON_LOGISTIC());
+		searchFacility = new MyButton(770, 110, 35, 35, LoginImage.getBUTTON_LOGISTIC());
 		searchFacility.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!FacilityInfoManage.this.searchFacility(facilityId.getText())){

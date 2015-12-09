@@ -45,12 +45,12 @@ public class DebitNoteBuild extends MyJPanel {
 		this.setOpaque(false);
 
 		this.add(new MyJLabel(550, 30, 210, 45, "收款单建立", 30, true));
-		this.add(new MyJLabel(385, 119, 105, 21, "快递员编号", 20, true));
+		this.add(new MyJLabel(415, 119, 105, 21, "快递员编号", 20, true));
 
-		courierId = new MyJTextField(500, 115, 250, 30);
+		courierId = new MyJTextField(530, 115, 250, 30);
 		courierId.setOnlyInteger(9);
 		this.add(courierId);
-		searchCourier = new MyButton(760, 115, 35, 35,
+		searchCourier = new MyButton(790, 110, 35, 35,
 				LoginImage.getBUTTON_LOGISTIC());
 		searchCourier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

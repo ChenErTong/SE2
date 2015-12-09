@@ -16,7 +16,7 @@ public class SaveDraft extends MyJFrame implements ActionListener{
 		savePanel = new SaveDraftPanel();
 		this.add(savePanel);
 		this.returnButton.addActionListener(this);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
 		
 	}
 

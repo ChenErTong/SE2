@@ -41,7 +41,7 @@ public class VehicleLoading extends MyJPanel {
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		loadingInfo = new LoadingInfo();
@@ -52,12 +52,14 @@ public class VehicleLoading extends MyJPanel {
 		
 		this.add(new MyJLabel(690, 150, 100, 25, "订单编号", 18, true));
 		MyJTextField orderID = new MyJTextField(780, 150, 150, 30);
+		orderID.setOnlyInteger(10);
 		this.add(orderID);
 		MyButton addOrder = new MyButton(950, 150, 66, 33, BranchImage.getBUTTON_TIANJIA());
 		addOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VehicleLoading.this.addOrderID(orderID.getText());
-				orderID.setText(null);
+				if(VehicleLoading.this.addOrderID(orderID.getText())){
+					orderID.setText(null);
+				}
 			}
 		});
 		this.add(addOrder);
@@ -91,9 +93,12 @@ public class VehicleLoading extends MyJPanel {
 	 * 插入订单编号
 	 * @param text
 	 */
-	protected void addOrderID(String text) {
+	protected boolean addOrderID(String text) {
+		if(text.length() != 10) return false;
+		
 		String[] data = new String[]{text};
 		ordersID.addRow(data);
+		return true;
 	}
 
 	/**

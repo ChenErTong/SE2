@@ -50,7 +50,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
 	}
 
 	@Override

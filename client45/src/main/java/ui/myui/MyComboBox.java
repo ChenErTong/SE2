@@ -31,9 +31,6 @@ public class MyComboBox extends JComboBox<String>{
 		this.setForeground(foreColor);
 		this.setFont(new MyFont(fontSize));
 		this.setVisible(true);
-		
-		
-		
 	}
 	/**
 	 * JComboBox的联动实现

@@ -75,7 +75,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		super(id);
 		totalPanel = new Panel_Login(this);
 		this.add(totalPanel);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
 		
 		login = new MyButton(571+85/2,580,137,30,LoginImage.getBUTTON_LOGIN());
 		login.setActionCommand("login");

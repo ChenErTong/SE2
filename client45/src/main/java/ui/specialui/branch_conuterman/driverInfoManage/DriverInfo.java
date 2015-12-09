@@ -88,16 +88,19 @@ public class DriverInfo extends MyTranslucentPanel{
 		this.add(new MyJLabel(418, 202, 63, 21, "编号", 18, true));
 		fields[5] = new MyJTextField(470, 200, 150, 30);
 		DriverBLService branchController = null;
+		
 		try {
 			branchController = ControllerFactory.getDriverController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
-		try {
-			fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
-		} catch (RemoteException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		if(branchController != null){
+			try {
+				fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
+			} catch (RemoteException e1) {
+				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			}
 		}
 		
 		this.add(new MyJLabel(355, 282, 103, 21, "行驶证期限", 18, true));

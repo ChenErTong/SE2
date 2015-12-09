@@ -50,7 +50,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		
 		this.returnButton.addActionListener(this);
 	
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
+		
+		this.repaint();
 	}
 
 	@Override

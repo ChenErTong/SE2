@@ -44,7 +44,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		try {
 			inventoryController  = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		this.add(new MyJLabel(544, 30, 192, 32, "库存分区调整", 30, true));
@@ -80,6 +80,8 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * @param frame
 	 */
 	private void setBlankPos(Frame_Inventory frame) {
+		if(inventoryController == null) return;
+		
 		try {
 			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
 		} catch (RemoteException e) {
@@ -99,6 +101,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * 设置仓库中货物列表
 	 */
 	private void setImportList(Frame_Inventory frame){
+		if(inventoryController == null) return;
 		ArrayList<InventoryPositionVO> commoditiesExisted;
 		try {
 			commoditiesExisted = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));

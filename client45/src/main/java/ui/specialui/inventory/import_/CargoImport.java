@@ -45,7 +45,7 @@ public class CargoImport extends MyJPanel {
 		try {
 			inventoryController  = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
@@ -157,6 +157,8 @@ public class CargoImport extends MyJPanel {
 	 * @param frame
 	 */
 	private void setBlankPos(Frame_Inventory frame){
+		if(inventoryController == null) return;
+		
 		try {
 			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
 		} catch (RemoteException e) {

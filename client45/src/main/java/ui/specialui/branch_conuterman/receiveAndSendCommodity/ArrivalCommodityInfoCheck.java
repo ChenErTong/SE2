@@ -42,7 +42,13 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	public ArrivalCommodityInfoCheck(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-
+		
+		try {
+			branchController = ControllerFactory.getBranchController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+		}
+		
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
 		
 		orders = new MyJTable(new String[]{"送达订单编号"}, false);
@@ -132,13 +138,10 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	 * 将订单列表显示在左侧列表中
 	 */
 	private void setOrderList(){
+		if(branchController == null) return;
+		
 		orders.clear();
-		try {
-			branchController = ControllerFactory.getBranchController();
-		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
-			return;
-		}
+		
 		try {
 			for (String orderID : branchController.getAllOrderNumber()) {
 				orders.addRow(new String[]{orderID});

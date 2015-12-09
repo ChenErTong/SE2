@@ -29,7 +29,9 @@ public class Frame_Courier extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		
 		this.returnButton.addActionListener(this);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
+		
+		this.repaint();
 	}
 
 	@Override

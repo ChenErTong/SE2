@@ -44,7 +44,7 @@ public class TimeAndCostManager extends MyJPanel{
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
 		this.add(new MyJLabel(500, 30, 230, 45, "报价与时间管理", 30, true));

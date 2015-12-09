@@ -30,7 +30,7 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 		totalPanel.setVisible(true);
 	
 		this.returnButton.addActionListener(this);
-		this.setBackground(CommonImage.TEST_BACKGROUND);
+		this.setBackground(CommonImage.BACKGROUND);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

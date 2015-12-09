@@ -24,14 +24,14 @@ import businesslogicservice.inventoryblservice.InventoryBLService;
 
 public class Stocking extends MyJPanel {
 	private static final long serialVersionUID = 1L;
-	
-	//前一截止点
+
+	// 前一截止点
 	private MyJLabel formerPoint;
 	private MyJTable inventoryCondition;
-	
+
 	private InventoryCheckVO inventoryCheck = null;
 	private InventoryBLService inventoryController;
-	
+
 	public Stocking(Frame_Inventory frame) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
@@ -39,47 +39,51 @@ public class Stocking extends MyJPanel {
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
-		
+
 		this.add(new MyJLabel(576, 30, 128, 32, "库存盘点", 30, true));
-		
+
 		this.add(new MyJLabel(385, 128, 105, 19, "前一截止点:", 18, true));
 		formerPoint = new MyJLabel(495, 128, 110, 19, null, 18, true);
 		this.add(formerPoint);
-		inventoryCondition = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
-		this.add(new MyJScrollPane(415, 150, 510, 410, inventoryCondition));
-	
+		inventoryCondition = new MyJTable(new String[] { "订单编号", "货物种类",
+				"仓库存放位置" }, false);
+		this.add(new MyJScrollPane(385, 150, 510, 410, inventoryCondition));
+
 		this.refreshCondition(frame);
-		
-		MyButton refresh = new MyButton(765, 126, 34, 34, InventoryImage.getBUTTON_REFRESH());
+
+		MyButton refresh = new MyButton(855, 110, 34, 34,
+				InventoryImage.getBUTTON_REFRESH());
 		refresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Stocking.this.refreshCondition(frame)){
+				if (Stocking.this.refreshCondition(frame)) {
 					new MyNotification(frame, "刷新成功", Color.GREEN);
 				}
 			}
 		});
 		this.add(refresh);
-		
-		MyButton stocking = new MyButton(584, 600, 111, 33, InventoryImage.getBUTTON_PD());
+
+		MyButton stocking = new MyButton(584, 600, 111, 33,
+				InventoryImage.getBUTTON_PD());
 		stocking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Stocking.this.snapshot()){
+				if (Stocking.this.snapshot()) {
 					new MyNotification(frame, "盘点成功", Color.GREEN);
 				}
 			}
 		});
 		this.add(stocking);
 	}
-	
+
 	/**
-	 * 进行库存快照，若成功返回true，若库存高于预警值则返回false
-	 * 需要导出到excel表
+	 * 进行库存快照，若成功返回true，若库存高于预警值则返回false 需要导出到excel表
+	 * 
 	 * @return
 	 */
 	private boolean snapshot() {
-		if(inventoryCheck == null) return false;
+		if (inventoryCheck == null)
+			return false;
 		try {
 			inventoryController.exportToExcel(inventoryCheck);
 		} catch (RemoteException e) {
@@ -89,22 +93,31 @@ public class Stocking extends MyJPanel {
 		inventoryCheck = null;
 		return true;
 	}
-	
-	//刷新库存信息
+
+	// 刷新库存信息
 	private boolean refreshCondition(Frame_Inventory frame) {
+		if (inventoryController == null) return false;
+		
 		try {
-			inventoryCheck = inventoryController.checkRecord(frame.getID().substring(0, 4), GetDate.getDate());
+			inventoryCheck = inventoryController.checkRecord(frame.getID()
+					.substring(0, 4), GetDate.getDate());
 		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return false;
 		}
+
 		String point = inventoryCheck.date + inventoryCheck.lotNum;
 		formerPoint.setText(point);
 		ArrayList<InventoryPositionVO> commodities = inventoryCheck.commos;
-		if(commodities != null){
+		if (commodities != null) {
 			for (InventoryPositionVO commodity : commodities) {
-				String position = Integer.toString(commodity.area) + "区" + Integer.toString(commodity.row) + "排" + Integer.toString(commodity.frame) + "架" + Integer.toString(commodity.position) + "位";
-				inventoryCondition.addRow(new String[]{commodity.commodity.ID, commodity.commodity.commodityType, position});
+				String position = Integer.toString(commodity.area) + "区"
+						+ Integer.toString(commodity.row) + "排"
+						+ Integer.toString(commodity.frame) + "架"
+						+ Integer.toString(commodity.position) + "位";
+				inventoryCondition.addRow(new String[] {
+						commodity.commodity.ID,
+						commodity.commodity.commodityType, position });
 			}
 		}
 		return true;
