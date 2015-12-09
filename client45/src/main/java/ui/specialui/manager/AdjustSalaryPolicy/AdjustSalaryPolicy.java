@@ -184,23 +184,27 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			policyPool.clear();
 			policyID  = "";
 		
-			ArrayList<PolicyVO> policyVO = new ArrayList<PolicyVO>();
-			String[] data = policyInfoList.getData();
+			//ArrayList<PolicyVO> policyVO = new ArrayList<PolicyVO>();
+			//String[] data = policyInfoList.getData();
+			String data = policyInfoList.getData();
 			if(data!=null){
-				switch(Integer.parseInt(data[0])){
+				/*switch(Integer.parseInt(data[0])){
 					case 0 :// baseVO = controller.show(SalaryPolicy.BYTIMES)
 					case 1 ://baseVO = controller.find();break;
 					case 2 : //baseVO = controller.find();break;
 					default :// baseVO = controller.find();break;
-			}
-		
-			for(int i = 0; i <policyVO.size(); i++){
-			String[] rowData = {};
-			tableModel.addRow(rowData);
-			policyPool.add(policyVO.get(i));
-			System.out.println("SearchSucceed!");
-				new MyNotification(this,"共有"+table.getColumnCount()+"个员工满足条件！",Color.GREEN);
-			}	
+				}*/
+				PolicyVO vo = controller.find(data);
+				String [] rowData = {vo.userIdentity+"",vo.salaryPolicy+"",vo.remark};
+				tableModel.addRow(rowData);
+				policyPool.add(vo);
+			/*	for(int i = 0; i <policyVO.size(); i++){
+					String[] rowData = {};
+					tableModel.addRow(rowData);
+					policyPool.add(policyVO.get(i));
+					System.out.println("SearchSucceed!");
+					new MyNotification(this,"共有"+table.getColumnCount()+"个员工满足条件！",Color.GREEN);
+				}*/	
 			}else {
 				new MyNotification(this,"请输入查询的薪水类型！",Color.RED);
 			}

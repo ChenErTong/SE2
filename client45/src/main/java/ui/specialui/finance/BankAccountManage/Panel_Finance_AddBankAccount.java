@@ -1,25 +1,16 @@
 package ui.specialui.finance.BankAccountManage;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-/**
- * 进行银行账户添加的半透明Panel
- * @author zsq
- * @version 2015/11/15 23:41
- */
-public class AddBankAccount extends MyTranslucentPanel implements ActionListener{
-	private static final long serialVersionUID = 1L;
 
+public class Panel_Finance_AddBankAccount extends MyTranslucentPanel{
 	private MyJTextField nameField;
 	private MyJTextField balanceField;
-	
-	public AddBankAccount() {
+	public Panel_Finance_AddBankAccount() {
 		super(660,100,550,240);
 		this.initComponent();
+		
 	}
 
 	private void initComponent() {
@@ -33,11 +24,9 @@ public class AddBankAccount extends MyTranslucentPanel implements ActionListener
 		this.add(balance);
 		
 		nameField = new MyJTextField(100,80,150,30);
-		nameField.addActionListener(this);
 		this.add(nameField);
 		
 		balanceField = new MyJTextField(380,80,150,30);
-		balanceField.addActionListener(this);
 		this.add(balanceField);
 		
 	}
@@ -59,22 +48,16 @@ public class AddBankAccount extends MyTranslucentPanel implements ActionListener
 	}
 	
 	public  void setData(String[] data){
+		
 		nameField.setText(data[0]);
 		balanceField.setText(data[1]);
 	}
-	
+
+	private static final long serialVersionUID = 1L;
 	public void refresh() {
 		nameField.setText(null);
 		balanceField.setText(null);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == nameField)
-			balanceField.requestFocus();
-		//	else if (e.getSource() == passText)
-			//loginButton.requestFocus();
-		//	}
-		
-	}
+	
 }

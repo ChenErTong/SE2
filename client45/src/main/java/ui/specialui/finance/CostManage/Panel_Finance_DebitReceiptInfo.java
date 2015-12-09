@@ -1,0 +1,74 @@
+package ui.specialui.finance.CostManage;
+
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+
+import ui.myui.MyFont;
+import ui.myui.MyJLabel;
+import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
+import ui.myui.MyTranslucentPanel;
+/*收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。*/
+public class Panel_Finance_DebitReceiptInfo extends MyTranslucentPanel{
+	private MyJTextField numberField;
+	private MyJTextField courierField;
+	private MyJTextField dateField;
+
+	public Panel_Finance_DebitReceiptInfo() {
+		super(680,100,550,562);
+		this.initComponent();
+	}
+
+	private void initComponent() {
+		this.add(new MyJLabel(40,50,90,30,"收款日期",16,true));
+		this.add(new MyJLabel(290,50,90,30,"收款金额",16,true));
+		this.add(new MyJLabel(40,160,90,30,"收款快递员",16,true));
+		this.add(new MyJLabel(290,160,100,30,"对应订单号",16,true));
+		
+		dateField = new MyJTextField(140,50,120,30);
+		this.add(dateField);
+		numberField = new MyJTextField(380,50,120,30);
+		this.add(numberField);
+		courierField = new MyJTextField(140,160,120,30);
+		this.add(courierField);
+		
+		//the table
+		String[] headers = {"对应订单号"};
+		MyJTable	table = new MyJTable(headers, false);
+		table.setBackground(new Color(40, 42, 66));
+		table.setForeground(Color.WHITE);
+		table.setFont(new MyFont(14));
+					
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
+							  	
+		JScrollPane jsp=new JScrollPane(table);
+		JTableHeader head = table.getTableHeader();
+		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+		head.setFont(new MyFont(14));
+		head.setForeground(Color.BLACK);
+		head.setResizingAllowed(false);
+						
+		jsp.setBounds(390, 160, 130, 300);
+		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+		jsp.setOpaque(false);
+		jsp.setBorder(BorderFactory.createEmptyBorder());
+		jsp.setVisible(true);
+		this.add(jsp);
+		
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	public void setUneditable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

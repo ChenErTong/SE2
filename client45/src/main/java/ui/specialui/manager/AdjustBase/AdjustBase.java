@@ -35,6 +35,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private SearchBaseInfo baseInfo;
 	private MyButton add;
 	private MyButton modify;
+	//private MyButton deleteButton;
 	private MyButton deleteButton;
 	private MyButton modifyButton;
 	private MyJTable table;
@@ -59,12 +60,12 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		basePool = new ArrayList<BaseVO>();
 		baseInfo = new SearchBaseInfo(this);
 		this.add(baseInfo);
-		deleteButton = new MyButton(150,660,150,30,ManagerImage.getBUTTON_DELETEBASE());
+		deleteButton = new MyButton(150,660,150,40,ManagerImage.getBUTTON_DELETEBASE());
 		deleteButton.setActionCommand("DeleteBase");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		modifyButton = new MyButton(350,660,150,30,ManagerImage.getBUTTON_MODIFYBASE());
+		modifyButton = new MyButton(350,660,150,40,ManagerImage.getBUTTON_MODIFYBASE());
 		modifyButton.setActionCommand("ModifyBase");
 		modifyButton.addActionListener(this);
 		this.add(modifyButton);
@@ -169,25 +170,31 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			basePool.clear();
 			baseID  = "";
 			
-			ArrayList<BaseVO> baseVO = new ArrayList<BaseVO>();
-			String[] data = baseInfo.getData();
+			//ArrayList<BaseVO> baseVO = new ArrayList<BaseVO>();
+		//	String[] data = baseInfo.getData();
+			String data = baseInfo.getData();
 			if(data!=null){
-				switch(Integer.parseInt(data[0])){
+				/*switch(Integer.parseInt(data[0])){
 					case 0 :// baseVO = controller.show(SalaryPolicy.BYTIMES)
 					case 1 ://baseVO = controller.find();break;
 					case 2 : //baseVO = controller.find();break;
 					default :// baseVO = controller.find();break;
-				}
+				}*/
+				
+				BaseVO baseVO = controller.find(data);
+				String [] rowData = {baseVO.cityFrom,baseVO.cityTo,baseVO.distance+"",baseVO.price+""};
+				tableModel.addRow(rowData);
+				basePool.add(baseVO);
 			
-				for(int i = 0; i <baseVO.size(); i++){
+			/*	for(int i = 0; i <baseVO.size(); i++){
 				String[] rowData = {};
 				tableModel.addRow(rowData);
 				basePool.add(baseVO.get(i));
 				System.out.println("SearchSucceed!");
 					new MyNotification(this,"共有"+table.getRowCount()+"个常量满足条件！",Color.GREEN);
-				}	
+				}	*/
 				}else {
-					new MyNotification(this,"请输入查询的常量类型！",Color.RED);
+					new MyNotification(this,"请输入查询的常量ID！",Color.RED);
 				}
 		}
 	}

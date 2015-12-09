@@ -16,6 +16,7 @@ import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 /**
  * 查询薪水策略
@@ -23,6 +24,7 @@ import ui.myui.MyTranslucentPanel;
  * @version 2015/12/05 14：30
  */
 public class SearchPolicyInfo  extends MyTranslucentPanel{
+
 	private MyJLabel employeeType;
 	private MyJLabel policyType;
 	private MyJComboBox employeeTypeBox;
@@ -30,27 +32,33 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 	private MyJButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
+	private MyJTextField policyID;
+	
 	public SearchPolicyInfo(AdjustSalaryPolicy handle) {
 		super(50, 100, 620, 560);
 		this.initComponent( handle);
 	}
 
 	private void initComponent(AdjustSalaryPolicy handle) {
-		String [] employeeTypes = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};
+		//String [] employeeTypes = {"快递员","财务人员","中转中心业务员","库存管理人员","营业厅业务员","司机","管理员","总经理"};
 		
-		employeeType = new MyJLabel(20,10,120,30, "请选择员工类别",14,true);
-		this.add(employeeType);
+		//employeeType = new MyJLabel(20,10,120,30, "请选择员工类别",14,true);
+		//this.add(employeeType);
 		
-		policyType = new MyJLabel(300,10,120,30,"请选择策略类别",14,true);
-		this.add(policyType);
+		//policyType = new MyJLabel(300,10,120,30,"请选择策略类别",14,true);
+		//this.add(policyType);
 		
-		 employeeTypeBox= new MyJComboBox(140,10,150,30,employeeTypes);
-		this.add(employeeTypeBox);
+		// employeeTypeBox= new MyJComboBox(140,10,150,30,employeeTypes);
+		//this.add(employeeTypeBox);
 		
-		String [] policyTypes = {"按月","计次","提成"};
-		policyTypeBox = new MyJComboBox(420,10,90,30,policyTypes);
-		this.add(policyTypeBox);
+	//	String [] policyTypes = {"按月","计次","提成"};
+	//	policyTypeBox = new MyJComboBox(420,10,90,30,policyTypes);
+		//this.add(policyTypeBox);
 		
+		this.add(new MyJLabel(20,10,180,30,"输入常量ID",16,true));
+		policyID = new MyJTextField(140,10,120,30);
+		this.add(policyID);	
+	
 		search = new MyJButton(520,10,90,30,"搜索",14);
 		search.setActionCommand("Search");
 		search.addActionListener(handle);
@@ -93,10 +101,14 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 		policyTypeBox.setSelectedItem(data[1]);
 	}
 
-	public String[] getData() {
-		String  data[] = new String[2];
-		data[0] = (String) employeeTypeBox.getSelectedItem();
-		data[1] = (String) policyTypeBox.getSelectedItem();
+	public String getData() {
+		String data = policyID.getText();
+		if(data==null){
+			return null;
+		}
+		//String  data[] = new String[2];
+		//data[0] = (String) employeeTypeBox.getSelectedItem();
+		//data[1] = (String) policyTypeBox.getSelectedItem();
 		return data;
 	}
 	public MyJTable getTable(){

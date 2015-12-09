@@ -16,6 +16,7 @@ import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
 
 /**
@@ -27,6 +28,7 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 
 	private MyJComboBox startCityList;
 	private MyJComboBox arrivalCityList;
+	private MyJTextField baseID;
 	private MyJButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
@@ -37,17 +39,19 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 	}
 	
 	private void initComponent(AdjustBase handle) {
-			String [] startCity = {"上海","南京","杭州","广州"};
-			String [] arrivalCity = {"上海","南京","杭州","广州"};
-			this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
-			this.add(new MyJLabel(270,10,120,30,"选择到达城市",16,true));
-			
-			startCityList = new MyJComboBox(140,10,120,30,startCity);
-			this.add(startCityList);
+		//	String [] startCity = {"上海","南京","杭州","广州"};
+			//String [] arrivalCity = {"上海","南京","杭州","广州"};
+		//	this.add(new MyJLabel(20,10,120,30, "选择出发城市",16,true));
+		//	this.add(new MyJLabel(270,10,120,30,"选择到达城市",16,true));
+			this.add(new MyJLabel(20,10,180,30,"输入常量ID",16,true));
+			baseID = new MyJTextField(140,10,120,30);
+			this.add(baseID);
+		//	startCityList = new MyJComboBox(140,10,120,30,startCity);
+		//	this.add(startCityList);
 	
-			arrivalCityList = new MyJComboBox(390,10,150,30,arrivalCity);
-			this.add(arrivalCityList);
-			search = new MyJButton(550,10,70,30,"搜索",16);
+			//arrivalCityList = new MyJComboBox(390,10,150,30,arrivalCity);
+			//this.add(arrivalCityList);
+			search = new MyJButton(390,10,90,30,"搜索",16);
 			search.setActionCommand("SearchBase");
 			search.addActionListener(handle);
 			this.add(search);
@@ -82,15 +86,20 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 		this.add(jsp);
 	}
 	public void setData(String data[]) {
-		startCityList.setSelectedItem(data[0]);
-		arrivalCityList.setSelectedItem(data[1]);
+		//startCityList.setSelectedItem(data[0]);
+		//arrivalCityList.setSelectedItem(data[1]);
 	}
 
-	public String []getData() {
-		String  data[] = new String[2] ;
-		data[0]= (String) startCityList.getSelectedItem();
-		data[1] =(String) arrivalCityList.getSelectedItem();
+	public String getData() {
+		String data = baseID.getText();
+		if(data==null){
+			return null;
+		}
 		return data;
+		//String  data[] = new String[2] ;
+		//data[0]= (String) startCityList.getSelectedItem();
+		//data[1] =(String) arrivalCityList.getSelectedItem();
+		//return data;
 	}
 	
 	public MyJTable getTable(){
