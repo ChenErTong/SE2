@@ -30,7 +30,7 @@ public class DebitReceiptInfo extends MyTranslucentPanel{
 	private  MyJTable table;
 	
 	public DebitReceiptInfo() {
-		super(680,100,550,240);
+		super(710,100,550,240+30);
 		this.initComponent();
 	}
 

@@ -116,7 +116,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 						iden = userController.show().get(i).iden;
 					}
 				}
-				
 				if(iden==null){
 					new MyNotification(this,"用户名或密码填写错误！",Color.RED);
 				}else if(iden.equals(UserIdentity.ADMIN)){

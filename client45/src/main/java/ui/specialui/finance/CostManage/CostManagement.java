@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -163,7 +165,18 @@ public class CostManagement extends MyJPanel implements ActionListener{
 			showController_2 = ControllerFactory.getRecordController();
 			String[] data = debitReceiptList.getData();
 			if(data!=null){
-				debitbillVO=showController_2.bussinessOneDay(data[0], data[1]);
+				
+				Date current = new Date();
+				String year = data[1];
+				SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+				year = (isDigit(year))?year:sdfYear.format(current);//默认为当年
+				String month = data[2];
+				month = (isDigit(month)) ? ("-" + month) : "";
+				String day = data[3];
+				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
+				String date = year + month + day;
+				
+				debitbillVO=showController_2.bussinessOneDay(data[0], date);
 					Object[] rowData = {debitbillVO.DebitBills};
 					tableModel.addRow(rowData);
 					System.out.println("SearchSucceed!");
@@ -172,5 +185,22 @@ public class CostManagement extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
 			}
 		}
-	}	
+	}
+	
+	/**
+	 * 判断一个字符串是否为数字
+	 * @param num
+	 * @return 是否是数字
+	 */
+	private boolean isDigit(String num) {
+		if (num.length() == 0) {
+			return false;
+		}
+		for(int i = 0; i < num.length(); i++) {
+			if (!Character.isDigit(num.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

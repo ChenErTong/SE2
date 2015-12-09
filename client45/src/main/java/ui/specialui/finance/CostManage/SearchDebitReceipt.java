@@ -3,11 +3,14 @@ package ui.specialui.finance.CostManage;
 import java.awt.Color;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
@@ -15,9 +18,12 @@ import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
+import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+
 
 /**
  * 选择日期进行收款单搜索，并且显示搜索得到的收款单列表
@@ -27,36 +33,50 @@ import ui.myui.MyTranslucentPanel;
 public class SearchDebitReceipt extends MyTranslucentPanel{
 	
 	private MyJLabel chooseBranch;
-	private MyComboBox branchList;
-	private MyComboBox dateList;
+	private MyJComboBox branchList;
+	//private MyComboBox dateList;
 	private MyButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
 	
+	private DateLabel[] dateLabel;
+	private MyJTextField[] input;
+	
 	public SearchDebitReceipt(CostManagement handle) {
-		super(50, 100, 620, 560);
+		super(20, 100, 680, 560);
 		this.initComponent(handle);
 	}
 
 	private void initComponent(CostManagement handle) {
 		
-		chooseBranch = new MyJLabel(20,10,150,30,"请选择营业厅和日期",14,true);
+		MyJLabel year = new MyJLabel(250-90,10,30,30,"年",16,true);
+		this.add(year);
+		
+		MyJLabel month = new MyJLabel(373-90,10,30,30,"月",16,true);
+		this.add(month);
+		
+		MyJLabel day = new MyJLabel(526-30-90,10,30,30,"日",16,true);
+		this.add(day);
+		
+		chooseBranch = new MyJLabel(10,10,60,30,"请选择：",14,true);
 		this.add(chooseBranch);
 	
 		String[] branches = {"南京","上海","杭州","广州"};
-		branchList = new MyComboBox(170,10,150,30,14,branches);
+		branchList = new MyJComboBox(160-90,10,90,30,branches);
 		this.add(branchList);
-		//TODO 
-		String[] dates = {""};
-		dateList = new MyComboBox(330,10,150,30,14,dates);
-		this.add(dateList);
+		 
+		//String[] dates = {""};
+		//dateList = new MyComboBox(330,10,150,30,14,dates);
+		//this.add(dateList);
 		
-		search = new MyButton(490,10,120,30,FinanceImage.getBUTTON_SEARCH());
+		search = new MyButton(280+3*123-90,10,120,30,FinanceImage.getBUTTON_SEARCH());
 		search.setActionCommand("SearchDebitReceipt");
 		search.addActionListener(handle);
 		this.add(search);
 		
+		this.addInput();
 		this.initTable();
+		
 	}
 	private void initTable(){
 		String[] headers = {"收款单编号","收款日期","收款金额","收款快递员","对应订单条形码"};
@@ -76,7 +96,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 								
-		jsp.setBounds(15, 50, 590, 495);
+		jsp.setBounds(15, 50, 590+60, 495);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());
@@ -84,15 +104,51 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		this.add(jsp);
 	}
 	
+	class DateLabel extends JLabel {
+		private static final long serialVersionUID = 1L;
+
+		public DateLabel(String Text) {
+			super(Text, JLabel.LEFT);
+			this.setFont(getFont());
+		}
+	}
+	/**
+	 * 添加输入日期的输入框
+	 */
+	private void addInput() {
+		dateLabel = new DateLabel[3];
+		input = new MyJTextField[3];
+		SimpleDateFormat[] sdf = new SimpleDateFormat[3];
+		String[] date_s = {"年", "月", "日"};
+		String[] dateFormat = {"yyyy", "MM", "dd"};
+		Date curDate = new Date();
+		// 初始化输入框，设置标签和输入框的位置，并且添加标签和输入框
+		for(int i = 0; i < dateLabel.length; i++) {
+			dateLabel[i] = new DateLabel(date_s[i]);
+			sdf[i] = new SimpleDateFormat(dateFormat[i]);
+			input[i] = new MyJTextField(280-90+i*123,10,90,30);
+			input[i].setText(sdf[i].format(curDate));
+			input[i].setFont(getFont());
+			input[i].setHorizontalAlignment(JTextField.CENTER);
+			this.add(input[i]);
+			this.add(dateLabel[i]);
+		}
+	}
+	
 	public void setData(String[] data) {
 		branchList.setSelectedItem(data[0]);
-		dateList.setSelectedItem(data[1]);
+		//dateList.setSelectedItem(data[1]);
 	}
 
 	public String[] getData() {
-		String  data[] = new String[2] ;
+		String  data[] = new String[4] ;
 		data[0] = (String) branchList.getSelectedItem();
-		data[1] = (String) dateList.getSelectedItem();
+		for(int i=1;i<4;i++){
+			data[i] = input[i].getText();
+			if(data[i]==null){
+				return null;
+			}
+		}
 		return data;
 	}
 	

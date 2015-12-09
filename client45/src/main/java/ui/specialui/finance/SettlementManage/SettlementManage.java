@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -156,9 +158,19 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			
 			controller = ControllerFactory.getDebitAndPayBillController();
 			ArrayList<PaymentBillVO> paybillVO = new ArrayList<PaymentBillVO>();
-			String data = payReceiptList.getData();
+			String []data = payReceiptList.getData();
 			if(data!=null){
-				showController.showList(data);
+				
+				Date current = new Date();
+				String year = data[0];
+				SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+				year = (isDigit(year))?year:sdfYear.format(current);//默认为当年
+				String month = data[1];
+				month = (isDigit(month)) ? ("-" + month) : "";
+				String day = data[2];
+				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
+				String date = year + month + day;
+				showController.showList(date);
 				for(int i = 0; i < paybillVO.size(); i++){
 					Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 					tableModel.addRow(rowData);
@@ -228,6 +240,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			}
 		}
 	}
+	
 	/**
 	 * 判断此时添加/修改哪种类型的付款单
 	 * @param num
@@ -260,6 +273,27 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		return data;
 	}
 	
+
+	/**
+	 * 判断一个字符串是否为数字
+	 * @param num
+	 * @return 是否是数字
+	 */
+	private boolean isDigit(String num) {
+		if (num.length() == 0) {
+			return false;
+		}
+		for(int i = 0; i < num.length(); i++) {
+			if (!Character.isDigit(num.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * 修改付款单
+	 */
 	private void modifyPaybill() {
 		table = payReceiptList.getTable();
 		controller = ControllerFactory.getDebitAndPayBillController();
