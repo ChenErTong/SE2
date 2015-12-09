@@ -2,6 +2,9 @@ package transfer;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -14,7 +17,16 @@ public class TestTransfer {
 	@Test
 	public void testTransfer() {
 //		assertTrue(true);
-		MockTransfer mockTransfer = new MockTransfer();
+		MockTransfer mockTransfer = null;
+		try {
+			mockTransfer = new MockTransfer();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		ArrayList<String> orders = new ArrayList<String>();
 		orders.add("My Name is SIDALIN");
 		orders.add("Head first CPP");

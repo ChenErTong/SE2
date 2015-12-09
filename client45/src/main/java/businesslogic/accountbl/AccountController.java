@@ -1,5 +1,7 @@
 package businesslogic.accountbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -13,8 +15,11 @@ import vo.accountvo.AccountVO;
  * @version 创建时间：2015年12月3日 下午3:31:56
  */
 public class AccountController implements AccountBLService {
-	Account AccountBL = new Account();
+	Account AccountBL;
 
+	public AccountController() throws MalformedURLException, RemoteException, NotBoundException {
+		AccountBL = new Account();
+	}
 	/**
 	 * @see AccountBLService#show()
 	 */

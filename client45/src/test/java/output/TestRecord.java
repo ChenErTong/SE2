@@ -1,6 +1,9 @@
 package output;
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.recordbl.RecordController;
@@ -14,7 +17,16 @@ import vo.receiptvo.PaymentBillVO;
 
 public class TestRecord {
 	public static void main(String[] args) {
-		RecordController controller = new RecordController();
+		RecordController controller = null;
+		try {
+			controller = new RecordController();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		ArrayList<String> orderNumbers = new ArrayList<>();
 		orderNumbers.add("123");
 		orderNumbers.add("124");

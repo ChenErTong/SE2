@@ -1,5 +1,7 @@
 package businesslogic.transferbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inv
 	Transfer transfer;
 	TransferDataService transferData;
 
-	public TransferInfo() {
+	public TransferInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		transfer = new Transfer();
 		transferData = transfer.getData();
 	}

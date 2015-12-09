@@ -38,23 +38,14 @@ public class Inventory {
 	private ReceiptInfo_Inventory receiptInfo;
 	private TransferInfo_Inventory transferInfo;
 
-	public Inventory() {
+	public Inventory() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptInfo = new ReceiptInfo();
 		transferInfo = new TransferInfo();
 		inventoryData = getData();
 	}
 
-	public InventoryDataService getData() {
-		try {
-			return (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public InventoryDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (InventoryDataService) Naming.lookup(RMIConfig.PREFIX + InventoryDataService.NAME);
 	}
 
 	/**

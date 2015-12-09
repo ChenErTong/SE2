@@ -1,5 +1,7 @@
 package businesslogic.orderbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class OrderInfo implements OrderInfo_Branch_Transfer {
 	Order order;
 	OrderDataService orderData;
 
-	public OrderInfo() {
+	public OrderInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		order = new Order();
 		orderData = order.getOrderData();
 	}

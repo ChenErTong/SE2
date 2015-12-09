@@ -45,12 +45,12 @@ public class ControllerFactory {
 	private static PolicyController policyController = null;
 	private static TransferController transferController = null;
 	
-	public static FacilityController getFacilityController(){
+	public static FacilityController getFacilityController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(facilityController == null) facilityController = new FacilityController();
 		return facilityController;
 	}
 	
-	public static DriverController getDriverController(){
+	public static DriverController getDriverController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(driverController == null) driverController = new DriverController();
 		return driverController;
 	}
@@ -60,67 +60,67 @@ public class ControllerFactory {
 		return userController;
 	}
 	
-	public static AccountController getAccountController() {
+	public static AccountController getAccountController()  throws MalformedURLException, RemoteException, NotBoundException{
 		if(accountController == null) accountController = new AccountController();
 		return accountController;
 	}
 	
-	public static BaseController getBaseController() {
+	public static BaseController getBaseController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(baseController == null) baseController = new BaseController();
 		return baseController;
 	}
 	
-	public static BranchController getBranchController() {
+	public static BranchController getBranchController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(branchController == null) branchController = new BranchController();
 		return branchController;
 	}
 	
-	public static 	BankAccountController getBankAccountController() {
+	public static 	BankAccountController getBankAccountController()  throws MalformedURLException, RemoteException, NotBoundException{
 		if(bankAccountController == null) bankAccountController = new BankAccountController();
 		return bankAccountController;
 	}
 	
-	public static 	DebitAndPayBillController getDebitAndPayBillController() {
+	public static 	DebitAndPayBillController getDebitAndPayBillController()  throws MalformedURLException, RemoteException, NotBoundException{
 		if(debitAndPayBillController == null) debitAndPayBillController = new DebitAndPayBillController();
 		return debitAndPayBillController;
 	}
 	
-	public static 	DebitAndPayBillShowController getDebitAndPayBillShowController() {
+	public static 	DebitAndPayBillShowController getDebitAndPayBillShowController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(debitAndPayBillShowController == null) debitAndPayBillShowController = new DebitAndPayBillShowController();
 		return debitAndPayBillShowController;
 	}
 	
-	public static InventoryController getInventoryController() {
+	public static InventoryController getInventoryController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(inventoryController == null) inventoryController = new InventoryController();
 		return inventoryController;
 	}
 	
-	public static OrganizationController getOrganizationController() {
+	public static OrganizationController getOrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(organizationController == null) organizationController = new OrganizationController();
 		return organizationController;
 	}
 	
-	public static RecordController getRecordController() {
+	public static RecordController getRecordController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(recordController == null) recordController = new RecordController();
 		return recordController;
 	}
 
-	public static ReceiptController getReceiptController() {
+	public static ReceiptController getReceiptController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(receiptController == null) receiptController = new ReceiptController();
 		return receiptController;
 	}
 	
-	public static OrderController getOrderController(){
+	public static OrderController getOrderController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(orderController == null) orderController = new OrderController();
 		return orderController;
 	}
 	
-	public static  PolicyController getPolicyController(){
+	public static  PolicyController getPolicyController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(policyController == null) policyController = new PolicyController();
 		return policyController;
 	}
 
-	public static TransferController getTransferController() {
+	public static TransferController getTransferController() throws MalformedURLException, RemoteException, NotBoundException {
 		if(transferController == null) transferController = new TransferController();
 		return transferController;
 	}

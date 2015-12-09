@@ -1,5 +1,8 @@
 package fund;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import businesslogic.fundbl.DebitAndPayBill;
@@ -11,7 +14,7 @@ public class MockDebitAndPayBill extends DebitAndPayBill{
 	private DebitAndPayBillVO debitAndPayBillVO;
 	private HashMap<String, String> bankAccounts;
 	
-	public MockDebitAndPayBill(String payID, String ExpenseID, HashMap<String, String> bankAccounts) {
+	public MockDebitAndPayBill(String payID, String ExpenseID, HashMap<String, String> bankAccounts) throws MalformedURLException, RemoteException, NotBoundException {
 		this.payID = payID;
 		this.ExpenseID = ExpenseID;
 		this.bankAccounts = bankAccounts;

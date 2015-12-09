@@ -1,5 +1,7 @@
 package businesslogic.basebl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -16,8 +18,11 @@ import vo.BaseVO;
  * @version 创建时间：2015年12月3日 下午3:32:32
  */
 public class BaseController implements BaseBLService {
-	Base BaseBL = new Base();
+	Base BaseBL ;
 
+	public BaseController() throws MalformedURLException, RemoteException, NotBoundException {
+		BaseBL = new Base();
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		return BaseBL.confirmOperation();

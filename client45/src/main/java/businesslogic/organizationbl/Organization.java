@@ -24,6 +24,7 @@ import vo.FacilityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
+
 /**
  * 
  * @author Ann
@@ -36,26 +37,18 @@ public class Organization {
 	private FacilityInfo_Branch_Transfer facilityInfo;
 	private InventoryInfo_Transfer inventoryInfo;
 
-	public Organization() {
+	public Organization() throws MalformedURLException, RemoteException, NotBoundException {
 		accountInfo = new AccountInfo();
 		facilityInfo = new FacilityInfo();
 		inventoryInfo = new InventoryInfo();
-		try {
-			branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
-			transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
+		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 	}
 
-	public String getBranchID(String city)throws RemoteException  {
+	public String getBranchID(String city) throws RemoteException {
 		String cityCode = CityTrans.getCodeByCity(city);
 		String ID = branchData.getID();
-		return cityCode+ID;
+		return cityCode + ID;
 	}
 
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
@@ -68,7 +61,7 @@ public class Organization {
 		return branchData.delete(organizationID);
 	}
 
-	public ResultMessage updateBranch(BranchVO vo)throws RemoteException  {
+	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
 		return branchData.modify(po);
 	}
@@ -87,42 +80,41 @@ public class Organization {
 		return branchNumbers;
 	}
 
-	public String getTransferID(String city)throws RemoteException  {
-		String cityCode=CityTrans.getCodeByCity(city);
-		return cityCode+transferData.getID();
+	public String getTransferID(String city) throws RemoteException {
+		String cityCode = CityTrans.getCodeByCity(city);
+		return cityCode + transferData.getID();
 	}
 
-	public ResultMessage addTransfer(TransferVO transfer)throws RemoteException  {
+	public ResultMessage addTransfer(TransferVO transfer) throws RemoteException {
 		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transfer.organizationID);
 		transfer.inventories.add(inventoryVO);
 		TransferPO transferPO = TransferTrans.convertVOtoPO(transfer);
 		return transferData.add(transferPO);
 	}
 
-	public ResultMessage deleteTransfer(String organizationID)throws RemoteException  {
+	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
 		return transferData.delete(organizationID);
 	}
-	
 
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
 		return transferData.modify(transferPO);
 	}
-	
-	public ArrayList<TransferVO> showTransfer()throws RemoteException  {
+
+	public ArrayList<TransferVO> showTransfer() throws RemoteException {
 		ArrayList<TransferPO> pos = transferData.find();
 		return TransferTrans.convertPOstoVOs(pos);
 	}
 
-	public ArrayList<AccountVO> getAccountsByOrganizationID(String organizationID) throws RemoteException{
+	public ArrayList<AccountVO> getAccountsByOrganizationID(String organizationID) throws RemoteException {
 		return accountInfo.getAccountByOrganizationID(organizationID);
 	}
-	
-	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID)throws RemoteException {
+
+	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException {
 		return facilityInfo.getFacilitiesByBranchID(branchID);
 	}
 
-	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException{
+	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException {
 		return inventoryInfo.getInventoriesByTransferID(transferID);
 	}
 }

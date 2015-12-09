@@ -1,5 +1,7 @@
 package businesslogic.accountbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class AccountInfo
 	Account account;
 	AccountDataService accountData;
 
-	public AccountInfo() {
+	public AccountInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		account = new Account();
 		accountData = account.getData();
 	}

@@ -1,5 +1,7 @@
 package businesslogic.recordbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -15,7 +17,11 @@ import vo.receiptvo.DebitAndPayBillVO;
  * @version 创建时间：2015年12月3日 下午3:38:28
  */
 public class RecordController implements RecordBLService {
-	Record RecordBL = new Record();
+	Record RecordBL;
+
+	public RecordController() throws MalformedURLException, RemoteException, NotBoundException {
+		RecordBL = new Record();
+	}
 
 	/**
 	 * @see RecordBLService#bussinessProcess(String, String)

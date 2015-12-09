@@ -1,5 +1,8 @@
 package order;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.orderbl.Order;
@@ -9,6 +12,10 @@ import vo.CommodityVO;
 import vo.OrderVO;
 
 public class MockOrder extends Order {
+	public MockOrder() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	ArrayList<CommodityVO> commmodities;
 	OrderPO order;
 	

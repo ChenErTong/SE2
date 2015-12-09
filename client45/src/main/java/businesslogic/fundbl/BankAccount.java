@@ -28,21 +28,12 @@ import vo.BankAccountVO;
 public class BankAccount {
 	private BankAccountDataService bankAccountData;
 
-	public BankAccount() {
+	public BankAccount() throws MalformedURLException, RemoteException, NotBoundException {
 		bankAccountData = getData();
 	}
 
-	public BankAccountDataService getData() {
-		try {
-			return (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX + BankAccountDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public BankAccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (BankAccountDataService) Naming.lookup(RMIConfig.PREFIX + BankAccountDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

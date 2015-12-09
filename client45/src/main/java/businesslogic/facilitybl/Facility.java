@@ -24,22 +24,13 @@ public class Facility {
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
 
-	public Facility() {
+	public Facility() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
 		facilityData = getData();
 	}
 
-	public FacilityDataService getData() {
-		try {
-			return (FacilityDataService) Naming.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public FacilityDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (FacilityDataService) Naming.lookup(RMIConfig.PREFIX + FacilityDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

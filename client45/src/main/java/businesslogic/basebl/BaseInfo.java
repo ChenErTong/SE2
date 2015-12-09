@@ -1,6 +1,8 @@
 package businesslogic.basebl;
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +21,7 @@ import po.BasePO;
 public class BaseInfo implements BaseInfo_Order{
 	Base base;
 	BaseDataService baseData;
-	public BaseInfo() {
+	public BaseInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		base = new Base();
 		baseData = base.getData();
 	}

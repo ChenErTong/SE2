@@ -1,5 +1,7 @@
 package businesslogic.facilitybl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ public class FacilityInfo implements FacilityInfo_OpeningStock, FacilityInfo_Bra
 	Facility facility;
 	FacilityDataService facilityData;
 
-	public FacilityInfo() {
+	public FacilityInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		facility = new Facility();
 		facilityData = facility.getData();
 	}

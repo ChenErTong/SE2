@@ -1,5 +1,7 @@
 package businesslogic.transferbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,7 +20,11 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @version 创建时间：2015年12月3日 下午3:38:40
  */
 public class TransferController implements TransferBLService {
-	Transfer TransferBL = new Transfer();
+	Transfer TransferBL;
+
+	public TransferController() throws MalformedURLException, RemoteException, NotBoundException {
+		TransferBL = new Transfer();
+	}
 
 	@Override
 	public ConfirmState confirmOperation() {

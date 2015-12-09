@@ -1,5 +1,8 @@
 package branch;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.branchbl.Branch;
@@ -9,6 +12,10 @@ import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class MockBranch extends Branch {
+	public MockBranch() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	private LoadingListVO loadingListVO;
 	private DeliveryListVO deliveryListVO;
 	private BranchArrivalListVO branchArrivalListVO;

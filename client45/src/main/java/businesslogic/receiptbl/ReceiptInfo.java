@@ -1,5 +1,7 @@
 package businesslogic.receiptbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Tr
 	Receipt receipt;
 	ReceiptDataService receiptData;
 
-	public ReceiptInfo() {
+	public ReceiptInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		receipt = new Receipt();
 		receiptData = receipt.getData();
 	}

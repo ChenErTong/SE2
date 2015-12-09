@@ -1,5 +1,7 @@
 package businesslogic.branchbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -24,7 +26,7 @@ public class BranchInfo
 	Branch branch;
 	BranchDataService branchData;
 
-	public BranchInfo() {
+	public BranchInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		branch = new Branch();
 		branchData = branch.getData();
 	}

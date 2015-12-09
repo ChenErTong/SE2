@@ -1,5 +1,7 @@
 package businesslogic.facilitybl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -15,7 +17,11 @@ import vo.FacilityVO;
  */
 public class FacilityController implements FacilityBLService {
 
-	Facility facilityBL = new Facility();
+	Facility facilityBL;
+
+	public FacilityController() throws MalformedURLException, RemoteException, NotBoundException {
+		facilityBL = new Facility();
+	}
 
 	@Override
 	public ConfirmState confirmOperation() {

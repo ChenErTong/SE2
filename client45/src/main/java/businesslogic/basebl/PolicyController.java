@@ -1,5 +1,7 @@
 package businesslogic.basebl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -14,7 +16,11 @@ import vo.PolicyVO;
  */
 public class PolicyController implements PolicyBLService {
 
-	Policy policyBL = new Policy();
+	Policy policyBL;
+
+	public PolicyController() throws MalformedURLException, RemoteException, NotBoundException {
+		policyBL = new Policy();
+	}
 
 	/**
 	 * @see PolicyBLService#getID()

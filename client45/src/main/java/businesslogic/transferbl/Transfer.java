@@ -32,22 +32,13 @@ public class Transfer {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Transfer receiptInfo;
 
-	public Transfer() {
+	public Transfer() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
 	}
 
-	public TransferDataService getData() {
-		try {
-			return (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public TransferDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

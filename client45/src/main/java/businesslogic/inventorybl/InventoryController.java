@@ -1,5 +1,7 @@
 package businesslogic.inventorybl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,7 +22,11 @@ import vo.receiptvo.InventoryImportReceiptVO;
  * @version 创建时间：2015年12月3日 下午3:35:26
  */
 public class InventoryController implements InventoryBLService {
-	Inventory InventoryBL = new Inventory();
+	Inventory InventoryBL ;
+	
+	public InventoryController() throws MalformedURLException, RemoteException, NotBoundException {
+		InventoryBL = new Inventory();
+	}
 
 	/**
 	 * @see InventoryBLService#getImportID()

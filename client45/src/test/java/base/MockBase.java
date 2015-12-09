@@ -1,5 +1,8 @@
 package base;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import state.FindTypeBase;
@@ -9,6 +12,10 @@ import vo.BaseVO;
 import businesslogic.basebl.Base;
 
 public class MockBase extends Base {
+	public MockBase() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	private ArrayList<Double> distances;
 	
 	private ArrayList<Double> price;

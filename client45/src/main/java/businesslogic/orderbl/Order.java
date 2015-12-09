@@ -24,23 +24,15 @@ import vo.OrderVO;
  */
 public class Order {
 	private OrderDataService orderData;
-	private BaseInfo_Order baseInfo = new BaseInfo();
+	private BaseInfo_Order baseInfo;
 
-	public Order() {
+	public Order() throws MalformedURLException, RemoteException, NotBoundException {
 		orderData = getOrderData();
+		baseInfo = new BaseInfo();
 	}
 
-	public OrderDataService getOrderData() {
-		try {
-			return (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public OrderDataService getOrderData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (OrderDataService) Naming.lookup(RMIConfig.PREFIX + OrderDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

@@ -27,22 +27,13 @@ public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
 	private ReceiptInfo_DebitAndPayBill receiptInfo;
 
-	public DebitAndPayBill() {
+	public DebitAndPayBill() throws MalformedURLException, RemoteException, NotBoundException {
 		debitAndPayBillData = getData();
 		receiptInfo = new ReceiptInfo();
 	}
 
-	public DebitAndPayBillDataService getData() {
-		try {
-			return (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public DebitAndPayBillDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (DebitAndPayBillDataService) Naming.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
 	}
 
 	public String getExpenseID() throws RemoteException {

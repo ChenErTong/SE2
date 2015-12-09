@@ -21,16 +21,8 @@ import vo.PolicyVO;
 public class Policy {
 	private PolicyDataService policyData;
 
-	public Policy() {
-		try {
-			policyData = (PolicyDataService) Naming.lookup(RMIConfig.PREFIX + PolicyDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+	public Policy() throws MalformedURLException, RemoteException, NotBoundException {
+		policyData = (PolicyDataService) Naming.lookup(RMIConfig.PREFIX + PolicyDataService.NAME);
 	}
 
 	public String getID() throws RemoteException {

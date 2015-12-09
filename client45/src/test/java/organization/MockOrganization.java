@@ -1,5 +1,8 @@
 package organization;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.organizationbl.Organization;
@@ -7,6 +10,10 @@ import state.ResultMessage;
 import vo.OrganizationVO;
 
 public class MockOrganization extends Organization{
+	public MockOrganization() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	protected String organizationID;
 
 	protected String date;

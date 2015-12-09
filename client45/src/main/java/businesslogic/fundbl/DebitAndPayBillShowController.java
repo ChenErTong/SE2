@@ -1,5 +1,7 @@
 package businesslogic.fundbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,7 +14,11 @@ import vo.receiptvo.DebitAndPayBillVO;
  */
 public class DebitAndPayBillShowController implements DebitAndPayBillShowService {
 
-	DebitAndPayBillShow showBL = new DebitAndPayBillShow();
+	DebitAndPayBillShow showBL;
+
+	public DebitAndPayBillShowController() throws MalformedURLException, RemoteException, NotBoundException {
+		showBL = new DebitAndPayBillShow();
+	}
 
 	/**
 	 * @see DebitAndPayBillShowService#showPay()

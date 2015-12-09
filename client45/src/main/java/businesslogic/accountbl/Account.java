@@ -29,22 +29,13 @@ public class Account {
 	private BranchInfo_Account branchInfo;
 	private TransferInfo_Account transferInfo;
 
-	public Account() {
+	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
 	}
 
-	public AccountDataService getData() {
-		try {
+	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
 			return (AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public ArrayList<AccountVO> show() throws RemoteException {

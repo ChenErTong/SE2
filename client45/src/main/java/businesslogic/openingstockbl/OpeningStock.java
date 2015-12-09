@@ -42,7 +42,7 @@ public class OpeningStock {
 	private InventoryInfo_OpeningStock inventoryInfo;
 	private BankAccountInfo_OpeningStock bankAccountInfo;
 
-	public OpeningStock() {
+	public OpeningStock() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
 		transferInfo = new TransferInfo();
 		accountInfo = new AccountInfo();
@@ -50,15 +50,7 @@ public class OpeningStock {
 		inventoryInfo = new InventoryInfo();
 		bankAccountInfo = new BankAccountInfo();
 
-		try {
-			openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+		openingStockData = (OpeningStockDataService) Naming.lookup(RMIConfig.PREFIX + OpeningStockDataService.NAME);
 	}
 
 	// 可能用不到了

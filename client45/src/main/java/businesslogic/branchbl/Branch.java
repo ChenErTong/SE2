@@ -35,22 +35,13 @@ public class Branch {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch receiptInfo;
 
-	public Branch() {
+	public Branch() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
 	}
 
-	public BranchDataService getData() {
-		try {
-			return (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public BranchDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 	}
 
 	public ConfirmState confirmOperation() {

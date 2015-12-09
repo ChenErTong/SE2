@@ -1,5 +1,7 @@
 package businesslogic.recordbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ import vo.receiptvo.DebitAndPayBillVO;
 public class Record {
 	private DebitAndPayBillShowInfo_Record showInfo;
 
-	public Record() {
+	public Record() throws MalformedURLException, RemoteException, NotBoundException {
 		showInfo = new DebitAndPayBillShowInfo();
 	}
 

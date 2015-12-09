@@ -15,17 +15,9 @@ public class MockFacility extends Facility {
 
 	private FacilityDataService facilityData;
 
-	public MockFacility() {
-		try {
-			facilityData = (FacilityDataService) Naming
-					.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + FacilityDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+	public MockFacility() throws MalformedURLException, RemoteException, NotBoundException {
+		facilityData = (FacilityDataService) Naming
+				.lookup("rmi://" + "127.0.0.1" + ":" + "8888" + "/" + FacilityDataService.NAME);
 	}
 
 	@Override

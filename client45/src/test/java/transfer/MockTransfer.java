@@ -1,5 +1,8 @@
 package transfer;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.transferbl.Transfer;
@@ -8,11 +11,13 @@ import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 public class MockTransfer extends Transfer {
+	public MockTransfer() throws MalformedURLException, RemoteException, NotBoundException {
+		super();
+	}
+
 	private TransferOrderVO transferOrderVO;
 	private TransferArrivalListVO transferArrivalListVO;
 
-	public MockTransfer() {
-	}
 
 	public void planeDepart(String facilityID, String departure, String destination, String courierName,
 			ArrayList<String> orders) {

@@ -22,21 +22,12 @@ import vo.receiptvo.ReceiptVO;
 public class Receipt {
 	private ReceiptDataService receiptData;
 
-	public Receipt() {
+	public Receipt() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptData = getData();
 	}
 
-	public ReceiptDataService getData() {
-		try {
-			return (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ReceiptDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 	}
 
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {

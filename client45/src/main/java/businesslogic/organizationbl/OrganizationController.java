@@ -1,5 +1,7 @@
 package businesslogic.organizationbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,8 +20,12 @@ import vo.accountvo.AccountVO;
  */
 public class OrganizationController implements OrganizationBLService {
 
-	Organization organization = new Organization();
+	Organization organization ;
 
+	
+	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
+		 organization = new Organization();
+	}
 	public String getID() {
 		/**
 		 * @author Ann

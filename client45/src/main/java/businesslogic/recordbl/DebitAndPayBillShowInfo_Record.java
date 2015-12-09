@@ -1,5 +1,7 @@
 package businesslogic.recordbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -47,6 +49,8 @@ public interface DebitAndPayBillShowInfo_Record {
 	 * @return BussinessOneDayVO型，单日收款单列表对象
 	 * @throws RemoteException
 	 *             远程异常
+	 * @throws NotBoundException
+	 * @throws MalformedURLException
 	 */
 	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException;
 }

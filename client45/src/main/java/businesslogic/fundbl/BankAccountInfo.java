@@ -1,5 +1,7 @@
 package businesslogic.fundbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ public class BankAccountInfo implements BankAccountInfo_OpeningStock {
 	BankAccount bankAccount;
 	BankAccountDataService bankAccountData;
 
-	public BankAccountInfo() {
+	public BankAccountInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		bankAccount = new BankAccount();
 		bankAccountData = bankAccount.getData();
 	}

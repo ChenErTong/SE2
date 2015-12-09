@@ -12,8 +12,10 @@ import po.BasePO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
+
 /**
  * 管理公司成本常量
+ * 
  * @author LIUXUANLIN
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:32:24
@@ -21,22 +23,14 @@ import vo.BaseVO;
 public class Base {
 	private BaseDataService baseData;
 
-	public Base() {
-		baseData=getData();
+	public Base() throws MalformedURLException, RemoteException, NotBoundException {
+		baseData = getData();
 	}
-	public BaseDataService getData(){
-		try {
-			return   (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		return null;
+
+	public BaseDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
 	}
-	
+
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;
 	}
@@ -69,11 +63,11 @@ public class Base {
 	public BaseVO find(String id) throws RemoteException {
 		ArrayList<BasePO> pos = baseData.find();
 		for (BasePO basePO : pos) {
-			if(basePO.getID().equals(id)){
+			if (basePO.getID().equals(id)) {
 				return BaseTrans.convertPOtoVO(basePO);
 			}
 		}
 		return null;
 	}
-	
+
 }

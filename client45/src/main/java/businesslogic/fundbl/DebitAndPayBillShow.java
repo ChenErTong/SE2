@@ -21,17 +21,9 @@ public class DebitAndPayBillShow {
 
 	private DebitAndPayBillDataService debitAndPayBillData;
 
-	public DebitAndPayBillShow() {
-		try {
-			debitAndPayBillData = (DebitAndPayBillDataService) Naming
-					.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+	public DebitAndPayBillShow() throws MalformedURLException, RemoteException, NotBoundException {
+		debitAndPayBillData = (DebitAndPayBillDataService) Naming
+				.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {

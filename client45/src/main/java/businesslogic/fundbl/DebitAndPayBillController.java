@@ -1,5 +1,7 @@
 package businesslogic.fundbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
@@ -14,8 +16,11 @@ import vo.receiptvo.PaymentBillVO;
  * @version 创建时间：2015年12月3日 下午3:34:31
  */
 public class DebitAndPayBillController implements DebitAndPayBillBLService {
-	DebitAndPayBill DebitAndPayBL = new DebitAndPayBill();
+	DebitAndPayBill DebitAndPayBL ;
 
+	public DebitAndPayBillController() throws MalformedURLException, RemoteException, NotBoundException {
+		DebitAndPayBL = new DebitAndPayBill();
+	}
 	/**
 	 * @see DebitAndPayBillBLService#getPayID()
 	 */

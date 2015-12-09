@@ -1,6 +1,8 @@
 package businesslogic.fundbl;
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -23,10 +25,12 @@ import vo.receiptvo.DebitBillVO;
 public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	DebitAndPayBill debitAndPayBill;
 	DebitAndPayBillDataService debitAndPayBillData;
+	AccountInfo_DebitAndPayBillVOShow accountInfo;
 
-	public DebitAndPayBillShowInfo() {
+	public DebitAndPayBillShowInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		debitAndPayBill = new DebitAndPayBill();
 		debitAndPayBillData = debitAndPayBill.getData();
+		accountInfo = new AccountInfo();
 	}
 
 	/**
@@ -69,7 +73,7 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	 *      String)
 	 */
 	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException {
-		AccountInfo_DebitAndPayBillVOShow accountInfo = new AccountInfo();
+
 		ArrayList<DebitBillVO> debits = new ArrayList<>();
 		BigDecimal income = new BigDecimal(0);
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();

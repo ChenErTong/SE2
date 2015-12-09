@@ -1,5 +1,7 @@
 package businesslogic.receiptbl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -15,7 +17,11 @@ import vo.receiptvo.ReceiptVO;
  * @version 创建时间：2015年12月3日 下午3:37:54
  */
 public class ReceiptController implements ReceiptBLService {
-	Receipt ReceiptBL = new Receipt();
+	Receipt ReceiptBL;
+
+	public ReceiptController() throws MalformedURLException, RemoteException, NotBoundException {
+		ReceiptBL = new Receipt();
+	}
 
 	/**
 	 * @see ReceiptBLService#updateReceipt(ReceiptVO)

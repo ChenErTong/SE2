@@ -1,6 +1,8 @@
 package businesslogic.orderbl;
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogicservice.orderblservice.OrderBLService;
@@ -16,7 +18,11 @@ import vo.OrderVO;
  * @version 创建时间：2015年12月3日 下午3:36:39
  */
 public class OrderController implements OrderBLService {
-	Order orderBL = new Order();
+	Order orderBL;
+
+	public OrderController() throws MalformedURLException, RemoteException, NotBoundException {
+		orderBL = new Order();
+	}
 
 	@Override
 	public ConfirmState confirmOperation() {

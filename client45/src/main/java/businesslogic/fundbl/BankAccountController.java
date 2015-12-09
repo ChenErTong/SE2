@@ -1,6 +1,8 @@
 package businesslogic.fundbl;
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -18,7 +20,11 @@ import vo.BankAccountVO;
  * @version 创建时间：2015年12月3日 下午3:34:06
  */
 public class BankAccountController implements BankAccountBLService {
-	BankAccount BankAccountBL = new BankAccount();
+	BankAccount BankAccountBL;
+
+	public BankAccountController() throws MalformedURLException, RemoteException, NotBoundException {
+		BankAccountBL = new BankAccount();
+	}
 
 	@Override
 	public ConfirmState confirmOperation() {

@@ -1,5 +1,7 @@
 package businesslogic.facilitybl;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import businesslogicservice.facilityblservice.DriverBLService;
@@ -14,8 +16,11 @@ import vo.accountvo.DriverVO;
  */
 public class DriverController implements DriverBLService {
 
-	Driver driverBL = new Driver();
+	Driver driverBL ;
 
+	public DriverController() throws MalformedURLException, RemoteException, NotBoundException {
+		driverBL = new Driver();
+	}
 	@Override
 	public ConfirmState confirmOperation() {
 		return driverBL.confirmOperation();
