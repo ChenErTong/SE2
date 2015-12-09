@@ -16,6 +16,8 @@ import state.ResultMessage;
 import state.UserAuthority;
 import state.UserIdentity;
 import ui.image.AdminImage;
+import ui.image.CommonImage;
+import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -40,6 +42,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private MyButton commonButton ;
 	private MyButton modifyButton ;
 	private MyJTable table;
+	private MyButton withdraw;
 	
 	/**
 	 * 静态变量，作为UserVO的存储池，在构造函数中初始化
@@ -126,11 +129,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-	//	MyButton Withdraw = new MyButton(1120,55,150,40,"注销登录",16);
-		//Withdraw.setActionCommand("Withdraw");
-		//Withdraw.addActionListener(frame);
-		//this.add(Withdraw);
-		//Withdraw.setVisible(true);
+		withdraw = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
+		withdraw.setActionCommand("Withdraw");
+		withdraw.addActionListener(frame);
+		this.add(withdraw);
 	}
 	
 	/**

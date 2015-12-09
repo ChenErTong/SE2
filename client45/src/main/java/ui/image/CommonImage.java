@@ -21,6 +21,14 @@ public class CommonImage extends Images{
 	 */
 	public static final ImageIcon TEST_BACKGROUND = createImageIcon("image/background1.jpg");
 	/**
+	 * 测试总经理功能界面图片
+	 */
+	public static final ImageIcon MANAGER_BACKGROUND = createImageIcon("image/background_Manager.png");
+	/**
+	 * 测试财务人员功能界面图片
+	 */
+	public static final ImageIcon FINANCE_BACKGROUND = createImageIcon("image/background_finance.png");
+	/**
 	 * 半透明
 	 */
 	public static final Image TEST_HALFOPAQUE = createImage("image/半透明.png");
@@ -40,6 +48,10 @@ public class CommonImage extends Images{
 	 * 文本框未选中
 	 */
 	private static Image TEXTFIELD_UNSELECTED = null;
+	/**
+	 * 注销登录
+	 */
+	private static ImageIcon WITHDRAW[]= null;
 	
 	public static ImageIcon[] getBUTTON_CLOSE(){
 		if(BUTTON_CLOSE == null){
@@ -86,5 +98,12 @@ public class CommonImage extends Images{
 			TEXTFIELD_UNSELECTED = createImage("image/文本框未选中.png");
 		}
 		return TEXTFIELD_UNSELECTED;
+	}
+	
+	public static ImageIcon[] getWITHDRAW(){
+		if(WITHDRAW==null){
+			WITHDRAW  = createImageIcons("image/button/注销登录.png");
+		}
+		return WITHDRAW;
 	}
 }
