@@ -99,12 +99,15 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 				} catch (MalformedURLException e1) {
 					new MyNotification(this,"数据导入失败！",Color.RED);
 					e1.printStackTrace();
+					return;
 				} catch (RemoteException e1) {
 					new MyNotification(this,"网络中断，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
+					return;
 				} catch (NotBoundException e1) {
 					new MyNotification(this,"请检查服务器是否正常工作！",Color.RED);
 					e1.printStackTrace();
+					return;
 				}
 				
 				iden = userController.login(new LoginInfo(data[0],data[1],flag));
