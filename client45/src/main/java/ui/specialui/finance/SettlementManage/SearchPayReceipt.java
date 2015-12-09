@@ -15,7 +15,6 @@ import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
-import ui.myui.MyJButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
