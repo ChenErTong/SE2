@@ -166,7 +166,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				debitbillVO=showController_2.bussinessOneDay(data[0], data[1]);
 					Object[] rowData = {debitbillVO.DebitBills};
 					tableModel.addRow(rowData);
-				System.out.println("SearchSucceed!");
+					System.out.println("SearchSucceed!");
 					new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);

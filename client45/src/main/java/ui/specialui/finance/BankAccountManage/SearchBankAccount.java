@@ -1,6 +1,8 @@
 package ui.specialui.finance.BankAccountManage;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
@@ -51,6 +53,15 @@ private void initComponent(BankAccountManage manage) {
 	this.add(new MyJLabel(10,10,150,30,"选择查找类型:",16,true));
 	searchField = new MyJTextField(140,40,200,30);
 	searchField.setText(" 在此输入搜索关键字  ");
+	searchField.addActionListener(new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource()==searchField){
+				searchField.setText(null);
+			}
+		}
+	});
 	this.add(searchField);
 	
 	String[] types = {"账户ID","账户名称","账户余额","模糊查找"};

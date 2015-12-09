@@ -47,13 +47,13 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 		log = new LogPanel(this);
 		this.add(log);
 		messagePool = new ArrayList<LogMessage>();
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Search")){
-			
-			if(e.getActionCommand().equals("Search")){
+				logText = log.getText();
 				String[] data = new String[3];
 				data = log.getData();
 				if(data==null){
@@ -78,6 +78,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 				
 				}
 			}else if(e.getActionCommand().equals("ShowAll")){
+				logText = log.getText();
 				logText.setText("");
 				ArrayList<LogMessage> logs = logController.show();
 				table = log.getTable();
@@ -97,7 +98,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					messagePool.add(logs.get(i));
 				}
  			}
-		}
+		
 	}
 		
 	/**

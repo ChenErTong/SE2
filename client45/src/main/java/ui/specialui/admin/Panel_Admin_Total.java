@@ -3,6 +3,9 @@ package ui.specialui.admin;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +47,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	static ArrayList<UserVO> userPool;
 	static String userID = " ";
 	
-	private UserController userController  = ControllerFactory.getUserController();
+	private UserController userController ;
 	
 	public Panel_Admin_Total(Frame_Admin frame_Admin)  {
 		super(0, 0, 1280, 720);
@@ -146,15 +149,27 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		userPool.clear();
 		userID = "";
 			
-		userController = ControllerFactory.getUserController();
-		ArrayList<UserVO> userVO= userController.show();
+		try {
+			userController = ControllerFactory.getUserController();
+			ArrayList<UserVO> userVO= userController.show();
 			
-		for(int i = 0; i < userVO.size(); i++){
-			Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,userVO.get(i).iden,userVO.get(i).authority
-						,userVO.get(i).phoneNumber,userVO.get(i).address};
-			tableModel.addRow(rowData);
-			userPool.add(userVO.get(i));
-			}
+			for(int i = 0; i < userVO.size(); i++){
+				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,userVO.get(i).iden,userVO.get(i).authority
+							,userVO.get(i).phoneNumber,userVO.get(i).address};
+				tableModel.addRow(rowData);
+				userPool.add(userVO.get(i));
+				}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	@Override
@@ -168,13 +183,25 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else if(data[5].equals("高级财务权限")){
 				
 			}else{
-				ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
-				if(rsg.equals(ResultMessage.SUCCESS)){
-					this.showAll();
-					userDetails.refresh();
-					new MyNotification(this,"用户信息添加成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"用户信息添加失败！",Color.RED);
+				try {
+					userController = ControllerFactory.getUserController();
+					ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
+					if(rsg.equals(ResultMessage.SUCCESS)){
+						this.showAll();
+						userDetails.refresh();
+						new MyNotification(this,"用户信息添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"用户信息添加失败！",Color.RED);
+					}
+				} catch (MalformedURLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (NotBoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
@@ -246,56 +273,80 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			userPool.clear();
 			userID = "";
 			
-			UserController userController = ControllerFactory.getUserController();
-			ArrayList<UserVO> userVO;
-			String data = userInfo.getData()+"";
-			if(data!=""){
-				switch(Integer.parseInt(data)){
-					case 1 : userVO = userController.showUser(UserIdentity.GENERAL_MANAGER);break;
-					case 2 : userVO = userController.showUser(UserIdentity.COURIER);break;
-					case 3 : userVO = userController.showUser(UserIdentity.INVENTORY_MANAGER);break;
-					case 4 : userVO = userController.showUser(UserIdentity.TRANSFER_CONTERMAN);break;
-					case 5 : userVO = userController.showUser(UserIdentity.BRANCH_COUNTERMAN); break;
-					case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);break;
-					case 7 : userVO =userController.showUser(UserIdentity.ADMIN);break;
-					default : userVO = userController.show();break;
+			UserController userController;
+			try {
+				userController = ControllerFactory.getUserController();
+				ArrayList<UserVO> userVO;
+				String data = userInfo.getData()+"";
+				if(data!=""){
+					switch(Integer.parseInt(data)){
+						case 1 : userVO = userController.showUser(UserIdentity.GENERAL_MANAGER);break;
+						case 2 : userVO = userController.showUser(UserIdentity.COURIER);break;
+						case 3 : userVO = userController.showUser(UserIdentity.INVENTORY_MANAGER);break;
+						case 4 : userVO = userController.showUser(UserIdentity.TRANSFER_CONTERMAN);break;
+						case 5 : userVO = userController.showUser(UserIdentity.BRANCH_COUNTERMAN); break;
+						case 6 : userVO = userController.showUser(UserIdentity.FINANCE_MANAGER);break;
+						case 7 : userVO =userController.showUser(UserIdentity.ADMIN);break;
+						default : userVO = userController.show();break;
+					}
+					for(int i = 0; i < userVO.size(); i++){
+						Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
+							userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
+						tableModel.addRow(rowData);
+						userPool.add(userVO.get(i));
+						System.out.println("SearchSucceed!");
+					}
+					this.repaint();
+					new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
+				}else{
+					new MyNotification(this,"请选择查询类型！",Color.RED);
 				}
-				for(int i = 0; i < userVO.size(); i++){
-					Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
-						userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
-					tableModel.addRow(rowData);
-					userPool.add(userVO.get(i));
-					System.out.println("SearchSucceed!");
-				}
-				this.repaint();
-				new MyNotification(this,"共有"+table.getRowCount()+"个员工满足条件！",Color.GREEN);
-			}else{
-				new MyNotification(this,"请选择查询类型！",Color.RED);
+			}catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (NotBoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 	}
 	
 	
 	private void modifyUser() {
-		userController = ControllerFactory.getUserController();
-		table = userInfo.getTable();
-		userID= userPool.get(table.getSelectedRow()).id;
-		String[] data = userDetails.getData();
-		if(userDetails.getData()==null){
-			new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
-		}else if(!this.limitIdentity(data[4], data[5])){
-			new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-		}
-		else{
-			ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
-			if(rsg.equals(ResultMessage.SUCCESS)){
-				this.showAll();
-				userDetails.refresh();
-				new MyNotification(this,"用户信息修改成功！",Color.GREEN);
-			}else{
-				new MyNotification(this,"用户信息修改失败！",Color.RED);
+		try {
+			userController = ControllerFactory.getUserController();
+			table = userInfo.getTable();
+			userID= userPool.get(table.getSelectedRow()).id;
+			String[] data = userDetails.getData();
+			if(userDetails.getData()==null){
+				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
+			}else if(!this.limitIdentity(data[4], data[5])){
+				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
 			}
+			else{
+				ResultMessage rsg = userController.updateUser((new UserVO(userID,data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					this.showAll();
+					userDetails.refresh();
+					new MyNotification(this,"用户信息修改成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"用户信息修改失败！",Color.RED);
+				}
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
 	/**
@@ -336,17 +387,28 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	}
 	
 	private void deleteUser() {
-		table = userInfo.getTable();
-		userController = ControllerFactory.getUserController();
-		UserVO vo = userPool.get(table.getSelectedRow());
-		ResultMessage rsg = userController.deleteUser(vo);
-		if(rsg.equals(ResultMessage.SUCCESS)){
-			System.out.println("DeleteSucceed!");
-			this.showAll();
-			new MyNotification(this,"用户删除成功！",Color.GREEN);
-			this.repaint();
-		}else{
-			new MyNotification(this,"用户删除失败！",Color.RED);
+		try {
+			table = userInfo.getTable();
+			userController = ControllerFactory.getUserController();
+			UserVO vo = userPool.get(table.getSelectedRow());
+			ResultMessage rsg = userController.deleteUser(vo);
+			if(rsg.equals(ResultMessage.SUCCESS)){
+				System.out.println("DeleteSucceed!");
+				this.showAll();
+				new MyNotification(this,"用户删除成功！",Color.GREEN);
+				this.repaint();
+			}else{
+				new MyNotification(this,"用户删除失败！",Color.RED);
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

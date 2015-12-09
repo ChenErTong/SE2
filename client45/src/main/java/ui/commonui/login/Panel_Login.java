@@ -45,7 +45,6 @@ public class Panel_Login extends MyJPanel{
 		
 		userIdField = new MyJTextField(535, 385, 210, 45);
 		userIdField.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==userIdField){

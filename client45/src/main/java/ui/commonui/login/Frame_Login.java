@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
@@ -51,7 +54,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 
 	private MyJTextField userIdField;
 	private MyJTextField passwordField;	
-	
+	private UserController userController;
 	private String userName;
 	private String userID;
 	private String userIden;
@@ -75,7 +78,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		        KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), 
 		        JComponent.WHEN_IN_FOCUSED_WINDOW); 
 		login.addKeyListener(new KeyAdapter(){ 
-			
 		    public void keyPressed(KeyEvent event){ 
 		    	if (KeyEvent.getKeyText(event.getKeyCode()).compareToIgnoreCase("Enter") == 0){ 
 		    		login.doClick(); 
@@ -88,11 +90,23 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e)  {
 		if(e.getSource()==login){
 			String [] data = totalPanel.getData();
 			if(data!=null){
-				UserController  userController = ControllerFactory.getUserController();
+				try {
+					userController = ControllerFactory.getUserController();
+				} catch (MalformedURLException e1) {
+					new MyNotification(this,"数据导入失败！",Color.RED);
+					e1.printStackTrace();
+				} catch (RemoteException e1) {
+					new MyNotification(this,"网络中断，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
+				} catch (NotBoundException e1) {
+					new MyNotification(this,"请检查服务器是否正常工作！",Color.RED);
+					e1.printStackTrace();
+				}
+				
 				iden = userController.login(new LoginInfo(data[0],data[1],flag));
 				String type = "";
 				userID = data[0];
@@ -102,6 +116,7 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 						iden = userController.show().get(i).iden;
 					}
 				}
+				
 				if(iden==null){
 					new MyNotification(this,"用户名或密码填写错误！",Color.RED);
 				}else if(iden.equals(UserIdentity.ADMIN)){
@@ -143,11 +158,13 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 			}else{
 				new MyNotification(this,"请完整输入登录信息！",Color.RED);
 			}
+	
 		}else if(e.getActionCommand().equals("Search")){
 			Frame_Sender frame_Sender = new Frame_Sender(senderID);
 			frame_Sender.setVisible(true);
 			new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 			this.setVisible(false);
+			
 		}else if(e.getActionCommand().equals("keep")){
 			flag = true;
 		}

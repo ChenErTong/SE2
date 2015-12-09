@@ -42,7 +42,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		
 		chooseBranch = new MyJLabel(20,10,150,30,"请选择营业厅和日期",14,true);
 		this.add(chooseBranch);
-		//TODO 
+	
 		String[] branches = {"南京","上海","杭州","广州"};
 		branchList = new MyComboBox(170,10,150,30,14,branches);
 		this.add(branchList);
