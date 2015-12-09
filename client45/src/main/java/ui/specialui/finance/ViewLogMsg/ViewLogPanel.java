@@ -72,7 +72,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 					String date = year + month + day;
 				
-					ArrayList<LogMessage> logs = logController.show();
+					ArrayList<LogMessage> logs = logController.showInDate(date);
 					logText.setText("");
 					for(int i=0;i<logs.size();i++){
 						logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);

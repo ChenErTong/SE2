@@ -26,6 +26,8 @@ import po.LogMessage;
  */
 public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private LogPanel log;
 	private MyEmptyTextArea logText;
 	
@@ -47,9 +49,6 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 		messagePool = new ArrayList<LogMessage>();
 	}
 
-	private static final long serialVersionUID = 1L;
-
-	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Search")){
@@ -70,7 +69,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 					String date = year + month + day;
 				
-					ArrayList<LogMessage> logs = logController.show();
+					ArrayList<LogMessage> logs = logController.showInDate(date);
 					logText.setText("");
 					for(int i=0;i<logs.size();i++){
 						logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);

@@ -67,7 +67,7 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 		this.initTable();
 	}
 	
-	private void initTable(){
+		private void initTable(){
 		//the table
 				String[] headers = {"员工类别","策略类别","策略规则"};
 				table = new MyJTable(headers,false);

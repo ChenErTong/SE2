@@ -53,7 +53,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		this.initComponent(frame_Admin);
 		this.setOpaque(false);
 		
-		MyLogo.setLogo(this);
+		//MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "管理员界面", 480, 0, 306, 142);
 	
 		this.showAll();

@@ -25,12 +25,11 @@ public class mainForUITest {
 
 
 	
-	   FrameManager managerFrame = new FrameManager(id);
-	   managerFrame.setVisible(true);
+//	  FrameManager managerFrame = new FrameManager(id);
+	//   managerFrame.setVisible(true);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
-
 
 
 //Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
@@ -41,10 +40,10 @@ public class mainForUITest {
 
 
 
-	//	Frame_Finance financeFrame = new Frame_Finance("0");
-		//financeFrame.setVisible(true);
+	Frame_Finance financeFrame = new Frame_Finance("0");
+	financeFrame.setVisible(true);
 
 //Frame_Sender senderFrame = new Frame_Sender(id);
-//		senderFrame.setVisible(true);
+	//	senderFrame.setVisible(true);
 	}
 }
