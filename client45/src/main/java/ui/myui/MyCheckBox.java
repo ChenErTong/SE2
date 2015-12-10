@@ -2,7 +2,6 @@ package ui.myui;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
-import javax.swing.border.EmptyBorder;
 
 /**
  * 单选框组件

@@ -57,6 +57,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Finance);
+		this.showAll();
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
@@ -100,11 +101,12 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		debitbillPool.clear();
 		debitBillID = "";
 		
-		
-		
 		 try {
 			 showController = ControllerFactory.getDebitAndPayBillShowController();
 			ArrayList<DebitAndPayBillVO> debitbillVO = showController.showExpense();
+			if(debitbillVO== null){
+				return ;
+			}
 			 DebitBillVO debitVO;
 			for(int i = 0; i < debitbillVO.size(); i++){
 				debitVO = ( DebitBillVO) debitbillVO.get(i);

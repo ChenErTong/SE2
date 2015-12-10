@@ -34,7 +34,7 @@ public class ModifyPolicy extends MyTranslucentPanel{
 		policyType = new MyJComboBox(375,50,150,30,policyList);
 		this.add(policyType);
 		
-		policyRule = new MyEmptyTextArea(115,140,410,90);
+		policyRule = new MyEmptyTextArea(115,140,410,90,true);
 		policyRule.setBackground(Color.WHITE);
 		this.add(policyRule);
 	}

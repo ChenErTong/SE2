@@ -110,6 +110,10 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			try {
 				AccountBLService controller = ControllerFactory.getAccountController();
 				accountVO = controller.show();
+				if(accountVO==null){
+					new MyNotification(this,"系统中无员工账户信息！",Color.RED);
+					return;
+				}
 				for(int i = 0; i < accountVO.size(); i++){
 					String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
 							accountVO.get(i).Salary+"",accountVO.get(i).Phone};

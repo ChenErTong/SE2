@@ -130,7 +130,6 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	/**
 	 * 显示所有的机构
 	 */
-	@SuppressWarnings("static-access")
 	public void showAll(){
 		table = (MyJTable) organizationInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -242,6 +241,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 					}
 				}else if(data[0].equals("中转中心")){
 					try {
+						controller = ControllerFactory.getOrganizationController();
 						ResultMessage rsg1 = controller.addTransfer(new TransferVO(controller.getTransferID(data[3]), 
 								data[2]+data[3]+data[4],OrganizationType.TRANSFER));
 						if(rsg1.equals(ResultMessage.SUCCESS)){
@@ -253,7 +253,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						}else{
 							new MyNotification(this,"新中转中心添加失败！",Color.RED);
 						}
-					} catch (RemoteException e1) {
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e1.printStackTrace();
 					}	

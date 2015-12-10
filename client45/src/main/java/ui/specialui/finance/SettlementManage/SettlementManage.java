@@ -137,6 +137,9 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		try {
 			showController = ControllerFactory.getDebitAndPayBillShowController();
 			ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
+			if(paybillVO==null){
+				return;
+			}
 			PaymentBillVO payVO;
 			for(int i = 0; i < paybillVO.size(); i++){
 				payVO = (PaymentBillVO) paybillVO.get(i);
@@ -205,16 +208,18 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
 							PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
-						BankAccountController bankController = ControllerFactory.getBankAccountController();
-						ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
-						if(rsg_2.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addPaybill.refresh();
-							new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"该账户无法完成付款！",Color.RED);
-							new MyNotification(this,"付款单添加失败！",Color.RED);
-						}
+						//BankAccountController bankController = ControllerFactory.getBankAccountController();
+						this.showAll();
+						new MyNotification(this,"付款单添加成功！",Color.GREEN);
+					//	ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
+						//if(rsg_2.equals(ResultMessage.SUCCESS)){
+							//this.showAll();
+							//addPaybill.refresh();
+							//new MyNotification(this,"付款单添加成功！",Color.GREEN);
+						//}else{
+							//new MyNotification(this,"该账户无法完成付款！",Color.RED);
+							//new MyNotification(this,"付款单添加失败！",Color.RED);
+						//}
 						
 					}else{
 						new MyNotification(this,"付款单添加失败！",Color.RED);
@@ -234,7 +239,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				Object[] data = this.setPayBill();
 				modifyPaybill.setData(data);
 			}
-		}else if(e.getActionCommand().endsWith("CheckModify")){
+		}else if(e.getActionCommand().endsWith("ConfirmModify")){
 			table = payReceiptList.getTable();
 			paybillID = paybillPool.get(table.getSelectedRow()).ID;
 			if(table.getSelectedRow()==0){
@@ -327,16 +332,11 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
 						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
-					BankAccountController bankController = ControllerFactory.getBankAccountController();
-					ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
-					if(rsg_2.equals(ResultMessage.SUCCESS)){
+					
 						this.showAll();
 						modifyPaybill.refresh();
 						new MyNotification(this,"付款单修改成功！",Color.GREEN);
-					}else{
-						new MyNotification(this,"该账户无法完成付款！",Color.RED);
-						new MyNotification(this,"付款单修改失败！",Color.RED);
-					}
+					
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
 				}

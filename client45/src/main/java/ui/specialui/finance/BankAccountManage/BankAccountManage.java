@@ -54,7 +54,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		//初始化静态成员变量
 		accountPool = new ArrayList<BankAccountVO>();
 		this.initComponent();
-		//this.showAll();	
+		this.showAll();	
 	}
 
 	private void initComponent() {
@@ -111,7 +111,9 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			try {
 				BankAccountBLService controller = ControllerFactory.getBankAccountController();
 				ArrayList<BankAccountVO> bankAccountVO = controller.show();
-				
+				if(bankAccountVO==null){
+					return;
+				}
 				for(int i = 0; i < bankAccountVO.size(); i++){
 					String[] rowData = {bankAccountVO.get(i).ID,
 							bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
@@ -197,22 +199,20 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			String[] data = addBankAccount.getData();
 			if(addBankAccount.getData()==null){
 				new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);
-			}else if(this.isLegal(data[2])){
+			}else if(!this.isLegal(data[2])){
 				new MyNotification(this,"输入的账户余额不合法！",Color.RED);
-			}else{
+			}
+			else{
 				try {
 					BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 					ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 							data[1],new BigDecimal(data[2]),null));
 					if(rsg.equals(ResultMessage.SUCCESS)){
-						ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
-						if(rsg_2.equals(ResultMessage.SUCCESS)){
-							this.showAll();
-							addBankAccount.refresh();
-							new MyNotification(this,"账户添加成功！",Color.GREEN);
-						}else{
-							new MyNotification(this,"账户添加失败！",Color.RED);
-						}
+						
+						new MyNotification(this,"账户添加成功！",Color.GREEN);
+					}else{
+						new MyNotification(this,"账户添加失败！",Color.RED);
+						
 
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
@@ -271,7 +271,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		table = bankAccountPanel.getTable();
 		String[] data = modifyAccountInfo.getData();
 		accountID = accountPool.get(table.getSelectedRow()).ID;
-		if(this.isLegal(data[2])){
+		if(!this.isLegal(data[2])){
 			new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 		}
 		try {
@@ -279,14 +279,10 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 					data[1],new BigDecimal(data[2]),null));
 			if(rsg.equals(ResultMessage.SUCCESS)){
-				ResultMessage rsg_2 =bankAccountController.addMoneyInBankAccount(data[1], new BigDecimal(data[2]));
-				if(rsg_2.equals(ResultMessage.SUCCESS)){
 					this.showAll();
 					modifyAccountInfo.refresh();
 					new MyNotification(this,"账户修改成功！",Color.GREEN);
-				}else{
-					new MyNotification(this,"账户修改失败！",Color.RED);
-				}
+			
 			}else{
 				new MyNotification(this,"账户修改失败！",Color.RED);
 			}

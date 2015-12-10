@@ -1,16 +1,10 @@
 package ui.myui;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.RenderingHints.Key;
-import java.util.HashMap;
-
 import javax.swing.BorderFactory;
 import javax.swing.JRadioButton;
-
 import ui.image.CommonImage;
+
 /**
  * 单选按钮
  * @author zsq

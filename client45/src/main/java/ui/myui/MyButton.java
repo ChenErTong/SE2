@@ -8,11 +8,9 @@ import java.awt.RenderingHints.Key;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.EmptyBorder;
 
 /**
  * 图片按钮类

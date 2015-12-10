@@ -296,6 +296,9 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				try {
 					RecordBLService recordController = ControllerFactory.getRecordController();
 					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+					if(vo==null){
+						return;
+					}
 					recordController.exportBussinessConditionToExcel(vo);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
