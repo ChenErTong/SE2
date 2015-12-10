@@ -52,6 +52,14 @@ public class CommonImage extends Images{
 	 * 注销登录
 	 */
 	private static ImageIcon WITHDRAW[]= null;
+	/**
+	 * 下拉框选中
+	 */
+	private static Image COMBOBOX_SELECTED = null;
+	/**
+	 *下拉框未选中
+	 */
+	private static Image COMBOBOX_UNSELECTED = null;
 	
 	public static ImageIcon[] getBUTTON_CLOSE(){
 		if(BUTTON_CLOSE == null){
@@ -105,5 +113,19 @@ public class CommonImage extends Images{
 			WITHDRAW  = createImageIcons("image/button/注销登录.png");
 		}
 		return WITHDRAW;
+	}
+	
+	public static Image getCOMBOBOX_SELECTED(){
+		if(COMBOBOX_SELECTED == null){
+			COMBOBOX_SELECTED = createImage("image/下拉框选中.png");
+		}
+		return COMBOBOX_SELECTED;
+	}
+	
+	public static Image  getCOMBOBOX_UNSELECTED(){
+		if(COMBOBOX_UNSELECTED == null){
+			COMBOBOX_UNSELECTED = createImage("image/下拉框未选中1.png");
+		}
+		return COMBOBOX_UNSELECTED;
 	}
 }
