@@ -92,7 +92,7 @@ public class MyJComboBox extends JComboBox<String> {
 		this.setVisible(true);
 
 //		this.set
-		this.setForeground(Color.WHITE);
+		//this.setForeground(Color.WHITE);
 		this.setBackground(new Color(0,0,0,0.6f));
 	}
 	
