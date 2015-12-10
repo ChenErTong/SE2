@@ -25,7 +25,7 @@ public class TransferTrans {
 		String date = vo.date;
 		ArrayList<AccountPO> accounts = AccountTrans.convertVOstoPOs(vo.accounts);
 		ArrayList<InventoryPO> inventoryPOs = InventoryTrans.convertInventoryVOstoPOs(vo.inventories);
-		return new TransferPO(ID, address, date, accounts, inventoryPOs);
+		return new TransferPO(ID, date, address, accounts, inventoryPOs);
 	}
 
 	public static TransferVO convertPOtoVO(TransferPO po) {
