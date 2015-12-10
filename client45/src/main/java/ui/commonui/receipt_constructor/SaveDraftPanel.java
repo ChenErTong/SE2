@@ -16,8 +16,9 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptState;
 import state.ReceiptType;
+import ui.image.LoginImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyJButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJFrame;
 import ui.myui.MyJLabel;
@@ -41,7 +42,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @version 2015/12/02 18:47
  */
 public class SaveDraftPanel extends MyJPanel implements ActionListener{
-	MyJButton check,export;
+	MyButton check,export;
 	MyEmptyTextArea ta;
 	MyJComboBox cbb;
 	ArrayList<ReceiptType> typePool;
@@ -58,7 +59,7 @@ public class SaveDraftPanel extends MyJPanel implements ActionListener{
 	private void initCompoment() {
 		typePool = new ArrayList<ReceiptType>();
 		billPool = new ArrayList<ValueObject>();
-		this.add(new MyJLabel(500,100,200,40,"单据查看",24,true));
+		this.add(new MyJLabel(530,70,300,40,"单据查看",30,true));
 		
 		ta = new MyEmptyTextArea(50,150,1180,550);
 		ta.setEditable(false);
@@ -67,13 +68,13 @@ public class SaveDraftPanel extends MyJPanel implements ActionListener{
 		jsp2.setBounds(25, 40 + 50, 650, 465);
 		this.add(jsp2);
 		
-		check = new MyJButton(0,300,40,130,"<html><br>查<br>看<br>单<br>据</br>",18);
+		check = new MyButton(10,300,30,30,LoginImage.getBUTTON_LOGISTIC());
 		check.setActionCommand("CheckReceipt");
 		check.addActionListener(this);
 		
-		export = new MyJButton(0,430,40,130,"<html><br>导<br>出<br>单<br>据</br>",18);
-		export.setActionCommand("ExportReceipt");
-		export.addActionListener(this);
+	//	export = new MyJButton(0,430,40,130,"<html><br>导<br>出<br>单<br>据</br>",18);
+	//	export.setActionCommand("ExportReceipt");
+	//	export.addActionListener(this);
 		
 		this.add(new MyJLabel(0,0,0,0,"请选择要查看的草稿单据！",18,true));
 		
