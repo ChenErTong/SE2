@@ -20,7 +20,7 @@ public class MyJLabel extends JLabel{
 		}else{
 			this.setFont(new MyFont(fontSize));
 		}	
-		this.setForeground(Color.WHITE);
+		this.setForeground(new Color(0,0,0,0.6f));
 		this.setText(text);
 		this.setVisible(true);
 	}

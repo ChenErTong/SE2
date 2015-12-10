@@ -68,7 +68,7 @@ public class MyJTextField extends JTextField {
 	public MyJTextField(int x, int y, int width, int height, String text) {
 		this.setBounds(x, y, width, height);
 		this.setFont(new MyFont(15));
-		this.setForeground(Color.WHITE);
+		this.setForeground(new Color(0,0,0,0.6f));
 		this.setText(text);
 		this.setVisible(true);
 		
