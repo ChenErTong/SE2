@@ -9,6 +9,9 @@ import ui.myui.MyNotification;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,7 +38,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
 	static ArrayList<LogMessage> messagePool;
 	
-	private LogController logController = ControllerFactory.getLogController();
+	//private LogController logController = ControllerFactory.getLogController();
 
 	public ViewLogPanel() {
 		super(0,0,1280,720);
@@ -71,33 +74,47 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 					String date = year + month + day;
 				
-					ArrayList<LogMessage> logs = logController.showInDate(date);
-					logText.setText("");
-					for(int i=0;i<logs.size();i++){
-						logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
-						logText.append("\n");
+					try {
+						LogController logController = ControllerFactory.getLogController();
+						ArrayList<LogMessage> logs = logController.showInDate(date);
+						logText.setText("");
+						for(int i=0;i<logs.size();i++){
+							logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
+							logText.append("\n");
+						}
+					} catch (MalformedURLException | RemoteException
+							| NotBoundException e1) {
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						e1.printStackTrace();
 					}
 				
 				}
 			}else if(e.getActionCommand().equals("ShowAll")){
 				logText = log.getText();
 				logText.setText("");
-				ArrayList<LogMessage> logs = logController.show();
-				table = log.getTable();
-				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-				
-				int rowCount = table.getRowCount();
-				
-				for(int i = 0; i < rowCount; i++){
-					tableModel.removeRow(0);
-				}
-				
-				messagePool.clear();
-		
-				for(int i=0;i<logs.size();i++){
-					String [] rowData = {logs.get(i).userName,logs.get(i).time,logs.get(i).message};
-					tableModel.addRow(rowData);
-					messagePool.add(logs.get(i));
+				try {
+					LogController logController = ControllerFactory.getLogController();
+					ArrayList<LogMessage> logs = logController.show();
+					table = log.getTable();
+					DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+					
+					int rowCount = table.getRowCount();
+					
+					for(int i = 0; i < rowCount; i++){
+						tableModel.removeRow(0);
+					}
+					
+					messagePool.clear();
+
+					for(int i=0;i<logs.size();i++){
+						String [] rowData = {logs.get(i).userName,logs.get(i).time,logs.get(i).message};
+						tableModel.addRow(rowData);
+						messagePool.add(logs.get(i));
+					}
+				} catch (MalformedURLException | RemoteException
+						| NotBoundException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					e1.printStackTrace();
 				}
  			
 		}
