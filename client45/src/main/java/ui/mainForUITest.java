@@ -43,10 +43,10 @@ adminFrame.setVisible(true);
 
 
 
-//Frame_Finance financeFrame = new Frame_Finance("0");
-//financeFrame.setVisible(true);
+Frame_Finance financeFrame = new Frame_Finance("0");
+financeFrame.setVisible(true);
 
-//Frame_Sender senderFrame = new Frame_Sender(id);
-	//senderFrame.setVisible(true);
+Frame_Sender senderFrame = new Frame_Sender(id);
+	senderFrame.setVisible(true);
 	}
 }
