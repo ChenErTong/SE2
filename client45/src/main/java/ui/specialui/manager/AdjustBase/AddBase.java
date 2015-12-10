@@ -34,8 +34,8 @@ public class AddBase extends MyTranslucentPanel{
 		this.add(new MyJLabel(265,140,20,30,"km",18,true));
 		this.add(new MyJLabel(525,140,50,30,"元/km",18,true));
 		
-		String [] startCity = {"上海","南京","杭州","广州"};
-		String [] arrivalCity = {"上海","南京","杭州","广州"};
+		String [] startCity = {"上海","南京","北京","广州"};
+		String [] arrivalCity = {"上海","南京","北京","广州"};
 		startCityList = new MyJComboBox(115,50,150,30,startCity);
 		this.add(startCityList);
 		startCityList.setSelectedIndex(0);

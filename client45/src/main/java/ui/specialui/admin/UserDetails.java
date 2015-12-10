@@ -133,7 +133,7 @@ public class UserDetails extends MyTranslucentPanel{
 	    citiesBox.setVisible(true);
 	    this.add(citiesBox);
 	   
-	    address = new MyEmptyTextArea(100,250,410,100);
+	    address = new MyEmptyTextArea(100,250,410,100,true);
 	    address.setBackground(Color.WHITE);
 	    this.add(address);   
 	}
