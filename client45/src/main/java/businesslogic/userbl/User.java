@@ -15,6 +15,7 @@ import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
+import vo.Command;
 import vo.UserVO;
 /**
  * 
@@ -23,6 +24,7 @@ import vo.UserVO;
  */
 public class User {
 	private UserDataService userData;
+	private UserCommandController commandManager;
 	public static String currentUserFileName;
 	private SerSaveAndLoad<UserPO> currentUserFile;
 	static{
@@ -30,6 +32,7 @@ public class User {
 	}
 	public User() throws MalformedURLException, RemoteException, NotBoundException {
 		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
+		commandManager = new UserCommandController("user");
 		File file = new File(currentUserFileName);
 		file.deleteOnExit();
 		userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
@@ -55,7 +58,14 @@ public class User {
 	}
 
 	public ResultMessage deleteUser(String username) throws RemoteException {
-		return userData.delete(username);
+		UserPO userPO =  userData.delete(username);
+		if(userPO==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<UserPO> command = new Command<UserPO>("delete", userPO);
+			commandManager.addCommand(command);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
@@ -123,4 +133,5 @@ public class User {
 		}
 		return vos;
 	}
+	
 }

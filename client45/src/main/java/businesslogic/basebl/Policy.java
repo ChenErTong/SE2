@@ -10,6 +10,7 @@ import config.RMIConfig;
 import dataservice.basedataservice.PolicyDataService;
 import po.PolicyPO;
 import state.ResultMessage;
+import vo.Command;
 import vo.PolicyVO;
 
 /**
@@ -20,8 +21,9 @@ import vo.PolicyVO;
  */
 public class Policy {
 	private PolicyDataService policyData;
-
+	private PolicyCommandController commandController;
 	public Policy() throws MalformedURLException, RemoteException, NotBoundException {
+		commandController = new PolicyCommandController("policy");
 		policyData = (PolicyDataService) Naming.lookup(RMIConfig.PREFIX + PolicyDataService.NAME);
 	}
 
@@ -35,7 +37,13 @@ public class Policy {
 	}
 
 	public ResultMessage deleteBase(String ID) throws RemoteException {
-		return policyData.delete(ID);
+		PolicyPO po= policyData.delete(ID);
+		if(po==null){
+			return ResultMessage.FAIL;
+		}else{
+			commandController.addCommand(new Command<PolicyPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage updateBase(PolicyVO vo) throws RemoteException {

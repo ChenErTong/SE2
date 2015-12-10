@@ -12,6 +12,7 @@ import po.BasePO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
+import vo.Command;
 
 /**
  * 管理公司成本常量
@@ -22,8 +23,9 @@ import vo.BaseVO;
  */
 public class Base {
 	private BaseDataService baseData;
-
+	private BaseCommandController commandController;
 	public Base() throws MalformedURLException, RemoteException, NotBoundException {
+		commandController = new BaseCommandController("base");
 		baseData = getData();
 	}
 
@@ -45,7 +47,13 @@ public class Base {
 	}
 
 	public ResultMessage deleteBase(String ID) throws RemoteException {
-		return baseData.delete(ID);
+		BasePO po =  baseData.delete(ID);
+		if(po==null){
+			return ResultMessage.FAIL;
+		}else{
+			commandController.addCommand(new Command<BasePO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {

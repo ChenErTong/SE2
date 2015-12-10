@@ -67,6 +67,10 @@ public class SerSaveAndLoad<E> implements Serializable {
 		return poList.isEmpty();
 	}
 	
+	public E getLast(){
+		return poList.get(poList.size()-1);
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void load(String folderName){
 		/* 没有该文件夹就创建 */

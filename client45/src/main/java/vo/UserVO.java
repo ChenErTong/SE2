@@ -4,8 +4,6 @@ import state.UserAuthority;
 import state.UserIdentity;
 
 public class UserVO {
-	/** serialVersionUID */
-	public static final long serialVersionUID = 1L;
 	/**
 	 * 用户ID
 	 */

@@ -57,12 +57,8 @@ public class Expense {
 
 	
 	public ResultMessage delete(String ID) {
-		try {
-			return expenseData.delete(ID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		return null;
+//			expenseData.delete(ID);
 	}
 
 	

@@ -32,8 +32,13 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 	}
 	
 	public String getID() throws RemoteException{
-		if (poList.isEmpty()) {
+		//由于添加了可撤销操作，取消maxID置0
+		/*if (poList.isEmpty()) {
 			maxID = 0;	// 初始化最大ID
+			configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
+		}*/
+		if ((maxID+"").equals(Util.max(IDMaxBit))) {
+			maxID = 0;	// 初始化最大ID(循环编号)
 			configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
 		}
 		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
@@ -61,15 +66,15 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 		}return ResultMessage.FAIL;
 	}
 
-	public ResultMessage delete(String id) throws RemoteException {
+	public PO delete(String id) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
 			PO poFind = poList.get(i);
 			if (poFind.getID().equals(id)) {
 				poList.remove(i);
-				return ResultMessage.SUCCESS;
+				return poFind;
 			}
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
 	public ResultMessage modify(PO po) throws RemoteException {

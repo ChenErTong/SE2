@@ -20,6 +20,7 @@ import po.TransferPO;
 import state.ResultMessage;
 import util.CityTrans;
 import vo.BranchVO;
+import vo.Command;
 import vo.FacilityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
@@ -36,11 +37,14 @@ public class Organization {
 	private AccountInfo_Branch_Transfer accountInfo;
 	private FacilityInfo_Branch_Transfer facilityInfo;
 	private InventoryInfo_Transfer inventoryInfo;
-
+	private BranchCommandController branchCommandController;
+	private TransferCommandController transferCommandController;
 	public Organization() throws MalformedURLException, RemoteException, NotBoundException {
 		accountInfo = new AccountInfo();
 		facilityInfo = new FacilityInfo();
 		inventoryInfo = new InventoryInfo();
+		branchCommandController = new BranchCommandController("branch");
+		transferCommandController = new TransferCommandController("transfer");
 		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 	}
@@ -58,7 +62,13 @@ public class Organization {
 	}
 
 	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
-		return branchData.delete(organizationID);
+		BranchPO po = branchData.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			branchCommandController.addCommand(new Command<BranchPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
@@ -93,7 +103,13 @@ public class Organization {
 	}
 
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
-		return transferData.delete(organizationID);
+		TransferPO po =  transferData.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			transferCommandController.addCommand(new Command<TransferPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {

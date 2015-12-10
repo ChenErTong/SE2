@@ -16,24 +16,24 @@ public interface BranchInfo_Facility extends OranizationInfo_Account {
 	/**
 	 * 在营业厅车辆信息中添加车辆
 	 * 
-	 * @param driver
+	 * @param car
 	 *            FacilityPO型，新增车辆
 	 * @return 添加是否成功
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public ResultMessage addCar(FacilityPO driver) throws RemoteException;
+	public ResultMessage addCar(FacilityPO car) throws RemoteException;
 
 	/**
 	 * 在营业厅车辆信息中修改车辆信息
 	 * 
-	 * @param driver
+	 * @param car
 	 *            FacilityPO型，修改车辆信息
 	 * @return 修改是否成功
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public ResultMessage modifyCar(FacilityPO driver) throws RemoteException;
+	public ResultMessage modifyCar(FacilityPO car) throws RemoteException;
 
 	/**
 	 * 在营业厅车辆信息中删除车辆
