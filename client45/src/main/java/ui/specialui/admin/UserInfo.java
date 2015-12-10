@@ -13,6 +13,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 import ui.image.AdminImage;
+import ui.image.LoginImage;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
@@ -50,7 +51,7 @@ public class UserInfo extends MyTranslucentPanel{
 		userList = new MyJComboBox(140,10,180,30,identity);
 		this.add(userList);
 		
-		search = new MyButton(450,10,120,30,AdminImage.getBUTTON_SEARCH());
+		search = new MyButton(330,10,35,35,LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("SearchUser");
 		search.addActionListener(handle);
 		this.add(search);

@@ -3,6 +3,8 @@ package ui.specialui.sender;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.image.CommonImage;
+import ui.image.LoginImage;
 import ui.image.SenderImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
@@ -47,12 +49,12 @@ public class SearchOrder extends MyTranslucentPanel{
 		senderNameField = new MyJTextField(185, 55, 200, 40);
 		this.add(senderNameField);
 		
-		 search = new MyButton(398,10,90,30,SenderImage.getBUTTON_SEARCH());
+		 search = new MyButton(398,10,35,35,LoginImage.getBUTTON_LOGISTIC());
 		 search.setActionCommand("SearchLogisticInfo");
 		 search.addActionListener(handle);
 		 this.add(search);
 		
-		 cancel = new MyButton(398,60,90,30,SenderImage.getBUTTON_QUXIAO());
+		 cancel = new MyButton(398,60,35,35,CommonImage.getWITHDRAW());
 		 cancel.setActionCommand("CancelSearch");
 		 cancel.addActionListener(new ActionListener(){
 			@Override

@@ -54,7 +54,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		//初始化静态成员变量
 		accountPool = new ArrayList<BankAccountVO>();
 		this.initComponent();
-		this.showAll();	
+		//this.showAll();	
 	}
 
 	private void initComponent() {

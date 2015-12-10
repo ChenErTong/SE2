@@ -36,8 +36,6 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
 	private MyJTable table;
 	static ArrayList<LogMessage> messagePool;
-	
-	//private LogController logController = ControllerFactory.getLogController();
 
 	public ViewLogPanel() {
 		super(0,0,1280,720);

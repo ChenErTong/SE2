@@ -22,6 +22,7 @@ import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
+import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
@@ -73,7 +74,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		MyJLabel day = new MyJLabel(388,75,30,30,"日",16,true);
 		this.add(day);
 	
-		check = new MyButton(608,75,120,30,FinanceImage.getBUTTON_VIEW());
+		check = new MyButton(608,75,30,30,LoginImage.getBUTTON_LOGISTIC());
 		check.setActionCommand("ViewIncomState");
 		check.addActionListener(this);
 		this.add(check);

@@ -101,11 +101,11 @@ public class LogPanel extends MyTranslucentPanel{
 		search.setActionCommand("Search");
 		search.addActionListener(panel);
 		
-		showAll.setActionCommand("ShowAll");
-		showAll.addActionListener(panel);
+		//showAll.setActionCommand("ShowAll");
+		//showAll.addActionListener(panel);
 		
 		this.add(search);
-		this.add(showAll);	
+		//this.add(showAll);	
 	}
 	/**
 	 * 初始化表格

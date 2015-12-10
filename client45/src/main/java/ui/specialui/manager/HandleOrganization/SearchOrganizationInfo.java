@@ -48,7 +48,7 @@ public class SearchOrganizationInfo extends MyTranslucentPanel{
 		 organizationType= new MyJComboBox(140,10,150,30,organizationTypes);
 		this.add(organizationType);
 		
-		search = new MyButton(350,5,30,30,LoginImage.getBUTTON_LOGISTIC());
+		search = new MyButton(300,10,30,30,LoginImage.getBUTTON_LOGISTIC());
 		search.setActionCommand("SearchOrganization");
 		search.addActionListener(handle);
 		this.add(search);
