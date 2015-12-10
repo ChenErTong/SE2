@@ -2,6 +2,8 @@ package ui.specialui.manager.HandleOrganization;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -161,7 +163,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				organizationPool.add(branchVO.get(i));
 				branchPool.add(branchVO.get(i));
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -179,13 +181,13 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			
 			organizationPool.clear();
 			organizationID = "";
-			controller = ControllerFactory.getOrganizationController();
 			
 			ArrayList<TransferVO> transferVO = new ArrayList<TransferVO>();
 			ArrayList<BranchVO> branchVO = new ArrayList<BranchVO>();
 			String data = organizationInfo.getData();
 			if(data!=null){
 				try {
+					controller = ControllerFactory.getOrganizationController();
 					switch(Integer.parseInt(data)){
 						case 0 : transferVO = controller.showTransfer(); branchVO = controller.showBranch(); this.repaint();break;
 						case 1 : branchVO = controller.showBranch(); this.repaint();break;
@@ -207,7 +209,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						branchPool.add(branchVO.get(i));
 					}
 					new MyNotification(this,"共有"+table.getRowCount()+"个机构满足条件！",Color.GREEN);
-				}catch (RemoteException e1) {
+				}catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -217,12 +219,12 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("AddOrganization")){
 			String[] data = organizationDetails.getData();
-			controller = ControllerFactory.getOrganizationController();
 			if(data==null){
 				new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 			}else{
 				if(data[0].equals("营业厅")){
 					try {
+						controller = ControllerFactory.getOrganizationController();
 						BranchVO branch = new BranchVO(controller.getBranchID(data[3]),data[2]+data[3]+data[4], 
 								OrganizationType.BRANCH);
 						ResultMessage rsg = controller.addBranch(branch);
@@ -234,7 +236,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						}else{
 							new MyNotification(this,"新营业厅添加失败！",Color.RED);
 						}
-					} catch (RemoteException e1) {
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e1.printStackTrace();
 					}
@@ -326,7 +328,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 
 	@SuppressWarnings("unused")
 	private void modifyOrganization() {
-		controller = ControllerFactory.getOrganizationController();
+	
 		table = organizationInfo.getTable();
 		String[] data = organizationDetails.getData();
 		organizationID =  organizationPool.get(table.getSelectedRow()).organizationID;
@@ -334,6 +336,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		ArrayList<FacilityVO> facilities = new ArrayList<FacilityVO>();
 		ArrayList<InventoryVO> inventories = new ArrayList<InventoryVO>();
 		try {
+			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
 				case TRANSFER:  accounts = controller.getAccountByOrganizationID(organizationID);
 							inventories = controller.getInventoriesByTransferID(organizationID);
@@ -360,7 +363,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						 	}break;
 				default:break;
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -369,10 +372,11 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 
 
 	private void deleteOrganization() {
-		controller = ControllerFactory.getOrganizationController();
+		
 		table = organizationInfo.getTable();
 		OrganizationVO vo =organizationPool.get(table.getSelectedRow());
 		try {
+			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
 			case TRANSFER:ResultMessage rsg = controller.deleteTransfer(vo.organizationID);
 							if(rsg.equals(ResultMessage.SUCCESS)){
@@ -397,7 +401,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			
 			default:break;
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -457,7 +461,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	
 		DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
 		DefaultTableModel tableModel_2 = (DefaultTableModel) table_2.getModel();
-		OrganizationBLService controller = ControllerFactory.getOrganizationController();
+		
 	
 		int rowCount = table.getRowCount();
 		/*for(int i = 0; i <=rowCount; i++){
@@ -476,6 +480,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		data[4] = organizationPool.get(table.getSelectedRow()).address.substring(6);
 		organizationDetails.setData(data);
 		try {
+			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
 				case TRANSFER:ArrayList<AccountVO> accounts = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
 					  for(int i=0;i<accounts.size();i++){
@@ -499,7 +504,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 					} break;
 			   default:break;
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}

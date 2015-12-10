@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -28,8 +30,6 @@ import vo.BankAccountVO;
  */
 public class BankAccountManage extends MyJPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	
-	BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 	
 	private SearchBankAccount bankAccountPanel;
 	private AddBankAccount addBankAccount;
@@ -107,8 +107,9 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			accountPool.clear();
 			accountID = "";
 			
-			BankAccountBLService controller = ControllerFactory.getBankAccountController();
+			
 			try {
+				BankAccountBLService controller = ControllerFactory.getBankAccountController();
 				ArrayList<BankAccountVO> bankAccountVO = controller.show();
 				
 				for(int i = 0; i < bankAccountVO.size(); i++){
@@ -117,7 +118,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 					tableModel.addRow(rowData);
 					accountPool.add(bankAccountVO.get(i));
 				}
-			} catch (RemoteException e) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e.printStackTrace();
 			}
@@ -140,11 +141,12 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			accountID = "";
 			
 			//"模糊查找", "账户编号(ID)", "账户名称", "账户余额"
-			BankAccountBLService controller = ControllerFactory.getBankAccountController();
+			
 			ArrayList<BankAccountVO> bankAccountVO;
 			String[] data = bankAccountPanel.getData();
 			if(data!=null){
 				try {
+					BankAccountBLService controller = ControllerFactory.getBankAccountController();
 					switch(Integer.parseInt(data[0])){
 						case 0 : bankAccountVO = controller.find(data[1], null);break;
 						case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
@@ -160,7 +162,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 					System.out.println("SearchSucceed!");
 					new MyNotification(this,"共有"+table.getRowCount()+"个账户满足条件！",Color.GREEN);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}	
@@ -199,6 +201,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 			}else{
 				try {
+					BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 					ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 							data[1],new BigDecimal(data[2]),null));
 					if(rsg.equals(ResultMessage.SUCCESS)){
@@ -212,7 +215,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 						}
 
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -247,9 +250,8 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 	
 	public void deleteAccount(){
 		table = bankAccountPanel.getTable();
-		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
-		
 		try {
+			BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 			ResultMessage rsg = bankAccountController.delete(accountPool.get(table.getSelectedRow()).ID);
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("DeleteSucceed!");
@@ -259,14 +261,13 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"账户删除失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
 	}
 	
 	public void modifyAccount(){
-		BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 		table = bankAccountPanel.getTable();
 		String[] data = modifyAccountInfo.getData();
 		accountID = accountPool.get(table.getSelectedRow()).ID;
@@ -274,6 +275,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			new MyNotification(this,"输入的账户余额不合法！",Color.RED);
 		}
 		try {
+			BankAccountBLService bankAccountController = ControllerFactory.getBankAccountController();
 			ResultMessage rsg = bankAccountController.update(new BankAccountVO(accountID,
 					data[1],new BigDecimal(data[2]),null));
 			if(rsg.equals(ResultMessage.SUCCESS)){
@@ -288,7 +290,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"账户修改失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}

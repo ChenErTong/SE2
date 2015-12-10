@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -253,8 +255,10 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			}else{
 				if(this.isLegal()){
 					String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
-					RecordBLService recordController = ControllerFactory.getRecordController();
+			
 					try {
+						
+						RecordBLService recordController = ControllerFactory.getRecordController();
 						BussinessConditionVO vo = recordController.bussinessCondition(endDate);
 						
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
@@ -276,7 +280,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 							tableModel.addRow(rowData3);
 							
 						}
-					} catch (RemoteException e1) {
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e1.printStackTrace();
 					}
@@ -288,11 +292,11 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
 			}else{
 				String endDate = yearAddZero((String)yearBox.getSelectedItem()) + addZero((String)monthBox.getSelectedItem()) + addZero((String)dayBox.getSelectedItem());
-				RecordBLService recordController = ControllerFactory.getRecordController();
 				try {
+					RecordBLService recordController = ControllerFactory.getRecordController();
 					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
 					recordController.exportBussinessConditionToExcel(vo);
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}

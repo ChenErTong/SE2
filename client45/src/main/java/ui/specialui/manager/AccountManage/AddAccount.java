@@ -3,6 +3,8 @@ package ui.specialui.manager.AccountManage;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -17,7 +19,6 @@ import ui.myui.MyTranslucentPanel;
 public class AddAccount extends MyTranslucentPanel{
 	private MyJTextField[] fields ;
 	private MyJComboBox branchID;
-	private OrganizationController controller = ControllerFactory.getOrganizationController();
 
 	public AddAccount() {
 		super(680,70,550,240);
@@ -124,6 +125,7 @@ public class AddAccount extends MyTranslucentPanel{
 		
 		String[] branchIDs;
 		try {
+			 OrganizationController controller = ControllerFactory.getOrganizationController();
 			ArrayList<String> id = controller.getAllBranchNumbers();
 			branchIDs = new String[100];
 			for(int i=0;i<id.size();i++){
@@ -131,7 +133,7 @@ public class AddAccount extends MyTranslucentPanel{
 				branchID = new MyJComboBox(390,170,110,30,branchIDs);
 				this.add(branchID);
 			}
-		} catch (RemoteException e1) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e1.printStackTrace();
 		}

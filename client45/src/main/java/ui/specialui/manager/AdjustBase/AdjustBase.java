@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -39,7 +41,6 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private MyButton deleteButton;
 	private MyButton modifyButton;
 	private MyJTable table;
-	private BaseBLService controller = ControllerFactory.getBaseController();
 
 	static ArrayList<BaseVO> basePool;
 	static String baseID = " ";
@@ -97,6 +98,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		basePool.clear();
 		baseID = "";
 		try {
+			BaseBLService controller = ControllerFactory.getBaseController();
 			ArrayList<BaseVO> baseVO = controller.show();
 			
 			for(int i = 0; i < baseVO.size(); i++){
@@ -104,7 +106,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				basePool.add(baseVO.get(i));
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -124,6 +126,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 			}else{
 				try {
+					BaseBLService controller = ControllerFactory.getBaseController();
 					ResultMessage rsg = controller.addBase(new BaseVO(controller.getID(),data[0],data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();
@@ -132,7 +135,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"常量添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -192,11 +195,12 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				}*/
 				
 				try {
+					BaseBLService controller = ControllerFactory.getBaseController();
 					BaseVO baseVO = controller.find(data);
 					String [] rowData = {baseVO.cityFrom,baseVO.cityTo,baseVO.distance+"",baseVO.price+""};
 					tableModel.addRow(rowData);
 					basePool.add(baseVO);
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -228,6 +232,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			new MyNotification(this,"输入的距离和单价不合法！",Color.RED);
 		}else{
 			try {
+				BaseBLService controller = ControllerFactory.getBaseController();
 				ResultMessage rsg = controller.updateBase(new BaseVO(basePool.get(table.getSelectedRow()).ID,data[0],
 						data[1],new BigDecimal(data[2]),new BigDecimal(data[3])));
 				if(rsg.equals(ResultMessage.SUCCESS)){
@@ -238,7 +243,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				}else{
 					new MyNotification(this,"常量修改失败！",Color.RED);
 				}
-			} catch (RemoteException e) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e.printStackTrace();
 			}
@@ -248,6 +253,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		table =  baseInfo.getTable();
 		
 		try {
+			BaseBLService controller = ControllerFactory.getBaseController();
 			ResultMessage rsg = controller.deleteBase(basePool.get(table.getSelectedRow()).ID);
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("DeleteSucceed!");
@@ -257,7 +263,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"常量删除失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}

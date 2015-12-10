@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -132,8 +134,8 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		paybillPool.clear();
 		paybillID = "";
 		
-		showController = ControllerFactory.getDebitAndPayBillShowController();
 		try {
+			showController = ControllerFactory.getDebitAndPayBillShowController();
 			ArrayList<DebitAndPayBillVO> paybillVO = showController.showPay();
 			PaymentBillVO payVO;
 			for(int i = 0; i < paybillVO.size(); i++){
@@ -142,7 +144,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				paybillPool.add((PaymentBillVO) paybillVO.get(i));
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -162,7 +164,6 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			paybillPool.clear();
 			paybillID = "";
 			
-			controller = ControllerFactory.getDebitAndPayBillController();
 			ArrayList<PaymentBillVO> paybillVO = new ArrayList<PaymentBillVO>();
 			String []data = payReceiptList.getData();
 			if(data!=null){
@@ -177,6 +178,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 				String date = year + month + day;
 				try {
+					controller = ControllerFactory.getDebitAndPayBillController();
 					showController.showList(date);
 					for(int i = 0; i < paybillVO.size(); i++){
 						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
@@ -184,7 +186,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 						paybillPool.add(paybillVO.get(i));
 						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}	
@@ -192,7 +194,6 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
 			}
 		}else if(e.getActionCommand().equals("AddPayReceipt")){
-			controller = ControllerFactory.getDebitAndPayBillController();
 			String[] data = addPaybill.getData();
 			if(data==null){
 					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
@@ -200,6 +201,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"输入的付款金额不合法！",Color.RED);
 			}else{
 				try {
+					controller = ControllerFactory.getDebitAndPayBillController();
 					ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
 							PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
@@ -217,7 +219,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"付款单添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -312,7 +314,6 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 	 */
 	private void modifyPaybill() {
 		table = payReceiptList.getTable();
-		controller = ControllerFactory.getDebitAndPayBillController();
 		
 		String[] data = modifyPaybill.getData();
 		if(data==null){
@@ -321,6 +322,8 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			new MyNotification(this,"付款金额输入不合法！",Color.RED);
 		}else{
 			try {
+				controller = ControllerFactory.getDebitAndPayBillController();
+				
 				ResultMessage rsg  = controller.updateDraft(new PaymentBillVO(paybillPool.get(table.getSelectedRow()).ID,data[5],ReceiptType.
 						PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 				if(rsg.equals(ResultMessage.SUCCESS)){
@@ -337,7 +340,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				}else{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
 				}
-			} catch (RemoteException e) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e.printStackTrace();
 			}

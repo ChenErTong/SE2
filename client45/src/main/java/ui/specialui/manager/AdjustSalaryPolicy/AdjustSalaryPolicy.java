@@ -4,6 +4,8 @@ package ui.specialui.manager.AdjustSalaryPolicy;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -41,7 +43,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private MyButton modifyButton;
 	private MyJTable table;
 	
-	private PolicyBLService controller = ControllerFactory.getPolicyController();
+	//private PolicyBLService controller = ControllerFactory.getPolicyController();
 
 	static ArrayList<PolicyVO> policyPool;
 	static String policyID = " ";
@@ -100,6 +102,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		
 
 		try {
+			PolicyBLService controller = ControllerFactory.getPolicyController();
 			ArrayList<PolicyVO> policyVO =  controller.show();
 			
 			for(int i = 0; i < policyVO.size(); i++){
@@ -107,7 +110,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				policyPool.add(policyVO.get(i));	
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -121,6 +124,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 				this.add(new MyNotification(this,"请检查策略信息填写是否完整！",Color.RED));
 			}else if(data[0].equals("0")&&data[1].equals("2")){
 				try {
+					PolicyBLService controller = ControllerFactory.getPolicyController();
 					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.COURIER,SalaryPolicy.DEDUCT,data[2]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
@@ -130,12 +134,13 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"策略添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
 			}else if(data[0].equals("5")&&data[1].equals("1")){
 				try {
+					PolicyBLService controller = ControllerFactory.getPolicyController();
 					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.DRIVER,SalaryPolicy.BYTIMES,data[2]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();
@@ -144,12 +149,13 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"策略添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
 			}else if(data[0].equals("2")&&data[1].equals("0")){
 				try {
+					PolicyBLService controller = ControllerFactory.getPolicyController();
 					ResultMessage rsg = controller.addPolicy(new PolicyVO(controller.getID(),UserIdentity.TRANSFER_CONTERMAN,SalaryPolicy.EVERYMONTH,data[2]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();
@@ -158,7 +164,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"策略添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -216,11 +222,12 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 					default :// baseVO = controller.find();break;
 				}*/
 				try {
+					PolicyBLService controller = ControllerFactory.getPolicyController();
 					PolicyVO vo = controller.find(data);
 					String [] rowData = {vo.userIdentity+"",vo.salaryPolicy+"",vo.remark};
 					tableModel.addRow(rowData);
 					policyPool.add(vo);
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -242,6 +249,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		table = policyInfoList.getTable();
 		
 		try {
+			PolicyBLService controller = ControllerFactory.getPolicyController();
 			ResultMessage rsg = controller.deletePolicy(policyPool.get(table.getSelectedRow()).ID);
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("DeleteSucceed!");
@@ -251,7 +259,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"策略删除失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -263,6 +271,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		
 		String[] data = modifyPolicy.getData();
 		try {
+			PolicyBLService controller = ControllerFactory.getPolicyController();
 			ResultMessage rsg = controller.updatePolicy(new PolicyVO(policyPool.get(table.getSelectedRow()).ID, UserIdentity.COURIER, SalaryPolicy.DEDUCT, data[2]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
@@ -272,7 +281,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"策略修改失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}

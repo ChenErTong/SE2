@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -98,9 +100,10 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		debitbillPool.clear();
 		debitBillID = "";
 		
-		showController = ControllerFactory.getDebitAndPayBillShowController();
+		
 		
 		 try {
+			 showController = ControllerFactory.getDebitAndPayBillShowController();
 			ArrayList<DebitAndPayBillVO> debitbillVO = showController.showExpense();
 			 DebitBillVO debitVO;
 			for(int i = 0; i < debitbillVO.size(); i++){
@@ -109,8 +112,8 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				debitbillPool.add((DebitBillVO) debitbillVO.get(i));
 			}
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
 	}
@@ -159,8 +162,8 @@ public class CostManagement extends MyJPanel implements ActionListener{
 						earnings = debitbillVO.earnings;
 						calAll.init(earnings+"");
 					}
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
 			}
@@ -176,10 +179,8 @@ public class CostManagement extends MyJPanel implements ActionListener{
 			debitBillID = "";
 			
 			BussinessOneDayVO debitbillVO ;
-			showController_2 = ControllerFactory.getRecordController();
 			String[] data = debitReceiptList.getData();
 			if(data!=null){
-				
 				Date current = new Date();
 				String year = data[1];
 				SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
@@ -191,12 +192,13 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				String date = year + month + day;
 				
 				try {
+					showController_2 = ControllerFactory.getRecordController();
 					debitbillVO=showController_2.bussinessOneDay(data[0], date);
 						Object[] rowData = {debitbillVO.DebitBills};
 						tableModel.addRow(rowData);
 						System.out.println("SearchSucceed!");
 						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络连接！",Color.RED);
 					e1.printStackTrace();
 				}

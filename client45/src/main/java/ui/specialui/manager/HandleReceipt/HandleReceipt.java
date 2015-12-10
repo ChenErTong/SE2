@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -21,7 +23,6 @@ import state.ResultMessage;
 import ui.commonui.receipt_constructor.ReceiptConductor;
 import ui.image.ManagerImage;
 import ui.myui.MyButton;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -136,20 +137,20 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 			if(!table.getValueAt(index, 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED);
 			}else{
-				receiptController =ControllerFactory.getReceiptController();
-				ArrayList<ReceiptVO> dontPassList = new ArrayList<ReceiptVO>();
-				ArrayList<ReceiptType> dontPassType =  new ArrayList<ReceiptType>();
-				dontPassList.add((ReceiptVO)listPool.get(index));
-				dontPassType.add(typePool.get(index));
 				try {
+					receiptController =ControllerFactory.getReceiptController();
+					ArrayList<ReceiptVO> dontPassList = new ArrayList<ReceiptVO>();
+					ArrayList<ReceiptType> dontPassType =  new ArrayList<ReceiptType>();
+					dontPassList.add((ReceiptVO)listPool.get(index));
+					dontPassType.add(typePool.get(index));
 					ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
 					if(rm.equals(ResultMessage.FAIL)){
 						new MyNotification(this,"不通过单据失败！",Color.RED);
 					}else{
 						search.doClick();
 					}
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
+				} catch (RemoteException | MalformedURLException | NotBoundException e) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e.printStackTrace();
 				}
 			}
@@ -160,16 +161,16 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				if(!table.getValueAt(index, 3).equals("未审批")){
 					new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED);
 				}else{
-					receiptController= ControllerFactory.getReceiptController();
-					
-					passList.clear();
-					passType.clear();
-					
-					passList.add(listPool.get(index));
-					passType.add(typePool.get(index));
-					PassList.add((ReceiptVO)listPool.get(index));
 					
 					try {
+						receiptController= ControllerFactory.getReceiptController();
+						
+						passList.clear();
+						passType.clear();
+						
+						passList.add(listPool.get(index));
+						passType.add(typePool.get(index));
+						PassList.add((ReceiptVO)listPool.get(index));
 						ResultMessage rsg = receiptController.passReceipt(PassList);
 						if(rsg.equals(ResultMessage.FAIL)){
 							new MyNotification(this,"单据审批失败！",Color.RED);
@@ -181,8 +182,8 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 							new MyNotification(this,"单据审批成功！",Color.GREEN);
 								
 						}
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
+					} catch (RemoteException | MalformedURLException | NotBoundException e) {
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e.printStackTrace();
 					}
 				}
@@ -221,8 +222,8 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				if(count == 0){
 					new MyNotification(this,"请先选择需要进行审批的单据！",Color.RED);
 				}else{
-					receiptController= ControllerFactory.getReceiptController();
 					try {
+						receiptController= ControllerFactory.getReceiptController();
 						ResultMessage rm = receiptController.passReceipt(PassList);
 						
 						if(rm.equals(ResultMessage.FAIL)){
@@ -230,8 +231,8 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 						}else{
 							new MyNotification(this,"单据批量审批成功！",Color.GREEN);
 						}
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
+					} catch (RemoteException | MalformedURLException | NotBoundException e) {
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e.printStackTrace();
 					}
 				}
@@ -333,7 +334,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	}
 	
 @SuppressWarnings("unused")
-private void getApprovalData(int index) throws RemoteException{
+private void getApprovalData(int index) throws RemoteException, MalformedURLException, NotBoundException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
 		
@@ -434,7 +435,7 @@ private void getApprovalData(int index) throws RemoteException{
 	}
 	
 	@SuppressWarnings("unused")
-	private void getPassData(int index) throws RemoteException{
+	private void getPassData(int index) throws RemoteException, MalformedURLException, NotBoundException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
 		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.SUCCESS);//待审批的单据
@@ -534,7 +535,7 @@ private void getApprovalData(int index) throws RemoteException{
 	}
 	
 	@SuppressWarnings("unused")
-	private void getFailureData(int index) throws RemoteException{
+	private void getFailureData(int index) throws RemoteException, MalformedURLException, NotBoundException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
 		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.SUCCESS);//待审批的单据
@@ -634,9 +635,14 @@ private void getApprovalData(int index) throws RemoteException{
 	}
 	
 	private void showAll() throws RemoteException{
-		this.getApprovalData(0);
-		this.getPassData(0);
-		this.getFailureData(0);
+		try {
+			this.getApprovalData(0);
+			this.getPassData(0);
+			this.getFailureData(0);
+		} catch (MalformedURLException | NotBoundException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
+		}
 	}
 	
 	private void writeto(String a,String file){

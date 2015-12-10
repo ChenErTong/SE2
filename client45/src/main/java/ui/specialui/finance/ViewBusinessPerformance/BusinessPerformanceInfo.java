@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -280,8 +282,9 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				if(this.isLegal()){
 					String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 					String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
-					RecordBLService recordController = ControllerFactory.getRecordController();
+					
 					try {
+						RecordBLService recordController = ControllerFactory.getRecordController();
 						ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 						
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
@@ -310,7 +313,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 						}else{
 							new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 						}
-					} catch (RemoteException e1) {
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						e1.printStackTrace();
 					}
@@ -323,14 +326,15 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			if(rowCount==0){
 				new MyNotification(this,"导出经营情况表失败！",Color.RED);
 			}else{
-				RecordBLService recordController = ControllerFactory.getRecordController();
+				
 				String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 				String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
 				try {
+					RecordBLService recordController = ControllerFactory.getRecordController();
 					ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
 					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}

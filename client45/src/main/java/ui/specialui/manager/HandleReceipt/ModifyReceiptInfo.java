@@ -3,6 +3,8 @@ package ui.specialui.manager.HandleReceipt;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.JScrollPane;
@@ -13,7 +15,6 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptType;
 import state.ResultMessage;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -205,7 +206,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 			}
 			try {
 				finish(currentType);
-			} catch (RemoteException e1) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
 			}
@@ -215,8 +216,10 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	
 	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单
-	 * @throws RemoteException */
-	private void finish(ReceiptType billType) throws RemoteException {
+	 * @throws RemoteException 
+	 * @throws NotBoundException 
+	 * @throws MalformedURLException */
+	private void finish(ReceiptType billType) throws RemoteException, MalformedURLException, NotBoundException {
 		ReceiptBLService controller = ControllerFactory.getReceiptController();
 		ResultMessage rm = null;
 		if(billType.equals(ReceiptType.ORDER)){

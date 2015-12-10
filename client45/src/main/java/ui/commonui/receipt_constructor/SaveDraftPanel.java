@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -78,21 +80,26 @@ public class SaveDraftPanel extends MyJPanel implements ActionListener{
 		
 		this.add(new MyJLabel(0,0,0,0,"请选择要查看的草稿单据！",18,true));
 		
-		cbb = new MyJComboBox(0,0,0,0,getSaveDraft());
+		try {
+			cbb = new MyJComboBox(0,0,0,0,getSaveDraft());
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			e.printStackTrace();
+		}
 		this.add(cbb);
 	}
 
 	private static final long serialVersionUID = 1L;
 
-	private String[] getSaveDraft(){
+	private String[] getSaveDraft() throws MalformedURLException, RemoteException, NotBoundException{
 		String str = "";
 		typePool.clear();
 		billPool.clear();
 		if(MyJFrame.frameName.equals("Frame_Branch")){
 			ReceiptBLService receiptController = ControllerFactory.getReceiptController();
-			
 			ArrayList<BranchArrivalListVO> list;
 			try {
+				
 				list = receiptController.show(ReceiptType.BRANCH_ARRIVAL, ReceiptState.DRAFT);
 				if(list != null){
 					for(int i = 0; i < list.size(); i++){

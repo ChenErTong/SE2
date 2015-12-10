@@ -3,6 +3,8 @@ package ui.specialui.finance.OpenningStock;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -156,8 +158,6 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	 * 显示系统当前所有的期初建账历史信息
 	 */
 	public void showAll(){
-		OpeningStockBLService controller = new OpeningStockController();
-	
 		
 		DefaultTableModel tableModel = (DefaultTableModel)transferTable.getModel();
 		DefaultTableModel tableModel2 = (DefaultTableModel)employTable.getModel();
@@ -187,6 +187,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		}
 		
 		try {
+			OpeningStockBLService controller = new OpeningStockController();
 			ArrayList<OpeningStockVO> openingStockVO = controller.show();
 			if(openingStockVO  != null){
 				for(int i = 0; i < openingStockVO.size(); i++){
@@ -217,7 +218,6 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 				}
 				
 				for(int j = 0; j < avo.inventories.size(); j++){
-					//TODO 
 					Object[] rowData = {avo.inventories.get(j).getID(), avo.date, avo.inventories.get(j).getTransferID()};
 					tableModel4.addRow(rowData);
 				}
@@ -229,7 +229,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 				}
 			}
 }
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -240,15 +240,15 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		if(e.getSource()==searchButton){
 			this.showAll();
 		}else if(e.getSource()==insertButton){
-			OpeningStockBLService controller = new OpeningStockController();
 			try {
+				OpeningStockBLService controller = new OpeningStockController();
 				ResultMessage rsg = controller.add();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"期初建账成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"期初建账失败！",Color.RED);
 				}
-			} catch (RemoteException e1) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
 			}

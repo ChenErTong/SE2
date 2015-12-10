@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -40,13 +42,13 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	static ArrayList<AccountVO> accountPool;
 	static String accountID = "";
 	
-	private AccountController controller = ControllerFactory.getAccountController();
 
 	public AccountManage() {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent();
 		accountPool = new ArrayList<AccountVO>();
+		
 		this.showAll();
 	}
 	
@@ -104,9 +106,9 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			accountPool.clear();
 			accountID = "";
 			
-			AccountBLService controller = ControllerFactory.getAccountController();
 			ArrayList<AccountVO> accountVO;
 			try {
+				AccountBLService controller = ControllerFactory.getAccountController();
 				accountVO = controller.show();
 				for(int i = 0; i < accountVO.size(); i++){
 					String[] rowData = {accountVO.get(i).ID,accountVO.get(i).Name,accountVO.get(i).Duty,accountVO.get(i).BirthDay,accountVO.get(i).IDCard,accountVO.get(i).WorkTime,
@@ -114,7 +116,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					tableModel.addRow(rowData);
 					accountPool.add(accountVO.get(i));
 				}
-			} catch (RemoteException e) {
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e.printStackTrace();
 			}
@@ -136,12 +138,13 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			
 			//用户类型查找 {"编号", "姓名", "职务", "出生日期", "身份证号",“任职时间”,"薪水","联系方式"};
 			//{"所有员工","总经理","快递员","中转库存管理员","中转中心业务员","营业厅业务员","财务人员","管理员","司机"};
-			AccountBLService controller = ControllerFactory.getAccountController();
+		
 			ArrayList<AccountVO> accountVO;
 			String data = userInfo.getData();
 			if(data!=null){
 				
 				try {
+					AccountBLService controller = ControllerFactory.getAccountController();
 					switch(Integer.parseInt(data)){
 						case 1 : accountVO = controller.show("总经理"); break;
 						case 2 :accountVO = controller.show("快递员"); break;
@@ -163,7 +166,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					System.out.println("SearchSucceed!");
 						new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}	
@@ -176,6 +179,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
 			}else{
 				try {
+					AccountController controller = ControllerFactory.getAccountController();
 					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						System.out.println("AddSucceed!");
@@ -185,7 +189,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					}else{
 						new MyNotification(this,"新员工添加失败！",Color.RED);
 					}
-				} catch (RemoteException e1) {
+				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
@@ -232,9 +236,9 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	
 	private void deleteAccount() {
 		table = userInfo.getTable();
-		AccountController controller = ControllerFactory.getAccountController();
 		ResultMessage rsg;
 		try {
+			AccountController controller = ControllerFactory.getAccountController();
 			rsg = controller.deleteAccount(accountPool.get(table.getSelectedRow()).ID);
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("DeleteSucceed!");
@@ -244,7 +248,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"员工删除失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
@@ -253,9 +257,9 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	
 	private void modifyAccount() {
 		table = userInfo.getTable();
-		AccountController controller = ControllerFactory.getAccountController();
 		String[] data = modifyAccount.getData();
 		try {
+			AccountController controller = ControllerFactory.getAccountController();
 			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
@@ -265,7 +269,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"员工修改失败！",Color.RED);
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}

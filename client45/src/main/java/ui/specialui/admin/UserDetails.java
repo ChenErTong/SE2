@@ -3,6 +3,8 @@ package ui.specialui.admin;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -37,7 +39,7 @@ public class UserDetails extends MyTranslucentPanel{
 	private JComboBox<?> citiesBox;
 	private MyJComboBox userAuthorityBox;
 	private MyEmptyTextArea address;
-	private OrganizationController controller = ControllerFactory.getOrganizationController();
+	
 	
 	public UserDetails() {
 		super(680,100,550,562);
@@ -50,6 +52,7 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
 		
 		try {
+			OrganizationController controller = ControllerFactory.getOrganizationController();
 			ArrayList<String> branchIDs = new ArrayList<String>();
 			branchIDs = controller.getAllBranchNumbers();
 			String[] trans = new String[100];
@@ -58,7 +61,7 @@ public class UserDetails extends MyTranslucentPanel{
 			}
 			branchID = new MyJComboBox(110,60,130,30,trans);
 			this.add(branchID);
-		} catch (RemoteException e1) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e1.printStackTrace();
 		}

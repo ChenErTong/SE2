@@ -3,6 +3,8 @@ package ui.specialui.sender;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -73,11 +75,11 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 				orderPool.clear();
 				orderID = "";
 				
-				orderController = ControllerFactory.getOrderController();
 				OrderVO orderVO;
 				String[] data = searchPanel.getSenderInfo();
 				if(data!=null){
 					try {
+						orderController = ControllerFactory.getOrderController();
 						orderVO = orderController.inquireOrder(data[0], data[1]);
 						if(orderVO==null){
 							new MyNotification(this,"没有相应的订单！",Color.RED);
@@ -90,7 +92,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 							}
 							orderPool.add(orderVO);
 						}
-					} catch (RemoteException e1) {
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						e1.printStackTrace();
 					}
 				}else{
