@@ -163,4 +163,44 @@ public class OrganizationController implements OrganizationBLService {
 		return organization.getInventoriesByTransferID(transferID);
 	}
 
+	@Override
+	public boolean canUndo_Branch() {
+		return branchCommandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo_Branch() {
+		return branchCommandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo_Branch() throws RemoteException {
+		return branchCommandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo_Branch() throws RemoteException {
+		return branchCommandController.redoCommand();
+	}
+
+	@Override
+	public boolean canUndo_Transfer() {
+		return transferCommandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo_Transfer() {
+		return transferCommandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo_Transfer() throws RemoteException {
+		return transferCommandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo_Transfer() throws RemoteException {
+		return transferCommandController.redoCommand();
+	}
+
 }

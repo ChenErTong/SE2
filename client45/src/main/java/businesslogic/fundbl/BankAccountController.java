@@ -125,5 +125,23 @@ public class BankAccountController implements BankAccountBLService {
 		UserAuthority authority = UserInfomation.getInstance().getAuthority();
 		return authority == UserAuthority.ADVANCE_FINANCE || authority == UserAuthority.MANAGER_LEVEL;
 	}
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
 
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
+	}
 }

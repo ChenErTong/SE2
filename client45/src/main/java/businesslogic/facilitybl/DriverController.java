@@ -22,11 +22,11 @@ import vo.accountvo.DriverVO;
 public class DriverController implements DriverBLService {
 
 	Driver driverBL;
-	private CommandController<DriverPO> commandManager;
+	private CommandController<DriverPO> commandController;
 
 	public DriverController() throws MalformedURLException, RemoteException, NotBoundException {
 		driverBL = new Driver();
-		commandManager = new CommandController<DriverPO>("driver");
+		commandController = new CommandController<DriverPO>("driver");
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class DriverController implements DriverBLService {
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
 		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>(driverBL, po);
-		commandManager.addCommand(deleteCommand);
+		commandController.addCommand(deleteCommand);
 		return deleteCommand.execute();
 		// DriverPO po = driverBL.delete(driver.ID);
 		// if(po==null){
@@ -89,5 +89,23 @@ public class DriverController implements DriverBLService {
 	public String getID(String branchID) throws RemoteException {
 		return driverBL.getID(branchID);
 	}
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
 
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
+	}
 }

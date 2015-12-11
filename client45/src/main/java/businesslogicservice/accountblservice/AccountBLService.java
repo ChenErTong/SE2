@@ -71,4 +71,9 @@ public interface AccountBLService {
 	 * @return AccountVO型，查找到的员工信息
 	 */
 	public AccountVO find(String id) throws RemoteException;
+	
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

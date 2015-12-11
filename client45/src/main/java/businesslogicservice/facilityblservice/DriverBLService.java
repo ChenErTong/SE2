@@ -50,4 +50,8 @@ public interface DriverBLService  extends BLService{
 	public DriverVO findDriver(String ID) throws RemoteException;
 	public ArrayList<DriverVO> findDriver () throws RemoteException;
 	public String getID(String branchID) throws RemoteException;
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

@@ -77,4 +77,24 @@ public class PolicyController implements PolicyBLService {
 		return policyBL.find(id);
 	}
 
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
+	}
+
 }

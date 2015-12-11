@@ -106,4 +106,24 @@ public class UserController implements UserBLService {
 		return userBL.showUser(userIdentity);
 	}
 
+	@Override
+	public boolean canUndo() {
+		return commandManager.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandManager.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandManager.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandManager.redoCommand();
+	}
+
 }

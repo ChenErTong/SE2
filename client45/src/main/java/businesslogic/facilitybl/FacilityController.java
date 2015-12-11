@@ -22,11 +22,11 @@ import vo.FacilityVO;
 public class FacilityController implements FacilityBLService {
 
 	Facility facilityBL;
-	private CommandController<FacilityPO> commandManager;
+	private CommandController<FacilityPO> commandController;
 
 	public FacilityController() throws MalformedURLException, RemoteException, NotBoundException {
 		facilityBL = new Facility();
-		commandManager = new CommandController<FacilityPO>("car");
+		commandController = new CommandController<FacilityPO>("car");
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class FacilityController implements FacilityBLService {
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
 		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>(facilityBL, facilityPO);
-		commandManager.addCommand(commandDelete);
+		commandController.addCommand(commandDelete);
 		return commandDelete.execute();
 		// FacilityPO facilityPO = facilityBL.delete(facility.facilityIdString);
 		// if(facilityPO==null){
@@ -88,5 +88,25 @@ public class FacilityController implements FacilityBLService {
 	public String getID(String branchID) throws RemoteException {
 		return facilityBL.getID(branchID);
 	}
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
+	}
+	
 
 }
