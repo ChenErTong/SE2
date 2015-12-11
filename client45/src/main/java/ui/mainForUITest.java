@@ -4,7 +4,12 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import ui.commonui.login.Frame_Login;
 import ui.specialui.admin.Frame_Admin;
+import ui.specialui.courier.Frame_Courier;
+import ui.specialui.finance.Frame_Finance;
+import ui.specialui.manager.FrameManager;
+import ui.specialui.sender.Frame_Sender;
 
 public class mainForUITest {
 	static String id = "123";
