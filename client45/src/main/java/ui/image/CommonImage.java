@@ -29,6 +29,10 @@ public class CommonImage extends Images{
 	 */
 	public static final ImageIcon FINANCE_BACKGROUND = createImageIcon("image/background_finance.png");
 	/**
+	 * 测试带下标logo的背景图片
+	 */
+	public static final ImageIcon BACKGROUND_LOGO = createImageIcon("image/background_login.png");
+	/**
 	 * 半透明
 	 */
 	public static final Image TEST_HALFOPAQUE = createImage("image/半透明.png");

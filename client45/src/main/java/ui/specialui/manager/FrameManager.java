@@ -69,49 +69,69 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				totalPanel.setVisible(true);
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			try {
-				this.setBackground(CommonImage.MANAGER_BACKGROUND);
-				subPanel = new HandleReceipt();
+				subPanel = new HandleReceipt(this);
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("HandleOrganization")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new HandleOrganization(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
 		}else if(e.getActionCommand().equals("AdjustBase")){
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new AdjustBase(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("AdjustSalaryPolicy")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new AdjustSalaryPolicy(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewUser")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
-			subPanel = new AccountManage();
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
+			subPanel = new AccountManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new ViewIncomeStatement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
-			subPanel = new ViewBusinessPerformance(this);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("Withdraw")){
@@ -119,9 +139,12 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new Panel_Login(login);
 			subPanel.setVisible(true);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
-			this.setBackground(CommonImage.MANAGER_BACKGROUND);
-			totalPanel.setVisible(false);
-			subPanel = new ViewLogPanel();
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
+			subPanel = new ViewLogPanel(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){

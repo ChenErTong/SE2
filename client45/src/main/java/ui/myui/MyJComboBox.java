@@ -80,9 +80,14 @@ public class MyJComboBox extends JComboBox<String> {
 		
 		//写上选择的内容
 		String text = (String) this.getSelectedItem();
-		g2d.setFont(new MyFont(15, true));
-		g2d.setPaint(new Color(0,0,0,0.6f));
-		g2d.drawString(text, 10, 19);
+		if(text==null){
+			g2d.setFont(new MyFont(15, true));
+			g2d.setPaint(new Color(0,0,0,0.6f));
+		}else{
+			g2d.setFont(new MyFont(15, true));
+			g2d.setPaint(new Color(0,0,0,0.6f));
+			g2d.drawString(text, 10, 19);
+		}
 		
 		this.repaint();
 	}

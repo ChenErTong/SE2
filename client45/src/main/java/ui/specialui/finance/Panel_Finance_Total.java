@@ -22,6 +22,11 @@ public class Panel_Finance_Total extends MyJPanel{
 		MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "财务人员界面", 544-60, 100, 387, 117);
 		
+		this.initComponent(frame_Finance);
+		
+	}
+	
+	public void initComponent(Frame_Finance frame_Finance){
 		MyButton CostManage = new MyButton(551, 250, 257, 46,FinanceImage.getBUTTON_JIESUAN());
 		CostManage.setActionCommand("CostManage");
 		CostManage.addActionListener(frame_Finance);
@@ -63,12 +68,15 @@ public class Panel_Finance_Total extends MyJPanel{
 		viewLog.addActionListener(frame_Finance);
 		this.add(viewLog);
 		
-		this.repaint();
-		
 		MyButton withdraw = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
 		withdraw.setActionCommand("Withdraw");
 		withdraw.addActionListener(frame_Finance);
 		this.add(withdraw);
+		
+		this.repaint();
 	}
+	
+	
+
 }
 

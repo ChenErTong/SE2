@@ -2,10 +2,16 @@ package ui.myui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.RoundRectangle2D;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
 import ui.image.CommonImage;
+
 import com.sun.awt.AWTUtilities;
 /**
  * Frame的总类，定义位置，大小，启动动画
@@ -24,6 +30,9 @@ public class MyJFrame extends JFrame{
 	protected MyButton returnButton;
 	//用户ID
 	protected String ID;
+	
+	boolean isDraging;
+	int xx, yy, X0, Y0, X, Y;
 	
 	public static  String frameName;
 	/**
@@ -73,6 +82,37 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.closeButton);
 		
+
+		//the codes that make the frame mouse-drag-able
+		this.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                requestFocus();
+                isDraging = true;
+                xx = e.getX();
+                yy = e.getY();
+            }
+ 
+            public void mouseReleased(MouseEvent e) {
+                isDraging = false;
+            }
+        });
+		
+        this.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
+                if (isDraging) {
+                    int left = getLocation().x;
+                    int top = getLocation().y;
+                    setLocation(left + e.getX() - xx, top + e.getY() - yy);
+                    X = left + e.getX() - xx;
+                    Y = top + e.getY() - yy;
+                    GetLocation io = new GetLocation();
+                    io.setX(X);
+                    io.setY(Y);
+                }
+            }
+        });
+        
+		
 		this.repaint();
 	}
 	
@@ -84,6 +124,23 @@ public class MyJFrame extends JFrame{
 	public String getID(){
 		return this.ID;
 	}
+	
+	/**
+	 * 初始化界面在屏幕中央
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	private int getLocation(int a,int b){
+		return (a-b)/2;
+	}
+			
+	public String getCurrentLocation(int X, int Y){
+		return String.valueOf(X) + ";" + String.valueOf(Y);
+	}
+		
+			
+	        
 	/**
 	 * 透明度渐变启动界面
 	 */

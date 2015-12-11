@@ -67,32 +67,60 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 				totalPanel.setVisible(true);
 			}
 		}else if(e.getActionCommand().equals("CostManage")){
-			totalPanel.setVisible(false);
+			if(subPanel !=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new CostManagement(this);
 			this.add(subPanel);
+			this.setBackground(CommonImage.BACKGROUND_LOGO);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+		
 		}else if(e.getActionCommand().equals("SettlementManage")){
-			totalPanel.setVisible(false);
+			if(subPanel !=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new SettlementManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("OpenningStock")){
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
+			subPanel = new OpenningStockManage(this);
 			totalPanel.setVisible(false);
 			subPanel = new OpenningStockManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("BankAccountManage")){
-			totalPanel.setVisible(false);
-			subPanel = new BankAccountManage();
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
+			subPanel = new BankAccountManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));	
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
-			totalPanel.setVisible(false);
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
 			subPanel = new ViewIncomeState(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
@@ -102,8 +130,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel.setVisible(true);
 			
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
-			totalPanel.setVisible(false);
-			subPanel = new ViewLogPanel();
+			if(subPanel!=null){
+				subPanel.setVisible(false);
+			}else{
+				totalPanel.setVisible(false);
+			}
+			subPanel = new ViewLogPanel(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){

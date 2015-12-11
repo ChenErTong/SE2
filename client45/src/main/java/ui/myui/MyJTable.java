@@ -37,7 +37,7 @@ public class MyJTable extends JTable{
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		this.setDefaultRenderer(Object.class, tcr);
 		this.setRowSelectionAllowed(true);	
-		this.setSelectionBackground(new Color(233, 138, 138));
+	///	this.setSelectionBackground(new Color(233, 138, 138));
 		JTableHeader head = this.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 		head.setFont(new MyFont(14));

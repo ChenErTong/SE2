@@ -18,11 +18,13 @@ import businesslogicservice.accountblservice.AccountBLService;
 import state.ResultMessage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
+import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
+import ui.specialui.manager.FrameManager;
 import vo.accountvo.AccountVO;
 
 public class AccountManage extends MyJPanel implements ActionListener{
@@ -43,10 +45,12 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	static String accountID = "";
 	
 
-	public AccountManage() {
+	public AccountManage(FrameManager frameManager) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent();
+		
+		this.leadline(frameManager);
 		accountPool = new ArrayList<AccountVO>();
 		
 		this.showAll();
@@ -89,6 +93,56 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		userInfo = new SearchAccount(this);
 		this.add(userInfo);
 	
+	}
+	
+	public void leadline(FrameManager frameManager){
+		
+		MyButton HandleReceipt = new MyButton(300-105, 690,95,20,ManagerImage.getBUTTON_APPROVE_());
+		HandleReceipt.setActionCommand("HandleReceipt");
+		HandleReceipt.addActionListener(frameManager);
+		this.add(HandleReceipt);
+		HandleReceipt.setVisible(true);
+		
+		MyButton HandleOrganization = new MyButton(300, 690,120,20,ManagerImage.getBUTTON_ORGANIZATION_());
+		HandleOrganization.setActionCommand("HandleOrganization");
+		HandleOrganization.addActionListener(frameManager);
+		this.add(HandleOrganization);
+		HandleOrganization.setVisible(true);
+		
+		MyButton AdjustBase = new MyButton(300+120+10, 690,120,20,ManagerImage.getBUTTON_BASE_());
+		AdjustBase.setActionCommand("AdjustBase");
+		AdjustBase.addActionListener(frameManager);
+		this.add(AdjustBase);
+		AdjustBase.setVisible(true);
+		
+		MyButton AdjustSalaryPolicy = new MyButton(300+120+10+130,690,120,20,ManagerImage.getBUTTON_POLICY_());
+		AdjustSalaryPolicy.setActionCommand("AdjustSalaryPolicy");
+		AdjustSalaryPolicy.addActionListener(frameManager);
+		this.add(AdjustSalaryPolicy);
+		AdjustSalaryPolicy.setVisible(true);
+		
+		MyButton ViewUser = new MyButton(300+120+10+130+130,  690,120,20,ManagerImage.getBUTTON_ACCOUNT_());
+		ViewUser.setActionCommand("ViewUser");
+		ViewUser.addActionListener(frameManager);
+		this.add(ViewUser);
+		ViewUser.setVisible(true);
+		
+		MyButton ViewBusinessPerformance = new MyButton(300+120+10+130+130+130,690,120,20,FinanceImage.getButton_JINGYING_());
+		ViewBusinessPerformance.setActionCommand("ViewBusinessPerformance");
+		ViewBusinessPerformance.addActionListener(frameManager);
+		this.add(ViewBusinessPerformance);
+		ViewBusinessPerformance.setVisible(true);
+		
+		MyButton ViewIncomeStatement = new MyButton(300+130*5,690,120,20,FinanceImage.getButton_CHENGBEN_());
+		ViewIncomeStatement.setActionCommand("ViewIncomeStatement");
+		ViewIncomeStatement.addActionListener(frameManager);
+		this.add(ViewIncomeStatement);
+		ViewIncomeStatement.setVisible(true);
+		
+		MyButton viewLog = new MyButton(300+130*6,690,120,20,FinanceImage.getButton_LOG_());
+		viewLog.setActionCommand("ViewLogMsg");
+		viewLog.addActionListener(frameManager);
+		this.add(viewLog);
 	}
 	/**
 	 * 显示所有的员工列表

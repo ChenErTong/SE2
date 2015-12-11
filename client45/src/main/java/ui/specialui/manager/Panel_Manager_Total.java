@@ -20,15 +20,18 @@ public class Panel_Manager_Total extends MyJPanel {
 		
 		MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "总公司总经理界面", 535, 100, 387, 148);
-		
-		
-		MyButton HandleReceipt = new MyButton(551, 200+10+8+18+5+20, 257, 46,ManagerImage.getBUTTON_APPROVE());;
+		this.initComponent(frameManager);
+		this.repaint();
+	}
+	
+	public void initComponent(FrameManager frameManager){
+		MyButton HandleReceipt = new MyButton(551, 200+10+8+18+5+20, 257, 46,ManagerImage.getBUTTON_APPROVE());
 		HandleReceipt.setActionCommand("HandleReceipt");
 		HandleReceipt.addActionListener(frameManager);
 		this.add(HandleReceipt);
 		HandleReceipt.setVisible(true);
 		
-		MyButton HandleOrganization = new MyButton(551, 256+10+8+18+5+20, 257, 46,ManagerImage.getBUTTON_ORGANIZATION());;
+		MyButton HandleOrganization = new MyButton(551, 256+10+8+18+5+20, 257, 46,ManagerImage.getBUTTON_ORGANIZATION());
 		
 		HandleOrganization.setActionCommand("HandleOrganization");
 		HandleOrganization.addActionListener(frameManager);
@@ -74,8 +77,6 @@ public class Panel_Manager_Total extends MyJPanel {
 		withdraw.setActionCommand("Withdraw");
 		withdraw.addActionListener(frameManager);
 		this.add(withdraw);
-		
-		this.repaint();
 	}
 
 }

@@ -25,6 +25,18 @@ import javax.swing.ImageIcon;
 		//系统日志
 		private static ImageIcon[] BUTTON_LOG = null;
 		
+		//单据审批
+		private static ImageIcon[] BUTTON_APPROVE_ = null;
+		//机构管理
+		private static ImageIcon[] BUTTON_ORGANIZATION_ = null;
+		//常量制定
+		private static ImageIcon[] BUTTON_BASE_ = null;
+		//策略
+		private static ImageIcon[] BUTTON_POLICY_ = null;
+		//员工信息
+		private static ImageIcon[] BUTTON_ACCOUNT_ = null;
+		
+		
 		//查看单据
 		private static ImageIcon[] BUTTON_VIEWBILL = null;
 		//批量审批
@@ -68,6 +80,41 @@ import javax.swing.ImageIcon;
 		private static ImageIcon[] BUTTON_CONFIRMADD = null;
 		//确认修改
 		private static ImageIcon[] BUTTON_CONFIRMMODIFY = null;
+		
+		public static ImageIcon[] getBUTTON_APPROVE_(){
+			if(BUTTON_APPROVE_ == null){
+				BUTTON_APPROVE_= Images.createImageIcons("image/button/单据导航.png");
+			}
+			return BUTTON_APPROVE_;
+		}
+		
+		public static ImageIcon[] getBUTTON_ORGANIZATION_(){
+			if(BUTTON_ORGANIZATION_ == null){
+				BUTTON_ORGANIZATION_ = Images.createImageIcons("image/button/机构导航.png");
+			}
+			return BUTTON_ORGANIZATION_;
+		}
+		
+		public static ImageIcon[] getBUTTON_BASE_(){
+			if(BUTTON_BASE_ == null){
+				BUTTON_BASE_ = Images.createImageIcons("image/button/运营导航.png");
+			}
+			return BUTTON_BASE_;
+		}
+		
+		public static ImageIcon[] getBUTTON_POLICY_(){
+			if(BUTTON_POLICY_ == null){
+				BUTTON_POLICY_ = Images.createImageIcons("image/button/薪水导航.png");
+			}
+			return BUTTON_POLICY_;
+		}
+		
+		public static ImageIcon[] getBUTTON_ACCOUNT_(){
+			if(BUTTON_ACCOUNT_ == null){
+				BUTTON_ACCOUNT_ = Images.createImageIcons("image/button/员工信息导航.png");
+			}
+			return BUTTON_ACCOUNT_;
+		}
 		
 		public static ImageIcon[] getBUTTON_APPROVE(){
 			if(BUTTON_APPROVE == null){

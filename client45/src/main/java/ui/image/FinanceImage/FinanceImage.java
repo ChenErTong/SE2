@@ -15,18 +15,25 @@ import ui.image.Images;
 	public class FinanceImage {
 			//结算管理
 			private static ImageIcon[] BUTTON_JIESUAN = null;
+			private static ImageIcon[] BUTTON_JIESUAN_ = null;
 			//成本管理
 			private static ImageIcon[] BUTTON_COST = null;
+			private static ImageIcon[] BUTTON_COST_ = null;
 			//银行账户
 			private static ImageIcon[] BUTTON_BANK = null;
+			private static ImageIcon[] BUTTON_BANK_ = null;
 			//期初建账
 			private static ImageIcon[] BUTTON_QICHU = null;
+			private static ImageIcon[] BUTTON_QICHU_ = null;
 			//经营情况表
 			private static ImageIcon[] BUTTON_JINGYING = null;
+			private static ImageIcon[] BUTTON_JINGYING_ = null;
 			//成本收益
 			private static ImageIcon[] BUTTON_CHENGBEN = null;
+			private static ImageIcon[] BUTTON_CHENGBEN_ = null;
 			//系统日志
 			private static ImageIcon[] BUTTON_LOG = null;
+			private static ImageIcon[] BUTTON_LOG_ = null;
 			//合计收款单
 			private static ImageIcon[] BUTTON_HEJISHOUKUAN = null;
 			//查看所选收款单
@@ -54,12 +61,25 @@ import ui.image.Images;
 				}
 				return BUTTON_JIESUAN;
 			}
+			public static ImageIcon[] getBUTTON_JIESUAN_(){
+				if(BUTTON_JIESUAN_ == null){
+					BUTTON_JIESUAN_= Images.createImageIcons("image/button/结算导航.png");
+				}
+				return BUTTON_JIESUAN_;
+			}
 			
 			public static ImageIcon[] getBUTTON_COST(){
 				if(BUTTON_COST == null){
 					BUTTON_COST = Images.createImageIcons("image/button/成本管理.png");
 				}
 				return BUTTON_COST;
+			}
+			
+			public static ImageIcon[] getBUTTON_COST_(){
+				if(BUTTON_COST_ == null){
+					BUTTON_COST_ = Images.createImageIcons("image/button/成本导航.png");
+				}
+				return BUTTON_COST_;
 			}
 			
 			public static ImageIcon[] getBUTTON_BANK(){
@@ -69,11 +89,24 @@ import ui.image.Images;
 				return BUTTON_BANK;
 			}
 			
+			public static ImageIcon[] getBUTTON_BANK_(){
+				if(BUTTON_BANK_ == null){
+					BUTTON_BANK_ = Images.createImageIcons("image/button/银行账户导航.png");
+				}
+				return BUTTON_BANK_;
+			}
+			
 			public static ImageIcon[] getBUTTON_QICHU(){
 				if(BUTTON_QICHU == null){
 					BUTTON_QICHU = Images.createImageIcons("image/button/期初建账管理.png");
 				}
 				return BUTTON_QICHU;
+			}
+			public static ImageIcon[] getBUTTON_QICHU_(){
+				if(BUTTON_QICHU_ == null){
+					BUTTON_QICHU_ = Images.createImageIcons("image/button/期初建账导航.png");
+				}
+				return BUTTON_QICHU_;
 			}
 			
 			public static ImageIcon[] getButton_JINGYING(){
@@ -83,6 +116,13 @@ import ui.image.Images;
 				return BUTTON_JINGYING;
 			}
 			
+			public static ImageIcon[] getButton_JINGYING_(){
+				if(BUTTON_JINGYING_==null){
+					BUTTON_JINGYING_ = Images.createImageIcons("image/button/经营情况导航.png");
+				}
+				return BUTTON_JINGYING_;
+			}
+			
 			public static ImageIcon[] getButton_CHENGBEN(){
 				if(BUTTON_CHENGBEN==null){
 					BUTTON_CHENGBEN = Images.createImageIcons("image/button/成本收益表.png");
@@ -90,11 +130,25 @@ import ui.image.Images;
 				return BUTTON_CHENGBEN;
 			}
 			
+			public static ImageIcon[] getButton_CHENGBEN_(){
+				if(BUTTON_CHENGBEN_==null){
+					BUTTON_CHENGBEN_ = Images.createImageIcons("image/button/成本收益导航.png");
+				}
+				return BUTTON_CHENGBEN_;
+			}
+			
 			public static ImageIcon[] getButton_LOG(){
 				if(BUTTON_LOG==null){
 					BUTTON_LOG = Images.createImageIcons("image/button/记录日志.png");
 				}
 				return BUTTON_LOG;
+			}
+			
+			public static ImageIcon[] getButton_LOG_(){
+				if(BUTTON_LOG_==null){
+					BUTTON_LOG_ = Images.createImageIcons("image/button/系统日志导航.png");
+				}
+				return BUTTON_LOG_;
 			}
 			
 			public static ImageIcon[] getButton_HEJISHOUKUAN(){
