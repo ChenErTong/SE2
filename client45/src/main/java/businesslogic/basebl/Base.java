@@ -6,8 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import command.BaseCommandController;
-import command.Command;
+import businesslogic.CommonBusinessLogic;
 import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
@@ -22,11 +21,11 @@ import vo.BaseVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:32:24
  */
-public class Base {
+public class Base implements CommonBusinessLogic<BasePO>{
 	private BaseDataService baseData;
-	private BaseCommandController commandController;
+	
 	public Base() throws MalformedURLException, RemoteException, NotBoundException {
-		commandController = new BaseCommandController("base");
+		
 		baseData = getData();
 	}
 
@@ -42,23 +41,15 @@ public class Base {
 		return baseData.getID();
 	}
 
-	public ResultMessage addBase(BaseVO vo) throws RemoteException {
-		BasePO basePO = BaseTrans.convertVOtoPO(vo);
+	public ResultMessage add(BasePO basePO) throws RemoteException {
 		return baseData.add(basePO);
 	}
 
-	public ResultMessage deleteBase(String ID) throws RemoteException {
-		BasePO po =  baseData.delete(ID);
-		if(po==null){
-			return ResultMessage.FAIL;
-		}else{
-			commandController.addCommand(new Command<BasePO>("delete", po));
-			return ResultMessage.SUCCESS;
-		}
+	public BasePO delete(String ID) throws RemoteException {
+		return  baseData.delete(ID);
 	}
 
-	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
-		BasePO basePO = BaseTrans.convertVOtoPO(vo);
+	public ResultMessage modify(BasePO basePO) throws RemoteException {
 		ResultMessage message = baseData.modify(basePO);
 		return message;
 	}

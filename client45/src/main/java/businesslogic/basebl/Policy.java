@@ -6,8 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import command.Command;
-import command.PolicyCommandController;
+import businesslogic.CommonBusinessLogic;
 import config.RMIConfig;
 import dataservice.basedataservice.PolicyDataService;
 import po.PolicyPO;
@@ -20,11 +19,10 @@ import vo.PolicyVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:32:56
  */
-public class Policy {
+public class Policy implements CommonBusinessLogic<PolicyPO>{
 	private PolicyDataService policyData;
-	private PolicyCommandController commandController;
 	public Policy() throws MalformedURLException, RemoteException, NotBoundException {
-		commandController = new PolicyCommandController("policy");
+		
 		policyData = (PolicyDataService) Naming.lookup(RMIConfig.PREFIX + PolicyDataService.NAME);
 	}
 
@@ -32,23 +30,15 @@ public class Policy {
 		return policyData.getID();
 	}
 
-	public ResultMessage addBase(PolicyVO vo) throws RemoteException {
-		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+	public ResultMessage add(PolicyPO po) throws RemoteException {
 		return policyData.add(po);
 	}
 
-	public ResultMessage deleteBase(String ID) throws RemoteException {
-		PolicyPO po= policyData.delete(ID);
-		if(po==null){
-			return ResultMessage.FAIL;
-		}else{
-			commandController.addCommand(new Command<PolicyPO>("delete", po));
-			return ResultMessage.SUCCESS;
-		}
+	public PolicyPO delete(String ID) throws RemoteException {
+		return policyData.delete(ID);
 	}
 
-	public ResultMessage updateBase(PolicyVO vo) throws RemoteException {
-		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+	public ResultMessage modify(PolicyPO po) throws RemoteException {
 		return policyData.modify(po);
 	}
 

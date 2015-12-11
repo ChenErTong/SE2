@@ -1,10 +1,13 @@
 package command;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
+import businesslogic.CommonBusinessLogic;
 import po.PersistentObject;
+import state.ResultMessage;
 
-public class Command<PO extends PersistentObject> implements Serializable{
+public abstract class Command<PO extends PersistentObject> implements Serializable{
 	/**
 	 * 
 	 */
@@ -16,5 +19,7 @@ public class Command<PO extends PersistentObject> implements Serializable{
 		this.po = po;
 	}
 	
-//	public abstract void execute();
+	
+	public abstract ResultMessage execute(CommonBusinessLogic<PO> businessLogic) throws RemoteException;
+	public abstract ResultMessage undo(CommonBusinessLogic<PO> businessLogic) throws RemoteException;
 }

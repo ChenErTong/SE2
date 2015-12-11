@@ -10,6 +10,7 @@ import state.ResultMessage;
 import state.SalaryPolicy;
 import vo.BaseVO;
 import businesslogic.basebl.Base;
+import po.BasePO;
 
 public class MockBase extends Base {
 	public MockBase() throws MalformedURLException, RemoteException, NotBoundException {
@@ -42,15 +43,15 @@ public class MockBase extends Base {
 		return "123";
 	}
 	
-	public ResultMessage addBase(BaseVO vo) {
+	public ResultMessage add(BaseVO vo) {
 		return ResultMessage.FAIL;
 	}
 	
-	public ResultMessage deleteBase(String ID) {
-		return ResultMessage.SUCCESS;
+	public BasePO delete(String ID) {
+		return null;
 	}
 	
-	public ResultMessage updateBase(BaseVO vo) {
+	public ResultMessage modify(BaseVO vo) {
 		return ResultMessage.WAIT;
 	}
 }

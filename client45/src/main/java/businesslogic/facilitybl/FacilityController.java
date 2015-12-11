@@ -6,6 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.FacilityBLService;
+import command.Command;
+import command.CommandDelete;
+import command.FacilityCommandController;
+import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.FacilityVO;
@@ -18,9 +22,10 @@ import vo.FacilityVO;
 public class FacilityController implements FacilityBLService {
 
 	Facility facilityBL;
-
+	private FacilityCommandController commandManager;
 	public FacilityController() throws MalformedURLException, RemoteException, NotBoundException {
 		facilityBL = new Facility();
+		commandManager = new FacilityCommandController("car");
 	}
 
 	@Override
@@ -32,21 +37,33 @@ public class FacilityController implements FacilityBLService {
 	 * @see FacilityBLService#addFacility(FacilityVO)
 	 */
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
-		return facilityBL.addFacility(facility);
+		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
+		return facilityBL.add(facilityPO);
 	}
 
 	/**
 	 * @see FacilityBLService#deleteFacility(FacilityVO)
 	 */
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
-		return facilityBL.deleteFacility(facility);
+		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
+		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>("delete", facilityPO);
+		commandManager.addCommand(commandDelete);
+		return commandDelete.execute(facilityBL);
+//		FacilityPO facilityPO = facilityBL.delete(facility.facilityIdString);
+//		if(facilityPO==null){
+//			return ResultMessage.FAIL;
+//		}else{
+//			commandManager.addCommand(new CommandDelete<FacilityPO>("delete", facilityPO));
+//			return ResultMessage.SUCCESS;
+//		}
 	}
 
 	/**
 	 * @see FacilityBLService#modifyFacility(FacilityVO)
 	 */
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
-		return facilityBL.modifyFacility(facility);
+		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
+		return facilityBL.modify(facilityPO);
 	}
 
 	/**

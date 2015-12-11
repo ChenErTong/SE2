@@ -6,6 +6,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.PolicyBLService;
+import command.CommandDelete;
+import command.PolicyCommandController;
+import po.PolicyPO;
 import state.ResultMessage;
 import vo.PolicyVO;
 
@@ -17,9 +20,11 @@ import vo.PolicyVO;
 public class PolicyController implements PolicyBLService {
 
 	Policy policyBL;
+	private PolicyCommandController commandController;
 
 	public PolicyController() throws MalformedURLException, RemoteException, NotBoundException {
 		policyBL = new Policy();
+		commandController = new PolicyCommandController("policy");
 	}
 
 	/**
@@ -33,21 +38,29 @@ public class PolicyController implements PolicyBLService {
 	 * @see PolicyBLService#addPolicy(PolicyVO)
 	 */
 	public ResultMessage addPolicy(PolicyVO vo) throws RemoteException {
-		return policyBL.addBase(vo);
+		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+		return policyBL.add(po);
 	}
 
 	/**
 	 * @see PolicyBLService#deletePolicy(String)
 	 */
 	public ResultMessage deletePolicy(String ID) throws RemoteException {
-		return policyBL.deleteBase(ID);
+		PolicyPO po= policyBL.delete(ID);
+		if(po==null){
+			return ResultMessage.FAIL;
+		}else{
+			commandController.addCommand(new CommandDelete<PolicyPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see PolicyBLService#updatePolicy(PolicyVO)
 	 */
 	public ResultMessage updatePolicy(PolicyVO vo) throws RemoteException {
-		return policyBL.updateBase(vo);
+		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+		return policyBL.modify(po);
 	}
 
 	/**

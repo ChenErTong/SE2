@@ -4,7 +4,12 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import businesslogicservice.facilityblservice.DriverBLService;
+import command.Command;
+import command.CommandDelete;
+import command.DriverCommandController;
+import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.accountvo.DriverVO;
@@ -16,11 +21,14 @@ import vo.accountvo.DriverVO;
  */
 public class DriverController implements DriverBLService {
 
-	Driver driverBL ;
+	Driver driverBL;
+	private DriverCommandController commandManager;
 
 	public DriverController() throws MalformedURLException, RemoteException, NotBoundException {
 		driverBL = new Driver();
+		commandManager = new DriverCommandController("driver");
 	}
+
 	@Override
 	public ConfirmState confirmOperation() {
 		return driverBL.confirmOperation();
@@ -30,48 +38,41 @@ public class DriverController implements DriverBLService {
 	 * @see DriverBLService#addDriver(DriverVO)
 	 */
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
-		try {
-			return driverBL.addDriver(driver);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		DriverPO po = FacilityTrans.convertVOtoPO(driver);
+		return driverBL.add(po);
 	}
 
 	/**
 	 * @see DriverBLService#deleteDriver(DriverVO)
 	 */
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
-		try {
-			return driverBL.deleteDriver(driver);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		DriverPO po = FacilityTrans.convertVOtoPO(driver);
+		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>("delete", po);
+		commandManager.addCommand(deleteCommand);
+		return deleteCommand.execute(driverBL);
+		// DriverPO po = driverBL.delete(driver.ID);
+		// if(po==null){
+		// return ResultMessage.FAIL;
+		// }
+		// else{
+		// commandManager.addCommand(new CommandDelete<DriverPO>("delete", po));
+		// return ResultMessage.SUCCESS;
+		// }
 	}
 
 	/**
 	 * @see DriverBLService#modifyDriver(DriverVO)
 	 */
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
-		try {
-			return driverBL.modifyDriver(driver);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAIL;
+		DriverPO po = FacilityTrans.convertVOtoPO(driver);
+		return driverBL.modify(po);
 	}
 
 	/**
 	 * @see DriverBLService#findDriver()
 	 */
 	public ArrayList<DriverVO> findDriver() throws RemoteException {
-		ArrayList<DriverVO> vos = null;
-		try {
-			vos = driverBL.findDriver();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		ArrayList<DriverVO> vos = driverBL.findDriver();
 		return vos;
 	}
 
@@ -79,24 +80,14 @@ public class DriverController implements DriverBLService {
 	 * @see DriverBLService#findDriver(String)
 	 */
 	public DriverVO findDriver(String ID) throws RemoteException {
-		try {
-			return driverBL.findDriver(ID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return driverBL.findDriver(ID);
 	}
 
 	/**
 	 * @see DriverBLService#getID(String)
 	 */
 	public String getID(String branchID) throws RemoteException {
-		try {
-			return driverBL.getID(branchID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return driverBL.getID(branchID);
 	}
 
 }

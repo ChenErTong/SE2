@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import command.AccountCommandController;
-import command.Command;
+import command.CommandDelete;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
@@ -49,28 +49,33 @@ public class AccountController implements AccountBLService {
 	 * @see AccountBLService#addAccount(AccountVO)
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
-		return AccountBL.addAccount(vo);
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		return AccountBL.add(po);
 	}
 
 	/**
 	 * @see AccountBLService#deleteAccount(String)
 	 */
 	public ResultMessage deleteAccount(String ID) throws RemoteException {
-		AccountPO account =  AccountBL.deleteAccount(ID);
-		if(account==null)
+		AccountPO account = AccountBL.delete(ID);
+		if (account == null) {
 			return ResultMessage.FAIL;
-		else{
-			commandController.addCommand(new Command<AccountPO>("delete", account));
-			//c
+		} else {
+			commandController.addCommand(new CommandDelete<AccountPO>("delete", account));
 			return ResultMessage.SUCCESS;
 		}
+//		Command<AccountPO> command = new CommandDelete<AccountPO>("delete", account);
+//		commandController.addCommand(command);
+//		return account == null ? ResultMessage.FAIL : ResultMessage.SUCCESS;
+		// }
 	}
 
 	/**
 	 * @see AccountBLService#updateAccount(AccountVO)
 	 */
 	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
-		return AccountBL.updateAccount(vo);
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		return AccountBL.modify(po);
 	}
 
 	/**

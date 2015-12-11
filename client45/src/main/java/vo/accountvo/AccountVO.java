@@ -3,7 +3,9 @@ package vo.accountvo;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class AccountVO {
+import vo.ValueObject;
+
+public class AccountVO extends ValueObject{
 	/** 员工编号 **/
 	public String ID;
 	/** 职务权限 **/

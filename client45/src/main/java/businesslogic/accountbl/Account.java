@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.CommonBusinessLogic;
 import businesslogic.organizationbl.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
@@ -20,7 +21,7 @@ import vo.accountvo.AccountVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:31:26
  */
-public class Account {
+public class Account implements CommonBusinessLogic<AccountPO>{
 	/**
 	 * Account数据接口
 	 */
@@ -62,15 +63,14 @@ public class Account {
 		return accountData.getID();
 	}
 
-	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
-		AccountPO po = AccountTrans.convertVOtoPO(vo);
+	public ResultMessage add(AccountPO po) throws RemoteException {
 		ResultMessage message = this.addAccountInOrganization(po);
 		if (message == ResultMessage.SUCCESS)
 			return accountData.add(po);
 		return ResultMessage.FAIL;
 	}
 
-	public AccountPO deleteAccount(String ID) throws RemoteException {
+	public AccountPO delete(String ID) throws RemoteException {
 		AccountPO po = accountData.find(ID);
 		if (po == null) {
 			return null;
@@ -79,16 +79,12 @@ public class Account {
 			ResultMessage message = this.deleteAccountInOrganization(organizationID, ID);
 			if (message == ResultMessage.SUCCESS){
 				return accountData.delete(ID);
-				
 			}
-				
 		}
 		return null;
-
 	}
 
-	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
-		AccountPO po = AccountTrans.convertVOtoPO(vo);
+	public ResultMessage modify(AccountPO po) throws RemoteException {
 		ResultMessage message = this.modifyAccountInOrganization(po);
 		if (message == ResultMessage.SUCCESS)
 			return accountData.modify(po);
@@ -186,5 +182,6 @@ public class Account {
 			return ResultMessage.FAIL;
 		}
 	}
+
 
 }
