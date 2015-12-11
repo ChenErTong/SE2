@@ -16,7 +16,6 @@ import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
-
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -29,6 +28,7 @@ import ui.myui.MyTranslucentPanel;
 public class LogPanel extends MyTranslucentPanel{
 	
 	private MyEmptyTextArea ta;
+	@SuppressWarnings("unused")
 	private MyButton search,showAll;
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;

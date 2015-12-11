@@ -3,7 +3,6 @@ package ui.specialui.admin;
 import java.awt.Color;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -11,8 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-
-import ui.image.AdminImage;
 import ui.image.LoginImage;
 import ui.myui.MyFont;
 import ui.myui.MyButton;

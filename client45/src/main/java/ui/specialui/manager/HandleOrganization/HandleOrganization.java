@@ -130,7 +130,6 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	/**
 	 * 显示所有的机构
 	 */
-	@SuppressWarnings("static-access")
 	public void showAll(){
 		table = (MyJTable) organizationInfo.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();

@@ -1,10 +1,8 @@
 package ui.myui;
 
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
-import javax.swing.border.EmptyBorder;
 /**
  * 下拉框组件
  * @author zsq

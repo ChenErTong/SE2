@@ -5,7 +5,6 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -13,9 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
-
 import ui.image.LoginImage;
-import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;

@@ -2,10 +2,8 @@ package ui.specialui.sender;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import ui.image.CommonImage;
 import ui.image.LoginImage;
-import ui.image.SenderImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;

@@ -1,11 +1,8 @@
 package ui.myui;
 
-import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
-
 import ui.image.CommonImage;
 /**
  * 半透明Panel,用于放置输入所需要的组件

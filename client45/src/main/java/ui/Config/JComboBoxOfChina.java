@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+
+import ui.myui.MyJComboBox;
 /**
  * 实现下拉框省市区三级联动的类
  * @author zsq
@@ -15,11 +17,11 @@ import javax.swing.JComboBox;
 public class JComboBoxOfChina {
 	
 	
-	private JComboBox combobox_privince;
+	private MyJComboBox combobox_privince;
 	
-	private JComboBox combobox_city;
+	private MyJComboBox combobox_city;
 
-	private JComboBox combobox_area;
+	private MyJComboBox combobox_area;
 	
 	private DefaultComboBoxModel model1 = new DefaultComboBoxModel();
 	  private DefaultComboBoxModel model2 = new DefaultComboBoxModel();
@@ -33,7 +35,7 @@ public class JComboBoxOfChina {
 	    for(String str : UiConfig_JComboBox.getProvinces()) {
 	      model1.addElement(str);
 	    }
-	    combobox_privince = new JComboBox(model1);
+	    combobox_privince = new MyJComboBox(model1);
 	    combobox_privince.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
 	        JComboBox source = (JComboBox) evt.getSource();
@@ -51,7 +53,7 @@ public class JComboBoxOfChina {
 	    for (String str : UiConfig_JComboBox.getCities("北京市")) {
 	      model2.addElement(str);
 	    }
-	    combobox_city = new JComboBox(model2);
+	    combobox_city = new MyJComboBox(model2);
 	    combobox_city.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
 	        JComboBox source = (JComboBox) evt.getSource();
@@ -60,7 +62,7 @@ public class JComboBoxOfChina {
 	      }
 	    });
 	   
-	    combobox_area = new JComboBox(model3);
+	    combobox_area = new MyJComboBox(model3);
 	  }
 
 	  public JComboBox getCombobox_privince() {
