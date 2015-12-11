@@ -17,7 +17,7 @@ import state.UserAuthority;
 import state.UserIdentity;
 import ui.image.AdminImage;
 import ui.image.CommonImage;
-import ui.image.LoginImage;
+
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -182,8 +182,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"请检查用户信息填写是否完整！",Color.RED);
 			}else if(!this.limitIdentity(data[4], data[5])){
 				new MyNotification(this,"用户身份和用户权限不匹配！",Color.RED);
-			}else if(data[5].equals("高级财务权限")){
-				
 			}else{
 				try {
 					userController = ControllerFactory.getUserController();
