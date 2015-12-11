@@ -7,8 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import command.Command;
-import command.UserCommandController;
+import businesslogic.CommonBusinessLogic;
 import config.RMIConfig;
 import dataservice.userdataservice.LoginInfo;
 import dataservice.userdataservice.UserDataService;
@@ -23,9 +22,9 @@ import vo.UserVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:38:54
  */
-public class User {
+public class User implements CommonBusinessLogic<UserPO>{
 	private UserDataService userData;
-	private UserCommandController commandManager;
+	
 	public static String currentUserFileName;
 	private SerSaveAndLoad<UserPO> currentUserFile;
 	static{
@@ -33,7 +32,7 @@ public class User {
 	}
 	public User() throws MalformedURLException, RemoteException, NotBoundException {
 		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
-		commandManager = new UserCommandController("user");
+		
 		File file = new File(currentUserFileName);
 		file.deleteOnExit();
 		userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
@@ -53,24 +52,15 @@ public class User {
 		return userData.getID();
 	}
 
-	public ResultMessage addUser(UserVO vo) throws RemoteException {
-		UserPO userPO = UserTrans.transVOtoPO(vo);
+	public ResultMessage add(UserPO userPO) throws RemoteException {
 		return userData.add(userPO);
 	}
 
-	public ResultMessage deleteUser(String username) throws RemoteException {
-		UserPO userPO =  userData.delete(username);
-		if(userPO==null){
-			return ResultMessage.FAIL;
-		}else{
-			Command<UserPO> command = new Command<UserPO>("delete", userPO);
-			commandManager.addCommand(command);
-			return ResultMessage.SUCCESS;
-		}
+	public UserPO delete(String username) throws RemoteException {
+		return  userData.delete(username);
 	}
 
-	public ResultMessage updateUser(UserVO vo) throws RemoteException {
-		UserPO userPO = UserTrans.transVOtoPO(vo);
+	public ResultMessage modify(UserPO userPO) throws RemoteException {
 		return userData.modify(userPO);
 	}
 	/**

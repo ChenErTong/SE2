@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
+import command.BankAccountCommandController;
+import command.CommandDelete;
+import po.BankAccountPO;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
@@ -21,9 +24,10 @@ import vo.BankAccountVO;
  */
 public class BankAccountController implements BankAccountBLService {
 	BankAccount BankAccountBL;
-
+	private BankAccountCommandController commandController;
 	public BankAccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		BankAccountBL = new BankAccount();
+		commandController = new BankAccountCommandController("bankAccount");
 	}
 
 	@Override
@@ -56,7 +60,7 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.add(vo);
+			return BankAccountBL.add(FundTrans.convertVOtoPO(vo));
 		}
 		return ResultMessage.FAIL;
 	}
@@ -66,7 +70,13 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage delete(String ID) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.delete(ID);
+			BankAccountPO po =  BankAccountBL.delete(ID);
+			if(po==null){
+				return ResultMessage.FAIL;
+			}else{
+				commandController.addCommand(new CommandDelete<BankAccountPO>("delete", po));
+				return ResultMessage.SUCCESS;
+			}
 		}
 		return ResultMessage.FAIL;
 	}
@@ -76,7 +86,7 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.update(vo);
+			return BankAccountBL.modify(FundTrans.convertVOtoPO(vo));
 		}
 		return ResultMessage.FAIL;
 	}

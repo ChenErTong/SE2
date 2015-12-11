@@ -5,12 +5,16 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogicservice.userblservice.UserBLService;
+import command.Command;
+import command.CommandDelete;
+import command.UserCommandController;
+import dataservice.userdataservice.LoginInfo;
+import po.UserPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
 import vo.UserVO;
-import dataservice.userdataservice.LoginInfo;
-import businesslogicservice.userblservice.UserBLService;
 
 /**
  * 
@@ -20,9 +24,10 @@ import businesslogicservice.userblservice.UserBLService;
 public class UserController implements UserBLService {
 
 	User userBL;
-
+	private UserCommandController commandManager;
 	public UserController() throws MalformedURLException, RemoteException, NotBoundException {
 		userBL = new User();
+		commandManager = new UserCommandController("user");
 	}
 
 	@Override
@@ -53,21 +58,30 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#addUser(UserVO)
 	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
-		return userBL.addUser(vo);
+		UserPO po = UserTrans.transVOtoPO(vo);
+		return userBL.add(po);
 	}
 
 	/**
 	 * @see UserBLService#deleteUser(UserVO)
 	 */
 	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
-		return userBL.deleteUser(vo.id);
+		UserPO userPO= userBL.delete(vo.id);
+		if(userPO==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<UserPO> command = new CommandDelete<UserPO>("delete", userPO);
+			commandManager.addCommand(command);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see UserBLService#updateUser(UserVO)
 	 */
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
-		return userBL.updateUser(vo);
+		UserPO po = UserTrans.transVOtoPO(vo);
+		return userBL.modify(po);
 	}
 
 	/**

@@ -8,14 +8,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.CommonBusinessLogic;
 import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.inventorybl.InventoryTrans;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
-import command.Command;
-import command.TransferCommandController;
 import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
+import po.InventoryPO;
 import po.TransferPO;
 import state.CommodityState;
 import state.ConfirmState;
@@ -35,16 +36,16 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:38:36
  */
-public class Transfer {
+public class Transfer implements CommonBusinessLogic<TransferPO> {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Transfer receiptInfo;
 	private TransferDataService transferData;
-	private TransferCommandController transferCommandController;
+	
 	private InventoryInfo_Transfer inventoryInfo;
 	public Transfer() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
-		transferCommandController = new TransferCommandController("transfer");
+		
 		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 		inventoryInfo = new InventoryInfo();
 	}
@@ -246,25 +247,19 @@ public class Transfer {
 		return cityCode + transferData.getID();
 	}
 
-	public ResultMessage addTransfer(TransferVO transfer) throws RemoteException {
-		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transfer.organizationID);
-		transfer.inventories.add(inventoryVO);
-		TransferPO transferPO = TransferTrans.convertVOtoPO(transfer);
+	public ResultMessage add(TransferPO transferPO) throws RemoteException {
+		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transferPO.getOrganizationID());
+		ArrayList<InventoryPO> inventories = transferPO.getInventories();
+		inventories.add(InventoryTrans.convertVOtoPO(inventoryVO));
+		transferPO.setInventories(inventories);
 		return transferData.add(transferPO);
 	}
 
-	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
-		TransferPO po =  transferData.delete(organizationID);
-		if (po == null) {
-			return ResultMessage.FAIL;
-		} else {
-			transferCommandController.addCommand(new Command<TransferPO>("delete", po));
-			return ResultMessage.SUCCESS;
-		}
+	public TransferPO delete(String organizationID) throws RemoteException {
+		return  transferData.delete(organizationID);
 	}
 
-	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
-		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+	public ResultMessage modify(TransferPO transferPO) throws RemoteException {
 		return transferData.modify(transferPO);
 	}
 

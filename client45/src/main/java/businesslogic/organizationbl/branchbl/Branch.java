@@ -9,11 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.CommonBusinessLogic;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
-import command.BranchCommandController;
-import command.Command;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
@@ -36,14 +35,14 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:33:06
  */
-public class Branch {
+public class Branch implements CommonBusinessLogic<BranchPO>{
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch receiptInfo;
 	private BranchDataService branchData;
-	private BranchCommandController branchCommandController;
+	
 	
 	public Branch() throws MalformedURLException, RemoteException, NotBoundException {
-		branchCommandController = new BranchCommandController("branch");
+		
 		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
@@ -207,24 +206,15 @@ public class Branch {
 		return cityCode + ID;
 	}
 
-	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
-		System.out.println(vo.toString());
-		BranchPO po = BranchTrans.convertVOtoPO(vo);
+	public ResultMessage add(BranchPO po) throws RemoteException {
 		return branchData.add(po);
 	}
 
-	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
-		BranchPO po = branchData.delete(organizationID);
-		if (po == null) {
-			return ResultMessage.FAIL;
-		} else {
-			branchCommandController.addCommand(new Command<BranchPO>("delete", po));
-			return ResultMessage.SUCCESS;
-		}
+	public BranchPO delete(String organizationID) throws RemoteException {
+		return branchData.delete(organizationID);
 	}
 
-	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
-		BranchPO po = BranchTrans.convertVOtoPO(vo);
+	public ResultMessage modify(BranchPO po) throws RemoteException {
 		return branchData.modify(po);
 	}
 

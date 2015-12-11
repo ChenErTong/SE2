@@ -6,8 +6,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.organizationbl.branchbl.Branch;
+import businesslogic.organizationbl.branchbl.BranchTrans;
 import businesslogic.organizationbl.transferbl.Transfer;
+import businesslogic.organizationbl.transferbl.TransferTrans;
 import businesslogicservice.organizationblservice.OrganizationBLService;
+import command.BranchCommandController;
+import command.CommandDelete;
+import command.TransferCommandController;
+import po.BranchPO;
+import po.TransferPO;
 import state.ResultMessage;
 import vo.BranchVO;
 import vo.FacilityVO;
@@ -25,10 +32,13 @@ public class OrganizationController implements OrganizationBLService {
 	Branch branchBL;
 	Transfer transferBL;
 	Organization organization;
-	
+	private BranchCommandController branchCommandController;
+	private TransferCommandController transferCommandController;
 	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
 		branchBL = new Branch();
 		transferBL = new Transfer();
+		branchCommandController = new BranchCommandController("branch");
+		transferCommandController = new TransferCommandController("transfer");
 	}
 	public String getID() {
 		/**
@@ -49,21 +59,29 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#addBranch(BranchVO)
 	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
-		return branchBL.addBranch(vo);
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchBL.add(po);
 	}
 
 	/**
 	 * @see OrganizationBLService#deleteBranch(String)
 	 */
 	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
-		return branchBL.deleteBranch(organizationID);
+		BranchPO po = branchBL.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			branchCommandController.addCommand(new CommandDelete<BranchPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see OrganizationBLService#updateBranch(BranchVO)
 	 */
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
-		return branchBL.updateBranch(vo);
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchBL.modify(po);
 	}
 
 	/**
@@ -91,21 +109,29 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#addTransfer(TransferVO)
 	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
-		return transferBL.addTransfer(vo);
+		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+		return transferBL.add(transferPO);
 	}
 
 	/**
 	 * @see OrganizationBLService#deleteTransfer(String)
 	 */
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
-		return transferBL.deleteTransfer(organizationID);
+		TransferPO po = transferBL.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			transferCommandController.addCommand(new CommandDelete<TransferPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see OrganizationBLService#updateTransfer(TransferVO)
 	 */
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
-		return transferBL.updateTransfer(vo);
+		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+		return transferBL.modify(transferPO);
 	}
 
 	/**
