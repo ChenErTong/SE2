@@ -11,6 +11,7 @@ import businesslogic.organizationbl.transferbl.Transfer;
 import businesslogic.organizationbl.transferbl.TransferTrans;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -47,13 +48,6 @@ public class OrganizationController implements OrganizationBLService {
 		doubleStack = new OrganizationCommandDoubleStack("organization");
 	}
 
-	public String getID() {
-		/**
-		 * @author Ann
-		 */
-		// 我觉得没有必要getID
-		return null;
-	}
 
 	/**
 	 * @see OrganizationBLService#getBranchID(String)
@@ -67,7 +61,10 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
-		return branchBL.add(po);
+		Command<BranchPO> addCommand=new CommandAdd<BranchPO>(branchBL, po);
+		branchCommandController.addCommand(addCommand);
+		doubleStack.add(OrganizationType.BRANCH);
+		return addCommand.execute();
 	}
 
 	/**
@@ -126,7 +123,10 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
-		return transferBL.add(transferPO);
+		Command<TransferPO> addCommand=new CommandAdd<TransferPO>(transferBL, transferPO);
+		transferCommandController.addCommand(addCommand);
+		doubleStack.add(OrganizationType.TRANSFER);
+		return addCommand.execute();
 	}
 
 	/**

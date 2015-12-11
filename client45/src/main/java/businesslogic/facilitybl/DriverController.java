@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.DriverBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -40,7 +41,9 @@ public class DriverController implements DriverBLService {
 	 */
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
-		return driverBL.add(po);
+		Command<DriverPO> addCommand=new CommandAdd<DriverPO>(driverBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**

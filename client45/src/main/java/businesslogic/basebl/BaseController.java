@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.BaseBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -48,7 +49,9 @@ public class BaseController implements BaseBLService {
 	 */
 	public ResultMessage addBase(BaseVO vo) throws RemoteException {
 		BasePO basePO = BaseTrans.convertVOtoPO(vo);
-		return BaseBL.add(basePO);
+		Command<BasePO> addCommand=new CommandAdd<BasePO>(BaseBL, basePO);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**

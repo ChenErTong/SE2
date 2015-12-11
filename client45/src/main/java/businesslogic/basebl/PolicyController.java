@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.PolicyBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -41,7 +42,9 @@ public class PolicyController implements PolicyBLService {
 	 */
 	public ResultMessage addPolicy(PolicyVO vo) throws RemoteException {
 		PolicyPO po = BaseTrans.convertVOtoPO(vo);
-		return policyBL.add(po);
+		Command<PolicyPO> addCommand=new CommandAdd<PolicyPO>(policyBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**

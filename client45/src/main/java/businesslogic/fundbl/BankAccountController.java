@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -63,7 +64,10 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.add(FundTrans.convertVOtoPO(vo));
+			BankAccountPO po =FundTrans.convertVOtoPO(vo);
+			Command<BankAccountPO> addCommand=new CommandAdd<BankAccountPO>(BankAccountBL, po);
+			commandController.addCommand(addCommand);
+			return addCommand.execute();
 		}
 		return ResultMessage.FAIL;
 	}

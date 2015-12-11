@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.FacilityBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -40,7 +41,9 @@ public class FacilityController implements FacilityBLService {
 	 */
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		return facilityBL.add(facilityPO);
+		Command<FacilityPO> addCommand=new CommandAdd<FacilityPO>(facilityBL, facilityPO);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**

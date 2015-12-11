@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -54,7 +55,9 @@ public class AccountController implements AccountBLService {
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
-		return AccountBL.add(po);
+		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(AccountBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import businesslogicservice.userblservice.UserBLService;
 import command.Command;
+import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
@@ -25,11 +26,11 @@ import vo.UserVO;
 public class UserController implements UserBLService {
 
 	User userBL;
-	private CommandController<UserPO> commandManager;
+	private CommandController<UserPO> commandController;
 
 	public UserController() throws MalformedURLException, RemoteException, NotBoundException {
 		userBL = new User();
-		commandManager = new CommandController<UserPO>("user");
+		commandController = new CommandController<UserPO>("user");
 	}
 
 	@Override
@@ -41,12 +42,7 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#show()
 	 */
 	public ArrayList<UserVO> show() throws RemoteException {
-		try {
 			return userBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
@@ -61,7 +57,9 @@ public class UserController implements UserBLService {
 	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
 		UserPO po = UserTrans.transVOtoPO(vo);
-		return userBL.add(po);
+		Command<UserPO> addCommand=new CommandAdd<UserPO>(userBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**
@@ -73,7 +71,7 @@ public class UserController implements UserBLService {
 			return ResultMessage.FAIL;
 		} else {
 			Command<UserPO> command = new CommandDelete<UserPO>(userBL, userPO);
-			commandManager.addCommand(command);
+			commandController.addCommand(command);
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -89,7 +87,7 @@ public class UserController implements UserBLService {
 		}
 		else{
 			Command<UserPO> modifyCommand = new CommandModify<UserPO>(userBL, res);
-			commandManager.addCommand(modifyCommand);
+			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -117,22 +115,22 @@ public class UserController implements UserBLService {
 
 	@Override
 	public boolean canUndo() {
-		return commandManager.canUndo();
+		return commandController.canUndo();
 	}
 
 	@Override
 	public boolean canRedo() {
-		return commandManager.canRedo();
+		return commandController.canRedo();
 	}
 
 	@Override
 	public ResultMessage undo() throws RemoteException {
-		return commandManager.undoCommand();
+		return commandController.undoCommand();
 	}
 
 	@Override
 	public ResultMessage redo() throws RemoteException {
-		return commandManager.redoCommand();
+		return commandController.redoCommand();
 	}
 
 }
