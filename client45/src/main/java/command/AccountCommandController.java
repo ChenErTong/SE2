@@ -1,11 +1,12 @@
-package businesslogic.accountbl;
+package command;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
-import command.CommandController;
+import businesslogic.accountbl.AccountController;
+import businesslogic.accountbl.AccountTrans;
 import po.accountpo.AccountPO;
 import vo.Command;
 
@@ -36,5 +37,12 @@ public class AccountCommandController extends CommandController<AccountPO>{
 		default:
 			break;
 		}
+	}
+
+
+	@Override
+	public void undoCommand() throws RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 }

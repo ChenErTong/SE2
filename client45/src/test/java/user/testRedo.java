@@ -2,7 +2,7 @@ package user;
 
 import java.rmi.RemoteException;
 
-import businesslogic.userbl.UserCommandController;
+import command.UserCommandController;
 
 public class testRedo {
 	public static void main(String[] args) {

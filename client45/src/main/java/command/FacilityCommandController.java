@@ -1,11 +1,12 @@
-package businesslogic.facilitybl;
+package command;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
-import command.CommandController;
+import businesslogic.facilitybl.FacilityController;
+import businesslogic.facilitybl.FacilityTrans;
 import po.FacilityPO;
 import vo.Command;
 
@@ -35,5 +36,11 @@ public class FacilityCommandController extends CommandController<FacilityPO>{
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void undoCommand() throws RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 }

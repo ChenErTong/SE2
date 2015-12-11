@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.branchbl.BranchInfo;
+import command.FacilityCommandController;
 import config.RMIConfig;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;

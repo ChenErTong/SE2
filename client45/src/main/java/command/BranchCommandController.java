@@ -1,23 +1,23 @@
-package businesslogic.organizationbl;
+package command;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
-import businesslogic.transferbl.TransferTrans;
-import command.CommandController;
-import po.TransferPO;
+import businesslogic.branchbl.BranchTrans;
+import businesslogic.organizationbl.OrganizationController;
+import po.BranchPO;
 import vo.Command;
 
-public class TransferCommandController extends CommandController<TransferPO> {
+public class BranchCommandController extends CommandController<BranchPO>{
 	
-	public TransferCommandController(String commandFile){
+	public BranchCommandController(String commandFile){
 		super(commandFile);
 	}
-
+	
 	@Override
-	public void redoCommand() throws RemoteException {
+	public void redoCommand() throws RemoteException{
 		OrganizationController controller = null;
 		try {
 			controller = ControllerFactory.getOrganizationController();
@@ -26,15 +26,21 @@ public class TransferCommandController extends CommandController<TransferPO> {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		Command<TransferPO> redoCommand = serDoer.getLast();
+		Command<BranchPO> redoCommand = serDoer.getLast();
 		switch (redoCommand.command) {
 		case "delete":
-			controller.addTransfer(TransferTrans.convertPOtoVO(redoCommand.po));
+			controller.addBranch(BranchTrans.convertPOtoVO(redoCommand.po));
 			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void undoCommand() throws RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 }

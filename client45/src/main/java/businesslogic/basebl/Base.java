@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import command.BaseCommandController;
 import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;

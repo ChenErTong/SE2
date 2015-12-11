@@ -1,11 +1,12 @@
-package businesslogic.basebl;
+package command;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
-import command.CommandController;
+import businesslogic.basebl.BaseController;
+import businesslogic.basebl.BaseTrans;
 import po.BasePO;
 import vo.Command;
 
@@ -35,5 +36,11 @@ public class BaseCommandController extends CommandController<BasePO> {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void undoCommand() throws RemoteException {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -26,4 +26,6 @@ public abstract class CommandController<PO extends PersistentObject> {
 	}
 	
 	public abstract void redoCommand() throws RemoteException;
+	
+	public abstract void undoCommand() throws RemoteException;
 }
