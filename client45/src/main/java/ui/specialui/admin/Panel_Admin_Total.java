@@ -7,12 +7,15 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
+
 import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import state.ResultMessage;
 import state.UserAuthority;
 import state.UserIdentity;
+import ui.commonui.confirmOperation.ConfirmOperationFrame;
 import ui.image.AdminImage;
 import ui.image.CommonImage;
 import ui.myui.MyButton;
@@ -58,7 +61,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		//MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "管理员界面", 487, 0, 306, 142);
 	
-		this.showAll();
+		//this.showAll();
 	}
 	
 	private void initComponent(Frame_Admin frame_Admin){
@@ -157,8 +160,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			for(int i = 0; i < userVO.size(); i++){
 			
 				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
-						userVO.get(i).iden.value,
-						userVO.get(i).authority.value
+						userVO.get(i).iden.value,userVO.get(i).authority.value
 							,userVO.get(i).phoneNumber,userVO.get(i).address};
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
@@ -226,7 +228,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的用户！",Color.RED);
 			}else{
-				new MyNotification(this,"正在删除用户！",Color.GREEN);
+				ConfirmOperationFrame eff = new ConfirmOperationFrame("DeleteUser");
+				eff.setVisible(true);
+			//	new MyNotification(this,"正在删除用户！",Color.GREEN);
 				this.deleteUser();
 			
 			}

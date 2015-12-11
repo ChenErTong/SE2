@@ -74,7 +74,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			}
 			subPanel = new CostManagement(this);
 			this.add(subPanel);
-			this.setBackground(CommonImage.BACKGROUND_LOGO);
+		//	this.setBackground(CommonImage.BACKGROUND_LOGO);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 		
 		}else if(e.getActionCommand().equals("SettlementManage")){

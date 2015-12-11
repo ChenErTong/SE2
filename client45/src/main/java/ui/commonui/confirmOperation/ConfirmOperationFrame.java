@@ -1,20 +1,19 @@
 package ui.commonui.confirmOperation;
 
 import java.awt.Color;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 import javax.swing.JButton;
-import javax.swing.JDialog;
+
+import ui.myui.MyWindow;
 
 /**
  * 确定是否进行此操作的窗体
  * @author zsq
  * 
  */
-public class ConfirmOperationFrame extends JDialog implements ActionListener{
+public class ConfirmOperationFrame extends MyWindow implements ActionListener{
 
 	/**
 	 * 
@@ -35,7 +34,7 @@ public class ConfirmOperationFrame extends JDialog implements ActionListener{
 		button_close.addActionListener(this);
 		this.add(button_close);
 		
-		//this.setBackground(new Color(0,0,0,0.6f));
+		this.setBackground(new Color(0,0,0,0.6f));
 	}
 	@Override
 	public void actionPerformed(ActionEvent events) {

@@ -18,11 +18,11 @@ public class Panel_Finance_Total extends MyJPanel{
 	public Panel_Finance_Total(Frame_Finance frame_Finance) {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		
 		MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "财务人员界面", 544-60, 100, 387, 117);
 		
 		this.initComponent(frame_Finance);
+		
 		
 	}
 	

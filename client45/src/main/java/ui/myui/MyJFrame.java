@@ -83,7 +83,7 @@ public class MyJFrame extends JFrame{
 		this.add(this.closeButton);
 		
 
-		//the codes that make the frame mouse-drag-able
+		//设置界面可拖动
 		this.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 requestFocus();
@@ -125,15 +125,6 @@ public class MyJFrame extends JFrame{
 		return this.ID;
 	}
 	
-	/**
-	 * 初始化界面在屏幕中央
-	 * @param a
-	 * @param b
-	 * @return
-	 */
-	private int getLocation(int a,int b){
-		return (a-b)/2;
-	}
 			
 	public String getCurrentLocation(int X, int Y){
 		return String.valueOf(X) + ";" + String.valueOf(Y);

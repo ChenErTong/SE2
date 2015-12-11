@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import ui.myui.MyColor;
+import ui.myui.MyJPanel;
 
-public class ConfirmOperationPanel extends JPanel implements ActionListener{
+public class ConfirmOperationPanel extends MyJPanel implements ActionListener{
 
 	/**
 	 * 
@@ -21,6 +21,7 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 	String flag;
 	
 	public ConfirmOperationPanel(){
+		super(0,0,400,150);
 		int width = 400;
 		int height = 150;
 		
@@ -44,8 +45,8 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 		
 		button_no = new JButton("否");
 		button_no.setBounds(240,60,120,30);
-		infoBar.setForeground(foreColor);
-		infoBar.setBackground(backColor);
+		button_no.setForeground(foreColor);
+		button_no.setBackground(backColor);
 		this.add(infoBar);
 	}
 	@Override
@@ -56,7 +57,7 @@ public class ConfirmOperationPanel extends JPanel implements ActionListener{
 		}
 		if(events.getSource()==button_yes){
 			switch(flag){
-			//TODO-在不同的几面进行不同的操作时根据flag调用
+			
 			case "DeleteUser":
 			}
 		ConfirmOperationFrame.button_close.doClick();
