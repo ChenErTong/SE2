@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import po.PersistentObject;
 import util.SerSaveAndLoad;
 
-public abstract class CommandController<PO extends PersistentObject> {
+public class CommandController<PO extends PersistentObject> {
 	protected SerSaveAndLoad<Command<PO>> serDoer;
 	protected SerSaveAndLoad<Command<PO>> serRedoer;
 	protected static String PRIFIX = "commandHistory";
@@ -24,7 +24,17 @@ public abstract class CommandController<PO extends PersistentObject> {
 		serDoer.add(command);
 	}
 	
-	public abstract void redoCommand() throws RemoteException;
+	public void redoCommand() throws RemoteException{
+		Command<PO> redoCommand = serRedoer.getLast();
+		redoCommand.execute();
+		serRedoer.removeLast();
+		serDoer.add(redoCommand);
+	}
 	
-	public abstract void undoCommand() throws RemoteException;
+	public void undoCommand() throws RemoteException{
+		Command<PO> redoCommand = serDoer.getLast();
+		redoCommand.undo();
+		serDoer.removeLast();
+		serRedoer.add(redoCommand);
+	}
 }

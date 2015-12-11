@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.userblservice.UserBLService;
 import command.Command;
+import command.CommandController;
 import command.CommandDelete;
-import command.UserCommandController;
 import dataservice.userdataservice.LoginInfo;
 import po.UserPO;
 import state.ConfirmState;
@@ -24,10 +24,11 @@ import vo.UserVO;
 public class UserController implements UserBLService {
 
 	User userBL;
-	private UserCommandController commandManager;
+	private CommandController<UserPO> commandManager;
+
 	public UserController() throws MalformedURLException, RemoteException, NotBoundException {
 		userBL = new User();
-		commandManager = new UserCommandController("user");
+		commandManager = new CommandController<UserPO>("user");
 	}
 
 	@Override
@@ -66,11 +67,11 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#deleteUser(UserVO)
 	 */
 	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
-		UserPO userPO= userBL.delete(vo.id);
-		if(userPO==null){
+		UserPO userPO = userBL.delete(vo.id);
+		if (userPO == null) {
 			return ResultMessage.FAIL;
-		}else{
-			Command<UserPO> command = new CommandDelete<UserPO>("delete", userPO);
+		} else {
+			Command<UserPO> command = new CommandDelete<UserPO>(userBL, userPO);
 			commandManager.addCommand(command);
 			return ResultMessage.SUCCESS;
 		}

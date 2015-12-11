@@ -7,19 +7,20 @@ import businesslogic.CommonBusinessLogic;
 import po.PersistentObject;
 import state.ResultMessage;
 
-public abstract class Command<PO extends PersistentObject> implements Serializable{
+public abstract class Command<PO extends PersistentObject> implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public String command;
+	public CommonBusinessLogic<PO> businessLogic;
 	public PO po;
-	public Command(String command, PO po) {
-		this.command = command;
+
+	public Command(CommonBusinessLogic<PO> businessLogic, PO po) {
+		this.businessLogic = businessLogic;
 		this.po = po;
 	}
-	
-	
-	public abstract ResultMessage execute(CommonBusinessLogic<PO> businessLogic) throws RemoteException;
-	public abstract ResultMessage undo(CommonBusinessLogic<PO> businessLogic) throws RemoteException;
+
+	public abstract ResultMessage execute() throws RemoteException;
+
+	public abstract ResultMessage undo() throws RemoteException;
 }

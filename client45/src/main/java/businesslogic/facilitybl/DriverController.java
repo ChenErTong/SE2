@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.DriverBLService;
 import command.Command;
+import command.CommandController;
 import command.CommandDelete;
-import command.DriverCommandController;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -22,11 +22,11 @@ import vo.accountvo.DriverVO;
 public class DriverController implements DriverBLService {
 
 	Driver driverBL;
-	private DriverCommandController commandManager;
+	private CommandController<DriverPO> commandManager;
 
 	public DriverController() throws MalformedURLException, RemoteException, NotBoundException {
 		driverBL = new Driver();
-		commandManager = new DriverCommandController("driver");
+		commandManager = new CommandController<DriverPO>("driver");
 	}
 
 	@Override
@@ -47,9 +47,9 @@ public class DriverController implements DriverBLService {
 	 */
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
-		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>("delete", po);
+		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>(driverBL, po);
 		commandManager.addCommand(deleteCommand);
-		return deleteCommand.execute(driverBL);
+		return deleteCommand.execute();
 		// DriverPO po = driverBL.delete(driver.ID);
 		// if(po==null){
 		// return ResultMessage.FAIL;

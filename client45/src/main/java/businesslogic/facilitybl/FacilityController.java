@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.facilityblservice.FacilityBLService;
 import command.Command;
+import command.CommandController;
 import command.CommandDelete;
-import command.FacilityCommandController;
 import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -22,10 +22,11 @@ import vo.FacilityVO;
 public class FacilityController implements FacilityBLService {
 
 	Facility facilityBL;
-	private FacilityCommandController commandManager;
+	private CommandController<FacilityPO> commandManager;
+
 	public FacilityController() throws MalformedURLException, RemoteException, NotBoundException {
 		facilityBL = new Facility();
-		commandManager = new FacilityCommandController("car");
+		commandManager = new CommandController<FacilityPO>("car");
 	}
 
 	@Override
@@ -46,16 +47,17 @@ public class FacilityController implements FacilityBLService {
 	 */
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>("delete", facilityPO);
+		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>(facilityBL, facilityPO);
 		commandManager.addCommand(commandDelete);
-		return commandDelete.execute(facilityBL);
-//		FacilityPO facilityPO = facilityBL.delete(facility.facilityIdString);
-//		if(facilityPO==null){
-//			return ResultMessage.FAIL;
-//		}else{
-//			commandManager.addCommand(new CommandDelete<FacilityPO>("delete", facilityPO));
-//			return ResultMessage.SUCCESS;
-//		}
+		return commandDelete.execute();
+		// FacilityPO facilityPO = facilityBL.delete(facility.facilityIdString);
+		// if(facilityPO==null){
+		// return ResultMessage.FAIL;
+		// }else{
+		// commandManager.addCommand(new CommandDelete<FacilityPO>("delete",
+		// facilityPO));
+		// return ResultMessage.SUCCESS;
+		// }
 	}
 
 	/**

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
-import command.BankAccountCommandController;
+import command.CommandController;
 import command.CommandDelete;
 import po.BankAccountPO;
 import state.ConfirmState;
@@ -24,10 +24,11 @@ import vo.BankAccountVO;
  */
 public class BankAccountController implements BankAccountBLService {
 	BankAccount BankAccountBL;
-	private BankAccountCommandController commandController;
+	private CommandController<BankAccountPO> commandController;
+
 	public BankAccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		BankAccountBL = new BankAccount();
-		commandController = new BankAccountCommandController("bankAccount");
+		commandController = new CommandController<BankAccountPO>("bankAccount");
 	}
 
 	@Override
@@ -70,11 +71,11 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage delete(String ID) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			BankAccountPO po =  BankAccountBL.delete(ID);
-			if(po==null){
+			BankAccountPO po = BankAccountBL.delete(ID);
+			if (po == null) {
 				return ResultMessage.FAIL;
-			}else{
-				commandController.addCommand(new CommandDelete<BankAccountPO>("delete", po));
+			} else {
+				commandController.addCommand(new CommandDelete<BankAccountPO>(BankAccountBL, po));
 				return ResultMessage.SUCCESS;
 			}
 		}

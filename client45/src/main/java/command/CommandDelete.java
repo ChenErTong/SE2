@@ -13,24 +13,23 @@ public class CommandDelete<PO extends PersistentObject> extends Command<PO> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CommandDelete(String command, PO po) {
-		super(command, po);
+	public CommandDelete(CommonBusinessLogic<PO> businessLogic, PO po) {
+		super(businessLogic, po);
 	}
 
 	@Override
-	public ResultMessage execute(CommonBusinessLogic<PO> businessLogic) throws RemoteException {
+	public ResultMessage execute() throws RemoteException {
 		PO res = businessLogic.delete(po.getID());
-		if(res==null){
+		if (res == null) {
 			return ResultMessage.FAIL;
-		}else{
+		} else {
 			return ResultMessage.SUCCESS;
 		}
 	}
 
 	@Override
-	public ResultMessage undo(CommonBusinessLogic<PO> businessLogic) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage undo() throws RemoteException {
+		return businessLogic.add(po);
 	}
 
 }

@@ -10,9 +10,8 @@ import businesslogic.organizationbl.branchbl.BranchTrans;
 import businesslogic.organizationbl.transferbl.Transfer;
 import businesslogic.organizationbl.transferbl.TransferTrans;
 import businesslogicservice.organizationblservice.OrganizationBLService;
-import command.BranchCommandController;
+import command.CommandController;
 import command.CommandDelete;
-import command.TransferCommandController;
 import po.BranchPO;
 import po.TransferPO;
 import state.ResultMessage;
@@ -32,14 +31,16 @@ public class OrganizationController implements OrganizationBLService {
 	Branch branchBL;
 	Transfer transferBL;
 	Organization organization;
-	private BranchCommandController branchCommandController;
-	private TransferCommandController transferCommandController;
+	private CommandController<BranchPO> branchCommandController;
+	private CommandController<TransferPO> transferCommandController;
+
 	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
 		branchBL = new Branch();
 		transferBL = new Transfer();
-		branchCommandController = new BranchCommandController("branch");
-		transferCommandController = new TransferCommandController("transfer");
+		branchCommandController = new CommandController<BranchPO>("branch");
+		transferCommandController = new CommandController<TransferPO>("transfer");
 	}
+
 	public String getID() {
 		/**
 		 * @author Ann
@@ -71,7 +72,7 @@ public class OrganizationController implements OrganizationBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			branchCommandController.addCommand(new CommandDelete<BranchPO>("delete", po));
+			branchCommandController.addCommand(new CommandDelete<BranchPO>(branchBL, po));
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -121,7 +122,7 @@ public class OrganizationController implements OrganizationBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			transferCommandController.addCommand(new CommandDelete<TransferPO>("delete", po));
+			transferCommandController.addCommand(new CommandDelete<TransferPO>(transferBL, po));
 			return ResultMessage.SUCCESS;
 		}
 	}

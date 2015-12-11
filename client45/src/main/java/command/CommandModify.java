@@ -13,18 +13,18 @@ public class CommandModify<PO extends PersistentObject> extends Command<PO> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CommandModify(String command, PO po) {
-		super(command, po);
+	public CommandModify(CommonBusinessLogic<PO> businessLogic, PO po) {
+		super(businessLogic, po);
 	}
 
 	@Override
-	public ResultMessage execute(CommonBusinessLogic<PO> businessLogic) throws RemoteException {
+	public ResultMessage execute() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage undo(CommonBusinessLogic<PO> businessLogic) throws RemoteException {
+	public ResultMessage undo() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

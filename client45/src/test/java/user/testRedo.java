@@ -2,11 +2,12 @@ package user;
 
 import java.rmi.RemoteException;
 
-import command.UserCommandController;
+import command.CommandController;
+import po.accountpo.AccountPO;
 
 public class testRedo {
 	public static void main(String[] args) {
-		UserCommandController commandManager= new UserCommandController("user");
+		CommandController<AccountPO> commandManager= new CommandController<AccountPO>("user");
 		try {
 			commandManager.redoCommand();
 		} catch (RemoteException e) {

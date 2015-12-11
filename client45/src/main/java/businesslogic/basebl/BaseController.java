@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.BaseBLService;
-import command.BaseCommandController;
+import command.CommandController;
 import command.CommandDelete;
 import po.BasePO;
 import state.ConfirmState;
@@ -22,10 +22,11 @@ import vo.BaseVO;
  */
 public class BaseController implements BaseBLService {
 	private Base BaseBL;
-	private BaseCommandController commandController;
+	private CommandController<BasePO> commandController;
+
 	public BaseController() throws MalformedURLException, RemoteException, NotBoundException {
 		BaseBL = new Base();
-		commandController = new BaseCommandController("base");
+		commandController = new CommandController<BasePO>("base");
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class BaseController implements BaseBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			commandController.addCommand(new CommandDelete<BasePO>("delete", po));
+			commandController.addCommand(new CommandDelete<BasePO>(BaseBL, po));
 			return ResultMessage.SUCCESS;
 		}
 	}

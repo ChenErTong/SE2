@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
-import command.AccountCommandController;
+import command.CommandController;
 import command.CommandDelete;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
@@ -19,11 +19,13 @@ import vo.accountvo.AccountVO;
  */
 public class AccountController implements AccountBLService {
 	private Account AccountBL;
-	private AccountCommandController commandController;
+	private CommandController<AccountPO> commandController;
+
 	public AccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		AccountBL = new Account();
-		commandController = new AccountCommandController("account");
+		commandController = new CommandController<AccountPO>("account");
 	}
+
 	/**
 	 * @see AccountBLService#show()
 	 */
@@ -61,12 +63,13 @@ public class AccountController implements AccountBLService {
 		if (account == null) {
 			return ResultMessage.FAIL;
 		} else {
-			commandController.addCommand(new CommandDelete<AccountPO>("delete", account));
+			commandController.addCommand(new CommandDelete<AccountPO>(AccountBL, account));
 			return ResultMessage.SUCCESS;
 		}
-//		Command<AccountPO> command = new CommandDelete<AccountPO>("delete", account);
-//		commandController.addCommand(command);
-//		return account == null ? ResultMessage.FAIL : ResultMessage.SUCCESS;
+		// Command<AccountPO> command = new CommandDelete<AccountPO>("delete",
+		// account);
+		// commandController.addCommand(command);
+		// return account == null ? ResultMessage.FAIL : ResultMessage.SUCCESS;
 		// }
 	}
 
