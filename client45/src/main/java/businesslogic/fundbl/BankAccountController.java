@@ -8,8 +8,10 @@ import java.util.ArrayList;
 
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
+import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.BankAccountPO;
 import state.ConfirmState;
 import state.FindTypeAccount;
@@ -87,7 +89,15 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.modify(FundTrans.convertVOtoPO(vo));
+			BankAccountPO po =FundTrans.convertVOtoPO(vo);
+			BankAccountPO res =  BankAccountBL.modify(po);
+			if(res==null){
+				return ResultMessage.FAIL;
+			}else{
+				Command<BankAccountPO> modifyCommand = new CommandModify<BankAccountPO>(BankAccountBL, res);
+				commandController.addCommand(modifyCommand);
+				return ResultMessage.SUCCESS;
+			}
 		}
 		return ResultMessage.FAIL;
 	}

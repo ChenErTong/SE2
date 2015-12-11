@@ -9,6 +9,7 @@ import businesslogicservice.facilityblservice.FacilityBLService;
 import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -65,7 +66,14 @@ public class FacilityController implements FacilityBLService {
 	 */
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		return facilityBL.modify(facilityPO);
+		FacilityPO res =  facilityBL.modify(facilityPO);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<FacilityPO> modifyCommand = new CommandModify<FacilityPO>(facilityBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

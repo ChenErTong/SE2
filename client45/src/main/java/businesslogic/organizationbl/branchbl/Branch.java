@@ -214,7 +214,7 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		return branchData.delete(organizationID);
 	}
 
-	public ResultMessage modify(BranchPO po) throws RemoteException {
+	public BranchPO modify(BranchPO po) throws RemoteException {
 		return branchData.modify(po);
 	}
 

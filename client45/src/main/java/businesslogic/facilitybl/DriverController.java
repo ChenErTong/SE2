@@ -9,6 +9,7 @@ import businesslogicservice.facilityblservice.DriverBLService;
 import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -65,7 +66,14 @@ public class DriverController implements DriverBLService {
 	 */
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
-		return driverBL.modify(po);
+		DriverPO res =  driverBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<DriverPO> modifyCommand = new CommandModify<DriverPO>(driverBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

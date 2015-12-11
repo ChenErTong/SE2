@@ -186,7 +186,7 @@ public class Inventory {
 		commos[afArea][afRow][afFrame][afPosition] = adjustCommodity;
 		commos[exArea][exRow][exFrame][exPosition] = null;
 		inventory.setCommos(commos);
-		return inventoryData.modify(inventory);
+		return inventoryData.modify(inventory)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**

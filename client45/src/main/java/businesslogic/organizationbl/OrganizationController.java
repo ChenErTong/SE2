@@ -10,8 +10,10 @@ import businesslogic.organizationbl.branchbl.BranchTrans;
 import businesslogic.organizationbl.transferbl.Transfer;
 import businesslogic.organizationbl.transferbl.TransferTrans;
 import businesslogicservice.organizationblservice.OrganizationBLService;
+import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import command.OrganizationCommandDoubleStack;
 import po.BranchPO;
 import po.TransferPO;
@@ -87,7 +89,15 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
-		return branchBL.modify(po);
+		BranchPO res =  branchBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<BranchPO> modifyCommand = new CommandModify<BranchPO>(branchBL, res);
+			branchCommandController.addCommand(modifyCommand);
+			doubleStack.add(OrganizationType.BRANCH);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
@@ -138,7 +148,15 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
-		return transferBL.modify(transferPO);
+		TransferPO res =  transferBL.modify(transferPO);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<TransferPO> modifyCommand = new CommandModify<TransferPO>(transferBL, res);
+			transferCommandController.addCommand(modifyCommand);
+			doubleStack.add(OrganizationType.BRANCH);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

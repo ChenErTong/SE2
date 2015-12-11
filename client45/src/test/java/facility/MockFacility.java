@@ -38,13 +38,13 @@ public class MockFacility extends Facility {
 	 * e.printStackTrace(); } return vo; }
 	 */
 	@Override
-	public ResultMessage modify(FacilityPO facility) {
+	public FacilityPO modify(FacilityPO facility) {
 		try {
-			facilityData.modify(facility);
+			return facilityData.modify(facility);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return null;
 	}
 
 	@Override

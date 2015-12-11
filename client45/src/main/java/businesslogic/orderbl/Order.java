@@ -170,7 +170,7 @@ public class Order {
 
 	public ResultMessage updateOrder(OrderVO order) throws RemoteException {
 		OrderPO po = OrderTrans.convertVOtoPO(order);
-		return orderData.modify(po);
+		return orderData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 }

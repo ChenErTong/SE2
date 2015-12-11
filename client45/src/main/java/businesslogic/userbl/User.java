@@ -60,7 +60,7 @@ public class User implements CommonBusinessLogic<UserPO>{
 		return  userData.delete(username);
 	}
 
-	public ResultMessage modify(UserPO userPO) throws RemoteException {
+	public UserPO modify(UserPO userPO) throws RemoteException {
 		return userData.modify(userPO);
 	}
 	/**

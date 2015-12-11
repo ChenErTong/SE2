@@ -84,11 +84,12 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 		return null;
 	}
 
-	public ResultMessage modify(AccountPO po) throws RemoteException {
+	public AccountPO modify(AccountPO po) throws RemoteException {
 		ResultMessage message = this.modifyAccountInOrganization(po);
-		if (message == ResultMessage.SUCCESS)
+		if (message == ResultMessage.SUCCESS){
 			return accountData.modify(po);
-		return ResultMessage.FAIL;
+		}
+		return null;
 	}
 
 	public AccountVO find(String id) throws RemoteException {

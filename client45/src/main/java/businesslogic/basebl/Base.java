@@ -49,9 +49,8 @@ public class Base implements CommonBusinessLogic<BasePO>{
 		return  baseData.delete(ID);
 	}
 
-	public ResultMessage modify(BasePO basePO) throws RemoteException {
-		ResultMessage message = baseData.modify(basePO);
-		return message;
+	public BasePO modify(BasePO basePO) throws RemoteException {
+		return baseData.modify(basePO);
 	}
 
 	public ArrayList<BaseVO> show() throws RemoteException {

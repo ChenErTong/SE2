@@ -6,8 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.BaseBLService;
+import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.BasePO;
 import state.ConfirmState;
 import state.ResultMessage;
@@ -67,7 +69,14 @@ public class BaseController implements BaseBLService {
 	 */
 	public ResultMessage updateBase(BaseVO vo) throws RemoteException {
 		BasePO basePO = BaseTrans.convertVOtoPO(vo);
-		return BaseBL.modify(basePO);
+		BasePO res =  BaseBL.modify(basePO);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<BasePO> modifyCommand = new CommandModify<BasePO>(BaseBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

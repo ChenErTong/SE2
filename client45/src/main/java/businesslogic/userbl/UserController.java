@@ -9,6 +9,7 @@ import businesslogicservice.userblservice.UserBLService;
 import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import dataservice.userdataservice.LoginInfo;
 import po.UserPO;
 import state.ConfirmState;
@@ -82,7 +83,15 @@ public class UserController implements UserBLService {
 	 */
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
 		UserPO po = UserTrans.transVOtoPO(vo);
-		return userBL.modify(po);
+		UserPO res = userBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}
+		else{
+			Command<UserPO> modifyCommand = new CommandModify<UserPO>(userBL, res);
+			commandManager.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

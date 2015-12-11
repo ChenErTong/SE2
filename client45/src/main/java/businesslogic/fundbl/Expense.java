@@ -63,12 +63,12 @@ public class Expense {
 
 	
 	public ResultMessage update(ExpenseVO vo) {
-		ExpensePO expensePO = FundTrans.convertVOtoPO(vo);
-		try {
-			return expenseData.modify(expensePO);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//		ExpensePO expensePO = FundTrans.convertVOtoPO(vo);
+//		try {
+//			return expenseData.modify(expensePO);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
 		return ResultMessage.FAIL;
 	}
 

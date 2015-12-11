@@ -259,7 +259,7 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		return  transferData.delete(organizationID);
 	}
 
-	public ResultMessage modify(TransferPO transferPO) throws RemoteException {
+	public TransferPO modify(TransferPO transferPO) throws RemoteException {
 		return transferData.modify(transferPO);
 	}
 

@@ -6,8 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
+import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
@@ -78,7 +80,14 @@ public class AccountController implements AccountBLService {
 	 */
 	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
-		return AccountBL.modify(po);
+		AccountPO res =  AccountBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<AccountPO> modifyCommand = new CommandModify<AccountPO>(AccountBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

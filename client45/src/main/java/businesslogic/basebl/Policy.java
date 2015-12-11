@@ -38,7 +38,7 @@ public class Policy implements CommonBusinessLogic<PolicyPO>{
 		return policyData.delete(ID);
 	}
 
-	public ResultMessage modify(PolicyPO po) throws RemoteException {
+	public PolicyPO modify(PolicyPO po) throws RemoteException {
 		return policyData.modify(po);
 	}
 

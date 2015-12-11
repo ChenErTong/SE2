@@ -23,8 +23,12 @@ public class CommandAdd<PO extends PersistentObject> extends Command<PO> {
 
 	@Override
 	public ResultMessage undo() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		PO res = businessLogic.delete(po.getID());
+		if (res == null) {
+			return ResultMessage.FAIL;
+		} else {
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 }

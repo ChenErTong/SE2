@@ -54,10 +54,10 @@ public class Driver implements CommonBusinessLogic<DriverPO>{
 		return null;
 	}
 
-	public ResultMessage modify(DriverPO driver) throws RemoteException {
+	public DriverPO modify(DriverPO driver) throws RemoteException {
 		if (branchInfo.modifyAccount(driver) == ResultMessage.SUCCESS)
 			return DriverData.modify(driver);
-		return ResultMessage.FAIL;
+		return null;
 	}
 
 	public ArrayList<DriverVO> findDriver() throws RemoteException {

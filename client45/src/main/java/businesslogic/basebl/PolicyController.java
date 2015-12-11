@@ -6,8 +6,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.PolicyBLService;
+import command.Command;
 import command.CommandController;
 import command.CommandDelete;
+import command.CommandModify;
 import po.PolicyPO;
 import state.ResultMessage;
 import vo.PolicyVO;
@@ -60,7 +62,14 @@ public class PolicyController implements PolicyBLService {
 	 */
 	public ResultMessage updatePolicy(PolicyVO vo) throws RemoteException {
 		PolicyPO po = BaseTrans.convertVOtoPO(vo);
-		return policyBL.modify(po);
+		PolicyPO res =  policyBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<PolicyPO> modifyCommand = new CommandModify<PolicyPO>(policyBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**

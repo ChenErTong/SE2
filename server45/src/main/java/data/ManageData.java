@@ -77,15 +77,15 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 		return null;
 	}
 
-	public ResultMessage modify(PO po) throws RemoteException {
+	public PO modify(PO po) throws RemoteException {
 		for (int i = 0; i < poList.size(); i++) {
 			PO poFind = poList.get(i);
 			if (poFind.getID().equals(po.getID())) {
 				poList.set(i, po);
-				return ResultMessage.SUCCESS;
+				return poFind;
 			}
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
 	@Override

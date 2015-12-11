@@ -59,7 +59,7 @@ public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
 		
 	}
 
-	public ResultMessage modify(BankAccountPO po) throws RemoteException {
+	public BankAccountPO modify(BankAccountPO po) throws RemoteException {
 		return bankAccountData.modify(po);
 	}
 
@@ -80,7 +80,7 @@ public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
 		if (oldmoney.compareTo(money) >= 0)
 			oldmoney = oldmoney.subtract(money);
 		po.setMoney(oldmoney);
-		return bankAccountData.modify(po);
+		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
 		BigDecimal oldmoney = po.getMoney();
 		oldmoney = oldmoney.add(money);
 		po.setMoney(oldmoney);
-		return bankAccountData.modify(po);
+		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**

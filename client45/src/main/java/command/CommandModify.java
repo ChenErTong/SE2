@@ -19,7 +19,7 @@ public class CommandModify<PO extends PersistentObject> extends Command<PO> {
 
 	@Override
 	public ResultMessage execute() throws RemoteException {
-		// TODO Auto-generated method stub
+		PO res = businessLogic.modify(po);
 		return null;
 	}
 

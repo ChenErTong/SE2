@@ -11,5 +11,5 @@ public interface ManageDataService<PO extends PersistentObject> extends DataServ
 	public ArrayList<PO> find()throws RemoteException;
 	public ResultMessage add(PO po)throws RemoteException;
 	public PO delete(String id) throws RemoteException;
-	public ResultMessage modify(PO po)throws RemoteException;
+	public PO modify(PO po)throws RemoteException;
 }

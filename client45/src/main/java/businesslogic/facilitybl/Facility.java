@@ -57,11 +57,11 @@ public class Facility implements CommonBusinessLogic<FacilityPO>{
 		return facilityVOs;
 	}
 
-	public ResultMessage modify(FacilityPO facility) throws RemoteException {
+	public FacilityPO modify(FacilityPO facility) throws RemoteException {
 		if (branchInfo.modifyCar(facility) == ResultMessage.SUCCESS) {
 			return facilityData.modify(facility);
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
 	public FacilityPO delete(String ID) throws RemoteException {
