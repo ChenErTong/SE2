@@ -14,6 +14,7 @@ import dataservice.userdataservice.UserDataService;
 import po.UserPO;
 import state.ConfirmState;
 import state.ResultMessage;
+import state.UserAuthority;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
 import vo.UserVO;
@@ -53,7 +54,17 @@ public class User implements CommonBusinessLogic<UserPO>{
 	}
 
 	public ResultMessage add(UserPO userPO) throws RemoteException {
-		return userData.add(userPO);
+		if(userPO.getAuthority()!=UserAuthority.ADVANCE_FINANCE)
+			return userData.add(userPO);
+		else{
+			ArrayList<UserPO> pos = userData.find();
+			for (UserPO po : pos) {
+				if(po.getAuthority()==UserAuthority.ADVANCE_FINANCE){
+					return ResultMessage.FAIL;
+				}
+			}
+			return userData.add(userPO);
+		}
 	}
 
 	public UserPO delete(String username) throws RemoteException {
