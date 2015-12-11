@@ -150,9 +150,12 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		try {
 			userController = ControllerFactory.getUserController();
 			ArrayList<UserVO> userVO= userController.show();
-			
+			if(userVO==null){
+				new MyNotification(this,"系统中无人员信息！",Color.RED);
+				return;
+			}
 			for(int i = 0; i < userVO.size(); i++){
-				System.out.println(userVO);
+			
 				Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
 						userVO.get(i).iden.value,
 						userVO.get(i).authority.value
@@ -160,16 +163,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				userPool.add(userVO.get(i));
 				}
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 
 	}
 	
@@ -193,13 +190,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 						new MyNotification(this,"用户信息添加失败！",Color.RED);
 					}
 				} catch (MalformedURLException e1) {
-					// TODO Auto-generated catch block
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				} catch (NotBoundException e1) {
-					// TODO Auto-generated catch block
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
 			}
@@ -301,13 +298,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询类型！",Color.RED);
 				}
 			}catch (MalformedURLException e1) {
-				// TODO Auto-generated catch block
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
 			} catch (RemoteException e1) {
-				// TODO Auto-generated catch block
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
 			} catch (NotBoundException e1) {
-				// TODO Auto-generated catch block
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
 			}
 		}
@@ -336,13 +333,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}
 			}
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
 		
@@ -400,13 +397,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"用户删除失败！",Color.RED);
 			}
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
 	}

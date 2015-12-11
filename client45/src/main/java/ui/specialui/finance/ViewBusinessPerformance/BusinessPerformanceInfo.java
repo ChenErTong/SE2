@@ -333,7 +333,11 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				try {
 					RecordBLService recordController = ControllerFactory.getRecordController();
 					ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
+					if(vo==null){
+						return;
+					}
 					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
+					
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);

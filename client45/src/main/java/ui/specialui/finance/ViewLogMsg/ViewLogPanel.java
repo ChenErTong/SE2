@@ -75,6 +75,9 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					try {
 						LogController logController = ControllerFactory.getLogController();
 						ArrayList<LogMessage> logs = logController.showInDate(date);
+						if(logs==null){
+							return;
+						}
 						logText.setText("");
 						for(int i=0;i<logs.size();i++){
 							logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);

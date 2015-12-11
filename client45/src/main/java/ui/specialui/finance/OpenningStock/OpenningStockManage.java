@@ -189,6 +189,9 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		try {
 			OpeningStockBLService controller = new OpeningStockController();
 			ArrayList<OpeningStockVO> openingStockVO = controller.show();
+			if(openingStockVO==null){
+				return;
+			}
 			if(openingStockVO  != null){
 				for(int i = 0; i < openingStockVO.size(); i++){
 					OpeningStockVO avo = openingStockVO.get(i);

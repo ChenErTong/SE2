@@ -100,7 +100,10 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		try {
 			BaseBLService controller = ControllerFactory.getBaseController();
 			ArrayList<BaseVO> baseVO = controller.show();
-			
+			if(baseVO==null){
+				new MyNotification(this,"系统中无成本信息！",Color.RED);
+				return;
+			}
 			for(int i = 0; i < baseVO.size(); i++){
 				String[] rowData = {baseVO.get(i).cityFrom,baseVO.get(i).cityTo,baseVO.get(i).distance+"km",baseVO.get(i).price+"元/km"};
 				tableModel.addRow(rowData);

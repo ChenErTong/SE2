@@ -105,6 +105,10 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			PolicyBLService controller = ControllerFactory.getPolicyController();
 			ArrayList<PolicyVO> policyVO =  controller.show();
 			
+			if(policyVO==null){
+				new MyNotification(this,"系统中无薪水策略信息！",Color.RED);
+				return;
+			}
 			for(int i = 0; i < policyVO.size(); i++){
 				Object[] rowData = {policyVO.get(i).userIdentity.value,policyVO.get(i).salaryPolicy.value,policyVO.get(i).remark};
 				tableModel.addRow(rowData);
@@ -171,7 +175,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("DeletePolicy")){
 			table = policyInfoList.getTable();
-			policyID = policyPool.get(table.getSelectedRow()).ID;
+		//	policyID = policyPool.get(table.getSelectedRow()).ID;
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的策略！",Color.RED);
 			}else{

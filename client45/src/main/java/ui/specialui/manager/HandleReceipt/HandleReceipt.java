@@ -95,7 +95,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	}
 	
 	private void initButton(){
-		ViewReceiptInfo = new MyButton(85, 650-30, 150, 40,ManagerImage.getBUTTON_VIEWACCOUNT());
+		ViewReceiptInfo = new MyButton(85, 650-30, 150, 40,ManagerImage.getBUTTON_VIEWBILL());
 		ViewReceiptInfo.setActionCommand("ViewReceiptInfo");
 		ViewReceiptInfo.addActionListener(this);
 		this.add(ViewReceiptInfo);
@@ -134,15 +134,15 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent events){
 		if(events.getActionCommand().equals("DontPassThisReceipt")){
-			if(!table.getValueAt(index, 3).equals("未审批")){
+			if(!table.getValueAt(table.getSelectedRow(), 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED);
 			}else{
 				try {
 					receiptController =ControllerFactory.getReceiptController();
 					ArrayList<ReceiptVO> dontPassList = new ArrayList<ReceiptVO>();
 					ArrayList<ReceiptType> dontPassType =  new ArrayList<ReceiptType>();
-					dontPassList.add((ReceiptVO)listPool.get(index));
-					dontPassType.add(typePool.get(index));
+					dontPassList.add((ReceiptVO)listPool.get(table.getSelectedRow()));
+					dontPassType.add(typePool.get(table.getSelectedRow()));
 					ResultMessage rm = receiptController.dontPassReceipt(dontPassList);
 					if(rm.equals(ResultMessage.FAIL)){
 						new MyNotification(this,"不通过单据失败！",Color.RED);
@@ -158,7 +158,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 			table = searchPanel.getTable();
 			ArrayList<ReceiptVO> PassList = new ArrayList<ReceiptVO>();
 			if(index >= 0){
-				if(!table.getValueAt(index, 3).equals("未审批")){
+				if(!table.getValueAt(table.getSelectedRow(), 3).equals("未审批")){
 					new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED);
 				}else{
 					
@@ -168,9 +168,9 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 						passList.clear();
 						passType.clear();
 						
-						passList.add(listPool.get(index));
-						passType.add(typePool.get(index));
-						PassList.add((ReceiptVO)listPool.get(index));
+						passList.add(listPool.get(table.getSelectedRow()));
+						passType.add(typePool.get(table.getSelectedRow()));
+						PassList.add((ReceiptVO)listPool.get(table.getSelectedRow()));
 						ResultMessage rsg = receiptController.passReceipt(PassList);
 						if(rsg.equals(ResultMessage.FAIL)){
 							new MyNotification(this,"单据审批失败！",Color.RED);

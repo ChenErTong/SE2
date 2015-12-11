@@ -125,7 +125,7 @@ import javax.swing.ImageIcon;
 			return BUTTON_LOG;
 		}
 		
-		public static ImageIcon[] getButton_VIEWBILL(){
+		public static ImageIcon[] getBUTTON_VIEWBILL(){
 			if(BUTTON_VIEWBILL==null){
 				BUTTON_VIEWBILL = Images.createImageIcons("image/button/查看单据.png");
 			}
