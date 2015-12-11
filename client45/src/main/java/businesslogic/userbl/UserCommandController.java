@@ -1,39 +1,35 @@
 package businesslogic.userbl;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
+import command.CommandController;
 import po.UserPO;
-import util.SerSaveAndLoad;
 import vo.Command;
 
-public class UserCommandController{
-	private SerSaveAndLoad<Command<UserPO>> serDoer;
-	private SerSaveAndLoad<Command<UserPO>> serRedoer;
-	private static String PRIFIX = "commandHistory";
-	private static String POFIX = ".ser";
+public class UserCommandController extends CommandController<UserPO>{
+	
 	public UserCommandController(String commandFile){
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
-		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
-		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
-		serDoerFile.deleteOnExit();
-		serRedoerFile.deleteOnExit();
+		super(commandFile);
 	}
 	
-	public void addCommand(Command<UserPO> command){
-		serDoer.add(command);
-	}
-	
-	public void redoCommand() throws MalformedURLException, RemoteException, NotBoundException{
-		UserController usercontroller = ControllerFactory.getUserController();
+	@Override
+	public void redoCommand() throws  RemoteException {
+		UserController usercontroller = null;
+		try {
+			usercontroller = ControllerFactory.getUserController();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		Command<UserPO> redoCommand = serDoer.getLast();
 		switch (redoCommand.command) {
 		case "delete":
 			usercontroller.addUser(UserTrans.transPOtoVO(redoCommand.po));
+			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:

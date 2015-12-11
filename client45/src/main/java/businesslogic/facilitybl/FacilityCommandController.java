@@ -1,33 +1,21 @@
 package businesslogic.facilitybl;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
+import command.CommandController;
 import po.FacilityPO;
-import util.SerSaveAndLoad;
 import vo.Command;
 
-public class FacilityCommandController{
-	private SerSaveAndLoad<Command<FacilityPO>> serDoer;
-	private SerSaveAndLoad<Command<FacilityPO>> serRedoer;
-	private static String PRIFIX = "commandHistory";
-	private static String POFIX = ".ser";
-	public FacilityCommandController(String commandFile) throws MalformedURLException, RemoteException, NotBoundException{
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
-		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
-		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
-		serDoerFile.deleteOnExit();
-		serRedoerFile.deleteOnExit();
+public class FacilityCommandController extends CommandController<FacilityPO>{
+	
+	public FacilityCommandController(String commandFile) {
+		super(commandFile);
 	}
 	
-	public void addCommand(Command<FacilityPO> command){
-		serDoer.add(command);
-	}
-	
+	@Override
 	public void redoCommand() throws RemoteException{
 		FacilityController controller = null;
 		try {
@@ -41,6 +29,7 @@ public class FacilityCommandController{
 		switch (redoCommand.command) {
 		case "delete":
 			controller.addFacility(FacilityTrans.convertPOtoVO(redoCommand.po));
+			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:

@@ -1,34 +1,22 @@
 package businesslogic.basebl;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
+import command.CommandController;
 import po.BasePO;
-import util.SerSaveAndLoad;
 import vo.Command;
 
-public class BaseCommandController{
-	private SerSaveAndLoad<Command<BasePO>> serDoer;
-	private SerSaveAndLoad<Command<BasePO>> serRedoer;
-	private static String PRIFIX = "commandHistory";
-	private static String POFIX = ".ser";
-	public BaseCommandController(String commandFile){
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
-		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
-		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
-		serDoerFile.deleteOnExit();
-		serRedoerFile.deleteOnExit();
+public class BaseCommandController extends CommandController<BasePO> {
+
+	public BaseCommandController(String commandFile) {
+		super(commandFile);
 	}
-	
-	public void addCommand(Command<BasePO> command){
-		serDoer.add(command);
-	}
-	
-	public void redoCommand() throws  RemoteException {
+
+	@Override
+	public void redoCommand() throws RemoteException {
 		BaseController usercontroller = null;
 		try {
 			usercontroller = ControllerFactory.getBaseController();
@@ -41,6 +29,7 @@ public class BaseCommandController{
 		switch (redoCommand.command) {
 		case "delete":
 			usercontroller.addBase(BaseTrans.convertPOtoVO(redoCommand.po));
+			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:

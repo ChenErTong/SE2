@@ -1,33 +1,22 @@
 package businesslogic.accountbl;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
+import command.CommandController;
 import po.accountpo.AccountPO;
-import util.SerSaveAndLoad;
 import vo.Command;
 
-public class AccountCommandController{
-	private SerSaveAndLoad<Command<AccountPO>> serDoer;
-	private SerSaveAndLoad<Command<AccountPO>> serRedoer;
-	private static String PRIFIX = "commandHistory";
-	private static String POFIX = ".ser";
-	public AccountCommandController(String commandFile) throws MalformedURLException, RemoteException, NotBoundException{
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
-		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
-		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
-		serDoerFile.deleteOnExit();
-		serRedoerFile.deleteOnExit();
+public class AccountCommandController extends CommandController<AccountPO>{
+
+	public AccountCommandController(String commandFile) {
+		super(commandFile);
 	}
 	
-	public void addCommand(Command<AccountPO> command){
-		serDoer.add(command);
-	}
-	
+	 
+	@Override
 	public void redoCommand() throws RemoteException{
 		AccountController controller = null;
 		try {
@@ -41,6 +30,7 @@ public class AccountCommandController{
 		switch (redoCommand.command) {
 		case "delete":
 			controller.addAccount(AccountTrans.convertPOToVO(redoCommand.po));
+			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:

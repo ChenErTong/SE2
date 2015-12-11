@@ -1,34 +1,22 @@
 package businesslogic.organizationbl;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
 import businesslogic.branchbl.BranchTrans;
+import command.CommandController;
 import po.BranchPO;
-import util.SerSaveAndLoad;
 import vo.Command;
 
-public class BranchCommandController{
-	private SerSaveAndLoad<Command<BranchPO>> serDoer;
-	private SerSaveAndLoad<Command<BranchPO>> serRedoer;
-	private static String PRIFIX = "commandHistory";
-	private static String POFIX = ".ser";
-	public BranchCommandController(String commandFile) throws MalformedURLException, RemoteException, NotBoundException{
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
-		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
-		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
-		serDoerFile.deleteOnExit();
-		serRedoerFile.deleteOnExit();
+public class BranchCommandController extends CommandController<BranchPO>{
+	
+	public BranchCommandController(String commandFile){
+		super(commandFile);
 	}
 	
-	public void addCommand(Command<BranchPO> command){
-		serDoer.add(command);
-	}
-	
+	@Override
 	public void redoCommand() throws RemoteException{
 		OrganizationController controller = null;
 		try {
@@ -42,6 +30,7 @@ public class BranchCommandController{
 		switch (redoCommand.command) {
 		case "delete":
 			controller.addBranch(BranchTrans.convertPOtoVO(redoCommand.po));
+			serDoer.removeLast();
 			serRedoer.add(redoCommand);
 			break;
 		default:
