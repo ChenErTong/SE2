@@ -11,6 +11,7 @@ import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
+import vo.Command;
 import vo.accountvo.AccountVO;
 
 /**
@@ -28,10 +29,12 @@ public class Account {
 
 	private BranchInfo_Account branchInfo;
 	private TransferInfo_Account transferInfo;
+	private AccountCommandController commandController;
 
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
+		commandController = new AccountCommandController("account");
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -75,8 +78,16 @@ public class Account {
 		} else {
 			String organizationID = po.getOrganizationID();
 			ResultMessage message = this.deleteAccountInOrganization(organizationID, ID);
-			if (message == ResultMessage.SUCCESS)
-				return accountData.delete(ID);
+			if (message == ResultMessage.SUCCESS){
+				AccountPO account = accountData.delete(ID);
+				if(account==null)
+					return ResultMessage.FAIL;
+				else{
+					commandController.addCommand(new Command<AccountPO>("delete", po));
+					return ResultMessage.SUCCESS;
+				}
+			}
+				
 		}
 		return ResultMessage.FAIL;
 

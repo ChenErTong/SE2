@@ -15,4 +15,11 @@ public class Util {
 		}
 		return res;
 	}
+	public static String max(int maxbit){
+		String res = "";
+		for (int i = 0; i < maxbit; i++) {
+			res+=9;
+		}
+		return res;
+	}
 }

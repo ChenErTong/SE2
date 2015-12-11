@@ -13,6 +13,7 @@ import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
+import vo.Command;
 import vo.FacilityVO;
 
 /**
@@ -23,9 +24,10 @@ import vo.FacilityVO;
 public class Facility {
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
-
+	private FacilityCommandController commandManager;
 	public Facility() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
+		commandManager = new FacilityCommandController("car");
 		facilityData = getData();
 	}
 
@@ -66,7 +68,12 @@ public class Facility {
 
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		if (branchInfo.deleteCar(facility.branchID, facility.facilityIdString) == ResultMessage.SUCCESS) {
-			return facilityData.delete(facility.facilityIdString);
+			FacilityPO po =  facilityData.delete(facility.facilityIdString);
+			if(po==null){
+				return ResultMessage.FAIL;
+			}else{
+				commandManager.addCommand(new Command<FacilityPO>("delete", po));
+			}
 		}
 		return ResultMessage.FAIL;
 	}

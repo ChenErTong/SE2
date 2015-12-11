@@ -19,6 +19,7 @@ import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
+import vo.Command;
 
 /**
  * 
@@ -27,7 +28,7 @@ import vo.BankAccountVO;
  */
 public class BankAccount {
 	private BankAccountDataService bankAccountData;
-
+	private BankAccountCommandController commandController;
 	public BankAccount() throws MalformedURLException, RemoteException, NotBoundException {
 		bankAccountData = getData();
 	}
@@ -54,7 +55,13 @@ public class BankAccount {
 	}
 
 	public ResultMessage delete(String ID) throws RemoteException {
-		return bankAccountData.delete(ID);
+		BankAccountPO po =  bankAccountData.delete(ID);
+		if(po==null){
+			return ResultMessage.FAIL;
+		}else{
+			commandController.addCommand(new Command<BankAccountPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {

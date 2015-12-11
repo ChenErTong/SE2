@@ -13,6 +13,7 @@ import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
+import vo.Command;
 import vo.accountvo.DriverVO;
 
 /**
@@ -23,9 +24,10 @@ import vo.accountvo.DriverVO;
 public class Driver {
 	private DriverDataService DriverData;
 	private BranchInfo_Facility branchInfo;
-
+	private DriverCommandController commandManager;
 	public Driver() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
+		commandManager = new DriverCommandController("driver");
 		DriverData = (DriverDataService) Naming.lookup(RMIConfig.PREFIX + DriverDataService.NAME);
 	}
 
@@ -41,8 +43,16 @@ public class Driver {
 	}
 
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
-		if (branchInfo.deleteAccount(driver.branchID, driver.ID) == ResultMessage.SUCCESS)
-			return DriverData.delete(driver.ID);
+		if (branchInfo.deleteAccount(driver.branchID, driver.ID) == ResultMessage.SUCCESS){
+			DriverPO po = DriverData.delete(driver.ID);
+			if(po==null){
+				return ResultMessage.FAIL;
+			}
+			else{
+				commandManager.addCommand(new Command<DriverPO>("delete", po));
+				return ResultMessage.SUCCESS;
+			}
+		}
 		return ResultMessage.FAIL;
 	}
 
