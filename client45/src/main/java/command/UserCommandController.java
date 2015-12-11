@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.userbl.UserController;
 import businesslogic.userbl.UserTrans;
 import po.UserPO;
-import vo.Command;
 
 public class UserCommandController extends CommandController<UserPO>{
 	

@@ -7,13 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import command.BaseCommandController;
+import command.Command;
 import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
 import state.ConfirmState;
 import state.ResultMessage;
 import vo.BaseVO;
-import vo.Command;
 
 /**
  * 管理公司成本常量

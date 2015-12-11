@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import businesslogic.orderbl.OrderTrans;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import businesslogic.receiptbl.ReceiptInfo;
-import businesslogic.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;

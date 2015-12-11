@@ -5,6 +5,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.organizationbl.branchbl.Branch;
+import businesslogic.organizationbl.transferbl.Transfer;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.ResultMessage;
 import vo.BranchVO;
@@ -20,11 +22,13 @@ import vo.accountvo.AccountVO;
  */
 public class OrganizationController implements OrganizationBLService {
 
-	Organization organization ;
-
+	Branch branchBL;
+	Transfer transferBL;
+	Organization organization;
 	
 	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
-		 organization = new Organization();
+		branchBL = new Branch();
+		transferBL = new Transfer();
 	}
 	public String getID() {
 		/**
@@ -38,77 +42,77 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#getBranchID(String)
 	 */
 	public String getBranchID(String city) throws RemoteException {
-		return organization.getBranchID(city);
+		return branchBL.getBranchID(city);
 	}
 
 	/**
 	 * @see OrganizationBLService#addBranch(BranchVO)
 	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
-		return organization.addBranch(vo);
+		return branchBL.addBranch(vo);
 	}
 
 	/**
 	 * @see OrganizationBLService#deleteBranch(String)
 	 */
 	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
-		return organization.deleteBranch(organizationID);
+		return branchBL.deleteBranch(organizationID);
 	}
 
 	/**
 	 * @see OrganizationBLService#updateBranch(BranchVO)
 	 */
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
-		return organization.updateBranch(vo);
+		return branchBL.updateBranch(vo);
 	}
 
 	/**
 	 * @see OrganizationBLService#showBranch()
 	 */
 	public ArrayList<BranchVO> showBranch() throws RemoteException {
-		return organization.showBranch();
+		return branchBL.showBranch();
 	}
 
 	/**
 	 * @see OrganizationBLService#getAllBranchNumbers()
 	 */
 	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
-		return organization.getAllBranchNumbers();
+		return branchBL.getAllBranchNumbers();
 	}
 
 	/**
 	 * @see OrganizationBLService#getTransferID(String)
 	 */
 	public String getTransferID(String city) throws RemoteException {
-		return organization.getTransferID(city);
+		return transferBL.getTransferID(city);
 	}
 
 	/**
 	 * @see OrganizationBLService#addTransfer(TransferVO)
 	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
-		return organization.addTransfer(vo);
+		return transferBL.addTransfer(vo);
 	}
 
 	/**
 	 * @see OrganizationBLService#deleteTransfer(String)
 	 */
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
-		return organization.deleteTransfer(organizationID);
+		return transferBL.deleteTransfer(organizationID);
 	}
 
 	/**
 	 * @see OrganizationBLService#updateTransfer(TransferVO)
 	 */
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
-		return organization.updateTransfer(vo);
+		return transferBL.updateTransfer(vo);
 	}
 
 	/**
 	 * @see OrganizationBLService#showTransfer()
 	 */
 	public ArrayList<TransferVO> showTransfer() throws RemoteException {
-		return organization.showTransfer();
+		return transferBL.showTransfer();
 	}
 
 	/**

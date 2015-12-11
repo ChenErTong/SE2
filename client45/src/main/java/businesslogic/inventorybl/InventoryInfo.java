@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
-import businesslogic.transferbl.InventoryInfo_Transfer;
+import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.InventoryPO;
 import vo.InventoryVO;

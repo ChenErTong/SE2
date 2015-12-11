@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.basebl.BaseController;
 import businesslogic.basebl.BaseTrans;
 import po.BasePO;
-import vo.Command;
 
 public class BaseCommandController extends CommandController<BasePO> {
 

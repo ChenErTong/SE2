@@ -5,10 +5,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
-import businesslogic.branchbl.BranchTrans;
 import businesslogic.organizationbl.OrganizationController;
+import businesslogic.organizationbl.branchbl.BranchTrans;
 import po.BranchPO;
-import vo.Command;
 
 public class BranchCommandController extends CommandController<BranchPO>{
 	

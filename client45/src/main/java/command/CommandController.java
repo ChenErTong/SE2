@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 
 import po.PersistentObject;
 import util.SerSaveAndLoad;
-import vo.Command;
 
 public abstract class CommandController<PO extends PersistentObject> {
 	protected SerSaveAndLoad<Command<PO>> serDoer;

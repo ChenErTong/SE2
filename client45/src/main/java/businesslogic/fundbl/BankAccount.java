@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import command.BankAccountCommandController;
+import command.Command;
 import config.RMIConfig;
 import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
@@ -20,7 +21,6 @@ import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
-import vo.Command;
 
 /**
  * 

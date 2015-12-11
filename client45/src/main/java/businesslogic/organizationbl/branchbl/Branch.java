@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.organizationbl.branchbl;
 
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
@@ -12,13 +12,18 @@ import java.util.Date;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
+import command.BranchCommandController;
+import command.Command;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
+import po.BranchPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import util.CityTrans;
+import vo.BranchVO;
 import vo.CommodityVO;
 import vo.OrderVO;
 import vo.receiptvo.ReceiptVO;
@@ -34,8 +39,12 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
 public class Branch {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch receiptInfo;
-
+	private BranchDataService branchData;
+	private BranchCommandController branchCommandController;
+	
 	public Branch() throws MalformedURLException, RemoteException, NotBoundException {
+		branchCommandController = new BranchCommandController("branch");
+		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
 	}
@@ -189,6 +198,48 @@ public class Branch {
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
 		return orderInfo.getAllOrders();
+	}
+	
+	
+	public String getBranchID(String city) throws RemoteException {
+		String cityCode = CityTrans.getCodeByCity(city);
+		String ID = branchData.getID();
+		return cityCode + ID;
+	}
+
+	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
+		System.out.println(vo.toString());
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchData.add(po);
+	}
+
+	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
+		BranchPO po = branchData.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			branchCommandController.addCommand(new Command<BranchPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
+	}
+
+	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
+		BranchPO po = BranchTrans.convertVOtoPO(vo);
+		return branchData.modify(po);
+	}
+
+	public ArrayList<BranchVO> showBranch() throws RemoteException {
+		ArrayList<BranchPO> branchPOs = branchData.find();
+		return BranchTrans.convertPOstoVOs(branchPOs);
+	}
+
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+		ArrayList<BranchPO> pos = branchData.find();
+		ArrayList<String> branchNumbers = new ArrayList<>();
+		for (BranchPO branchPO : pos) {
+			branchNumbers.add(branchPO.getOrganizationID());
+		}
+		return branchNumbers;
 	}
 
 }

@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.facilitybl.FacilityController;
 import businesslogic.facilitybl.FacilityTrans;
 import po.FacilityPO;
-import vo.Command;
 
 public class FacilityCommandController extends CommandController<FacilityPO>{
 	

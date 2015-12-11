@@ -5,7 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.Branch;
+import businesslogic.organizationbl.branchbl.Branch;
 import state.CommodityState;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;

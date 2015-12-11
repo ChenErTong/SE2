@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.accountbl.AccountController;
 import businesslogic.accountbl.AccountTrans;
 import po.accountpo.AccountPO;
-import vo.Command;
 
 public class AccountCommandController extends CommandController<AccountPO>{
 

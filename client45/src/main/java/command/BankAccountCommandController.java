@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.fundbl.BankAccountController;
 import businesslogic.fundbl.FundTrans;
 import po.BankAccountPO;
-import vo.Command;
 
 public class BankAccountCommandController extends CommandController<BankAccountPO> {
 	

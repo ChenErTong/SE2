@@ -6,12 +6,12 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import command.Command;
 import command.PolicyCommandController;
 import config.RMIConfig;
 import dataservice.basedataservice.PolicyDataService;
 import po.PolicyPO;
 import state.ResultMessage;
-import vo.Command;
 import vo.PolicyVO;
 
 /**

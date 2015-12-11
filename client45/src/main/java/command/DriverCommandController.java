@@ -8,7 +8,6 @@ import businesslogic.ControllerFactory;
 import businesslogic.facilitybl.DriverController;
 import businesslogic.facilitybl.FacilityTrans;
 import po.accountpo.DriverPO;
-import vo.Command;
 
 public class DriverCommandController extends CommandController<DriverPO> {
 

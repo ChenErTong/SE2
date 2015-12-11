@@ -6,9 +6,8 @@ import java.rmi.RemoteException;
 
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
-import businesslogic.transferbl.TransferTrans;
+import businesslogic.organizationbl.transferbl.TransferTrans;
 import po.TransferPO;
-import vo.Command;
 
 public class TransferCommandController extends CommandController<TransferPO> {
 	

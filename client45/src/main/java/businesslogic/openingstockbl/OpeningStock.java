@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import businesslogic.accountbl.AccountInfo;
-import businesslogic.branchbl.BranchInfo;
 import businesslogic.facilitybl.FacilityInfo;
 import businesslogic.fundbl.BankAccountInfo;
 import businesslogic.inventorybl.InventoryInfo;
-import businesslogic.transferbl.TransferInfo;
+import businesslogic.organizationbl.branchbl.BranchInfo;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.openingstockdataservice.OpeningStockDataService;
 import po.BankAccountPO;

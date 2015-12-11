@@ -1,4 +1,4 @@
-package businesslogic.transferbl;
+package businesslogic.organizationbl.transferbl;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -8,17 +8,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.inventorybl.InventoryInfo;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
+import command.Command;
+import command.TransferCommandController;
 import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
+import po.TransferPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import util.CityTrans;
 import vo.CommodityVO;
+import vo.InventoryVO;
+import vo.TransferVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
@@ -31,10 +38,15 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 public class Transfer {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Transfer receiptInfo;
-
+	private TransferDataService transferData;
+	private TransferCommandController transferCommandController;
+	private InventoryInfo_Transfer inventoryInfo;
 	public Transfer() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
+		transferCommandController = new TransferCommandController("transfer");
+		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+		inventoryInfo = new InventoryInfo();
 	}
 
 	public TransferDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -227,6 +239,38 @@ public class Transfer {
 			return null;
 		receiptInfo.add(vo);
 		return vo;
+	}
+
+	public String getTransferID(String city) throws RemoteException {
+		String cityCode = CityTrans.getCodeByCity(city);
+		return cityCode + transferData.getID();
+	}
+
+	public ResultMessage addTransfer(TransferVO transfer) throws RemoteException {
+		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transfer.organizationID);
+		transfer.inventories.add(inventoryVO);
+		TransferPO transferPO = TransferTrans.convertVOtoPO(transfer);
+		return transferData.add(transferPO);
+	}
+
+	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
+		TransferPO po =  transferData.delete(organizationID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			transferCommandController.addCommand(new Command<TransferPO>("delete", po));
+			return ResultMessage.SUCCESS;
+		}
+	}
+
+	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
+		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
+		return transferData.modify(transferPO);
+	}
+
+	public ArrayList<TransferVO> showTransfer() throws RemoteException {
+		ArrayList<TransferPO> pos = transferData.find();
+		return TransferTrans.convertPOstoVOs(pos);
 	}
 
 }

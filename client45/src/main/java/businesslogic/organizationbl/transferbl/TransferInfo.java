@@ -1,4 +1,4 @@
-package businesslogic.transferbl;
+package businesslogic.organizationbl.transferbl;
 
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;

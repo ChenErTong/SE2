@@ -6,13 +6,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.BranchInfo;
-import command.AccountCommandController;
+import businesslogic.organizationbl.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
-import vo.Command;
 import vo.accountvo.AccountVO;
 
 /**
@@ -30,12 +28,12 @@ public class Account {
 
 	private BranchInfo_Account branchInfo;
 	private TransferInfo_Account transferInfo;
-	private AccountCommandController commandController;
+	
 
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
-		commandController = new AccountCommandController("account");
+		
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -72,25 +70,20 @@ public class Account {
 		return ResultMessage.FAIL;
 	}
 
-	public ResultMessage deleteAccount(String ID) throws RemoteException {
+	public AccountPO deleteAccount(String ID) throws RemoteException {
 		AccountPO po = accountData.find(ID);
 		if (po == null) {
-			return ResultMessage.FAIL;
+			return null;
 		} else {
 			String organizationID = po.getOrganizationID();
 			ResultMessage message = this.deleteAccountInOrganization(organizationID, ID);
 			if (message == ResultMessage.SUCCESS){
-				AccountPO account = accountData.delete(ID);
-				if(account==null)
-					return ResultMessage.FAIL;
-				else{
-					commandController.addCommand(new Command<AccountPO>("delete", po));
-					return ResultMessage.SUCCESS;
-				}
+				return accountData.delete(ID);
+				
 			}
 				
 		}
-		return ResultMessage.FAIL;
+		return null;
 
 	}
 

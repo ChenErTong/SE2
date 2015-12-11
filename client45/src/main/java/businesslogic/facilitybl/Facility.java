@@ -6,7 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.BranchInfo;
+import businesslogic.organizationbl.branchbl.BranchInfo;
+import command.Command;
 import command.FacilityCommandController;
 import config.RMIConfig;
 import dataservice.facilitydataservice.FacilityDataService;
@@ -14,7 +15,6 @@ import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
-import vo.Command;
 import vo.FacilityVO;
 
 /**

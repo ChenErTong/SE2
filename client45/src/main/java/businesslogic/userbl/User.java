@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import command.Command;
 import command.UserCommandController;
 import config.RMIConfig;
 import dataservice.userdataservice.LoginInfo;
@@ -16,7 +17,6 @@ import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
 import util.SerSaveAndLoad;
-import vo.Command;
 import vo.UserVO;
 /**
  * 

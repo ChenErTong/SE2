@@ -1,4 +1,4 @@
-package vo;
+package command;
 
 import java.io.Serializable;
 
@@ -15,4 +15,6 @@ public class Command<PO extends PersistentObject> implements Serializable{
 		this.command = command;
 		this.po = po;
 	}
+	
+//	public abstract void execute();
 }

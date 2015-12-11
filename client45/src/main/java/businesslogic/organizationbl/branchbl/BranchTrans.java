@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.organizationbl.branchbl;
 
 import java.util.ArrayList;
 
