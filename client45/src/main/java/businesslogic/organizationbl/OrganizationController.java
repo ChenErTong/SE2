@@ -12,8 +12,10 @@ import businesslogic.organizationbl.transferbl.TransferTrans;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import command.CommandController;
 import command.CommandDelete;
+import command.OrganizationCommandDoubleStack;
 import po.BranchPO;
 import po.TransferPO;
+import state.OrganizationType;
 import state.ResultMessage;
 import vo.BranchVO;
 import vo.FacilityVO;
@@ -33,12 +35,14 @@ public class OrganizationController implements OrganizationBLService {
 	Organization organization;
 	private CommandController<BranchPO> branchCommandController;
 	private CommandController<TransferPO> transferCommandController;
+	private OrganizationCommandDoubleStack doubleStack;
 
 	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
 		branchBL = new Branch();
 		transferBL = new Transfer();
 		branchCommandController = new CommandController<BranchPO>("branch");
 		transferCommandController = new CommandController<TransferPO>("transfer");
+		doubleStack = new OrganizationCommandDoubleStack("organization");
 	}
 
 	public String getID() {
@@ -73,6 +77,7 @@ public class OrganizationController implements OrganizationBLService {
 			return ResultMessage.FAIL;
 		} else {
 			branchCommandController.addCommand(new CommandDelete<BranchPO>(branchBL, po));
+			doubleStack.add(OrganizationType.BRANCH);
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -123,6 +128,7 @@ public class OrganizationController implements OrganizationBLService {
 			return ResultMessage.FAIL;
 		} else {
 			transferCommandController.addCommand(new CommandDelete<TransferPO>(transferBL, po));
+			doubleStack.add(OrganizationType.TRANSFER);
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -163,44 +169,52 @@ public class OrganizationController implements OrganizationBLService {
 		return organization.getInventoriesByTransferID(transferID);
 	}
 
-	@Override
-	public boolean canUndo_Branch() {
-		return branchCommandController.canUndo();
-	}
 
-	@Override
-	public boolean canRedo_Branch() {
-		return branchCommandController.canRedo();
-	}
-
-	@Override
-	public ResultMessage undo_Branch() throws RemoteException {
+	private ResultMessage undo_Branch() throws RemoteException {
 		return branchCommandController.undoCommand();
 	}
 
-	@Override
-	public ResultMessage redo_Branch() throws RemoteException {
+	private ResultMessage redo_Branch() throws RemoteException {
 		return branchCommandController.redoCommand();
 	}
 
-	@Override
-	public boolean canUndo_Transfer() {
-		return transferCommandController.canUndo();
-	}
 
-	@Override
-	public boolean canRedo_Transfer() {
-		return transferCommandController.canRedo();
-	}
-
-	@Override
-	public ResultMessage undo_Transfer() throws RemoteException {
+	private ResultMessage undo_Transfer() throws RemoteException {
 		return transferCommandController.undoCommand();
 	}
 
-	@Override
-	public ResultMessage redo_Transfer() throws RemoteException {
+	private ResultMessage redo_Transfer() throws RemoteException {
 		return transferCommandController.redoCommand();
+	}
+
+	@Override
+	public boolean canUndo() {
+		return doubleStack.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return doubleStack.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		OrganizationType type = doubleStack.undo();
+		if(type==OrganizationType.BRANCH)
+			return this.undo_Branch();
+		else{
+			return this.undo_Transfer();
+		}
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		OrganizationType type = doubleStack.redo();
+		if(type==OrganizationType.BRANCH)
+			return this.redo_Branch();
+		else{
+			return this.redo_Transfer();
+		}
 	}
 
 }

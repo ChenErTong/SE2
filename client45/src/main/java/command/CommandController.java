@@ -23,6 +23,7 @@ public class CommandController<PO extends PersistentObject> {
 	
 	public void addCommand(Command<PO> command){
 		serDoer.add(command);
+		serRedoer.clear();
 	}
 	
 	public ResultMessage undoCommand() throws RemoteException{
