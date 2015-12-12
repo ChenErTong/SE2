@@ -28,8 +28,8 @@ public class mainForUITest {
 	 //FrameManager managerFrame = new FrameManager(id);
 	  //managerFrame.setVisible(true);
 
-	 FrameManager managerFrame = new FrameManager(id);
-	  managerFrame.setVisible(true);
+//	 FrameManager managerFrame = new FrameManager(id);
+	//  managerFrame.setVisible(true);
 
 
 //	Frame_Courier courierFrame = new Frame_Courier();
