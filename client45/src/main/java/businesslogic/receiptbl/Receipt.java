@@ -17,6 +17,7 @@ import po.CommodityPO;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
+import po.receiptpo.PaymentBillPO;
 import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
@@ -29,7 +30,6 @@ import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
-import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 /**
  * 
@@ -95,13 +95,24 @@ public class Receipt {
 		case TRANS_TRAIN:
 		case TRANS_TRUCK:				approveTransferOrder(po);
 		case TRANS_ARRIVAL:			approveTransferArrival(po);
-		case DEBIT:
-			DebitBillPO debitBill = (DebitBillPO) po;
-			String accountID = debitBill.getBankAccountID();
-			BigDecimal money = debitBill.getMoney();
-			bankAccountInfo.addMoneyInBankAccount(accountID, money);
+		case DEBIT:								approveDebit(po);
+		case PAY:									approvePay(po);
 		default:									break;
 		}
+	}
+
+	private void approvePay(ReceiptPO po) throws RemoteException {
+		PaymentBillPO payBill = (PaymentBillPO) po;
+		String accountID = payBill.getBankAccountID();
+		BigDecimal money = payBill.getMoney();
+		bankAccountInfo.subtractMoneyInBankAccount(accountID, money);
+	}
+
+	private void approveDebit(ReceiptPO po) throws RemoteException {
+		DebitBillPO debitBill = (DebitBillPO) po;
+		String accountID = debitBill.getBankAccountID();
+		BigDecimal money = debitBill.getMoney();
+		bankAccountInfo.addMoneyInBankAccount(accountID, money);
 	}
 
 	private void approveTransferArrival(ReceiptPO po) throws RemoteException {

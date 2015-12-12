@@ -11,7 +11,6 @@ import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.PaymentBillPO;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
@@ -25,7 +24,7 @@ import vo.receiptvo.PaymentBillVO;
  */
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
-//	private ReceiptInfo_DebitAndPayBill receiptInfo;
+	private ReceiptInfo_DebitAndPayBill receiptInfo;
 
 	public DebitAndPayBill() throws MalformedURLException, RemoteException, NotBoundException {
 		debitAndPayBillData = getData();
