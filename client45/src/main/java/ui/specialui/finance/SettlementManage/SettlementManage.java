@@ -188,7 +188,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			PaymentBillVO payVO;
 			for(int i = 0; i < paybillVO.size(); i++){
 				payVO = (PaymentBillVO) paybillVO.get(i);
-				Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.accountID,payVO.items.value,payVO.remarks,payVO.date};
+				Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.bankAccountID,payVO.items.value,payVO.remarks,payVO.date};
 				tableModel.addRow(rowData);
 				paybillPool.add((PaymentBillVO) paybillVO.get(i));
 			}
@@ -229,7 +229,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					controller = ControllerFactory.getDebitAndPayBillController();
 					showController.showList(date);
 					for(int i = 0; i < paybillVO.size(); i++){
-						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).accountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
+						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 						tableModel.addRow(rowData);
 						paybillPool.add(paybillVO.get(i));
 						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
@@ -334,7 +334,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 		Object[] data = new String[6];
 		data[0] = paybillPool.get(table.getSelectedRow()).payerName;
 		data[1] = paybillPool.get(table.getSelectedRow()).money+"";
-		data[2] = paybillPool.get(table.getSelectedRow()).accountID;
+		data[2] = paybillPool.get(table.getSelectedRow()).bankAccountID;
 		data[3] = paybillPool.get(table.getSelectedRow()).remarks;
 		data[4] = paybillPool.get(table.getSelectedRow()).items.value;
 		data[5] = paybillPool.get(table.getSelectedRow()).date;

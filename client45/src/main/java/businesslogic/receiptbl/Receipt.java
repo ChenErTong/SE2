@@ -1,16 +1,20 @@
 package businesslogic.receiptbl;
 
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.fundbl.BankAccountInfo;
 import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.CommodityPO;
+import po.receiptpo.DebitBillPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
@@ -36,10 +40,13 @@ public class Receipt {
 	private ReceiptDataService receiptData;
 	private InventoryInfo_Receipt inventoryInfo;
 	private OrderInfo_Receipt orderInfo;
+	private BankAccountInfo_Receipt bankAccountInfo;
 
 	public Receipt() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptData = getData();
 		inventoryInfo = new InventoryInfo();
+		orderInfo = new OrderInfo();
+		bankAccountInfo = new BankAccountInfo();
 	}
 
 	public ReceiptDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -88,6 +95,11 @@ public class Receipt {
 		case TRANS_TRAIN:
 		case TRANS_TRUCK:				approveTransferOrder(po);
 		case TRANS_ARRIVAL:			approveTransferArrival(po);
+		case DEBIT:
+			DebitBillPO debitBill = (DebitBillPO) po;
+			String accountID = debitBill.getBankAccountID();
+			BigDecimal money = debitBill.getMoney();
+			bankAccountInfo.addMoneyInBankAccount(accountID, money);
 		default:									break;
 		}
 	}

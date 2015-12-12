@@ -19,10 +19,6 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 付款账号的ID
-	 */
-	private String accountID;
-	/**
 	 * 备注（租金年份、运单号、标注工资月份）
 	 */
 	private String remarks;
@@ -33,26 +29,21 @@ public class PaymentBillPO extends DebitAndPayBillPO {
 
 	public PaymentBillPO(String ID, String date ,ReceiptType type, BigDecimal money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
-		super(ID, type, money);
+		super(ID, type, money,accountID);
 		this.date = date;
 		this.payerName=payerName;
 		this.payBillItem=items;
-		this.accountID=accountID;
 		this.remarks=remarks;
 	}
 	
 	public PaymentBillPO(String ID  ,ReceiptType type, BigDecimal money, String payerName, PayBillItem items,
 			String accountID, String remarks) {
-		super(ID, type, money);
+		super(ID, type, money,accountID);
 		this.payerName=payerName;
 		this.payBillItem=items;
-		this.accountID=accountID;
 		this.remarks=remarks;
 	}
 
-	public String getAccountID() {
-		return accountID;
-	}
 
 	public String getRemarks() {
 		return remarks;

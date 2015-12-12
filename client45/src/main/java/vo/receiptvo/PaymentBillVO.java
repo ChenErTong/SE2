@@ -16,10 +16,6 @@ public class PaymentBillVO extends DebitAndPayBillVO {
 	 */
 	public String payerName;
 	/**
-	 * 付款账号的ID
-	 */
-	public String accountID;
-	/**
 	 * 付款条目
 	 */
 	public PayBillItem items;
@@ -28,11 +24,10 @@ public class PaymentBillVO extends DebitAndPayBillVO {
 	 */
 	public String remarks;
 
-	public PaymentBillVO(String iD, String date, ReceiptType type, BigDecimal money, String payerName, String accountID,
+	public PaymentBillVO(String iD, String date, ReceiptType type, BigDecimal money, String payerName, String bankAccountID,
 			PayBillItem items, String remarks) {
-		super(iD, type, money);
+		super(iD, type, money,bankAccountID);
 		this.payerName = payerName;
-		this.accountID = accountID;
 		this.items = items;
 		this.remarks = remarks;
 	}

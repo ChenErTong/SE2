@@ -14,6 +14,10 @@ public class BussinessProcessExportVO {
 	public String date;
 	public BigDecimal money;
 	public ReceiptType type;
+	/**
+	 * 付款账号的ID
+	 */
+	public String accountID;
 	//debit
 	public String courierID;
 	public ArrayList<String> orderNumbers;
@@ -22,10 +26,6 @@ public class BussinessProcessExportVO {
 	 * 付款人姓名
 	 */
 	public String payerName;
-	/**
-	 * 付款账号的ID
-	 */
-	public String accountID;
 	/**
 	 * 付款条目
 	 */
@@ -42,13 +42,13 @@ public class BussinessProcessExportVO {
 		this.date=vo.date;
 		this.money=vo.money;
 		this.type=type;
+		this.accountID=vo.bankAccountID;
 		if(type==ReceiptType.DEBIT){
 			this.courierID=((DebitBillVO)vo).courierID;
 			this.orderNumbers=((DebitBillVO)vo).orderNumbers;
 		}
 		else {
 			this.payerName=((PaymentBillVO)vo).payerName;
-			this.accountID=((PaymentBillVO)vo).accountID;
 			this.items=((PaymentBillVO)vo).items;
 			this.remarks=((PaymentBillVO)vo).remarks;
 		}
