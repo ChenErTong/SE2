@@ -1,4 +1,4 @@
-﻿package ui.myui;
+package ui.myui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,7 +13,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 import ui.image.CommonImage;
-
 /**
  * 下拉框
  * @author czw

@@ -73,7 +73,6 @@ public class RMIManage {
 				Naming.bind(prefix+FacilityData.NAME, DataFactory.createDataService(FacilityData.NAME));
 				Naming.bind(prefix+DebitAndPayBillData.NAME, DataFactory.createDataService(DebitAndPayBillData.NAME));
 				Naming.bind(prefix+BankAccountData.NAME, DataFactory.createDataService(BankAccountData.NAME));
-//				Naming.bind(prefix+ExpenseData.NAME, DataFactory.createDataService(ExpenseData.NAME));
 				Naming.bind(prefix+InventoryData.NAME, DataFactory.createDataService(InventoryData.NAME));
 				Naming.bind(prefix+OpeningStockData.NAME, DataFactory.createDataService(OpeningStockData.NAME));
 				Naming.bind(prefix+OrderData.NAME, DataFactory.createDataService(OrderData.NAME));

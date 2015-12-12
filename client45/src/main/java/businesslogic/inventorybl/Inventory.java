@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import businesslogic.orderbl.OrderTrans;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import businesslogic.receiptbl.ReceiptInfo;
-import businesslogic.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
@@ -186,7 +186,7 @@ public class Inventory {
 		commos[afArea][afRow][afFrame][afPosition] = adjustCommodity;
 		commos[exArea][exRow][exFrame][exPosition] = null;
 		inventory.setCommos(commos);
-		return inventoryData.modify(inventory);
+		return inventoryData.modify(inventory)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**

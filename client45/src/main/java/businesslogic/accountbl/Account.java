@@ -6,12 +6,12 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.BranchInfo;
+import businesslogic.CommonBusinessLogic;
+import businesslogic.organizationbl.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
-import vo.Command;
 import vo.accountvo.AccountVO;
 
 /**
@@ -21,7 +21,7 @@ import vo.accountvo.AccountVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:31:26
  */
-public class Account {
+public class Account implements CommonBusinessLogic<AccountPO>{
 	/**
 	 * Account数据接口
 	 */
@@ -29,12 +29,12 @@ public class Account {
 
 	private BranchInfo_Account branchInfo;
 	private TransferInfo_Account transferInfo;
-	private AccountCommandController commandController;
+	
 
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
-		commandController = new AccountCommandController("account");
+		
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -63,42 +63,33 @@ public class Account {
 		return accountData.getID();
 	}
 
-	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
-		AccountPO po = AccountTrans.convertVOtoPO(vo);
+	public ResultMessage add(AccountPO po) throws RemoteException {
 		ResultMessage message = this.addAccountInOrganization(po);
 		if (message == ResultMessage.SUCCESS)
 			return accountData.add(po);
 		return ResultMessage.FAIL;
 	}
 
-	public ResultMessage deleteAccount(String ID) throws RemoteException {
+	public AccountPO delete(String ID) throws RemoteException {
 		AccountPO po = accountData.find(ID);
 		if (po == null) {
-			return ResultMessage.FAIL;
+			return null;
 		} else {
 			String organizationID = po.getOrganizationID();
 			ResultMessage message = this.deleteAccountInOrganization(organizationID, ID);
 			if (message == ResultMessage.SUCCESS){
-				AccountPO account = accountData.delete(ID);
-				if(account==null)
-					return ResultMessage.FAIL;
-				else{
-					commandController.addCommand(new Command<AccountPO>("delete", po));
-					return ResultMessage.SUCCESS;
-				}
+				return accountData.delete(ID);
 			}
-				
 		}
-		return ResultMessage.FAIL;
-
+		return null;
 	}
 
-	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
-		AccountPO po = AccountTrans.convertVOtoPO(vo);
+	public AccountPO modify(AccountPO po) throws RemoteException {
 		ResultMessage message = this.modifyAccountInOrganization(po);
-		if (message == ResultMessage.SUCCESS)
+		if (message == ResultMessage.SUCCESS){
 			return accountData.modify(po);
-		return ResultMessage.FAIL;
+		}
+		return null;
 	}
 
 	public AccountVO find(String id) throws RemoteException {
@@ -192,5 +183,6 @@ public class Account {
 			return ResultMessage.FAIL;
 		}
 	}
+
 
 }

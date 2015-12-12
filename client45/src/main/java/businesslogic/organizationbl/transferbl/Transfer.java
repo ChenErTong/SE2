@@ -1,4 +1,4 @@
-package businesslogic.transferbl;
+package businesslogic.organizationbl.transferbl;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -8,17 +8,25 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.CommonBusinessLogic;
+import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.inventorybl.InventoryTrans;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
+import po.InventoryPO;
+import po.TransferPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import util.CityTrans;
 import vo.CommodityVO;
+import vo.InventoryVO;
+import vo.TransferVO;
 import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
@@ -28,13 +36,18 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:38:36
  */
-public class Transfer {
+public class Transfer implements CommonBusinessLogic<TransferPO> {
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Transfer receiptInfo;
-
+	private TransferDataService transferData;
+	
+	private InventoryInfo_Transfer inventoryInfo;
 	public Transfer() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
+		
+		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
+		inventoryInfo = new InventoryInfo();
 	}
 
 	public TransferDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -227,6 +240,32 @@ public class Transfer {
 			return null;
 		receiptInfo.add(vo);
 		return vo;
+	}
+
+	public String getTransferID(String city) throws RemoteException {
+		String cityCode = CityTrans.getCodeByCity(city);
+		return cityCode + transferData.getID();
+	}
+
+	public ResultMessage add(TransferPO transferPO) throws RemoteException {
+		InventoryVO inventoryVO = inventoryInfo.getTransferInitialInventory(transferPO.getOrganizationID());
+		ArrayList<InventoryPO> inventories = transferPO.getInventories();
+		inventories.add(InventoryTrans.convertVOtoPO(inventoryVO));
+		transferPO.setInventories(inventories);
+		return transferData.add(transferPO);
+	}
+
+	public TransferPO delete(String organizationID) throws RemoteException {
+		return  transferData.delete(organizationID);
+	}
+
+	public TransferPO modify(TransferPO transferPO) throws RemoteException {
+		return transferData.modify(transferPO);
+	}
+
+	public ArrayList<TransferVO> showTransfer() throws RemoteException {
+		ArrayList<TransferPO> pos = transferData.find();
+		return TransferTrans.convertPOstoVOs(pos);
 	}
 
 }

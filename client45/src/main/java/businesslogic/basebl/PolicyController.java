@@ -6,6 +6,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.baseblservice.PolicyBLService;
+import command.Command;
+import command.CommandAdd;
+import command.CommandController;
+import command.CommandDelete;
+import command.CommandModify;
+import po.PolicyPO;
 import state.ResultMessage;
 import vo.PolicyVO;
 
@@ -17,9 +23,11 @@ import vo.PolicyVO;
 public class PolicyController implements PolicyBLService {
 
 	Policy policyBL;
+	private CommandController<PolicyPO> commandController;
 
 	public PolicyController() throws MalformedURLException, RemoteException, NotBoundException {
 		policyBL = new Policy();
+		commandController = new CommandController<PolicyPO>("policy");
 	}
 
 	/**
@@ -33,21 +41,38 @@ public class PolicyController implements PolicyBLService {
 	 * @see PolicyBLService#addPolicy(PolicyVO)
 	 */
 	public ResultMessage addPolicy(PolicyVO vo) throws RemoteException {
-		return policyBL.addBase(vo);
+		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+		Command<PolicyPO> addCommand=new CommandAdd<PolicyPO>(policyBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**
 	 * @see PolicyBLService#deletePolicy(String)
 	 */
 	public ResultMessage deletePolicy(String ID) throws RemoteException {
-		return policyBL.deleteBase(ID);
+		PolicyPO po = policyBL.delete(ID);
+		if (po == null) {
+			return ResultMessage.FAIL;
+		} else {
+			commandController.addCommand(new CommandDelete<PolicyPO>(policyBL, po));
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see PolicyBLService#updatePolicy(PolicyVO)
 	 */
 	public ResultMessage updatePolicy(PolicyVO vo) throws RemoteException {
-		return policyBL.updateBase(vo);
+		PolicyPO po = BaseTrans.convertVOtoPO(vo);
+		PolicyPO res =  policyBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<PolicyPO> modifyCommand = new CommandModify<PolicyPO>(policyBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
@@ -62,6 +87,26 @@ public class PolicyController implements PolicyBLService {
 	 */
 	public PolicyVO find(String id) throws RemoteException {
 		return policyBL.find(id);
+	}
+
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
 	}
 
 }

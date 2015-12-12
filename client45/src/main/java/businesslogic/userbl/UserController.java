@@ -5,12 +5,18 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogicservice.userblservice.UserBLService;
+import command.Command;
+import command.CommandAdd;
+import command.CommandController;
+import command.CommandDelete;
+import command.CommandModify;
+import dataservice.userdataservice.LoginInfo;
+import po.UserPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import state.UserIdentity;
 import vo.UserVO;
-import dataservice.userdataservice.LoginInfo;
-import businesslogicservice.userblservice.UserBLService;
 
 /**
  * 
@@ -20,9 +26,11 @@ import businesslogicservice.userblservice.UserBLService;
 public class UserController implements UserBLService {
 
 	User userBL;
+	private CommandController<UserPO> commandController;
 
 	public UserController() throws MalformedURLException, RemoteException, NotBoundException {
 		userBL = new User();
+		commandController = new CommandController<UserPO>("user");
 	}
 
 	@Override
@@ -34,12 +42,7 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#show()
 	 */
 	public ArrayList<UserVO> show() throws RemoteException {
-		try {
 			return userBL.show();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
@@ -53,21 +56,40 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#addUser(UserVO)
 	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
-		return userBL.addUser(vo);
+		UserPO po = UserTrans.transVOtoPO(vo);
+		Command<UserPO> addCommand=new CommandAdd<UserPO>(userBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**
 	 * @see UserBLService#deleteUser(UserVO)
 	 */
 	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
-		return userBL.deleteUser(vo.id);
+		UserPO userPO = userBL.delete(vo.id);
+		if (userPO == null) {
+			return ResultMessage.FAIL;
+		} else {
+			Command<UserPO> command = new CommandDelete<UserPO>(userBL, userPO);
+			commandController.addCommand(command);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
 	 * @see UserBLService#updateUser(UserVO)
 	 */
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
-		return userBL.updateUser(vo);
+		UserPO po = UserTrans.transVOtoPO(vo);
+		UserPO res = userBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}
+		else{
+			Command<UserPO> modifyCommand = new CommandModify<UserPO>(userBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
@@ -89,6 +111,26 @@ public class UserController implements UserBLService {
 	 */
 	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException {
 		return userBL.showUser(userIdentity);
+	}
+
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
 	}
 
 }

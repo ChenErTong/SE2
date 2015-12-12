@@ -32,7 +32,7 @@ public class Receipt {
 
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
 		ReceiptPO po = ReceiptTrans.convertVOtoPO(receiptVO);
-		return receiptData.modify(po);
+		return receiptData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Receipt {
 		for (ReceiptVO vo : VOs) {
 			ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 			po.setReceiptState(ReceiptState.SUCCESS);
-			ResultMessage messagePass = receiptData.modify(po);
+			ResultMessage messagePass = receiptData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 			if (messagePass == ResultMessage.FAIL)
 				message = ResultMessage.FAIL;
 		}
@@ -70,7 +70,7 @@ public class Receipt {
 		for (ReceiptVO vo : VOs) {
 			ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 			po.setReceiptState(ReceiptState.FAILURE);
-			ResultMessage messagePass = receiptData.modify(po);
+			ResultMessage messagePass = receiptData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 			if (messagePass == ResultMessage.FAIL)
 				message = ResultMessage.FAIL;
 		}

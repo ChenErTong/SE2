@@ -74,7 +74,7 @@ public class DebitAndPayBill {
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		po.setReceiptState(ReceiptState.APPROVALING);
 		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
-			return debitAndPayBillData.modify(po);
+			return debitAndPayBillData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 		return ResultMessage.FAIL;
 	}
 
@@ -88,7 +88,7 @@ public class DebitAndPayBill {
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
 		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
-			return debitAndPayBillData.modify(po);
+			return debitAndPayBillData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 		return ResultMessage.FAIL;
 	}
 }

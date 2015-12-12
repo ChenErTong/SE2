@@ -12,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.CommonBusinessLogic;
 import config.RMIConfig;
 import dataservice.funddataservice.BankAccountDataService;
 import po.BankAccountPO;
@@ -19,16 +20,15 @@ import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
 import vo.BankAccountVO;
-import vo.Command;
 
 /**
  * 
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:34:01
  */
-public class BankAccount {
+public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
 	private BankAccountDataService bankAccountData;
-	private BankAccountCommandController commandController;
+	
 	public BankAccount() throws MalformedURLException, RemoteException, NotBoundException {
 		bankAccountData = getData();
 	}
@@ -50,23 +50,18 @@ public class BankAccount {
 		return FundTrans.convertBankAccountPOstoVOs(bankaccounts);
 	}
 
-	public ResultMessage add(BankAccountVO vo) throws RemoteException {
-		System.out.println(vo.toString());
-		return bankAccountData.add(FundTrans.convertVOtoPO(vo));
+
+	public ResultMessage add(BankAccountPO po) throws RemoteException {
+		return bankAccountData.add(po);
 	}
 
-	public ResultMessage delete(String ID) throws RemoteException {
-		BankAccountPO po =  bankAccountData.delete(ID);
-		if(po==null){
-			return ResultMessage.FAIL;
-		}else{
-			commandController.addCommand(new Command<BankAccountPO>("delete", po));
-			return ResultMessage.SUCCESS;
-		}
+	public BankAccountPO delete(String ID) throws RemoteException {
+		return  bankAccountData.delete(ID);
+		
 	}
 
-	public ResultMessage update(BankAccountVO vo) throws RemoteException {
-		return bankAccountData.modify(FundTrans.convertVOtoPO(vo));
+	public BankAccountPO modify(BankAccountPO po) throws RemoteException {
+		return bankAccountData.modify(po);
 	}
 
 	/**
@@ -86,7 +81,7 @@ public class BankAccount {
 		if (oldmoney.compareTo(money) >= 0)
 			oldmoney = oldmoney.subtract(money);
 		po.setMoney(oldmoney);
-		return bankAccountData.modify(po);
+		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -104,7 +99,7 @@ public class BankAccount {
 		BigDecimal oldmoney = po.getMoney();
 		oldmoney = oldmoney.add(money);
 		po.setMoney(oldmoney);
-		return bankAccountData.modify(po);
+		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**

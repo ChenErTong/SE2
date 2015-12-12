@@ -9,7 +9,6 @@ import businesslogic.facilitybl.Facility;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import state.ResultMessage;
-import vo.FacilityVO;
 
 public class MockFacility extends Facility {
 
@@ -21,10 +20,9 @@ public class MockFacility extends Facility {
 	}
 
 	@Override
-	public ResultMessage addFacility(FacilityVO facility) {
-		FacilityPO facilityPO = null;
+	public ResultMessage add(FacilityPO facility) {
 		try {
-			facilityData.add(facilityPO);
+			facilityData.add(facility);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -40,23 +38,22 @@ public class MockFacility extends Facility {
 	 * e.printStackTrace(); } return vo; }
 	 */
 	@Override
-	public ResultMessage modifyFacility(FacilityVO facility) {
-		FacilityPO facilityPO = null;
+	public FacilityPO modify(FacilityPO facility) {
 		try {
-			facilityData.modify(facilityPO);
+			return facilityData.modify(facility);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return null;
 	}
 
 	@Override
-	public ResultMessage deleteFacility(FacilityVO facility) {
+	public FacilityPO delete(String ID) {
 		try {
-			facilityData.delete(facility.facilityIdString);
+			facilityData.delete(ID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCESS;
+		return null;
 	}
 }

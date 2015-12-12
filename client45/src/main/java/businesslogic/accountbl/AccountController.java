@@ -6,6 +6,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.accountblservice.AccountBLService;
+import command.Command;
+import command.CommandAdd;
+import command.CommandController;
+import command.CommandDelete;
+import command.CommandModify;
+import po.accountpo.AccountPO;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
 
@@ -15,11 +21,14 @@ import vo.accountvo.AccountVO;
  * @version 创建时间：2015年12月3日 下午3:31:56
  */
 public class AccountController implements AccountBLService {
-	Account AccountBL;
+	private Account AccountBL;
+	private CommandController<AccountPO> commandController;
 
 	public AccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		AccountBL = new Account();
+		commandController = new CommandController<AccountPO>("account");
 	}
+
 	/**
 	 * @see AccountBLService#show()
 	 */
@@ -45,21 +54,43 @@ public class AccountController implements AccountBLService {
 	 * @see AccountBLService#addAccount(AccountVO)
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
-		return AccountBL.addAccount(vo);
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(AccountBL, po);
+		commandController.addCommand(addCommand);
+		return addCommand.execute();
 	}
 
 	/**
 	 * @see AccountBLService#deleteAccount(String)
 	 */
 	public ResultMessage deleteAccount(String ID) throws RemoteException {
-		return AccountBL.deleteAccount(ID);
+		AccountPO account = AccountBL.delete(ID);
+		if (account == null) {
+			return ResultMessage.FAIL;
+		} else {
+			commandController.addCommand(new CommandDelete<AccountPO>(AccountBL, account));
+			return ResultMessage.SUCCESS;
+		}
+		// Command<AccountPO> command = new CommandDelete<AccountPO>("delete",
+		// account);
+		// commandController.addCommand(command);
+		// return account == null ? ResultMessage.FAIL : ResultMessage.SUCCESS;
+		// }
 	}
 
 	/**
 	 * @see AccountBLService#updateAccount(AccountVO)
 	 */
 	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
-		return AccountBL.updateAccount(vo);
+		AccountPO po = AccountTrans.convertVOtoPO(vo);
+		AccountPO res =  AccountBL.modify(po);
+		if(res==null){
+			return ResultMessage.FAIL;
+		}else{
+			Command<AccountPO> modifyCommand = new CommandModify<AccountPO>(AccountBL, res);
+			commandController.addCommand(modifyCommand);
+			return ResultMessage.SUCCESS;
+		}
 	}
 
 	/**
@@ -67,6 +98,26 @@ public class AccountController implements AccountBLService {
 	 */
 	public AccountVO find(String id) throws RemoteException {
 		return AccountBL.find(id);
+	}
+
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
+
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
 	}
 
 }

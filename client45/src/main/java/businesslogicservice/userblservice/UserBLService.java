@@ -78,5 +78,8 @@ public interface UserBLService extends BLService {
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException;
 
 	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException;
-
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

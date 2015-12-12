@@ -32,7 +32,6 @@ public class DataFactory {
 		case FacilityData.NAME:						return new FacilityData();
 		case DebitAndPayBillData.NAME:			return new DebitAndPayBillData();
 		case BankAccountData.NAME:				return new BankAccountData();
-//		case ExpenseData.NAME:						return new ExpenseData();
 		case InventoryData.NAME:					return new InventoryData();
 		case OpeningStockData.NAME:				return new OpeningStockData();
 		case OrderData.NAME:							return new OrderData();

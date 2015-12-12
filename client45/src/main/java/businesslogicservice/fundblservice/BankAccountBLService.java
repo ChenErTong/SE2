@@ -66,4 +66,8 @@ public interface BankAccountBLService extends BLService{
 	public ResultMessage subtractMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException;
 	
 	public ResultMessage addMoneyInBankAccount(String accountID,BigDecimal money) throws RemoteException;
-}
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
+	}

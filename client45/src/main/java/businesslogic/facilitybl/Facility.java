@@ -6,14 +6,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.BranchInfo;
+import businesslogic.CommonBusinessLogic;
+import businesslogic.organizationbl.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.facilitydataservice.FacilityDataService;
 import po.FacilityPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
-import vo.Command;
 import vo.FacilityVO;
 
 /**
@@ -21,13 +21,13 @@ import vo.FacilityVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:33:33
  */
-public class Facility {
+public class Facility implements CommonBusinessLogic<FacilityPO>{
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
-	private FacilityCommandController commandManager;
+	
 	public Facility() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
-		commandManager = new FacilityCommandController("car");
+		
 		facilityData = getData();
 	}
 
@@ -39,10 +39,9 @@ public class Facility {
 		return ConfirmState.CONFIRM;
 	}
 
-	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
-		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		if (branchInfo.addCar(facilityPO) == ResultMessage.SUCCESS)
-			return facilityData.add(facilityPO);
+	public ResultMessage add(FacilityPO facility) throws RemoteException {
+		if (branchInfo.addCar(facility) == ResultMessage.SUCCESS)
+			return facilityData.add(facility);
 		return ResultMessage.FAIL;
 	}
 
@@ -58,24 +57,24 @@ public class Facility {
 		return facilityVOs;
 	}
 
-	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
-		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		if (branchInfo.modifyCar(facilityPO) == ResultMessage.SUCCESS) {
-			return facilityData.modify(facilityPO);
+	public FacilityPO modify(FacilityPO facility) throws RemoteException {
+		if (branchInfo.modifyCar(facility) == ResultMessage.SUCCESS) {
+			return facilityData.modify(facility);
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
-	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
-		if (branchInfo.deleteCar(facility.branchID, facility.facilityIdString) == ResultMessage.SUCCESS) {
-			FacilityPO po =  facilityData.delete(facility.facilityIdString);
-			if(po==null){
-				return ResultMessage.FAIL;
-			}else{
-				commandManager.addCommand(new Command<FacilityPO>("delete", po));
+	public FacilityPO delete(String ID) throws RemoteException {
+		FacilityPO facility = facilityData.find(ID);
+		if(facility==null){
+			return null;
+		}else{
+			String branchID = facility.getBranchID();
+			if (branchInfo.deleteCar(branchID, ID) == ResultMessage.SUCCESS) {
+				return  facilityData.delete(ID);
 			}
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
 	/**

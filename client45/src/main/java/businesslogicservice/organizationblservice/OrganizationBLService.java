@@ -125,4 +125,9 @@ public interface OrganizationBLService {
 	public ArrayList<FacilityVO> getFacilitiesByBranchID(String branchID) throws RemoteException;
 
 	public ArrayList<InventoryVO> getInventoriesByTransferID(String transferID) throws RemoteException;
+	
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

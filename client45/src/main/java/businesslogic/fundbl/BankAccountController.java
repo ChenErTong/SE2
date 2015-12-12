@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
+import command.Command;
+import command.CommandAdd;
+import command.CommandController;
+import command.CommandDelete;
+import command.CommandModify;
+import po.BankAccountPO;
 import state.ConfirmState;
 import state.FindTypeAccount;
 import state.ResultMessage;
@@ -21,9 +27,11 @@ import vo.BankAccountVO;
  */
 public class BankAccountController implements BankAccountBLService {
 	BankAccount BankAccountBL;
+	private CommandController<BankAccountPO> commandController;
 
 	public BankAccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		BankAccountBL = new BankAccount();
+		commandController = new CommandController<BankAccountPO>("bankAccount");
 	}
 
 	@Override
@@ -57,7 +65,10 @@ public class BankAccountController implements BankAccountBLService {
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
 		System.out.println(UserInfomation.getInstance().getUserName());
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.add(vo);
+			BankAccountPO po =FundTrans.convertVOtoPO(vo);
+			Command<BankAccountPO> addCommand=new CommandAdd<BankAccountPO>(BankAccountBL, po);
+			commandController.addCommand(addCommand);
+			return addCommand.execute();
 		}
 		return ResultMessage.FAIL;
 	}
@@ -67,7 +78,13 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage delete(String ID) throws RemoteException {
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.delete(ID);
+			BankAccountPO po = BankAccountBL.delete(ID);
+			if (po == null) {
+				return ResultMessage.FAIL;
+			} else {
+				commandController.addCommand(new CommandDelete<BankAccountPO>(BankAccountBL, po));
+				return ResultMessage.SUCCESS;
+			}
 		}
 		return ResultMessage.FAIL;
 	}
@@ -78,7 +95,15 @@ public class BankAccountController implements BankAccountBLService {
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		
 		if (this.isCorrectAuthority()) {
-			return BankAccountBL.update(vo);
+			BankAccountPO po =FundTrans.convertVOtoPO(vo);
+			BankAccountPO res =  BankAccountBL.modify(po);
+			if(res==null){
+				return ResultMessage.FAIL;
+			}else{
+				Command<BankAccountPO> modifyCommand = new CommandModify<BankAccountPO>(BankAccountBL, res);
+				commandController.addCommand(modifyCommand);
+				return ResultMessage.SUCCESS;
+			}
 		}
 		return ResultMessage.FAIL;
 	}
@@ -116,5 +141,23 @@ public class BankAccountController implements BankAccountBLService {
 		UserAuthority authority = UserInfomation.getInstance().getAuthority();
 		return authority == UserAuthority.ADVANCE_FINANCE;
 	}
+	@Override
+	public boolean canUndo() {
+		return commandController.canUndo();
+	}
 
+	@Override
+	public boolean canRedo() {
+		return commandController.canRedo();
+	}
+
+	@Override
+	public ResultMessage undo() throws RemoteException {
+		return commandController.undoCommand();
+	}
+
+	@Override
+	public ResultMessage redo() throws RemoteException {
+		return commandController.redoCommand();
+	}
 }

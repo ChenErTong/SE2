@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.organizationbl.branchbl;
 
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
@@ -9,16 +9,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.CommonBusinessLogic;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
+import po.BranchPO;
 import state.CommodityState;
 import state.ConfirmState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import util.CityTrans;
+import vo.BranchVO;
 import vo.CommodityVO;
 import vo.OrderVO;
 import vo.receiptvo.ReceiptVO;
@@ -31,11 +35,15 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:33:06
  */
-public class Branch {
+public class Branch implements CommonBusinessLogic<BranchPO>{
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch receiptInfo;
-
+	private BranchDataService branchData;
+	
+	
 	public Branch() throws MalformedURLException, RemoteException, NotBoundException {
+		
+		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
 	}
@@ -189,6 +197,39 @@ public class Branch {
 	 */
 	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
 		return orderInfo.getAllOrders();
+	}
+	
+	
+	public String getBranchID(String city) throws RemoteException {
+		String cityCode = CityTrans.getCodeByCity(city);
+		String ID = branchData.getID();
+		return cityCode + ID;
+	}
+
+	public ResultMessage add(BranchPO po) throws RemoteException {
+		return branchData.add(po);
+	}
+
+	public BranchPO delete(String organizationID) throws RemoteException {
+		return branchData.delete(organizationID);
+	}
+
+	public BranchPO modify(BranchPO po) throws RemoteException {
+		return branchData.modify(po);
+	}
+
+	public ArrayList<BranchVO> showBranch() throws RemoteException {
+		ArrayList<BranchPO> branchPOs = branchData.find();
+		return BranchTrans.convertPOstoVOs(branchPOs);
+	}
+
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+		ArrayList<BranchPO> pos = branchData.find();
+		ArrayList<String> branchNumbers = new ArrayList<>();
+		for (BranchPO branchPO : pos) {
+			branchNumbers.add(branchPO.getOrganizationID());
+		}
+		return branchNumbers;
 	}
 
 }

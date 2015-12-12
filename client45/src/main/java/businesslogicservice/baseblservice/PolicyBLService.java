@@ -61,4 +61,8 @@ public interface PolicyBLService {
 	 * @author Ann
 	 */
 	public PolicyVO find(String id) throws RemoteException;
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

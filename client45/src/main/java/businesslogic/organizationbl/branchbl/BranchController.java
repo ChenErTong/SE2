@@ -1,4 +1,4 @@
-package businesslogic.branchbl;
+package businesslogic.organizationbl.branchbl;
 
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
@@ -24,9 +24,10 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  */
 public class BranchController implements BranchBLService {
 	Branch BranchBL;
-
+	
 	public BranchController() throws MalformedURLException, RemoteException, NotBoundException {
 		BranchBL = new Branch();
+		
 	}
 
 	@Override

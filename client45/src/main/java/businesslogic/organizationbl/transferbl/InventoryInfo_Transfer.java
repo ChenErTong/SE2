@@ -1,4 +1,4 @@
-package businesslogic.transferbl;
+package businesslogic.organizationbl.transferbl;
 
 import java.rmi.RemoteException;
 

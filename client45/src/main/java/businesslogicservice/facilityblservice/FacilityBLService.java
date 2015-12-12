@@ -52,4 +52,8 @@ public interface FacilityBLService extends BLService{
 	public FacilityVO findFacility(String ID) throws RemoteException;
 	public ArrayList<FacilityVO> findFacility () throws RemoteException;
 	public String getID(String branchID) throws RemoteException;
+	public boolean canUndo();
+	public boolean canRedo();
+	public ResultMessage undo() throws RemoteException;
+	public ResultMessage redo() throws RemoteException;
 }

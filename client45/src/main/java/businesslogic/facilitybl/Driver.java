@@ -6,14 +6,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.branchbl.BranchInfo;
+import businesslogic.CommonBusinessLogic;
+import businesslogic.organizationbl.branchbl.BranchInfo;
 import config.RMIConfig;
 import dataservice.facilitydataservice.DriverDataService;
 import po.accountpo.DriverPO;
 import state.ConfirmState;
 import state.ResultMessage;
 import util.Util;
-import vo.Command;
 import vo.accountvo.DriverVO;
 
 /**
@@ -21,13 +21,13 @@ import vo.accountvo.DriverVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:33:25
  */
-public class Driver {
+public class Driver implements CommonBusinessLogic<DriverPO>{
 	private DriverDataService DriverData;
 	private BranchInfo_Facility branchInfo;
-	private DriverCommandController commandManager;
+	
 	public Driver() throws MalformedURLException, RemoteException, NotBoundException {
 		branchInfo = new BranchInfo();
-		commandManager = new DriverCommandController("driver");
+		
 		DriverData = (DriverDataService) Naming.lookup(RMIConfig.PREFIX + DriverDataService.NAME);
 	}
 
@@ -35,32 +35,29 @@ public class Driver {
 		return ConfirmState.CONFIRM;
 	}
 
-	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
-		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
-		if (branchInfo.addAccount(driverPO) == ResultMessage.SUCCESS)
-			return DriverData.add(driverPO);
+	public ResultMessage add(DriverPO driver) throws RemoteException {
+		if (branchInfo.addAccount(driver) == ResultMessage.SUCCESS)
+			return DriverData.add(driver);
 		return ResultMessage.FAIL;
 	}
 
-	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
-		if (branchInfo.deleteAccount(driver.branchID, driver.ID) == ResultMessage.SUCCESS){
-			DriverPO po = DriverData.delete(driver.ID);
-			if(po==null){
-				return ResultMessage.FAIL;
-			}
-			else{
-				commandManager.addCommand(new Command<DriverPO>("delete", po));
-				return ResultMessage.SUCCESS;
+	public DriverPO delete(String ID) throws RemoteException {
+		DriverPO driver = DriverData.find(ID);
+		if (driver == null) {
+			return null;
+		} else {
+			String branchID = driver.getOrganizationID();
+			if (branchInfo.deleteAccount(branchID, ID) == ResultMessage.SUCCESS) {
+				return DriverData.delete(ID);
 			}
 		}
-		return ResultMessage.FAIL;
+		return null;
 	}
 
-	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
-		DriverPO driverPO = FacilityTrans.convertVOtoPO(driver);
-		if (branchInfo.modifyAccount(driverPO) == ResultMessage.SUCCESS)
-			return DriverData.modify(driverPO);
-		return ResultMessage.FAIL;
+	public DriverPO modify(DriverPO driver) throws RemoteException {
+		if (branchInfo.modifyAccount(driver) == ResultMessage.SUCCESS)
+			return DriverData.modify(driver);
+		return null;
 	}
 
 	public ArrayList<DriverVO> findDriver() throws RemoteException {

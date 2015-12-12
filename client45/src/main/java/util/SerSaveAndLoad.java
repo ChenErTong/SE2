@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class SerSaveAndLoad<E> implements Serializable {
 	/**
-	 * 
+	 * default UID
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<E> poList = new ArrayList<E>();
@@ -71,6 +71,10 @@ public class SerSaveAndLoad<E> implements Serializable {
 		return poList.get(poList.size()-1);
 	}
 	
+	public void removeLast(){
+		poList.remove(poList.size()-1);
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void load(String folderName){
 		/* 没有该文件夹就创建 */
@@ -108,7 +112,7 @@ public class SerSaveAndLoad<E> implements Serializable {
 		}
 	}
 	private void save(){
-		/* 将商品集合存入文件中 */
+		/* 将Object存入文件中 */
 		ObjectOutputStream oos = null;
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(fileName));

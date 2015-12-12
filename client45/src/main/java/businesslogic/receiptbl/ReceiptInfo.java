@@ -7,11 +7,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.branchbl.ReceiptInfo_Branch;
 import businesslogic.fundbl.ReceiptInfo_DebitAndPayBill;
 import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
-import businesslogic.transferbl.ReceiptInfo_Transfer;
+import businesslogic.organizationbl.branchbl.ReceiptInfo_Branch;
+import businesslogic.organizationbl.transferbl.ReceiptInfo_Transfer;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
