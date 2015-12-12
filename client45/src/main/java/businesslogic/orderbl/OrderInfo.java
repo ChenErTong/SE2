@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
+import businesslogic.receiptbl.OrderInfo_Receipt;
 import dataservice.orderdataservice.OrderDataService;
 import po.CommodityPO;
 import po.OrderPO;
@@ -18,7 +19,7 @@ import vo.OrderVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:36:43
  */
-public class OrderInfo implements OrderInfo_Branch_Transfer {
+public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	Order order;
 	OrderDataService orderData;
 
@@ -41,12 +42,12 @@ public class OrderInfo implements OrderInfo_Branch_Transfer {
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(ArrayList, String,
 	 *      CommodityState)
 	 */
-	public void changeOrderState(ArrayList<String> orderIDs, String message, CommodityState orderState)
+	public void changeOrderState(ArrayList<String> orderIDs, String message, CommodityState commodityState)
 			throws RemoteException {
 		for (String orderID : orderIDs) {
 			OrderPO orderPO = orderData.find(orderID);
 			addHitoryMessage(orderPO, message);
-			updateOrderState(orderPO, orderState);
+			updateCommodityState(orderPO, commodityState);
 		}
 	}
 
@@ -98,10 +99,10 @@ public class OrderInfo implements OrderInfo_Branch_Transfer {
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(String, String,
 	 *      CommodityState)
 	 */
-	public void changeOrderState(String order, String message, CommodityState orderState) throws RemoteException {
+	public void changeOrderState(String order, String message, CommodityState commodityState) throws RemoteException {
 		OrderPO orderPO = orderData.find(order);
 		addHitoryMessage(orderPO, message);
-		updateOrderState(orderPO, orderState);
+		updateCommodityState(orderPO, commodityState);
 	}
 
 	/**
@@ -109,15 +110,15 @@ public class OrderInfo implements OrderInfo_Branch_Transfer {
 	 * 
 	 * @param orderPO
 	 *            OrderPO型，订单持久化队形
-	 * @param orderState
+	 * @param commodityState
 	 *            CommodityState型，订单新状态
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	private void updateOrderState(OrderPO orderPO, CommodityState orderState) throws RemoteException {
+	private void updateCommodityState(OrderPO orderPO, CommodityState commodityState) throws RemoteException {
 		ArrayList<CommodityPO> commos = orderPO.getCommodityPO();
 		for (CommodityPO commodityPO : commos) {
-			commodityPO.setCommodityState(orderState);
+			commodityPO.setCommodityState(commodityState);
 		}
 		orderPO.setCommodityPO(commos);
 		orderData.modify(orderPO);

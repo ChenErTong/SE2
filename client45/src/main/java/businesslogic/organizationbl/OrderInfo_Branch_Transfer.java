@@ -3,7 +3,6 @@ package businesslogic.organizationbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.receiptbl.OrderInfo_Receipt;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -12,7 +11,7 @@ import vo.OrderVO;
  * @author Ann
  * @version 创建时间：2015年12月3日 下午3:37:09
  */
-public interface OrderInfo_Branch_Transfer extends OrderInfo_Receipt {
+public interface OrderInfo_Branch_Transfer{
 	/**
 	 * 获取所有的订单
 	 * 

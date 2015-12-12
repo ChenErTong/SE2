@@ -40,12 +40,12 @@ public interface OrderInfo_Receipt {
 	 *            String型，订单ID
 	 * @param message
 	 *            String型，历史轨迹信息
-	 * @param orderState
+	 * @param commodifyState
 	 *            CommodityState型，订单新状态
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public void changeOrderState(String order, String message, CommodityState orderState) throws RemoteException;
+	public void changeOrderState(String order, String message, CommodityState commodifyState) throws RemoteException;
 
 	/**
 	 * 当总经理审批后，修改订单的信息（主要是历史轨迹）
@@ -54,11 +54,11 @@ public interface OrderInfo_Receipt {
 	 *            ArrayList<String>型，订单ID列表
 	 * @param message
 	 *            String型，历史轨迹信息
-	 * @param orderState
+	 * @param commodityState
 	 *            CommodityState型，订单新状态
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public void changeOrderState(ArrayList<String> orders, String message, CommodityState orderState) throws RemoteException;
+	public void changeOrderState(ArrayList<String> orders, String message, CommodityState commodityState) throws RemoteException;
 
 }

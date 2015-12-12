@@ -17,12 +17,15 @@ import po.receiptpo.ReceiptPO;
 import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
 import po.receiptpo.orderreceiptpo.DeliveryListPO;
 import po.receiptpo.orderreceiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
+import po.receiptpo.orderreceiptpo.TransferOrderPO;
 import state.CommodityState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
+import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
 /**
  * 
@@ -81,8 +84,28 @@ public class Receipt {
 		case BRANCH_ARRIVAL:			approveBranchArrial(po);
 		case BRANCH_DELIVER:			approveBranchDelivery(po);
 		case BRANCH_TRUCK:				approveBranchLoading(po);
+		case TRANS_PLANE:
+		case TRANS_TRAIN:
+		case TRANS_TRUCK:				approveTransferOrder(po);
+		case TRANS_ARRIVAL:			approveTransferArrival(po);
 		default:									break;
 		}
+	}
+
+	private void approveTransferArrival(ReceiptPO po) throws RemoteException {
+		TransferArrivalListPO transferArrivalReceipt = (TransferArrivalListPO) po;
+		String order = transferArrivalReceipt.getOrders();
+		String destination = transferArrivalReceipt.getDestination();
+		CommodityState state = transferArrivalReceipt.getState();
+		orderInfo.changeOrderState(order, "货物已到达" + destination + "中转中心",state);
+	}
+
+	private void approveTransferOrder(ReceiptPO po) throws RemoteException {
+		TransferOrderPO transferOrderReceipt = (TransferOrderPO) po;
+		ArrayList<String> orders = transferOrderReceipt.getOrders();
+		String departure = transferOrderReceipt.getDeparture();
+		String destination = transferOrderReceipt.getDestination();
+		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
 	}
 
 	private void approveBranchLoading(ReceiptPO po) throws RemoteException {
@@ -103,7 +126,6 @@ public class Receipt {
 		BranchArrivalListPO branchArrialReceipt = (BranchArrivalListPO) po;
 		String orderID = branchArrialReceipt.getOrders();
 		String departure = branchArrialReceipt.getDeparture();
-		//TODO 应该是orderState
 		CommodityState state = branchArrialReceipt.getState();
 		orderInfo.changeOrderState(orderID, "货物已到达" + departure + "营业厅", state);
 	}
