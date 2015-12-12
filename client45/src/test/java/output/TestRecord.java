@@ -31,7 +31,7 @@ public class TestRecord {
 		orderNumbers.add("123");
 		orderNumbers.add("124");
 		orderNumbers.add("125");
-		DebitBillVO vo1 = new DebitBillVO("0", ReceiptType.DEBIT, "153456", new BigDecimal("58.2"), orderNumbers, GetDate.getDate());
+		DebitBillVO vo1 = new DebitBillVO("0", ReceiptType.DEBIT, "153456", new BigDecimal("58.2"), orderNumbers, GetDate.getDate(),"009");
 		PaymentBillVO vo2 = new PaymentBillVO("0", GetDate.getDate(), ReceiptType.PAY, new BigDecimal("25.32"), "wang", "007", PayBillItem.BONUS, "超额完成任务奖金");
 		ArrayList<DebitAndPayBillVO> receipt = new ArrayList<>();
 		receipt.add(vo1);
