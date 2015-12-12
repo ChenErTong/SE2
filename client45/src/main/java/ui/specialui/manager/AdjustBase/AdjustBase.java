@@ -219,7 +219,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = baseInfo.getTable();
-			baseID = basePool.get(table.getSelectedRow()).ID;
+		//	baseID = basePool.get(table.getSelectedRow()).ID;
 				if(modifyBase.getData()==null){
 					new MyNotification(this,"请检查常量信息填写是否完整！",Color.RED);
 				}else{

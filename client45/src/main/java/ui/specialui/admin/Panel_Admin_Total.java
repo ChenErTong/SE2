@@ -61,12 +61,10 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		//MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "管理员界面", 487, 0, 306, 142);
 	
-		//this.showAll();
+		this.showAll();
 	}
 	
 	private void initComponent(Frame_Admin frame_Admin){
-	//	this.add(new MyJLabel(550, 30, 210, 45, "用户信息管理", 30, true));
-	
 		userInfo = new UserInfo(this);
 		this.add(userInfo);
 		
@@ -228,9 +226,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要删除的用户！",Color.RED);
 			}else{
-				ConfirmOperationFrame eff = new ConfirmOperationFrame("DeleteUser");
-				eff.setVisible(true);
-			//	new MyNotification(this,"正在删除用户！",Color.GREEN);
+				new MyNotification(this,"正在删除用户！",Color.GREEN);
 				this.deleteUser();
 			
 			}

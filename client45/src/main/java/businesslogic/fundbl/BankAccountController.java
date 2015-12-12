@@ -55,6 +55,7 @@ public class BankAccountController implements BankAccountBLService {
 	 * @see BankAccountBLService#add(BankAccountVO)
 	 */
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
+		System.out.println(UserInfomation.getInstance().getUserName());
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.add(vo);
 		}
@@ -75,6 +76,7 @@ public class BankAccountController implements BankAccountBLService {
 	 * @see BankAccountBLService#update(BankAccountVO)
 	 */
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
+		
 		if (this.isCorrectAuthority()) {
 			return BankAccountBL.update(vo);
 		}
@@ -112,7 +114,7 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	private boolean isCorrectAuthority() {
 		UserAuthority authority = UserInfomation.getInstance().getAuthority();
-		return authority == UserAuthority.ADVANCE_FINANCE || authority == UserAuthority.MANAGER_LEVEL;
+		return authority == UserAuthority.ADVANCE_FINANCE;
 	}
 
 }

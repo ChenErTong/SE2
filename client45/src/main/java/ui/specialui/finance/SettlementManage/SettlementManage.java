@@ -225,6 +225,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				String day = data[2];
 				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 				String date = year + month + day;
+			
 				try {
 					controller = ControllerFactory.getDebitAndPayBillController();
 					showController.showList(date);
@@ -241,6 +242,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);
 			}
+			
 		}else if(e.getActionCommand().equals("AddPayReceipt")){
 			String[] data = addPaybill.getData();
 			if(data==null){
@@ -280,7 +282,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的付款单！",Color.RED);
 			}else{
-				paybillID = paybillPool.get(table.getSelectedRow()).ID;
+			//	paybillID = paybillPool.get(table.getSelectedRow()).ID;
 				Object[] data = this.setPayBill();
 				modifyPaybill.setData(data);
 			}

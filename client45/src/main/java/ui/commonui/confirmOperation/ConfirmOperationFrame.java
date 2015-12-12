@@ -27,14 +27,14 @@ public class ConfirmOperationFrame extends MyWindow implements ActionListener{
 		
 		panel = new ConfirmOperationPanel();
 		panel.setOpaque(true);
-		panel.setBackground(new Color(0,0,0,0.8f));
+		panel.setBackground(new Color(0,0,0,0.3f));
 		this.add(panel);
 		
 		button_close = new JButton();
 		button_close.addActionListener(this);
 		this.add(button_close);
 		
-		this.setBackground(new Color(0,0,0,0.6f));
+		this.setBackground(new Color(0,0,0,0.1f));
 	}
 	@Override
 	public void actionPerformed(ActionEvent events) {

@@ -219,7 +219,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				}
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
-			accountID = accountPool.get(table.getSelectedRow()).ID;
+			//accountID = accountPool.get(table.getSelectedRow()).ID;
 				
 			if(modifyAccountInfo.getData()==null){
 				new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);

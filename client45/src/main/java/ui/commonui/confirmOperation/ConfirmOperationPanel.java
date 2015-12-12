@@ -25,7 +25,7 @@ public class ConfirmOperationPanel extends MyJPanel implements ActionListener{
 		int width = 400;
 		int height = 150;
 		
-		Color foreColor = Color.WHITE;
+		Color foreColor = Color.BLACK;
 		Color backColor = MyColor.getColor();
 		
 		this.setBounds((1280-width)/2,(720-height)/2,width,height);
@@ -47,11 +47,12 @@ public class ConfirmOperationPanel extends MyJPanel implements ActionListener{
 		button_no.setBounds(240,60,120,30);
 		button_no.setForeground(foreColor);
 		button_no.setBackground(backColor);
+		this.add(button_no);
+		
 		this.add(infoBar);
 	}
 	@Override
 	public void actionPerformed(ActionEvent events) {
-		// TODO Auto-generated method stub
 		if(events.getSource()==button_no){
 			ConfirmOperationFrame.button_close.doClick();
 		}

@@ -239,7 +239,7 @@ public void leadline(FrameManager frameManager){
 			if(table.getSelectedRowCount() == 0){
 				this.add(new MyNotification(this,"请先选择要修改的策略！",Color.RED));
 			}else{
-				policyID = policyPool.get(table.getSelectedRow()).ID;
+			//	policyID = policyPool.get(table.getSelectedRow()).ID;
 				Object[] data = new Object[3];
 				data[0] = policyPool.get(table.getSelectedRow()).userIdentity;
 				data[1] = policyPool.get(table.getSelectedRow()).salaryPolicy;

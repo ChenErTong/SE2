@@ -263,7 +263,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
-			accountID = accountPool.get(table.getSelectedRow()).ID;
+		//	accountID = accountPool.get(table.getSelectedRow()).ID;
 			if(modifyAccount.getData()==null){
 				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
 			}else{

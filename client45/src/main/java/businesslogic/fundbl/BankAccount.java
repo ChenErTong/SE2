@@ -51,6 +51,7 @@ public class BankAccount {
 	}
 
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
+		System.out.println(vo.toString());
 		return bankAccountData.add(FundTrans.convertVOtoPO(vo));
 	}
 
