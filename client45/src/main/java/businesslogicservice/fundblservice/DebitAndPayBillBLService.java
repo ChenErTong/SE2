@@ -59,23 +59,23 @@ public interface DebitAndPayBillBLService {
 	// 建立付款单
 	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException;
 
-	/**
-	 * 提交单据进行审批
-	 * 
-	 * @return 是否成功
-	 * @throws RemoteException
-	 */
-	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException;
-
-	/**
-	 * 保存成草稿状态
-	 * 
-	 * @return 处理结果
-	 * @author zsq
-	 * @version Oct 22,2015
-	 * @throws RemoteException
-	 */
-	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException;
+//	/**
+//	 * 提交单据进行审批
+//	 * 
+//	 * @return 是否成功
+//	 * @throws RemoteException
+//	 */
+//	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException;
+//
+//	/**
+//	 * 保存成草稿状态
+//	 * 
+//	 * @return 处理结果
+//	 * @author zsq
+//	 * @version Oct 22,2015
+//	 * @throws RemoteException
+//	 */
+//	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException;
 
 	/**
 	 * 修改草稿状态
