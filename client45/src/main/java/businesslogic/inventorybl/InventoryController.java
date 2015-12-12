@@ -94,33 +94,33 @@ public class InventoryController implements InventoryBLService {
 		return InventoryBL.checkRecord(transferID, date);
 	}
 
-	/**
-	 * @see InventoryBLService#saveImport(InventoryImportReceiptVO)
-	 */
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		return InventoryBL.saveImport(importReceipt);
-	}
-
-	/**
-	 * @see InventoryBLService#saveExport(InventoryExportReceiptVO)
-	 */
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		return InventoryBL.saveExport(exportReceipt);
-	}
-
-	/**
-	 * @see InventoryBLService#submitImport(InventoryImportReceiptVO)
-	 */
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		return InventoryBL.submitImport(importReceipt);
-	}
-
-	/**
-	 * @see InventoryBLService#submitExport(InventoryExportReceiptVO)
-	 */
-	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		return InventoryBL.submitExport(exportReceipt);
-	}
+//	/**
+//	 * @see InventoryBLService#saveImport(InventoryImportReceiptVO)
+//	 */
+//	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
+//		return InventoryBL.saveImport(importReceipt);
+//	}
+//
+//	/**
+//	 * @see InventoryBLService#saveExport(InventoryExportReceiptVO)
+//	 */
+//	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
+//		return InventoryBL.saveExport(exportReceipt);
+//	}
+//
+//	/**
+//	 * @see InventoryBLService#submitImport(InventoryImportReceiptVO)
+//	 */
+//	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
+//		return InventoryBL.submitImport(importReceipt);
+//	}
+//
+//	/**
+//	 * @see InventoryBLService#submitExport(InventoryExportReceiptVO)
+//	 */
+//	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
+//		return InventoryBL.submitExport(exportReceipt);
+//	}
 
 	/**
 	 * @see InventoryBLService#getCommoditiesInInventory(String)

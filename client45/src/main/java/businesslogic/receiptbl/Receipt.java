@@ -6,12 +6,17 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.CommodityPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
 
 /**
@@ -21,6 +26,7 @@ import vo.receiptvo.ReceiptVO;
  */
 public class Receipt {
 	private ReceiptDataService receiptData;
+	private InventoryInfo_Receipt inventoryInfo;
 
 	public Receipt() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptData = getData();
@@ -50,10 +56,45 @@ public class Receipt {
 			ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 			po.setReceiptState(ReceiptState.SUCCESS);
 			ResultMessage messagePass = receiptData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
-			if (messagePass == ResultMessage.FAIL)
+			if (messagePass == ResultMessage.FAIL){
 				message = ResultMessage.FAIL;
+			}else{
+				this.approve(po);
+			}
+				
 		}
 		return message;
+	}
+
+	private void approve(ReceiptPO po) throws RemoteException {
+		ReceiptType type = po.getReceiptType();
+		switch(type){
+		case INSTOCK: 			approveInventoryImport(po);
+		case OUTSTOCK:			approveInventoryExport(po);
+		default:						break;
+		}
+	}
+
+	private void approveInventoryExport(ReceiptPO po) throws RemoteException {
+		InventoryExportReceiptPO exportReceipt = (InventoryExportReceiptPO) po;
+		String transferID = exportReceipt.getTransferID();
+		int area = exportReceipt.getArea();
+		int row = exportReceipt.getRow();
+		int frame = exportReceipt.getFrame();
+		int position = exportReceipt.getPosition();
+		inventoryInfo.inventoryExport(transferID, area, row, frame, position);
+	}
+
+	private void approveInventoryImport(ReceiptPO po) throws RemoteException {
+		InventoryImportReceiptPO importReceipt = (InventoryImportReceiptPO) po;
+		String transferID = importReceipt.getTransferID();
+		CommodityPO commodityPO = importReceipt.getCommodityPO();
+		CommodityVO commodity = OrderTrans.convertPOtoVO(commodityPO);
+		int area = importReceipt.getArea();
+		int row = importReceipt.getRow();
+		int frame = importReceipt.getFrame();
+		int position = importReceipt.getPosition();
+		inventoryInfo.inventoryImport(transferID, commodity, area, row, frame, position);
 	}
 
 	/**

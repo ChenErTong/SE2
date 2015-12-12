@@ -25,7 +25,7 @@ import vo.receiptvo.PaymentBillVO;
  */
 public class DebitAndPayBill {
 	private DebitAndPayBillDataService debitAndPayBillData;
-	private ReceiptInfo_DebitAndPayBill receiptInfo;
+//	private ReceiptInfo_DebitAndPayBill receiptInfo;
 
 	public DebitAndPayBill() throws MalformedURLException, RemoteException, NotBoundException {
 		debitAndPayBillData = getData();
@@ -55,6 +55,7 @@ public class DebitAndPayBill {
 	 */
 
 	// 建立收款单
+	//12.11 如果审批通过就改变账户余额
 	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException {
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
 		if (receiptInfo.add(vo) == ResultMessage.SUCCESS)

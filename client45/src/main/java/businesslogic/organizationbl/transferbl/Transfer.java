@@ -38,7 +38,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  */
 public class Transfer implements CommonBusinessLogic<TransferPO> {
 	private OrderInfo_Branch_Transfer orderInfo;
-	private ReceiptInfo_Transfer receiptInfo;
+//	private ReceiptInfo_Transfer receiptInfo;
 	private TransferDataService transferData;
 	
 	private InventoryInfo_Transfer inventoryInfo;

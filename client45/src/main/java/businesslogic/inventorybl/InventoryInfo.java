@@ -6,10 +6,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
+import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
 import dataservice.inventorydataservice.InventoryDataService;
+import po.CommodityPO;
 import po.InventoryPO;
+import vo.CommodityVO;
 import vo.InventoryVO;
 
 /**
@@ -55,6 +58,30 @@ public class InventoryInfo
 	public InventoryVO getTransferInitialInventory(String transferID) throws RemoteException {
 		InventoryVO vo = new InventoryVO(inventoryData.getID(), 4, 100, 100, 100, transferID);
 		return vo;
+	}
+	
+	public void inventoryImport(String transferID, CommodityVO commodity, int area, int row, int frame, int position)
+			throws RemoteException {
+		// 修改仓库信息
+		CommodityPO commodityPO = OrderTrans.convertVOtoPO(commodity);
+		// 通过中转中心的id获取inventoryPO
+		InventoryPO inventoryPO = inventory.findInventoryByTransferID(transferID);
+		// 修改库存
+		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		commos[area][row][frame][position] = commodityPO;
+		inventoryPO.setCommos(commos);
+		inventoryData.modify(inventoryPO);
+	}
+	
+	public void inventoryExport(String transferID, int area, int row, int frame, int position)
+			throws RemoteException {
+		// 通过中转中心的id获取inventoryPO
+		InventoryPO inventoryPO = inventory.findInventoryByTransferID(transferID);
+		// 修改库存
+		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		commos[area][row][frame][position] = null;
+		inventoryPO.setCommos(commos);
+		inventoryData.modify(inventoryPO);
 	}
 
 }

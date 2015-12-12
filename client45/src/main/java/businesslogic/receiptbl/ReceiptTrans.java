@@ -298,7 +298,8 @@ public class ReceiptTrans {
 		int row =po.getRow();
 		int frame = po.getFrame();
 		int position = po.getPosition();
-		return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position);
+		String transferID = po.getTransferID();
+		return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position,transferID);
 	}
 	
 	public static ReceiptPO convertSpecialVOtoPO(InventoryImportReceiptVO vo){
@@ -309,7 +310,8 @@ public class ReceiptTrans {
 		int row =vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position);
+		String transferID = vo.transferID;
+		return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position,transferID);
 	}
 	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){

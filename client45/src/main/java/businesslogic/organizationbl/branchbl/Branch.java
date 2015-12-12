@@ -37,7 +37,7 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  */
 public class Branch implements CommonBusinessLogic<BranchPO>{
 	private OrderInfo_Branch_Transfer orderInfo;
-	private ReceiptInfo_Branch receiptInfo;
+//	private ReceiptInfo_Branch receiptInfo;
 	private BranchDataService branchData;
 	
 	

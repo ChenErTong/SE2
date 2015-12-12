@@ -134,7 +134,7 @@ public class CargoImport extends MyJPanel {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return -2;
 		}
-		String importID;
+		/*String importID;
 		try {
 			importID = inventoryController.getImportID();
 			inventoryController.saveImport(importReceipt);
@@ -142,10 +142,10 @@ public class CargoImport extends MyJPanel {
 		} catch (RemoteException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return -2;
-		}
+		}*/
 		
 		//将入库单添加到入库单列表
-		importList.addRow(new String[]{importID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
+		importList.addRow(new String[]{importReceipt.ID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
 		//将货物从货物列表移除
 		commodities.removeRow();
 		

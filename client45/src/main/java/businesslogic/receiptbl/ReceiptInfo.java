@@ -124,11 +124,11 @@ public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Tr
 	/**
 	 * @see ReceiptInfo_Inventory
 	 */
-	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
+	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position,String transferID)
 			throws RemoteException {
 		String id = this.getImportID();
 		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row,
-				frame, position);
+				frame, position,transferID);
 		this.add(importReceiptVO);
 		return importReceiptVO;
 	}
