@@ -1,6 +1,7 @@
 package businesslogic.organizationbl.transferbl;
 
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import businesslogic.accountbl.TransferInfo_Account;
 import businesslogic.inventorybl.TransferInfo_Inventory;
 import businesslogic.openingstockbl.TransferInfo_OpeningStock;
+import config.RMIConfig;
 import dataservice.transferdataservice.TransferDataService;
 import po.TransferPO;
 import po.accountpo.AccountPO;
@@ -19,12 +21,10 @@ import state.ResultMessage;
  * @version 创建时间：2015年12月3日 下午3:38:44
  */
 public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inventory, TransferInfo_Account {
-	Transfer transfer;
 	TransferDataService transferData;
 
 	public TransferInfo() throws MalformedURLException, RemoteException, NotBoundException {
-		transfer = new Transfer();
-		transferData = transfer.getData();
+		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 	}
 
 	/**
