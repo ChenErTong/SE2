@@ -9,6 +9,7 @@ import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
+import businesslogic.receiptbl.InventoryInfo_Receipt;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
@@ -21,7 +22,7 @@ import vo.InventoryVO;
  * @version 创建时间：2015年12月3日 下午3:35:32
  */
 public class InventoryInfo
-		implements InventoryInfo_OpeningStock, InventoryInfo_Branch_Transfer, InventoryInfo_Transfer {
+		implements InventoryInfo_OpeningStock, InventoryInfo_Branch_Transfer, InventoryInfo_Transfer,InventoryInfo_Receipt {
 	Inventory inventory;
 	InventoryDataService inventoryData;
 

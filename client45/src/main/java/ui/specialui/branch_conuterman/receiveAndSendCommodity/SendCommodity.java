@@ -98,8 +98,8 @@ public class SendCommodity extends MyJPanel{
 		DeliveryListVO deliveryList;
 		try {
 			deliveryList = branchController.getDeliveryList(orderID, courierName);
-			branchController.save(deliveryList);
-			branchController.submit(deliveryList);
+//			branchController.save(deliveryList);
+//			branchController.submit(deliveryList);
 			return 0;
 		} catch (RemoteException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);

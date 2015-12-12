@@ -79,21 +79,21 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 			LoadingListVO loadingList = ((VehicleLoading) subPanel).produceLoadingList();
 			if(loadingList != null){
 				// TODO
-				BranchBLService branchController;
-				try {
-					branchController = ControllerFactory.getBranchController();
-				} catch (MalformedURLException | RemoteException
-						| NotBoundException e2) {
-					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
-					return;
-				}
-				try {
-					branchController.save(loadingList);
-					branchController.submit(loadingList);
-				} catch (RemoteException e1) {
-					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
-					return;
-				}
+//				BranchBLService branchController;
+//				try {
+//					branchController = ControllerFactory.getBranchController();
+//				} catch (MalformedURLException | RemoteException
+//						| NotBoundException e2) {
+//					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+//					return;
+//				}
+//				try {
+//					branchController.save(loadingList);
+//					branchController.submit(loadingList);
+//				} catch (RemoteException e1) {
+//					new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+//					return;
+//				}
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = new LoadingListUI(loadingList);

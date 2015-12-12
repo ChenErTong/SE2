@@ -6,10 +6,8 @@ import java.util.ArrayList;
 
 import businesslogicservice.BLService;
 import state.CommodityState;
-import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -57,25 +55,25 @@ public interface BranchBLService extends BLService{
 	 */
 	public DeliveryListVO getDeliveryList(String order, String courierName) throws RemoteException;
 	
-	/**
-	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�
-	 * @return 澶勭悊缁撴灉
-	 * @param receipt 钀ヤ笟鍘呭崟鎹�
-	 * @author czw 
-	 * @version Oct 22,2015
-	 * @throws RemoteException 
-	 */
-	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
-	
-	/**
-	 * 淇濆瓨鍗曟嵁
-	 * @return 澶勭悊缁撴灉
-	 * @param receipt 钀ヤ笟鍘呭崟鎹�
-	 * @author czw 
-	 * @version Oct 22,2015
-	 * @throws RemoteException 
-	 */
-	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
+//	/**
+//	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�
+//	 * @return 澶勭悊缁撴灉
+//	 * @param receipt 钀ヤ笟鍘呭崟鎹�
+//	 * @author czw 
+//	 * @version Oct 22,2015
+//	 * @throws RemoteException 
+//	 */
+//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
+//	
+//	/**
+//	 * 淇濆瓨鍗曟嵁
+//	 * @return 澶勭悊缁撴灉
+//	 * @param receipt 钀ヤ笟鍘呭崟鎹�
+//	 * @author czw 
+//	 * @version Oct 22,2015
+//	 * @throws RemoteException 
+//	 */
+//	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
 	
 	/**
 	 * @return 瑁呰溅鍗�

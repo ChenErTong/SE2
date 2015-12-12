@@ -124,8 +124,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		BranchArrivalListVO arrivalList;
 		try {
 			arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
-			branchController.save(arrivalList);
-			branchController.submit(arrivalList);
+//			branchController.save(arrivalList);
+//			branchController.submit(arrivalList);
 			row = -1;
 			return 0;
 		} catch (RemoteException e) {

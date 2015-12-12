@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.inventorybl.InventoryInfo;
 import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
@@ -13,6 +14,10 @@ import po.CommodityPO;
 import po.receiptpo.InventoryExportReceiptPO;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
+import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
+import po.receiptpo.orderreceiptpo.DeliveryListPO;
+import po.receiptpo.orderreceiptpo.LoadingListPO;
+import state.CommodityState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -27,9 +32,11 @@ import vo.receiptvo.ReceiptVO;
 public class Receipt {
 	private ReceiptDataService receiptData;
 	private InventoryInfo_Receipt inventoryInfo;
+	private OrderInfo_Receipt orderInfo;
 
 	public Receipt() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptData = getData();
+		inventoryInfo = new InventoryInfo();
 	}
 
 	public ReceiptDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -69,10 +76,36 @@ public class Receipt {
 	private void approve(ReceiptPO po) throws RemoteException {
 		ReceiptType type = po.getReceiptType();
 		switch(type){
-		case INSTOCK: 			approveInventoryImport(po);
-		case OUTSTOCK:			approveInventoryExport(po);
-		default:						break;
+		case INSTOCK: 						approveInventoryImport(po);
+		case OUTSTOCK:						approveInventoryExport(po);
+		case BRANCH_ARRIVAL:			approveBranchArrial(po);
+		case BRANCH_DELIVER:			approveBranchDelivery(po);
+		case BRANCH_TRUCK:				approveBranchLoading(po);
+		default:									break;
 		}
+	}
+
+	private void approveBranchLoading(ReceiptPO po) throws RemoteException {
+		LoadingListPO loadingReceipt = (LoadingListPO) po;
+		ArrayList<String> orders = loadingReceipt.getOrders();
+		String destination = loadingReceipt.getDistination();
+		orderInfo.changeOrderState(orders, "货物已离开" + destination + "营业厅");
+	}
+
+	private void approveBranchDelivery(ReceiptPO po) throws RemoteException {
+		DeliveryListPO deliveryReceipt = (DeliveryListPO) po;
+		String order = deliveryReceipt.getOrders();
+		String message = "订单正在被派件，派件员是"+deliveryReceipt.getCourierName();
+		orderInfo.changeOrderState(order, message);
+	}
+
+	private void approveBranchArrial(ReceiptPO po) throws RemoteException {
+		BranchArrivalListPO branchArrialReceipt = (BranchArrivalListPO) po;
+		String orderID = branchArrialReceipt.getOrders();
+		String departure = branchArrialReceipt.getDeparture();
+		//TODO 应该是orderState
+		CommodityState state = branchArrialReceipt.getState();
+		orderInfo.changeOrderState(orderID, "货物已到达" + departure + "营业厅", state);
 	}
 
 	private void approveInventoryExport(ReceiptPO po) throws RemoteException {

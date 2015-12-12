@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import businesslogicservice.branchblservice.BranchBLService;
 import state.CommodityState;
 import state.ConfirmState;
-import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -70,19 +68,19 @@ public class BranchController implements BranchBLService {
 		return BranchBL.getDeliveryList(orders, courierName);
 	}
 
-	/**
-	 * @see BranchBLService#submit(ReceiptVO)
-	 */
-	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		return BranchBL.submit(receipt);
-	}
-
-	/**
-	 * @see BranchBLService#save(ReceiptVO)
-	 */
-	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		return BranchBL.save(receipt);
-	}
+//	/**
+//	 * @see BranchBLService#submit(ReceiptVO)
+//	 */
+//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
+//		return BranchBL.submit(receipt);
+//	}
+//
+//	/**
+//	 * @see BranchBLService#save(ReceiptVO)
+//	 */
+//	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+//		return BranchBL.save(receipt);
+//	}
 
 	/**
 	 * @see BranchBLService#truckDeliver(String, String, String, String,
