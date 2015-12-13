@@ -23,7 +23,17 @@ public class InventoryImage {
 	private static ImageIcon[] BUTTON_RUKUDAN = null;
 	//升入出库单按钮
 	private static ImageIcon[] BUTTON_CHUKUDAN = null;
-	
+	//库存查看导航
+	private static ImageIcon[] BUTTON_CHAKAN_GUIDE = null;
+	//库存盘点导航
+	private static ImageIcon[] BUTTON_PANDIAN_GUIDE = null;
+	//库存分区调整导航
+	private static ImageIcon[] BUTTON_FENQUTIAOZHENG_GUIDE = null;
+	//入库导航
+	private static ImageIcon[] BUTTON_RUKU_GUIDE = null;
+	//出库导航
+	private static ImageIcon[] BUTTON_CHUKU_GUIDE = null;
+		
 	public static ImageIcon[] getBUTTON_CHAKAN(){
 		if(BUTTON_CHAKAN == null){
 			BUTTON_CHAKAN = Images.createImageIcons("image/button/库存查看.png");
@@ -92,5 +102,40 @@ public class InventoryImage {
 			BUTTON_CHUKUDAN = Images.createImageIcons("image/button/生成出库单.png");
 		}
 		return BUTTON_CHUKUDAN;
+	}
+	
+	public static ImageIcon[] getBUTTON_CHAKAN_GUIDE(){
+		if(BUTTON_CHAKAN_GUIDE == null){
+			BUTTON_CHAKAN_GUIDE = Images.createImageIcons("image/button/导航库存查看.png");
+		}
+		return BUTTON_CHAKAN_GUIDE;
+	}
+	
+	public static ImageIcon[] getBUTTON_PANDIAN_GUIDE(){
+		if(BUTTON_PANDIAN_GUIDE == null){
+			BUTTON_PANDIAN_GUIDE = Images.createImageIcons("image/button/导航库存盘点.png");
+		}
+		return BUTTON_PANDIAN_GUIDE;
+	}
+	
+	public static ImageIcon[] getBUTTON_FENQUTIAOZHENG_GUIDE(){
+		if(BUTTON_FENQUTIAOZHENG_GUIDE == null){
+			BUTTON_FENQUTIAOZHENG_GUIDE = Images.createImageIcons("image/button/导航库存分区调整.png");
+		}
+		return BUTTON_FENQUTIAOZHENG_GUIDE;
+	}
+	
+	public static ImageIcon[] getBUTTON_RUKU_GUIDE(){
+		if(BUTTON_RUKU_GUIDE == null){
+			BUTTON_RUKU_GUIDE = Images.createImageIcons("image/button/导航入库.png");
+		}
+		return BUTTON_RUKU_GUIDE;
+	}
+	
+	public static ImageIcon[] getBUTTON_CHUKU_GUIDE(){
+		if(BUTTON_CHUKU_GUIDE == null){
+			BUTTON_CHUKU_GUIDE = Images.createImageIcons("image/button/导航出库.png");
+		}
+		return BUTTON_CHUKU_GUIDE;
 	}
 }

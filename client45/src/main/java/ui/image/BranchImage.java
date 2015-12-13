@@ -49,7 +49,17 @@ public class BranchImage {
 	private static ImageIcon[] BUTTON_SHANCHUSIJI_HORIZONTAL = null;
 	//添加按钮
 	private static ImageIcon[] BUTTON_TIANJIA = null;
-	
+	// 车辆装车管理导航
+	private static ImageIcon[] BUTTON_ZHUANGCHE_GUIDE = null;
+	// 车辆信息管理导航
+	private static ImageIcon[] BUTTON_CHELIANG_GUIDE = null;
+	// 司机信息管理导航
+	private static ImageIcon[] BUTTON_SIJI_GUIDE = null;
+	// 接收派件货物导航
+	private static ImageIcon[] BUTTON_JIESHOUPAIJIAN_GUIDE = null;
+	// 收款单建立导航
+	private static ImageIcon[] BUTTON_SHOUKUANDAN_GUIDE = null;
+		
 	public static ImageIcon[] getBUTTON_ZHUANGCHE() {
 		if (BUTTON_ZHUANGCHE == null) {
 			BUTTON_ZHUANGCHE = Images
@@ -229,5 +239,44 @@ public class BranchImage {
 					.createImageIcons("image/button/添加.png");
 		}
 		return BUTTON_TIANJIA;
+	}
+	
+	public static ImageIcon[] getBUTTON_ZHUANGCHE_GUIDE() {
+		if (BUTTON_ZHUANGCHE_GUIDE == null) {
+			BUTTON_ZHUANGCHE_GUIDE = Images
+					.createImageIcons("image/button/导航车辆装车管理.png");
+		}
+		return BUTTON_ZHUANGCHE_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_CHELIANG_GUIDE() {
+		if (BUTTON_CHELIANG_GUIDE == null) {
+			BUTTON_CHELIANG_GUIDE = Images
+					.createImageIcons("image/button/导航车辆信息管理.png");
+		}
+		return BUTTON_CHELIANG_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_SIJI_GUIDE() {
+		if (BUTTON_SIJI_GUIDE == null) {
+			BUTTON_SIJI_GUIDE = Images.createImageIcons("image/button/导航司机信息管理.png");
+		}
+		return BUTTON_SIJI_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_JIESHOUPAIJIAN_GUIDE() {
+		if (BUTTON_JIESHOUPAIJIAN_GUIDE == null) {
+			BUTTON_JIESHOUPAIJIAN_GUIDE = Images
+					.createImageIcons("image/button/导航接收派件货物.png");
+		}
+		return BUTTON_JIESHOUPAIJIAN_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_SHOUKUANDAN_GUIDE() {
+		if (BUTTON_SHOUKUANDAN_GUIDE == null) {
+			BUTTON_SHOUKUANDAN_GUIDE = Images
+					.createImageIcons("image/button/导航收款单建立.png");
+		}
+		return BUTTON_SHOUKUANDAN_GUIDE;
 	}
 }

@@ -17,7 +17,15 @@ public class TransferImage {
 	private static ImageIcon[] BUTTON_ZHUANGCHEDAN = null;
 	//生成到达单
 	private static ImageIcon[] BUTTON_DAODADAN = null;
-	
+	// 汽车装运管理导航
+	private static ImageIcon[] BUTTON_QICHE_GUIDE = null;
+	// 火车装运管理导航
+	private static ImageIcon[] BUTTON_HUOCHE_GUIDE = null;
+	// 飞机装运管理导航
+	private static ImageIcon[] BUTTON_FEIJI_GUIDE = null;
+	// 中转接收管理导航
+	private static ImageIcon[] BUTTON_ZHONGZHUAN_GUIDE = null;
+		
 	public static ImageIcon[] getBUTTON_QICHE() {
 		if (BUTTON_QICHE == null) {
 			BUTTON_QICHE = Images.createImageIcons("image/button/汽车装运管理.png");
@@ -65,5 +73,33 @@ public class TransferImage {
 			BUTTON_DAODADAN = Images.createImageIcons("image/button/生成到达单.png");
 		}
 		return BUTTON_DAODADAN;
+	}
+	
+	public static ImageIcon[] getBUTTON_QICHE_GUIDE() {
+		if (BUTTON_QICHE_GUIDE == null) {
+			BUTTON_QICHE_GUIDE = Images.createImageIcons("image/button/导航汽车装运管理.png");
+		}
+		return BUTTON_QICHE_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_HUOCHE_GUIDE() {
+		if (BUTTON_HUOCHE_GUIDE == null) {
+			BUTTON_HUOCHE_GUIDE = Images.createImageIcons("image/button/导航火车装运管理.png");
+		}
+		return BUTTON_HUOCHE_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_FEIJI_GUIDE() {
+		if (BUTTON_FEIJI_GUIDE == null) {
+			BUTTON_FEIJI_GUIDE = Images.createImageIcons("image/button/导航飞机装运管理.png");
+		}
+		return BUTTON_FEIJI_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_ZHONGZHUAN_GUIDE() {
+		if (BUTTON_ZHONGZHUAN_GUIDE == null) {
+			BUTTON_ZHONGZHUAN_GUIDE = Images.createImageIcons("image/button/导航中转接收管理.png");
+		}
+		return BUTTON_ZHONGZHUAN_GUIDE;
 	}
 }

@@ -21,7 +21,13 @@ public class CourierImage {
 	private static ImageIcon[] BUTTON_SHOUJIANDAN = null;
 	//时间与报价管理按钮
 	private static ImageIcon[] BUTTON_JISUAN = null;
-	
+	// 订单输入导航
+	private static ImageIcon[] BUTTON_DINGDAN_GUIDE = null;
+	// 收件信息输入导航
+	private static ImageIcon[] BUTTON_SHOUJIAN_GUIDE = null;
+	// 报价和时间管理导航
+	private static ImageIcon[] BUTTON_BAOJIASHIJIAN_GUIDE = null;
+		
 	public static ImageIcon[] getBUTTON_DINGDAN() {
 		if (BUTTON_DINGDAN == null) {
 			BUTTON_DINGDAN = Images
@@ -85,5 +91,28 @@ public class CourierImage {
 			BUTTON_SHOUJIANDAN = Images.createImageIcons("image/button/生成收件单.png");
 		}
 		return BUTTON_SHOUJIANDAN;
+	}
+	
+	public static ImageIcon[] getBUTTON_DINGDAN_GUIDE() {
+		if (BUTTON_DINGDAN_GUIDE == null) {
+			BUTTON_DINGDAN_GUIDE = Images
+					.createImageIcons("image/button/导航订单输入.png");
+		}
+		return BUTTON_DINGDAN_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_SHOUJIAN_GUIDE() {
+		if (BUTTON_SHOUJIAN_GUIDE == null) {
+			BUTTON_SHOUJIAN_GUIDE = Images
+					.createImageIcons("image/button/导航收件信息输入.png");
+		}
+		return BUTTON_SHOUJIAN_GUIDE;
+	}
+
+	public static ImageIcon[] getBUTTON_BAOJIASHIJIAN_GUIDE() {
+		if (BUTTON_BAOJIASHIJIAN_GUIDE == null) {
+			BUTTON_BAOJIASHIJIAN_GUIDE = Images.createImageIcons("image/button/导航报价和时间管理.png");
+		}
+		return BUTTON_BAOJIASHIJIAN_GUIDE;
 	}
 }
