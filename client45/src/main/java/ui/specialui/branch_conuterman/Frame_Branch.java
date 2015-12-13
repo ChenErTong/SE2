@@ -3,12 +3,6 @@ package ui.specialui.branch_conuterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-
-import businesslogic.ControllerFactory;
-import businesslogicservice.branchblservice.BranchBLService;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -257,6 +251,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		switch(((DebitNoteBuild) subPanel).produceDebitNote()){
 		case 0: new MyNotification(this, "成功建立收款单", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请输入一个快递员", Color.RED); break;
+		case 2: new MyNotification(this, "请输入银行卡号", Color.RED); break;
 		}	
 		return false;
 	}

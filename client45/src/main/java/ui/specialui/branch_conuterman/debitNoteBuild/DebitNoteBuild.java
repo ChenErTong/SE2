@@ -37,6 +37,7 @@ public class DebitNoteBuild extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private MyJTextField courierId;
+	private MyJTextField bankAccont;
 	private MyButton searchCourier;
 	private MyEmptyTextArea courierBill;
 
@@ -45,12 +46,12 @@ public class DebitNoteBuild extends MyJPanel {
 		this.setOpaque(false);
 
 		this.add(new MyJLabel(550, 30, 210, 45, "收款单建立", 30, true));
-		this.add(new MyJLabel(415, 119, 105, 21, "快递员编号", 20, true));
+		this.add(new MyJLabel(415, 109, 105, 21, "快递员编号", 20, true));
 
-		courierId = new MyJTextField(530, 115, 250, 30);
+		courierId = new MyJTextField(530, 105, 250, 30);
 		courierId.setOnlyInteger(9);
 		this.add(courierId);
-		searchCourier = new MyButton(790, 110, 35, 35,
+		searchCourier = new MyButton(790, 100, 35, 35,
 				LoginImage.getBUTTON_LOGISTIC());
 		searchCourier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -61,10 +62,15 @@ public class DebitNoteBuild extends MyJPanel {
 		});
 		this.add(searchCourier);
 
-		this.add(new MyJLabel(545, 190, 189, 21, "快递员当日收款信息", 18, true));
-		courierBill = new MyEmptyTextArea(410, 190, 440, 405);
+		this.add(new MyJLabel(545, 160, 189, 21, "快递员当日收款信息", 18, true));
+		courierBill = new MyEmptyTextArea(410, 160, 440, 405);
 		this.add(courierBill);
 
+		this.add(new MyJLabel(490, 587, 76, 19, "银行卡号", 18, true));
+		bankAccont = new MyJTextField(580, 580, 180, 33);
+		bankAccont.setOnlyInteger(19);
+		this.add(bankAccont);
+		
 		MyButton produceDebitNote = new MyButton(575, 630, 111, 33,
 				BranchImage.getBUTTON_SKD());
 		produceDebitNote.setActionCommand("produceDebitNote");
@@ -145,6 +151,10 @@ public class DebitNoteBuild extends MyJPanel {
 		if (text.equals("")) {
 			return 1;
 		}
+		String bankId = bankAccont.getText();
+		if(bankId.equals("")){
+			return 2;
+		}
 		String[] lines = text.split("\n");
 		String[] infos;
 		ArrayList<String> orderID = new ArrayList<String>();
@@ -167,9 +177,8 @@ public class DebitNoteBuild extends MyJPanel {
 		}
 		DebitBillVO debitBillVO;
 		try {
-			//TODO 加上bankAccountid
 			debitBillVO = new DebitBillVO(controller.getExpenseID(),
-				ReceiptType.DEBIT, courierID, money, orderID, date," ");
+				ReceiptType.DEBIT, courierID, money, orderID, date, bankId);
 			controller.addDebitBill(debitBillVO);
 //			controller.save(debitBillVO);
 //			controller.submit(debitBillVO);

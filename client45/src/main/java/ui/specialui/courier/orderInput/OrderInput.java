@@ -52,7 +52,7 @@ public class OrderInput extends MyJPanel {
 		commodities = new CommodityInfoInput();
 		this.add(commodities);
 
-		MyButton confirm = new MyButton(584, 640, 111, 33, CourierImage.getBUTTON_SHENGCHENGDINGDAN());
+		MyButton confirm = new MyButton(559, 640, 111, 33, CourierImage.getBUTTON_SHENGCHENGDINGDAN());
 		confirm.setActionCommand("produceOrder");
 		confirm.addActionListener(frame);
 		this.add(confirm);
