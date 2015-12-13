@@ -18,14 +18,12 @@ import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
 import state.CommodityState;
 import state.ConfirmState;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.CityTrans;
 import vo.BranchVO;
 import vo.CommodityVO;
 import vo.OrderVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
@@ -103,8 +101,6 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		String orderID = order.ID;
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID,
 				departure, state, orderID);
-		// 更改VO状态
-		orderInfo.changeOrderState(orderID, "货物已到达" + departure + "营业厅", state);
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -126,33 +122,33 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		return vo;
 	}
 
-	/**
-	 * 提交单据
-	 * 
-	 * @param receipt
-	 *            ReceiptVO型，单据
-	 * @return ResultMessage型，结果
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		receipt.receiptState = ReceiptState.APPROVALING;
-		return receiptInfo.modify(receipt);
-	}
+//	/**
+//	 * 提交单据
+//	 * 
+//	 * @param receipt
+//	 *            ReceiptVO型，单据
+//	 * @return ResultMessage型，结果
+//	 * @throws RemoteException
+//	 *             远程异常
+//	 */
+//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
+//		receipt.receiptState = ReceiptState.APPROVALING;
+//		return receiptInfo.modify(receipt);
+//	}
 
-	/**
-	 * 保存草稿
-	 * 
-	 * @param receipt
-	 *            ReceiptVO型，单据
-	 * @return ResultMessage型，保存结果
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		receipt.receiptState = ReceiptState.DRAFT;
-		return receiptInfo.add(receipt);
-	}
+//	/**
+//	 * 保存草稿
+//	 * 
+//	 * @param receipt
+//	 *            ReceiptVO型，单据
+//	 * @return ResultMessage型，保存结果
+//	 * @throws RemoteException
+//	 *             远程异常
+//	 */
+//	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+//		receipt.receiptState = ReceiptState.DRAFT;
+//		return receiptInfo.add(receipt);
+//	}
 
 	/**
 	 * 生成营业厅装车单
@@ -181,8 +177,6 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		ID = branchID + dateInID + ID;
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID, facilityID,
 				courierName, courierName, orders, money);
-		// 更改VO状态 TODO
-		orderInfo.changeOrderState(orders, "货物已离开" + destination + "营业厅");
 		receiptInfo.add(vo);
 		return vo;
 	}

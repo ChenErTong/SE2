@@ -1,17 +1,34 @@
 package businesslogic.receiptbl;
 
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.fundbl.BankAccountInfo;
+import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.orderbl.OrderInfo;
+import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
+import po.CommodityPO;
+import po.receiptpo.DebitBillPO;
+import po.receiptpo.InventoryExportReceiptPO;
+import po.receiptpo.InventoryImportReceiptPO;
+import po.receiptpo.PaymentBillPO;
 import po.receiptpo.ReceiptPO;
+import po.receiptpo.orderreceiptpo.BranchArrivalListPO;
+import po.receiptpo.orderreceiptpo.DeliveryListPO;
+import po.receiptpo.orderreceiptpo.LoadingListPO;
+import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
+import po.receiptpo.orderreceiptpo.TransferOrderPO;
+import state.CommodityState;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
+import vo.CommodityVO;
 import vo.receiptvo.ReceiptVO;
 
 /**
@@ -21,9 +38,15 @@ import vo.receiptvo.ReceiptVO;
  */
 public class Receipt {
 	private ReceiptDataService receiptData;
+	private InventoryInfo_Receipt inventoryInfo;
+	private OrderInfo_Receipt orderInfo;
+	private BankAccountInfo_Receipt bankAccountInfo;
 
 	public Receipt() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptData = getData();
+		inventoryInfo = new InventoryInfo();
+		orderInfo = new OrderInfo();
+		bankAccountInfo = new BankAccountInfo();
 	}
 
 	public ReceiptDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
@@ -50,10 +73,106 @@ public class Receipt {
 			ReceiptPO po = ReceiptTrans.convertVOtoPO(vo);
 			po.setReceiptState(ReceiptState.SUCCESS);
 			ResultMessage messagePass = receiptData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
-			if (messagePass == ResultMessage.FAIL)
+			if (messagePass == ResultMessage.FAIL){
 				message = ResultMessage.FAIL;
+			}else{
+				this.approve(po);
+			}
+				
 		}
 		return message;
+	}
+
+	private void approve(ReceiptPO po) throws RemoteException {
+		ReceiptType type = po.getReceiptType();
+		switch(type){
+		case INSTOCK: 						approveInventoryImport(po);
+		case OUTSTOCK:						approveInventoryExport(po);
+		case BRANCH_ARRIVAL:			approveBranchArrial(po);
+		case BRANCH_DELIVER:			approveBranchDelivery(po);
+		case BRANCH_TRUCK:				approveBranchLoading(po);
+		case TRANS_PLANE:
+		case TRANS_TRAIN:
+		case TRANS_TRUCK:				approveTransferOrder(po);
+		case TRANS_ARRIVAL:			approveTransferArrival(po);
+		case DEBIT:								approveDebit(po);
+		case PAY:									approvePay(po);
+		default:									break;
+		}
+	}
+
+	private void approvePay(ReceiptPO po) throws RemoteException {
+		PaymentBillPO payBill = (PaymentBillPO) po;
+		String accountID = payBill.getBankAccountID();
+		BigDecimal money = payBill.getMoney();
+		bankAccountInfo.subtractMoneyInBankAccount(accountID, money);
+	}
+
+	private void approveDebit(ReceiptPO po) throws RemoteException {
+		DebitBillPO debitBill = (DebitBillPO) po;
+		String accountID = debitBill.getBankAccountID();
+		BigDecimal money = debitBill.getMoney();
+		bankAccountInfo.addMoneyInBankAccount(accountID, money);
+	}
+
+	private void approveTransferArrival(ReceiptPO po) throws RemoteException {
+		TransferArrivalListPO transferArrivalReceipt = (TransferArrivalListPO) po;
+		String order = transferArrivalReceipt.getOrders();
+		String destination = transferArrivalReceipt.getDestination();
+		CommodityState state = transferArrivalReceipt.getState();
+		orderInfo.changeOrderState(order, "货物已到达" + destination + "中转中心",state);
+	}
+
+	private void approveTransferOrder(ReceiptPO po) throws RemoteException {
+		TransferOrderPO transferOrderReceipt = (TransferOrderPO) po;
+		ArrayList<String> orders = transferOrderReceipt.getOrders();
+		String departure = transferOrderReceipt.getDeparture();
+		String destination = transferOrderReceipt.getDestination();
+		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
+	}
+
+	private void approveBranchLoading(ReceiptPO po) throws RemoteException {
+		LoadingListPO loadingReceipt = (LoadingListPO) po;
+		ArrayList<String> orders = loadingReceipt.getOrders();
+		String destination = loadingReceipt.getDistination();
+		orderInfo.changeOrderState(orders, "货物已离开" + destination + "营业厅");
+	}
+
+	private void approveBranchDelivery(ReceiptPO po) throws RemoteException {
+		DeliveryListPO deliveryReceipt = (DeliveryListPO) po;
+		String order = deliveryReceipt.getOrders();
+		String message = "订单正在被派件，派件员是"+deliveryReceipt.getCourierName();
+		orderInfo.changeOrderState(order, message);
+	}
+
+	private void approveBranchArrial(ReceiptPO po) throws RemoteException {
+		BranchArrivalListPO branchArrialReceipt = (BranchArrivalListPO) po;
+		String orderID = branchArrialReceipt.getOrders();
+		String departure = branchArrialReceipt.getDeparture();
+		CommodityState state = branchArrialReceipt.getState();
+		orderInfo.changeOrderState(orderID, "货物已到达" + departure + "营业厅", state);
+	}
+
+	private void approveInventoryExport(ReceiptPO po) throws RemoteException {
+		InventoryExportReceiptPO exportReceipt = (InventoryExportReceiptPO) po;
+		String transferID = exportReceipt.getTransferID();
+		int area = exportReceipt.getArea();
+		int row = exportReceipt.getRow();
+		int frame = exportReceipt.getFrame();
+		int position = exportReceipt.getPosition();
+		inventoryInfo.inventoryExport(transferID, area, row, frame, position);
+	}
+
+	private void approveInventoryImport(ReceiptPO po) throws RemoteException {
+		InventoryImportReceiptPO importReceipt = (InventoryImportReceiptPO) po;
+		String transferID = importReceipt.getTransferID();
+		CommodityPO commodityPO = importReceipt.getCommodityPO();
+		CommodityVO commodity = OrderTrans.convertPOtoVO(commodityPO);
+		int area = importReceipt.getArea();
+		int row = importReceipt.getRow();
+		int frame = importReceipt.getFrame();
+		int position = importReceipt.getPosition();
+		inventoryInfo.inventoryImport(transferID, commodity, area, row, frame, position);
 	}
 
 	/**

@@ -168,10 +168,10 @@ public class DebitNoteBuild extends MyJPanel {
 		DebitBillVO debitBillVO;
 		try {
 			debitBillVO = new DebitBillVO(controller.getExpenseID(),
-					ReceiptType.DEBIT, courierID, money, orderID, date);
+					ReceiptType.DEBIT, courierID, money, orderID, date,bankAccountID);
 			controller.addDebitBill(debitBillVO);
-			controller.save(debitBillVO);
-			controller.submit(debitBillVO);
+//			controller.save(debitBillVO);
+//			controller.submit(debitBillVO);
 			return 0;
 		} catch (RemoteException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);

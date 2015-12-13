@@ -11,7 +11,6 @@ import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
 import po.receiptpo.DebitBillPO;
 import po.receiptpo.PaymentBillPO;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
@@ -55,6 +54,7 @@ public class DebitAndPayBill {
 	 */
 
 	// 建立收款单
+	//12.11 如果审批通过就改变账户余额
 	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException {
 		DebitBillPO po = FundTrans.convertVOtoPO(vo);
 		if (receiptInfo.add(vo) == ResultMessage.SUCCESS)
@@ -69,21 +69,21 @@ public class DebitAndPayBill {
 		return ResultMessage.FAIL;
 	}
 
-	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
-		vo.receiptState = ReceiptState.APPROVALING;
-		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
-		po.setReceiptState(ReceiptState.APPROVALING);
-		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
-			return debitAndPayBillData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
-		return ResultMessage.FAIL;
-	}
-
-	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
-		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
-		if (receiptInfo.add(vo) == ResultMessage.SUCCESS)
-			return debitAndPayBillData.add(po);
-		return ResultMessage.FAIL;
-	}
+//	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
+//		vo.receiptState = ReceiptState.APPROVALING;
+//		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
+//		po.setReceiptState(ReceiptState.APPROVALING);
+//		if (receiptInfo.modify(vo) == ResultMessage.SUCCESS)
+//			return debitAndPayBillData.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
+//		return ResultMessage.FAIL;
+//	}
+//
+//	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
+//		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);
+//		if (receiptInfo.add(vo) == ResultMessage.SUCCESS)
+//			return debitAndPayBillData.add(po);
+//		return ResultMessage.FAIL;
+//	}
 
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
 		DebitAndPayBillPO po = FundTrans.convertVOtoPO(vo);

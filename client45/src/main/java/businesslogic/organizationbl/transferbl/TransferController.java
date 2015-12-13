@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import businesslogicservice.transferblservice.TransferBLService;
 import state.CommodityState;
 import state.ConfirmState;
-import state.ResultMessage;
 import vo.CommodityVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
@@ -65,19 +63,19 @@ public class TransferController implements TransferBLService {
 		return TransferBL.trainTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
-	/**
-	 * @see TransferBLService#submit(ReceiptVO)
-	 */
-	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		return TransferBL.submit(receipt);
-	}
-
-	/**
-	 * @see TransferBLService#save(ReceiptVO)
-	 */
-	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		return TransferBL.save(receipt);
-	}
+//	/**
+//	 * @see TransferBLService#submit(ReceiptVO)
+//	 */
+//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
+//		return TransferBL.submit(receipt);
+//	}
+//
+//	/**
+//	 * @see TransferBLService#save(ReceiptVO)
+//	 */
+//	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+//		return TransferBL.save(receipt);
+//	}
 
 	/**
 	 * @see TransferBLService#receiptList(String, String, String,

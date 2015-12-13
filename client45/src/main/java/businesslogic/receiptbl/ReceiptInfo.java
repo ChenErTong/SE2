@@ -1,6 +1,7 @@
 package businesslogic.receiptbl;
 
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import businesslogic.inventorybl.ReceiptInfo_Inventory;
 import businesslogic.organizationbl.ReceiptInfo_Branch_Transfer;
 import businesslogic.organizationbl.branchbl.ReceiptInfo_Branch;
 import businesslogic.organizationbl.transferbl.ReceiptInfo_Transfer;
+import config.RMIConfig;
 import dataservice.receiptdataservice.ReceiptDataService;
 import po.receiptpo.InventoryImportReceiptPO;
 import po.receiptpo.ReceiptPO;
@@ -29,12 +31,10 @@ import vo.receiptvo.ReceiptVO;
  */
 public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Transfer, ReceiptInfo_Transfer,
 		ReceiptInfo_Branch, ReceiptInfo_DebitAndPayBill {
-	Receipt receipt;
 	ReceiptDataService receiptData;
 
 	public ReceiptInfo() throws MalformedURLException, RemoteException, NotBoundException {
-		receipt = new Receipt();
-		receiptData = receipt.getData();
+		receiptData = (ReceiptDataService) Naming.lookup(RMIConfig.PREFIX + ReceiptDataService.NAME);
 	}
 
 	/**
@@ -124,11 +124,11 @@ public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Tr
 	/**
 	 * @see ReceiptInfo_Inventory
 	 */
-	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
+	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position,String transferID)
 			throws RemoteException {
 		String id = this.getImportID();
 		InventoryImportReceiptVO importReceiptVO = new InventoryImportReceiptVO(id, ReceiptType.INSTOCK, vo, area, row,
-				frame, position);
+				frame, position,transferID);
 		this.add(importReceiptVO);
 		return importReceiptVO;
 	}

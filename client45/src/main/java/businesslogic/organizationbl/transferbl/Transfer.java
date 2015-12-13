@@ -20,14 +20,12 @@ import po.InventoryPO;
 import po.TransferPO;
 import state.CommodityState;
 import state.ConfirmState;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.CityTrans;
 import vo.CommodityVO;
 import vo.InventoryVO;
 import vo.TransferVO;
-import vo.receiptvo.ReceiptVO;
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 
@@ -101,8 +99,6 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_PLANE, departure, destination,
 				courierName, orders);
 		vo.date = date;
-		// 更改VO状态
-		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -139,8 +135,6 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
 				courierName, orders);
 		vo.date = date;
-		// 更改VO状态
-		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -177,38 +171,36 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
 				courierName, orders);
 		vo.date = date;
-		// 更改VO状态
-		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
 		receiptInfo.add(vo);
 		return vo;
 	}
 
-	/**
-	 * 提交单据
-	 * 
-	 * @param receipt
-	 *            ReceiptVO型，单据
-	 * @return ResultMessage型，是否成功
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-		receipt.receiptState = ReceiptState.APPROVALING;
-		return receiptInfo.modify(receipt);
-	}
-
-	/**
-	 * 保存草稿状态
-	 * 
-	 * @param receiptReceiptVO型，单据
-	 * @return ResultMessage型，是否成功
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-		receipt.receiptState = ReceiptState.DRAFT;
-		return receiptInfo.add(receipt);
-	}
+//	/**
+//	 * 提交单据
+//	 * 
+//	 * @param receipt
+//	 *            ReceiptVO型，单据
+//	 * @return ResultMessage型，是否成功
+//	 * @throws RemoteException
+//	 *             远程异常
+//	 */
+//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
+//		receipt.receiptState = ReceiptState.APPROVALING;
+//		return receiptInfo.modify(receipt);
+//	}
+//
+//	/**
+//	 * 保存草稿状态
+//	 * 
+//	 * @param receiptReceiptVO型，单据
+//	 * @return ResultMessage型，是否成功
+//	 * @throws RemoteException
+//	 *             远程异常
+//	 */
+//	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
+//		receipt.receiptState = ReceiptState.DRAFT;
+//		return receiptInfo.add(receipt);
+//	}
 
 	/**
 	 * 生成中转中心到达单
@@ -235,9 +227,6 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		ID = transferID + dateInID + ID;
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, order);
-		// 更改VO状态 TODO 一堆
-		if (!orderInfo.changeOrderState(order, "货物已到达" + destination + "中转中心"))
-			return null;
 		receiptInfo.add(vo);
 		return vo;
 	}

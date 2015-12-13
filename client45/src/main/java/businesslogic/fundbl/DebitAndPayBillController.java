@@ -56,19 +56,19 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService {
 		return DebitAndPayBL.addPayBill(vo);
 	}
 
-	/**
-	 * @see DebitAndPayBillBLService#submit(DebitAndPayBillVO)
-	 */
-	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
-		return DebitAndPayBL.submit(vo);
-	}
-
-	/**
-	 * @see DebitAndPayBillBLService#save(DebitAndPayBillVO)
-	 */
-	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
-		return DebitAndPayBL.save(vo);
-	}
+//	/**
+//	 * @see DebitAndPayBillBLService#submit(DebitAndPayBillVO)
+//	 */
+//	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
+//		return DebitAndPayBL.submit(vo);
+//	}
+//
+//	/**
+//	 * @see DebitAndPayBillBLService#save(DebitAndPayBillVO)
+//	 */
+//	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
+//		return DebitAndPayBL.save(vo);
+//	}
 
 	/**
 	 * @see DebitAndPayBillBLService#updateDraft(DebitAndPayBillVO)

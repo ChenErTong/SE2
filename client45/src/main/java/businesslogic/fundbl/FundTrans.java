@@ -81,7 +81,8 @@ public class FundTrans {
 			BigDecimal money = po.getMoney();
 			ArrayList<String> orderNumbers = po.getOrderNumbers();
 			String date = po.getDate();
-			return new DebitBillVO(id, type, courierID, money, orderNumbers, date);
+			String bankAccountID = po.getBankAccountID();
+			return new DebitBillVO(id, type, courierID, money, orderNumbers, date,bankAccountID);
 		}
 	}
 
@@ -92,10 +93,11 @@ public class FundTrans {
 			String id = vo.ID;
 			ReceiptType type = vo.type;
 			String courierID = vo.courierID;
+			String bankAccountID = vo.bankAccountID;
 			BigDecimal money = vo.money;
 			ArrayList<String> orderNumbers = vo.orderNumbers;
 			String date = vo.date;
-			return new DebitBillPO(id, type, courierID, money, orderNumbers, date);
+			return new DebitBillPO(id, type, courierID, money, orderNumbers, date,bankAccountID);
 		}
 	}
 
@@ -108,7 +110,7 @@ public class FundTrans {
 			ReceiptType type = po.getReceiptType();
 			BigDecimal money = po.getMoney();
 			String payerName = po.getPayerName();
-			String accountID = po.getAccountID();
+			String accountID = po.getBankAccountID();
 			PayBillItem items = po.getPayBillItem();
 			String remarks = po.getRemarks();
 			return new PaymentBillVO(iD, date, type, money, payerName, accountID, items, remarks);
@@ -123,7 +125,7 @@ public class FundTrans {
 			ReceiptType type = vo.type;
 			BigDecimal money = vo.money;
 			String payerName = vo.payerName;
-			String accountID = vo.accountID;
+			String accountID = vo.bankAccountID;
 			PayBillItem items = vo.items;
 			String remarks = vo.remarks;
 			return new PaymentBillPO(ID, type, money, payerName, items, accountID, remarks);
@@ -178,7 +180,7 @@ public class FundTrans {
 
 	public static DebitBillVO convertDebitPOtoDebitVO(DebitBillPO po) {
 		DebitBillVO vo = new DebitBillVO(po.getID(), po.getReceiptType(), po.getCourierID(), po.getMoney(),
-				po.getOrderNumbers(), po.getDate());
+				po.getOrderNumbers(), po.getDate(),po.getBankAccountID());
 		return vo;
 	}
 }

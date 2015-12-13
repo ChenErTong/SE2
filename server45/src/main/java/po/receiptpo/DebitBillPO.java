@@ -21,8 +21,8 @@ public class DebitBillPO extends DebitAndPayBillPO {
 	private ArrayList<String> orderNumbers;
 	private String date;
 	
-	public DebitBillPO(String id,ReceiptType type,String courierID,BigDecimal money,ArrayList<String> orderNumbers, String date) {
-		super(id, type, money);
+	public DebitBillPO(String id,ReceiptType type,String courierID,BigDecimal money,ArrayList<String> orderNumbers, String date,String bankAccountID) {
+		super(id, type, money,bankAccountID);
 		this.courierID=courierID;
 		this.orderNumbers=orderNumbers;
 		this.date = date;

@@ -15,7 +15,6 @@ import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
 import po.TransferPO;
-import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.ExportExcel;
@@ -99,18 +98,12 @@ public class Inventory {
 	 */
 	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
 			int frame, int position) throws RemoteException {
-		// 修改仓库信息
-		CommodityPO commodityPO = OrderTrans.convertVOtoPO(commodity);
-		// 通过中转中心的id获取inventoryPO
-		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
-		// 修改库存
-		CommodityPO[][][][] commos = inventoryPO.getCommos();
-		commos[area][row][frame][position] = commodityPO;
-		inventoryPO.setCommos(commos);
-		inventoryData.modify(inventoryPO);
+//		inventoryImport(transferID, commodity, area, row, frame, position);
 		// 添加入库单
-		return receiptInfo.addImportReceipt(commodity, area, row, frame, position);
+		return receiptInfo.addImportReceipt(commodity, area, row, frame, position,transferID);
 	}
+
+	
 
 	/**
 	 * 生成仓库出库单
@@ -133,12 +126,9 @@ public class Inventory {
 			throws RemoteException {
 		// 通过中转中心的id获取inventoryPO
 		InventoryPO inventoryPO = this.findInventoryByTransferID(transferID);
-		// 修改库存
+		// 获得商品
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
 		CommodityPO commodityPO = commos[area][row][frame][position];
-		commos[area][row][frame][position] = null;
-		inventoryPO.setCommos(commos);
-		inventoryData.modify(inventoryPO);
 		// 添加出库单
 		String id = receiptInfo.getExportID();
 		InventoryExportReceiptVO vo = new InventoryExportReceiptVO(id, ReceiptType.OUTSTOCK, transferID,
@@ -146,6 +136,8 @@ public class Inventory {
 		receiptInfo.add(vo);
 		return vo;
 	}
+
+	
 
 	/**
 	 * 生成库存调整单（保存到出数据中）
@@ -174,11 +166,17 @@ public class Inventory {
 	 */
 	public ResultMessage adjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
 			int afRow, int afFrame, int afPosition) throws RemoteException {
+		this.inventoryAdjust(transferID, exArea, exRow, exFrame, exPosition, afArea, afRow, afFrame, afPosition);
 		// 生成库存调整单
 		String adjustID = receiptInfo.getAdjustID();
 		AdjustReceiptVO vo = new AdjustReceiptVO(adjustID, ReceiptType.TAKINGSTOCK, exArea, exRow, exFrame, exPosition,
 				afArea, afRow, afFrame, afPosition);
-		receiptInfo.add(vo);
+		return receiptInfo.add(vo);
+	
+	}
+
+	private void inventoryAdjust(String transferID, int exArea, int exRow, int exFrame, int exPosition, int afArea,
+			int afRow, int afFrame, int afPosition) throws RemoteException {
 		// 修改库存
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
 		CommodityPO[][][][] commos = inventory.getCommos();
@@ -186,7 +184,7 @@ public class Inventory {
 		commos[afArea][afRow][afFrame][afPosition] = adjustCommodity;
 		commos[exArea][exRow][exFrame][exPosition] = null;
 		inventory.setCommos(commos);
-		return inventoryData.modify(inventory)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
+		inventoryData.modify(inventory);
 	}
 
 	/**
@@ -246,13 +244,13 @@ public class Inventory {
 	 * @return ResultMessage型，保存结果
 	 * @throws RemoteException
 	 *             远程异常
-	 */
+	 *//*
 	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		importReceipt.receiptState = ReceiptState.DRAFT;
 		return receiptInfo.add(importReceipt);
 	}
 
-	/**
+	*//**
 	 * 保存出库单为草稿
 	 * 
 	 * @param exportReceipt
@@ -260,13 +258,13 @@ public class Inventory {
 	 * @return ResultMessage型，保存结果
 	 * @throws RemoteException
 	 *             远程异常
-	 */
+	 *//*
 	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		exportReceipt.receiptState = ReceiptState.DRAFT;
 		return receiptInfo.add(exportReceipt);
 	}
 
-	/**
+	*//**
 	 * 提交入库单
 	 * 
 	 * @param exportReceipt
@@ -274,13 +272,13 @@ public class Inventory {
 	 * @return ResultMessage型，提交结果
 	 * @throws RemoteException
 	 *             远程异常
-	 */
+	 *//*
 	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
 		importReceipt.receiptState = ReceiptState.APPROVALING;
 		return receiptInfo.modify(importReceipt);
 	}
 
-	/**
+	*//**
 	 * 提交出库单
 	 * 
 	 * @param exportReceipt
@@ -288,11 +286,11 @@ public class Inventory {
 	 * @return ResultMessage型，提交结果
 	 * @throws RemoteException
 	 *             远程异常
-	 */
+	 *//*
 	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
 		exportReceipt.receiptState = ReceiptState.APPROVALING;
 		return receiptInfo.modify(exportReceipt);
-	}
+	}*/
 
 	/**
 	 * 获得仓库中的所有商品
@@ -456,7 +454,7 @@ public class Inventory {
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	private InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
+	public InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
 		TransferPO transferPO = transferInfo.getTransfer(transferID);
 		if (transferPO == null) {
 			return null;

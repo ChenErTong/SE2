@@ -234,7 +234,8 @@ public class ReceiptTrans {
 		BigDecimal money = po.getMoney();
 		ArrayList<String> orderNumbers = po.getOrderNumbers();
 		String date = po.getDate();
-		return new DebitBillVO(id, type, courierID, money, orderNumbers, date);
+		String bankAccountID = po.getBankAccountID();
+		return new DebitBillVO(id, type, courierID, money, orderNumbers, date,bankAccountID);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(DebitBillVO vo){
 		String id = vo.ID;
@@ -243,7 +244,8 @@ public class ReceiptTrans {
 		BigDecimal money = vo.money;
 		ArrayList<String> orderNumbers = vo.orderNumbers;
 		String date = vo.date;
-		return new DebitBillPO(id, type, courierID, money, orderNumbers, date);
+		String bankAccountID = vo.bankAccountID;
+		return new DebitBillPO(id, type, courierID, money, orderNumbers, date,bankAccountID);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(PaymentBillPO po){
 		String iD = po.getID();
@@ -251,7 +253,7 @@ public class ReceiptTrans {
 		ReceiptType type = po.getReceiptType();
 		BigDecimal money = po.getMoney();
 		String payerName = po.getPayerName();
-		String accountID = po.getAccountID();
+		String accountID = po.getBankAccountID();
 		PayBillItem items = po.getPayBillItem();
 		String remarks = po.getRemarks();
 		return new PaymentBillVO(iD, date, type, money, payerName, accountID, items, remarks);
@@ -262,7 +264,7 @@ public class ReceiptTrans {
 		ReceiptType type = vo.type;
 		BigDecimal money =vo.money;
 		String payerName = vo.payerName;
-		String accountID = vo.accountID;
+		String accountID = vo.bankAccountID;
 		PayBillItem items = vo.items;
 		String remarks = vo.remarks;
 		return new PaymentBillPO(ID, date ,type, money, payerName, items, accountID, remarks);
@@ -298,7 +300,8 @@ public class ReceiptTrans {
 		int row =po.getRow();
 		int frame = po.getFrame();
 		int position = po.getPosition();
-		return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position);
+		String transferID = po.getTransferID();
+		return new InventoryImportReceiptVO(id, type, commodityVO, area, row, frame, position,transferID);
 	}
 	
 	public static ReceiptPO convertSpecialVOtoPO(InventoryImportReceiptVO vo){
@@ -309,7 +312,8 @@ public class ReceiptTrans {
 		int row =vo.row;
 		int frame = vo.frame;
 		int position = vo.position;
-		return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position);
+		String transferID = vo.transferID;
+		return new InventoryImportReceiptPO(ID, type, commodityPO, area, row, frame, position,transferID);
 	}
 	
 	public static ArrayList<ReceiptVO> convertPOstoVOs(ArrayList<ReceiptPO> pos){

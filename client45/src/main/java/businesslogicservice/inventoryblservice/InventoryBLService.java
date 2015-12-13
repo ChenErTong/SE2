@@ -56,10 +56,10 @@ public interface InventoryBLService {
 
 	/** 选择并添加相应的数据（订单托运编号、入库日期、目的地、区号、排号、架号、位号）到进货单中生成进货单PO **/
 
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
+//	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
 
 	/** 单据被提交发送给经理进行审批 **/
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
+//	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException;
 
 	/* 出库 */
 	/**
@@ -78,10 +78,10 @@ public interface InventoryBLService {
 			throws RemoteException;
 
 	/** 选择并添加相应的数据（订单托运编号、出库日期、目的地、装运形式、中转单编号）到出库单中生成出库单PO **/
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
+//	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
 
 	/** 单据被提交发送给经理进行审 **/
-	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
+//	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
 
 	/* 调整 */
 	/**

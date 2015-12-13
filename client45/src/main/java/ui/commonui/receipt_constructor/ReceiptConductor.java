@@ -148,7 +148,8 @@ public class ReceiptConductor {
 		for(int i=0;i<9;i++){
 			text = text + blank4;
 		}
-		text = text +"付款账户： "+receipt.accountID+"\n";
+		//TODO Ann
+		text = text +"付款账户： "+receipt.bankAccountID+"\n";
 		for(int i=0;i<9;i++){
 			text = text +blank4;
 		}

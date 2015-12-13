@@ -134,7 +134,7 @@ public interface ReceiptInfo_Inventory {
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position)
+	public InventoryImportReceiptVO addImportReceipt(CommodityVO vo, int area, int row, int frame, int position,String transferID)
 			throws RemoteException;
 
 	/**

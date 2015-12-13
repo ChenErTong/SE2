@@ -99,7 +99,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		table = new MyJTable(headers, true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		Object[] rowData = {receipt.payerName,receipt.money,receipt.accountID,receipt.items,receipt.remarks,receipt.date};
+		Object[] rowData = {receipt.payerName,receipt.money,receipt.bankAccountID,receipt.items,receipt.remarks,receipt.date};
 		tableModel.addRow(rowData);
 	}
 	private void exportTable(InventoryExportReceiptVO receipt) {/*ReceiptType type, String destination, String depture, ExpressType expressType,
@@ -241,7 +241,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 				double price = Double.parseDouble((String)table.getValueAt(i, 1));
 				sum = sum + price;
 			}
-			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.accountID,vo.items,vo.remarks));
+			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
 			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));
@@ -250,7 +250,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
 		}else if(billType.equals(ReceiptType.INSTOCK)){
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
-			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
+			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position,vo.transferID));
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
 			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.transferID,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
@@ -259,7 +259,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
 		}else if(billType.equals(ReceiptType.DEBIT)){
 			DebitBillVO  vo = (DebitBillVO) currentBill;
-			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date));
+			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date,vo.bankAccountID));
 		}
 		if(rm.equals(ResultMessage.SUCCESS)){
 			new MyNotification(this,"单据修改成功",Color.GREEN);

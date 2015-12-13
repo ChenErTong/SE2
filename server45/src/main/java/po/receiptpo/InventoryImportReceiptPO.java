@@ -16,12 +16,14 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	private int row;
 	private int frame;
 	private int position;
-	public InventoryImportReceiptPO(String ID, ReceiptType type,  CommodityPO commodityPO, int area, int row, int frame, int position) {
+	private String transferID;
+	public InventoryImportReceiptPO(String ID, ReceiptType type,  CommodityPO commodityPO, int area, int row, int frame, int position,String transferID) {
 		super(ID, type);
 		this.area = area;
 		this.row = row;
 		this.frame = frame;
 		this.position = position;
+		this.transferID = transferID;
 	}
 	public int getArea() {
 		return area;
@@ -53,6 +55,12 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 	public void setCommodityPO(CommodityPO commodityPO) {
 		this.commodityPO = commodityPO;
 	}
-
+	public String getTransferID() {
+		return transferID;
+	}
+	public void setTransferID(String transferID) {
+		this.transferID = transferID;
+	}
+	
 	
 }

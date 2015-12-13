@@ -2,7 +2,6 @@ package businesslogic.fundbl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.math.BigDecimal;
 /**
  * @author LIUXUANLIN
  */
@@ -64,43 +63,9 @@ public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
 		return bankAccountData.modify(po);
 	}
 
-	/**
-	 * 减少银行账户中的金额
-	 * 
-	 * @param accountID
-	 *            String型，银行账户编号
-	 * @param money
-	 *            BigDecimal型，金额
-	 * @return ResultMessage型，扣款是否成功
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
-		BankAccountPO po = bankAccountData.find(accountID);
-		BigDecimal oldmoney = po.getMoney();
-		if (oldmoney.compareTo(money) >= 0)
-			oldmoney = oldmoney.subtract(money);
-		po.setMoney(oldmoney);
-		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
-	}
+	
 
-	/**
-	 * 添加银行账户中的金额
-	 * 
-	 * @param String型，银行账户编号
-	 * @param money
-	 *            BigDecimal型，金额
-	 * @return ResultMessage型，添加是否成功
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ResultMessage addMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
-		BankAccountPO po = bankAccountData.find(accountID);
-		BigDecimal oldmoney = po.getMoney();
-		oldmoney = oldmoney.add(money);
-		po.setMoney(oldmoney);
-		return this.modify(po)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
-	}
+	
 
 	/**
 	 * 模糊查找账户
