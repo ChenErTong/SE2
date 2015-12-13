@@ -76,7 +76,7 @@ public class CommonImage extends Images{
 	
 	public static ImageIcon[] getBUTTON_BACKOUT(){
 		if(BUTTON_BACKOUT == null){
-			BUTTON_BACKOUT = createImageIcons("image/button/撤销.png");
+			BUTTON_BACKOUT = createImageIcons("image/button/注销登录.png");
 		}
 		return BUTTON_BACKOUT;
 	}

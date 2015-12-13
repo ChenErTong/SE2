@@ -75,7 +75,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		this.add(day);
 	
 		check = new MyButton(608,75,30,30,LoginImage.getBUTTON_LOGISTIC());
-		check.setActionCommand("ViewIncomState");
+		check.setActionCommand("ViewIncomeState");
 		check.addActionListener(this);
 		this.add(check);
 		
@@ -283,11 +283,11 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}
 				}
 			}
-		}else if(e.getActionCommand().equals("ExportIncomeTable")){
+		}else if(e.getActionCommand().equals("ExportIncomeState")){
 			int rowCount = table.getRowCount();
 			if(rowCount==0){
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
@@ -302,7 +302,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 					recordController.exportBussinessConditionToExcel(vo);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}

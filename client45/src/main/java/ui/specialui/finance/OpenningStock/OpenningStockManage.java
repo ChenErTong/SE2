@@ -277,7 +277,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 }
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
  }
 
@@ -291,12 +291,13 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 				ResultMessage rsg = controller.add();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"期初建账成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"期初建账失败！",Color.RED);
 				}
 			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
+				return;
 			}
 		}
 	}

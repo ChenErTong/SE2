@@ -89,7 +89,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1223-39,610,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
@@ -176,7 +176,7 @@ public void leadline(FrameManager frameManager){
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 
@@ -200,7 +200,7 @@ public void leadline(FrameManager frameManager){
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}else if(data[0].equals("5")&&data[1].equals("1")){
 				try {
@@ -215,7 +215,7 @@ public void leadline(FrameManager frameManager){
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}else if(data[0].equals("2")&&data[1].equals("0")){
 				try {
@@ -230,7 +230,7 @@ public void leadline(FrameManager frameManager){
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}else if(e.getActionCommand().equals("DeletePolicy")){
@@ -293,7 +293,7 @@ public void leadline(FrameManager frameManager){
 					policyPool.add(vo);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			/*	for(int i = 0; i <policyVO.size(); i++){
 					String[] rowData = {};
@@ -310,14 +310,14 @@ public void leadline(FrameManager frameManager){
 				PolicyBLService controller  = ControllerFactory.getPolicyController();
 				ResultMessage rsg = controller.undo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
-					
+					new MyNotification(this,"撤销操作成功！",Color.GREEN);
 				}else{
-					
+					new MyNotification(this,"撤销操作失败！",Color.RED);
 				}
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
+				return;
 			}
 		}
 	}
@@ -339,7 +339,7 @@ public void leadline(FrameManager frameManager){
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 		
 	}
@@ -361,7 +361,7 @@ public void leadline(FrameManager frameManager){
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 	

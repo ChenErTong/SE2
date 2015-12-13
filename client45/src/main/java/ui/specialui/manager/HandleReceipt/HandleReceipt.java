@@ -202,7 +202,7 @@ public void leadline(FrameManager frameManager){
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e.printStackTrace();
+					return;
 				}
 			}
 		}else if(events.getActionCommand().equals("PassThisReceipt")){
@@ -235,7 +235,7 @@ public void leadline(FrameManager frameManager){
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e.printStackTrace();
+						return;
 					}
 				}
 			}
@@ -284,7 +284,7 @@ public void leadline(FrameManager frameManager){
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e.printStackTrace();
+						return;
 					}
 				}
 			}else{
@@ -347,35 +347,35 @@ public void leadline(FrameManager frameManager){
 				try{
 					getApprovalData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 			}else if(data[0]==2){
 				try{
 					getPassData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 			}else if(data[0]==3){
 				try{
 					getFailureData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 			}else{
 				try{
 					getApprovalData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 				try{
 					getPassData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 				try{
 					getFailureData(data[1]);
 				}catch(Exception e){
-					e.printStackTrace();
+					return;
 				}
 			}
 			if(table.getRowCount() == 0){
@@ -692,7 +692,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			this.getFailureData(0);
 		} catch (MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 	
@@ -707,7 +707,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			fw.write(a);
 			fw.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			return;
 		}
 	}
 }

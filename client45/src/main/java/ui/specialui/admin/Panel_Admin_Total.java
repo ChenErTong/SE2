@@ -15,7 +15,7 @@ import businesslogic.userbl.UserController;
 import state.ResultMessage;
 import state.UserAuthority;
 import state.UserIdentity;
-import ui.commonui.confirmOperation.ConfirmOperationFrame;
+
 import ui.image.AdminImage;
 import ui.image.CommonImage;
 import ui.myui.MyButton;
@@ -94,11 +94,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		commonButton.setActionCommand("AddUser");
 		commonButton.addActionListener(this);
 		this.add(commonButton);
-		
-		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
-		backout.setActionCommand("backout");
-		backout.addActionListener(this);
-		this.add(backout);
+	
 		
 		this.repaint();
 	}
@@ -136,6 +132,11 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		withdraw.setActionCommand("Withdraw");
 		withdraw.addActionListener(frame);
 		this.add(withdraw);
+		
+		backout = new MyButton(1190,665,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
 	}
 	
 	/**
@@ -312,6 +313,20 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			} catch (NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				e1.printStackTrace();
+			}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				UserController controller = ControllerFactory.getUserController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"操作撤销成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"操作撤销失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
 			}
 		}
 	}

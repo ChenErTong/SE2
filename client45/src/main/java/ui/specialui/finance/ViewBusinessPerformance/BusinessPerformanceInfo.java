@@ -316,7 +316,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}
 				}else{
 					new MyNotification(this,"输入的日期参数不合法！",Color.RED);
@@ -341,7 +341,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}
