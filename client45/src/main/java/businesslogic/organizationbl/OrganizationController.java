@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogic.organizationbl.branchbl.Branch;
 import businesslogic.organizationbl.branchbl.BranchTrans;
 import businesslogic.organizationbl.transferbl.Transfer;
@@ -61,6 +62,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#addBranch(BranchVO)
 	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加营业厅");
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
 		Command<BranchPO> addCommand=new CommandAdd<BranchPO>(Branch.BLNAME, po);
 		branchCommandController.addCommand(addCommand);
@@ -72,6 +74,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#deleteBranch(String)
 	 */
 	public ResultMessage deleteBranch(String organizationID) throws RemoteException {
+		LogController.getInstance().addLog("删除营业厅");
 		BranchPO po = branchBL.delete(organizationID);
 		if (po == null) {
 			return ResultMessage.FAIL;
@@ -86,6 +89,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#updateBranch(BranchVO)
 	 */
 	public ResultMessage updateBranch(BranchVO vo) throws RemoteException {
+		LogController.getInstance().addLog("修改营业厅信息");
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
 		BranchPO res =  branchBL.modify(po);
 		if(res==null){
@@ -123,6 +127,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#addTransfer(TransferVO)
 	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加中转中心");
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
 		Command<TransferPO> addCommand=new CommandAdd<TransferPO>(Transfer.BLNAME, transferPO);
 		transferCommandController.addCommand(addCommand);
@@ -134,6 +139,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#deleteTransfer(String)
 	 */
 	public ResultMessage deleteTransfer(String organizationID) throws RemoteException {
+		LogController.getInstance().addLog("删除中转中心");
 		TransferPO po = transferBL.delete(organizationID);
 		if (po == null) {
 			return ResultMessage.FAIL;
@@ -148,6 +154,7 @@ public class OrganizationController implements OrganizationBLService {
 	 * @see OrganizationBLService#updateTransfer(TransferVO)
 	 */
 	public ResultMessage updateTransfer(TransferVO vo) throws RemoteException {
+		LogController.getInstance().addLog("修改中转中心信息");
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
 		TransferPO res =  transferBL.modify(transferPO);
 		if(res==null){

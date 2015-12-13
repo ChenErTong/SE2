@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.branchblservice.BranchBLService;
 import state.CommodityState;
 import state.ConfirmState;
@@ -65,6 +66,7 @@ public class BranchController implements BranchBLService {
 	 * @see BranchBLService#getDeliveryList(String, String)
 	 */
 	public DeliveryListVO getDeliveryList(String orders, String courierName) throws RemoteException {
+		LogController.getInstance().addLog("生成快递员派件单");
 		return BranchBL.getDeliveryList(orders, courierName);
 	}
 
@@ -88,6 +90,7 @@ public class BranchController implements BranchBLService {
 	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
 			ArrayList<String> orders, BigDecimal money) throws RemoteException {
+		LogController.getInstance().addLog("生成营业厅装车单");
 		return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
 	}
 
@@ -97,6 +100,7 @@ public class BranchController implements BranchBLService {
 	 */
 	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders)
 			throws RemoteException {
+		LogController.getInstance().addLog("生成营业厅到达单");
 		return BranchBL.getBranchArrivalList(departure, state, orders);
 	}
 }

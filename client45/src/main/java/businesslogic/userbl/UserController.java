@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.userblservice.UserBLService;
 import command.Command;
 import command.CommandAdd;
@@ -42,7 +43,7 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#show()
 	 */
 	public ArrayList<UserVO> show() throws RemoteException {
-			return userBL.show();
+		return userBL.show();
 	}
 
 	/**
@@ -56,8 +57,9 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#addUser(UserVO)
 	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加用户");
 		UserPO po = UserTrans.transVOtoPO(vo);
-		Command<UserPO> addCommand=new CommandAdd<UserPO>(User.BLNAME, po);
+		Command<UserPO> addCommand = new CommandAdd<UserPO>(User.BLNAME, po);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -66,6 +68,7 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#deleteUser(UserVO)
 	 */
 	public ResultMessage deleteUser(UserVO vo) throws RemoteException {
+		LogController.getInstance().addLog("删除用户");
 		UserPO userPO = userBL.delete(vo.id);
 		if (userPO == null) {
 			return ResultMessage.FAIL;
@@ -80,12 +83,12 @@ public class UserController implements UserBLService {
 	 * @see UserBLService#updateUser(UserVO)
 	 */
 	public ResultMessage updateUser(UserVO vo) throws RemoteException {
+		LogController.getInstance().addLog("修改用户信息");
 		UserPO po = UserTrans.transVOtoPO(vo);
 		UserPO res = userBL.modify(po);
-		if(res==null){
+		if (res == null) {
 			return ResultMessage.FAIL;
-		}
-		else{
+		} else {
 			Command<UserPO> modifyCommand = new CommandModify<UserPO>(User.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;

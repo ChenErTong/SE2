@@ -4,12 +4,7 @@ import javax.swing.UIManager;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-import ui.commonui.login.Frame_Login;
-import ui.specialui.admin.Frame_Admin;
-import ui.specialui.courier.Frame_Courier;
-import ui.specialui.finance.Frame_Finance;
-import ui.specialui.manager.FrameManager;
-import ui.specialui.sender.Frame_Sender;
+import ui.specialui.inventory.Frame_Inventory;
 
 public class mainForUITest3 {
 	static String id = "123";
@@ -28,8 +23,8 @@ public class mainForUITest3 {
 //	FrameManager managerFrame = new FrameManager(id);
   //managerFrame.setVisible(true);
 
-	 FrameManager managerFrame = new FrameManager(id);
-  managerFrame.setVisible(true);
+//	 FrameManager managerFrame = new FrameManager(id);
+//  managerFrame.setVisible(true);
 
 
 //	Frame_Courier courierFrame = new Frame_Courier();
@@ -45,5 +40,12 @@ public class mainForUITest3 {
 
 //Frame_Sender senderFrame = new Frame_Sender(id);
 //senderFrame.setVisible(true);
+  
+	String userID = "010000001";
+//	new Frame_Login(userID);
+new Frame_Inventory(userID);
+//new Frame_Transfer(userID);
+//new Frame_Courier(userID);
+//new Frame_Branch(userID);
 	}
 }

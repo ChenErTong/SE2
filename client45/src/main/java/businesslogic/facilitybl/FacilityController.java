@@ -41,6 +41,7 @@ public class FacilityController implements FacilityBLService {
 	 * @see FacilityBLService#addFacility(FacilityVO)
 	 */
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
+		LogController.getInstance().addLog("添加车辆");
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
 		Command<FacilityPO> addCommand=new CommandAdd<FacilityPO>(Facility.BLNAME, facilityPO);
 		commandController.addCommand(addCommand);
@@ -51,6 +52,7 @@ public class FacilityController implements FacilityBLService {
 	 * @see FacilityBLService#deleteFacility(FacilityVO)
 	 */
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
+		LogController.getInstance().addLog("删除车辆");
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
 		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>(Facility.BLNAME, facilityPO);
 		commandController.addCommand(commandDelete);

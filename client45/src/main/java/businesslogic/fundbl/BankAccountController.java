@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserInfomation;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import command.Command;
@@ -62,8 +63,8 @@ public class BankAccountController implements BankAccountBLService {
 	 * @see BankAccountBLService#add(BankAccountVO)
 	 */
 	public ResultMessage add(BankAccountVO vo) throws RemoteException {
-		System.out.println(UserInfomation.getInstance().getUserName());
 		if (this.isCorrectAuthority()) {
+			LogController.getInstance().addLog("添加银行账户");
 			BankAccountPO po =FundTrans.convertVOtoPO(vo);
 			Command<BankAccountPO> addCommand=new CommandAdd<BankAccountPO>(BankAccount.BLNAME, po);
 			commandController.addCommand(addCommand);
@@ -77,6 +78,7 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	public ResultMessage delete(String ID) throws RemoteException {
 		if (this.isCorrectAuthority()) {
+			LogController.getInstance().addLog("删除银行账户");
 			BankAccountPO po = BankAccountBL.delete(ID);
 			if (po == null) {
 				return ResultMessage.FAIL;
@@ -94,6 +96,7 @@ public class BankAccountController implements BankAccountBLService {
 	public ResultMessage update(BankAccountVO vo) throws RemoteException {
 		
 		if (this.isCorrectAuthority()) {
+			LogController.getInstance().addLog("修改银行账户");
 			BankAccountPO po =FundTrans.convertVOtoPO(vo);
 			BankAccountPO res =  BankAccountBL.modify(po);
 			if(res==null){

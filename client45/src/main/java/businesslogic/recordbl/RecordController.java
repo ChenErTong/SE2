@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.recordblservice.RecordBLService;
 import vo.BussinessConditionVO;
 import vo.BussinessOneDayVO;
@@ -27,37 +28,26 @@ public class RecordController implements RecordBLService {
 	 * @see RecordBLService#bussinessProcess(String, String)
 	 */
 	public ArrayList<DebitAndPayBillVO> bussinessProcess(String begin, String end) throws RemoteException {
-		try {
-			return RecordBL.bussinessProcess(begin, end);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		LogController.getInstance().addLog("查询公司经营情况");
+		return RecordBL.bussinessProcess(begin, end);
 	}
 
 	/**
 	 * @see RecordBLService#bussinessCondition(String)
 	 */
 	public BussinessConditionVO bussinessCondition(String end) throws RemoteException {
-		try {
-			return RecordBL.bussinessCondition(end);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		LogController.getInstance().addLog("查询公司成本收益");
+		return RecordBL.bussinessCondition(end);
 	}
 
 	/**
 	 * @see RecordBLService#bussinessOneDay(String, String)
 	 */
 	public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date) throws RemoteException {
-		try {
-			return RecordBL.bussinessOneDay(WorkPlace, date);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+		LogController.getInstance().addLog("查询"+WorkPlace+"在"+date+"单日收益");
+		return RecordBL.bussinessOneDay(WorkPlace, date);
 	}
+	
 
 	/**
 	 * @see RecordBLService#exportBussinessProcessToExcel(BussinessProcessVO)

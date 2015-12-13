@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import businesslogic.fundbl.BankAccountInfo;
 import businesslogic.inventorybl.InventoryInfo;
+import businesslogic.logbl.LogController;
 import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import config.RMIConfig;
@@ -102,6 +103,7 @@ public class Receipt {
 	}
 
 	private void approvePay(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过付款单");
 		PaymentBillPO payBill = (PaymentBillPO) po;
 		String accountID = payBill.getBankAccountID();
 		BigDecimal money = payBill.getMoney();
@@ -109,6 +111,7 @@ public class Receipt {
 	}
 
 	private void approveDebit(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过收款单");
 		DebitBillPO debitBill = (DebitBillPO) po;
 		String accountID = debitBill.getBankAccountID();
 		BigDecimal money = debitBill.getMoney();
@@ -116,6 +119,7 @@ public class Receipt {
 	}
 
 	private void approveTransferArrival(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过中转中心到达单");
 		TransferArrivalListPO transferArrivalReceipt = (TransferArrivalListPO) po;
 		String order = transferArrivalReceipt.getOrders();
 		String destination = transferArrivalReceipt.getDestination();
@@ -124,6 +128,7 @@ public class Receipt {
 	}
 
 	private void approveTransferOrder(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过中转中心转运单");
 		TransferOrderPO transferOrderReceipt = (TransferOrderPO) po;
 		ArrayList<String> orders = transferOrderReceipt.getOrders();
 		String departure = transferOrderReceipt.getDeparture();
@@ -132,6 +137,7 @@ public class Receipt {
 	}
 
 	private void approveBranchLoading(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过营业厅转运单");
 		LoadingListPO loadingReceipt = (LoadingListPO) po;
 		ArrayList<String> orders = loadingReceipt.getOrders();
 		String destination = loadingReceipt.getDistination();
@@ -139,6 +145,7 @@ public class Receipt {
 	}
 
 	private void approveBranchDelivery(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过快递员派件单");
 		DeliveryListPO deliveryReceipt = (DeliveryListPO) po;
 		String order = deliveryReceipt.getOrders();
 		String message = "订单正在被派件，派件员是"+deliveryReceipt.getCourierName();
@@ -146,6 +153,7 @@ public class Receipt {
 	}
 
 	private void approveBranchArrial(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过营业厅到达单");
 		BranchArrivalListPO branchArrialReceipt = (BranchArrivalListPO) po;
 		String orderID = branchArrialReceipt.getOrders();
 		String departure = branchArrialReceipt.getDeparture();
@@ -154,6 +162,7 @@ public class Receipt {
 	}
 
 	private void approveInventoryExport(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过仓库出库单");		
 		InventoryExportReceiptPO exportReceipt = (InventoryExportReceiptPO) po;
 		String transferID = exportReceipt.getTransferID();
 		int area = exportReceipt.getArea();
@@ -164,6 +173,7 @@ public class Receipt {
 	}
 
 	private void approveInventoryImport(ReceiptPO po) throws RemoteException {
+		LogController.getInstance().addLog("审批通过仓库入库单");
 		InventoryImportReceiptPO importReceipt = (InventoryImportReceiptPO) po;
 		String transferID = importReceipt.getTransferID();
 		CommodityPO commodityPO = importReceipt.getCommodityPO();

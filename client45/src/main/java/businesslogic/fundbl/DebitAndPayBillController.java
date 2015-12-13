@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.fundblservice.DebitAndPayBillBLService;
 import state.ResultMessage;
 import vo.receiptvo.DebitAndPayBillVO;
@@ -46,6 +47,7 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService {
 	 * @see DebitAndPayBillBLService#addDebitBill(DebitBillVO)
 	 */
 	public ResultMessage addDebitBill(DebitBillVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加收款单");
 		return DebitAndPayBL.addDebitBill(vo);
 	}
 
@@ -53,34 +55,16 @@ public class DebitAndPayBillController implements DebitAndPayBillBLService {
 	 * @see DebitAndPayBillBLService#addPayBill(PaymentBillVO)
 	 */
 	public ResultMessage addPayBill(PaymentBillVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加付款单");
 		return DebitAndPayBL.addPayBill(vo);
 	}
-
-//	/**
-//	 * @see DebitAndPayBillBLService#submit(DebitAndPayBillVO)
-//	 */
-//	public ResultMessage submit(DebitAndPayBillVO vo) throws RemoteException {
-//		return DebitAndPayBL.submit(vo);
-//	}
-//
-//	/**
-//	 * @see DebitAndPayBillBLService#save(DebitAndPayBillVO)
-//	 */
-//	public ResultMessage save(DebitAndPayBillVO vo) throws RemoteException {
-//		return DebitAndPayBL.save(vo);
-//	}
 
 	/**
 	 * @see DebitAndPayBillBLService#updateDraft(DebitAndPayBillVO)
 	 */
 	public ResultMessage updateDraft(DebitAndPayBillVO vo) throws RemoteException {
+		LogController.getInstance().addLog("更新收款单");
 		return DebitAndPayBL.updateDraft(vo);
 	}
-
-	/*
-	 * @Override public ResultMessage delete(String ID) { try { return
-	 * DebitAndPayBL.delete(ID); } catch (RemoteException e) {
-	 * e.printStackTrace(); } return null; }
-	 */
 
 }

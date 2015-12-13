@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.orderblservice.OrderBLService;
 import state.ConfirmState;
 import state.ExpressType;
@@ -33,6 +34,7 @@ public class OrderController implements OrderBLService {
 	 * @see OrderBLService#addOrder(OrderVO)
 	 */
 	public ResultMessage addOrder(OrderVO order) throws RemoteException {
+		LogController.getInstance().addLog("添加订单");
 		return orderBL.addOrder(order);
 	}
 
@@ -40,6 +42,7 @@ public class OrderController implements OrderBLService {
 	 * @see OrderBLService#inquireOrder(String, String)
 	 */
 	public OrderVO inquireOrder(String orderNumber, String senderName) throws RemoteException {
+		LogController.getInstance().addLog("查询订单");
 		return orderBL.inquireOrder(orderNumber, senderName);
 	}
 
@@ -55,12 +58,7 @@ public class OrderController implements OrderBLService {
 	 */
 	public BigDecimal getCost(CommodityVO[] commodityList, String senderAddress, String receiverAddress,
 			ExpressType expressType) throws RemoteException {
-		try {
 			return orderBL.getCost(commodityList, senderAddress, receiverAddress, expressType);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return new BigDecimal(0);
 	}
 
 	/**
@@ -75,18 +73,15 @@ public class OrderController implements OrderBLService {
 	 * @see OrderBLService#addOrder(CommodityVO[], OrderVO)
 	 */
 	public ResultMessage addOrder(CommodityVO[] commmodities, OrderVO order) throws RemoteException {
-		try {
+		LogController.getInstance().addLog("添加订单");
 			return orderBL.addOrder(commmodities, order);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	/**
 	 * @see OrderBLService#inquireOrder(String)
 	 */
 	public OrderVO inquireOrder(String orderNumber) throws RemoteException {
+		LogController.getInstance().addLog("查询订单");
 		return orderBL.inquireOrder(orderNumber);
 	}
 
@@ -94,6 +89,7 @@ public class OrderController implements OrderBLService {
 	 * @see OrderBLService#updateOrder(OrderVO)
 	 */
 	public ResultMessage updateOrder(OrderVO order) throws RemoteException {
+		LogController.getInstance().addLog("更新订单信息");
 		return orderBL.updateOrder(order);
 	}
 
