@@ -22,6 +22,7 @@ import vo.accountvo.AccountVO;
  * @version 创建时间：2015年12月3日 下午3:31:26
  */
 public class Account implements CommonBusinessLogic<AccountPO>{
+	public final static String BLNAME="Account";
 	/**
 	 * Account数据接口
 	 */
@@ -34,7 +35,6 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
-		
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {

@@ -55,7 +55,7 @@ public class AccountController implements AccountBLService {
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
-		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(AccountBL, po);
+		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(Account.BLNAME, po);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -68,7 +68,7 @@ public class AccountController implements AccountBLService {
 		if (account == null) {
 			return ResultMessage.FAIL;
 		} else {
-			commandController.addCommand(new CommandDelete<AccountPO>(AccountBL, account));
+			commandController.addCommand(new CommandDelete<AccountPO>(Account.BLNAME, account));
 			return ResultMessage.SUCCESS;
 		}
 		// Command<AccountPO> command = new CommandDelete<AccountPO>("delete",
@@ -87,7 +87,7 @@ public class AccountController implements AccountBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<AccountPO> modifyCommand = new CommandModify<AccountPO>(AccountBL, res);
+			Command<AccountPO> modifyCommand = new CommandModify<AccountPO>(Account.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}

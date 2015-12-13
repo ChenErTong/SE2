@@ -65,7 +65,7 @@ public class BankAccountController implements BankAccountBLService {
 		System.out.println(UserInfomation.getInstance().getUserName());
 		if (this.isCorrectAuthority()) {
 			BankAccountPO po =FundTrans.convertVOtoPO(vo);
-			Command<BankAccountPO> addCommand=new CommandAdd<BankAccountPO>(BankAccountBL, po);
+			Command<BankAccountPO> addCommand=new CommandAdd<BankAccountPO>(BankAccount.BLNAME, po);
 			commandController.addCommand(addCommand);
 			return addCommand.execute();
 		}
@@ -81,7 +81,7 @@ public class BankAccountController implements BankAccountBLService {
 			if (po == null) {
 				return ResultMessage.FAIL;
 			} else {
-				commandController.addCommand(new CommandDelete<BankAccountPO>(BankAccountBL, po));
+				commandController.addCommand(new CommandDelete<BankAccountPO>(BankAccount.BLNAME, po));
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -99,7 +99,7 @@ public class BankAccountController implements BankAccountBLService {
 			if(res==null){
 				return ResultMessage.FAIL;
 			}else{
-				Command<BankAccountPO> modifyCommand = new CommandModify<BankAccountPO>(BankAccountBL, res);
+				Command<BankAccountPO> modifyCommand = new CommandModify<BankAccountPO>(BankAccount.BLNAME, res);
 				commandController.addCommand(modifyCommand);
 				return ResultMessage.SUCCESS;
 			}

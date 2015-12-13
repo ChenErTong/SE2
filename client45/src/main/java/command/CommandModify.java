@@ -2,10 +2,11 @@ package command;
 
 import java.rmi.RemoteException;
 
+import businesslogic.BLFactory;
 import businesslogic.CommonBusinessLogic;
 import po.PersistentObject;
 import state.ResultMessage;
-
+@SuppressWarnings("unchecked")
 public class CommandModify<PO extends PersistentObject> extends Command<PO> {
 
 	/**
@@ -13,12 +14,13 @@ public class CommandModify<PO extends PersistentObject> extends Command<PO> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CommandModify(CommonBusinessLogic<PO> businessLogic, PO po) {
-		super(businessLogic, po);
+	public CommandModify(String BLName, PO po) {
+		super(BLName, po);
 	}
 
 	@Override
 	public ResultMessage execute() throws RemoteException {
+		CommonBusinessLogic<PO> businessLogic = (CommonBusinessLogic<PO>) BLFactory.getBLByName(BLName);
 		PO res = businessLogic.modify(po);
 		if(res==null){
 			return ResultMessage.FAIL;
@@ -28,8 +30,10 @@ public class CommandModify<PO extends PersistentObject> extends Command<PO> {
 		}
 	}
 
+	
 	@Override
 	public ResultMessage undo() throws RemoteException {
+		CommonBusinessLogic<PO> businessLogic = (CommonBusinessLogic<PO>) BLFactory.getBLByName(BLName);
 		PO res = businessLogic.modify(po);
 		if(res==null){
 			return ResultMessage.FAIL;

@@ -24,6 +24,7 @@ import vo.UserVO;
  * @version 创建时间：2015年12月3日 下午3:38:54
  */
 public class User implements CommonBusinessLogic<UserPO>{
+	public  final static String BLNAME="User";
 	private UserDataService userData;
 	
 	public static String currentUserFileName;

@@ -22,6 +22,7 @@ import vo.FacilityVO;
  * @version 创建时间：2015年12月3日 下午3:33:33
  */
 public class Facility implements CommonBusinessLogic<FacilityPO>{
+	public  final static String BLNAME="Facility";
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
 	

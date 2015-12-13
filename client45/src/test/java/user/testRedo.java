@@ -1,17 +1,33 @@
 package user;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import businesslogic.ControllerFactory;
+import businesslogic.accountbl.AccountController;
+import businesslogic.orderbl.OrderController;
+import businesslogic.organizationbl.OrganizationController;
 import command.CommandController;
 import po.accountpo.AccountPO;
 
 public class testRedo {
 	public static void main(String[] args) {
-		CommandController<AccountPO> commandManager= new CommandController<AccountPO>("user");
+//		CommandController<AccountPO> commandManager= new CommandController<AccountPO>("user");
 		try {
-			commandManager.redoCommand();
-		} catch (RemoteException e) {
-			e.printStackTrace();
+//			AccountController accountController = ControllerFactory.getAccountController();
+//			System.out.println(accountController.canUndo());
+//			accountController.undo();
+			OrganizationController organizationController = new OrganizationController();
+			organizationController.undo();
+			organizationController.undo();
+			organizationController.redo();
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
 		}
 	}
 }

@@ -34,6 +34,7 @@ import vo.receiptvo.orderreceiptvo.LoadingListVO;
  * @version 创建时间：2015年12月3日 下午3:33:06
  */
 public class Branch implements CommonBusinessLogic<BranchPO>{
+	public  final static String BLNAME="Branch";
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Branch receiptInfo;
 	private BranchDataService branchData;

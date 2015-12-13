@@ -35,6 +35,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @version 创建时间：2015年12月3日 下午3:38:36
  */
 public class Transfer implements CommonBusinessLogic<TransferPO> {
+	public  final static String BLNAME="Transfer";
 	private OrderInfo_Branch_Transfer orderInfo;
 	private ReceiptInfo_Transfer receiptInfo;
 	private TransferDataService transferData;

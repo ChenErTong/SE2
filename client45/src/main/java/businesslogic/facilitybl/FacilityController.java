@@ -41,7 +41,7 @@ public class FacilityController implements FacilityBLService {
 	 */
 	public ResultMessage addFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		Command<FacilityPO> addCommand=new CommandAdd<FacilityPO>(facilityBL, facilityPO);
+		Command<FacilityPO> addCommand=new CommandAdd<FacilityPO>(Facility.BLNAME, facilityPO);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -51,7 +51,7 @@ public class FacilityController implements FacilityBLService {
 	 */
 	public ResultMessage deleteFacility(FacilityVO facility) throws RemoteException {
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
-		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>(facilityBL, facilityPO);
+		Command<FacilityPO> commandDelete = new CommandDelete<FacilityPO>(Facility.BLNAME, facilityPO);
 		commandController.addCommand(commandDelete);
 		return commandDelete.execute();
 		// FacilityPO facilityPO = facilityBL.delete(facility.facilityIdString);
@@ -73,7 +73,7 @@ public class FacilityController implements FacilityBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<FacilityPO> modifyCommand = new CommandModify<FacilityPO>(facilityBL, res);
+			Command<FacilityPO> modifyCommand = new CommandModify<FacilityPO>(Facility.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}

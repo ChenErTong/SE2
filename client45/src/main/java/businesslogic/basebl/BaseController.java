@@ -49,7 +49,7 @@ public class BaseController implements BaseBLService {
 	 */
 	public ResultMessage addBase(BaseVO vo) throws RemoteException {
 		BasePO basePO = BaseTrans.convertVOtoPO(vo);
-		Command<BasePO> addCommand=new CommandAdd<BasePO>(BaseBL, basePO);
+		Command<BasePO> addCommand=new CommandAdd<BasePO>(Base.BLNAME, basePO);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -62,7 +62,7 @@ public class BaseController implements BaseBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			commandController.addCommand(new CommandDelete<BasePO>(BaseBL, po));
+			commandController.addCommand(new CommandDelete<BasePO>(Base.BLNAME, po));
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -76,7 +76,7 @@ public class BaseController implements BaseBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<BasePO> modifyCommand = new CommandModify<BasePO>(BaseBL, res);
+			Command<BasePO> modifyCommand = new CommandModify<BasePO>(Base.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}

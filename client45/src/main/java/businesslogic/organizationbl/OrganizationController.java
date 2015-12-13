@@ -61,7 +61,7 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage addBranch(BranchVO vo) throws RemoteException {
 		BranchPO po = BranchTrans.convertVOtoPO(vo);
-		Command<BranchPO> addCommand=new CommandAdd<BranchPO>(branchBL, po);
+		Command<BranchPO> addCommand=new CommandAdd<BranchPO>(Branch.BLNAME, po);
 		branchCommandController.addCommand(addCommand);
 		doubleStack.add(OrganizationType.BRANCH);
 		return addCommand.execute();
@@ -75,7 +75,7 @@ public class OrganizationController implements OrganizationBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			branchCommandController.addCommand(new CommandDelete<BranchPO>(branchBL, po));
+			branchCommandController.addCommand(new CommandDelete<BranchPO>(Branch.BLNAME, po));
 			doubleStack.add(OrganizationType.BRANCH);
 			return ResultMessage.SUCCESS;
 		}
@@ -90,7 +90,7 @@ public class OrganizationController implements OrganizationBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<BranchPO> modifyCommand = new CommandModify<BranchPO>(branchBL, res);
+			Command<BranchPO> modifyCommand = new CommandModify<BranchPO>(Branch.BLNAME, res);
 			branchCommandController.addCommand(modifyCommand);
 			doubleStack.add(OrganizationType.BRANCH);
 			return ResultMessage.SUCCESS;
@@ -123,7 +123,7 @@ public class OrganizationController implements OrganizationBLService {
 	 */
 	public ResultMessage addTransfer(TransferVO vo) throws RemoteException {
 		TransferPO transferPO = TransferTrans.convertVOtoPO(vo);
-		Command<TransferPO> addCommand=new CommandAdd<TransferPO>(transferBL, transferPO);
+		Command<TransferPO> addCommand=new CommandAdd<TransferPO>(Transfer.BLNAME, transferPO);
 		transferCommandController.addCommand(addCommand);
 		doubleStack.add(OrganizationType.TRANSFER);
 		return addCommand.execute();
@@ -137,7 +137,7 @@ public class OrganizationController implements OrganizationBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			transferCommandController.addCommand(new CommandDelete<TransferPO>(transferBL, po));
+			transferCommandController.addCommand(new CommandDelete<TransferPO>(Transfer.BLNAME, po));
 			doubleStack.add(OrganizationType.TRANSFER);
 			return ResultMessage.SUCCESS;
 		}
@@ -152,7 +152,7 @@ public class OrganizationController implements OrganizationBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<TransferPO> modifyCommand = new CommandModify<TransferPO>(transferBL, res);
+			Command<TransferPO> modifyCommand = new CommandModify<TransferPO>(Transfer.BLNAME, res);
 			transferCommandController.addCommand(modifyCommand);
 			doubleStack.add(OrganizationType.BRANCH);
 			return ResultMessage.SUCCESS;

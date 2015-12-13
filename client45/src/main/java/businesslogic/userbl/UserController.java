@@ -57,7 +57,7 @@ public class UserController implements UserBLService {
 	 */
 	public ResultMessage addUser(UserVO vo) throws RemoteException {
 		UserPO po = UserTrans.transVOtoPO(vo);
-		Command<UserPO> addCommand=new CommandAdd<UserPO>(userBL, po);
+		Command<UserPO> addCommand=new CommandAdd<UserPO>(User.BLNAME, po);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -70,7 +70,7 @@ public class UserController implements UserBLService {
 		if (userPO == null) {
 			return ResultMessage.FAIL;
 		} else {
-			Command<UserPO> command = new CommandDelete<UserPO>(userBL, userPO);
+			Command<UserPO> command = new CommandDelete<UserPO>(User.BLNAME, userPO);
 			commandController.addCommand(command);
 			return ResultMessage.SUCCESS;
 		}
@@ -86,7 +86,7 @@ public class UserController implements UserBLService {
 			return ResultMessage.FAIL;
 		}
 		else{
-			Command<UserPO> modifyCommand = new CommandModify<UserPO>(userBL, res);
+			Command<UserPO> modifyCommand = new CommandModify<UserPO>(User.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}

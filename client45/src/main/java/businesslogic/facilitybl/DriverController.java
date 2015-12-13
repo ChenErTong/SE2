@@ -41,7 +41,7 @@ public class DriverController implements DriverBLService {
 	 */
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
-		Command<DriverPO> addCommand=new CommandAdd<DriverPO>(driverBL, po);
+		Command<DriverPO> addCommand=new CommandAdd<DriverPO>(Driver.BLNAME, po);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -51,7 +51,7 @@ public class DriverController implements DriverBLService {
 	 */
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
-		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>(driverBL, po);
+		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>(Driver.BLNAME, po);
 		commandController.addCommand(deleteCommand);
 		return deleteCommand.execute();
 		// DriverPO po = driverBL.delete(driver.ID);
@@ -73,7 +73,7 @@ public class DriverController implements DriverBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<DriverPO> modifyCommand = new CommandModify<DriverPO>(driverBL, res);
+			Command<DriverPO> modifyCommand = new CommandModify<DriverPO>(Driver.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}

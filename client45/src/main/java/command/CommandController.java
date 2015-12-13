@@ -13,8 +13,8 @@ public class CommandController<PO extends PersistentObject> {
 	protected static String PRIFIX = "commandHistory";
 	protected static String POFIX = ".ser";
 	public CommandController(String commandFile){
-		serDoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
-		serRedoer = new SerSaveAndLoad<>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
+		serDoer = new SerSaveAndLoad<Command<PO>>(PRIFIX, PRIFIX+"/"+commandFile+POFIX);
+		serRedoer = new SerSaveAndLoad<Command<PO>>(PRIFIX, PRIFIX+"/"+commandFile+"Re"+POFIX);
 		File serDoerFile = new File(PRIFIX+"/"+commandFile+POFIX);
 		File serRedoerFile = new File(PRIFIX+"/"+commandFile+"Re"+POFIX);
 		serDoerFile.deleteOnExit();
@@ -23,10 +23,12 @@ public class CommandController<PO extends PersistentObject> {
 	
 	public void addCommand(Command<PO> command){
 		serDoer.add(command);
+		System.out.println(serDoer.size());
 		serRedoer.clear();
 	}
 	
 	public ResultMessage undoCommand() throws RemoteException{
+		System.out.println(serDoer.size());
 		Command<PO> redoCommand = serDoer.getLast();
 		serDoer.removeLast();
 		serRedoer.add(redoCommand);

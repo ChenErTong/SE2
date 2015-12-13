@@ -42,7 +42,7 @@ public class PolicyController implements PolicyBLService {
 	 */
 	public ResultMessage addPolicy(PolicyVO vo) throws RemoteException {
 		PolicyPO po = BaseTrans.convertVOtoPO(vo);
-		Command<PolicyPO> addCommand=new CommandAdd<PolicyPO>(policyBL, po);
+		Command<PolicyPO> addCommand=new CommandAdd<PolicyPO>(Policy.BLNAME, po);
 		commandController.addCommand(addCommand);
 		return addCommand.execute();
 	}
@@ -55,7 +55,7 @@ public class PolicyController implements PolicyBLService {
 		if (po == null) {
 			return ResultMessage.FAIL;
 		} else {
-			commandController.addCommand(new CommandDelete<PolicyPO>(policyBL, po));
+			commandController.addCommand(new CommandDelete<PolicyPO>(Policy.BLNAME, po));
 			return ResultMessage.SUCCESS;
 		}
 	}
@@ -69,7 +69,7 @@ public class PolicyController implements PolicyBLService {
 		if(res==null){
 			return ResultMessage.FAIL;
 		}else{
-			Command<PolicyPO> modifyCommand = new CommandModify<PolicyPO>(policyBL, res);
+			Command<PolicyPO> modifyCommand = new CommandModify<PolicyPO>(Policy.BLNAME, res);
 			commandController.addCommand(modifyCommand);
 			return ResultMessage.SUCCESS;
 		}
