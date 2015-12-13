@@ -23,11 +23,6 @@ import vo.accountvo.AccountVO;
  */
 public class Account implements CommonBusinessLogic<AccountPO>{
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
 	 * Account数据接口
 	 */
 	private AccountDataService accountData;

@@ -20,10 +20,6 @@ import vo.PolicyVO;
  * @version 创建时间：2015年12月3日 下午3:32:56
  */
 public class Policy implements CommonBusinessLogic<PolicyPO>{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private PolicyDataService policyData;
 	public Policy() throws MalformedURLException, RemoteException, NotBoundException {
 		
