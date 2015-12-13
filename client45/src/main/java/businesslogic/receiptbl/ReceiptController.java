@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -27,6 +28,7 @@ public class ReceiptController implements ReceiptBLService {
 	 * @see ReceiptBLService#updateReceipt(ReceiptVO)
 	 */
 	public ResultMessage updateReceipt(ReceiptVO receiptVO) throws RemoteException {
+		LogController.getInstance().addLog("更新单据信息");
 		return ReceiptBL.updateReceipt(receiptVO);
 	}
 
@@ -34,6 +36,7 @@ public class ReceiptController implements ReceiptBLService {
 	 * @see ReceiptBLService#passReceipt(ArrayList)
 	 */
 	public ResultMessage passReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
+		LogController.getInstance().addLog("通过单据");
 		return ReceiptBL.passReceipt(VOs);
 	}
 
@@ -41,6 +44,7 @@ public class ReceiptController implements ReceiptBLService {
 	 * @see ReceiptBLService#dontPassReceipt(ArrayList)
 	 */
 	public ResultMessage dontPassReceipt(ArrayList<ReceiptVO> VOs) throws RemoteException {
+		LogController.getInstance().addLog("否决单据");
 		return ReceiptBL.dontPassReceipt(VOs);
 	}
 
