@@ -22,6 +22,10 @@ import vo.BaseVO;
  * @version 创建时间：2015年12月3日 下午3:32:24
  */
 public class Base implements CommonBusinessLogic<BasePO>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BaseDataService baseData;
 	
 	public Base() throws MalformedURLException, RemoteException, NotBoundException {

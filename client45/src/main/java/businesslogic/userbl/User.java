@@ -24,6 +24,11 @@ import vo.UserVO;
  * @version 创建时间：2015年12月3日 下午3:38:54
  */
 public class User implements CommonBusinessLogic<UserPO>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private UserDataService userData;
 	
 	public static String currentUserFileName;

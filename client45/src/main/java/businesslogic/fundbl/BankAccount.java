@@ -26,6 +26,10 @@ import vo.BankAccountVO;
  * @version 创建时间：2015年12月3日 下午3:34:01
  */
 public class BankAccount implements CommonBusinessLogic<BankAccountPO>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BankAccountDataService bankAccountData;
 	
 	public BankAccount() throws MalformedURLException, RemoteException, NotBoundException {

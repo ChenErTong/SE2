@@ -22,6 +22,10 @@ import vo.FacilityVO;
  * @version 创建时间：2015年12月3日 下午3:33:33
  */
 public class Facility implements CommonBusinessLogic<FacilityPO>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private FacilityDataService facilityData;
 	private BranchInfo_Facility branchInfo;
 	
