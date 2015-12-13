@@ -131,7 +131,7 @@ public class TrainCommodity extends MyJPanel {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return;
 		}
-		if (ordersID != null) {
+		if ((ordersID != null)&&(ordersID.size() > 0)) {
 			for (String orderID : ordersID) {
 				orderList.addRow(new String[] { orderID });
 			}
