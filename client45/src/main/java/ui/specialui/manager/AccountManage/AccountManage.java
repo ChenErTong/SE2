@@ -16,6 +16,7 @@ import businesslogic.ControllerFactory;
 import businesslogic.accountbl.AccountController;
 import businesslogicservice.accountblservice.AccountBLService;
 import state.ResultMessage;
+import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -39,6 +40,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	private MyButton add;
 	private MyButton modify;
 	private MyButton deleteButton;
+	private MyButton backout;
 	private MyJTable table;
 
 	static ArrayList<AccountVO> accountPool;
@@ -89,6 +91,11 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);
+		
+		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
 		
 		userInfo = new SearchAccount(this);
 		this.add(userInfo);

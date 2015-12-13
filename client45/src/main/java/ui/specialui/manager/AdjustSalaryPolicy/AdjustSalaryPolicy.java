@@ -16,6 +16,7 @@ import businesslogicservice.baseblservice.PolicyBLService;
 import state.ResultMessage;
 import state.SalaryPolicy;
 import state.UserIdentity;
+import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -42,6 +43,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private MyButton modify;
 	private MyButton deleteButton;
 	private MyButton modifyButton;
+	private MyButton backout;
 	private MyJTable table;
 	
 	//private PolicyBLService controller = ControllerFactory.getPolicyController();
@@ -86,6 +88,12 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);
+		
+		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
+		
 		this.showAll();
 	}
 	
@@ -296,6 +304,20 @@ public void leadline(FrameManager frameManager){
 				}*/	
 			}else {
 				new MyNotification(this,"请输入查询的薪水类型！",Color.RED);
+			}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				PolicyBLService controller  = ControllerFactory.getPolicyController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					
+				}else{
+					
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				e1.printStackTrace();
 			}
 		}
 	}

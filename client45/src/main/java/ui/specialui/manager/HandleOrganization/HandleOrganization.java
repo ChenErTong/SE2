@@ -18,6 +18,7 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.OrganizationType;
 import state.ResultMessage;
+import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -44,6 +45,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 
 	private MyButton commonButton ;
 	private MyButton modifyButton ;
+	private MyButton backout;
 
 	private SearchOrganizationInfo organizationInfo;
 	private OrganizationDetails organizationDetails;
@@ -160,6 +162,11 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		deleteButton.setActionCommand("DeleteOrganization");
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
+		
+		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
 	}
 	
 	private void insertPanel(FrameManager frame) {

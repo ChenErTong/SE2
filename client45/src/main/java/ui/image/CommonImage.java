@@ -68,6 +68,18 @@ public class CommonImage extends Images{
 	 * 下拉框文本
 	 */
 	private static Image COMBOBOX_TEXT = null;
+	/**
+	 * 撤销操作
+	 * @return
+	 */
+	private static ImageIcon[] BUTTON_BACKOUT = null;
+	
+	public static ImageIcon[] getBUTTON_BACKOUT(){
+		if(BUTTON_BACKOUT == null){
+			BUTTON_BACKOUT = createImageIcons("image/button/撤销.png");
+		}
+		return BUTTON_BACKOUT;
+	}
 	
 	public static ImageIcon[] getBUTTON_CLOSE(){
 		if(BUTTON_CLOSE == null){

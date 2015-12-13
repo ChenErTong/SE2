@@ -130,7 +130,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 		if(senderNameInfo == null){
 			return 2;
 		}
-		if(orderNumberInfo.length()!=11){
+		if(orderNumberInfo.length()!=10){
 			return 3;
 		}
 		return 0;

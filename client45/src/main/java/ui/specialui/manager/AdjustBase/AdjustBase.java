@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogicservice.baseblservice.BaseBLService;
 import state.ResultMessage;
+import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -42,6 +43,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private MyButton deleteButton;
 	private MyButton modifyButton;
 	private MyJTable table;
+	private MyButton backout;
 
 	static ArrayList<BaseVO> basePool;
 	static String baseID = " ";
@@ -82,6 +84,12 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		modify.setActionCommand("CheckModify");
 		modify.addActionListener(this);
 		this.add(modify);
+		
+		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
+		
 		this.showAll();
 	}
 	
@@ -270,6 +278,20 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				}else {
 					new MyNotification(this,"请输入查询的常量ID！",Color.RED);
 				}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				BaseBLService controller = ControllerFactory.getBaseController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					
+				}else{
+					
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

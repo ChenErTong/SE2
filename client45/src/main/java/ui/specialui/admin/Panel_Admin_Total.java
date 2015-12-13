@@ -42,6 +42,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private MyButton modifyButton ;
 	private MyJTable table;
 	private MyButton withdraw;
+	private MyButton backout;
 	
 	/**
 	 * 静态变量，作为UserVO的存储池，在构造函数中初始化
@@ -93,6 +94,11 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		commonButton.setActionCommand("AddUser");
 		commonButton.addActionListener(this);
 		this.add(commonButton);
+		
+		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
 		
 		this.repaint();
 	}
