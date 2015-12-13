@@ -216,6 +216,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		switch(((FacilityInfoManage) subPanel).addFacility()){
 		case 0: new MyNotification(this, "添加成功", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成车辆信息填写", Color.RED); break;
+		case 2: new MyNotification(this, "车辆编号不符合规范", Color.RED); break;
 		}	
 		return false;
 	}
@@ -253,6 +254,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		switch(((DriverInfoManage) subPanel).addDriver()){
 		case 0: new MyNotification(this, "添加成功", Color.GREEN); return true;
 		case 1: new MyNotification(this, "请完成司机信息填写", Color.RED); break;
+		case 2: new MyNotification(this, "编号不符合规范", Color.RED); break;
 		}	
 		return false;
 	}

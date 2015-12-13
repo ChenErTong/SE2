@@ -209,15 +209,14 @@ public class DriverInfoManage extends MyJPanel {
 	public int addDriver() {
 		String[] data = driverInfo.getData();
 		if(data == null) return 1;
-		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], new BigDecimal(0), data[6], data[3], id.substring(0, 6));
-		System.out.println(driver.ID+"--print in ui");
+		if(data[5].length() != 9) return 2;
+		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], new BigDecimal(0), data[6], data[3], data[5].substring(0, 6));
 		try {
 			driverController.addDriver(driver);
 		} catch (RemoteException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return -1;
 		}
-		driverController.confirmOperation();
 		return 0;
 	}
 

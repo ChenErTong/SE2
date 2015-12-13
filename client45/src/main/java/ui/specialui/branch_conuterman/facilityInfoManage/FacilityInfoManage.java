@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+import po.receiptpo.orderreceiptpo.LoadingListPO;
 import ui.image.BranchImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
@@ -207,8 +209,8 @@ public class FacilityInfoManage extends MyJPanel {
 	public int addFacility() {
 		String[] data = facilityInfo.getData();
 		if(data == null) return 1;
-		//TODO 此处要添加branchID  branchID可以在organizationbl里拿到（getAllBranchNumbers）
-		facility = new FacilityVO(null, null, data[2], data[4], data[1], data[3], data[0], id.substring(0, 6));
+		if(data[2].length() != 9) return 2;
+		facility = new FacilityVO(null, new ArrayList<LoadingListPO>(), data[2], data[4], data[1], data[3], data[0], data[2].substring(0, 6));
 		try {
 			facilityController.addFacility(facility);
 		} catch (RemoteException e) {

@@ -87,6 +87,8 @@ public class DriverInfo extends MyTranslucentPanel{
 		
 		this.add(new MyJLabel(418, 202, 63, 21, "编号", 18, true));
 		fields[5] = new MyJTextField(470, 200, 150, 30);
+		fields[5].setOnlyInteger(9);
+		
 		DriverBLService branchController = null;
 		
 		try {
