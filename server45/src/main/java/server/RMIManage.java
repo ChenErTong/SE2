@@ -64,7 +64,6 @@ public class RMIManage {
 				String prefix=RMIConfig.PREFIX;
 //				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
 				System.out.println(prefix);
-				
 				//注册Data类
 				Naming.bind(prefix+AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
 				Naming.bind(prefix+BaseData.NAME, DataFactory.createDataService(BaseData.NAME));

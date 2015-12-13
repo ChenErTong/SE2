@@ -37,7 +37,6 @@ public class CarCommodity extends MyJPanel {
 		
 		//选中的订单的列表
 		orderSelected = new MyJTable(new String[]{"选中订单"}, false);
-		this.setOrdersID();
 		orderSelected.addMouseListener(new MouseAdapter() {
 			public void mouseMoved(MouseEvent e) {  
 				int row = orderSelected.rowAtPoint(e.getPoint());
@@ -80,6 +79,8 @@ public class CarCommodity extends MyJPanel {
 		TransferOrder.setActionCommand("TransferOrderForCar");
 		TransferOrder.addActionListener(frame);
 		this.add(TransferOrder);
+	
+		this.setOrdersID();
 	}
 	
 	private void showOrder(MyEmptyTextArea orderInfo, String orderId) {
