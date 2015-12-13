@@ -4,12 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import businesslogic.ControllerFactory;
-import businesslogic.accountbl.AccountController;
-import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
-import command.CommandController;
-import po.accountpo.AccountPO;
 
 public class testRedo {
 	public static void main(String[] args) {
