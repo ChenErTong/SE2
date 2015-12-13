@@ -73,6 +73,10 @@ public class CommonImage extends Images{
 	 * @return
 	 */
 	private static ImageIcon[] BUTTON_BACKOUT = null;
+	/**
+	 * 下标
+	 */
+	private static ImageIcon SUBSCRIPT = null;
 	
 	public static ImageIcon[] getBUTTON_BACKOUT(){
 		if(BUTTON_BACKOUT == null){
@@ -154,5 +158,12 @@ public class CommonImage extends Images{
 			COMBOBOX_TEXT = createImage("image/下拉框文本.png");
 		}
 		return COMBOBOX_TEXT;
+	}
+	
+	public static ImageIcon getSUBSCRIPT(){
+		if(SUBSCRIPT == null){
+			SUBSCRIPT = createImageIcon("image/下标.png");
+		}
+		return SUBSCRIPT;
 	}
 }

@@ -9,6 +9,7 @@ import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import ui.image.CommonImage;
 
@@ -30,6 +31,8 @@ public class MyJFrame extends JFrame{
 	protected MyButton returnButton;
 	//用户ID
 	protected String ID;
+	//下标
+	protected JLabel subscript;
 	
 	boolean isDraging;
 	int xx, yy, X0, Y0, X, Y;
@@ -54,6 +57,10 @@ public class MyJFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setResizable(false);
+		
+		subscript = new JLabel(CommonImage.getSUBSCRIPT());
+		subscript.setBounds(10, 688, 148, 27);
+		this.add(subscript);
 		
 		//设置圆角
 		AWTUtilities.setWindowShape(this, new RoundRectangle2D.Double(0.0D,

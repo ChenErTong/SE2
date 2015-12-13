@@ -7,10 +7,11 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
 import ui.image.CommonImage;
+import ui.image.TransferImage;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -35,7 +36,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 	private String[] loadingInfo;
 	private ArrayList<String> orders;
 	private TransferBLService transferController;
-	
+	// 导航栏
+	private MyButton carLoading;
+	private MyButton trainLoading;
+	private MyButton planeLoading;
+	private MyButton transferReceive;
+		
 	public Frame_Transfer(String userID) {
 		super(userID);
 		
@@ -50,6 +56,24 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		
 		this.returnButton.addActionListener(this);
 	
+		carLoading = new MyButton(760, 690, 120, 20, TransferImage.getBUTTON_QICHE_GUIDE());
+		carLoading.setActionCommand("CarLoading");
+		carLoading.addActionListener(this);
+		trainLoading = new MyButton(890, 690, 120, 20, TransferImage.getBUTTON_HUOCHE_GUIDE());
+		trainLoading.setActionCommand("TrainLoading");
+		trainLoading.addActionListener(this);
+		planeLoading = new MyButton(1020, 690, 120, 20, TransferImage.getBUTTON_FEIJI_GUIDE());
+		planeLoading.setActionCommand("PlaneLoading");
+		planeLoading.addActionListener(this);
+		transferReceive = new MyButton(1150, 690, 120, 20, TransferImage.getBUTTON_ZHONGZHUAN_GUIDE());
+		transferReceive.setActionCommand("TransferReceiveManage");
+		transferReceive.addActionListener(this);
+		this.add(carLoading);
+		this.add(trainLoading);
+		this.add(planeLoading);
+		this.add(transferReceive);
+		this.setNavigation(false);
+		
 		this.setBackground(CommonImage.BACKGROUND);
 		
 		this.repaint();
@@ -64,28 +88,52 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
+				this.setNavigation(false);
 			}
 		}else if(e.getActionCommand().equals("CarLoading")){
 			//进入汽车装运管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new CarLoading(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("TrainLoading")){
 			//进入火车装运管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new TrainLoading(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("PlaneLoading")){
 			//进入飞机装运管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new PlaneLoading(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("TransferReceiveManage")){
 			//进入中转接收管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new TransferReceiveManage(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("jumpToCommodityForCar")){
 			//进入汽车装运管理货物输入界面
 			if(this.jumpToCommodityForCar()){
@@ -265,5 +313,14 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		}
 		
 		return true;
+	}
+	
+	// 设置导航栏是否隐藏
+	private void setNavigation(boolean isVisible) {
+		carLoading.setVisible(isVisible);
+		trainLoading.setVisible(isVisible);
+		planeLoading.setVisible(isVisible);
+		transferReceive.setVisible(isVisible);
+		subscript.setVisible(isVisible);
 	}
 }

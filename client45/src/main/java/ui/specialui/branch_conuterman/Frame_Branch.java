@@ -3,7 +3,10 @@ package ui.specialui.branch_conuterman;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import ui.image.BranchImage;
 import ui.image.CommonImage;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -21,12 +24,40 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 
 	private Panel_Branch_Total totalPanel;
 	private MyJPanel subPanel;
-	
+	// 导航栏
+	private MyButton vehicleloading;
+	private MyButton facilityInfoManage;
+	private MyButton driverInfoManage;
+	private MyButton receiveAndSend;
+	private MyButton debitNote;
+		
 	public Frame_Branch(String userID) {
 		super(userID);
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
+		
+		vehicleloading = new MyButton(650, 690, 120, 20, BranchImage.getBUTTON_ZHUANGCHE_GUIDE());
+		vehicleloading.setActionCommand("Vehicleloading");
+		vehicleloading.addActionListener(this);
+		facilityInfoManage = new MyButton(780, 690, 120, 20, BranchImage.getBUTTON_CHELIANG_GUIDE());
+		facilityInfoManage.setActionCommand("FacilityInfoManage");
+		facilityInfoManage.addActionListener(this);
+		driverInfoManage = new MyButton(910, 690, 120, 20, BranchImage.getBUTTON_SIJI_GUIDE());
+		driverInfoManage.setActionCommand("DriverInfoManage");
+		driverInfoManage.addActionListener(this);
+		receiveAndSend = new MyButton(1040, 690, 120, 20, BranchImage.getBUTTON_JIESHOUPAIJIAN_GUIDE());
+		receiveAndSend.setActionCommand("ReceiveAndSendCommodity");
+		receiveAndSend.addActionListener(this);
+		debitNote = new MyButton(1170, 690, 100, 20, BranchImage.getBUTTON_SHOUKUANDAN_GUIDE());
+		debitNote.setActionCommand("DebitNoteBuild");
+		debitNote.addActionListener(this);
+		this.add(vehicleloading);
+		this.add(facilityInfoManage);
+		this.add(driverInfoManage);
+		this.add(receiveAndSend);
+		this.add(debitNote);
+		this.setNavigation(false);
 		
 		this.setBackground(CommonImage.BACKGROUND);
 		
@@ -42,32 +73,63 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
+				this.setNavigation(false);
 			}
 		}else if(e.getActionCommand().equals("Vehicleloading")){
 			//进入车辆装车管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new VehicleLoading(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("FacilityInfoManage")){
 			//进入车辆信息管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new FacilityInfoManage(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("DriverInfoManage")){
 			//进入司机信息管理界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new DriverInfoManage(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ReceiveAndSendCommodity")){
 			//进入接收派件货物界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new ArrivalCommodityInfoCheck(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("DebitNoteBuild")){
 			//进入收款单建立界面
 			totalPanel.setVisible(false);
+			if(subPanel != null){
+				subPanel.setVisible(false);
+				this.remove(subPanel);
+				subPanel = null;
+			}
 			subPanel = new DebitNoteBuild(this);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("produceLoadingList")){
 			//从车辆装车管理界面进入装车单界面
 			LoadingListVO loadingList = ((VehicleLoading) subPanel).produceLoadingList();
@@ -254,5 +316,15 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		case 2: new MyNotification(this, "请输入银行卡号", Color.RED); break;
 		}	
 		return false;
+	}
+	
+	// 设置导航栏是否隐藏
+	private void setNavigation(boolean isVisible) {
+		vehicleloading.setVisible(isVisible);
+		facilityInfoManage.setVisible(isVisible);
+		driverInfoManage.setVisible(isVisible);
+		receiveAndSend.setVisible(isVisible);
+		debitNote.setVisible(isVisible);
+		subscript.setVisible(isVisible);
 	}
 }

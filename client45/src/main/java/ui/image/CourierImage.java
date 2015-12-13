@@ -111,7 +111,7 @@ public class CourierImage {
 
 	public static ImageIcon[] getBUTTON_BAOJIASHIJIAN_GUIDE() {
 		if (BUTTON_BAOJIASHIJIAN_GUIDE == null) {
-			BUTTON_BAOJIASHIJIAN_GUIDE = Images.createImageIcons("image/button/导航报价和时间管理.png");
+			BUTTON_BAOJIASHIJIAN_GUIDE = Images.createImageIcons("image/button/导航报价与时间管理.png");
 		}
 		return BUTTON_BAOJIASHIJIAN_GUIDE;
 	}
