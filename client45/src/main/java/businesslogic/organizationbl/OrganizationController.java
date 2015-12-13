@@ -43,6 +43,7 @@ public class OrganizationController implements OrganizationBLService {
 	public OrganizationController() throws MalformedURLException, RemoteException, NotBoundException {
 		branchBL = new Branch();
 		transferBL = new Transfer();
+		organization = new Organization();
 		branchCommandController = new CommandController<BranchPO>("branch");
 		transferCommandController = new CommandController<TransferPO>("transfer");
 		doubleStack = new OrganizationCommandDoubleStack("organization");
