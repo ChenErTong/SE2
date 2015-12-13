@@ -105,6 +105,7 @@ public class UserController implements UserBLService {
 	/**
 	 * @see UserBLService#updateAdmin(String, String)
 	 */
+	@SuppressWarnings("deprecation")
 	public ResultMessage updateAdmin(String oldPassword, String newPassword) throws RemoteException {
 		return userBL.updateAdmin(oldPassword, newPassword);
 	}

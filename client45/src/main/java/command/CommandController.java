@@ -23,12 +23,10 @@ public class CommandController<PO extends PersistentObject> {
 	
 	public void addCommand(Command<PO> command){
 		serDoer.add(command);
-		System.out.println(serDoer.size());
 		serRedoer.clear();
 	}
 	
 	public ResultMessage undoCommand() throws RemoteException{
-		System.out.println(serDoer.size());
 		Command<PO> redoCommand = serDoer.getLast();
 		serDoer.removeLast();
 		serRedoer.add(redoCommand);

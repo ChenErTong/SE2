@@ -50,8 +50,30 @@ public interface DriverBLService  extends BLService{
 	public DriverVO findDriver(String ID) throws RemoteException;
 	public ArrayList<DriverVO> findDriver () throws RemoteException;
 	public String getID(String branchID) throws RemoteException;
+	/**
+	 * 是否可以进行撤销操作
+	 * 
+	 * @return boolean型，返回true，表示可以进行撤销操作，此时撤销按钮应设为可以按下
+	 *         返回false，表示不可以进行撤销操作，此时撤销按钮应设为不可以按下
+	 */
 	public boolean canUndo();
+	/**
+	 * 是否可以进行回撤操作
+	 * 
+	 * @return boolean型，返回true，表示可以进行回撤操作，此时回撤按钮应设为可以按下
+	 *         返回false，表示不可以进行回撤操作，此时回撤按钮应设为不可以按下
+	 */
 	public boolean canRedo();
+	/**
+	 * 执行撤销操作
+	 * @return 操作结果
+	 * @throws RemoteException 远程异常
+	 */
 	public ResultMessage undo() throws RemoteException;
+	/**
+	 * 执行回撤操作
+	 * @return 操作结果
+	 * @throws RemoteException 远程异常
+	 */
 	public ResultMessage redo() throws RemoteException;
 }

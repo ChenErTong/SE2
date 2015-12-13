@@ -85,9 +85,9 @@ public class User implements CommonBusinessLogic<UserPO>{
 	 * @version Nov 29,2015
 	 */
 	public UserIdentity login(LoginInfo loginInfo) throws RemoteException {
-		/*if(loginInfo.username.equals("admin")&&loginInfo.password.equals("admin")){
+		if(loginInfo.username.equals("0")&&loginInfo.password.equals("admin")){
 			return UserIdentity.ADMIN;
-		}*/
+		}
 		ArrayList<UserPO> pos = userData.find();
 		for (UserPO po : pos) {
 			if (po.getUserName().equals(loginInfo.username)){
@@ -112,6 +112,7 @@ public class User implements CommonBusinessLogic<UserPO>{
 	 * @version Oct 22,2015
 	 * @author Ann
 	 * @version Nov 29,2015
+	 * @deprecated
 	 */
 	public ResultMessage updateAdmin(String oldPassword,String newPassword) throws RemoteException{
 		UserPO admin = userData.find("0000");

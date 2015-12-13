@@ -49,8 +49,8 @@ public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inv
 		ArrayList<AccountPO> accounts = transfer.getAccounts();
 		accounts.add(account);
 		transfer.setAccounts(accounts);
-		return transferData.add(transfer);
-	}
+		return transferData.modify(transfer)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
+	}		
 
 	/**
 	 * @see TransferInfo_Account#modifyAccount(AccountPO)
@@ -64,7 +64,7 @@ public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inv
 			}
 		}
 		transfer.setAccounts(accounts);
-		return transferData.add(transfer);
+		return transferData.modify(transfer)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inv
 			}
 		}
 		transfer.setAccounts(accounts);
-		return transferData.add(transfer);
+		return transferData.modify(transfer)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 }
