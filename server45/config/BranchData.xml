@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <root IDMaxBit="3" maxID="014"/>
+=======
+<root IDMaxBit="3" maxID="010"/>
+>>>>>>> origin/master2
