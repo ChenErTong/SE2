@@ -139,8 +139,8 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 	public String[] getData() {
 		String  data[] = new String[4] ;
 		data[0] = (String) branchList.getSelectedItem();
-		for(int i=0;i<3;i++){
-			data[i+1] = input[i].getText();
+		for(int i=1;i<4;i++){
+			data[i] = input[i].getText();
 			if(data[i]==null){
 				return null;
 			}

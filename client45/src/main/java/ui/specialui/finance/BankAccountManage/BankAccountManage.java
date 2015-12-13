@@ -201,9 +201,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
 						default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
 					}
-					if(bankAccountVO==null){
-						return ;
-					}
+
 					for(int i = 0; i < bankAccountVO.size(); i++){
 					String[] rowData = {bankAccountVO.get(i).ID, 
 							bankAccountVO.get(i).name, String.valueOf(bankAccountVO.get(i).money)+"元"};
