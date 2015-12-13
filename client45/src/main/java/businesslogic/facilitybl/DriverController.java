@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.facilityblservice.DriverBLService;
 import command.Command;
 import command.CommandAdd;
@@ -40,6 +41,7 @@ public class DriverController implements DriverBLService {
 	 * @see DriverBLService#addDriver(DriverVO)
 	 */
 	public ResultMessage addDriver(DriverVO driver) throws RemoteException {
+		LogController.getInstance().addLog("添加司机");
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
 		Command<DriverPO> addCommand=new CommandAdd<DriverPO>(Driver.BLNAME, po);
 		commandController.addCommand(addCommand);
@@ -50,6 +52,7 @@ public class DriverController implements DriverBLService {
 	 * @see DriverBLService#deleteDriver(DriverVO)
 	 */
 	public ResultMessage deleteDriver(DriverVO driver) throws RemoteException {
+		LogController.getInstance().addLog("删除司机");
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
 		Command<DriverPO> deleteCommand = new CommandDelete<DriverPO>(Driver.BLNAME, po);
 		commandController.addCommand(deleteCommand);
@@ -68,6 +71,7 @@ public class DriverController implements DriverBLService {
 	 * @see DriverBLService#modifyDriver(DriverVO)
 	 */
 	public ResultMessage modifyDriver(DriverVO driver) throws RemoteException {
+		LogController.getInstance().addLog("修改司机信息");
 		DriverPO po = FacilityTrans.convertVOtoPO(driver);
 		DriverPO res =  driverBL.modify(po);
 		if(res==null){

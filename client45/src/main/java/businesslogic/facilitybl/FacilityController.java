@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.facilityblservice.FacilityBLService;
 import command.Command;
 import command.CommandAdd;
@@ -68,6 +69,7 @@ public class FacilityController implements FacilityBLService {
 	 * @see FacilityBLService#modifyFacility(FacilityVO)
 	 */
 	public ResultMessage modifyFacility(FacilityVO facility) throws RemoteException {
+		LogController.getInstance().addLog("修改车辆信息");
 		FacilityPO facilityPO = FacilityTrans.convertVOtoPO(facility);
 		FacilityPO res =  facilityBL.modify(facilityPO);
 		if(res==null){
