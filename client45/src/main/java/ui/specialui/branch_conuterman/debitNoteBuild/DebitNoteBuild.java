@@ -167,8 +167,9 @@ public class DebitNoteBuild extends MyJPanel {
 		}
 		DebitBillVO debitBillVO;
 		try {
+			//TODO 加上bankAccountid
 			debitBillVO = new DebitBillVO(controller.getExpenseID(),
-					ReceiptType.DEBIT, courierID, money, orderID, date,bankAccountID);
+				ReceiptType.DEBIT, courierID, money, orderID, date," ");
 			controller.addDebitBill(debitBillVO);
 //			controller.save(debitBillVO);
 //			controller.submit(debitBillVO);
