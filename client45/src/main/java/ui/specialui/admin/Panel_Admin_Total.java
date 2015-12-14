@@ -194,6 +194,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else{
 				try {
 					userController = ControllerFactory.getUserController();
+					//这里传一个机构的编号（我在transferController里新加了一个获得所有中转中心的编号的方法
+					//和一个用户的身份
 					ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();

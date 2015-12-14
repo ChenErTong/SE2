@@ -115,6 +115,7 @@ public class InitDatas {
 			initAccountInTransfer(accountController);
 			for (int i = 0; i < 20; i++) {
 				String branchID = organizationController.getBranchID("北京市");
+				System.out.println(branchID);
 				organizationController
 						.addBranch(new BranchVO(branchID, "北京市北京市朝阳区新源南路" + (i + 17) + "号", OrganizationType.BRANCH));
 				initAccountInBranch(accountController, branchID);
@@ -122,7 +123,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(1);
 			}
-			/*for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 20; i++) {
 				String branchID = organizationController.getBranchID("上海市");
 				organizationController.addBranch(new BranchVO(branchID, "上海市上海市普陀区桃浦路" + ((i + 190) * 10 + i + 1) + "号",
 						OrganizationType.BRANCH));
@@ -148,7 +149,7 @@ public class InitDatas {
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(4);
-			}*/
+			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			e.printStackTrace();
 		}

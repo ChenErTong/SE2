@@ -198,6 +198,7 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	public String getBranchID(String city) throws RemoteException {
 		String cityCode = CityTrans.getCodeByCity(city);//3位
 		String ID = branchData.getID();//两位
+		System.out.println(city);
 		return cityCode+CityTrans.getTransferCode(city) + ID;
 	}
 

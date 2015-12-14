@@ -36,10 +36,16 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 	public String getUserID(String organizationID,UserIdentity userIden) throws RemoteException {
 		if(userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("1")||userIden.userIDMidFix.equals("2"))
 			organizationID="000000";
+		if ((maxID+"").equals(Util.max(IDMaxBit))) {
+			maxID = 0;	// 初始化最大ID(循环编号)
+			configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
+		}
 		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
 		String linShiID = organizationID+userIden.userIDMidFix+currentID;
 		while(containsID(poList.getInList(), linShiID)){
 			addID();
+			maxID%=100;
+			System.out.println(maxID);
 			currentID = Util.transIntToString(maxID + 1, IDMaxBit);
 			linShiID = organizationID+userIden.userIDMidFix+currentID;
 		}
