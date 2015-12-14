@@ -209,7 +209,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
 			this.remove(userDetails);
-			this.remove(commonButton);
+			if(commonButton!=null){
+				this.remove(commonButton);
+			}
 			userDetails = new UserDetails();
 			userDetails.add(new MyJLabel(230,5,120,30,"修改用户信息",18,true));
 			this.repaint();
@@ -239,9 +241,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("ViewUserInfo")){
 			this.remove(userDetails);
-			this.remove(commonButton);
-			this.remove(modifyButton);
-			
+			if(commonButton!=null){
+				this.remove(commonButton);
+			}
+			if(modifyButton!=null){
+				this.remove(modifyButton);
+			}
+	
 			userDetails = new UserDetails();
 			userDetails.add(new MyJLabel(230,5,120,30,"查看用户信息",18,true));
 			this.add(userDetails);
