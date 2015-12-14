@@ -163,7 +163,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1227-35,632,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
@@ -223,7 +223,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 	
@@ -381,6 +381,20 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				this.initTable();
 	
 			}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				OrganizationBLService controller = ControllerFactory.getOrganizationController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"撤销操作失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 		}
 
 	}
@@ -424,7 +438,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 
@@ -462,7 +476,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 		
 	}
@@ -565,7 +579,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 
 	}

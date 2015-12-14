@@ -15,6 +15,7 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.fundblservice.BankAccountBLService;
 import state.FindTypeAccount;
 import state.ResultMessage;
+import ui.image.CommonImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
@@ -40,6 +41,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 	private MyButton modifyButton;
 	private MyButton add;
 	private MyButton modify;
+	private MyButton backout;
 	private MyJTable table;
 	
 	/**
@@ -90,6 +92,11 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 		modify.setActionCommand("ConfirmModify");
 		modify.addActionListener(this);
 		this.add(modify);
+		
+		backout = new MyButton(1223-35,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout.setActionCommand("backout");
+		backout.addActionListener(this);
+		this.add(backout);
 		
 		this.leadline(frame_Finance);
 
@@ -214,7 +221,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}	
 				}else {
 					new MyNotification(this,"请输入查询关键字！",Color.RED);
@@ -265,7 +272,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}else if(e.getActionCommand().equals("DeleteBankAccount")){
@@ -275,6 +282,20 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"正在删除账户！",Color.GREEN);
 				this.deleteAccount();
+			}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				BankAccountBLService controller = ControllerFactory.getBankAccountController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"操作撤销成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"操作撤销失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
 			}
 		}
 

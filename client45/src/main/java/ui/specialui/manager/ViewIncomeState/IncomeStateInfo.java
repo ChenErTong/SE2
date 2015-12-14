@@ -274,7 +274,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}
 				}
 			}
@@ -290,7 +290,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 					recordController.exportBussinessConditionToExcel(vo);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}

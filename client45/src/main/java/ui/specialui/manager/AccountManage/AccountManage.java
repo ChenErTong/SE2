@@ -92,7 +92,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1223-39,610,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
@@ -183,7 +183,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 				}
 			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e.printStackTrace();
+				return;
 			}
 		}
 	
@@ -270,7 +270,6 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table = userInfo.getTable();
-		//	accountID = accountPool.get(table.getSelectedRow()).ID;
 			if(modifyAccount.getData()==null){
 				new MyNotification(this,"请检查员工信息填写是否完整！",Color.RED);
 			}else{
@@ -295,6 +294,21 @@ public class AccountManage extends MyJPanel implements ActionListener{
 				new MyNotification(this,"正在删除员工！",Color.GREEN);
 				this.deleteAccount();
 			}
+		}else if(e.getActionCommand().equals("backout")){
+			try {
+				AccountController controller = ControllerFactory.getAccountController();
+				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"撤销操作失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			
+			}
 		}
 		
 	}
@@ -315,7 +329,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 		
 	}
@@ -336,7 +350,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 	

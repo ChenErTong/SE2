@@ -128,6 +128,22 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					try {
 						LogController logController = ControllerFactory.getLogController();
 						ArrayList<LogMessage> logs = logController.showInDate(date);
+						table = log.getTable();
+						DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+						
+						int rowCount = table.getRowCount();
+						
+						for(int i = 0; i < rowCount; i++){
+							tableModel.removeRow(0);
+						}
+						
+						messagePool.clear();
+
+						for(int i=0;i<logs.size();i++){
+							String [] rowData = {logs.get(i).userName,logs.get(i).time,logs.get(i).message};
+							tableModel.addRow(rowData);
+							messagePool.add(logs.get(i));
+						}
 						logText.setText("");
 						for(int i=0;i<logs.size();i++){
 							logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
@@ -136,7 +152,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					} catch (MalformedURLException | RemoteException
 							| NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}
 				
 				}
@@ -167,7 +183,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 				} catch (MalformedURLException | RemoteException
 						| NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 				
  			}
