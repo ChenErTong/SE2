@@ -57,7 +57,7 @@ public class InventoryInfo
 	 * @see InventoryInfo_Transfer#getTransferInitialInventory(String)
 	 */
 	public InventoryVO getTransferInitialInventory(String transferID) throws RemoteException {
-		InventoryVO vo = new InventoryVO(inventoryData.getID(), 4, 100, 100, 100, transferID);
+		InventoryVO vo = new InventoryVO(inventoryData.getID(), 4, 10, 10, 10, transferID);
 		return vo;
 	}
 	

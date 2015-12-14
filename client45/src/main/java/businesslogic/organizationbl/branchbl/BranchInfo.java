@@ -46,7 +46,7 @@ public class BranchInfo
 		ArrayList<FacilityPO> cars = branch.getFacilities();
 		cars.add(car);
 		branch.setFacilities(cars);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class BranchInfo
 			}
 		}
 		branch.setFacilities(cars);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class BranchInfo
 			}
 		}
 		branch.setFacilities(cars);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class BranchInfo
 		ArrayList<AccountPO> accounts = branch.getAccounts();
 		accounts.add(account);
 		branch.setAccounts(accounts);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class BranchInfo
 			}
 		}
 		branch.setAccounts(accounts);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 
 	/**
@@ -117,6 +117,6 @@ public class BranchInfo
 			}
 		}
 		branch.setAccounts(accounts);
-		return branchData.add(branch);
+		return branchData.modify(branch)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
 }

@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.transferblservice.TransferBLService;
 import state.CommodityState;
 import state.ConfirmState;
@@ -42,6 +43,7 @@ public class TransferController implements TransferBLService {
 	 */
 	public TransferOrderVO planeTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
+		LogController.getInstance().addLog("生成中转中心飞机转运单");
 		return TransferBL.planeTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
@@ -51,6 +53,7 @@ public class TransferController implements TransferBLService {
 	 */
 	public TransferOrderVO truckTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
+		LogController.getInstance().addLog("生成中转中心汽车转运单");
 		return TransferBL.truckTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
@@ -60,6 +63,7 @@ public class TransferController implements TransferBLService {
 	 */
 	public TransferOrderVO trainTransfer(String transfer, String facilityID, String departure, String destination,
 			String courierName, ArrayList<String> orders, String date, String id) throws RemoteException {
+		LogController.getInstance().addLog("生成中转中心火车转运单");
 		return TransferBL.trainTransfer(transfer, facilityID, departure, destination, courierName, orders, date, id);
 	}
 
@@ -83,6 +87,7 @@ public class TransferController implements TransferBLService {
 	 */
 	public TransferArrivalListVO receiptList(String transferID, String departure, String destination,
 			CommodityState state, String orders) throws RemoteException {
+		LogController.getInstance().addLog("生成中转中心到达单");
 		return TransferBL.receiptList(transferID, departure, destination, state, orders);
 	}
 }

@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
 import state.ResultMessage;
 import vo.OpeningStockVO;
@@ -41,6 +42,7 @@ public class OpeningStockController implements OpeningStockBLService {
 	 * @see OpeningStockBLService#add()
 	 */
 	public ResultMessage add() throws RemoteException {
+		LogController.getInstance().addLog("添加期初账目");
 		ResultMessage resultMessage = OpeningStockBL.add();
 		return resultMessage;
 	}

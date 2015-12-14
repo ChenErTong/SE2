@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import businesslogic.CommonBusinessLogic;
 import businesslogic.organizationbl.branchbl.BranchInfo;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import config.RMIConfig;
 import dataservice.accountdataservice.AccountDataService;
 import po.accountpo.AccountPO;
@@ -35,6 +36,7 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
 		accountData = getData();
 		branchInfo = new BranchInfo();
+		transferInfo = new TransferInfo();
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {

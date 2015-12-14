@@ -55,7 +55,7 @@ public class UserDetails extends MyTranslucentPanel{
 			OrganizationController controller = ControllerFactory.getOrganizationController();
 			ArrayList<String> branchIDs = new ArrayList<String>();
 			branchIDs = controller.getAllBranchNumbers();
-			String[] trans = new String[100];
+			String[] trans = new String[2000];
 			for(int i=0;i<branchIDs.size();i++){
 				trans[i] = branchIDs.get(i);
 			}

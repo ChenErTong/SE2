@@ -14,6 +14,4 @@ public class BussinessOneDayVO {
 		this.DebitBills = debitBills;
 		this.earnings = earnings;
 	}
-	
-	
 }
