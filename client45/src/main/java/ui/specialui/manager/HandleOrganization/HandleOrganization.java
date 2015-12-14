@@ -208,7 +208,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			ArrayList<BranchVO> branchVO = controller.showBranch();
 			for(int i=0;i<transferVO.size();i++){
 				Object [] rowData1 = {transferVO.get(i).organizationID,transferVO.get(i).organizationType,
-						transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
+						transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts.get(i).toString(),transferVO.get(i).address};
 				tableModel.addRow(rowData1);
 				organizationPool.add(transferVO.get(i));
 				transferPool.add(transferVO.get(i));
@@ -216,7 +216,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 			for(int i=0;i<branchVO.size();i++){
 				Object[] rowData2 = {branchVO.get(i).organizationID,branchVO.get(i).organizationType,branchVO.get(i).date
-						,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
+						,branchVO.get(i).facilities.get(i).toString(),branchVO.get(i).accounts.get(i).toString(),branchVO.get(i).address};
 				tableModel.addRow(rowData2);
 				organizationPool.add(branchVO.get(i));
 				branchPool.add(branchVO.get(i));

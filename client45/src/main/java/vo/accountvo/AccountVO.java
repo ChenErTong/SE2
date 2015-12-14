@@ -40,4 +40,12 @@ public class AccountVO extends ValueObject{
 		this.branchID = branchID;
 		ordersID = new ArrayList<String>();	
 	}
+	@Override
+	public String toString(){
+		return this.Name+"|"+this.Duty+"|"+this.Salary+"|"+this.WorkTime;
+		
+		
+		
+		
+	}
 }
