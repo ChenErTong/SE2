@@ -69,18 +69,27 @@ public class CommonImage extends Images{
 	 */
 	private static Image COMBOBOX_TEXT = null;
 	/**
-	 * 撤销操作
-	 * @return
+	 * undo
 	 */
 	private static ImageIcon[] BUTTON_BACKOUT = null;
 	/**
 	 * 下标
 	 */
 	private static ImageIcon SUBSCRIPT = null;
+	/**
+	 * redo
+	 */
+	private static ImageIcon[] BUTTON_REDO= null;
 	
+	public static ImageIcon[] getBUTTON_REDO(){
+		if(BUTTON_REDO == null){
+			BUTTON_REDO = createImageIcons("image/button/redo.png");
+		}
+		return BUTTON_REDO;
+	}
 	public static ImageIcon[] getBUTTON_BACKOUT(){
 		if(BUTTON_BACKOUT == null){
-			BUTTON_BACKOUT = createImageIcons("image/button/注销登录.png");
+			BUTTON_BACKOUT = createImageIcons("image/button/undo.png");
 		}
 		return BUTTON_BACKOUT;
 	}

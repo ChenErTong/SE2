@@ -44,6 +44,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 	private MyButton modifyButton;
 	private MyJTable table;
 	private MyButton backout;
+	private MyButton redo;
 
 	static ArrayList<BaseVO> basePool;
 	static String baseID = " ";
@@ -85,10 +86,16 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		backout = new MyButton(1223,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1223-40,610,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
+		
+		redo = new MyButton(1223,610,35,35,CommonImage.getBUTTON_REDO());
+		redo.setActionCommand("redo");
+		redo.addActionListener(this);
+		this.add(redo);
+		
 		
 		this.showAll();
 	}
@@ -282,6 +289,20 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 			try {
 				BaseBLService controller = ControllerFactory.getBaseController();
 				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"操作撤销成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"操作撤销失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
+		}else if(e.getActionCommand().equals("redo")){
+			try {
+				BaseBLService controller = ControllerFactory.getBaseController();
+				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"操作撤销成功！",Color.GREEN);
 				}else{

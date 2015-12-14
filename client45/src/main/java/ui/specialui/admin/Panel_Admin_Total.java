@@ -43,6 +43,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private MyJTable table;
 	private MyButton withdraw;
 	private MyButton backout;
+	private MyButton redo;
 	
 	/**
 	 * 静态变量，作为UserVO的存储池，在构造函数中初始化
@@ -133,10 +134,15 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		withdraw.addActionListener(frame);
 		this.add(withdraw);
 		
-		backout = new MyButton(1190,665,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1190-40,665,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
+		
+		redo = new MyButton(1190,665,35,35,CommonImage.getBUTTON_REDO());
+		redo.setActionCommand("redo");
+		redo.addActionListener(this);
+		this.add(redo);
 	}
 	
 	/**
@@ -198,13 +204,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					}
 				} catch (MalformedURLException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				} catch (RemoteException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				} catch (NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyUserInfo")){
@@ -312,13 +318,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}
 			}catch (MalformedURLException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
+				return;
 			} catch (RemoteException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
+				return;
 			} catch (NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
+				return;
 			}
 		}else if(e.getActionCommand().equals("backout")){
 			try {
@@ -328,6 +334,20 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"操作撤销成功！",Color.GREEN);
 				}else{
 					new MyNotification(this,"操作撤销失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
+		}else if(e.getActionCommand().equals("redo")){
+			try {
+				UserController controller = ControllerFactory.getUserController();
+				ResultMessage rsg = controller.redo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"操作恢复成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"操作恢复失败！",Color.RED);
 				}
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {

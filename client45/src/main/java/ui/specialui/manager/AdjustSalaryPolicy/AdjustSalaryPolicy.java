@@ -45,6 +45,7 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 	private MyButton deleteButton;
 	private MyButton modifyButton;
 	private MyButton backout;
+	private MyButton redo;
 	private MyJTable table;
 
 	static ArrayList<PolicyVO> policyPool;
@@ -88,10 +89,16 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 		modify.addActionListener(this);
 		this.add(modify);
 		
-		backout = new MyButton(1223-39,610,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1223-39-40,610,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
+		
+		redo = new MyButton(1223-39,610,35,35,CommonImage.getBUTTON_REDO());
+		redo.setActionCommand("redo");
+		redo.addActionListener(this);
+		this.add(redo);
+		
 		
 		this.showAll();
 	}
@@ -263,6 +270,20 @@ public void leadline(FrameManager frameManager){
 			try {
 				PolicyBLService controller  = ControllerFactory.getPolicyController();
 				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"撤销操作失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
+		}else if(e.getActionCommand().equals("redo")){
+			try {
+				PolicyBLService controller  = ControllerFactory.getPolicyController();
+				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
 				}else{

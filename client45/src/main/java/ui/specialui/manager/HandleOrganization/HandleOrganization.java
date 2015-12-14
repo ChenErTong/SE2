@@ -46,6 +46,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	private MyButton commonButton ;
 	private MyButton modifyButton ;
 	private MyButton backout;
+	private MyButton redo;
 
 	private SearchOrganizationInfo organizationInfo;
 	private OrganizationDetails organizationDetails;
@@ -163,10 +164,16 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		backout = new MyButton(1227-35,632,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1227-35-40,632,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);
+		
+		redo = new MyButton(1223-35,610,35,35,CommonImage.getBUTTON_REDO());
+		redo.setActionCommand("redo");
+		redo.addActionListener(this);
+		this.add(redo);
+		
 	}
 	
 	private void insertPanel(FrameManager frame) {
@@ -390,6 +397,20 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			try {
 				OrganizationBLService controller = ControllerFactory.getOrganizationController();
 				ResultMessage rsg = controller.undo();
+				if(rsg.equals(ResultMessage.SUCCESS)){
+					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+				}else{
+					new MyNotification(this,"撤销操作失败！",Color.RED);
+				}
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
+		}else if(e.getActionCommand().equals("redo")){
+			try {
+				OrganizationBLService controller = ControllerFactory.getOrganizationController();
+				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
 				}else{
