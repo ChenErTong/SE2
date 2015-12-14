@@ -132,4 +132,10 @@ public interface TransferBLService extends BLService {
 	public TransferArrivalListVO receiptList(String transferID,
 			String departure, String destination, CommodityState state,
 			String orders) throws RemoteException;
+	/**
+	 * 获得所有的中转中心编号
+	 * @return 所有的中转中心编号，添加user的时候调用
+	 * @throws RemoteException 远程异常
+	 */
+	public ArrayList<String> getAllTransferNumbers() throws RemoteException;
 }

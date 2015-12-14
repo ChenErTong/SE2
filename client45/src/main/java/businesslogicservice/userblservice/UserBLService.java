@@ -26,7 +26,7 @@ public interface UserBLService extends BLService {
 
 	/**
 	 * 界面进行新建用户操作是得到一个可用的ID
-	 * 
+	 * organizationID是机构的编号,可能是transfer的，也可能是branch的
 	 * @return
 	 * @author zsq
 	 * @version Oct 22,2015

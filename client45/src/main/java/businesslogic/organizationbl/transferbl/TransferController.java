@@ -90,4 +90,9 @@ public class TransferController implements TransferBLService {
 		LogController.getInstance().addLog("生成中转中心到达单");
 		return TransferBL.receiptList(transferID, departure, destination, state, orders);
 	}
+
+	@Override
+	public ArrayList<String> getAllTransferNumbers() throws RemoteException {
+		return TransferBL.getAllTransferNumbers();
+	}
 }

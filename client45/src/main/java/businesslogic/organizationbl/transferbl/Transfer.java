@@ -258,7 +258,7 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		return TransferTrans.convertPOstoVOs(pos);
 	}
 	
-	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+	public ArrayList<String> getAllTransferNumbers() throws RemoteException {
 		ArrayList<TransferPO> pos = transferData.find();
 		ArrayList<String> transferNumbers = new ArrayList<>();
 		for (TransferPO transferPO : pos) {
