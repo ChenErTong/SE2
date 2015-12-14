@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.accountblservice.AccountBLService;
 import command.Command;
 import command.CommandAdd;
@@ -54,6 +55,7 @@ public class AccountController implements AccountBLService {
 	 * @see AccountBLService#addAccount(AccountVO)
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加公司职员");
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(Account.BLNAME, po);
 		commandController.addCommand(addCommand);
@@ -64,6 +66,7 @@ public class AccountController implements AccountBLService {
 	 * @see AccountBLService#deleteAccount(String)
 	 */
 	public ResultMessage deleteAccount(String ID) throws RemoteException {
+		LogController.getInstance().addLog("删除公司职员");
 		AccountPO account = AccountBL.delete(ID);
 		if (account == null) {
 			return ResultMessage.FAIL;
@@ -82,6 +85,7 @@ public class AccountController implements AccountBLService {
 	 * @see AccountBLService#updateAccount(AccountVO)
 	 */
 	public ResultMessage updateAccount(AccountVO vo) throws RemoteException {
+		LogController.getInstance().addLog("修改公司职员信息");
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		AccountPO res =  AccountBL.modify(po);
 		if(res==null){

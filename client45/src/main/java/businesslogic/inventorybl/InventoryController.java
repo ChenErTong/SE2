@@ -55,7 +55,7 @@ public class InventoryController implements InventoryBLService {
 	 */
 	public InventoryImportReceiptVO addCommodities(String transferID, CommodityVO commodity, int area, int row,
 			int frame, int position) throws RemoteException {
-		LogController.getInstance().addLog("入库");
+		LogController.getInstance().addLog("申请入库");
 		return InventoryBL.addCommodities(transferID, commodity, area, row, frame, position);
 	}
 
@@ -64,7 +64,7 @@ public class InventoryController implements InventoryBLService {
 	 */
 	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
 			throws RemoteException {
-		LogController.getInstance().addLog("出库");
+		LogController.getInstance().addLog("申请出库");
 		return InventoryBL.minusCommodities(transferID, area, row, frame, position);
 	}
 

@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.logbl.LogController;
 import businesslogicservice.baseblservice.PolicyBLService;
 import command.Command;
 import command.CommandAdd;
@@ -41,6 +42,7 @@ public class PolicyController implements PolicyBLService {
 	 * @see PolicyBLService#addPolicy(PolicyVO)
 	 */
 	public ResultMessage addPolicy(PolicyVO vo) throws RemoteException {
+		LogController.getInstance().addLog("添加员工薪水策略");
 		PolicyPO po = BaseTrans.convertVOtoPO(vo);
 		Command<PolicyPO> addCommand=new CommandAdd<PolicyPO>(Policy.BLNAME, po);
 		commandController.addCommand(addCommand);
@@ -51,6 +53,7 @@ public class PolicyController implements PolicyBLService {
 	 * @see PolicyBLService#deletePolicy(String)
 	 */
 	public ResultMessage deletePolicy(String ID) throws RemoteException {
+		LogController.getInstance().addLog("删除员工薪水策略");
 		PolicyPO po = policyBL.delete(ID);
 		if (po == null) {
 			return ResultMessage.FAIL;
@@ -64,6 +67,7 @@ public class PolicyController implements PolicyBLService {
 	 * @see PolicyBLService#updatePolicy(PolicyVO)
 	 */
 	public ResultMessage updatePolicy(PolicyVO vo) throws RemoteException {
+		LogController.getInstance().addLog("修改员工薪水策略");
 		PolicyPO po = BaseTrans.convertVOtoPO(vo);
 		PolicyPO res =  policyBL.modify(po);
 		if(res==null){
