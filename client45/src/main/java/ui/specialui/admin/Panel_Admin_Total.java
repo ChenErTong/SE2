@@ -15,7 +15,6 @@ import businesslogic.userbl.UserController;
 import state.ResultMessage;
 import state.UserAuthority;
 import state.UserIdentity;
-
 import ui.image.AdminImage;
 import ui.image.CommonImage;
 import ui.myui.MyButton;
@@ -196,7 +195,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					userController = ControllerFactory.getUserController();
 					//这里传一个机构的编号（我在transferController里新加了一个获得所有中转中心的编号的方法
 					//和一个用户的身份
-					ResultMessage rsg = userController.addUser((new UserVO(userController.getID(),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
+					ResultMessage rsg = userController.addUser((new UserVO(userController.getID(data[0],this.decideIden(data[4])),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();
 						userDetails.refresh();
@@ -494,6 +493,26 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}
 		return true;
 	}
+	
+	/**
+	 * 添加员工 {"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
+	 */
+	
+	private UserIdentity decideIden(String data){
+		switch (data){
+		case "快递员":return UserIdentity.COURIER;
+		case "财务人员":return UserIdentity.FINANCE_MANAGER;
+		case "中转业务员":return UserIdentity.TRANSFER_CONTERMAN;
+		case "库存管理员":return UserIdentity.INVENTORY_MANAGER;
+		case "营业厅业务员":return UserIdentity.BRANCH_COUNTERMAN;
+		case "管理员":return UserIdentity.ADMIN;
+		case "总经理":return UserIdentity.GENERAL_MANAGER;
+		default:
+			break;
+		}
+		return null;
+	}
+	
 }
 
 	
