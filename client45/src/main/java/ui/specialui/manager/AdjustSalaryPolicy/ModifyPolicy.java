@@ -58,8 +58,17 @@ public class ModifyPolicy extends MyTranslucentPanel{
 		data[0] = employeeType.getSelectedIndex()+"";
 		data[1] = policyType.getSelectedIndex()+"";
 		data[2] = policyRule.getText();
+		for(int i=0;i<2;i++){
+			if(data[i]==" "){
+				return null;
+			}
+		}
+		if(data[2]==""){
+			return null;
+		}else{
+			return data;
+		}
 		
-		return data;
 	}
 	private static final long serialVersionUID = 1L;
 
