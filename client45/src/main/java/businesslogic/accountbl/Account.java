@@ -113,7 +113,7 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	 *             远程异常
 	 */
 	private ResultMessage deleteAccountInOrganization(String organizationID, String accountID) throws RemoteException {
-		if (organizationID.length() == 4) {
+		if (organizationID.endsWith("00")) {
 			// The organization is transfer,use transferInfo to delete this
 			// account
 			return transferInfo.deleteAccount(organizationID, accountID);
@@ -142,7 +142,7 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	 */
 	private ResultMessage addAccountInOrganization(AccountPO account) throws RemoteException {
 		String organizationID = account.getOrganizationID();
-		if (organizationID.length() == 4) {
+		if (organizationID.endsWith("00")) {
 			// The organization is transfer,use transferInfo to add this account
 			return transferInfo.addAccount(account);
 		} else if (organizationID.length() == 6) {
@@ -170,7 +170,7 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	 */
 	private ResultMessage modifyAccountInOrganization(AccountPO account) throws RemoteException {
 		String organizationID = account.getOrganizationID();
-		if (organizationID.length() == 4) {
+		if (organizationID.endsWith("00")) {
 			// The organization is transfer,use transferInfo to modify this
 			// account
 			return transferInfo.modifyAccount(account);

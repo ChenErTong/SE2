@@ -32,4 +32,13 @@ public class CityTrans {
 		String cityCode=map.get(city);
 		return cityCode;
 	}
+	public static String getTransferCode(String city){
+		switch(city){
+		case "北京市": return "1";
+		case "上海市": return "2";
+		case "广州市": return "3";
+		case "南京市": return "4";
+		}
+		return "0";
+	}
 }

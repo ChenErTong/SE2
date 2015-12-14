@@ -34,7 +34,7 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 
 	@Override
 	public String getUserID(String organizationID,UserIdentity userIden) throws RemoteException {
-		if(userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("0"))
+		if(userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("1")||userIden.userIDMidFix.equals("2"))
 			organizationID="000000";
 		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
 		String linShiID = organizationID+userIden.userIDMidFix+currentID;

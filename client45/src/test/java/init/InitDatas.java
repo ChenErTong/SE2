@@ -27,9 +27,9 @@ import vo.accountvo.DriverVO;
 
 public class InitDatas {
 	public static void main(String[] args) {
-		// initUser();
-		// initOrganization();
-		// initBase();
+		 initUser();
+		 initOrganization();
+		 initBase();
 	}
 
 	private static void initBase() {
@@ -69,19 +69,19 @@ public class InitDatas {
 		try {
 			UserController userController = ControllerFactory.getUserController();
 			String ID = userController.getID("000", UserIdentity.ADMIN);
-			userController.addUser(new UserVO(ID, ID, "管理员", "", UserIdentity.ADMIN, UserAuthority.HIGHESTLEVEL, ""));
+			userController.addUser(new UserVO(ID, ID, "管理员", "123456", UserIdentity.ADMIN, UserAuthority.HIGHESTLEVEL, "123456"));
 			ID = userController.getID("000", UserIdentity.GENERAL_MANAGER);
 			userController.addUser(
-					new UserVO(ID, ID, "总经理1", "", UserIdentity.GENERAL_MANAGER, UserAuthority.MANAGER_LEVEL, ""));
+					new UserVO(ID, ID, "总经理1", "123456", UserIdentity.GENERAL_MANAGER, UserAuthority.MANAGER_LEVEL, "123456"));
 			ID = userController.getID("000", UserIdentity.GENERAL_MANAGER);
 			userController.addUser(
-					new UserVO(ID, ID, "总经理2", "", UserIdentity.GENERAL_MANAGER, UserAuthority.MANAGER_LEVEL, ""));
+					new UserVO(ID, ID, "总经理2", "123456", UserIdentity.GENERAL_MANAGER, UserAuthority.MANAGER_LEVEL, "123456"));
 			ID = userController.getID("000", UserIdentity.FINANCE_MANAGER);
 			userController.addUser(
-					new UserVO(ID, ID, "财务人员l", "", UserIdentity.FINANCE_MANAGER, UserAuthority.COMMONLEVEL, ""));
+					new UserVO(ID, ID, "财务人员l", "123456", UserIdentity.FINANCE_MANAGER, UserAuthority.COMMONLEVEL, "123456"));
 			ID = userController.getID("000", UserIdentity.FINANCE_MANAGER);
 			userController.addUser(
-					new UserVO(ID, ID, "财务人员h", "", UserIdentity.FINANCE_MANAGER, UserAuthority.ADVANCE_FINANCE, ""));
+					new UserVO(ID, ID, "财务人员h", "123456", UserIdentity.FINANCE_MANAGER, UserAuthority.ADVANCE_FINANCE, "123456"));
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			e.printStackTrace();
@@ -97,15 +97,19 @@ public class InitDatas {
 			UserController userController = ControllerFactory.getUserController();
 			String transferID;
 			transferID = organizationController.getTransferID("北京市");
+			System.out.println(transferID);
 			organizationController.addTransfer(new TransferVO(transferID, "北京市北京市朝阳区霄云路", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			transferID = organizationController.getTransferID("上海市");
+			System.out.println(transferID);
 			organizationController.addTransfer(new TransferVO(transferID, "上海市上海市浦东新区德堡路", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			transferID = organizationController.getTransferID("广州市");
+			System.out.println(transferID);
 			organizationController.addTransfer(new TransferVO(transferID, "广东省广州市越秀区连新路", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			transferID = organizationController.getTransferID("南京市");
+			System.out.println(transferID);
 			organizationController.addTransfer(new TransferVO(transferID, "江苏省南京市雨花台区软件大道", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			initAccountInTransfer(accountController);
@@ -118,7 +122,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(1);
 			}
-			for (int i = 0; i < 20; i++) {
+			/*for (int i = 0; i < 20; i++) {
 				String branchID = organizationController.getBranchID("上海市");
 				organizationController.addBranch(new BranchVO(branchID, "上海市上海市普陀区桃浦路" + ((i + 190) * 10 + i + 1) + "号",
 						OrganizationType.BRANCH));
@@ -144,7 +148,7 @@ public class InitDatas {
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(4);
-			}
+			}*/
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			e.printStackTrace();
 		}
@@ -154,13 +158,13 @@ public class InitDatas {
 		String ID;
 		for (int j = 0; j < 5; j++) {
 			ID = userController.getID(branchID,UserIdentity.BRANCH_COUNTERMAN);
-			userController.addUser(new UserVO(ID, ID, "营业厅业务员" + ID, "", UserIdentity.BRANCH_COUNTERMAN,
-					UserAuthority.COMMONLEVEL, ""));
+			userController.addUser(new UserVO(ID, ID, "营业厅业务员" + ID, "123456", UserIdentity.BRANCH_COUNTERMAN,
+					UserAuthority.COMMONLEVEL, "123456"));
 		}
 		for (int j = 0; j < 50; j++) {
 			ID = userController.getID(branchID,UserIdentity.COURIER);
 			userController.addUser(
-					new UserVO(ID, ID, "快递员" + ID, "", UserIdentity.COURIER, UserAuthority.COMMONLEVEL, ""));
+					new UserVO(ID, ID, "快递员" + ID, "123456", UserIdentity.COURIER, UserAuthority.COMMONLEVEL, "123456"));
 		}
 	}
 
@@ -168,11 +172,11 @@ public class InitDatas {
 		String ID;
 		for (int i = 0; i < 2; i++) {
 			ID = userController.getID(transferID, UserIdentity.INVENTORY_MANAGER);
-			userController.addUser(new UserVO(ID, ID, "仓库管理" + ID, "", UserIdentity.INVENTORY_MANAGER,UserAuthority.COMMONLEVEL, ""));
+			userController.addUser(new UserVO(ID, ID, "仓库管理" + ID, "123456", UserIdentity.INVENTORY_MANAGER,UserAuthority.COMMONLEVEL, "123456"));
 		}
 		for (int i = 0; i < 15; i++) {
 			ID = userController.getID(transferID, UserIdentity.TRANSFER_CONTERMAN);
-			userController.addUser(new UserVO(ID, ID, "中转中心业务员" + ID, "", UserIdentity.TRANSFER_CONTERMAN,UserAuthority.COMMONLEVEL, ""));
+			userController.addUser(new UserVO(ID, ID, "中转中心业务员" + ID, "123456", UserIdentity.TRANSFER_CONTERMAN,UserAuthority.COMMONLEVEL, "123456"));
 		}
 	}
 
@@ -180,16 +184,16 @@ public class InitDatas {
 		for (int i = 0; i < 15; i++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, "", "", "", new BigDecimal("4500"), "0", "0101"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "010100"));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, "", "", "", new BigDecimal("4500"), "0", "0212"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "021200"));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, "", "", "", new BigDecimal("4500"), "0", "0203"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "020300"));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, "", "", "", new BigDecimal("4500"), "0", "0254"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "025400"));
 		}
 	}
 
@@ -198,7 +202,7 @@ public class InitDatas {
 		for (int j = 0; j < 20; j++) {
 			String carID = facilityController.getID(branchID);
 			String driverID = driverController.getID(branchID);
-			driverController.addDriver(new DriverVO(driverID, "司机", "司机" + driverID, "", "", "", new BigDecimal(500),
+			driverController.addDriver(new DriverVO(driverID, "司机", "司机" + driverID, GetDate.getDate(), "123456", "123456", new BigDecimal(500),
 					"0", carID, branchID));
 			facilityController.addFacility(new FacilityVO(driverID, new ArrayList<>(), carID, GetDate.getDate(),
 					carID.substring(6), carID.substring(6), "A 00" + carID.substring(6), branchID));
@@ -209,13 +213,13 @@ public class InitDatas {
 			throws RemoteException {
 		for (int j = 0; j < 5; j++) {
 			String ID = accountController.getID();
-			accountController.addAccount(new AccountVO(ID, "营业厅业务员", "员工" + ID, GetDate.getDate(), "", "",
-					new BigDecimal(3000), "", branchID));
+			accountController.addAccount(new AccountVO(ID, "营业厅业务员", "员工" + ID, GetDate.getDate(), "123456", "123456",
+					new BigDecimal(3000), "0", branchID));
 		}
 		for (int j = 0; j < 50; j++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "", "", new BigDecimal(1000), "", branchID));
+					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal(1000), "0", branchID));
 		}
 	}
 }

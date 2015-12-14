@@ -234,7 +234,7 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 
 	public String getTransferID(String city) throws RemoteException {
 		String cityCode = CityTrans.getCodeByCity(city);
-		return cityCode + transferData.getID();
+		return cityCode + transferData.getID()+"00";
 	}
 
 	public ResultMessage add(TransferPO transferPO) throws RemoteException {
@@ -256,6 +256,15 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 	public ArrayList<TransferVO> showTransfer() throws RemoteException {
 		ArrayList<TransferPO> pos = transferData.find();
 		return TransferTrans.convertPOstoVOs(pos);
+	}
+	
+	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
+		ArrayList<TransferPO> pos = transferData.find();
+		ArrayList<String> transferNumbers = new ArrayList<>();
+		for (TransferPO transferPO : pos) {
+			transferNumbers.add(transferPO.getOrganizationID());
+		}
+		return transferNumbers;
 	}
 
 }
