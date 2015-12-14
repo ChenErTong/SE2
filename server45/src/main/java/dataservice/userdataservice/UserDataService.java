@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import dataservice.ManageDataService;
 import po.UserPO;
+import state.UserIdentity;
 
 /**
  *提供系统用户集体载入、增删改查的服务
@@ -20,6 +21,6 @@ public interface  UserDataService extends ManageDataService<UserPO> {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public String getID() throws RemoteException;
+	public String getUserID(String organizationID,UserIdentity userIden) throws RemoteException;
 	public UserPO find(String id) throws RemoteException;
 }

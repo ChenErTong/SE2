@@ -31,7 +31,7 @@ public interface UserBLService extends BLService {
 	 * @author zsq
 	 * @version Oct 22,2015
 	 */
-	public String getID() throws RemoteException;
+	public String getID(String organizationID,UserIdentity userIden) throws RemoteException;
 
 	/**
 	 * 添加一位用户

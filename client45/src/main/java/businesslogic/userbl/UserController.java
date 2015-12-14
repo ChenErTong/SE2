@@ -49,8 +49,8 @@ public class UserController implements UserBLService {
 	/**
 	 * @see UserBLService#getID()
 	 */
-	public String getID() throws RemoteException {
-		return userBL.getID();
+	public String getID(String organizationID,UserIdentity userIden) throws RemoteException {
+		return userBL.getID(organizationID,userIden);
 	}
 
 	/**

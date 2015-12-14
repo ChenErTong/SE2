@@ -50,8 +50,8 @@ public class User implements CommonBusinessLogic<UserPO>{
 		return vos;
 	}
 
-	public String getID() throws RemoteException {
-		return userData.getID();
+	public String getID(String organizationID,UserIdentity userIden) throws RemoteException {
+		return userData.getUserID(organizationID,userIden);
 	}
 
 	public ResultMessage add(UserPO userPO) throws RemoteException {

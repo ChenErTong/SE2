@@ -45,7 +45,7 @@ public abstract class ManageData<PO extends PersistentObject> extends Data imple
 		return currentID;
 	}
 	
-	private void addID() {
+	protected void addID() {
 		++maxID;
 		configReader.setValue("maxID", Util.transIntToString(maxID, IDMaxBit));
 	}

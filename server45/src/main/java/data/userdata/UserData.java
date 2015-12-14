@@ -1,12 +1,15 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import config.XMLReader;
 import data.ManageData;
 import dataservice.userdataservice.UserDataService;
 import po.UserPO;
+import state.UserIdentity;
 import util.SerSaveAndLoad;
+import util.Util;
 
 public class UserData extends ManageData<UserPO> implements UserDataService {
 
@@ -29,4 +32,24 @@ public class UserData extends ManageData<UserPO> implements UserDataService {
 		configReader=new XMLReader("config/"+NAME+".xml");
 	}
 
+	@Override
+	public String getUserID(String organizationID,UserIdentity userIden) throws RemoteException {
+		if(userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("0")||userIden.userIDMidFix.equals("0"))
+			organizationID="000000";
+		currentID = Util.transIntToString(maxID + 1, IDMaxBit);
+		String linShiID = organizationID+userIden.userIDMidFix+currentID;
+		while(containsID(poList.getInList(), linShiID)){
+			addID();
+			currentID = Util.transIntToString(maxID + 1, IDMaxBit);
+			linShiID = organizationID+userIden.userIDMidFix+currentID;
+		}
+		return linShiID;
+	}
+	private boolean containsID(ArrayList<UserPO> pos, String linShiID) {
+		for (UserPO po : pos) {
+			if(po.getID().equals(linShiID))
+				return true;
+		}
+		return false;
+	}
 }
