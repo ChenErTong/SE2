@@ -208,7 +208,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			ArrayList<BranchVO> branchVO = controller.showBranch();
 			for(int i=0;i<transferVO.size();i++){
 				Object [] rowData1 = {transferVO.get(i).organizationID,transferVO.get(i).organizationType,
-						transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts.get(i).toString(),transferVO.get(i).address};
+						transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
 				tableModel.addRow(rowData1);
 				organizationPool.add(transferVO.get(i));
 				transferPool.add(transferVO.get(i));
@@ -216,7 +216,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 			for(int i=0;i<branchVO.size();i++){
 				Object[] rowData2 = {branchVO.get(i).organizationID,branchVO.get(i).organizationType,branchVO.get(i).date
-						,branchVO.get(i).facilities.get(i).toString(),branchVO.get(i).accounts.get(i).toString(),branchVO.get(i).address};
+						,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
 				tableModel.addRow(rowData2);
 				organizationPool.add(branchVO.get(i));
 				branchPool.add(branchVO.get(i));
@@ -269,7 +269,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 					new MyNotification(this,"共有"+table.getRowCount()+"个机构满足条件！",Color.GREEN);
 				}catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 				
 			}else{
@@ -296,7 +296,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}
 				}else if(data[0].equals("中转中心")){
 					try {
@@ -314,7 +314,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-						e1.printStackTrace();
+						return;
 					}	
 				}
 			}
@@ -336,9 +336,10 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				organizationDetails = new OrganizationDetails();
 				organizationDetails.add(new MyJLabel(230,5,120,30,"修改机构信息",18,true));
 				this.add(organizationDetails);
-				
-				this.remove(commonButton);
-				modifyButton = new MyButton(890,670,120,30,ManagerImage.getBUTTON_CONFIRMMODIFY());
+				if(commonButton!=null){
+					this.remove(commonButton);
+				}
+				modifyButton = new MyButton(890, 670-30, 120, 30,ManagerImage.getBUTTON_CONFIRMMODIFY());
 				modifyButton.setActionCommand("CheckModify");
 				modifyButton.addActionListener(this);
 				this.add(modifyButton);
@@ -353,7 +354,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("CheckModify")){
 			table =organizationInfo.getTable();
-			organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
+		//	organizationID=organizationPool.get(table.getSelectedRow()).organizationID;
 				if(organizationDetails.getData()==null){
 					new MyNotification(this,"请检查机构信息填写是否完整！",Color.RED);
 				}else{
@@ -363,8 +364,12 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		}else if(e.getActionCommand().equals("ViewOrganization")){
 			table =organizationInfo.getTable();
 			this.remove(organizationDetails);
-			this.remove(commonButton);
-		//	this.remove(modifyButton);
+			if(commonButton!=null){
+				this.remove(commonButton);
+			}
+			if(modifyButton!=null){
+				this.remove(modifyButton);
+			}
 			
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要查看的机构！",Color.RED);
@@ -404,17 +409,23 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	
 		table = organizationInfo.getTable();
 		String[] data = organizationDetails.getData();
-		organizationID =  organizationPool.get(table.getSelectedRow()).organizationID;
+		organizationID =organizationPool.get(table.getSelectedRow()).organizationID;
 		ArrayList<AccountVO> accounts = new ArrayList<AccountVO>();
 		ArrayList<FacilityVO> facilities = new ArrayList<FacilityVO>();
 		ArrayList<InventoryVO> inventories = new ArrayList<InventoryVO>();
 		try {
 			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
-				case TRANSFER:  accounts = controller.getAccountByOrganizationID(organizationID);
-							inventories = controller.getInventoriesByTransferID(organizationID);
-							//ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], data[1], accounts,inventories));
+				case TRANSFER:  //accounts = controller.getAccountByOrganizationID(organizationID);
+							//if(accounts!=null){
+								  
+						//	}
+							//inventories = controller.getInventoriesByTransferID(organizationID);
+							//if(inventories!=null){
+								
+							//}
 							ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], OrganizationType.TRANSFER));
+							
 							if(rsg.equals(ResultMessage.SUCCESS)){
 								System.out.println("ModifySucceed!");
 								this.showAll();
@@ -423,10 +434,15 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 							}else{
 								new MyNotification(this,"中转中心信息修改失败！",Color.RED);
 							}break;
-				case BRANCH: accounts = controller.getAccountByOrganizationID(organizationID);
-						 facilities = controller.getFacilitiesByBranchID(organizationID);
-						// ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID, data[1], data[2]+data[3]+data[4], accounts, facilities));
-						 ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID,data[2]+data[3]+data[4],OrganizationType.BRANCH));
+				case BRANCH: //accounts = controller.getAccountByOrganizationID(organizationID);
+							//if(accounts!=null){
+					
+							//}
+							//facilities = controller.getFacilitiesByBranchID(organizationID);
+							//if(facilities!=null){
+								
+						//	}
+							ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID,data[2]+data[3]+data[4],OrganizationType.BRANCH));
 						 	if(rsg1.equals(ResultMessage.SUCCESS)){
 						 		this.showAll();
 						 		organizationDetails.refresh();
@@ -545,6 +561,8 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		for(int i = 0;i<=rowCount;i++){
 			tableModel_2.removeRow(0);
 		}*/
+		
+		table =organizationInfo.getTable();
 		String [] data = new String[5];
 		data[0] = organizationPool.get(table.getSelectedRow()).organizationType+"";
 		data[1] = organizationPool.get(table.getSelectedRow()).date;
@@ -555,26 +573,41 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		try {
 			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
-				case TRANSFER:ArrayList<AccountVO> accounts = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
-					  for(int i=0;i<accounts.size();i++){
-						  Object[]rowData_1 = {accounts.get(i)};
-						  tableModel_2.addRow(rowData_1);
+				case TRANSFER:
+					ArrayList<AccountVO> accounts = new ArrayList<AccountVO>();
+					 accounts = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+					  if(accounts!=null){
+						  for(int i=0;i<accounts.size();i++){
+							  Object[]rowData_1 = {accounts.get(i)};
+							  tableModel_2.addRow(rowData_1);
+						  }
 					  }
+					  
 					  ArrayList<InventoryVO> inventories = controller.getInventoriesByTransferID(organizationPool.get(table.getSelectedRow()).organizationID);
-					  for(int i=0;i<inventories.size();i++){
-						  Object[]rowData_2 = {inventories.get(i)};
-						  tableModel.addRow(rowData_2);
-					  }break;
-			   case BRANCH:ArrayList<AccountVO> accounts_2 = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
-					 for(int i=0;i<accounts_2.size();i++){
-						 Object[]rowData_1 = {accounts_2.get(i)};
-						 tableModel_2.addRow(rowData_1);
-					 }
+					  if(inventories!=null){
+						  for(int i=0;i<inventories.size();i++){
+							  Object[]rowData_2 = {inventories.get(i)};
+							  tableModel.addRow(rowData_2);
+						  }
+					  }
+					  break;
+			   case BRANCH:
+				 
+				   ArrayList<AccountVO> accounts_2 = controller.getAccountByOrganizationID(organizationPool.get(table.getSelectedRow()).organizationID);
+			   		if(accounts_2!=null){
+			   			for(int i=0;i<accounts_2.size();i++){
+							 Object[]rowData_1 = {accounts_2.get(i)};
+							 tableModel_2.addRow(rowData_1);
+						 }
+			   		}
 					ArrayList<FacilityVO> facilities = controller.getFacilitiesByBranchID(organizationPool.get(table.getSelectedRow()).organizationID);
-					for(int i=0;i<facilities.size();i++){
-						Object[] rowData_2 = {facilities.get(i)};
-						tableModel.addRow(rowData_2);;
-					} break;
+					if(facilities!=null){
+						for(int i=0;i<facilities.size();i++){
+							Object[] rowData_2 = {facilities.get(i)};
+							tableModel.addRow(rowData_2);;
+						}
+					}
+					 break;
 			   default:break;
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {

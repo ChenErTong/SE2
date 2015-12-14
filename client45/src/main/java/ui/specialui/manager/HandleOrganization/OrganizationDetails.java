@@ -106,7 +106,7 @@ public class OrganizationDetails extends MyTranslucentPanel{
 		data[3] = (String) citiesBox.getSelectedItem();
 		data[4] = address.getText();
 		for(int i = 0;i<5;i++){
-			if(data[i].equals("")) return null;
+			if(data[i].equals(null)) return null;
 		}
 		return data;
 	}
