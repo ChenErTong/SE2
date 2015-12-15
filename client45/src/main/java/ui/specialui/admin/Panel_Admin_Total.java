@@ -493,19 +493,18 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	}
 	
 	/**
-	 * 添加新策略的决策表
+	 * 添加员工 {"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
 	 */
 	
 	private UserIdentity decideIden(String data){
 		switch (data){
-		case "0":return UserIdentity.COURIER;
-		case "1":return UserIdentity.FINANCE_MANAGER;
-		case "2":return UserIdentity.TRANSFER_CONTERMAN;
-		case "3":return UserIdentity.INVENTORY_MANAGER;
-		case "4":return UserIdentity.BRANCH_COUNTERMAN;
-		case "5":return UserIdentity.DRIVER;
-		case "6":return UserIdentity.ADMIN;
-		case "7":return UserIdentity.GENERAL_MANAGER;
+		case "快递员":return UserIdentity.COURIER;
+		case "财务人员":return UserIdentity.FINANCE_MANAGER;
+		case "中转业务员":return UserIdentity.TRANSFER_CONTERMAN;
+		case "库存管理员":return UserIdentity.INVENTORY_MANAGER;
+		case "营业厅业务员":return UserIdentity.BRANCH_COUNTERMAN;
+		case "管理员":return UserIdentity.ADMIN;
+		case "总经理":return UserIdentity.GENERAL_MANAGER;
 		default:
 			break;
 		}
