@@ -79,7 +79,6 @@ public class Receipt {
 			}else{
 				this.approve(po);
 			}
-				
 		}
 		return message;
 	}
@@ -87,17 +86,17 @@ public class Receipt {
 	private void approve(ReceiptPO po) throws RemoteException {
 		ReceiptType type = po.getReceiptType();
 		switch(type){
-		case INSTOCK: 						approveInventoryImport(po);
-		case OUTSTOCK:						approveInventoryExport(po);
-		case BRANCH_ARRIVAL:			approveBranchArrial(po);
-		case BRANCH_DELIVER:			approveBranchDelivery(po);
-		case BRANCH_TRUCK:				approveBranchLoading(po);
+		case INSTOCK: 						approveInventoryImport(po); break;
+		case OUTSTOCK:						approveInventoryExport(po);break;
+		case BRANCH_ARRIVAL:			approveBranchArrial(po);break;
+		case BRANCH_DELIVER:			approveBranchDelivery(po);break;
+		case BRANCH_TRUCK:				approveBranchLoading(po);break;
 		case TRANS_PLANE:
 		case TRANS_TRAIN:
-		case TRANS_TRUCK:				approveTransferOrder(po);
-		case TRANS_ARRIVAL:			approveTransferArrival(po);
-		case DEBIT:								approveDebit(po);
-		case PAY:									approvePay(po);
+		case TRANS_TRUCK:				approveTransferOrder(po);break;
+		case TRANS_ARRIVAL:			approveTransferArrival(po);break;
+		case DEBIT:								approveDebit(po);break;
+		case PAY:									approvePay(po);break;
 		default:									break;
 		}
 	}
@@ -220,20 +219,20 @@ public class Receipt {
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type, ReceiptState state) throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
+		System.out.println("---------------------------------------------");
 		for (ReceiptPO receiptPO : pos) {
 			 System.out.println(receiptPO.getID());
 			 System.out.println(receiptPO.getReceiptState());
 			boolean isCorrectType = receiptPO.getReceiptType().equals(type);
 			boolean isCorrectState = receiptPO.getReceiptState().equals(state);
-//			if (isCorrectType)
-//				System.out.println("state " + isCorrectState + " " + state);
 			if (isCorrectType && isCorrectState) {
 				@SuppressWarnings("unchecked")
 				T vo = (T) ReceiptTrans.convertPOtoVO(receiptPO);
-				System.out.println(vo.toString());
 				vos.add(vo);
 			}
 		}
+		System.out.println(vos.size());
+		System.out.println("---------------------------------------------");
 		return vos;
 	}
 }
