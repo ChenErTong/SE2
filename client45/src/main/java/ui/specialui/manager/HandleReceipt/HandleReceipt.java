@@ -45,6 +45,11 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @author zsq
  * @time 2015/11/18 23:58
  */
+/**
+ * 
+ * @author zsq
+ * @time 2015年12月16日下午9:34:40
+ */
 public class HandleReceipt extends MyJPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
@@ -183,6 +188,8 @@ public void leadline(FrameManager frameManager){
 		viewLog.addActionListener(frameManager);
 		this.add(viewLog);
 	}
+
+
 	public void actionPerformed(ActionEvent events){
 		if(events.getActionCommand().equals("DontPassThisReceipt")){
 			if(!table.getValueAt(table.getSelectedRow(), 3).equals("未审批")){
@@ -199,6 +206,7 @@ public void leadline(FrameManager frameManager){
 						new MyNotification(this,"不通过单据失败！",Color.RED);
 					}else{
 						search.doClick();
+						new MyNotification(this,"不通过单据成功！",Color.GREEN);
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
@@ -208,7 +216,6 @@ public void leadline(FrameManager frameManager){
 		}else if(events.getActionCommand().equals("PassThisReceipt")){
 			table = searchPanel.getTable();
 			ArrayList<ReceiptVO> PassList = new ArrayList<ReceiptVO>();
-			if(index >= 0){
 				if(!table.getValueAt(table.getSelectedRow(), 3).equals("未审批")){
 					new MyNotification(this,"状态为未审批状态的单据才能进行审批！",Color.RED);
 				}else{
@@ -221,16 +228,16 @@ public void leadline(FrameManager frameManager){
 						
 						passList.add(listPool.get(table.getSelectedRow()));
 						passType.add(typePool.get(table.getSelectedRow()));
+						
 						PassList.add((ReceiptVO)listPool.get(table.getSelectedRow()));
+						
 						ResultMessage rsg = receiptController.passReceipt(PassList);
 						if(rsg.equals(ResultMessage.FAIL)){
-							new MyNotification(this,"单据审批失败！",Color.RED);
+							new MyNotification(this,"通过单据失败！",Color.RED);
 						}else{
 							search.doClick();
 							index = -1;
-							//ta.setText("");
-							//word.setText("单据状态:    ");
-							new MyNotification(this,"单据审批成功！",Color.GREEN);
+							new MyNotification(this,"通过单据成功！",Color.GREEN);
 								
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
@@ -238,7 +245,7 @@ public void leadline(FrameManager frameManager){
 						return;
 					}
 				}
-			}
+
 		}else if(events.getActionCommand().equals("PassSelectedReceipts")){
 			table = searchPanel.getTable();
 			int count = 0;
@@ -254,7 +261,7 @@ public void leadline(FrameManager frameManager){
 					if(table.getValueAt(i, 0).equals(Boolean.TRUE)){
 						passList.add(listPool.get(i));
 						passType.add(typePool.get(i));
-						PassList.add((ReceiptVO)listPool.get(index));
+						PassList.add((ReceiptVO)listPool.get(i));
 					}
 			}
 			for(int i = 0; i < rowCount; i++){
@@ -280,6 +287,8 @@ public void leadline(FrameManager frameManager){
 						if(rm.equals(ResultMessage.FAIL)){
 							new MyNotification(this,"单据批量审批失败",Color.RED);
 						}else{
+							
+							search.doClick();
 							new MyNotification(this,"单据批量审批成功！",Color.GREEN);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
@@ -308,20 +317,33 @@ public void leadline(FrameManager frameManager){
 			}else{
 				ReceiptConductor  writer = new ReceiptConductor();
 				receiptInfo.getTa().setText(writer.writeReceipt(typePool.get(index),listPool.get(index)));
+				this.repaint();
 			}
 		}else if(events.getActionCommand().equals("ModifyReceiptInfo")){
-				//System.out.println("111");
-				table = searchPanel.getTable();
-			//	System.out.println(index);
-				if(index >= 0){
-					if(!table.getValueAt(index, 3).equals("未审批")){
-						new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
-					}else{
-						ModifyReceiptInfo modifyUI = new ModifyReceiptInfo(typePool.get(index),listPool.get(index));
-						this.setVisible(false);
-						modifyUI.setVisible(true);
-					}
+			table = searchPanel.getTable();
+			int count = 0;
+			
+			for(int i = 0; i < table.getRowCount(); i++){
+			if(table.getValueAt(i, 0) != null)
+				if(table.getValueAt(i, 0).equals(Boolean.TRUE)){
+					count++;
+					index = i;
 				}
+			}
+			if(count == 0){
+				new MyNotification(this,"请选择一条要修改的单据！",Color.RED);
+			}else if(count > 1){
+				new MyNotification(this,"请只选择一条要修改的单据！",Color.RED);
+			}
+
+			if(!table.getValueAt(index, 3).equals("未审批")){
+				new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
+			}else{
+				ModifyReceiptInfo modifyUI = new ModifyReceiptInfo(typePool.get(index),listPool.get(index));
+				this.setVisible(false);
+				modifyUI.setVisible(true);
+			}
+			
 		}else if(events.getActionCommand().equals("ExportReceipt")){
 			table = searchPanel.getTable();
 			if(index >= 0){
