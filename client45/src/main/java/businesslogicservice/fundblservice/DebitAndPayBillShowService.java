@@ -3,6 +3,8 @@ package businesslogicservice.fundblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import state.ReceiptState;
+import state.ReceiptType;
 import vo.receiptvo.DebitAndPayBillVO;
 /**
  * 
@@ -71,4 +73,15 @@ public interface DebitAndPayBillShowService {
 	public ArrayList<DebitAndPayBillVO> showExpenseDraft() throws RemoteException;
 	
 	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException;
+	/**
+	 * 根据类型
+	 * 返回付款单列表或收款单列表（不能全部返回）
+	 * 要是要全部的就调用两次
+	 * type不能为null
+	 * @param type
+	 * @param state
+	 * @return
+	 * @throws RemoteException
+	 */
+	public <T extends DebitAndPayBillVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException;
 }

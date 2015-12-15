@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogicservice.fundblservice.DebitAndPayBillShowService;
+import state.ReceiptState;
+import state.ReceiptType;
 import vo.receiptvo.DebitAndPayBillVO;
 
 /**
@@ -105,6 +107,12 @@ public class DebitAndPayBillShowController implements DebitAndPayBillShowService
 	 */
 	public ArrayList<DebitAndPayBillVO> showList(String end) throws RemoteException {
 		return showBL.showList(end);
+	}
+
+	@Override
+	public <T extends DebitAndPayBillVO> ArrayList<T> show(ReceiptType type, ReceiptState state)
+			throws RemoteException {
+		return showBL.show(type, state);
 	}
 
 }

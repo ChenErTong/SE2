@@ -11,15 +11,21 @@ import businesslogic.accountbl.AccountController;
 import businesslogic.basebl.BaseController;
 import businesslogic.facilitybl.DriverController;
 import businesslogic.facilitybl.FacilityController;
+import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
 import businesslogic.userbl.UserController;
+import state.CommodityState;
+import state.ExpressType;
 import state.OrganizationType;
+import state.PackageType;
 import state.UserAuthority;
 import state.UserIdentity;
 import util.GetDate;
 import vo.BaseVO;
 import vo.BranchVO;
+import vo.CommodityVO;
 import vo.FacilityVO;
+import vo.OrderVO;
 import vo.TransferVO;
 import vo.UserVO;
 import vo.accountvo.AccountVO;
@@ -30,6 +36,21 @@ public class InitDatas {
 		 initUser();
 		 initOrganization();
 		 initBase();
+		 initOrder();
+	}
+
+	private static void initOrder() {
+		try {
+			OrderController orderController = ControllerFactory.getOrderController();
+			for (int i = 0; i < 20; i++) {
+				CommodityVO com[] = {new CommodityVO("123", new BigDecimal("0.156"), new BigDecimal("0.156"), CommodityState.Complete)};
+				orderController.addOrder(com,new OrderVO(orderController.getOrderId(), "123", "123", "123", "123", "123",
+						"123", "123", "123", new ArrayList<>(), GetDate.getDate(), GetDate.getDate(),
+						new BigDecimal(18), PackageType.Metal, ExpressType.Car));
+			}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void initBase() {
@@ -113,7 +134,7 @@ public class InitDatas {
 			organizationController.addTransfer(new TransferVO(transferID, "江苏省南京市雨花台区软件大道", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			initAccountInTransfer(accountController);
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("北京市");
 				System.out.println(branchID);
 				organizationController
@@ -123,7 +144,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(1);
 			}
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("上海市");
 				organizationController.addBranch(new BranchVO(branchID, "上海市上海市普陀区桃浦路" + ((i + 190) * 10 + i + 1) + "号",
 						OrganizationType.BRANCH));
@@ -132,7 +153,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(2);
 			}
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("广州市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "广东省广州市越秀区中山二路" + (i + 37) + "号", OrganizationType.BRANCH));
@@ -141,7 +162,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(3);
 			}
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("南京市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "江苏省南京市秦淮区大明路" + (160 + i) + "号", OrganizationType.BRANCH));
