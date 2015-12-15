@@ -162,7 +162,7 @@ public class InitDatas {
 			userController.addUser(new UserVO(ID, ID, "营业厅业务员" + ID, "123456", UserIdentity.BRANCH_COUNTERMAN,
 					UserAuthority.COMMONLEVEL, "123456"));
 		}
-		for (int j = 0; j < 50; j++) {
+		for (int j = 0; j < 5; j++) {
 			ID = userController.getID(branchID,UserIdentity.COURIER);
 			userController.addUser(
 					new UserVO(ID, ID, "快递员" + ID, "123456", UserIdentity.COURIER, UserAuthority.COMMONLEVEL, "123456"));
@@ -200,7 +200,7 @@ public class InitDatas {
 
 	private static void initDriverAndCar(FacilityController facilityController, DriverController driverController,
 			String branchID) throws RemoteException {
-		for (int j = 0; j < 20; j++) {
+		for (int j = 0; j < 2; j++) {
 			String carID = facilityController.getID(branchID);
 			String driverID = driverController.getID(branchID);
 			driverController.addDriver(new DriverVO(driverID, "司机", "司机" + driverID, GetDate.getDate(), "123456", "123456", new BigDecimal(500),
@@ -217,7 +217,7 @@ public class InitDatas {
 			accountController.addAccount(new AccountVO(ID, "营业厅业务员", "员工" + ID, GetDate.getDate(), "123456", "123456",
 					new BigDecimal(3000), "0", branchID));
 		}
-		for (int j = 0; j < 50; j++) {
+		for (int j = 0; j < 5; j++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
 					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal(1000), "0", branchID));

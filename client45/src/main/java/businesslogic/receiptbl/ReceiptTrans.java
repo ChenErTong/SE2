@@ -19,6 +19,7 @@ import po.receiptpo.orderreceiptpo.TransferArrivalListPO;
 import po.receiptpo.orderreceiptpo.TransferOrderPO;
 import state.CommodityState;
 import state.PayBillItem;
+import state.ReceiptState;
 import state.ReceiptType;
 import vo.CommodityVO;
 import vo.receiptvo.AdjustReceiptVO;
@@ -43,23 +44,29 @@ public class ReceiptTrans {
 		if(vo==null)
 			return null;
 		else {
+			ReceiptPO po=null;
 			ReceiptType type =vo.type;
+			ReceiptState state = vo.receiptState;
+			if(state==null) 
+				vo.receiptState=ReceiptState.APPROVALING;
 			switch (type) {
-			case BRANCH_ARRIVAL:		return convertSpecialVOtoPO((BranchArrivalListVO)vo);
-			case BRANCH_DELIVER: 		return convertSpecialVOtoPO((DeliveryListVO)vo);
-			case BRANCH_TRUCK:			return convertSpecialVOtoPO((LoadingListVO)vo);
-			case TRANS_ARRIVAL:		return convertSpecialVOtoPO((TransferArrivalListVO)vo);
+			case BRANCH_ARRIVAL:		po=convertSpecialVOtoPO((BranchArrivalListVO)vo); break;
+			case BRANCH_DELIVER: 		po=convertSpecialVOtoPO((DeliveryListVO)vo);break;
+			case BRANCH_TRUCK:			po=convertSpecialVOtoPO((LoadingListVO)vo);break;
+			case TRANS_ARRIVAL:		po=convertSpecialVOtoPO((TransferArrivalListVO)vo);break;
 			case TRANS_PLANE:
 			case TRANS_TRAIN:
-			case TRANS_TRUCK:			return convertSpecialVOtoPO((TransferOrderVO)vo);
-			case DEBIT:							return convertSpecialVOtoPO((DebitBillVO)vo);
-			case PAY:								return convertSpecialVOtoPO((PaymentBillVO)vo);
-			case TAKINGSTOCK:			return convertSpecialVOtoPO((AdjustReceiptVO)vo);
-			case OUTSTOCK:					return convertSpecialVOtoPO((InventoryExportReceiptVO)vo);
-			case INSTOCK:					return convertSpecialVOtoPO((InventoryImportReceiptVO)vo);
-			case CONFIRM:					return convertSpecialVOtoPO((RecipientConfirmReceiptVO)vo);
+			case TRANS_TRUCK:			po=convertSpecialVOtoPO((TransferOrderVO)vo);break;
+			case DEBIT:							po=convertSpecialVOtoPO((DebitBillVO)vo);break;
+			case PAY:								po=convertSpecialVOtoPO((PaymentBillVO)vo);break;
+			case TAKINGSTOCK:			po=convertSpecialVOtoPO((AdjustReceiptVO)vo);break;
+			case OUTSTOCK:					po=convertSpecialVOtoPO((InventoryExportReceiptVO)vo);break;
+			case INSTOCK:					po=convertSpecialVOtoPO((InventoryImportReceiptVO)vo);break;
+			case CONFIRM:					po=convertSpecialVOtoPO((RecipientConfirmReceiptVO)vo);break;
 			default:  								return null;
 			}
+			po.setReceiptState(vo.receiptState);
+			return po;
 		}
 	}
 	
@@ -68,23 +75,29 @@ public class ReceiptTrans {
 		if(po==null)
 			return null;
 		else {
+			ReceiptVO vo=null;
 			ReceiptType type = po.getReceiptType();
+			ReceiptState state = po.getReceiptState();
+			if(state==null) 
+				po.setReceiptState(ReceiptState.APPROVALING);
 			switch (type) {
-			case BRANCH_ARRIVAL:		return convertSpecialPOtoVO((BranchArrivalListPO) po);
-			case BRANCH_DELIVER: 		return convertSpecialPOtoVO((DeliveryListPO)po);
-			case BRANCH_TRUCK:			return convertSpecialPOtoVO((LoadingListPO)po);
-			case TRANS_ARRIVAL:		return convertSpecialPOtoVO((TransferArrivalListPO)po);
+			case BRANCH_ARRIVAL:		vo= convertSpecialPOtoVO((BranchArrivalListPO) po);break;
+			case BRANCH_DELIVER: 		vo= convertSpecialPOtoVO((DeliveryListPO)po);break;
+			case BRANCH_TRUCK:			vo= convertSpecialPOtoVO((LoadingListPO)po);break;
+			case TRANS_ARRIVAL:		vo= convertSpecialPOtoVO((TransferArrivalListPO)po);break;
 			case TRANS_PLANE:
 			case TRANS_TRAIN:
-			case TRANS_TRUCK:			return convertSpecialPOtoVO((TransferOrderPO)po);
-			case DEBIT:							return convertSpecialPOtoVO((DebitBillPO)po);
-			case PAY:								return convertSpecialPOtoVO((PaymentBillPO)po);
-			case TAKINGSTOCK:			return convertSpecialPOtoVO((AdjustReceiptPO)po);
-			case OUTSTOCK:					return convertSpecialPOtoVO((InventoryExportReceiptPO)po);
-			case INSTOCK:					return convertSpecialPOtoVO((InventoryImportReceiptPO)po);
-			case CONFIRM:					return convertSpecialPOtoVO((RecipientConfirmReceiptPO)po);
+			case TRANS_TRUCK:			vo= convertSpecialPOtoVO((TransferOrderPO)po);break;
+			case DEBIT:							vo= convertSpecialPOtoVO((DebitBillPO)po);break;
+			case PAY:								vo= convertSpecialPOtoVO((PaymentBillPO)po);break;
+			case TAKINGSTOCK:			vo= convertSpecialPOtoVO((AdjustReceiptPO)po);break;
+			case OUTSTOCK:					vo= convertSpecialPOtoVO((InventoryExportReceiptPO)po);break;
+			case INSTOCK:					vo= convertSpecialPOtoVO((InventoryImportReceiptPO)po);break;
+			case CONFIRM:					vo= convertSpecialPOtoVO((RecipientConfirmReceiptPO)po);break;
 			default:  								return null;
 			}
+			vo.receiptState=po.getReceiptState();
+			return vo;
 		}
 	}
 	public static ReceiptVO convertSpecialPOtoVO(RecipientConfirmReceiptPO po){

@@ -343,7 +343,7 @@ public void leadline(FrameManager frameManager){
 			for(int k = 0; k < rowCount; k++)
 				tableModel.removeRow(0);
 			int data[] = searchPanel.getData();
-			if(data[0]==1){
+			 if(data[0]==1){
 				try{
 					getApprovalData(data[1]);
 				}catch(Exception e){
@@ -378,13 +378,13 @@ public void leadline(FrameManager frameManager){
 					return;
 				}
 			}
+			System.out.println(listPool);
 			if(table.getRowCount() == 0){
 				new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED);
 			}
 		}
 	}
 	
-@SuppressWarnings("unused")
 private void getApprovalData(int index) throws RemoteException, MalformedURLException, NotBoundException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
@@ -400,7 +400,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.APPROVALING);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.APPROVALING);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.APPROVALING);
-		
+		System.out.println(transferOrder);
 		model = (DefaultTableModel) table.getModel();
 		
 		if(index == 0){
