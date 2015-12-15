@@ -599,17 +599,17 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 	private void getFailureData(int index) throws RemoteException, MalformedURLException, NotBoundException{
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
-		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.FAILURE);//待审批的单据
-		ArrayList<OrderReceiptVO> orderReceipt = controller.show(ReceiptType.ORDER, ReceiptState.FAILURE);
-		ArrayList<LoadingListVO> loadingList = controller.show(ReceiptType.BRANCH_TRUCK, ReceiptState.FAILURE);
-		ArrayList<BranchArrivalListVO> branchArrival = controller.show(ReceiptType.BRANCH_ARRIVAL, ReceiptState.FAILURE);
-		ArrayList<DebitBillVO> debitBill = controller.show(ReceiptType.DEBIT, ReceiptState.FAILURE);
-		ArrayList<DeliveryListVO> delivery = controller.show(ReceiptType.BRANCH_DELIVER, ReceiptState.FAILURE);
-		ArrayList<TransferArrivalListVO> transferArrival = controller.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.FAILURE);
-		ArrayList<InventoryImportReceiptVO> importReceipt = controller.show(ReceiptType.INSTOCK,ReceiptState.FAILURE);
-		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.FAILURE);
-		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.FAILURE);
-		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.FAILURE);
+		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.SUCCESS);//待审批的单据
+		ArrayList<OrderReceiptVO> orderReceipt = controller.show(ReceiptType.ORDER, ReceiptState.SUCCESS);
+		ArrayList<LoadingListVO> loadingList = controller.show(ReceiptType.BRANCH_TRUCK, ReceiptState.SUCCESS);
+		ArrayList<BranchArrivalListVO> branchArrival = controller.show(ReceiptType.BRANCH_ARRIVAL, ReceiptState.SUCCESS);
+		ArrayList<DebitBillVO> debitBill = controller.show(ReceiptType.DEBIT, ReceiptState.SUCCESS);
+		ArrayList<DeliveryListVO> delivery = controller.show(ReceiptType.BRANCH_DELIVER, ReceiptState.SUCCESS);
+		ArrayList<TransferArrivalListVO> transferArrival = controller.show(ReceiptType.TRANS_ARRIVAL, ReceiptState.SUCCESS);
+		ArrayList<InventoryImportReceiptVO> importReceipt = controller.show(ReceiptType.INSTOCK,ReceiptState.SUCCESS);
+		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.SUCCESS);
+		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.SUCCESS);
+		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.SUCCESS);
 		
 		model = (DefaultTableModel) table.getModel();
 		
