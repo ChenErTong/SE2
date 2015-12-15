@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
+import businesslogic.organizationbl.transferbl.TransferController;
 import ui.Config.JComboBoxOfChina;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
@@ -49,16 +50,25 @@ public class UserDetails extends MyTranslucentPanel{
 	private void initComponent() {
 		fields = new MyJTextField[2];
 		
-		this.add(new MyJLabel(10, 60, 100, 30, "营业厅编号", 18, true));
+		this.add(new MyJLabel(10, 60, 100, 30, "机构编号", 18, true));
 		
 		try {
 			OrganizationController controller = ControllerFactory.getOrganizationController();
+			TransferController transController = ControllerFactory.getTransferController();
 			ArrayList<String> branchIDs = new ArrayList<String>();
+			ArrayList<String> transIDs = new ArrayList<String>();
 			branchIDs = controller.getAllBranchNumbers();
+			transIDs = transController.getAllTransferNumbers();
+			
 			String[] trans = new String[2000];
+			
 			for(int i=0;i<branchIDs.size();i++){
 				trans[i] = branchIDs.get(i);
 			}
+			for(int i=0;i<transIDs.size();i++){
+				trans[i+branchIDs.size()] = transIDs.get(i);
+			}
+		
 			branchID = new MyJComboBox(110,60,130,30,trans);
 			this.add(branchID);
 		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
