@@ -33,9 +33,10 @@ public class User implements CommonBusinessLogic<UserPO>{
 		currentUserFileName="user/userdata.ser";
 	}
 	public User() throws MalformedURLException, RemoteException, NotBoundException {
-		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
-		
 		File file = new File(currentUserFileName);
+		if(file.exists())
+			file.delete();
+		currentUserFile = new SerSaveAndLoad<>("user",User.currentUserFileName);
 		file.deleteOnExit();
 		userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 	}
