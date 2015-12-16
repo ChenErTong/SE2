@@ -28,9 +28,7 @@ public class MyJTable extends JTable{
 		this.headers = headers;
 		cellData = null;
 
-		if(isCellEditable){
-			this.setCellEditable();
-		}
+		this.setCellEditable();
 		this.setBackground(new Color(0, 0, 0, 0.3f));
 		this.setForeground(Color.WHITE);
 		this.setFont(new MyFont(14));
@@ -65,6 +63,7 @@ public class MyJTable extends JTable{
 	}
 	
 	public void addRow(String[] rowData){
+		System.out.println(rowData[0]);
 		model.addRow(rowData);
 		this.setModel(model);
 	}

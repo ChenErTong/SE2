@@ -20,6 +20,7 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.transfer_counterman.Frame_Transfer;
+import ui.specialui.transfer_counterman.car_loading.CarCommodity;
 import vo.CommodityVO;
 import vo.OrderVO;
 
@@ -70,6 +71,7 @@ public class PlaneCommodity extends MyJPanel {
 					int row = orderList.getSelectedRow();
 					String[] orderId = orderList.getData(row);
 					orderSelected.addRow(orderId);
+					PlaneCommodity.this.repaint();
 				}
 			}
 		});

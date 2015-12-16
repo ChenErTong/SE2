@@ -10,6 +10,7 @@ import ui.specialui.branch_conuterman.Frame_Branch;
 import ui.specialui.courier.Frame_Courier;
 import ui.specialui.inventory.Frame_Inventory;
 import ui.specialui.manager.FrameManager;
+import ui.specialui.transfer_counterman.Frame_Transfer;
 
 public class mainForUITest3 {
 	static String id = "123";
@@ -49,8 +50,8 @@ public class mainForUITest3 {
 	String userID = "010015001";
 //	new Frame_Login(userID);
 //new Frame_Inventory(userID);
-//new Frame_Transfer(userID);
+new Frame_Transfer(userID);
 //new Frame_Courier(userID);
-new Frame_Branch(userID);
+//new Frame_Branch(userID);
 	}
 }

@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -74,6 +73,7 @@ public class TrainCommodity extends MyJPanel {
 					int row = orderList.getSelectedRow();
 					String[] orderId = orderList.getData(row);
 					orderSelected.addRow(orderId);
+					TrainCommodity.this.repaint();
 				}
 			}
 		});
