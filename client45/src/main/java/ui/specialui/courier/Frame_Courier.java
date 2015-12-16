@@ -36,7 +36,8 @@ public class Frame_Courier extends MyJFrame implements ActionListener {
 		this.add(totalPanel);
 
 		this.returnButton.addActionListener(this);
-
+		this.withdrawButton.setVisible(true);
+		
 		orderInput = new MyButton(910, 690, 80, 20,
 				CourierImage.getBUTTON_DINGDAN_GUIDE());
 		orderInput.setActionCommand("OrderInput");

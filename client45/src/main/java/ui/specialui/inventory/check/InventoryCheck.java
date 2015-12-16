@@ -78,7 +78,6 @@ public class InventoryCheck extends MyJPanel{
 		
 		InventoryViewVO inventoryView = null;
 		try {
-			System.out.println(inventoryController == null);
 			inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
 		} catch (RemoteException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);

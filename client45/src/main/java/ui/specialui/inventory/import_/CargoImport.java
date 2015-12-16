@@ -90,6 +90,8 @@ public class CargoImport extends MyJPanel {
 			}
 		});
 		this.add(produceImportList);
+		
+		this.setCommodities(frame);
 	}
 	
 	/**
@@ -134,15 +136,6 @@ public class CargoImport extends MyJPanel {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return -2;
 		}
-		/*String importID;
-		try {
-			importID = inventoryController.getImportID();
-			inventoryController.saveImport(importReceipt);
-			inventoryController.submitImport(importReceipt);
-		} catch (RemoteException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
-			return -2;
-		}*/
 		
 		//将入库单添加到入库单列表
 		importList.addRow(new String[]{importReceipt.ID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
@@ -171,6 +164,15 @@ public class CargoImport extends MyJPanel {
 				posInfo = Integer.toString(posVO.area) + "区" + Integer.toString(posVO.row) + "排" + Integer.toString(posVO.frame) + "架" + Integer.toString(posVO.position) + "位";
 				position.addItem(posInfo);	
 			}
+		}
+	}
+	
+	private void setCommodities(Frame_Inventory frame){
+		try {
+			inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+		} catch (RemoteException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			return;
 		}
 	}
 }

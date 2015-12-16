@@ -64,7 +64,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Finance_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.addActionListener(this);
+		this.withdrawButton.setVisible(true);
 		
 		CostManage = new MyButton(300, 690, 95, 20,FinanceImage.getBUTTON_JIESUAN_());
 		CostManage.setActionCommand("CostManage");
@@ -189,10 +189,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
-		}else if(e.getActionCommand().equals("Withdraw")){
-			Frame_Login login = new Frame_Login(ID);
-			subPanel = new Panel_Login(login);
-			subPanel.setVisible(true);
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				output = businessPerformance.getTable();

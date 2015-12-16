@@ -37,6 +37,7 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
+		this.withdrawButton.setVisible(true);
 		
 		vehicleloading = new MyButton(650, 690, 120, 20, BranchImage.getBUTTON_ZHUANGCHE_GUIDE());
 		vehicleloading.setActionCommand("Vehicleloading");

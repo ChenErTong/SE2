@@ -3,9 +3,6 @@ package ui.specialui.admin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import ui.commonui.login.Frame_Login;
-import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
@@ -25,8 +22,8 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Admin_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.addActionListener(this);
 		this.setBackground(CommonImage.BACKGROUND);
+		this.withdrawButton.setVisible(true);
 	}
 	
 
@@ -39,10 +36,6 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 			}
-		}else if(e.getActionCommand().equals("Withdraw")){
-			Frame_Login login = new Frame_Login(ID);
-			subPanel = new Panel_Login(login);
-			subPanel.setVisible(true);
 		}
 	}
 }

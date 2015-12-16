@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 
 import com.sun.awt.AWTUtilities;
@@ -92,7 +93,12 @@ public class MyJFrame extends JFrame{
 		this.add(this.closeButton);
 		
 		this.withdrawButton = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
-		this.withdrawButton.setActionCommand("Withdraw");
+		this.withdrawButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Frame_Login(ID);
+				MyJFrame.this.dispose();
+			}
+		});
 		this.add(this.withdrawButton);
 
 		//设置界面可拖动

@@ -208,6 +208,9 @@ public class Inventory {
 				ReceiptType.INSTOCK);
 		ArrayList<InventoryExportReceiptVO> exportReceipts = receiptInfo.showInDateByType(beginDate, endDate,
 				ReceiptType.OUTSTOCK);
+		if((importReceipts.size() == 0)&&(exportReceipts.size() == 0)){
+			return null;
+		}
 		// 获得仓库中商品位置
 		ArrayList<InventoryPositionVO> commoditiesInInventory = this.getCommoditiesInInventory(transferID);
 		// 新建库存查看VO

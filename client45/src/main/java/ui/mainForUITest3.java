@@ -50,7 +50,7 @@ public class mainForUITest3 {
 	String userID = "010015001";
 //	new Frame_Login(userID);
 //new Frame_Inventory(userID);
-new Frame_Transfer(userID);
+//new Frame_Transfer(userID);
 //new Frame_Courier(userID);
 //new Frame_Branch(userID);
 	}

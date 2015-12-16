@@ -62,7 +62,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.addActionListener(this);
+		this.withdrawButton.setVisible(true);
 		
 		HandleReceipt = new MyButton(300-105, 690,95,20,ManagerImage.getBUTTON_APPROVE_());
 		HandleReceipt.setActionCommand("HandleReceipt");
@@ -212,10 +212,6 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
-		}else if(e.getActionCommand().equals("Withdraw")){
-			Frame_Login login = new Frame_Login(ID);
-			subPanel = new Panel_Login(login);
-			subPanel.setVisible(true);
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((BusinessPerformanceInfo)subPanel).getTable());
