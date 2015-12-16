@@ -173,7 +173,7 @@ public class ReceiveInput extends MyJPanel{
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return -1;
 		}
-
+		
 		AccountVO account;
 		try {
 			account = accountController.find(frame_Courier.getID());

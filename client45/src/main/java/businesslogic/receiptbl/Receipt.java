@@ -219,10 +219,10 @@ public class Receipt {
 	public <T extends ReceiptVO> ArrayList<T> show(ReceiptType type, ReceiptState state) throws RemoteException {
 		ArrayList<ReceiptPO> pos = receiptData.find();
 		ArrayList<T> vos = new ArrayList<>();
-		System.out.println("---------------------------------------------");
+//		System.out.println("---------------------------------------------");
 		for (ReceiptPO receiptPO : pos) {
-			 System.out.println(receiptPO.getID());
-			 System.out.println(receiptPO.getReceiptState());
+//			 System.out.println(receiptPO.getID());
+//			 System.out.println(receiptPO.getReceiptState());
 			boolean isCorrectType = receiptPO.getReceiptType().equals(type);
 			boolean isCorrectState = receiptPO.getReceiptState().equals(state);
 			if (isCorrectType && isCorrectState) {
@@ -231,8 +231,8 @@ public class Receipt {
 				vos.add(vo);
 			}
 		}
-		System.out.println(vos.size());
-		System.out.println("---------------------------------------------");
+//		System.out.println(vos.size());
+//		System.out.println("---------------------------------------------");
 		return vos;
 	}
 }

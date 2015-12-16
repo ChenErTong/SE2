@@ -76,8 +76,11 @@ public class Record {
 	 *            BussinessProcessVO型，成本收益表
 	 */
 	public void exportBussinessProcessToExcel(BussinessProcessVO vo,String fileDirectoryPath) {
-		String fileName = fileDirectoryPath+"/" + vo.beginDate + "至" + vo.endDate + "经营情况报表" + ".xls";
-		String head = vo.beginDate + "-" + vo.endDate + "经营情况报表";
+		if(fileDirectoryPath.equals(""))
+			fileDirectoryPath="output";
+		String fileName = fileDirectoryPath+"/" + vo.beginDate + "至" + vo.endDate.split(" ")[0] + "经营情况报表" + ".xls";
+		System.out.println(fileName);
+		String head = vo.beginDate + "-" + vo.endDate.split(" ")[0] + "经营情况报表";
 		String[] title = { "单据编号", "日期", "金额", "单据类型","涉及银行账号", "快递员编号（收款单）", "订单号（收款单）", "姓名（付款单）", "付款类型（付款单）",
 				"备注（付款单）" };
 		List<Object> list = new ArrayList<>();

@@ -277,13 +277,13 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				new MyNotification(this,"请输入查看日期区间！",Color.RED);
 			}else{
 				if(this.isLegal()){
-					String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
-					String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
+					String beginDate = yearAddZero(input[0].getText()) +"-"+ addZero(input[1].getText()) +"-"+ addZero(input[2].getText());
+					String endDate = yearAddZero(input[3].getText()) +"-"+ addZero(input[4].getText()) +"-"+ addZero(input[5].getText())+" 23:59";
 				
 					try {
 						RecordBLService recordController = ControllerFactory.getRecordController();
 						ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
-						
+						System.out.println(vo);
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 						int rowCount = table.getRowCount();
 						for(int i = 0; i < rowCount; i++){
@@ -325,9 +325,8 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			if(rowCount==0){
 				new MyNotification(this,"导出经营情况表失败！",Color.RED);
 			}else{
-				String beginDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
-	
-				String endDate = yearAddZero(input[3].getText()) + addZero(input[4].getText()) + addZero(input[5].getText());
+				String beginDate = yearAddZero(input[0].getText()) +"-"+ addZero(input[1].getText()) +"-"+ addZero(input[2].getText());
+				String endDate = yearAddZero(input[3].getText()) +"-"+ addZero(input[4].getText()) +"-"+ addZero(input[5].getText())+" 23:59";
 			
 				ArrayList<DebitAndPayBillVO> vo;
 				try {

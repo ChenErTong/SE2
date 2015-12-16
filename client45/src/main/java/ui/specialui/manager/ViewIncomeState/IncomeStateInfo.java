@@ -248,7 +248,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				new MyNotification(this,"请输入截止日期！",Color.RED);
 			}else{
 				if(this.isLegal()){
-					String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
+					String endDate = yearAddZero(input[0].getText())+"-" + addZero(input[1].getText())+"-" + addZero(input[2].getText());
 			
 					try {
 						
@@ -292,7 +292,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			if(rowCount==0){
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
 			}else{
-				String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
+				String endDate = yearAddZero(input[0].getText())+"-" + addZero(input[1].getText())+"-" + addZero(input[2].getText());
 				try {
 					RecordBLService recordController = ControllerFactory.getRecordController();
 					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
