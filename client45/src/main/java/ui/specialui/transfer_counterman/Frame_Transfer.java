@@ -7,8 +7,10 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -55,7 +57,6 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.setVisible(true);
 		
 		carLoading = new MyButton(760, 690, 120, 20, TransferImage.getBUTTON_QICHE_GUIDE());
 		carLoading.setActionCommand("CarLoading");
@@ -90,6 +91,8 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 				this.setNavigation(false);
+			}else{
+				this.logout();
 			}
 		}else if(e.getActionCommand().equals("CarLoading")){
 			//进入汽车装运管理界面

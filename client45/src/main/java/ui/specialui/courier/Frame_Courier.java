@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.CourierImage;
 import ui.myui.MyButton;
@@ -36,7 +37,6 @@ public class Frame_Courier extends MyJFrame implements ActionListener {
 		this.add(totalPanel);
 
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.setVisible(true);
 		
 		orderInput = new MyButton(910, 690, 80, 20,
 				CourierImage.getBUTTON_DINGDAN_GUIDE());
@@ -69,6 +69,8 @@ public class Frame_Courier extends MyJFrame implements ActionListener {
 				subPanel = null;
 				totalPanel.setVisible(true);
 				this.setNavigation(false);
+			}else{
+				this.logout();
 			}
 		} else if (e.getActionCommand().equals("OrderInput")) {
 			totalPanel.setVisible(false);

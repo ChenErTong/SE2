@@ -5,9 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
+
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
-
 import vo.OrderVO;
 /**
  * 订单物流信息查询界面
@@ -28,14 +29,15 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Sender_Total();
 		this.add(totalPanel);
 		totalPanel.setVisible(true);
-		
-		this.withdrawButton.setVisible(false);
-		
+				
 		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.BACKGROUND);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("return")){
+			this.logout();
+		}
 	}
 }
 

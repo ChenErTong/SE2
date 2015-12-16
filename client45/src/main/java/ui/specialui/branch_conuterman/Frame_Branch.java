@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ui.commonui.login.Frame_Login;
 import ui.image.BranchImage;
 import ui.image.CommonImage;
 import ui.myui.MyButton;
@@ -37,7 +38,6 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		this.totalPanel = new Panel_Branch_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.setVisible(true);
 		
 		vehicleloading = new MyButton(650, 690, 120, 20, BranchImage.getBUTTON_ZHUANGCHE_GUIDE());
 		vehicleloading.setActionCommand("Vehicleloading");
@@ -76,6 +76,8 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 				this.setNavigation(false);
+			}else{
+				this.logout();
 			}
 		}else if(e.getActionCommand().equals("Vehicleloading")){
 			//进入车辆装车管理界面

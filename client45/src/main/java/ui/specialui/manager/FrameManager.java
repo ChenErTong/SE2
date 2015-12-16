@@ -60,7 +60,6 @@ public class FrameManager extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.setVisible(true);
 		
 		HandleReceipt = new MyButton(300-105, 690,95,20,ManagerImage.getBUTTON_APPROVE_());
 		HandleReceipt.setActionCommand("HandleReceipt");
@@ -128,6 +127,8 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 				this.setNavigation(false);
+			}else{
+				this.logout();
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
 			if(subPanel!=null){
@@ -306,6 +307,5 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				ViewIncomeStatement.setVisible(isVisible);
 				viewLog.setVisible(isVisible);
 				subscript.setVisible(isVisible);
-				withdrawButton.setVisible(!isVisible);
 			}
 }

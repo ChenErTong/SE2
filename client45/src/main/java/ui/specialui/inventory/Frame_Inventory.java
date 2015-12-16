@@ -2,6 +2,8 @@ package ui.specialui.inventory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.InventoryImage;
 import ui.myui.MyButton;
@@ -30,7 +32,6 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		
 		this.returnButton.addActionListener(this);
-		this.withdrawButton.setVisible(true);
 		
 		check = new MyButton(870, 690, 80, 20, InventoryImage.getBUTTON_CHAKAN_GUIDE());
 		check.setActionCommand("InventoryCheck");
@@ -68,6 +69,8 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 				subPanel = null;
 				totalPanel.setVisible(true);
 				this.setNavigation(false);
+			}else{
+				this.logout();
 			}
 		}else if(e.getActionCommand().equals("InventoryCheck")){
 			//进入库存查看界面
