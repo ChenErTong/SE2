@@ -25,6 +25,7 @@ import businesslogicservice.recordblservice.RecordBLService;
 import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
+import ui.myui.MyFileChooser;
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -280,6 +281,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			}
 		}else if(e.getActionCommand().equals("ExportIncomeTable")){
 			int rowCount = table.getRowCount();
+			new MyFileChooser();
 			if(rowCount==0){
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
 			}else{

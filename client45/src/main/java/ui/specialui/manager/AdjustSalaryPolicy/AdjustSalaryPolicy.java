@@ -272,6 +272,7 @@ public void leadline(FrameManager frameManager){
 				ResultMessage rsg = controller.undo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"撤销操作失败！",Color.RED);
 				}
@@ -286,6 +287,7 @@ public void leadline(FrameManager frameManager){
 				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"撤销操作失败！",Color.RED);
 				}
@@ -334,7 +336,7 @@ public void leadline(FrameManager frameManager){
 				System.out.println("ModifySucceed!");
 				this.showAll();
 				modifyPolicy.refresh();
-				new MyNotification(this,"策略修改成功！",Color.GREEN);		
+				new MyNotification(this,"策略修改成功！",Color.GREEN);	
 			}else{
 				new MyNotification(this,"策略修改失败！",Color.RED);
 			}

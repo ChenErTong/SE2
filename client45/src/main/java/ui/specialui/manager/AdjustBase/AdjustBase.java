@@ -291,6 +291,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				ResultMessage rsg = controller.undo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"操作撤销成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"操作撤销失败！",Color.RED);
 				}
@@ -305,6 +306,7 @@ public class AdjustBase extends MyJPanel implements ActionListener{
 				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"操作撤销成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"操作撤销失败！",Color.RED);
 				}

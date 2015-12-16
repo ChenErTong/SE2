@@ -399,6 +399,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				ResultMessage rsg = controller.undo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"撤销操作失败！",Color.RED);
 				}
@@ -413,6 +414,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 				ResultMessage rsg = controller.redo();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"撤销操作成功！",Color.GREEN);
+					this.showAll();
 				}else{
 					new MyNotification(this,"撤销操作失败！",Color.RED);
 				}

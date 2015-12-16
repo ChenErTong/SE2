@@ -26,6 +26,7 @@ import businesslogicservice.recordblservice.RecordBLService;
 import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
+import ui.myui.MyFileChooser;
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
@@ -321,6 +322,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			int rowCount = table.getRowCount();
+			new MyFileChooser();
 			if(rowCount==0){
 				new MyNotification(this,"导出经营情况表失败！",Color.RED);
 			}else{
