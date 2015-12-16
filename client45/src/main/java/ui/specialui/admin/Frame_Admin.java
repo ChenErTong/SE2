@@ -24,6 +24,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.BACKGROUND);
 		this.withdrawButton.setVisible(true);
+		this.repaint();
 	}
 	
 
