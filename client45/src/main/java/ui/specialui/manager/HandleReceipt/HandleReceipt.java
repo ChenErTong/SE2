@@ -72,14 +72,14 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	public HandleReceipt(FrameManager frameManager) throws RemoteException {
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
-		this.initComponent();
-		this.leadline(frameManager);
 		listPool = new ArrayList<ValueObject>();
 		typePool = new ArrayList<ReceiptType>();
-		
 		passList = new ArrayList<ValueObject>();
 		passType = new ArrayList<ReceiptType>();
+		this.initComponent();
 		search  = searchPanel.getSearch();
+		this.leadline(frameManager);
+		
 	}
 	
 	private void initComponent() throws RemoteException {
@@ -335,7 +335,9 @@ public void leadline(FrameManager frameManager){
 			//清空VO储存池
 			listPool.clear();
 			typePool.clear();
-			
+
+			System.out.println(listPool);
+
 			table = searchPanel.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			
@@ -400,7 +402,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.APPROVALING);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.APPROVALING);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.APPROVALING);
-		System.out.println(transferOrder);
+//		System.out.println(transferOrder);
 		model = (DefaultTableModel) table.getModel();
 		
 		if(index == 0){
@@ -417,9 +419,13 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		}
 		if(index == 2){
 			for(int i = 0; i < loadingList.size(); i++){
+				System.out.println(loadingList+"!");
 				Object[] rowData = {new Boolean(false), "装车单", loadingList.get(i).ID, "未审批"};
 				model.addRow(rowData);
+				System.out.println(loadingList+"!");
+				System.out.println(listPool);
 				listPool.add(loadingList.get(i));
+				
 				typePool.add(loadingList.get(i).type);
 			}
 		}

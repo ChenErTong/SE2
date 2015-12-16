@@ -73,7 +73,6 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	 *      String)
 	 */
 	public BussinessOneDayVO getBussinessOneDayIncome(String branch, String date) throws RemoteException {
-
 		ArrayList<DebitBillVO> debits = new ArrayList<>();
 		BigDecimal income = new BigDecimal(0);
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
@@ -87,6 +86,9 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 				}
 			}
 		}
+		System.out.println(debits.size());
+		if(debits.size()==0)
+			return null;
 		return new BussinessOneDayVO(debits, income);
 	}
 
