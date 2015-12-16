@@ -18,7 +18,7 @@ public class MyRenderer extends JLabel implements ListCellRenderer {
 	
 	public Component getListCellRendererComponent(JList list, Object value,
 			int index, boolean isSelected, boolean cellHasFocus) {
-		this.setText(value.toString());
+		this.setText((String)value);
 		if(isSelected){
 			this.setBackground(new Color(210, 188, 153));
 		}else{
