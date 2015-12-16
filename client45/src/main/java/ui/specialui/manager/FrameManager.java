@@ -122,12 +122,14 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				} catch (RemoteException e1) {
 					return;
 				}
+				this.setNavigation(false);
 				
 			}else if(modifyReceiptInfo==null&&subPanel != null){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
+				this.setNavigation(false);
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
 			if(subPanel!=null){

@@ -100,6 +100,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		viewLog.setActionCommand("ViewLogMsg");
 		viewLog.addActionListener(this);
 		this.add(viewLog);
+		
 		this.setNavigation(false);
 		
 		this.repaint();
@@ -115,6 +116,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 				this.remove(subPanel);
 				subPanel = null;
 				totalPanel.setVisible(true);
+				this.setNavigation(false);
 			}
 		}else if(e.getActionCommand().equals("CostManage")){
 			if(subPanel !=null){
@@ -301,7 +303,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			ViewIncomeStatement.setVisible(isVisible);
 			viewLog.setVisible(isVisible);
 			subscript.setVisible(isVisible);
-			withdrawButton.setVisible(isVisible);
+			withdrawButton.setVisible(!isVisible);
 			
 		}
 }
