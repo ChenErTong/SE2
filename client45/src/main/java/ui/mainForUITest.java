@@ -34,9 +34,8 @@ FrameManager managerFrame = new FrameManager(id);
 
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
-//
-Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
-	//Frame_Admin adminFrame = new Frame_Admin(id);
+//Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
+	
 //adminFrame.setVisible(true);
 
 

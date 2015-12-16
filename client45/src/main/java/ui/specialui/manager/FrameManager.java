@@ -16,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import ui.commonui.login.Frame_Login;
 import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
+import ui.image.ManagerImage;
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
@@ -44,14 +47,66 @@ public class FrameManager extends MyJFrame implements ActionListener{
 	private MyJPanel subPanel;
 	
 	static JTable outputTable;
+	//导航栏
+	private MyButton HandleReceipt;
+	private MyButton HandleOrganization;
+	private MyButton AdjustBase;
+	private MyButton AdjustSalaryPolicy;
+	private MyButton ViewUser;
+	private MyButton ViewBusinessPerformance;
+	private MyButton ViewIncomeStatement;
+	private MyButton viewLog;
 	
 	public FrameManager(String userID){
 		super(userID);
 		totalPanel = new Panel_Manager_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		subscript.setVisible(false);
+		this.withdrawButton.addActionListener(this);
+		
+		HandleReceipt = new MyButton(300-105, 690,95,20,ManagerImage.getBUTTON_APPROVE_());
+		HandleReceipt.setActionCommand("HandleReceipt");
+		HandleReceipt.addActionListener(this);
+		this.add(HandleReceipt);
+		
+		HandleOrganization = new MyButton(300, 690,120,20,ManagerImage.getBUTTON_ORGANIZATION_());
+		HandleOrganization.setActionCommand("HandleOrganization");
+		HandleOrganization.addActionListener(this);
+		this.add(HandleOrganization);
+		
+		AdjustBase = new MyButton(300+120+10, 690,120,20,ManagerImage.getBUTTON_BASE_());
+		AdjustBase.setActionCommand("AdjustBase");
+		AdjustBase.addActionListener(this);
+		this.add(AdjustBase);
+		
+		AdjustSalaryPolicy = new MyButton(300+120+10+130,690,120,20,ManagerImage.getBUTTON_POLICY_());
+		AdjustSalaryPolicy.setActionCommand("AdjustSalaryPolicy");
+		AdjustSalaryPolicy.addActionListener(this);
+		this.add(AdjustSalaryPolicy);
+		
+		ViewUser = new MyButton(300+120+10+130+130,  690,120,20,ManagerImage.getBUTTON_ACCOUNT_());
+		ViewUser.setActionCommand("ViewUser");
+		ViewUser.addActionListener(this);
+		this.add(ViewUser);
+		
+		ViewBusinessPerformance = new MyButton(300+120+10+130+130+130,690,120,20,FinanceImage.getButton_JINGYING_());
+		ViewBusinessPerformance.setActionCommand("ViewBusinessPerformance");
+		ViewBusinessPerformance.addActionListener(this);
+		this.add(ViewBusinessPerformance);
+		
+		ViewIncomeStatement = new MyButton(300+130*5,690,120,20,FinanceImage.getButton_CHENGBEN_());
+		ViewIncomeStatement.setActionCommand("ViewIncomeStatement");
+		ViewIncomeStatement.addActionListener(this);
+		this.add(ViewIncomeStatement);
+		
+		viewLog = new MyButton(300+130*6,690,120,20,FinanceImage.getButton_LOG_());
+		viewLog.setActionCommand("ViewLogMsg");
+		viewLog.addActionListener(this);
+		this.setNavigation(false);
+		
+		this.repaint();
 		this.setBackground(CommonImage.BACKGROUND);
+		
 	}
 
 	@Override
@@ -61,8 +116,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				modifyReceiptInfo.setVisible(false);
 				this.remove(modifyReceiptInfo);
 				modifyReceiptInfo = null;
-				subPanel.setVisible(true);
-				System.out.println("111");
+				try {
+					subPanel = new HandleReceipt(this);
+					subPanel.setVisible(true);
+				} catch (RemoteException e1) {
+					return;
+				}
+				
 			}else if(modifyReceiptInfo==null&&subPanel != null){
 				subPanel.setVisible(false);
 				this.remove(subPanel);
@@ -78,10 +138,11 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			try {
 				subPanel = new HandleReceipt(this);
 			} catch (RemoteException e1) {
-				e1.printStackTrace();
+				return;
 			}
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("HandleOrganization")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -91,6 +152,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new HandleOrganization(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("AdjustBase")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -100,6 +162,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new AdjustBase(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("AdjustSalaryPolicy")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -109,6 +172,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new AdjustSalaryPolicy(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewUser")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -118,6 +182,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new AccountManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -127,6 +192,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new ViewIncomeStatement(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -135,10 +201,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			}			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("Withdraw")){
-			Frame_Login login = new Frame_Login(ID);
-			subPanel = new Panel_Login(login);
-			subPanel.setVisible(true);
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -148,6 +211,11 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			subPanel = new ViewLogPanel(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
+		}else if(e.getActionCommand().equals("Withdraw")){
+			Frame_Login login = new Frame_Login(ID);
+			subPanel = new Panel_Login(login);
+			subPanel.setVisible(true);
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				setTable(((BusinessPerformanceInfo)subPanel).getTable());
@@ -226,8 +294,22 @@ public class FrameManager extends MyJFrame implements ActionListener{
 	       	this.add(new MyNotification(this,"已成功导出！",Color.GREEN));
 	     
 	   }
+	
 	public static void setTable(JTable _table){
 		outputTable = _table;
-		
 	}
+	
+	// 设置导航栏是否隐藏
+			private void setNavigation(boolean isVisible) {
+				HandleReceipt.setVisible(isVisible);
+				HandleOrganization.setVisible(isVisible);
+				AdjustBase.setVisible(isVisible);
+				AdjustSalaryPolicy.setVisible(isVisible);
+				ViewUser.setVisible(isVisible);
+				ViewBusinessPerformance.setVisible(isVisible);
+				ViewIncomeStatement.setVisible(isVisible);
+				viewLog.setVisible(isVisible);
+				subscript.setVisible(isVisible);
+				withdrawButton.setVisible(!isVisible);
+			}
 }

@@ -25,6 +25,7 @@ public class Frame_Admin extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Admin_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
+		this.withdrawButton.addActionListener(this);
 		this.setBackground(CommonImage.BACKGROUND);
 	}
 	

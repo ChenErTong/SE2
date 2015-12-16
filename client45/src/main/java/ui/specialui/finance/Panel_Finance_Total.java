@@ -1,6 +1,5 @@
 package ui.specialui.finance;
 
-import ui.image.CommonImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyJPanel;
@@ -67,11 +66,6 @@ public class Panel_Finance_Total extends MyJPanel{
 		viewLog.setActionCommand("ViewLogMsg");
 		viewLog.addActionListener(frame_Finance);
 		this.add(viewLog);
-		
-		MyButton withdraw = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
-		withdraw.setActionCommand("Withdraw");
-		withdraw.addActionListener(frame_Finance);
-		this.add(withdraw);
 		
 		this.repaint();
 	}

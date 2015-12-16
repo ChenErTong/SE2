@@ -58,43 +58,31 @@ public class ReceiptConductor {
 		String blank = " ";
 		String line ="----";
 		
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"收款单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
-		text = text +"收款人ID： "+receipt.courierID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
-		text = text +"付款日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+		text = text +"收款日期： "+receipt.date+"\n";
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
+		text = text+"账目信息"+"\n";
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text + "账目信息：" + "\n";
+		text = text +"收款人ID： "+receipt.courierID+"\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"收款金额: "+receipt.money+"元\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号: "+"\n";
@@ -113,64 +101,38 @@ public class ReceiptConductor {
 		String blank = " ";
 		String line ="----";
 		
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"付款单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
+		text = text +"付款日期： "+receipt.date+"\n";
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"付款人： "+receipt.payerName+"\n";
-		for(int i=0;i<35;i++){
+	
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text +"付款日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
-		text = text + "账目信息：" + "\n";
-		
-		for(int i=0;i<9;i++){
-			text = text + blank4;
-		}
-		//TODO Ann
 		text = text +"付款账户： "+receipt.bankAccountID+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"转账金额： "+receipt.money+"元\n";
 		
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";
-			
-		for(int i = 0; i < 7; i++){
+		text = text + "单据备注: " +receipt.remarks+ "\n";
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text + "单据备注:" +receipt.remarks+ "\n";
-		for(int i = 0; i < 9; i++){
-			text = text + blank4;
-		}
-		text = text+receipt.items+"\n";
+		text = text+"单据条目: "+receipt.items+"\n";
 		return text;
 	}
 
@@ -182,57 +144,45 @@ public class ReceiptConductor {
 		String blank = " ";
 		String line ="----";
 		
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"出库单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"出库日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+
 		text = text + "出库信息：" + "\n";
-		
-		for(int i=0;i<35;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"出库区号： "+receipt.area+"区\n";
 	
-		for(int i=0;i<5;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text + "出库排号:" +receipt.row+ "排\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text+"出库架号："+receipt.frame+"架\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		
 		text = text+"出库位号："+receipt.position+"位\n";
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"中转中心编号： "+receipt.transferID+"\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"货物信息： "+receipt.commodityVO.commodityType+" "+receipt.commodityVO.commodityState+" "+
@@ -248,59 +198,46 @@ public class ReceiptConductor {
 		String blank = " ";
 		String line ="----";
 		
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"入库单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"入库日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+	
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+	
 		text = text + "入库信息：" + "\n";
-		
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
-		for(int i=0;i<5;i++){
+	
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出库区号： "+receipt.area+"区\n";
 			
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text + "出库排号:" +receipt.row+ "排\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"出库架号："+receipt.frame+"架\n";
-		for(int i = 0;i < 9;i++){
+		for(int i = 0;i < 2;i++){
 			text = text+blank4;
 		}
 		text = text+"出库位号："+receipt.position+"位\n";
-		for(int i = 0;i<9;i++){
+		for(int i = 0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text+""+receipt.position+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text+"货物信息： "+receipt.commodityVO.commodityType+" "+receipt.commodityVO.commodityState+" "+
@@ -317,60 +254,46 @@ public class ReceiptConductor {
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"转运单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"转运日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"转运工具编号："+receipt.facilityID+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出发城市： "+receipt.departure+"\n";
 
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
-		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
 		}
 		text = text + "\n";
 			
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text + "到达城市:" +receipt.destination+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"押运人: "+receipt.courierName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
@@ -387,60 +310,42 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"转运单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"转运日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"转运工具编号："+receipt.facilityID+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出发城市： "+receipt.departure+"\n";
 
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";
-			
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+
 		text = text + "到达城市:" +receipt.destination+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"押运人: "+receipt.courierName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
@@ -457,60 +362,50 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"转运单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"转运日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+		
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+	
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"转运工具编号："+receipt.facilityID+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出发城市： "+receipt.departure+"\n";
 
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		for(int i = 0; i < 32; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + line;
 		}
 		text = text + "\n";
 			
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text + "到达城市:" +receipt.destination+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"押运人: "+receipt.courierName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
@@ -528,67 +423,49 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"中转中心到达单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
+		text = text +"到达日期： "+receipt.date+"\n";
 		for(int i=0;i<35;i++){
 			text = text + blank4;
 		}
 		text = text +"到达日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"中转中心编号："+receipt.transferCenterID+"\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出发城市： "+receipt.departure+"\n";
 
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";
-			
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+		
 		text = text + "到达城市:" +receipt.destination+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"货物状态: "+receipt.state+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text +"订单条形码号： "+"\n";
-	///	for(int i=0;i<receipt.order.size();i++){
-		//	text = text+": "+receipt.order.get(i)+"\n";
-		//}
+		text = text +"订单条形码号： "+receipt.order;
 		return text;
 	}
 
@@ -600,46 +477,32 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
+		text = text+"\n";
 		text = text+blank+"派件单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"派送日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"派送快递员： "+receipt.courierName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
-		//for(int i=0;i<receipt.orders.size();i++){
-			//text = text+": "+receipt.orders.get(i)+"\n";
-		//}
-		return null;
+		return text;
 	}
 
 	private String writeBranch_Arrival(BranchArrivalListVO receipt) {
@@ -650,9 +513,10 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
+		text = text+"\n";
 		text = text+blank+"营业厅到达单"+"\n";
 		for(int i=0;i<5;i++){
 			text = text + blank4;
@@ -662,44 +526,27 @@ String ID = receipt.ID;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"到达日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"出发城市： "+receipt.departure+"\n";
 
-		for(int i = 0; i < 5; i++){
-			text = text + blank4;
-		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";
-			
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text + "转运单编号:" +receipt.transferListID+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"货物状态: "+receipt.state+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+receipt.order+"\n";
@@ -715,75 +562,58 @@ String ID = receipt.ID;
 		String blank4 = "    ";
 		String blank = " ";
 		String line ="----";
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
+		text = text+"\n";
 		text = text+blank+"营业厅装车单"+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
-			text = text + blank4;
-		}
 		text = text +"装车日期： "+receipt.date+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
+	
 		for(int i = 0; i < 32; i++){
 			text = text + line;
 		}
 		text = text + "\n";
-		for(int i = 0; i < 7; i++){
-			text = text + blank4;
-		}
+	
 		text = text + "单据信息：" + "\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"营业厅ID： "+receipt.branchID+"\n";
 
-		/*for(int i = 0; i < 5; i++){
-			text = text + blank4;
-		}
-		for(int i = 0; i < 32; i++){
-			text = text + line;
-		}
-		text = text + "\n";*/
-			
-		for(int i = 0; i < 7; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text + "汽运编号： " +receipt.transferNumber+ "\n";
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text+"到达地: "+receipt.distination+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text+"车辆代号: "+receipt.carID+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text+blank4;
 		}
 		text = text+"监装员: "+receipt.monitorName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text+blank4;
 		}
 		text = text+"押运员: "+receipt.courierName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"订单条形码号： "+"\n";
 		for(int i=0;i<receipt.orders.size();i++){
 			text = text+": "+receipt.orders.get(i)+"\n";
 		}
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text+blank4;
 		}
 		text = text +"运费： "+receipt.money+"\n";
@@ -801,73 +631,76 @@ String ID = receipt.ID;
 		String blank = " ";
 		String line ="----";
 		
-		for(int i=0;i<25;i++){
+		for(int i=0;i<7;i++){
 			blank = blank+blank4;
 		}
 		text = text+blank+"寄件单："+"\n";
-		for(int i=0;i<5;i++){
-			text = text + blank4;
-		}
 		for(int i=0;i<32;i++){
 			text = text+line;
 		}
 		text = text + "\n";
 		text = text +"单据编号： "+ID+"\n";
-		for(int i=0;i<35;i++){
+		for(int i = 0; i < 32; i++){
+			text = text + line;
+		}
+		text = text + "\n";
+	
+		text = text + "单据信息：" + "\n";
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"寄件人姓名： "+receipt.senderName+"\n";
-		for(int i=0;i<35;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"寄件人电话：： "+receipt.senderTel+"\n";
 		
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
 		text = text +"寄件人住址： "+receipt.senderAddress+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"寄件人单位： "+receipt.senderCo+"元\n";
 			
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
 		text = text +"收件人姓名： "+receipt.recipientName+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"收件人电话： "+receipt.recipientTel+"元\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"收件人住址： "+receipt.recipientAddress+"元\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"收件人单位： "+receipt.recipientCo+"元\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"派件时间： "+receipt.sendTime+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"收件时间： "+receipt.recipientTime+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"包装类型： "+receipt.packType+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"快递类型： "+receipt.express+"\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"费用： "+receipt.money+"元\n";
-		for(int i=0;i<9;i++){
+		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		text = text +"运送轨迹： "+"\n";

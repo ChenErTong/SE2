@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import ui.commonui.login.Frame_Login;
 import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
+import ui.image.FinanceImage.FinanceImage;
+import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
@@ -48,13 +50,60 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private Panel_Finance_Total totalPanel;
 	private MyJPanel subPanel ;
 	private BusinessPerformanceInfo businessPerformance;
+	//导航栏
+	private MyButton CostManage;
+	private MyButton SettlementManage;
+	private MyButton BankAccountManage;
+	private MyButton OpenningStock;
+	private MyButton ViewBusinessPerformance;
+	private MyButton ViewIncomeStatement;
+	private MyButton viewLog;
 	
 	public Frame_Finance(String userID){
 		super(userID);
 		totalPanel = new Panel_Finance_Total(this);
 		this.add(totalPanel);
 		this.returnButton.addActionListener(this);
-		subscript.setVisible(false);
+		this.withdrawButton.addActionListener(this);
+		
+		CostManage = new MyButton(300, 690, 95, 20,FinanceImage.getBUTTON_JIESUAN_());
+		CostManage.setActionCommand("CostManage");
+		CostManage.addActionListener(this);
+		this.add(CostManage);
+		
+		SettlementManage = new MyButton(395+10,690,95,20,FinanceImage.getBUTTON_COST_());
+		SettlementManage.setActionCommand("SettlementManage");
+		SettlementManage.addActionListener(this);
+		this.add(SettlementManage);
+		
+		BankAccountManage = new MyButton(395+10+105,690,120,20,FinanceImage.getBUTTON_BANK_());
+		BankAccountManage.setActionCommand("BankAccountManage");
+		BankAccountManage.addActionListener(this);
+		this.add(BankAccountManage);
+		
+		OpenningStock = new MyButton(405+105+120+10,690,120,20,FinanceImage.getBUTTON_QICHU_());
+		OpenningStock.setActionCommand("OpenningStock");
+		OpenningStock.addActionListener(this);
+		this.add(OpenningStock);
+		
+		ViewBusinessPerformance = new MyButton(510+130+120+10+5,690,120,20,FinanceImage.getButton_JINGYING_());
+		ViewBusinessPerformance.setActionCommand("ViewBusinessPerformance");
+		ViewBusinessPerformance.addActionListener(this);
+		this.add(ViewBusinessPerformance);
+		
+		ViewIncomeStatement = new MyButton(770+130+10,690,120,20,FinanceImage.getButton_CHENGBEN_());
+		ViewIncomeStatement.setActionCommand("ViewIncomeStatement");
+		ViewIncomeStatement.addActionListener(this);
+		this.add(ViewIncomeStatement);
+		
+		viewLog = new MyButton(770+130+130+15,690,120,20,FinanceImage.getButton_LOG_());
+		viewLog.setActionCommand("ViewLogMsg");
+		viewLog.addActionListener(this);
+		this.add(viewLog);
+		this.setNavigation(false);
+		
+		this.repaint();
+		
 		this.setBackground(CommonImage.BACKGROUND);
 	}
 
@@ -75,8 +124,8 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			}
 			subPanel = new CostManagement(this);
 			this.add(subPanel);
-		//	this.setBackground(CommonImage.BACKGROUND_LOGO);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		
 		}else if(e.getActionCommand().equals("SettlementManage")){
 			if(subPanel !=null){
@@ -87,6 +136,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new SettlementManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("OpenningStock")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -98,6 +148,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new OpenningStockManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("BankAccountManage")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -107,6 +158,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new BankAccountManage(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));	
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -116,6 +168,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new ViewBusinessPerformance(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -125,11 +178,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new ViewIncomeState(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
-		}else if(e.getActionCommand().equals("Withdraw")){
-			Frame_Login login = new Frame_Login(ID);
-			subPanel = new Panel_Login(login);
-			subPanel.setVisible(true);
-			
+			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
 			if(subPanel!=null){
 				subPanel.setVisible(false);
@@ -139,6 +188,11 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			subPanel = new ViewLogPanel(this);
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
+			this.setNavigation(true);
+		}else if(e.getActionCommand().equals("Withdraw")){
+			Frame_Login login = new Frame_Login(ID);
+			subPanel = new Panel_Login(login);
+			subPanel.setVisible(true);
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			if(this.isExport()){
 				output = businessPerformance.getTable();
@@ -240,5 +294,19 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 		outputTable = _table;
 		
 	}
+	
+	// 设置导航栏是否隐藏
+		private void setNavigation(boolean isVisible) {
+			CostManage.setVisible(isVisible);
+			SettlementManage.setVisible(isVisible);
+			BankAccountManage.setVisible(isVisible);
+			OpenningStock.setVisible(isVisible);
+			ViewBusinessPerformance.setVisible(isVisible);
+			ViewIncomeStatement.setVisible(isVisible);
+			viewLog.setVisible(isVisible);
+			subscript.setVisible(isVisible);
+			withdrawButton.setVisible(isVisible);
+			
+		}
 }
 

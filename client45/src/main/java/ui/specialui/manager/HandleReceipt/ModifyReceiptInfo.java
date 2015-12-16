@@ -1,25 +1,15 @@
 package ui.specialui.manager.HandleReceipt;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptType;
-import state.ResultMessage;
-import ui.image.ManagerImage;
-import ui.myui.MyButton;
-import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
-import ui.myui.MyNotification;
+
 import ui.myui.MyTranslucentPanel;
 import vo.OrderVO;
 import vo.ValueObject;
@@ -30,7 +20,7 @@ import vo.receiptvo.PaymentBillVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.DeliveryListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
-import vo.receiptvo.orderreceiptvo.OrderReceiptVO;
+
 import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import vo.receiptvo.orderreceiptvo.TransferOrderVO;
 /**
@@ -111,7 +101,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	}
 	private void importTable(InventoryImportReceiptVO receipt) {
 		//  ReceiptType type, String depture, String destination,String commoditiesID, int a, int b, int c, int d)
-		String[] headers = {};
+		String[] headers = {"单据类型","转运ID","商品货物信息","区","排","架","位"};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 	

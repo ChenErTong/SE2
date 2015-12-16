@@ -1,6 +1,5 @@
 package ui.specialui.manager;
 
-import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.myui.MyButton;
 import ui.myui.MyJPanel;
@@ -72,11 +71,6 @@ public class Panel_Manager_Total extends MyJPanel {
 		viewLog.setActionCommand("ViewLogMsg");
 		viewLog.addActionListener(frameManager);
 		this.add(viewLog);
-		
-		MyButton withdraw = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
-		withdraw.setActionCommand("Withdraw");
-		withdraw.addActionListener(frameManager);
-		this.add(withdraw);
 	}
 
 }

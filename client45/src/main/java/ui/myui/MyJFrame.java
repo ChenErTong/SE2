@@ -33,6 +33,8 @@ public class MyJFrame extends JFrame{
 	protected String ID;
 	//下标
 	protected JLabel subscript;
+	//撤销登录
+	protected MyButton withdrawButton;
 	
 	boolean isDraging;
 	int xx, yy, X0, Y0, X, Y;
@@ -89,6 +91,9 @@ public class MyJFrame extends JFrame{
 		});
 		this.add(this.closeButton);
 		
+		this.withdrawButton = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
+		this.withdrawButton.setActionCommand("Withdraw");
+		this.add(this.withdrawButton);
 
 		//设置界面可拖动
 		this.addMouseListener(new MouseAdapter() {

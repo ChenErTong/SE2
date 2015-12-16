@@ -21,7 +21,7 @@ import ui.image.CommonImage;
 import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyJFrame;
-import ui.myui.MyJTextField;
+
 import ui.myui.MyNotification;
 import ui.specialui.admin.Frame_Admin;
 import ui.specialui.branch_conuterman.Frame_Branch;
@@ -56,12 +56,11 @@ import ui.specialui.transfer_counterman.Frame_Transfer;
 public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
-	private MyJTextField userIdField;
-	private MyJTextField passwordField;	
+	
 	private UserController userController;
-	private String userName;
+
 	private String userID;
-	private String userIden;
+	
 	private UserIdentity iden;
 	static String senderID = "123";
 	boolean flag = false;
