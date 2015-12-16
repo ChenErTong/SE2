@@ -48,11 +48,11 @@ public class mainForUITest3 {
 //senderFrame.setVisible(true);
   
 	String userID = "010015001";
-//	new Frame_Login(userID);
+	new Frame_Login(userID);
 //new Frame_Inventory(userID);
 //new Frame_Transfer(userID);
 //new Frame_Courier(userID);
 //new Frame_Branch(userID);
-	new Frame_Admin(userID);
+//	new Frame_Admin(userID);
 	}
 }

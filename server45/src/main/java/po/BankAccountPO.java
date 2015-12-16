@@ -74,7 +74,10 @@ public class BankAccountPO extends PersistentObject{
 		return this.ID+"|"+this.name+"|"+this.money;
 	}
 
-	
+	@Override
+	public String getID() {
+		return super.getID();
+	}
 
 	
 }
