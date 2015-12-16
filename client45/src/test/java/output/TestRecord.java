@@ -37,6 +37,6 @@ public class TestRecord {
 		receipt.add(vo1);
 		receipt.add(vo2);
 		BussinessProcessVO vo = new BussinessProcessVO(receipt, GetDate.getDate(), GetDate.getDate());
-		controller.exportBussinessProcessToExcel(vo);
+		controller.exportBussinessProcessToExcel(vo,"output");
 	}
 }

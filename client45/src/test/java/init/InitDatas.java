@@ -11,15 +11,21 @@ import businesslogic.accountbl.AccountController;
 import businesslogic.basebl.BaseController;
 import businesslogic.facilitybl.DriverController;
 import businesslogic.facilitybl.FacilityController;
+import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
 import businesslogic.userbl.UserController;
+import state.CommodityState;
+import state.ExpressType;
 import state.OrganizationType;
+import state.PackageType;
 import state.UserAuthority;
 import state.UserIdentity;
 import util.GetDate;
 import vo.BaseVO;
 import vo.BranchVO;
+import vo.CommodityVO;
 import vo.FacilityVO;
+import vo.OrderVO;
 import vo.TransferVO;
 import vo.UserVO;
 import vo.accountvo.AccountVO;
@@ -30,6 +36,21 @@ public class InitDatas {
 		 initUser();
 		 initOrganization();
 		 initBase();
+		 initOrder();
+	}
+
+	private static void initOrder() {
+		try {
+			OrderController orderController = ControllerFactory.getOrderController();
+			for (int i = 0; i < 20; i++) {
+				CommodityVO com[] = {new CommodityVO("123", new BigDecimal("0.156"), new BigDecimal("0.156"), CommodityState.Complete)};
+				orderController.addOrder(com,new OrderVO(orderController.getOrderId(), "123", "123", "123", "123", "123",
+						"123", "123", "123", new ArrayList<>(), GetDate.getDate(), GetDate.getDate(),
+						new BigDecimal(18), PackageType.Metal, ExpressType.Car));
+			}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void initBase() {

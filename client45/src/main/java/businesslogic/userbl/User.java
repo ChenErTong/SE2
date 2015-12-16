@@ -90,9 +90,10 @@ public class User implements CommonBusinessLogic<UserPO>{
 		}
 		ArrayList<UserPO> pos = userData.find();
 		for (UserPO po : pos) {
-			if (po.getUserName().equals(loginInfo.username)){
+			if (po.getID().equals(loginInfo.username)){
 				if (po.getPassword().equals(loginInfo.password)) {
 					this.currentUserFile.add(po);
+					System.out.println(po.getID());
 					return po.getIden();
 				}else {
 					//密码不正确

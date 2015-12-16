@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.receiptbl.Receipt;
 import config.RMIConfig;
 import dataservice.funddataservice.DebitAndPayBillDataService;
 import po.receiptpo.DebitAndPayBillPO;
@@ -20,10 +21,12 @@ import vo.receiptvo.DebitAndPayBillVO;
 public class DebitAndPayBillShow {
 
 	private DebitAndPayBillDataService debitAndPayBillData;
+	private Receipt receipt;
 
 	public DebitAndPayBillShow() throws MalformedURLException, RemoteException, NotBoundException {
 		debitAndPayBillData = (DebitAndPayBillDataService) Naming
 				.lookup(RMIConfig.PREFIX + DebitAndPayBillDataService.NAME);
+		receipt=new Receipt();
 	}
 
 	public ArrayList<DebitAndPayBillVO> showPay() throws RemoteException {
@@ -129,5 +132,11 @@ public class DebitAndPayBillShow {
 			}
 		}
 		return vos;
+	}
+	
+	public <T extends DebitAndPayBillVO> ArrayList<T> show(ReceiptType type,ReceiptState state) throws RemoteException{
+		if(type==null)
+			System.out.println("wrong!!!!!!!!!!!!我没考虑这种情况");
+		return receipt.show(type, state);
 	}
 }

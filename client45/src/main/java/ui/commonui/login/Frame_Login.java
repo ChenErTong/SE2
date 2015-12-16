@@ -53,7 +53,6 @@ import ui.specialui.transfer_counterman.Frame_Transfer;
  *  @time 2015/12/08 18:48:05
  */
 
-@SuppressWarnings("unused")
 public class Frame_Login extends MyJFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
@@ -106,37 +105,24 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 					userController = ControllerFactory.getUserController();
 				} catch (MalformedURLException e1) {
 					new MyNotification(this,"客户端文件丢失！",Color.RED);
-					//e1.printStackTrace();
 					return;
 				} catch (RemoteException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					//e1.printStackTrace();
 					return;
 				} catch (NotBoundException e1) {
 					new MyNotification(this,"请检查服务器是否正常工作！",Color.RED);
-					//e1.printStackTrace();
 					return;
 				}
 				
 				try {
 					iden = userController.login(new LoginInfo(data[0],data[1],flag));
+					System.out.println(data[0]+","+data[1]);
+					System.out.println(iden);
 				} catch (RemoteException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					e1.printStackTrace();
 				}
-				String type = "";
 				userID = data[0];
-				try {
-					for(int i=0;i<userController.show().size();i++){
-						if(userController.show().get(i).id.equals(userID)){
-							userName = userController.show().get(i).userName;
-							iden = userController.show().get(i).iden;
-						}
-					}
-				} catch (RemoteException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
-				}
 				if(iden==null){
 					new MyNotification(this,"用户名或密码填写错误！",Color.RED);
 				}else if(iden.equals(UserIdentity.ADMIN)){

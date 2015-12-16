@@ -52,8 +52,8 @@ public class RecordController implements RecordBLService {
 	/**
 	 * @see RecordBLService#exportBussinessProcessToExcel(BussinessProcessVO)
 	 */
-	public void exportBussinessProcessToExcel(BussinessProcessVO vo) {
-		RecordBL.exportBussinessProcessToExcel(vo);
+	public void exportBussinessProcessToExcel(BussinessProcessVO vo,String fileDirectoryPath) {
+		RecordBL.exportBussinessProcessToExcel(vo,fileDirectoryPath);
 	}
 
 	/**

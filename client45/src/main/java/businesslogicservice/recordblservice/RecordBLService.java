@@ -23,7 +23,7 @@ public interface RecordBLService {
 	
 	 public BussinessOneDayVO bussinessOneDay(String WorkPlace, String date) throws RemoteException;
 	 
-	 public void exportBussinessProcessToExcel(BussinessProcessVO vo);
+	 public void exportBussinessProcessToExcel(BussinessProcessVO vo,String fileDirectoryPath);
 	
 	 public void exportBussinessConditionToExcel(BussinessConditionVO vo);
 }
