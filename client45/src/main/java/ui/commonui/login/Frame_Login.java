@@ -124,37 +124,30 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 					new MyNotification(this,"用户名或密码填写错误！",Color.RED);
 				}else if(iden.equals(UserIdentity.ADMIN)){
 					Frame_Admin frame_Admin = new Frame_Admin(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Admin.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.GENERAL_MANAGER)){
 					FrameManager frame_Manager = new FrameManager(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Manager.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.FINANCE_MANAGER)){
 					Frame_Finance frame_Finance = new Frame_Finance(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Finance.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.INVENTORY_MANAGER)){
 					Frame_Inventory frame_Inventory = new Frame_Inventory(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Inventory.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.COURIER)){
 					Frame_Courier frame_Courier = new Frame_Courier(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Courier.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.BRANCH_COUNTERMAN)){
 					Frame_Branch frame_Branch = new Frame_Branch(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Branch.setVisible(true);
 					this.setVisible(false);
 				}else if(iden.equals(UserIdentity.TRANSFER_CONTERMAN)){
 					Frame_Transfer frame_Transfer = new Frame_Transfer(userID);
-					new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 					frame_Transfer.setVisible(true);
 					this.setVisible(false);
 				}
@@ -165,7 +158,6 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("Search")){
 			Frame_Sender frame_Sender = new Frame_Sender(senderID);
 			frame_Sender.setVisible(true);
-			new MyNotification(this,"欢迎使用本系统！",Color.GREEN);
 			this.setVisible(false);
 			
 		}else if(e.getActionCommand().equals("keep")){
