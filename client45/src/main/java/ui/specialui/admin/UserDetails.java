@@ -33,7 +33,7 @@ public class UserDetails extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private MyJTextField[] fields;
-	private MyPasswordField passwordField;
+	private MyJTextField passwordField;
 	private MyJComboBox userIdentityBox;
 	private MyJComboBox branchID;
 	private JComboBox<?> provincesBox;
@@ -77,7 +77,7 @@ public class UserDetails extends MyTranslucentPanel{
 		}
 		
 		this.add(new MyJLabel(250,60,90,30,"用户密码",18,true));
-		passwordField = new MyPasswordField(340,60,140,30);
+		passwordField = new MyJTextField(340,60,140,30);
 		passwordField.addActionListener(new ActionListener(){
 
 			@Override
@@ -205,7 +205,7 @@ public class UserDetails extends MyTranslucentPanel{
 	public String[] getData() {
 		String[] data = new String[9];
 		data[0] = (String) branchID.getSelectedItem();
-		data[1] = new String(passwordField.getPassword());
+		data[1] = new String(passwordField.getText());
 		System.out.println(data[1]);
 		for (int i = 0; i < 2; i++) {			
 			if((data[2+i] = fields[i].getText()).equals(null)) return null;
