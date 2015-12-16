@@ -117,6 +117,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 					commodityKindField.setText(null);
 					commodityVolumnField.setText(null);
 					commodityWeightField.setText(null);
+					CommodityInfoInput.this.repaint();
 				}
 			}
 		});
@@ -126,6 +127,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		deleteCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				commodityList.removeRow();
+				CommodityInfoInput.this.repaint();
 			}
 		});
 		this.add(deleteCommodity);
@@ -134,6 +136,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		clearCommodity.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				commodityList.clear();
+				CommodityInfoInput.this.repaint();
 			}
 		});
 		this.add(clearCommodity);

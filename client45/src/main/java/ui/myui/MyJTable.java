@@ -69,7 +69,7 @@ public class MyJTable extends JTable{
 	}
 	
 	public void removeRow(){
-		int[] selectedRows = this.getSelectedColumns();
+		int[] selectedRows = this.getSelectedRows();
 		int j = 0;
 		
 		for (int i : selectedRows) {
