@@ -15,10 +15,10 @@ import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
-
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import state.PayBillItem;
+import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import ui.image.FinanceImage.BankAccountImage;
@@ -229,7 +229,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				try {
 					controller = ControllerFactory.getDebitAndPayBillController();
 					//TODO 
-					showController.showList(date);
+					paybillVO = showController.show(ReceiptType.PAY, ReceiptState.APPROVALING);
 					for(int i = 0; i < paybillVO.size(); i++){
 						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 						tableModel.addRow(rowData);
