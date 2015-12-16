@@ -17,6 +17,8 @@ import vo.OrderVO;
  */
 public class OrderTrans {
 	public static OrderPO convertVOtoPO(OrderVO vo) {
+		if(vo==null)
+			return null;
 		ArrayList<CommodityPO> pos = convertCommodityVOstoPOs(vo.commodities);
 		if (vo.midAddres == null) {
 			vo.midAddres = new ArrayList<>();
@@ -27,6 +29,8 @@ public class OrderTrans {
 	}
 
 	public static OrderVO convertPOtoVO(OrderPO po) {
+		if(po==null)
+			return null;
 		if (po.getMidAddres() == null) {
 			po.setMidAddres(new ArrayList<>());
 		}
