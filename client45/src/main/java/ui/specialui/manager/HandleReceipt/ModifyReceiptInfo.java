@@ -15,6 +15,8 @@ import businesslogic.ControllerFactory;
 import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptType;
 import state.ResultMessage;
+import ui.image.ManagerImage;
+import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
@@ -36,9 +38,7 @@ import vo.receiptvo.orderreceiptvo.TransferOrderVO;
  * @author zsq
  * @time 2015/11/18 23:57
  */
-public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListener{
-//	private static MyJButton modify;
-	//private MyJButton cancel;
+public class ModifyReceiptInfo extends MyTranslucentPanel {
 	
 	MyJTable table ;
 	JTextField textField;
@@ -46,27 +46,14 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	ReceiptType currentType;
 	
 	public ModifyReceiptInfo(ReceiptType  type,ValueObject receipt) {
-		super(365,100-30,550,550);
+		super(365-100,100-30,750,550);
 		this.currentBill = receipt;
 		this.currentType = type;
 		this.setOpaque(false);
 		this.initComponent();
 		initTable(type,receipt);
 	}
-	private void initComponent() {
-		
-		MyJLabel title = new MyJLabel(580, 40, 170, 50, "修改单据数据", 24, true);
-		this.add(title);
-		
-	/*	modify = new MyJButton(475,600-30,100,30,"保存修改",18);
-		modify.setActionCommand("Modify");
-		modify.addActionListener(this);
-		this.add(modify);
-		
-		cancel = new MyJButton(720,600,100,30,"撤销修改",18);
-		cancel.setActionCommand("Cancel");
-		cancel.addActionListener(this);
-		this.add(cancel);	*/
+	private void initComponent() {	
 	}
 	
 	private void initTable(ReceiptType receiptType, ValueObject receipt){
@@ -104,7 +91,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void exportTable(InventoryExportReceiptVO receipt) {/*ReceiptType type, String destination, String depture, ExpressType expressType,
 			String transferID, String commoditiesID, int a, int b, int c, int d*/
-		String [] headers = {};
+		String [] headers = {"单据类型","转运ID","商品货物信息","区","排","架","位"};
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -114,7 +101,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void transOrderTable(TransferOrderVO receipt) {
 		// String facilityID, ReceiptType type,String departure, String destination, String courierName ArrayList<String> orders
-		String [] headers = {};
+		String [] headers = {"单据类型","中转车次编号","出发地","到达地","监装员","托运订单编号"};
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
@@ -133,7 +120,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void transferArrivalTable(TransferArrivalListVO receipt) {
 		// ReceiptType type,String transferCenterID, String destination, String departure,CommodityState state, ArrayList<String> orders
-		String[] headers = {};
+		String[] headers = {"单据类型","中转中心编号","出发地","目的地","货物到达状态","订单订单号"};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel =(DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.transferCenterID,receipt.destination,receipt.departure,receipt.state,receipt.order};
@@ -141,7 +128,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void deliveryList(DeliveryListVO receipt) {
 		//  ReceiptType type,ArrayList<String> orders, String courierName
-		String[] headers = {};
+		String[] headers = {"单据类型","货物到达状态","订单订单号"};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.order,receipt.courierName};
@@ -149,17 +136,17 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 		
 	}
 	private void debitBillTable(DebitBillVO receipt) {
-		String[] headers = {"收款日期","收款金额","收款快递员","对应订单条形码"};
+		String[] headers = {"单据类型","收款日期","收款金额","收款快递员","对应订单条形码"};
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		Object[] rowData = {receipt.date,receipt.money,receipt.courierID,receipt.orderNumbers};
+		Object[] rowData = {receipt.type,receipt.date,receipt.money,receipt.courierID,receipt.orderNumbers};
 		tableModel.addRow(rowData);
 		
 	}
 	private void branchArrivalTable(BranchArrivalListVO receipt) {
 		// ReceiptType type, String transferListID, String departure,		CommodityState state, ArrayList<String> orders
-		String[] headers = {};
+		String[] headers = {"单据类型","中转单编号","出发地","货物到达状态","订单订单号"};
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
@@ -168,11 +155,11 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void loadingListTable(LoadingListVO receipt) {
 		// ReceiptType type, String branchID, String transferNumber,	String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, double money
-		String[] headers = {};
+		String[] headers = {"单据种类","营业厅编号","装运编号","目的地","车辆代号","监装员","押运员","订单序列","运费"};
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-		Object[]rowData = {receipt.type,receipt.branchID,receipt.transferNumber,receipt.distination,receipt.carID,receipt.monitorName,receipt.courierName,receipt.orders,receipt.money};
+		Object[]rowData = {receipt.type.value,receipt.branchID,receipt.transferNumber,receipt.distination,receipt.carID,receipt.monitorName,receipt.courierName,receipt.orders,receipt.money};
 		tableModel.addRow(rowData);
 	}
 	private void orderTable(OrderVO receipt) {
@@ -187,7 +174,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 	}
 	private void initJsp(){
 		JScrollPane jsp = new JScrollPane(table);
-		jsp.setBounds(25, 40, 750, 250);
+		jsp.setBounds(10, 10, 730, 530);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setVisible(true);
@@ -196,75 +183,4 @@ public class ModifyReceiptInfo extends MyTranslucentPanel implements ActionListe
 
 
 	private static final long serialVersionUID = 1L;
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("Modify")){
-			if(table.isEditing()){
-				table.getCellEditor().stopCellEditing();
-				new MyNotification(this,"正在修改单据！",Color.RED);
-			}
-			try {
-				finish(currentType);
-			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e1.printStackTrace();
-			}
-		}else if(e.getActionCommand().equals("Cancel")){
-			
-		}
-	}
-	
-	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单
-	 * @throws RemoteException 
-	 * @throws NotBoundException 
-	 * @throws MalformedURLException */
-	private void finish(ReceiptType billType) throws RemoteException, MalformedURLException, NotBoundException {
-		ReceiptBLService controller = ControllerFactory.getReceiptController();
-		ResultMessage rm = null;
-		if(billType.equals(ReceiptType.ORDER)){
-			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
-		//	ArrayList<String> orders = new ArrayList<String>();
-			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
-		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
-			LoadingListVO vo = (LoadingListVO)currentBill;	
-			rm = controller.updateReceipt(new LoadingListVO(vo.ID,vo.type,vo.branchID,vo.transferNumber,vo.distination,
-					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
-		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
-			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
-			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.order));
-		}else if(billType.equals(ReceiptType.PAY)){
-			PaymentBillVO vo = (PaymentBillVO) currentBill;
-			double sum = 0;
-			
-			for(int i = 0; i < table.getRowCount(); i++){
-				double price = Double.parseDouble((String)table.getValueAt(i, 1));
-				sum = sum + price;
-			}
-			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
-		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
-			DeliveryListVO vo = (DeliveryListVO) currentBill;
-			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));
-		}else if(billType.equals(ReceiptType.TRANS_ARRIVAL)){
-			TransferArrivalListVO vo = (TransferArrivalListVO) currentBill;
-			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
-		}else if(billType.equals(ReceiptType.INSTOCK)){
-			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
-			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position,vo.transferID));
-		}else if(billType.equals(ReceiptType.OUTSTOCK)){
-			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
-			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.transferID,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
-		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
-			TransferOrderVO vo = (TransferOrderVO) currentBill;
-			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
-		}else if(billType.equals(ReceiptType.DEBIT)){
-			DebitBillVO  vo = (DebitBillVO) currentBill;
-			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date,vo.bankAccountID));
-		}
-		if(rm.equals(ResultMessage.SUCCESS)){
-			new MyNotification(this,"单据修改成功",Color.GREEN);
-		}else{
-			new MyNotification(this,"单据修改失败",Color.RED);
-		}
-	}
 }

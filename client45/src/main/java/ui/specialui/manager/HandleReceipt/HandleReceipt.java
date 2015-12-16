@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
+import businesslogicservice.receiptblservice.ReceiptBLService;
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -26,6 +27,7 @@ import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
 import vo.ValueObject;
@@ -56,6 +58,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	private ReceiptController receiptController;
 	private SearchReceipt searchPanel;
 	private ReceiptInfo receiptInfo;
+	ModifyReceiptInfo modifyUI;
 	
 	static ArrayList<ValueObject> listPool;
 	static ArrayList<ReceiptType> typePool;
@@ -66,6 +69,9 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	JTable table;
 	DefaultTableModel model;
 	
+	ValueObject currentBill;
+	ReceiptType currentType;
+	
 	private MyButton ViewReceiptInfo;
 	private MyButton PassSelectedReceipts;
 	private MyButton ModifyReceiptInfo;
@@ -73,6 +79,8 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	private MyButton DontPassThisReceipt;
 	private MyButton ExportReceipt;
 	private MyButton search;
+	private MyButton modify;
+	private MyButton cancel;
 	
 	public HandleReceipt(FrameManager frameManager) throws RemoteException {
 		super(0, 0, 1280, 720);
@@ -339,9 +347,22 @@ public void leadline(FrameManager frameManager){
 			if(!table.getValueAt(index, 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
 			}else{
-				ModifyReceiptInfo modifyUI = new ModifyReceiptInfo(typePool.get(index),listPool.get(index));
-				this.setVisible(false);
-				modifyUI.setVisible(true);
+				modifyUI = new ModifyReceiptInfo(typePool.get(index),listPool.get(index));
+				currentType = typePool.get(index);
+				currentBill = listPool.get(index);
+				
+				this.removeAll();
+				this.add(new MyJLabel(550, 20, 200, 40, "单据信息修改", 24, true));
+				modify = new MyButton(395,633,100,30,ManagerImage.getBUTTON_APPROVE());
+				modify.setActionCommand("Modify");
+				modify.addActionListener(this);
+				this.add(modify);
+				cancel = new MyButton(766,633,100,30,ManagerImage.getBUTTON_APPROVEALL());
+				cancel.setActionCommand("Cancel");
+				cancel.addActionListener(this);
+				this.add(cancel);	
+				this.repaint();
+				this.add(modifyUI);
 			}
 			
 		}else if(events.getActionCommand().equals("ExportReceipt")){
@@ -358,7 +379,7 @@ public void leadline(FrameManager frameManager){
 			listPool.clear();
 			typePool.clear();
 
-			System.out.println(listPool);
+		//	System.out.println(listPool);
 
 			table = searchPanel.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -405,6 +426,24 @@ public void leadline(FrameManager frameManager){
 			}
 			if(table.getRowCount() == 0){
 				new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED);
+			}
+		}else if(events.getSource()==cancel){
+			
+		}else if(events.getSource()==modify){
+			MyJTable table = modifyUI.table;
+			if(table.isEditing()){
+				table.getCellEditor().stopCellEditing();
+				new MyNotification(this,"正在修改单据！",Color.RED);
+			}
+			try {
+				finish(currentType);
+				this.removeAll();
+				
+				this.initComponent();
+				this.repaint();
+			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
 			}
 		}
 	}
@@ -742,6 +781,61 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			return;
 		}
 	}
+	
+
+	/**寄件单、装车单、营业厅到达单、收款单、派件单、中转中心到达单、入库单、中转单、出库单、付款单
+	 * @throws RemoteException 
+	 * @throws NotBoundException 
+	 * @throws MalformedURLException */
+	private void finish(ReceiptType billType) throws RemoteException, MalformedURLException, NotBoundException {
+		ReceiptBLService controller = ControllerFactory.getReceiptController();
+		ResultMessage rm = null;
+		if(billType.equals(ReceiptType.ORDER)){
+			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
+		//	ArrayList<String> orders = new ArrayList<String>();
+			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
+		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
+			LoadingListVO vo = (LoadingListVO)currentBill;	
+			rm = controller.updateReceipt(new LoadingListVO(vo.ID,vo.type,vo.branchID,vo.transferNumber,vo.distination,
+					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
+		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
+			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
+			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.order));
+		}else if(billType.equals(ReceiptType.PAY)){
+			PaymentBillVO vo = (PaymentBillVO) currentBill;
+			double sum = 0;
+			
+			for(int i = 0; i < table.getRowCount(); i++){
+				double price = Double.parseDouble((String)table.getValueAt(i, 1));
+				sum = sum + price;
+			}
+			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
+		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
+			DeliveryListVO vo = (DeliveryListVO) currentBill;
+			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));
+		}else if(billType.equals(ReceiptType.TRANS_ARRIVAL)){
+			TransferArrivalListVO vo = (TransferArrivalListVO) currentBill;
+			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
+		}else if(billType.equals(ReceiptType.INSTOCK)){
+			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
+			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position,vo.transferID));
+		}else if(billType.equals(ReceiptType.OUTSTOCK)){
+			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
+			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.transferID,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
+		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
+			TransferOrderVO vo = (TransferOrderVO) currentBill;
+			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
+		}else if(billType.equals(ReceiptType.DEBIT)){
+			DebitBillVO  vo = (DebitBillVO) currentBill;
+			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date,vo.bankAccountID));
+		}
+		if(rm.equals(ResultMessage.SUCCESS)){
+			new MyNotification(this,"单据修改成功",Color.GREEN);
+		}else{
+			new MyNotification(this,"单据修改失败",Color.RED);
+		}
+	}
+
 }
 
 
