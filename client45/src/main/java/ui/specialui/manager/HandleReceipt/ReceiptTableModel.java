@@ -6,7 +6,7 @@ public class ReceiptTableModel extends DefaultTableModel {
 
 	private static final long serialVersionUID = 1L;
 	
-	String[] header = {"选择","单据编号","单据种类","通过状态" }; 
+	String[] header = {"选择","单据种类","单据编号","通过状态" }; 
 	
 	public ReceiptTableModel(){
 		this.setDataVector(null, header); 

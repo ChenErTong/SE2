@@ -25,7 +25,7 @@ public class mainForUITest {
 
 
 	
-	FrameManager managerFrame = new FrameManager(id);
+FrameManager managerFrame = new FrameManager(id);
   managerFrame.setVisible(true);
 
 	// FrameManager managerFrame = new FrameManager(id);
@@ -35,7 +35,7 @@ public class mainForUITest {
 //	Frame_Courier courierFrame = new Frame_Courier();
 	//	courierFrame.setVisible(true);
 //
-//Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
+Frame_Admin adminFrame = new Frame_Admin("0");	adminFrame.setVisible(true);
 	//Frame_Admin adminFrame = new Frame_Admin(id);
 //adminFrame.setVisible(true);
 

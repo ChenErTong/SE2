@@ -113,7 +113,7 @@ public class InitDatas {
 			organizationController.addTransfer(new TransferVO(transferID, "江苏省南京市雨花台区软件大道", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
 			initAccountInTransfer(accountController);
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("北京市");
 				System.out.println(branchID);
 				organizationController
@@ -123,7 +123,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(1);
 			}
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("上海市");
 				organizationController.addBranch(new BranchVO(branchID, "上海市上海市普陀区桃浦路" + ((i + 190) * 10 + i + 1) + "号",
 						OrganizationType.BRANCH));
@@ -132,7 +132,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(2);
 			}
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("广州市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "广东省广州市越秀区中山二路" + (i + 37) + "号", OrganizationType.BRANCH));
@@ -141,7 +141,7 @@ public class InitDatas {
 				addUserInBranch(userController, branchID);
 				System.out.println(3);
 			}
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("南京市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "江苏省南京市秦淮区大明路" + (160 + i) + "号", OrganizationType.BRANCH));

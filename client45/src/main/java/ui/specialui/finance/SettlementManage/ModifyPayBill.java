@@ -11,7 +11,7 @@ import ui.myui.MyTranslucentPanel;
 /**
  * 修改付款单信息的Panel
  * @author zsq
- * @version 201512/5 10:00
+ * @version 2015/12/5 10:00
  */
 public class ModifyPayBill extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
@@ -104,7 +104,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		data[4] =items.getSelectedIndex()+"";
 		data[5] = fields[4].getText();
 		for(int i=0;i<6;i++){
-			if(data[i]==""||data[i]==null){
+			if(data[i].equals("")||data[i]==null){
 				return null;
 			}
 		}

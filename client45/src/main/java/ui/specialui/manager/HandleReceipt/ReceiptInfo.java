@@ -22,7 +22,7 @@ public class ReceiptInfo extends MyTranslucentPanel{
 		
 		ta = new MyEmptyTextArea(10,60,530,460);
 		ta.setEditable(false);
-		ta.setBackground(getBackground());
+		//ta.setBackground(getBackground());
 		this.add(ta);
 	}
 	

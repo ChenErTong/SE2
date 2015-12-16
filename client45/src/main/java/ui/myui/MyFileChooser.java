@@ -14,19 +14,17 @@ public class MyFileChooser {
 	
 	public MyFileChooser(){
 		JFileChooser jfc = new JFileChooser();
-		jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		jfc.setMultiSelectionEnabled(true);
 		int returnval = jfc.showDialog(new JLabel(), "导出");
 		if(returnval==JFileChooser.APPROVE_OPTION){
 			File[] files =jfc.getSelectedFiles();
 			String str = "";
 			for(File file:files){
-				if(file.isDirectory()){
-					str = file.getAbsolutePath();
-				}else if(file.isFile()){
-					str = file.getAbsolutePath()+file.getName();
-				}
-			}	
+				str = file.getAbsolutePath();
+			}
+			System.out.println(str);
 		}
 	}
+	
 }
