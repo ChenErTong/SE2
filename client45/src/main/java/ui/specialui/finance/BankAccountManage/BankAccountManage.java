@@ -214,7 +214,9 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
 						default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
 					}
+				
 					if(bankAccountVO==null){
+						new MyNotification(this,"无满足条件的账户！",Color.RED);
 						return ;
 					}
 					for(int i = 0; i < bankAccountVO.size(); i++){
@@ -234,7 +236,6 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				}
 		}else if(e.getActionCommand().equals("ConfirmModify")){
 			table = bankAccountPanel.getTable();
-			//accountID = accountPool.get(table.getSelectedRow()).ID;
 				
 			if(modifyAccountInfo.getData()==null){
 				new MyNotification(this,"请检查账户信息填写是否完整！",Color.RED);
@@ -272,7 +273,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 						
 						new MyNotification(this,"账户添加成功！",Color.GREEN);
 					}else{
-						new MyNotification(this,"账户添加失败！",Color.RED);
+						new MyNotification(this,"非高级财务权限无法添加账户！",Color.RED);
 						
 
 					}

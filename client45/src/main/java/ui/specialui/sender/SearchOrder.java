@@ -30,7 +30,7 @@ public class SearchOrder extends MyTranslucentPanel{
 		this.add( new MyJLabel(65,55,120,40,"寄件人姓名",18,true));
 		
 		 orderNumberField = new MyJTextField(185, 5 ,200, 40);
-		 orderNumberField.setOnlyInteger(11);
+		 orderNumberField.setOnlyInteger(10);
 		 orderNumberField.addActionListener(new ActionListener(){
 
 			@Override

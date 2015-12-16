@@ -104,7 +104,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		data[4] =items.getSelectedIndex()+"";
 		data[5] = fields[4].getText();
 		for(int i=0;i<6;i++){
-			if(data[i]==null){
+			if(data[i]==""||data[i]==null){
 				return null;
 			}
 		}

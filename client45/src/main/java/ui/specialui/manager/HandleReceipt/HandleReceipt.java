@@ -335,6 +335,7 @@ public void leadline(FrameManager frameManager){
 			//清空VO储存池
 			listPool.clear();
 			typePool.clear();
+			
 			table = searchPanel.getTable();
 			DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 			
@@ -378,7 +379,6 @@ public void leadline(FrameManager frameManager){
 					return;
 				}
 			}
-			System.out.println(listPool);
 			if(table.getRowCount() == 0){
 				new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED);
 			}
@@ -424,6 +424,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			}
 		}
 		if(index == 3){
+			
 			for(int i = 0; i < branchArrival.size(); i++){
 				Object[] rowData = {new Boolean(false), "营业厅到达单", branchArrival.get(i).ID, "未审批"};
 				model.addRow(rowData);
@@ -432,6 +433,9 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			}
 		}
 		if(index == 4){
+			if(debitBill==null){
+				return;
+			}
 			for(int i = 0; i <  debitBill.size(); i++){
 				Object[] rowData = {new Boolean(false), "收款单", debitBill.get(i).ID, "未审批"};
 				model.addRow(rowData);

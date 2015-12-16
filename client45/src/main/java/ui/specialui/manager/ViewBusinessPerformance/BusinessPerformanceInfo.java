@@ -306,8 +306,8 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 									break;
 								}
 							}
+							new MyNotification(this,"共有"+table.getRowCount()+"个单据满足条件！",Color.GREEN);
 						}else{
-							System.out.println("111");
 							new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
@@ -315,7 +315,6 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 						return;
 					}
 			}else{
-					System.out.println("222");
 					new MyNotification(this,"输入的日期参数不合法！",Color.RED);
 				}
 			}
@@ -334,6 +333,10 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 				try {
 					RecordBLService recordController = ControllerFactory.getRecordController();
 					vo = recordController.bussinessProcess(beginDate, endDate);
+					if(vo==null){
+						new MyNotification(this,"空表无法导出！",Color.RED);
+						return;
+					}
 					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate));
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {

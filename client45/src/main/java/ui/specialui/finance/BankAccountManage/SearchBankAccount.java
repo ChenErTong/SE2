@@ -55,7 +55,7 @@ private void initComponent(BankAccountManage manage) {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==searchField){
-				searchField.setText(null);
+				searchField.setText("");
 			}
 		}
 	});

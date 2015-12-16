@@ -112,6 +112,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 		case 1: new MyNotification(this, "请填写订单号", Color.RED); break;
 		case 2: new MyNotification(this, "请填写寄件人姓名", Color.RED); break;
 		case 3: new MyNotification(this, "订单号输入错误！", Color.RED); break;
+		case 4: new MyNotification(this,"请输入查询信息！",Color.RED);break;
 		}	
 		return false ;
 	}
@@ -122,15 +123,16 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 	 */
 	public int search() {
 		String[] string = searchPanel.getSenderInfo();
-		String orderNumberInfo =  string[0];
-		String senderNameInfo = string[1];
-		if(orderNumberInfo == null){
+		if(string==null){
+			return 4;
+		}
+		if(string[0] == ""){
 			return 1;
 		}
-		if(senderNameInfo == null){
+		if(string[1] == ""){
 			return 2;
 		}
-		if(orderNumberInfo.length()!=10){
+		if(string[0].length()!=10){
 			return 3;
 		}
 		return 0;

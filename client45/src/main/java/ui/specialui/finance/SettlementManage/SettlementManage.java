@@ -228,6 +228,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			
 				try {
 					controller = ControllerFactory.getDebitAndPayBillController();
+					//TODO 
 					showController.showList(date);
 					for(int i = 0; i < paybillVO.size(); i++){
 						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
@@ -279,23 +280,23 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			}
 		}else if(e.getActionCommand().equals("ModifyPayReceipt")){
 			table = payReceiptList.getTable();
-			
+			if(table.getSelectedRowCount()==0){
+				new MyNotification(this,"请先选择需要修改的付款单！",Color.RED);
+			}else{
 				Object[] data = this.setPayBill();
 				modifyPaybill.setData(data);
+			}
 			
 		}else if(e.getActionCommand().endsWith("ConfirmModify")){
 			table = payReceiptList.getTable();
-			paybillID = paybillPool.get(table.getSelectedRow()).ID;
-			if(table.getSelectedRow()==0){
-				new MyNotification(this,"请先选择需要修改的付款单！",Color.RED);
+		
+			if(modifyPaybill.getData()==null){
+				new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
 			}else{
-				if(modifyPaybill.getData()==null){
-					new MyNotification(this,"请检查付款单信息填写是否完整！",Color.RED);
-				}else{
-					new MyNotification(this,"正在修改付款单信息！",Color.GREEN);
-					this.modifyPaybill();
-				}
+				new MyNotification(this,"正在修改付款单信息！",Color.GREEN);
+				this.modifyPaybill();
 			}
+			
 		}else if(e.getActionCommand().equals("ViewPayBill")){
 			table = payReceiptList.getTable();
 			if(table.getSelectedRowCount()==0){

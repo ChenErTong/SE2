@@ -54,14 +54,11 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	
 	public Panel_Admin_Total(Frame_Admin frame_Admin)  {
 		super(0, 0, 1280, 720);
-		userPool = new ArrayList<UserVO>();
-
-		this.initComponent(frame_Admin);
 		this.setOpaque(false);
-		
-		//MyLogo.setLogo(this);
 		MyTitle.setTitle(this, "管理员界面", 487, 0, 306, 142);
-	
+		
+		this.initComponent(frame_Admin);
+		userPool = new ArrayList<UserVO>();
 		this.showAll();
 	}
 	
@@ -73,6 +70,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		userDetails.setUneditable();
 		this.add(userDetails);
 		this.initButton(frame_Admin);
+		
+		this.repaint();
 	}	
 	
 	
@@ -142,6 +141,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		redo.setActionCommand("redo");
 		redo.addActionListener(this);
 		this.add(redo);
+		
+		this.repaint();
 	}
 	
 	/**

@@ -243,12 +243,13 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("ViewIncomState")){
+		if(e.getActionCommand().equals("ViewIncomeState")){
 			if(this.getData()==null){
-				new MyNotification(this,"请选择截止日期！",Color.RED);
+				new MyNotification(this,"请输入截止日期！",Color.RED);
 			}else{
 				if(this.isLegal()){
 					String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
+			
 					try {
 						
 						RecordBLService recordController = ControllerFactory.getRecordController();
@@ -272,11 +273,17 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 							
 							tableModel.addRow(rowData3);
 							
+							new MyNotification(this,"共有"+table.getRowCount()+"个单据满足条件！",Color.GREEN);
+							
+						}else{
+							new MyNotification(this,"成本收益表预览失败！",Color.RED);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 						return;
 					}
+				}else{
+					new MyNotification(this,"输入的日期参数不合法！",Color.RED);
 				}
 			}
 		}else if(e.getActionCommand().equals("ExportIncomeTable")){
@@ -289,7 +296,12 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				try {
 					RecordBLService recordController = ControllerFactory.getRecordController();
 					BussinessConditionVO vo = recordController.bussinessCondition(endDate);
+					if(vo==null){
+						new MyNotification(this,"空表无法导出！！",Color.RED);
+						return;
+					}
 					recordController.exportBussinessConditionToExcel(vo);
+					new MyNotification(this,"成本收益表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					return;

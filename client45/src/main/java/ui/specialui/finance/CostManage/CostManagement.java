@@ -241,6 +241,10 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				try {
 					showController_2 = ControllerFactory.getRecordController();
 					debitbillVO=showController_2.bussinessOneDay(data[0], date);
+					if(debitbillVO==null){
+						new MyNotification(this,"无符合条件的收款单！",Color.RED);
+						return;
+					}
 						Object[] rowData = {debitbillVO.DebitBills};
 						tableModel.addRow(rowData);
 						System.out.println("SearchSucceed!");
