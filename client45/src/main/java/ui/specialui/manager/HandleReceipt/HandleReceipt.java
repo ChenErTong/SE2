@@ -753,7 +753,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
 		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
 			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
-			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.order));
+			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orderID));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
 			double sum = 0;

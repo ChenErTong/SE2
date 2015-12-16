@@ -135,7 +135,7 @@ public class ReceiveInput extends MyJPanel{
 
 	/**
 	 * 向订单信息界面生成订单信息
-	 * @param order
+	 * @param orderID
 	 */
 	private void setOrderInfo() {
 		orderInfo.setText("订单编号" + order.ID + "\n");

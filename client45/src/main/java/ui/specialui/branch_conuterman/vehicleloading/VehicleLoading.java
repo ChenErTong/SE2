@@ -59,6 +59,8 @@ public class VehicleLoading extends MyJPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(VehicleLoading.this.addOrderID(orderID.getText())){
 					orderID.setText(null);
+				}else{
+					new MyNotification(frame, "请输入正确的订单号", Color.RED);
 				}
 			}
 		});
@@ -93,7 +95,7 @@ public class VehicleLoading extends MyJPanel {
 	 * 插入订单编号
 	 * @param text
 	 */
-	protected boolean addOrderID(String text) {
+	private boolean addOrderID(String text) {
 		if(text.length() != 10) return false;
 		
 		String[] data = new String[]{text};

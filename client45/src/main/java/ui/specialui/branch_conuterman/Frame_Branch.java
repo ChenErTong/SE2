@@ -17,6 +17,7 @@ import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityIn
 import ui.specialui.branch_conuterman.receiveAndSendCommodity.SendCommodity;
 import ui.specialui.branch_conuterman.vehicleloading.LoadingListUI;
 import ui.specialui.branch_conuterman.vehicleloading.VehicleLoading;
+import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 
 public class Frame_Branch extends MyJFrame implements ActionListener{
@@ -158,10 +159,10 @@ public class Frame_Branch extends MyJFrame implements ActionListener{
 		}else if(e.getActionCommand().equals("produceArrivalList")){
 			//从接收派件货物界面进入到达单界面
 			if(this.produceArrivalList()){
-				String orderID = ((ArrivalCommodityInfoCheck) subPanel).getOrderID();
+				BranchArrivalListVO arrivalList = ((ArrivalCommodityInfoCheck) subPanel).getArrivalList();
 				subPanel.setVisible(false);
 				this.getLayeredPane().remove(subPanel);
-				subPanel = new SendCommodity(this, orderID);
+				subPanel = new SendCommodity(this, arrivalList);
 				this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));			}
 		}else if(e.getActionCommand().equals("produceDeliveryList")){
 			//从到达单界面进入接收派件货物界面

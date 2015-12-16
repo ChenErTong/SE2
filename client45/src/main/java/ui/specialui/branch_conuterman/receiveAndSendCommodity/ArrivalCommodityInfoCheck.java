@@ -38,6 +38,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 	private int row = -1;
 	private OrderVO order;
 	private BranchBLService branchController;
+	private BranchArrivalListVO arrivalList;
 	
 	public ArrivalCommodityInfoCheck(Frame_Branch frame) {
 		super(0, 0, 1280, 720);
@@ -112,6 +113,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		}
 		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
 		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
+		this.repaint();
 	}
 	/**
 	 * 生成到达单
@@ -121,11 +123,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		//未选中任何订单
 		if(row == -1) return 1;
 		//选中订单，将其转化成到达单
-		BranchArrivalListVO arrivalList;
 		try {
 			arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
-//			branchController.save(arrivalList);
-//			branchController.submit(arrivalList);
 			row = -1;
 			return 0;
 		} catch (RemoteException e) {
@@ -152,7 +151,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		}
 	}
 	
-	public String getOrderID(){
-		return order.ID;
+	public BranchArrivalListVO getArrivalList(){
+		return arrivalList;
 	}
 }

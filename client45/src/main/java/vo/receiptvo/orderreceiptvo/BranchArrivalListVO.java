@@ -20,15 +20,15 @@ public class BranchArrivalListVO extends ReceiptVO {
 	public String transferListID;
 	public String departure;
 	public CommodityState state;
-	public String order;
+	public String orderID;
 
 	public BranchArrivalListVO(String id, ReceiptType type, String transferListID, String departure,
-			CommodityState state, String orders) {
+			CommodityState state, String orderID) {
 		super(id, type);
 		this.transferListID = transferListID;
 		this.departure = departure;
 		this.state = state;
-		this.order=orders;
+		this.orderID=orderID;
 	}
 
 }
