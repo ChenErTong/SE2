@@ -53,5 +53,6 @@ public class mainForUITest3 {
 //new Frame_Transfer(userID);
 //new Frame_Courier(userID);
 //new Frame_Branch(userID);
+	new Frame_Admin(userID);
 	}
 }
