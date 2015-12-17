@@ -42,7 +42,7 @@ public class TransferReceiveManage extends MyJPanel{
 
 	public int produceArrivalList(Frame_Transfer frame) {
 		String[] data = arrivalCommodity.getData();
-		if(data == null) return -1;
+		if(data == null) return 1;
 		//TODO
 		//到达单生成步骤
 		TransferBLService transferController;

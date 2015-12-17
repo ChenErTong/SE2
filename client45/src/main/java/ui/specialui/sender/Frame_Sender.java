@@ -28,7 +28,9 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 		totalPanel = new Panel_Sender_Total();
 		this.add(totalPanel);
 		totalPanel.setVisible(true);
-	
+		
+		this.withdrawButton.setVisible(false);
+		
 		this.returnButton.addActionListener(this);
 		this.setBackground(CommonImage.BACKGROUND);
 	}

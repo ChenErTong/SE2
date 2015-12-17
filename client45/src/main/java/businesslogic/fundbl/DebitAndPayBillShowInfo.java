@@ -39,7 +39,11 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	public ArrayList<DebitAndPayBillVO> getBusinessProcess(String startDate, String endDate) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
 		ArrayList<DebitAndPayBillVO> VOs = new ArrayList<>();
+		System.out.println(startDate);
+		System.out.println(endDate);
 		for (DebitAndPayBillPO debitAndPayBillPO : POs) {
+			System.out.println(debitAndPayBillPO.getID());
+			System.out.println(debitAndPayBillPO.getDate());
 			if (inDate(debitAndPayBillPO, startDate, endDate)) {
 				DebitAndPayBillVO vo = FundTrans.convertPOtoVO(debitAndPayBillPO);
 				VOs.add(vo);
@@ -53,6 +57,7 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	 */
 	public BussinessConditionVO getBussinessCondition(String endDate) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
+		System.out.println(POs);
 		BigDecimal income = new BigDecimal(0);
 		BigDecimal expense = new BigDecimal(0);
 		BigDecimal profit = new BigDecimal(0);

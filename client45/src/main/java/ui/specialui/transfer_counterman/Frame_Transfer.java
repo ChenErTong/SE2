@@ -55,7 +55,8 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		
 		this.returnButton.addActionListener(this);
-	
+		this.withdrawButton.setVisible(true);
+		
 		carLoading = new MyButton(760, 690, 120, 20, TransferImage.getBUTTON_QICHE_GUIDE());
 		carLoading.setActionCommand("CarLoading");
 		carLoading.addActionListener(this);

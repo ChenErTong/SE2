@@ -135,7 +135,7 @@ public class ReceiveInput extends MyJPanel{
 
 	/**
 	 * 向订单信息界面生成订单信息
-	 * @param order
+	 * @param orderID
 	 */
 	private void setOrderInfo() {
 		orderInfo.setText("订单编号" + order.ID + "\n");
@@ -173,7 +173,7 @@ public class ReceiveInput extends MyJPanel{
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return -1;
 		}
-
+		
 		AccountVO account;
 		try {
 			account = accountController.find(frame_Courier.getID());

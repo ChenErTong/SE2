@@ -549,7 +549,7 @@ String ID = receipt.ID;
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text +"订单条形码号： "+receipt.order+"\n";
+		text = text +"订单条形码号： "+receipt.orderID+"\n";
 		return text;
 	}
 

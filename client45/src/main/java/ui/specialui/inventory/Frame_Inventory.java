@@ -30,6 +30,7 @@ public class Frame_Inventory extends MyJFrame implements ActionListener{
 		this.add(totalPanel);
 		
 		this.returnButton.addActionListener(this);
+		this.withdrawButton.setVisible(true);
 		
 		check = new MyButton(870, 690, 80, 20, InventoryImage.getBUTTON_CHAKAN_GUIDE());
 		check.setActionCommand("InventoryCheck");

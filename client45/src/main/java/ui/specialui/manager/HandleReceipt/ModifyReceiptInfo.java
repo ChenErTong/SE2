@@ -140,7 +140,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.order};
+		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.orderID};
 		tableModel.addRow(rowData);
 	}
 	private void loadingListTable(LoadingListVO receipt) {

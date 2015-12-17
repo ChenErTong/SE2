@@ -130,7 +130,7 @@ public class ReceiptTrans {
 		String transferListID = vo.transferListID;
 		String departure = vo.departure;
 		CommodityState state = vo.state;
-		String orders = vo.order ;
+		String orders = vo.orderID ;
 		return new BranchArrivalListPO(ID, type, transferListID, departure, state, orders);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(DeliveryListPO po){

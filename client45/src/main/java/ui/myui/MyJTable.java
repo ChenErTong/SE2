@@ -37,7 +37,6 @@ public class MyJTable extends JTable{
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		this.setDefaultRenderer(Object.class, tcr);
 		this.setRowSelectionAllowed(true);	
-	///	this.setSelectionBackground(new Color(233, 138, 138));
 		JTableHeader head = this.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
 		head.setFont(new MyFont(14));
@@ -64,6 +63,7 @@ public class MyJTable extends JTable{
 	}
 	
 	public void addRow(String[] rowData){
+		System.out.println(rowData[0]);
 		model.addRow(rowData);
 		this.setModel(model);
 	}
@@ -81,7 +81,12 @@ public class MyJTable extends JTable{
 	}
 	
 	public void clear(){
-		model = new DefaultTableModel(null, this.headers);
+		model = new DefaultTableModel(null, this.headers){
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row, int column) {
+				return MyJTable.this.isCellEditable;
+			}
+		};
 		this.setModel(model);
 	}
 	

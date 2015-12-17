@@ -2,6 +2,9 @@ package ui.myui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -11,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 
 import com.sun.awt.AWTUtilities;
@@ -92,7 +96,12 @@ public class MyJFrame extends JFrame{
 		this.add(this.closeButton);
 		
 		this.withdrawButton = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
-		this.withdrawButton.setActionCommand("Withdraw");
+		this.withdrawButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Frame_Login(ID);
+				MyJFrame.this.dispose();
+			}
+		});
 		this.add(this.withdrawButton);
 
 		//设置界面可拖动
@@ -124,7 +133,29 @@ public class MyJFrame extends JFrame{
             }
         });
         
-		
+        //ctrl+w键退出系统
+		this.addKeyListener(new KeyAdapter() {
+			boolean tag1 = false;
+			boolean tag2 = false;
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_CONTROL){
+					tag1 = true;
+				}else if(e.getKeyCode() == KeyEvent.VK_W){
+					tag2 = true;
+				}
+				if(tag1&&tag2){
+					System.exit(0);
+				}
+			}
+			public void keyReleased(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_CONTROL){
+					tag1 = false;
+				}else if(e.getKeyCode() == KeyEvent.VK_W){
+					tag2 = false;
+				}
+			}
+		});
+        
 		this.repaint();
 	}
 	

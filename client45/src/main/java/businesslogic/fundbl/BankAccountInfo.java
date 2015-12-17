@@ -46,6 +46,9 @@ public class BankAccountInfo implements BankAccountInfo_OpeningStock,BankAccount
 	 */
 	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
 		BankAccountPO po = bankAccountData.find(accountID);
+		System.out.println(accountID);
+		if(po==null)
+			return ResultMessage.FAIL;
 		BigDecimal oldmoney = po.getMoney();
 		if (oldmoney.compareTo(money) >= 0)
 			oldmoney = oldmoney.subtract(money);

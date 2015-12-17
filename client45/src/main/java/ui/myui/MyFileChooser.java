@@ -9,7 +9,6 @@ import javax.swing.JLabel;
  * @author zsq
  * @time 2015年12月15日下午1:23:13
  */
-
 public class MyFileChooser {
 	
 	public MyFileChooser(){

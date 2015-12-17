@@ -70,6 +70,7 @@ public class CarCommodity extends MyJPanel {
 					int row = orderList.getSelectedRow();
 					String[] orderId = orderList.getData(row);
 					orderSelected.addRow(orderId);
+					CarCommodity.this.repaint();
 				}
 			}
 		});
