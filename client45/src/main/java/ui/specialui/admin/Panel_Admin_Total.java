@@ -57,6 +57,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		MyTitle.setTitle(this, "管理员界面", 487, 0, 306, 142);
 		
 		this.initComponent(frame_Admin);
+		this.repaint();
 		userPool = new ArrayList<UserVO>();
 		this.showAll();
 	}

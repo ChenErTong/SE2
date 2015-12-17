@@ -13,8 +13,6 @@ import java.rmi.RemoteException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import ui.commonui.login.Frame_Login;
-import ui.commonui.login.Panel_Login;
 import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.FinanceImage;

@@ -108,12 +108,16 @@ private void initComponent(BankAccountManage manage) {
 		this.add(jsp);
 	}
 	public String[] getData(){
-		String [] data = new String[3];
+		String [] data = new String[2];
 		
 		data[0] = findType.getSelectedIndex()+"";
 		data[1] = searchField.getText();
+		System.out.println(data[0]);
+		System.out.println(data[1]);
 	
-		if(data[0]==null&&data[1]==null){
+		if(data[0].equals("")){
+			return null;
+		}else if(data[1].length()<=0){
 			return null;
 		}
 		return data;

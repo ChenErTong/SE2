@@ -67,7 +67,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 		this.add(day);
 		
 		check = new MyButton(172+3*123+5,75,30,30,LoginImage.getBUTTON_LOGISTIC());
-		check.setActionCommand("ViewIncomState");
+		check.setActionCommand("ViewIncomeState");
 		check.addActionListener(this);
 		this.add(check);
 		
@@ -248,7 +248,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				new MyNotification(this,"请输入截止日期！",Color.RED);
 			}else{
 				if(this.isLegal()){
-					String endDate = yearAddZero(input[0].getText())+"-" + addZero(input[1].getText())+"-" + addZero(input[2].getText());
+					String endDate = yearAddZero(input[0].getText()) + addZero(input[1].getText()) + addZero(input[2].getText());
 			
 					try {
 						

@@ -138,7 +138,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				}
 			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-				e.printStackTrace();
+				return;
 			}
 		}
 
@@ -166,13 +166,12 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 				try {
 					BankAccountBLService controller = ControllerFactory.getBankAccountController();
 					switch(Integer.parseInt(data[0])){
-						case 0 : bankAccountVO = controller.find(data[1], null);break;
-						case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
-						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
-						default : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
+						case 0 : bankAccountVO = controller.find(data[1], FindTypeAccount.ID);break;
+						case 1 : bankAccountVO = controller.find(data[1], FindTypeAccount.NAME);break;
+						case 2 : bankAccountVO = controller.find(data[1], FindTypeAccount.MONEY);break;
+						default : bankAccountVO = controller.find(data[1], null);break;
 					}
-				
-					if(bankAccountVO==null){
+					if(bankAccountVO.size()<=0){
 						new MyNotification(this,"无满足条件的账户！",Color.RED);
 						return ;
 					}
@@ -227,7 +226,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 					ResultMessage rsg = bankAccountController.add(new BankAccountVO(bankAccountController.getID(),
 							data[1],new BigDecimal(data[2]),null));
 					if(rsg.equals(ResultMessage.SUCCESS)){
-						
+						this.showAll();
 						new MyNotification(this,"账户添加成功！",Color.GREEN);
 					}else{
 						new MyNotification(this,"非高级财务权限无法添加账户！",Color.RED);
@@ -312,7 +311,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 	
@@ -337,7 +336,7 @@ public class BankAccountManage extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 }
