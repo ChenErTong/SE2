@@ -23,7 +23,8 @@ import state.ReceiptType;
 import state.ResultMessage;
 import ui.commonui.receipt_constructor.ReceiptConductor;
 import ui.image.ManagerImage;
-import ui.image.FinanceImage.FinanceImage;
+import ui.image.FinanceImage.BankAccountImage;
+
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -91,7 +92,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		passType = new ArrayList<ReceiptType>();
 		this.initComponent();
 		search  = searchPanel.getSearch();
-		this.leadline(frameManager);
+	
 		
 	}
 	
@@ -147,55 +148,6 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 		this.add(ExportReceipt);
 	}
 	
-public void leadline(FrameManager frameManager){
-		
-		MyButton HandleReceipt = new MyButton(300-105, 690,95,20,ManagerImage.getBUTTON_APPROVE_());
-		HandleReceipt.setActionCommand("HandleReceipt");
-		HandleReceipt.addActionListener(frameManager);
-		this.add(HandleReceipt);
-		HandleReceipt.setVisible(true);
-		
-		MyButton HandleOrganization = new MyButton(300, 690,120,20,ManagerImage.getBUTTON_ORGANIZATION_());
-		HandleOrganization.setActionCommand("HandleOrganization");
-		HandleOrganization.addActionListener(frameManager);
-		this.add(HandleOrganization);
-		HandleOrganization.setVisible(true);
-		
-		MyButton AdjustBase = new MyButton(300+120+10, 690,120,20,ManagerImage.getBUTTON_BASE_());
-		AdjustBase.setActionCommand("AdjustBase");
-		AdjustBase.addActionListener(frameManager);
-		this.add(AdjustBase);
-		AdjustBase.setVisible(true);
-		
-		MyButton AdjustSalaryPolicy = new MyButton(300+120+10+130,690,120,20,ManagerImage.getBUTTON_POLICY_());
-		AdjustSalaryPolicy.setActionCommand("AdjustSalaryPolicy");
-		AdjustSalaryPolicy.addActionListener(frameManager);
-		this.add(AdjustSalaryPolicy);
-		AdjustSalaryPolicy.setVisible(true);
-		
-		MyButton ViewUser = new MyButton(300+120+10+130+130,  690,120,20,ManagerImage.getBUTTON_ACCOUNT_());
-		ViewUser.setActionCommand("ViewUser");
-		ViewUser.addActionListener(frameManager);
-		this.add(ViewUser);
-		ViewUser.setVisible(true);
-		
-		MyButton ViewBusinessPerformance = new MyButton(300+120+10+130+130+130,690,120,20,FinanceImage.getButton_JINGYING_());
-		ViewBusinessPerformance.setActionCommand("ViewBusinessPerformance");
-		ViewBusinessPerformance.addActionListener(frameManager);
-		this.add(ViewBusinessPerformance);
-		ViewBusinessPerformance.setVisible(true);
-		
-		MyButton ViewIncomeStatement = new MyButton(300+130*5,690,120,20,FinanceImage.getButton_CHENGBEN_());
-		ViewIncomeStatement.setActionCommand("ViewIncomeStatement");
-		ViewIncomeStatement.addActionListener(frameManager);
-		this.add(ViewIncomeStatement);
-		ViewIncomeStatement.setVisible(true);
-		
-		MyButton viewLog = new MyButton(300+130*6,690,120,20,FinanceImage.getButton_LOG_());
-		viewLog.setActionCommand("ViewLogMsg");
-		viewLog.addActionListener(frameManager);
-		this.add(viewLog);
-	}
 
 
 	public void actionPerformed(ActionEvent events){
@@ -343,7 +295,7 @@ public void leadline(FrameManager frameManager){
 			}else if(count > 1){
 				new MyNotification(this,"请只选择一条要修改的单据！",Color.RED);
 			}
-
+			System.out.println(index);
 			if(!table.getValueAt(index, 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
 			}else{
@@ -353,7 +305,7 @@ public void leadline(FrameManager frameManager){
 				
 				this.removeAll();
 				this.add(new MyJLabel(550, 20, 200, 40, "单据信息修改", 24, true));
-				modify = new MyButton(395,633,100,30,ManagerImage.getBUTTON_APPROVE());
+				modify = new MyButton(395,633,100,30,BankAccountImage.getBUTTON_CONFIRM());
 				modify.setActionCommand("Modify");
 				modify.addActionListener(this);
 				this.add(modify);
@@ -452,6 +404,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		table = searchPanel.getTable();	
 		ReceiptController controller = ControllerFactory.getReceiptController();
 		
+		@SuppressWarnings("unused")
 		ArrayList<ReceiptVO> vo = controller.show(null, ReceiptState.APPROVALING);//待审批的单据
 		ArrayList<OrderReceiptVO> orderReceipt = controller.show(ReceiptType.ORDER, ReceiptState.APPROVALING);
 		ArrayList<LoadingListVO> loadingList = controller.show(ReceiptType.BRANCH_TRUCK, ReceiptState.APPROVALING);

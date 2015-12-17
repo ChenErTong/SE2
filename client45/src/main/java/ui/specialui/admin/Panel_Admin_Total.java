@@ -40,7 +40,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	private MyButton commonButton ;
 	private MyButton modifyButton ;
 	private MyJTable table;
-	private MyButton withdraw;
 	private MyButton backout;
 	private MyButton redo;
 	
@@ -127,11 +126,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		withdraw = new MyButton(15,15,35,35, CommonImage.getWITHDRAW());
-		withdraw.setActionCommand("Withdraw");
-		withdraw.addActionListener(frame);
-		this.add(withdraw);
-		
 		backout = new MyButton(1190-40,665,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
@@ -194,8 +188,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else{
 				try {
 					userController = ControllerFactory.getUserController();
-					//这里传一个机构的编号（我在transferController里新加了一个获得所有中转中心的编号的方法
-					//和一个用户的身份
 					ResultMessage rsg = userController.addUser((new UserVO(userController.getID(data[0],this.decideIden(data[4])),data[1],data[2],data[3],this.identity(data[4]),this.authority(data[5]),data[6]+data[7]+data[8])));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 						this.showAll();

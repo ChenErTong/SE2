@@ -17,7 +17,7 @@ public class ReceiptInfo extends MyTranslucentPanel{
 	}
 	
 	private void initComponent() {
-		MyJLabel title = new MyJLabel(195,10,170,40,"单据详细信息",18,true);
+		MyJLabel title = new MyJLabel(228,10,170,40,"单据详细信息",18,true);
 		this.add(title);
 		
 		ta = new MyEmptyTextArea(10,60,530,460);
