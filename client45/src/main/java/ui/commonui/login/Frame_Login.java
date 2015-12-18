@@ -89,6 +89,9 @@ public class Frame_Login extends MyJFrame implements ActionListener{
 		}); 
 		login.addActionListener(this);
 		totalPanel.add(login);
+		
+		this.returnButton.setVisible(false);
+		this.subscript.setVisible(false);
 	}
 
 
