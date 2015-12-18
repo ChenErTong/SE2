@@ -57,7 +57,6 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 	 */
 	public BussinessConditionVO getBussinessCondition(String endDate) throws RemoteException {
 		ArrayList<DebitAndPayBillPO> POs = debitAndPayBillData.find();
-		System.out.println(POs);
 		BigDecimal income = new BigDecimal(0);
 		BigDecimal expense = new BigDecimal(0);
 		BigDecimal profit = new BigDecimal(0);
