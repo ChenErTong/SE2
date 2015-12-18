@@ -254,7 +254,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 						
 						RecordBLService recordController = ControllerFactory.getRecordController();
 						BussinessConditionVO vo = recordController.bussinessCondition(endDate);
-						System.out.println(vo+"ui");
+						
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 						int rowCount = table.getRowCount();
 						for(int i = 0; i < rowCount; i++){
