@@ -295,7 +295,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 			}else if(count > 1){
 				new MyNotification(this,"请只选择一条要修改的单据！",Color.RED);
 			}
-			System.out.println(index);
+		//	System.out.println(index);
 			if(!table.getValueAt(index, 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
 			}else{
@@ -309,7 +309,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				modify.setActionCommand("Modify");
 				modify.addActionListener(this);
 				this.add(modify);
-				cancel = new MyButton(766,633,100,30,ManagerImage.getBUTTON_APPROVEALL());
+				cancel = new MyButton(766,633,100,30,ManagerImage.getBUTTON_RETURN());
 				cancel.setActionCommand("Cancel");
 				cancel.addActionListener(this);
 				this.add(cancel);	
@@ -380,12 +380,23 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				new MyNotification(this,"目前没有找到符合条件的单据！",Color.RED);
 			}
 		}else if(events.getSource()==cancel){
-			
+			MyJTable table = modifyUI.table;
+			if(table.isEditing()){
+				table.getCellEditor().stopCellEditing();
+			}
+			try {
+				this.removeAll();
+				this.initComponent();
+				this.repaint();
+			} catch (RemoteException e) {	
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 		}else if(events.getSource()==modify){
 			MyJTable table = modifyUI.table;
 			if(table.isEditing()){
 				table.getCellEditor().stopCellEditing();
-				new MyNotification(this,"正在修改单据！",Color.RED);
+				new MyNotification(this,"正在修改单据！",Color.GREEN);
 			}
 			try {
 				finish(currentType);
@@ -758,10 +769,10 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
 			double sum = 0;
 			
-			for(int i = 0; i < table.getRowCount(); i++){
-				double price = Double.parseDouble((String)table.getValueAt(i, 1));
-				sum = sum + price;
-			}
+			//for(int i = 0; i < table.getRowCount(); i++){
+				//double price = Double.parseDouble((String)table.getValueAt(i, 1));
+				//sum = sum + price;
+		//	}
 			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;

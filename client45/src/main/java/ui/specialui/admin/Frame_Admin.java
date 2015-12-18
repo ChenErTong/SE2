@@ -3,7 +3,7 @@ package ui.specialui.admin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import ui.commonui.login.Frame_Login;
+
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 /**

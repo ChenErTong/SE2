@@ -49,6 +49,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		this.add(fields[0]);
 		
 		fields[1] = new MyJTextField(380,50,120,30);
+		fields[1].setOnlyDouble();
 		fields[1].addActionListener(new ActionListener(){
 
 			@Override
@@ -104,7 +105,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 		data[4] =items.getSelectedIndex()+"";
 		data[5] = fields[4].getText();
 		for(int i=0;i<6;i++){
-			if(data[i].equals("")||data[i]==null){
+			if(data[i].equals("")){
 				return null;
 			}
 		}
@@ -121,7 +122,7 @@ public class ModifyPayBill extends MyTranslucentPanel{
 	}
 
 	public void refresh(){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<4;i++){
 			fields[i].setText(null);
 		}
 		items.setSelectedItem(null);

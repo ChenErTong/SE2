@@ -80,7 +80,15 @@ import javax.swing.ImageIcon;
 		private static ImageIcon[] BUTTON_CONFIRMADD = null;
 		//确认修改
 		private static ImageIcon[] BUTTON_CONFIRMMODIFY = null;
+		//返回
+		private static ImageIcon[] BUTTON_RETURN = null;
 		
+		public static ImageIcon[] getBUTTON_RETURN(){
+			if(BUTTON_RETURN==null){
+				BUTTON_RETURN = Images.createImageIcons("image/button/结束.png");
+			}
+			return BUTTON_RETURN;
+		}
 		public static ImageIcon[] getBUTTON_APPROVE_(){
 			if(BUTTON_APPROVE_ == null){
 				BUTTON_APPROVE_= Images.createImageIcons("image/button/单据导航.png");

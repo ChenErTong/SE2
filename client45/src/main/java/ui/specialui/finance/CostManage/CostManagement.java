@@ -27,7 +27,6 @@ import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
 import vo.BussinessOneDayVO;
-import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
 
 /**
@@ -107,8 +106,11 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		
 		 try {
 			 showController = ControllerFactory.getDebitAndPayBillShowController();
-			ArrayList<DebitAndPayBillVO> debitbillVO = showController.show(ReceiptType.DEBIT,ReceiptState.SUCCESS);
-			if(debitbillVO== null){
+			ArrayList<DebitBillVO> debitbillVO = showController.show(ReceiptType.DEBIT,ReceiptState.APPROVALING);
+			ArrayList<DebitBillVO> debitbillVO_1 = showController.show(ReceiptType.DEBIT, ReceiptState.SUCCESS);
+			ArrayList<DebitBillVO> debitbillVO_2 = showController.show(ReceiptType.DEBIT, ReceiptState.FAILURE);
+
+			if(debitbillVO== null&&debitbillVO_1==null&&debitbillVO_2==null){
 				return ;
 			}
 			 DebitBillVO debitVO;
@@ -118,9 +120,22 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				debitbillPool.add((DebitBillVO) debitbillVO.get(i));
 			}
+			
+			for(int i = 0; i < debitbillVO_1.size(); i++){
+				debitVO = ( DebitBillVO) debitbillVO_1.get(i);
+				Object[] rowData = {debitVO.ID,debitVO.date,debitVO.courierID,debitVO.money,debitVO.orderNumbers};
+				tableModel.addRow(rowData);
+				debitbillPool.add((DebitBillVO) debitbillVO_1.get(i));
+			}
+			for(int i = 0; i < debitbillVO_2.size(); i++){
+				debitVO = ( DebitBillVO) debitbillVO_2.get(i);
+				Object[] rowData = {debitVO.ID,debitVO.date,debitVO.courierID,debitVO.money,debitVO.orderNumbers};
+				tableModel.addRow(rowData);
+				debitbillPool.add((DebitBillVO) debitbillVO_2.get(i));
+			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+			return;
 		}
 	}
 

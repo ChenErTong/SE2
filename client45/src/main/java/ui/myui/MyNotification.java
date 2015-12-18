@@ -22,14 +22,21 @@ public class MyNotification extends JDialog implements Runnable{
 	private static final long serialVersionUID = 1L;
 	private Dimension size = new Dimension(300,100);
 
+	
 	@SuppressWarnings("restriction")
 	public MyNotification(JPanel panel, String text, Color color){
 		//super(panel);
 		this.setUndecorated(true);
 		setSize(size);
+	
+		if((int)panel.getLocationOnScreen().getY()==94){
+			
+			this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620-70);
+		}else{
+			this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620);
+			
+		}
 		
-		this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620);
-
 		// the underground panel
 		UndergroundPanel mainPanel = new UndergroundPanel();
 		mainPanel.setLayout(null);

@@ -55,7 +55,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	
 	private void initTable(){
 		String[] headers = {"机构编号", "成立日期","机构类型","机构人数","机构地址","机构人员信息","仓库/转运工具信息"};
-		transferTable= new MyJTable(headers,true);
+		transferTable= new MyJTable(headers,false);
 		transferTable.setBackground(new Color(40, 42, 66));
 		transferTable.setForeground(Color.WHITE);
 		transferTable.setFont(new MyFont(14));
@@ -66,7 +66,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 
 		
 		String[] headers2 = {"人员编号", " 日期","姓名","职务权限","工作时间"};
-		employTable = new MyJTable(headers2,true);
+		employTable = new MyJTable(headers2,false);
 		employTable.setBackground(new Color(40, 42, 66));
 		employTable.setForeground(Color.WHITE);
 		employTable.setFont(new MyFont(14));
@@ -76,7 +76,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		employTable.setDefaultRenderer(Object.class, tcr1);
 		
 		String[] headers3 = {"车辆编号", "日期","车辆购入日期","车牌号","运输历史"};
-		facilityTable = new MyJTable(headers3,true);
+		facilityTable = new MyJTable(headers3,false);
 		facilityTable.setBackground(new Color(40, 42, 66));
 		facilityTable.setForeground(Color.WHITE);
 		facilityTable.setFont(new MyFont(14));
@@ -86,7 +86,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		facilityTable.setDefaultRenderer(Object.class, tcr2);
 		
 		String[] headers4 = {"库存编号","区","排","架","位"};
-		inventoryTable = new MyJTable(headers4,true);
+		inventoryTable = new MyJTable(headers4,false);
 		inventoryTable.setBackground(new Color(40, 42, 66));
 		inventoryTable.setForeground(Color.WHITE);
 		inventoryTable.setFont(new MyFont(14));

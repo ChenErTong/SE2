@@ -28,6 +28,7 @@ import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyButton;
 import ui.myui.MyFileChooser;
 import ui.myui.MyFont;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
@@ -49,8 +50,9 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	private DateLabel[] dateLabel;
 	private MyJTextField[] input;
 	private JScrollPane jsp;
+	
 	public BusinessPerformanceInfo(FrameManager frame_Manager) {
-		super(80, 100-30,1120,570+48);
+		super(80, 70,1120,570+48);
 		this.initComponent(frame_Manager);
 	}
 
@@ -283,7 +285,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 					try {
 						RecordBLService recordController = ControllerFactory.getRecordController();
 						ArrayList<DebitAndPayBillVO> vo =  recordController.bussinessProcess(beginDate, endDate);
-						System.out.println(vo);
+				
 						DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 						int rowCount = table.getRowCount();
 						for(int i = 0; i < rowCount; i++){

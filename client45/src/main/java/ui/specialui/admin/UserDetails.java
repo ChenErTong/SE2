@@ -20,7 +20,6 @@ import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
-import ui.myui.MyPasswordField;
 import ui.myui.MyTranslucentPanel;
 
 /**

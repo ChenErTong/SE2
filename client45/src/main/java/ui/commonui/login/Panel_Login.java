@@ -62,7 +62,7 @@ public class Panel_Login extends MyJPanel{
 		
 		keepPassword= new MyJRadioButton(645+85/2,495,200,30,"记住密码");
 		keepPassword.addActionListener(frame_Login);
-		this.add(keepPassword);
+		//this.add(keepPassword);
 	
 	}
 	
