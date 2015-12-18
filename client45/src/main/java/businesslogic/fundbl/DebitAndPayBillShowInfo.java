@@ -63,10 +63,11 @@ public class DebitAndPayBillShowInfo implements DebitAndPayBillShowInfo_Record {
 		BigDecimal profit = new BigDecimal(0);
 		for (DebitAndPayBillPO debitAndPayBillPO : POs) {
 			ReceiptType type = debitAndPayBillPO.getReceiptType();
-			if (type == ReceiptType.DEBIT)
+			if (type == ReceiptType.DEBIT){
+				income = income.add(debitAndPayBillPO.getMoney());
+			} else if (type == ReceiptType.PAY) {
 				expense = expense.add(debitAndPayBillPO.getMoney());
-			else if (type == ReceiptType.PAY)
-				profit = profit.add(debitAndPayBillPO.getMoney());
+			}
 		}
 		profit = income.subtract(expense);
 		BussinessConditionVO vo = new BussinessConditionVO(endDate, income, expense, profit);
