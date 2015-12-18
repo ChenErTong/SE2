@@ -60,6 +60,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 					row = orders.getSelectedRow();
 					String orderId = orders.getData(row)[0];
 					ArrivalCommodityInfoCheck.this.showOrderInfo(orderId);
+				} else{
+					ArrivalCommodityInfoCheck.this.repaint();
 				}
 			}
 		});

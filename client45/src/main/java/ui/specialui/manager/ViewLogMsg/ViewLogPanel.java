@@ -61,18 +61,22 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 				data = log.getData();
 				if(data==null){
 					new MyNotification(this,"请输入查询日期",Color.RED);
+					return;
+				}else if(!this.isLegal(data)){
+					new MyNotification(this,"输入的查询日期不符合日期规则！",Color.RED);
+					return;
 				}else{
-					Date current = new Date();
+				//	Date current = new Date();
 					String year = data[0];
-					SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
-					year = (isDigit(year))?year:sdfYear.format(current);//默认为当年
+				//	SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+					year = (isDigit(year))?year:"";//sdfYear.format(current);//默认为当年
 					String month = data[1];
 					month = (isDigit(month)) ? ("-" + month) : "";
 					String day = data[2];
 					day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
 					String date = year + month + day;
 					
-					
+
 					try {
 						LogController logController = ControllerFactory.getLogController();
 						ArrayList<LogMessage> logs = logController.showInDate(date);
@@ -97,6 +101,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 							logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
 							logText.append("\n");
 						}
+						new MyNotification(this,"共有"+table.getRowCount()+"条记录满足条件！",Color.GREEN);
 					} catch (MalformedURLException | RemoteException
 							| NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
@@ -151,6 +156,36 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 			if (!Character.isDigit(num.charAt(i))) {
 				return false;
 			}
+		}
+		return true;
+	}
+	
+	/**
+	 * 判断输入的日期是否合法
+	 */
+	private boolean isLegal(String []input){
+		for(int i=0;i<input.length;i++){
+			if(!this.isDigit(input[i])){
+				return false;
+			}
+		}	
+		
+		Date current = new Date();
+		SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+		
+		int standard = Integer.parseInt(sdfYear.format(current));
+		int year = Integer.parseInt(input[0]);
+		int month = Integer.parseInt(input[1]);
+		int day = Integer.parseInt(input[2]);
+		if(year<0||year>standard){
+			return false;
+		}else if((month<0||month>12)){
+			return false;
+		}else if((day<0||day>31)){
+			return false;
+		}
+		if((month==2&&day>28)){
+			return false;
 		}
 		return true;
 	}

@@ -204,9 +204,14 @@ public class AdjustSalaryPolicy extends MyJPanel implements ActionListener{
 				try {
 					PolicyBLService controller = ControllerFactory.getPolicyController();
 					PolicyVO vo = controller.find(data);
+					if(vo==null){
+						new MyNotification(this,"系统中无薪水策略信息！",Color.RED);
+						return;
+					}
 					String [] rowData = {vo.userIdentity+"",vo.salaryPolicy+"",vo.remark};
 					tableModel.addRow(rowData);
 					policyPool.add(vo);
+					new MyNotification(this,"共有"+table.getRowCount()+"个策略符合条件！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					return;

@@ -228,13 +228,21 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 				return false;
 			}
 		}	
+		
+		Date current = new Date();
+		SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+		
+		int standard = Integer.parseInt(sdfYear.format(current));
 		int year = Integer.parseInt(input[0].getText());
 		int month = Integer.parseInt(input[1].getText());
 		int day = Integer.parseInt(input[2].getText());
-		if(year<0||(month<0||month>12)||(day<0||day>31)){
+		if(year<0||year>standard){
+			return false;
+		}else if((month<0||month>12)){
+			return false;
+		}else if((day<0||day>31)){
 			return false;
 		}
-		
 		if((month==2&&day>28)){
 			return false;
 		}

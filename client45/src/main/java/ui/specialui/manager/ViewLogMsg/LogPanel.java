@@ -149,12 +149,13 @@ public class LogPanel extends MyTranslucentPanel{
 		String[] data = new String[3];
 		for(int i=0;i<3;i++){
 			data[i] = input[i].getText();
-			if(data[i]==null){
+			if(data[i].equals("")){
 				return null;
 			}
 		}
 		return data;
 	}
+	
 	
 	public MyEmptyTextArea getText(){
 		return  ta;

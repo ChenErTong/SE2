@@ -35,6 +35,6 @@ public class mainForUITest2 {
 	//new Frame_Courier(userID);
 //	new Frame_Branch(userID);
 //	new Frame_Finance(userID);
-		new Frame_Admin(userID);
+	//	new Frame_Admin(userID);
 	}
 }

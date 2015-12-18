@@ -76,7 +76,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 		table = new MyJTable(headers, true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		Object[] rowData = {receipt.payerName,receipt.money,receipt.bankAccountID,receipt.items,receipt.remarks,receipt.date};
+		Object[] rowData = {receipt.payerName,receipt.money,receipt.bankAccountID,receipt.items.value,receipt.remarks,receipt.date};
 		tableModel.addRow(rowData);
 	}
 	private void exportTable(InventoryExportReceiptVO receipt) {/*ReceiptType type, String destination, String depture, ExpressType expressType,
@@ -85,7 +85,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 		table = new MyJTable(headers,true);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		Object[] rowData = {receipt.type,receipt.transferID,receipt.commodityVO,receipt.area,receipt.row,receipt.frame,receipt.position};
+		Object[] rowData = {receipt.type,receipt.transferID,receipt.commodityVO.commodityState+"|"+receipt.commodityVO.commodityType+"|"+receipt.commodityVO.weight+"|"+receipt.commodityVO.volumn,receipt.area,receipt.row,receipt.frame,receipt.position};
 		tableModel.addRow(rowData);
 		
 	}
@@ -105,7 +105,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 	
-		Object[] rowData = {receipt.type,receipt.area,receipt.row,receipt.frame,receipt.position,receipt.commodityVO.commodityType,receipt.commodityVO.commodityState,receipt.commodityVO.weight,receipt.commodityVO.volumn};
+		Object[] rowData = {receipt.type,receipt.commodityVO.commodityState+"|"+receipt.commodityVO.commodityType+"|"+receipt.commodityVO.weight+"|"+receipt.commodityVO.volumn,receipt.area,receipt.row,receipt.frame,receipt.position};
 		tableModel.addRow(rowData);
 	}
 	private void transferArrivalTable(TransferArrivalListVO receipt) {

@@ -29,7 +29,6 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
-import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.PaymentBillVO;
 
 /**
@@ -132,13 +131,16 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			tableModel.removeRow(0);
 		}
 		
+		
 		paybillPool.clear();
 		paybillID = "";
 		
 		try {
 			showController = ControllerFactory.getDebitAndPayBillShowController();
-			ArrayList<PaymentBillVO> paybillVO = showController.show(ReceiptType.PAY, ReceiptState.SUCCESS);
-			if(paybillVO==null){
+			ArrayList<PaymentBillVO> paybillVO = showController.show(ReceiptType.PAY, ReceiptState.APPROVALING);
+			ArrayList<PaymentBillVO> paybillVO_1 = showController.show(ReceiptType.PAY, ReceiptState.SUCCESS);
+			ArrayList<PaymentBillVO> paybillVO_2 = showController.show(ReceiptType.PAY, ReceiptState.FAILURE);
+			if(paybillVO==null&&paybillVO_2==null&&paybillVO_1==null){
 				return;
 			}
 			PaymentBillVO payVO;
@@ -148,6 +150,19 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 				tableModel.addRow(rowData);
 				paybillPool.add((PaymentBillVO) paybillVO.get(i));
 			}
+			for(int i = 0; i <  paybillVO_1.size(); i++){
+				payVO = (PaymentBillVO)  paybillVO_1.get(i);
+				Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.bankAccountID,payVO.items.value,payVO.remarks,payVO.date};
+				tableModel.addRow(rowData);
+				paybillPool.add((PaymentBillVO) paybillVO_1.get(i));
+			}
+			for(int i = 0; i <  paybillVO_2.size(); i++){
+				payVO = (PaymentBillVO)  paybillVO_2.get(i);
+				Object[] rowData = {payVO.ID,payVO.payerName,payVO.money,payVO.bankAccountID,payVO.items.value,payVO.remarks,payVO.date};
+				tableModel.addRow(rowData);
+				paybillPool.add((PaymentBillVO) paybillVO_2.get(i));
+			}
+		
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			return;
@@ -213,20 +228,9 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					ResultMessage rsg  = controller.addPayBill(new PaymentBillVO(controller.getPayID(),data[5],ReceiptType.
 							PAY,new BigDecimal(data[1]),data[0],data[2],this.payItem(data[4]),data[3]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
-						//BankAccountController bankController = ControllerFactory.getBankAccountController();
 						this.showAll();
 						new MyNotification(this,"付款单添加成功！",Color.GREEN);
 						addPaybill.refresh();
-					//	ResultMessage rsg_2 = bankController.subtractMoneyInBankAccount(data[2], new BigDecimal(data[1]));
-						//if(rsg_2.equals(ResultMessage.SUCCESS)){
-							//this.showAll();
-							//addPaybill.refresh();
-							//new MyNotification(this,"付款单添加成功！",Color.GREEN);
-						//}else{
-							//new MyNotification(this,"该账户无法完成付款！",Color.RED);
-							//new MyNotification(this,"付款单添加失败！",Color.RED);
-						//}
-						
 					}else{
 						new MyNotification(this,"付款单添加失败！",Color.RED);
 					}

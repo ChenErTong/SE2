@@ -37,6 +37,7 @@ public class AddBankAccount extends MyTranslucentPanel implements ActionListener
 		this.add(nameField);
 		
 		balanceField = new MyJTextField(380,80,150,30);
+		balanceField.setOnlyDouble();
 		balanceField.addActionListener(this);
 		this.add(balanceField);
 		
