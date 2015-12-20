@@ -80,6 +80,18 @@ public class CommonImage extends Images{
 	 * redo
 	 */
 	private static ImageIcon[] BUTTON_REDO= null;
+	/**
+	 * 确定框背景
+	 */
+	private static Image CONFIRM_BACKGROUND = null;
+	/**
+	 * 确认按钮
+	 */
+	private static ImageIcon[] BUTTON_CONFIRM = null;
+	/**
+	 * 取消按钮
+	 */
+	private static ImageIcon[] BUTTON_CANCEL = null;
 	
 	public static ImageIcon[] getBUTTON_REDO(){
 		if(BUTTON_REDO == null){
@@ -174,5 +186,26 @@ public class CommonImage extends Images{
 			SUBSCRIPT = createImageIcon("image/下标.png");
 		}
 		return SUBSCRIPT;
+	}
+	
+	public static Image getCONFIRM_BACKGROUND(){
+		if(CONFIRM_BACKGROUND == null){
+			CONFIRM_BACKGROUND = createImage("image/确定框.png");
+		}
+		return CONFIRM_BACKGROUND;
+	}
+	
+	public static ImageIcon[] getBUTTON_CONFIRM(){
+		if(BUTTON_CONFIRM == null){
+			BUTTON_CONFIRM = createImageIcons("image/确认.png");
+		}
+		return BUTTON_CONFIRM;
+	}
+	
+	public static ImageIcon[] getBUTTON_CANCEL(){
+		if(BUTTON_CANCEL == null){
+			BUTTON_CANCEL = createImageIcons("image/取消.png");
+		}
+		return BUTTON_CANCEL;
 	}
 }

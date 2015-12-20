@@ -8,11 +8,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.RoundRectangle2D;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import ui.commonui.exitSystem.ExitSystemFrame;
 import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
+
 import com.sun.awt.AWTUtilities;
 /**
  * Frame的总类，定义位置，大小，启动动画
@@ -23,6 +27,10 @@ import com.sun.awt.AWTUtilities;
 public class MyJFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
+	//退出确认界面
+	private ExitSystemFrame exit;
+	//覆盖
+	private MyTranslucentPanel cover;
 	//退出按钮
 	protected MyButton closeButton;
 	//最小化按钮
@@ -84,7 +92,11 @@ public class MyJFrame extends JFrame{
 		this.closeButton = new MyButton(1235, 15, 32, 32, CommonImage.getBUTTON_CLOSE());
 		this.closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				cover = new MyTranslucentPanel(0, 0, 1280, 720);
+				MyJFrame.this.getLayeredPane().add(cover);
+				MyJFrame.this.setEnabled(false);
+				exit = new ExitSystemFrame(MyJFrame.this, MyJFrame.this.getLocationOnScreen().getX() + 640, MyJFrame.this.getLocationOnScreen().getY() + 360);
+				exit.setEnabled(true);
 			}
 		});
 		this.add(this.closeButton);
@@ -162,8 +174,6 @@ public class MyJFrame extends JFrame{
 	public String getCurrentLocation(int X, int Y){
 		return String.valueOf(X) + ";" + String.valueOf(Y);
 	}
-		
-			
 	        
 	/**
 	 * 透明度渐变启动界面
@@ -187,5 +197,16 @@ public class MyJFrame extends JFrame{
 				}
 			}
 		}
+	}
+
+	public void cancelExit() {
+		exit.setVisible(false);
+		this.remove(exit);
+		exit = null;
+		cover.setVisible(false);
+		this.remove(cover);
+		cover = null;
+		this.setEnabled(true);
+		this.setVisible(true);
 	}
 }

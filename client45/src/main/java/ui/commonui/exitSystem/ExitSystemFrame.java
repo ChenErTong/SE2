@@ -3,37 +3,54 @@ package ui.commonui.exitSystem;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 
-public class ExitSystemFrame extends JDialog implements ActionListener{
+import ui.image.CommonImage;
+import ui.myui.MyButton;
+import ui.myui.MyJFrame;
+import ui.myui.MyJLabel;
 
-	/**
-	 * 
-	 */
+import com.sun.awt.AWTUtilities;
+
+@SuppressWarnings("restriction")
+public class ExitSystemFrame extends JDialog{
 	private static final long serialVersionUID = 1L;
-
-	ExitSystemPanel panel;
-	public static JButton button_close;
 	
-	public ExitSystemFrame(){
+	public ExitSystemFrame(MyJFrame frame, double x, double y){
+		this.setSize(256, 144);
+		this.setLocation((int)(x - this.getWidth() / 2), (int)(y - this.getHeight() / 2));
+		this.setLayout(null);
+		this.setUndecorated(true);
+		//设置圆角
+		AWTUtilities.setWindowShape(this, new RoundRectangle2D.Double(0.0D,
+				0.0D, 256, 144, 8.0D, 8.0D));
+		//设置半透明
+		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.6f);
+				
+		MyJLabel title = new MyJLabel(23, 20, 210, 21, "是否确认退出当前系统", 20, true);
+		title.setForeground(Color.BLACK);
+		this.add(title);
 		
-		panel = new ExitSystemPanel();
-		panel.setOpaque(true);
-		panel.setBackground(new Color(0,0,0,0.3f));
-		this.add(panel);
+		MyButton confirm = new MyButton(63, 68, 45, 45, CommonImage.getBUTTON_CONFIRM());
+		confirm.setActionCommand("confirm");
+		confirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		this.add(confirm);
 		
-		button_close = new JButton();
-		button_close.addActionListener(this);
-		this.add(button_close);
+		MyButton cancel = new MyButton(153, 70, 38, 38, CommonImage.getBUTTON_CANCEL());
+		cancel.setActionCommand("cancel");
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.cancelExit();
+			}
+		});
+		this.add(cancel);
+		
+		this.setVisible(true);		
 	}
-	@Override
-	public void actionPerformed(ActionEvent events) {
-		// TODO Auto-generated method stub
-		if(events.getSource()==button_close){
-			this.setVisible(false);
-		}
-	}
-
 }
