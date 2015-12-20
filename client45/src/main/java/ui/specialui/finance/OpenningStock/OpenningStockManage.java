@@ -198,7 +198,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 				for(int j = 0; j < avo.transfers.size(); j++){
 					Object[] rowData = {avo.transfers.get(j).getOrganizationID(), avo.date
 							, avo.transfers.get(j).getOrganizationType(),avo.transfers.get(j).getNumberOfPerson(),avo.transfers.get(j).getAddress(),
-							avo.transfers.get(j).getAccounts(),avo.transfers.get(j).getInventories()};
+							avo.transfers.get(j).getAccounts().toString(),avo.transfers.get(j).getInventories().toString()};
 					tableModel.addRow(rowData);
 				}
 				for(int j = 0;j<avo.branchs.size();j++){
@@ -215,7 +215,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 				
 				for(int j = 0; j < avo.facilities.size(); j++){
 					Object[] rowData = {avo.facilities.get(j).getID(), avo.date, avo.facilities.get(j).getDate(), avo.facilities.get(j).getVehicleIdentificationNumber(), 
-						avo.facilities.get(j).getDeliverHistory()};
+						avo.facilities.get(j).getDeliverHistory().toString()};
 					tableModel3.addRow(rowData);
 				}
 				

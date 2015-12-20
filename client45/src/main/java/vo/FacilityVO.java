@@ -65,8 +65,8 @@ public class FacilityVO {
 
 	@Override
 	public String toString() {
-		return managerId + ", " + deliverHistory + ", " + facilityIdString + ", " + dateString + ", " + bottomCode
-				+ ", " + engineCode + ", " + vehicleIdentificationNumber;
+		return managerId + "|" + deliverHistory + "|" + facilityIdString + "|" + dateString + "|" + bottomCode
+				+ "|" + engineCode + "|" + vehicleIdentificationNumber;
 	}
 	
 	

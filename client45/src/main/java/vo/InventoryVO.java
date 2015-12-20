@@ -12,4 +12,8 @@ public class InventoryVO extends ValueObject {
 		this.commodities=new CommodityVO[area][row][frame][position];
 		this.transferID=transferID;
 	}
+	@Override
+	public String toString(){
+		return this.ID+"|"+commodities[0].length+"|"+commodities[0][0].length+"|"+commodities[0][0][0].length+"|"+this.transferID;
+	}
 }

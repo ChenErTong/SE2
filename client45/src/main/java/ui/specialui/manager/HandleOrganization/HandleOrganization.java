@@ -164,7 +164,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			ArrayList<BranchVO> branchVO = controller.showBranch();
 			for(int i=0;i<transferVO.size();i++){
 				Object [] rowData1 = {transferVO.get(i).organizationID,transferVO.get(i).organizationType,
-						transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
+						transferVO.get(i).date,transferVO.get(i).inventories.toString(),transferVO.get(i).accounts.toString(),transferVO.get(i).address};
 				tableModel.addRow(rowData1);
 				organizationPool.add(transferVO.get(i));
 				transferPool.add(transferVO.get(i));
@@ -172,7 +172,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 			for(int i=0;i<branchVO.size();i++){
 				Object[] rowData2 = {branchVO.get(i).organizationID,branchVO.get(i).organizationType,branchVO.get(i).date
-						,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
+						,branchVO.get(i).facilities.toString(),branchVO.get(i).accounts.toString(),branchVO.get(i).address};
 				tableModel.addRow(rowData2);
 				organizationPool.add(branchVO.get(i));
 				branchPool.add(branchVO.get(i));
@@ -210,14 +210,14 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 					}
 					for(int i=0;i<transferVO.size();i++){
 						Object[] rowData1 ={transferVO.get(i).organizationID,transferVO.get(i).organizationType,
-								transferVO.get(i).date,transferVO.get(i).inventories,transferVO.get(i).accounts,transferVO.get(i).address};
+								transferVO.get(i).date,transferVO.get(i).inventories.toString(),transferVO.get(i).accounts.toString(),transferVO.get(i).address};
 						tableModel.addRow(rowData1);
 						organizationPool.add(transferVO.get(i));
 						transferPool.add(transferVO.get(i));
 					}
 					for(int i=0;i<branchVO.size();i++){
 						Object[] rowData2 = {branchVO.get(i).organizationID,branchVO.get(i).organizationType,branchVO.get(i).date
-								,branchVO.get(i).facilities,branchVO.get(i).accounts,branchVO.get(i).address};
+								,branchVO.get(i).facilities.toString(),branchVO.get(i).accounts.toString(),branchVO.get(i).address};
 						tableModel.addRow(rowData2);
 						organizationPool.add(branchVO.get(i));
 						branchPool.add(branchVO.get(i));
@@ -388,14 +388,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		try {
 			controller = ControllerFactory.getOrganizationController();
 			switch(organizationPool.get(table.getSelectedRow()).organizationType){
-				case TRANSFER:  //accounts = controller.getAccountByOrganizationID(organizationID);
-							//if(accounts!=null){
-								  
-						//	}
-							//inventories = controller.getInventoriesByTransferID(organizationID);
-							//if(inventories!=null){
-								
-							//}
+				case TRANSFER:  
 							ResultMessage rsg = controller.updateTransfer(new TransferVO(organizationID, data[2]+data[3]+data[4], OrganizationType.TRANSFER));
 							
 							if(rsg.equals(ResultMessage.SUCCESS)){
@@ -406,14 +399,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 							}else{
 								new MyNotification(this,"中转中心信息修改失败！",Color.RED);
 							}break;
-				case BRANCH: //accounts = controller.getAccountByOrganizationID(organizationID);
-							//if(accounts!=null){
-					
-							//}
-							//facilities = controller.getFacilitiesByBranchID(organizationID);
-							//if(facilities!=null){
-								
-						//	}
+				case BRANCH: 
 							ResultMessage rsg1 = controller.updateBranch(new BranchVO(organizationID,data[2]+data[3]+data[4],OrganizationType.BRANCH));
 						 	if(rsg1.equals(ResultMessage.SUCCESS)){
 						 		this.showAll();
