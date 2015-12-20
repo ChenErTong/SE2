@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman.vehicleloading;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -19,6 +21,7 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityInfoCheck;
 import vo.OrderVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import businesslogic.ControllerFactory;
@@ -49,6 +52,15 @@ public class VehicleLoading extends MyJPanel {
 
 		String[] orderId = new String[]{"订单编号"};
 		ordersID = new MyJTable(orderId, false);
+		ordersID.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				//双击取消订单
+				if (e.getClickCount() == 2) {
+					ordersID.removeRow();
+				}
+				VehicleLoading.this.repaint();
+			}
+		});
 		
 		this.add(new MyJLabel(690, 150, 100, 25, "订单编号", 18, true));
 		MyJTextField orderID = new MyJTextField(780, 150, 150, 30);
@@ -100,6 +112,7 @@ public class VehicleLoading extends MyJPanel {
 		
 		String[] data = new String[]{text};
 		ordersID.addRow(data);
+		this.repaint();
 		return true;
 	}
 
@@ -150,9 +163,13 @@ public class VehicleLoading extends MyJPanel {
 			return null;
 		}
 		String[][] orderNum = ordersID.getData();
+		if(orderNum == null){
+			new MyNotification(this, "请输入订单编号", Color.RED);
+			return null;
+		}
 		ArrayList<String> ordernum = new ArrayList<String>(orderNum.length);
-		for (String num : ordernum) {
-			ordernum.add(num);
+		for (String[] num : orderNum) {
+			ordernum.add(num[0]);
 		}
 		new MyNotification(this, "成功生成装车单", Color.GREEN);
 		

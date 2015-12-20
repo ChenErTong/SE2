@@ -89,17 +89,17 @@ public class DriverInfo extends MyTranslucentPanel{
 		fields[5] = new MyJTextField(470, 200, 150, 30);
 		fields[5].setOnlyInteger(9);
 		
-		DriverBLService branchController = null;
+		DriverBLService dirverController = null;
 		
 		try {
-			branchController = ControllerFactory.getDriverController();
+			dirverController = ControllerFactory.getDriverController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 		}
 		
-		if(branchController != null){
+		if(dirverController != null){
 			try {
-				fields[5].setText(branchController.getID(frame.getID().substring(0, 6)));
+				fields[5].setText(dirverController.getID(frame.getID().substring(0, 6)));
 			} catch (RemoteException e1) {
 				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			}

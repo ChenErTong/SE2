@@ -26,15 +26,12 @@ public class LoadingInfo extends MyTranslucentPanel {
 		this.add(new MyJLabel(78, 42, 60, 25, "目的地", 18, true));
 		destination = new MyJTextField(150, 40, 130, 30);
 		destination.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==destination){
 					supercargo.requestFocus();
 				}
-				
 			}
-			
 		});
 		this.add(destination);
 		
@@ -93,7 +90,7 @@ public class LoadingInfo extends MyTranslucentPanel {
 		
 		this.add(new MyJLabel(42, 292, 100, 25, "营业厅编号", 18, true));
 		branchId = new MyJTextField(150, 290, 130, 30);
-		branchId.setOnlyInteger(3);
+		branchId.setOnlyInteger(6);
 		this.add(branchId);
 	}
 	

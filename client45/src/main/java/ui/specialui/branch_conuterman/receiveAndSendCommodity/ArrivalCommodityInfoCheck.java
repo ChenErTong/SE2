@@ -60,9 +60,8 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 					row = orders.getSelectedRow();
 					String orderId = orders.getData(row)[0];
 					ArrivalCommodityInfoCheck.this.showOrderInfo(orderId);
-				} else{
-					ArrivalCommodityInfoCheck.this.repaint();
 				}
+				ArrivalCommodityInfoCheck.this.repaint();
 			}
 		});
 		this.setOrderList();
@@ -115,7 +114,6 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		}
 		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
 		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
-		this.repaint();
 	}
 	/**
 	 * 生成到达单
