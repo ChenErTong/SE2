@@ -127,7 +127,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		deleteButton.addActionListener(this);
 		this.add(deleteButton);
 		
-		backout = new MyButton(1190-40,665,35,35,CommonImage.getBUTTON_BACKOUT());
+		backout = new MyButton(1150,665,35,35,CommonImage.getBUTTON_BACKOUT());
 		backout.setActionCommand("backout");
 		backout.addActionListener(this);
 		this.add(backout);

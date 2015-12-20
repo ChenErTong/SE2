@@ -17,21 +17,9 @@ public class CommonImage extends Images{
 	 */
 	public static ImageIcon[] BUTTON_RETURN = null;
 	/**
-	 * 测试背景图片
+	 * 背景图片
 	 */
 	public static final ImageIcon BACKGROUND = createImageIcon("image/background1.jpg");
-	/**
-	 * 测试总经理功能界面图片
-	 */
-	public static final ImageIcon MANAGER_BACKGROUND = createImageIcon("image/background_Manager.png");
-	/**
-	 * 测试财务人员功能界面图片
-	 */
-	public static final ImageIcon FINANCE_BACKGROUND = createImageIcon("image/background_finance.png");
-	/**
-	 * 测试带下标logo的背景图片
-	 */
-	public static final ImageIcon BACKGROUND_LOGO = createImageIcon("image/background_login.png");
 	/**
 	 * 半透明
 	 */
