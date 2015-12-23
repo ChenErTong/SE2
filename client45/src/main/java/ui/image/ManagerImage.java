@@ -83,6 +83,14 @@ import javax.swing.ImageIcon;
 		//返回
 		private static ImageIcon[] BUTTON_RETURN = null;
 		
+		private static ImageIcon[] BUTTON_VIEWMSG = null;
+		
+		public static ImageIcon[] getBUTTON_VIEWMSG(){
+			if(BUTTON_VIEWMSG == null){
+				BUTTON_VIEWMSG = Images.createImageIcons("image/button/查看记录.png");
+			}
+			return BUTTON_VIEWMSG;
+		}
 		public static ImageIcon[] getBUTTON_RETURN(){
 			if(BUTTON_RETURN==null){
 				BUTTON_RETURN = Images.createImageIcons("image/button/结束.png");

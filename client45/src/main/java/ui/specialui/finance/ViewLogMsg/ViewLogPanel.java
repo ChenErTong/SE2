@@ -1,5 +1,7 @@
 package ui.specialui.finance.ViewLogMsg;
 
+import ui.image.ManagerImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -36,7 +38,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	
 	private LogPanel log;
 	private MyEmptyTextArea logText;
-	
+	private MyButton view;
 	static ArrayList<LogMessage> messagePool;
 
 	public ViewLogPanel(Frame_Finance frame_Finance) {
@@ -49,6 +51,11 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 		this.add(new MyJLabel(530, 20, 300, 40, "系统操作日志查看", 30, true));
 		 log = new LogPanel(this);
 		this.add(log);
+		
+		view = new MyButton(510,630,120,40,ManagerImage.getBUTTON_VIEWMSG());
+		view.setActionCommand("ViewMessage");
+		view.addActionListener(this);
+		this.add(view);
 		messagePool = new ArrayList<LogMessage>();
 	}
 
@@ -107,34 +114,18 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 				}
 			
 			}
-		}else if(e.getActionCommand().equals("ShowAll")){
-				logText = log.getText();
-				logText.setText("");
-				try {
-					LogController logController = ControllerFactory.getLogController();
-					ArrayList<LogMessage> logs = logController.show();
-					table = log.getTable();
-					DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-					
-					int rowCount = table.getRowCount();
-					
-					for(int i = 0; i < rowCount; i++){
-						tableModel.removeRow(0);
-					}
-					
-					messagePool.clear();
-
-					for(int i=0;i<logs.size();i++){
-						String [] rowData = {logs.get(i).userName,logs.get(i).time,logs.get(i).message};
-						tableModel.addRow(rowData);
-						messagePool.add(logs.get(i));
-					}
-				} catch (MalformedURLException | RemoteException
-						| NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
-				}
- 			
+		}else if(e.getActionCommand().equals("ViewMessage")){
+			logText = log.getText();
+			logText.setText("");
+			table = log.getTable();
+			
+			if(table.getSelectedRowCount() == 0){
+				new MyNotification(this,"请先选择要查看的记录！",Color.RED);
+			}else{
+				logText.append(messagePool.get(table.getSelectedRow()).userName+" "+messagePool.get(table.getSelectedRow()
+					).time+" "+messagePool.get(table.getSelectedRow()).message);
+				logText.append("\n");
+			}
 		}
 	}
 		

@@ -193,7 +193,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}	
 				}else {
 					new MyNotification(this,"请选择员工类型！",Color.RED);
@@ -216,7 +216,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}
 		}else if(e.getActionCommand().equals("ModifyAccountInfo")){

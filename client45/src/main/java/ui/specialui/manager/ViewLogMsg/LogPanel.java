@@ -36,12 +36,12 @@ public class LogPanel extends MyTranslucentPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public LogPanel(ViewLogPanel handle) {
-		super(50, 100-30, 1180, 600);
+		super(50, 100-30, 1180, 600-50);
 		this.addInput();
 		this.initButton(handle);
 		this.initTable();
 		
-		ta = new MyEmptyTextArea(620+42,50,500,530);
+		ta = new MyEmptyTextArea(620+42,50,500,530-50);
 		ta.setBackground(Color.WHITE);
 		this.add(ta);
 		
@@ -136,7 +136,7 @@ public class LogPanel extends MyTranslucentPanel{
 		head.setForeground(Color.BLACK);
 		head.setResizingAllowed(false);
 				
-		jsp.setBounds(15, 50, 590, 530);
+		jsp.setBounds(15, 50, 590, 530-50);
 		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
 		jsp.setOpaque(false);
 		jsp.setBorder(BorderFactory.createEmptyBorder());

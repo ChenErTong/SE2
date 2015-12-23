@@ -1,5 +1,7 @@
 package ui.specialui.manager.ViewLogMsg;
 
+import ui.image.ManagerImage;
+import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -35,6 +37,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	private LogPanel log;
 	private MyEmptyTextArea logText;
 	
+	private MyButton view;
 	private MyJTable table;
 	static ArrayList<LogMessage> messagePool;
 
@@ -47,6 +50,10 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 	private void initComponent() {
 		this.add(new MyJLabel(530, 20, 300, 40, "系统操作日志查看", 30, true));
 		log = new LogPanel(this);
+		view = new MyButton(510,630,120,40,ManagerImage.getBUTTON_VIEWMSG());
+		view.setActionCommand("ViewMessage");
+		view.addActionListener(this);
+		this.add(view);
 		this.add(log);
 		messagePool = new ArrayList<LogMessage>();
 		
@@ -96,11 +103,11 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 							tableModel.addRow(rowData);
 							messagePool.add(logs.get(i));
 						}
-						logText.setText("");
-						for(int i=0;i<logs.size();i++){
+					//	logText.setText("");
+						/*for(int i=0;i<logs.size();i++){
 							logText.append(logs.get(i).userName+" "+logs.get(i).time+" "+logs.get(i).message);
 							logText.append("\n");
-						}
+						}*/
 						new MyNotification(this,"共有"+table.getRowCount()+"条记录满足条件！",Color.GREEN);
 					} catch (MalformedURLException | RemoteException
 							| NotBoundException e1) {
@@ -109,39 +116,20 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 					}
 				
 				}
-			}else if(e.getActionCommand().equals("ShowAll")){
+			}else if(e.getActionCommand().equals("ViewMessage")){
 				logText = log.getText();
 				logText.setText("");
+				table = log.getTable();
 				
-				ArrayList<LogMessage> logs;
-				try {
-					LogController logController = ControllerFactory.getLogController();
-					logs = logController.show();
-					table = log.getTable();
-					DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-					
-					int rowCount = table.getRowCount();
-					
-					for(int i = 0; i < rowCount; i++){
-						tableModel.removeRow(0);
-					}
-					
-					messagePool.clear();
-			
-					for(int i=0;i<logs.size();i++){
-						String [] rowData = {logs.get(i).userName,logs.get(i).time,logs.get(i).message};
-						tableModel.addRow(rowData);
-						messagePool.add(logs.get(i));
-					}
-				} catch (MalformedURLException | RemoteException
-						| NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-					return;
+				if(table.getSelectedRowCount() == 0){
+					new MyNotification(this,"请先选择要查看的记录！",Color.RED);
+				}else{
+					logText.append(messagePool.get(table.getSelectedRow()).userName+" "+messagePool.get(table.getSelectedRow()
+						).time+" "+messagePool.get(table.getSelectedRow()).message);
+					logText.append("\n");
 				}
-				
- 			}
-		
-	}
+			}
+		}
 		
 	/**
 	 * 判断一个字符串是否为数字

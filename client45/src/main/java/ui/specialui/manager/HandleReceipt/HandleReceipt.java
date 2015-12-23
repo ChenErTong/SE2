@@ -756,7 +756,6 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		ResultMessage rm = null;
 		if(billType.equals(ReceiptType.ORDER)){
 			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
-		//	ArrayList<String> orders = new ArrayList<String>();
 			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
 		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
 			LoadingListVO vo = (LoadingListVO)currentBill;	
@@ -767,12 +766,6 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orderID));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
-			double sum = 0;
-			
-			//for(int i = 0; i < table.getRowCount(); i++){
-				//double price = Double.parseDouble((String)table.getValueAt(i, 1));
-				//sum = sum + price;
-		//	}
 			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
