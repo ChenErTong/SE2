@@ -31,5 +31,13 @@ public class LoadingListVO extends OrderReceiptVO{
 		this.courierName = courierName;
 		this.money = money;
 	}
+
+	@Override
+	public String toString() {
+		return " branchID=" + branchID + ", transferNumber=" + transferNumber + ", distination=" + distination
+				+ ", carID=" + carID + ", monitorName=" + monitorName + ", courierName=" + courierName + ", money="
+				+ money;
+	}
+	
 	
 }

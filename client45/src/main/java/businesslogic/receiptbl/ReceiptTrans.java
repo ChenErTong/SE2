@@ -171,6 +171,9 @@ public class ReceiptTrans {
 		ArrayList<String> orders = vo.orders;
 		String courierName = vo.courierName;
 		BigDecimal money =vo.money;
+//		System.out.println();
+//		System.out.println(vo);
+//		System.out.println();
 		return new LoadingListPO(ID, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){
