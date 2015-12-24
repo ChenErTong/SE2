@@ -153,7 +153,7 @@ public class CargoImport extends MyJPanel {
 		if(inventoryController == null) return;
 		
 		try {
-			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 6));
+			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
 		} catch (RemoteException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return;
