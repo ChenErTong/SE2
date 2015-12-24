@@ -31,11 +31,9 @@ public class StartPanel extends ServerPanel implements ActionListener{
 	}
 	private void initComponent(){
 		server = new RMIManage();
-
 		serverInfoPanel = new ServerInfoPanel(server.getHostAddr(), server.getHostName());
 		this.add(serverInfoPanel);
 		this.addStartStopButton();
-		
 		this.add(new ServerLabel(750/2,40,150,30,"服务器信息",30,true));
 	}
 	
@@ -43,11 +41,11 @@ public class StartPanel extends ServerPanel implements ActionListener{
 	 * 添加开始和关闭按钮
 	 */
 	private void addStartStopButton() {
-
 		startBtn = new ServerButton(325,257,200,60,CommonImage.getBUTTON_OPEN());
+		startBtn.addActionListener(this);
 		this.add(startBtn);
-		
 		stopBtn = new ServerButton(325,257+60+20,200,60,CommonImage.getCLOSE());
+		stopBtn.addActionListener(this);
 		this.add(stopBtn);
 		stopBtn.setEnabled(false);
 	}
@@ -56,19 +54,19 @@ public class StartPanel extends ServerPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == startBtn) {
-		/*	if (!server.isStarted()) {
+			if (!server.isOpen()) {
 				startBtn.setEnabled(false);
 				stopBtn.setEnabled(true);
 				server.startServer();
 				serverInfoPanel.setStarted(true);
-			}*/
+			}
 		} else if (e.getSource() == stopBtn) {
-			/*if (server.isStarted()) {
+			if (server.isOpen()) {
 				startBtn.setEnabled(true);
 				stopBtn.setEnabled(false);
 				server.stopServer();
 				serverInfoPanel.setStarted(false);
-			}*/
+			}
 		}
 	}
 }
