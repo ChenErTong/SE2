@@ -96,8 +96,10 @@ public class Record {
 	 * @param vo
 	 *            BussinessConditionVO型，经营情况表
 	 */
-	public void exportBussinessConditionToExcel(BussinessConditionVO vo) {
-		String fileName = "output/" + "截至" + vo.end + "成本收益报表" + ".xls";
+	public void exportBussinessConditionToExcel(BussinessConditionVO vo,String fileDirectoryPath) {
+		if(fileDirectoryPath.equals(""))
+			fileDirectoryPath="output";
+		String fileName = fileDirectoryPath+"/" + "截至" + vo.end + "成本收益报表" + ".xls";
 		String head = "截至" + vo.end + "成本收益报表";
 		String[] title = { "日期", "总收入", "总支出", "总利润" };
 		List<Object> list = new ArrayList<>();

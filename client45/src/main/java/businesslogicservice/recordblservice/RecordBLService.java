@@ -25,5 +25,5 @@ public interface RecordBLService {
 	 
 	 public void exportBussinessProcessToExcel(BussinessProcessVO vo,String fileDirectoryPath);
 	
-	 public void exportBussinessConditionToExcel(BussinessConditionVO vo);
+	 public void exportBussinessConditionToExcel(BussinessConditionVO vo,String fileDirectoryPath);
 }
