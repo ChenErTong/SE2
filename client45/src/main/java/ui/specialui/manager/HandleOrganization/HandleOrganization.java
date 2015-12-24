@@ -252,6 +252,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						ControllerFactory.init();
 						return;
 					}
 				}else if(data[0].equals("中转中心")){
@@ -264,12 +265,12 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 							organizationDetails.refresh();
 							organizationDetails.setUneditable();
 							new MyNotification(this,"新中转中心添加成功！",Color.GREEN);
-
 						}else{
 							new MyNotification(this,"新中转中心添加失败！",Color.RED);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						ControllerFactory.init();
 						return;
 					}	
 				}

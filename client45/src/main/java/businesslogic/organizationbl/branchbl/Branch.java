@@ -41,7 +41,6 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	
 	
 	public Branch() throws MalformedURLException, RemoteException, NotBoundException {
-		
 		branchData = (BranchDataService) Naming.lookup(RMIConfig.PREFIX + BranchDataService.NAME);
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();

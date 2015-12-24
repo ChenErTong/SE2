@@ -40,7 +40,7 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	}
 
 	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
-			return (AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
+		return (AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
 	}
 
 	public ArrayList<AccountVO> show() throws RemoteException {

@@ -129,4 +129,24 @@ public class ControllerFactory {
 		if(logController == null) logController = new LogController();
 		return logController;
 	}
+	
+	public static void init(){
+		logController = null;
+		facilityController = null;
+		driverController = null;
+		userController = null;
+		accountController = null;
+		baseController = null;
+		bankAccountController = null;
+		branchController = null;
+		debitAndPayBillController = null;
+		debitAndPayBillShowController = null;
+		inventoryController = null;
+		organizationController = null;
+		recordController = null;
+		receiptController = null;
+		orderController = null;
+		policyController = null;
+		transferController = null;
+	}
 }
