@@ -3,7 +3,6 @@ package ui.server;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import data.userdata.UserData;
 import ui.MyTranslucentPanel;
 import ui.ServerTable;
 
