@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.CommonBusinessLogic;
-import businesslogic.DataFactory;
 import config.RMIConfig;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
@@ -27,12 +26,13 @@ public class Base implements CommonBusinessLogic<BasePO>{
 	private BaseDataService baseData;
 	
 	public Base() throws MalformedURLException, RemoteException, NotBoundException {
-		baseData = (BaseDataService) DataFactory.getData(BaseDataService.NAME);
+		
+		baseData = getData();
 	}
 
-	/*public BaseDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
-		
-	}*/
+	public BaseDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
+		return (BaseDataService) Naming.lookup(RMIConfig.PREFIX + BaseDataService.NAME);
+	}
 
 	public ConfirmState confirmOperation() {
 		return ConfirmState.CONFIRM;

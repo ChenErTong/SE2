@@ -7,9 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.CommonBusinessLogic;
-import businesslogic.DataFactory;
 import config.RMIConfig;
-import dataservice.basedataservice.BaseDataService;
 import dataservice.basedataservice.PolicyDataService;
 import po.PolicyPO;
 import state.ResultMessage;
@@ -25,7 +23,8 @@ public class Policy implements CommonBusinessLogic<PolicyPO>{
 	public  final static String BLNAME="Policy";
 	private PolicyDataService policyData;
 	public Policy() throws MalformedURLException, RemoteException, NotBoundException {
-		policyData=(PolicyDataService) DataFactory.getData(PolicyDataService.NAME);
+		
+		policyData = (PolicyDataService) Naming.lookup(RMIConfig.PREFIX + PolicyDataService.NAME);
 	}
 
 	public String getID() throws RemoteException {
