@@ -61,18 +61,30 @@ public class ServerButton extends JButton {
 		image = images[0];
 		this.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				image = images[2];
-				ServerButton.this.repaint();
+				if(e.getComponent().isEnabled()){
+					image = images[2];
+					ServerButton.this.repaint();
+				}
 			}
 			public void mouseExited(MouseEvent e) {
-				image = images[0];
-				ServerButton.this.repaint();
+				if(e.getComponent().isEnabled()){
+					image = images[0];
+					ServerButton.this.repaint();
+				}
 			}
 			public void mouseEntered(MouseEvent e) {
-				image = images[1];
-				ServerButton.this.repaint();
+				if(e.getComponent().isEnabled()){
+					image = images[1];
+					ServerButton.this.repaint();
+				}
 			}
 		});
+	}
+	
+	@SuppressWarnings("static-access")
+	public void setImage(int num,ImageIcon[] icons){
+		image=icons[num].getImage().getScaledInstance(this.getWidth(),
+				this.getHeight(), icons[num].getImage().SCALE_DEFAULT);
 	}
 
 	public void paintComponent(Graphics g){
