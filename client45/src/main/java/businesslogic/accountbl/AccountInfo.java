@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.DataFactory;
 import businesslogic.fundbl.AccountInfo_DebitAndPayBillVOShow;
 import businesslogic.openingstockbl.AccountInfo_OpeningStock;
 import businesslogic.organizationbl.AccountInfo_Branch_Transfer;
@@ -24,7 +25,7 @@ public class AccountInfo
 
 	public AccountInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		account = new Account();
-		accountData = account.getData();
+		accountData =  (AccountDataService) DataFactory.getData(AccountDataService.NAME);
 	}
 
 	/**

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import businesslogic.DataFactory;
 import businesslogic.orderbl.BaseInfo_Order;
 import dataservice.basedataservice.BaseDataService;
 import po.BasePO;
@@ -23,7 +24,7 @@ public class BaseInfo implements BaseInfo_Order{
 	BaseDataService baseData;
 	public BaseInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		base = new Base();
-		baseData = base.getData();
+		baseData = (BaseDataService) DataFactory.getData(BaseDataService.NAME);
 	}
 	/**
 	 * @see BaseInfo_Order#getArrialDateByCities(String, String, String, double)

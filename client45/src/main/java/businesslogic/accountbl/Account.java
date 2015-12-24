@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.CommonBusinessLogic;
+import businesslogic.DataFactory;
 import businesslogic.organizationbl.branchbl.BranchInfo;
 import businesslogic.organizationbl.transferbl.TransferInfo;
 import config.RMIConfig;
@@ -34,17 +35,38 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	
 
 	public Account() throws MalformedURLException, RemoteException, NotBoundException {
-		accountData = getData();
+		accountData = (AccountDataService) DataFactory.getData(AccountDataService.NAME);
 		branchInfo = new BranchInfo();
 		transferInfo = new TransferInfo();
 	}
 
-	public AccountDataService getData() throws MalformedURLException, RemoteException, NotBoundException {
-			return (AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
-	}
+	/*public AccountDataService getData() throws RemoteException {
+		try {
+			return (AccountDataService) DataFactory.getData(AccountDataService.NAME);
+		} catch (NotBoundException e) {
+			System.out.println("服务器异常");
+			e.printStackTrace();
+		}
+		return null;
+	}*/
 
-	public ArrayList<AccountVO> show() throws RemoteException {
-		return AccountTrans.convertPOstoVOs(accountData.find());
+	public ArrayList<AccountVO> show(){
+		System.out.println(accountData);
+		try {
+			return AccountTrans.convertPOstoVOs(accountData.find());
+		} catch (RemoteException e) {
+			try {
+				accountData=(AccountDataService) Naming.lookup(RMIConfig.PREFIX + AccountDataService.NAME);
+			} catch (MalformedURLException e1) {
+				e1.printStackTrace();
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			} catch (NotBoundException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		return new ArrayList<>();
 	}
 
 	/**
