@@ -237,11 +237,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		}
 		TransferOrderVO transferOrder;
 		try {
+			transferController = ControllerFactory.getTransferController();
 			transferOrder = transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
 //			transferController.save(transferOrder);
 //			transferController.submit(transferOrder);	
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
 		}
 		
@@ -272,11 +273,12 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		}
 		TransferOrderVO transferOrder;
 		try {
+			transferController = ControllerFactory.getTransferController();
 			transferOrder = transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 //			transferController.save(transferOrder);
 //			transferController.submit(transferOrder);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
 		}
 		
@@ -307,12 +309,13 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		}
 		TransferOrderVO transferOrder;
 		try {
+			transferController = ControllerFactory.getTransferController();
 			transferOrder = transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 //			transferController.save(transferOrder);
 //			transferController.submit(transferOrder);
 			}
-		catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
 		}
 		

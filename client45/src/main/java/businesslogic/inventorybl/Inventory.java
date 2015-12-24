@@ -208,9 +208,9 @@ public class Inventory {
 				ReceiptType.INSTOCK);
 		ArrayList<InventoryExportReceiptVO> exportReceipts = receiptInfo.showInDateByType(beginDate, endDate,
 				ReceiptType.OUTSTOCK);
-		if((importReceipts.size() == 0)&&(exportReceipts.size() == 0)){
+		/*if((importReceipts.size() == 0)&&(exportReceipts.size() == 0)){
 			return null;
-		}
+		}*/
 		// 获得仓库中商品位置
 		ArrayList<InventoryPositionVO> commoditiesInInventory = this.getCommoditiesInInventory(transferID);
 		// 新建库存查看VO
@@ -364,7 +364,6 @@ public class Inventory {
 	 */
 	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException {
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
-		System.out.println(inventory);
 		// 如果中转中心没有仓库，返回空列表
 		if (inventory == null) {
 			return new ArrayList<>();
@@ -395,6 +394,7 @@ public class Inventory {
 				}
 			}
 		}
+		System.out.println(commosInInventory.size());
 		return commosInInventory;
 	}
 
@@ -460,6 +460,7 @@ public class Inventory {
 	 */
 	public InventoryPO findInventoryByTransferID(String transferID) throws RemoteException {
 		TransferPO transferPO = transferInfo.getTransfer(transferID);
+		System.out.println(transferPO);
 		if (transferPO == null) {
 			return null;
 		}

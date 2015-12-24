@@ -47,7 +47,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
@@ -124,11 +124,12 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		if(row == -1) return 1;
 		//选中订单，将其转化成到达单
 		try {
+			branchController = ControllerFactory.getBranchController();
 			arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
 			row = -1;
 			return 0;
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 	}
@@ -142,11 +143,13 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		orders.clear();
 		
 		try {
+			branchController = ControllerFactory.getBranchController();
 			for (String orderID : branchController.getAllOrderNumber()) {
 				orders.addRow(new String[]{orderID});
 			}
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			orders.repaint();
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 	}

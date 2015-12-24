@@ -44,7 +44,7 @@ public class TimeAndCostManager extends MyJPanel{
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		this.add(new MyJLabel(500, 30, 230, 45, "报价与时间管理", 30, true));
@@ -99,12 +99,13 @@ public class TimeAndCostManager extends MyJPanel{
 		BigDecimal cost = null;
 		String arrivalDate = null;
 		try {
+			controller = ControllerFactory.getOrderController();
 			cost = controller.getCost(commodities, senderInfo[2],
 					receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 			arrivalDate = controller.getArrivalDate(senderInfo[2],
 					receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
-		} catch (RemoteException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 

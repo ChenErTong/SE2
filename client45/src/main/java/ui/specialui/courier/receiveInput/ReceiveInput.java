@@ -45,7 +45,7 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		order = null;
 		
@@ -117,7 +117,7 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			orderController = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		try {
@@ -155,6 +155,7 @@ public class ReceiveInput extends MyJPanel{
 		}
 		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
 		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
+		
 	}
 	
 	public int produceReceiveList(Frame_Courier frame_Courier){
@@ -170,13 +171,15 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			accountController = ControllerFactory.getAccountController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		
 		AccountVO account;
 		try {
+			
 			account = accountController.find(frame_Courier.getID());
+			System.out.println(account);
 			account.ordersID.add(order.ID);
 			accountController.updateAccount(account);
 		} catch (RemoteException e) {

@@ -44,7 +44,7 @@ public class SendCommodity extends MyJPanel{
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 				
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
@@ -69,7 +69,7 @@ public class SendCommodity extends MyJPanel{
 		try {
 			organizationController = ControllerFactory.getOrganizationController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		ArrayList<AccountVO> couriers = null;;
@@ -146,10 +146,11 @@ public class SendCommodity extends MyJPanel{
 		}
 		String courierName = courierInfo.split(" ")[1];
 		try {
+			branchController = ControllerFactory.getBranchController();
 			branchController.getDeliveryList(arrivalListVO.orderID, courierName);
 			return 0;
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 	}

@@ -38,7 +38,7 @@ public class OrderInput extends MyJPanel {
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		this.add(new MyJLabel(550, 30, 150, 45, "订单输入", 30, true));
@@ -89,9 +89,10 @@ public class OrderInput extends MyJPanel {
 
 		String id;
 		try {
+			controller = ControllerFactory.getOrderController();
 			id = controller.getOrderId();
-		} catch (RemoteException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		
@@ -104,12 +105,13 @@ public class OrderInput extends MyJPanel {
 		BigDecimal cost = null;
 		String arrivalDate = null;;
 		try {
+			controller = ControllerFactory.getOrderController();
 			cost = controller.getCost(commodities, senderInfo[2],
 					receiverInfo[2], ExpressType.getType(commodityInfo[2]));
 			arrivalDate = controller.getArrivalDate(senderInfo[2],
 					receiverInfo[2], ExpressType.getType(commodityInfo[2]), GetDate.getDate());
-		} catch (RemoteException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 
@@ -138,9 +140,10 @@ public class OrderInput extends MyJPanel {
 				PackageType.getType(commodityInfo[1]),
 				ExpressType.getType(commodityInfo[2]));
 		try {
+			controller = ControllerFactory.getOrderController();
 			controller.addOrder(order);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		return 0;

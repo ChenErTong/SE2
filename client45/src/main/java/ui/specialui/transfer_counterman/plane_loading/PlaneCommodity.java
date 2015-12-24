@@ -95,9 +95,10 @@ public class PlaneCommodity extends MyJPanel {
 		}
 		OrderVO order = null;
 		try {
+			orderController = ControllerFactory.getOrderController();
 			order = orderController.inquireOrder(orderId);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		orderInfo.setText("订单编号" + order.ID + "\n");
@@ -118,7 +119,7 @@ public class PlaneCommodity extends MyJPanel {
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		ArrayList<String> ordersID = null;

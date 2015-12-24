@@ -44,7 +44,7 @@ public class FacilityInfoManage extends MyJPanel {
 		try {
 			facilityController = ControllerFactory.getFacilityController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		facilityId = new MyJTextField(510, 115, 250, 30);
@@ -186,9 +186,10 @@ public class FacilityInfoManage extends MyJPanel {
 	 */
 	private boolean searchFacility(String facilityId) {
 		try {
+			facilityController = ControllerFactory.getFacilityController();
 			facility = facilityController.findFacility(facilityId);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		if(facility == null){
@@ -212,9 +213,10 @@ public class FacilityInfoManage extends MyJPanel {
 		if(data[2].length() != 9) return 2;
 		facility = new FacilityVO(null, new ArrayList<LoadingListPO>(), data[2], data[4], data[1], data[3], data[0], data[2].substring(0, 6));
 		try {
+			facilityController = ControllerFactory.getFacilityController();
 			facilityController.addFacility(facility);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		facilityController.confirmOperation();
@@ -234,9 +236,10 @@ public class FacilityInfoManage extends MyJPanel {
 		facility.engineCode=data[3];
 		facility.dateString=data[4];
 		try {
+			facilityController = ControllerFactory.getFacilityController();
 			facilityController.modifyFacility(facility);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		facilityController.confirmOperation();
@@ -248,9 +251,10 @@ public class FacilityInfoManage extends MyJPanel {
 			return 2;
 		}
 		try {
+			facilityController = ControllerFactory.getFacilityController();
 			facilityController.deleteFacility(facility);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		facilityController.confirmOperation();
