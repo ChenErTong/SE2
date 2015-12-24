@@ -21,97 +21,64 @@ import javax.swing.JPanel;
 public class MyNotification extends JDialog implements Runnable{
 	private static final long serialVersionUID = 1L;
 	private Dimension size = new Dimension(300,100);
-
 	
-	@SuppressWarnings("restriction")
-	public MyNotification(JPanel panel, String text, Color color){
-		//super(panel);
-		this.setUndecorated(true);
-		setSize(size);
+	public MyNotification(JFrame frame, String text, Color color, boolean autoClosed){
+		super(frame);
+		
+		if((int)frame.getLocationOnScreen().getY()==94){
+			this.setLocation((int)frame.getLocationOnScreen().getX() + 900, (int)frame.getLocationOnScreen().getY() + 620-70);
+		}else{
+			this.setLocation((int)frame.getLocationOnScreen().getX() + 900, (int)frame.getLocationOnScreen().getY() + 620);
+		}
+		
+		this.init(text, color);
+		
+		if(autoClosed){
+			startThread();
+		}
+	}
 	
+	public MyNotification(JPanel panel, String text, Color color, boolean autoClosed){
 		if((int)panel.getLocationOnScreen().getY()==94){
-			
 			this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620-70);
 		}else{
 			this.setLocation((int)panel.getLocationOnScreen().getX() + 900, (int)panel.getLocationOnScreen().getY() + 620);
-			
 		}
 		
-		// the underground panel
-		UndergroundPanel mainPanel = new UndergroundPanel();
-		mainPanel.setLayout(null);
-
-		// the message label
-		if (text.length() > 10) {
-			String message1 = text, message2;
-			message1 = text.substring(0, 9);
-			message2 = text.substring(9, text.length());
-			// show the two message labels
-			JLabel messageLabel1 = new JLabel(message1);
-			messageLabel1.setForeground(color);
-			messageLabel1.setFont(new MyFont(18, true));
-			messageLabel1.setBounds(
-					size.width / 2 - messageLabel1.getPreferredSize().width	/ 2, 
-					size.height / 2 - messageLabel1.getPreferredSize().height / 2 - 16, 
-					messageLabel1.getPreferredSize().width,
-					messageLabel1.getPreferredSize().height);
-			mainPanel.add(messageLabel1, BorderLayout.CENTER);
-
-			JLabel messageLabel2 = new JLabel(message2);
-			messageLabel2.setForeground(color);
-			messageLabel2.setFont(new MyFont(18, true));
-			messageLabel2.setBounds(
-					size.width / 2 - messageLabel2.getPreferredSize().width	/ 2,
-					size.height / 2	- messageLabel2.getPreferredSize().height / 2 + 16,
-					messageLabel2.getPreferredSize().width,
-					messageLabel2.getPreferredSize().height);
-			mainPanel.add(messageLabel2, BorderLayout.CENTER);
-		} else {
-			JLabel messageLabel = new JLabel(text);
-			messageLabel.setForeground(color);
-			messageLabel.setFont(new MyFont(18, true));
-			messageLabel.setBounds(
-					size.width / 2 - messageLabel.getPreferredSize().width / 2,
-					size.height / 2 - messageLabel.getPreferredSize().height / 2 - 2,
-					messageLabel.getPreferredSize().width,
-					messageLabel.getPreferredSize().height);
-			mainPanel.add(messageLabel, BorderLayout.CENTER);
-		}
-		add(mainPanel);
-
-		// set the window transparent
-		com.sun.awt.AWTUtilities.setWindowOpaque(this, false);
-
-		// 渐隐效果显示
-		float translucent = 0.01f;
-		com.sun.awt.AWTUtilities.setWindowOpacity(this, 0.0f);
-		setVisible(true);
-		while (translucent < 1) {
-			com.sun.awt.AWTUtilities.setWindowOpacity(this, translucent);
-			translucent += 0.03f;
-		}
+		this.init(text, color);
 		
+		if(autoClosed){
+			startThread();
+		}
+	}
+
+	public void startThread(){
 		Thread t = new Thread(this);
 		t.start();
 	}
-	@SuppressWarnings("restriction")
+	
+	public MyNotification(JPanel panel, String text, Color color){
+		this(panel, text, color, true);
+	}
+		
+
 	public MyNotification(JFrame frame, String text, Color color) {
-		super(frame);
+		this(frame, text, color, true);
+	}
+
+	@SuppressWarnings("restriction")
+	private void init(String text, Color color){
 		this.setUndecorated(true);
 		setSize(size);
 		
-		this.setLocation((int)frame.getLocationOnScreen().getX() + 900, (int)frame.getLocationOnScreen().getY() + 620);
-
-		// the underground panel
 		UndergroundPanel mainPanel = new UndergroundPanel();
 		mainPanel.setLayout(null);
 
-		// the message label
 		if (text.length() > 10) {
 			String message1 = text, message2;
 			message1 = text.substring(0, 9);
 			message2 = text.substring(9, text.length());
-			// show the two message labels
+
 			JLabel messageLabel1 = new JLabel(message1);
 			messageLabel1.setForeground(color);
 			messageLabel1.setFont(new MyFont(18, true));
@@ -144,7 +111,6 @@ public class MyNotification extends JDialog implements Runnable{
 		}
 		add(mainPanel);
 
-		// set the window transparent
 		com.sun.awt.AWTUtilities.setWindowOpaque(this, false);
 
 		// 渐隐效果显示
@@ -156,11 +122,8 @@ public class MyNotification extends JDialog implements Runnable{
 			translucent += 0.03f;
 		}
 		
-		Thread t = new Thread(this);
-		t.start();
 	}
-
-	// close the window
+	
 	@SuppressWarnings("restriction")
 	public void close() {
 		// 渐隐效果
@@ -185,7 +148,6 @@ public class MyNotification extends JDialog implements Runnable{
 
 		private static final long serialVersionUID = 1L;
 
-		// paint the underground
 		protected void paintComponent(Graphics g) {
 			Graphics2D g2 = (Graphics2D) g;
 			int width = getWidth();
@@ -200,10 +162,8 @@ public class MyNotification extends JDialog implements Runnable{
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 					RenderingHints.VALUE_ANTIALIAS_ON);
 
-			// draw the background
 			g2.fillRoundRect(7, 7, width - 14, height - 14, 20, 20);
 
-			// draw the border lines
 			g2.setColor(Color.WHITE);
 			g2.drawRoundRect(6, 6, width - 14, height - 14, 20, 20);
 			g2.setColor(new Color(240, 155, 75, 200));
