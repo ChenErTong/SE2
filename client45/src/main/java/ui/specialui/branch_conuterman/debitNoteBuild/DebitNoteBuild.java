@@ -99,14 +99,14 @@ public class DebitNoteBuild extends MyJPanel {
 						.getAccountController();
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
-				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 				return true;
 			}
 		AccountVO account = null;
 		try {
 			account = acountController.find(courierId);
 		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		if (account == null)
@@ -121,7 +121,7 @@ public class DebitNoteBuild extends MyJPanel {
 						.getOrderController();
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
-				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 				return true;
 			}
 
@@ -134,7 +134,7 @@ public class DebitNoteBuild extends MyJPanel {
 							+ order.money + "\t收款日期：" + order.recipientTime);
 				}
 			} catch (RemoteException e) {
-				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 				return true;
 			}
 		}
@@ -172,7 +172,7 @@ public class DebitNoteBuild extends MyJPanel {
 			controller = ControllerFactory
 					.getDebitAndPayBillController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return 2;
 		}
 		DebitBillVO debitBillVO;
@@ -184,7 +184,7 @@ public class DebitNoteBuild extends MyJPanel {
 //			controller.submit(debitBillVO);
 			return 0;
 		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return 2;
 		}
 	}

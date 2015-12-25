@@ -313,7 +313,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 							new MyNotification(this,"未找到符合条件的单据！",Color.RED);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 						return;
 					}
 			}else{
@@ -342,7 +342,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate),path);
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				}
 			}

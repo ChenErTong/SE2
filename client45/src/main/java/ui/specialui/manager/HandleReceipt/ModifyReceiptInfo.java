@@ -118,7 +118,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	}
 	private void deliveryList(DeliveryListVO receipt) {
 		//  ReceiptType type,ArrayList<String> orders, String courierName
-		String[] headers = {"单据类型","货物到达状态","订单订单号"};
+		String[] headers = {"单据类型","订单号","装车员"};
 		table = new MyJTable(headers,true);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.order,receipt.courierName};

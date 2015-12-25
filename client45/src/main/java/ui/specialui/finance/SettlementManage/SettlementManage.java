@@ -163,7 +163,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			}
 		
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 			return;
 		}
 	}
@@ -214,7 +214,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					
 		
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				}	
 			}else{
@@ -240,7 +240,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 						new MyNotification(this,"付款单添加失败！",Color.RED);
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				}
 			}
@@ -335,7 +335,7 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 					new MyNotification(this,"付款单修改失败！",Color.RED);
 				}
 			} catch (RemoteException | MalformedURLException | NotBoundException e) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			}
 		}

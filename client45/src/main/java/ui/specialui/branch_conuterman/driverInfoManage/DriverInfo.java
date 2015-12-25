@@ -94,14 +94,14 @@ public class DriverInfo extends MyTranslucentPanel{
 		try {
 			dirverController = ControllerFactory.getDriverController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		if(dirverController != null){
 			try {
 				fields[5].setText(dirverController.getID(frame.getID().substring(0, 6)));
 			} catch (RemoteException e1) {
-				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			}
 		}
 		

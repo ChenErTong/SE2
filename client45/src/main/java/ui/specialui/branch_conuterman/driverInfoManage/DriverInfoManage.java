@@ -42,7 +42,7 @@ public class DriverInfoManage extends MyJPanel {
 		try {
 			driverController = ControllerFactory.getDriverController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		driverId = new MyJTextField(510, 115, 250, 30);
@@ -184,9 +184,10 @@ public class DriverInfoManage extends MyJPanel {
 	 */
 	private boolean searchDriver(String driverId) {	
 		try {
+			driverController = ControllerFactory.getDriverController();
 			driver = driverController.findDriver(driverId);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		if(driver == null){
@@ -212,9 +213,10 @@ public class DriverInfoManage extends MyJPanel {
 		if(data[5].length() != 9) return 2;
 		driver = new DriverVO(data[5], "营业厅司机", data[0], data[1], data[4], data[2], new BigDecimal(0), data[6], data[3], data[5].substring(0, 6));
 		try {
+			driverController = ControllerFactory.getDriverController();
 			driverController.addDriver(driver);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		return 0;
@@ -234,9 +236,10 @@ public class DriverInfoManage extends MyJPanel {
 		driver.WorkTime = data[6];
 		
 		try {
+			driverController = ControllerFactory.getDriverController();
 			driverController.modifyDriver(driver);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		driverController.confirmOperation();
@@ -248,9 +251,10 @@ public class DriverInfoManage extends MyJPanel {
 			return 2;
 		}
 		try {
+			driverController = ControllerFactory.getDriverController();
 			driverController.deleteDriver(driver);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		driverController.confirmOperation();

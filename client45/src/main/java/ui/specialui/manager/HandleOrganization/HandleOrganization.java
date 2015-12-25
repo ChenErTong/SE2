@@ -179,6 +179,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			ControllerFactory.init();
 			return;
 		}
 	}
@@ -225,6 +226,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 					new MyNotification(this,"共有"+table.getRowCount()+"个机构满足条件！",Color.GREEN);
 				}catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					ControllerFactory.init();
 					return;
 				}
 				
@@ -356,6 +358,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				ControllerFactory.init();
 				return;
 			}
 		}else if(e.getActionCommand().equals("redo")){
@@ -371,6 +374,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				ControllerFactory.init();
 				return;
 			}
 		}
@@ -413,6 +417,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			ControllerFactory.init();
 			return;
 		}
 	}
@@ -451,6 +456,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			ControllerFactory.init();
 			return;
 		}
 		
@@ -571,6 +577,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			ControllerFactory.init();
 			return;
 		}
 

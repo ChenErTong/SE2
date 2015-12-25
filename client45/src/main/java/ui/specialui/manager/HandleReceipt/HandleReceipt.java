@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -30,6 +31,7 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
+import vo.CommodityVO;
 import vo.ValueObject;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryExportReceiptVO;
@@ -67,6 +69,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 	ArrayList<ValueObject> passList;
 	ArrayList<ReceiptType> passType;
 	JTable table;
+	MyJTable modifyTable;
 	DefaultTableModel model;
 	
 	ValueObject currentBill;
@@ -169,6 +172,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 					}
 				} catch (RemoteException | MalformedURLException | NotBoundException e) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					ControllerFactory.init();
 					return;
 				}
 			}
@@ -201,6 +205,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						ControllerFactory.init();
 						return;
 					}
 				}
@@ -252,6 +257,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						ControllerFactory.init();
 						return;
 					}
 				}
@@ -294,7 +300,6 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 			}else if(count > 1){
 				new MyNotification(this,"请只选择一条要修改的单据！",Color.RED);
 			}
-		//	System.out.println(index);
 			if(!table.getValueAt(index, 3).equals("未审批")){
 				new MyNotification(this,"状态为未审批的单据才能进行修改！",Color.RED);
 			}else{
@@ -389,12 +394,13 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				this.repaint();
 			} catch (RemoteException e) {	
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				ControllerFactory.init();
 				return;
 			}
 		}else if(events.getSource()==modify){
-			MyJTable table = modifyUI.table;
-			if(table.isEditing()){
-				table.getCellEditor().stopCellEditing();
+			modifyTable= modifyUI.table;
+			if(modifyTable.isEditing()){
+				modifyTable.getCellEditor().stopCellEditing();
 				new MyNotification(this,"正在修改单据！",Color.GREEN);
 			}
 			try {
@@ -405,6 +411,7 @@ public class HandleReceipt extends MyJPanel implements ActionListener{
 				this.repaint();
 			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				ControllerFactory.init();
 				return;
 			}
 		}
@@ -426,7 +433,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		ArrayList<TransferOrderVO> transferOrder = controller.show(ReceiptType.TRANS_PLANE, ReceiptState.APPROVALING);
 		ArrayList<InventoryExportReceiptVO> exportReceipt = controller.show(ReceiptType.OUTSTOCK, ReceiptState.APPROVALING);
 		ArrayList<PaymentBillVO> paymentBill = controller.show(ReceiptType.PAY, ReceiptState.APPROVALING);
-//		System.out.println(transferOrder);
+
 		model = (DefaultTableModel) table.getModel();
 		
 		if(index == 0){
@@ -760,34 +767,88 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
 		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
 			LoadingListVO vo = (LoadingListVO)currentBill;	
+			//String[] headers = {"单据种类","营业厅编号","装运编号","目的地","车辆代号","监装员","押运员","订单序列","运费"};
+			vo.branchID = (String)modifyTable.getValueAt(0, 1);
+			vo.transferNumber = (String)modifyTable.getValueAt(0, 2);
+			vo.distination = (String)modifyTable.getValueAt(0, 3);
+			vo.carID = (String)modifyTable.getValueAt(0, 4);
+			vo.courierName = (String)modifyTable.getValueAt(0, 6);
+			vo.monitorName = (String)modifyTable.getValueAt(0, 5);
+			vo.orders = new ArrayList<String>();
+			vo.orders.add((String)modifyTable.getValueAt(0, 7));
+			vo.money = new BigDecimal((String)modifyTable.getValueAt(0, 8));
+			
 			rm = controller.updateReceipt(new LoadingListVO(vo.ID,vo.type,vo.branchID,vo.transferNumber,vo.distination,
 					vo.carID,vo.monitorName,vo.courierName,vo.orders,vo.money));
 		}else if(billType.equals(ReceiptType.BRANCH_ARRIVAL)){
 			BranchArrivalListVO vo = (BranchArrivalListVO) currentBill;
+			//	String[] headers = {"单据类型","中转单编号","出发地","货物到达状态","订单订单号"};
+			vo.transferListID = (String)modifyTable.getValueAt(0, 1);
+			vo.departure = (String)modifyTable.getValueAt(0, 2);
+			vo.orderID = (String)modifyTable.getValueAt(0, 3);
 			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orderID));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
-			vo.date = (String) table.getValueAt(0, 1);
+			
+			vo.date = (String) modifyTable.getValueAt(0, 5);
+			vo.money = new BigDecimal((String)modifyTable.getValueAt(0, 1));
+			vo.payerName = (String)modifyTable.getValueAt(0, 0);
+			vo.bankAccountID = (String)modifyTable.getValueAt(0, 2);
+			vo.remarks = (String)modifyTable.getValueAt(0, 4);
 			
 			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
 		
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
+			vo.order = (String)table.getValueAt(0, 1);
+			vo.courierName = (String)table.getValueAt(0, 2);
 			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));
 		}else if(billType.equals(ReceiptType.TRANS_ARRIVAL)){
+			//String[] headers = {"单据类型","中转中心编号","出发地","目的地","货物到达状态","订单订单号"};
 			TransferArrivalListVO vo = (TransferArrivalListVO) currentBill;
+			vo.transferCenterID = (String)modifyTable.getValueAt(0, 1);
+			vo.departure = (String)modifyTable.getValueAt(0, 2);
+			vo.destination = (String)modifyTable.getValueAt(0, 3);
+			vo.order = (String)modifyTable.getValueAt(0, 5);
 			rm = controller.updateReceipt(new TransferArrivalListVO(vo.ID,vo.type,vo.transferCenterID,vo.destination,vo.departure,vo.state,vo.order));
 		}else if(billType.equals(ReceiptType.INSTOCK)){
 			InventoryImportReceiptVO vo = (InventoryImportReceiptVO) currentBill;
+			vo.transferID = (String)modifyTable.getValueAt(0, 1);
+			//	vo.commodityVO = (CommodityVO) modifyTable.getValueAt(0, 2);
+				vo.area = Integer.parseInt((String)modifyTable.getValueAt(0, 3));
+				vo.position = Integer.parseInt((String)modifyTable.getValueAt(0, 4));
+				vo.row = Integer.parseInt((String)modifyTable.getValueAt(0, 5));
+				vo.position = Integer.parseInt((String)modifyTable.getValueAt(0, 6));
 			rm = controller.updateReceipt(new InventoryImportReceiptVO(vo.ID,vo.type,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position,vo.transferID));
 		}else if(billType.equals(ReceiptType.OUTSTOCK)){
+			//String [] headers = {"单据类型","转运ID","商品货物信息","区","排","架","位"};
 			InventoryExportReceiptVO vo = (InventoryExportReceiptVO) currentBill;
+			vo.transferID = (String)modifyTable.getValueAt(0, 1);
+			vo.area = Integer.parseInt((String)modifyTable.getValueAt(0, 3));
+			vo.position = Integer.parseInt((String)modifyTable.getValueAt(0, 4));
+			vo.row = Integer.parseInt((String)modifyTable.getValueAt(0, 5));
+			vo.position = Integer.parseInt((String)modifyTable.getValueAt(0, 6));
+			
 			rm = controller.updateReceipt(new InventoryExportReceiptVO(vo.ID,vo.type,vo.transferID,vo.commodityVO,vo.area,vo.row,vo.frame,vo.position));
 		}else if(billType.equals(ReceiptType.TRANS_PLANE)){
+		//	String [] headers = {"单据类型","中转车次编号","出发地","到达地","监装员","托运订单编号"};
 			TransferOrderVO vo = (TransferOrderVO) currentBill;
+			vo.facilityID = (String)modifyTable.getValueAt(0, 1);
+			vo.departure = (String)modifyTable.getValueAt(0, 2);
+			vo.destination = (String)modifyTable.getValueAt(0, 3);
+			vo.courierName = (String)modifyTable.getValueAt(0, 4);
+			vo.orders = new ArrayList<String>();
+			vo.orders.add((String)modifyTable.getValueAt(0, 5));
 			rm = controller.updateReceipt(new TransferOrderVO(vo.ID,vo.facilityID,vo.type,vo.departure,vo.destination,vo.courierName,vo.orders));
 		}else if(billType.equals(ReceiptType.DEBIT)){
 			DebitBillVO  vo = (DebitBillVO) currentBill;
+			//String[] headers = {"单据类型","收款日期","收款金额","收款快递员","对应订单条形码"};
+			vo.date = (String)modifyTable.getValueAt(0, 1);
+			vo.money = new BigDecimal((String)modifyTable.getValueAt(0, 2));
+			vo.courierID = (String)modifyTable.getValueAt(0, 3);
+			vo.orderNumbers = new ArrayList<String>();
+			vo.orderNumbers.add((String)modifyTable.getValueAt(0, 4));
+			
 			rm = controller.updateReceipt(new DebitBillVO(vo.ID,vo.type,vo.courierID,vo.money,vo.orderNumbers, vo.date,vo.bankAccountID));
 		}
 		if(rm.equals(ResultMessage.SUCCESS)){

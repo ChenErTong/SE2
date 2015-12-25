@@ -14,6 +14,7 @@ import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.fundbl.DebitAndPayBillShowController;
 import businesslogic.inventorybl.InventoryController;
 import businesslogic.logbl.LogController;
+import businesslogic.openingstockbl.OpeningStockController;
 import businesslogic.orderbl.OrderController;
 import businesslogic.organizationbl.OrganizationController;
 import businesslogic.organizationbl.branchbl.BranchController;
@@ -44,7 +45,12 @@ public class ControllerFactory {
 	private static OrderController orderController = null;
 	private static PolicyController policyController = null;
 	private static TransferController transferController = null;
+	private static OpeningStockController openningController = null;
 	
+	public static OpeningStockController getOpeningController() throws  MalformedURLException, RemoteException, NotBoundException{
+		if(openningController == null) openningController = new OpeningStockController();
+		return openningController;
+	}
 	public static FacilityController getFacilityController() throws MalformedURLException, RemoteException, NotBoundException{
 		if(facilityController == null) facilityController = new FacilityController();
 		return facilityController;

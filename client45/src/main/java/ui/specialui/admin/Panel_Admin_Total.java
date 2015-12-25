@@ -172,8 +172,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				userPool.add(userVO.get(i));
 				}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		} 
 
 	}
@@ -198,13 +198,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 						new MyNotification(this,"用户信息添加失败！",Color.RED);
 					}
 				} catch (MalformedURLException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				} catch (RemoteException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				} catch (NotBoundException e1) {
-					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					return;
 				}
 			}
@@ -312,13 +312,13 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					new MyNotification(this,"请选择查询类型！",Color.RED);
 				}
 			}catch (MalformedURLException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			} catch (RemoteException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			} catch (NotBoundException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			}
 		}else if(e.getActionCommand().equals("backout")){
@@ -333,7 +333,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			}
 		}else if(e.getActionCommand().equals("redo")){
@@ -348,7 +348,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}
 			} catch (MalformedURLException | RemoteException
 					| NotBoundException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 				return;
 			}
 		}
@@ -377,14 +377,14 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				}
 			}
 		} catch (MalformedURLException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		} catch (RemoteException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		} catch (NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		}
 		
 	}
@@ -441,14 +441,14 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"用户删除失败！",Color.RED);
 			}
 		} catch (MalformedURLException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		} catch (RemoteException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		} catch (NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e.printStackTrace();
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		}
 	}
 	

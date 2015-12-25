@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import businesslogic.ControllerFactory;
 import businesslogic.openingstockbl.OpeningStockController;
 import businesslogicservice.openingstockblservice.OpeningStockBLService;
 import state.ResultMessage;
@@ -186,7 +187,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 		}
 		
 		try {
-			OpeningStockBLService controller = new OpeningStockController();
+			OpeningStockBLService controller = ControllerFactory.getOpeningController();
 			ArrayList<OpeningStockVO> openingStockVO = controller.show();
 			if(openingStockVO==null){
 				return;
@@ -232,7 +233,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 			}
 }
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();ControllerFactory.init();
 			return;
 		}
  }
@@ -243,7 +244,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 			this.showAll();
 		}else if(e.getSource()==insertButton){
 			try {
-				OpeningStockBLService controller = new OpeningStockController();
+				OpeningStockBLService controller = ControllerFactory.getOpeningController();
 				ResultMessage rsg = controller.add();
 				if(rsg.equals(ResultMessage.SUCCESS)){
 					new MyNotification(this,"期初建账成功！",Color.GREEN);
@@ -252,7 +253,7 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 					new MyNotification(this,"期初建账失败！",Color.RED);
 				}
 			} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();ControllerFactory.init();
 				return;
 			}
 		}

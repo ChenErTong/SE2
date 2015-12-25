@@ -93,7 +93,7 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 							orderPool.add(orderVO);
 						}
 					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-						e1.printStackTrace();
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 					}
 				}else{
 					new MyNotification(this,"请输入查询信息！",Color.RED);

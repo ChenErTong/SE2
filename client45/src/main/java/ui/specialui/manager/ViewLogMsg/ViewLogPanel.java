@@ -111,7 +111,7 @@ public class ViewLogPanel extends MyJPanel implements ActionListener{
 						new MyNotification(this,"共有"+table.getRowCount()+"条记录满足条件！",Color.GREEN);
 					} catch (MalformedURLException | RemoteException
 							| NotBoundException e1) {
-						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 						return;
 					}
 				
