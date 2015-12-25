@@ -296,7 +296,8 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 			}
 		}else if(e.getActionCommand().equals("ExportIncomeTable")){
 			int rowCount = table.getRowCount();
-			new MyFileChooser();
+			MyFileChooser chooser = new MyFileChooser();
+			String path = chooser.str;
 			if(rowCount==0){
 				new MyNotification(this,"导出成本收益表失败！",Color.RED);
 			}else{

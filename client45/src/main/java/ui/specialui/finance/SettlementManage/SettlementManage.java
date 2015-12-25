@@ -8,9 +8,8 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -184,36 +183,43 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 			paybillID = "";
 			
 			ArrayList<PaymentBillVO> paybillVO = new ArrayList<PaymentBillVO>();
-			String []data = payReceiptList.getData();
-			if(data!=null){
-				
-				Date current = new Date();
-				String year = data[0];
-				SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
-				year = (isDigit(year))?year:sdfYear.format(current);//默认为当年
-				String month = data[1];
-				month = (isDigit(month)) ? ("-" + month) : "";
-				String day = data[2];
-				day = (isDigit(day) && month.length() != 0) ? ("-" + day) : "";
-				String date = year + month + day;
+			int data = payReceiptList.getData();
+			if(data!=3){
 			
 				try {
 					controller = ControllerFactory.getDebitAndPayBillController();
-					//TODO 
-					
-					paybillVO = showController.show(ReceiptType.PAY, ReceiptState.SUCCESS);
-					for(int i = 0; i < paybillVO.size(); i++){
-						Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
-						tableModel.addRow(rowData);
-						paybillPool.add(paybillVO.get(i));
-						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+					switch (data){
+					case 0:paybillVO = showController.show(ReceiptType.PAY, ReceiptState.APPROVALING);
+							for(int i = 0; i < paybillVO.size(); i++){
+								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
+								tableModel.addRow(rowData);
+								paybillPool.add(paybillVO.get(i));
+								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+							}break;
+					case 1:paybillVO = showController.show(ReceiptType.PAY, ReceiptState.SUCCESS);
+							for(int i = 0; i < paybillVO.size(); i++){
+								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
+								tableModel.addRow(rowData);
+								paybillPool.add(paybillVO.get(i));
+								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+							}break;
+					case 2:paybillVO = showController.show(ReceiptType.PAY, ReceiptState.FAILURE);
+							for(int i = 0; i < paybillVO.size(); i++){
+								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
+								tableModel.addRow(rowData);
+								paybillPool.add(paybillVO.get(i));
+								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
+							}break;
+					default:break;
 					}
+					
+		
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					return;
 				}	
 			}else{
-					new MyNotification(this,"请选择查询日期！",Color.RED);
+					new MyNotification(this,"请选择受收款单状态！",Color.RED);
 			}
 			
 		}else if(e.getActionCommand().equals("AddPayReceipt")){
@@ -303,23 +309,6 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 	}
 	
 
-	/**
-	 * 判断一个字符串是否为数字
-	 * @param num
-	 * @return 是否是数字
-	 */
-	private boolean isDigit(String num) {
-		if (num.length() == 0) {
-			return false;
-		}
-		for(int i = 0; i < num.length(); i++) {
-			if (!Character.isDigit(num.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
 	/**
 	 * 修改付款单
 	 */

@@ -8,10 +8,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import businesslogic.ControllerFactory;
+import businesslogic.fundbl.DebitAndPayBillShowController;
 import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -57,6 +62,8 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private MyButton ViewBusinessPerformance;
 	private MyButton ViewIncomeStatement;
 	private MyButton viewLog;
+	
+	private DebitAndPayBillShowController showController;
 	
 	public Frame_Finance(String userID){
 		super(userID);
@@ -119,6 +126,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 				this.logout();
 			}
 		}else if(e.getActionCommand().equals("CostManage")){
+			try {
+					showController = ControllerFactory.getDebitAndPayBillShowController();
+				} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					return;
+				}
 			if(subPanel !=null){
 				subPanel.setVisible(false);
 			}else{
@@ -130,6 +143,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.setNavigation(true);
 		
 		}else if(e.getActionCommand().equals("SettlementManage")){
+			 try {
+					showController = ControllerFactory.getDebitAndPayBillShowController();
+				} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+					return;
+				}
 			if(subPanel !=null){
 				subPanel.setVisible(false);
 			}else{
@@ -139,7 +158,14 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.add(subPanel);
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
+			
 		}else if(e.getActionCommand().equals("OpenningStock")){
+			try {
+				showController = ControllerFactory.getDebitAndPayBillShowController();
+			} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -152,6 +178,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("BankAccountManage")){
+			try {
+				showController = ControllerFactory.getDebitAndPayBillShowController();
+			} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -162,6 +194,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));	
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
+			try {
+				showController = ControllerFactory.getDebitAndPayBillShowController();
+			} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -172,6 +210,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
+			try {
+				showController = ControllerFactory.getDebitAndPayBillShowController();
+			} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -182,6 +226,12 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
+			try {
+				showController = ControllerFactory.getDebitAndPayBillShowController();
+			} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -302,6 +352,6 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 			ViewBusinessPerformance.setVisible(isVisible);
 			ViewIncomeStatement.setVisible(isVisible);
 			viewLog.setVisible(isVisible);
-			subscript.setVisible(isVisible);			
+			subscript.setVisible(isVisible);
 		}
 }

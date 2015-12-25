@@ -8,11 +8,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import businesslogic.ControllerFactory;
+import businesslogicservice.accountblservice.AccountBLService;
 import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.FinanceImage;
@@ -54,6 +58,8 @@ public class FrameManager extends MyJFrame implements ActionListener{
 	private MyButton ViewBusinessPerformance;
 	private MyButton ViewIncomeStatement;
 	private MyButton viewLog;
+	
+	private AccountBLService controller ;
 	
 	public FrameManager(String userID){
 		super(userID);
@@ -131,6 +137,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 				this.logout();
 			}
 		}else if(e.getActionCommand().equals("HandleReceipt")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -145,6 +158,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("HandleOrganization")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -155,6 +175,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("AdjustBase")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -165,6 +192,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("AdjustSalaryPolicy")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -175,6 +209,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewUser")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -185,6 +226,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewIncomeStatement")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -195,6 +243,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewBusinessPerformance")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{
@@ -204,6 +259,13 @@ public class FrameManager extends MyJFrame implements ActionListener{
 			this.getLayeredPane().add(subPanel,new Integer(Integer.MAX_VALUE));
 			this.setNavigation(true);
 		}else if(e.getActionCommand().equals("ViewLogMsg")){
+			try {
+				controller = ControllerFactory.getAccountController();
+			} catch (MalformedURLException | RemoteException
+					| NotBoundException e2) {
+				new MyNotification(this,"网络连接异常,请检查网络设置！",Color.RED);
+				return;
+			}
 			if(subPanel!=null){
 				subPanel.setVisible(false);
 			}else{

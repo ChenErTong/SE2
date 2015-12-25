@@ -18,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
 import businesslogicservice.receiptblservice.ReceiptBLService;
+
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
 import ui.commonui.receipt_constructor.ReceiptConductor;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
-
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
@@ -756,6 +756,7 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 		ResultMessage rm = null;
 		if(billType.equals(ReceiptType.ORDER)){
 			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
+		//	vo.orders = (ArrayList<String>) table.getValueAt(0, 2);
 			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
 		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
 			LoadingListVO vo = (LoadingListVO)currentBill;	
@@ -766,7 +767,10 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 			rm = controller.updateReceipt(new BranchArrivalListVO(vo.ID,vo.type,vo.transferListID,vo.departure,vo.state,vo.orderID));
 		}else if(billType.equals(ReceiptType.PAY)){
 			PaymentBillVO vo = (PaymentBillVO) currentBill;
+			vo.date = (String) table.getValueAt(0, 1);
+			
 			rm = controller.updateReceipt(new PaymentBillVO(vo.ID,vo.date,vo.type,vo.money,vo.payerName,vo.bankAccountID,vo.items,vo.remarks));
+		
 		}else if(billType.equals(ReceiptType.BRANCH_DELIVER)){
 			DeliveryListVO vo = (DeliveryListVO) currentBill;
 			rm = controller.updateReceipt(new DeliveryListVO(vo.ID,vo.type,vo.order,vo.courierName));

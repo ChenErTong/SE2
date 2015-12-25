@@ -58,7 +58,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 		super(0, 0, 1280, 720);
 		this.setOpaque(false);
 		this.initComponent(frame_Finance);
-		this.showAll();
+		this.showAll(frame_Finance);
 	}
 
 	private void initComponent(Frame_Finance frame_Finance) {
@@ -90,7 +90,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 	/**
 	 * 显示所有的收款单 
 	 */
-	public void showAll(){
+	public void showAll(Frame_Finance frame_Finance){
 		
 		table = debitReceiptList.getTable();
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -134,7 +134,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 				debitbillPool.add((DebitBillVO) debitbillVO_2.get(i));
 			}
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
+			new MyNotification(frame_Finance,"网络连接异常，请检查网络设置！",Color.RED);
 			return;
 		}
 	}
@@ -225,7 +225,7 @@ public class CostManagement extends MyJPanel implements ActionListener{
 						new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络连接！",Color.RED);
-					e1.printStackTrace();
+					return;
 				}
 			}else{
 					new MyNotification(this,"请选择查询日期！",Color.RED);

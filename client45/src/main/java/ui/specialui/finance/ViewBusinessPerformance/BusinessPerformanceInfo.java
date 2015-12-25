@@ -326,7 +326,8 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 			}
 		}else if(e.getActionCommand().equals("ExportBusinessTable")){
 			int rowCount = table.getRowCount();
-			new MyFileChooser();
+			MyFileChooser chooser = new MyFileChooser();
+			String path = chooser.str;
 			if(rowCount==0){
 				new MyNotification(this,"此时没有符合条件的单据，无法进行导出！",Color.RED);
 			}else{
@@ -340,7 +341,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 						new MyNotification(this,"空表无法导出！",Color.RED);
 						return;
 					}
-					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate),"");
+					recordController.exportBussinessProcessToExcel(new BussinessProcessVO(vo,beginDate,endDate),path);
 					
 					new MyNotification(this,"经营情况表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {

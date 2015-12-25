@@ -10,7 +10,7 @@ import javax.swing.JLabel;
  * @time 2015年12月15日下午1:23:13
  */
 public class MyFileChooser {
-	
+	public String str;
 	public MyFileChooser(){
 		JFileChooser jfc = new JFileChooser();
 		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -18,11 +18,11 @@ public class MyFileChooser {
 		int returnval = jfc.showDialog(new JLabel(), "导出");
 		if(returnval==JFileChooser.APPROVE_OPTION){
 			File[] files =jfc.getSelectedFiles();
-			String str = "";
+			str = "";
 			for(File file:files){
 				str = file.getAbsolutePath();
 			}
-			System.out.println(str);
+		//	System.out.println(str);
 		}
 	}
 	
