@@ -123,16 +123,17 @@ public class AddAccount extends MyTranslucentPanel{
 		fields[6] = new MyJTextField(130,170,120,30);
 		this.add(fields[6]);
 		
-		String[] branchIDs;
+		String[] branchIDs = new String[100];
 		try {
 			 OrganizationController controller = ControllerFactory.getOrganizationController();
 			ArrayList<String> id = controller.getAllBranchNumbers();
-			branchIDs = new String[100];
 			for(int i=0;i<id.size();i++){
 				branchIDs[i] = id.get(i);
-				branchID = new MyJComboBox(390,170,110,30,branchIDs);
-				this.add(branchID);
+				
 			}
+			branchID = new MyJComboBox(390,170,110,30,branchIDs);
+			this.add(branchID);
+		
 		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e1.printStackTrace();

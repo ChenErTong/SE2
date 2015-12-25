@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import ui.MyTranslucentPanel;
-import ui.ServerLabel;
 
 public class ServerInfoPanel extends MyTranslucentPanel{
 
@@ -89,8 +88,6 @@ public class ServerInfoPanel extends MyTranslucentPanel{
 
 	/**
 	 * 计时器
-	 * @author cylong
-	 * @version 2014年12月15日 下午8:40:54
 	 */
 	private class Time extends Thread {
 

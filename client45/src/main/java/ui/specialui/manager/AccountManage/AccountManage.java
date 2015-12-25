@@ -188,9 +188,8 @@ public class AccountManage extends MyJPanel implements ActionListener{
 							accountVO.get(i).Salary+"",accountVO.get(i).Phone,accountVO.get(i).ordersID.toString()};
 					tableModel.addRow(rowData);
 					accountPool.add(accountVO.get(i));
-					System.out.println("SearchSucceed!");
-						new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
 					}
+					new MyNotification(this,"共有"+table.getRowCount()+"个用户满足条件！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 					new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 					return;

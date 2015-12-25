@@ -14,15 +14,11 @@ public class StartPanel extends ServerPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	/** 显示系统信息 */
 	private ServerInfoPanel serverInfoPanel;
-	/** 显示当前登录客户信息 */
-	private ClientInfoPanel clientInfoPanel;
+
 	/** 启动服务器按钮 */
 	private ServerButton startBtn;
 	/** 关闭服务器按钮 */
 	private ServerButton stopBtn;
-
-	/**刷新按钮*/
-	private ServerButton refreshBtn;
 	
 	private RMIManage server;
 	
@@ -39,11 +35,8 @@ public class StartPanel extends ServerPanel implements ActionListener{
 		serverInfoPanel = new ServerInfoPanel(server.getHostAddr(), server.getHostName());
 		this.add(serverInfoPanel);
 		this.addStartStopButton();
-		//clientInfoPanel = new ClientInfoPanel();
-		//this.add(clientInfoPanel);
 		
 		this.add(new ServerLabel(750/2,40,150,30,"服务器信息",30,true));
-		//this.add(new ServerLabel(580+450/2,40,150,30,"客户端信息",24,true));
 	}
 	
 	/**
@@ -57,9 +50,6 @@ public class StartPanel extends ServerPanel implements ActionListener{
 		stopBtn = new ServerButton(325,257+60+20,200,60,CommonImage.getCLOSE());
 		this.add(stopBtn);
 		stopBtn.setEnabled(false);
-		
-	//	refreshBtn = new ServerButton(580+225,565+77,150,40,CommonImage.getBUTTON_REFRESH());
-		//this.add(refreshBtn);
 	}
 	
 	
@@ -79,9 +69,6 @@ public class StartPanel extends ServerPanel implements ActionListener{
 				server.stopServer();
 				serverInfoPanel.setStarted(false);
 			}*/
-		}else if(e.getSource() == refreshBtn){
-			clientInfoPanel.removeAll();
-			clientInfoPanel.initComponent();
 		}
 	}
 }

@@ -15,6 +15,7 @@ import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyComboBox;
 import ui.myui.MyFont;
+import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
@@ -31,7 +32,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 	private MyButton search;
 	private MyJTable table;
 	private JScrollPane jsp;
-	private MyComboBox payState;
+	private MyJComboBox payState;
 
 	
 	public SearchPayReceipt(SettlementManage handle) {
@@ -44,7 +45,7 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 		this.add(chooseDate);
 		
 		String[] state = {"未审批","通过审批","未通过审批"};
-		payState = new MyComboBox(142,10,150,30,14,state);
+		payState = new MyJComboBox(142,10,150,30,state);
 		this.add(payState);
 	
 		

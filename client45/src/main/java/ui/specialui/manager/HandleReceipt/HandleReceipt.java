@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import businesslogic.ControllerFactory;
 import businesslogic.receiptbl.ReceiptController;
 import businesslogicservice.receiptblservice.ReceiptBLService;
-
 import state.ReceiptState;
 import state.ReceiptType;
 import state.ResultMessage;
@@ -751,12 +750,13 @@ private void getApprovalData(int index) throws RemoteException, MalformedURLExce
 	 * @throws RemoteException 
 	 * @throws NotBoundException 
 	 * @throws MalformedURLException */
+	@SuppressWarnings("unchecked")
 	private void finish(ReceiptType billType) throws RemoteException, MalformedURLException, NotBoundException {
 		ReceiptBLService controller = ControllerFactory.getReceiptController();
 		ResultMessage rm = null;
 		if(billType.equals(ReceiptType.ORDER)){
 			OrderReceiptVO vo = (OrderReceiptVO) currentBill;
-		//	vo.orders = (ArrayList<String>) table.getValueAt(0, 2);
+			vo.orders = (ArrayList<String>) table.getValueAt(0, 2);
 			rm = controller.updateReceipt(new OrderReceiptVO(vo.ID,vo.type,vo.orders));
 		}else if(billType.equals(ReceiptType.BRANCH_TRUCK)){
 			LoadingListVO vo = (LoadingListVO)currentBill;	

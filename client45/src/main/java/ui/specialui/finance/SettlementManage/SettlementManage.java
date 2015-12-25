@@ -194,22 +194,21 @@ public class SettlementManage extends MyJPanel implements ActionListener{
 								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 								tableModel.addRow(rowData);
 								paybillPool.add(paybillVO.get(i));
-								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
-							}break;
+							}	new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);break;
 					case 1:paybillVO = showController.show(ReceiptType.PAY, ReceiptState.SUCCESS);
 							for(int i = 0; i < paybillVO.size(); i++){
 								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 								tableModel.addRow(rowData);
 								paybillPool.add(paybillVO.get(i));
-								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
-							}break;
+								
+							}	new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);break;
 					case 2:paybillVO = showController.show(ReceiptType.PAY, ReceiptState.FAILURE);
 							for(int i = 0; i < paybillVO.size(); i++){
 								Object[] rowData = {paybillVO.get(i).ID,paybillVO.get(i).type,paybillVO.get(i).payerName,paybillVO.get(i).bankAccountID,paybillVO.get(i).items.value,paybillVO.get(i).remarks};
 								tableModel.addRow(rowData);
 								paybillPool.add(paybillVO.get(i));
-								new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);
-							}break;
+								
+							}	new MyNotification(this,"共有"+table.getRowCount()+"个付款单满足条件！",Color.GREEN);break;
 					default:break;
 					}
 					
