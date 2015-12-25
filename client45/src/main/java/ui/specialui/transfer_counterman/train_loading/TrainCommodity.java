@@ -93,14 +93,15 @@ public class TrainCommodity extends MyJPanel {
 		try {
 			orderController = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		OrderVO order = null;
 		try {
+			orderController = ControllerFactory.getOrderController();
 			order = orderController.inquireOrder(orderId);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		orderInfo.setText("订单编号" + order.ID + "\n");
@@ -122,7 +123,7 @@ public class TrainCommodity extends MyJPanel {
 			branchController = ControllerFactory
 					.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		ArrayList<String> ordersID = null;

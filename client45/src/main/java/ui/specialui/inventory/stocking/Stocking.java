@@ -39,7 +39,7 @@ public class Stocking extends MyJPanel {
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 
 		this.add(new MyJLabel(576, 30, 128, 32, "库存盘点", 30, true));
@@ -85,9 +85,10 @@ public class Stocking extends MyJPanel {
 		if (inventoryCheck == null)
 			return false;
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			inventoryController.exportToExcel(inventoryCheck);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
 		}
 		inventoryCheck = null;
@@ -96,12 +97,13 @@ public class Stocking extends MyJPanel {
 
 	// 刷新库存信息
 	private boolean refreshCondition(Frame_Inventory frame) {
-		if (inventoryController == null) return false;
+	//	if (inventoryController == null) return false;
 		
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			inventoryCheck = inventoryController.checkRecord(frame.getID()
 					.substring(0, 4), GetDate.getDate());
-		} catch (RemoteException e) {
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return false;
 		}

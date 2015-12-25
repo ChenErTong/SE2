@@ -62,7 +62,7 @@ public class FacilityInfo extends MyTranslucentPanel{
 		try {
 			facilityController = ControllerFactory.getFacilityController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		if(facilityController != null){

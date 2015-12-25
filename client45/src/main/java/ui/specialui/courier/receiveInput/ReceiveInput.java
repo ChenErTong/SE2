@@ -45,7 +45,7 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			controller = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		order = null;
 		
@@ -117,7 +117,7 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			orderController = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		try {
@@ -170,7 +170,7 @@ public class ReceiveInput extends MyJPanel{
 		try {
 			accountController = ControllerFactory.getAccountController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
 		

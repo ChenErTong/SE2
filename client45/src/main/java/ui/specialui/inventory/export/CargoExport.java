@@ -40,7 +40,7 @@ public class CargoExport extends MyJPanel {
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "出库", 30, true));
@@ -81,9 +81,10 @@ public class CargoExport extends MyJPanel {
 		if(inventoryController == null) return;
 		ArrayList<InventoryPositionVO> commodities = null;
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
-		} catch (RemoteException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		if(commodities != null){

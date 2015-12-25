@@ -45,7 +45,7 @@ public class CargoImport extends MyJPanel {
 		try {
 			inventoryController  = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
@@ -75,14 +75,15 @@ public class CargoImport extends MyJPanel {
 					posVOs.remove(row);
 					//库存报警
 					try {
+						inventoryController = ControllerFactory.getInventoryController();
 						double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 4));
 						if(alarmRate < 0.9){
 							new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.GREEN);
 						}else{
 							new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.RED);
 						}
-					} catch (RemoteException e1) {
-						new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+					} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+						new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 					}
 				}else if(row == -1){
 					new MyNotification(frame, "请选择一件订单", Color.RED);
@@ -111,7 +112,7 @@ public class CargoImport extends MyJPanel {
 		try {
 			orderController = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e2) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -2;
 		}
 		OrderVO order = null;
@@ -131,9 +132,10 @@ public class CargoImport extends MyJPanel {
 		InventoryPositionVO pos = posVOs.get(rowOfPos);
 		InventoryImportReceiptVO importReceipt;
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
-		} catch (RemoteException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -2;
 		}
 		
@@ -153,9 +155,10 @@ public class CargoImport extends MyJPanel {
 		if(inventoryController == null) return;
 		
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
-		} catch (RemoteException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		if(posVOs != null){
@@ -169,9 +172,10 @@ public class CargoImport extends MyJPanel {
 	
 	private void setCommodities(Frame_Inventory frame){
 		try {
-			inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
-		} catch (RemoteException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			inventoryController = ControllerFactory.getInventoryController();
+			inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 6));
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 	}

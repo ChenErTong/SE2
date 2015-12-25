@@ -89,7 +89,7 @@ public class CarCommodity extends MyJPanel {
 		try {
 			orderController = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		OrderVO order =null;
@@ -117,7 +117,7 @@ public class CarCommodity extends MyJPanel {
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
 		ArrayList<String> ordersID = null;

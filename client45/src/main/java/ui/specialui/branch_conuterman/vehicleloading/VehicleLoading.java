@@ -44,7 +44,7 @@ public class VehicleLoading extends MyJPanel {
 		try {
 			branchController = ControllerFactory.getBranchController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
 		loadingInfo = new LoadingInfo();
@@ -130,7 +130,7 @@ public class VehicleLoading extends MyJPanel {
 		try {
 			order_info = ControllerFactory.getOrderController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return new BigDecimal(0.0);
 		}
 		
@@ -174,9 +174,10 @@ public class VehicleLoading extends MyJPanel {
 		new MyNotification(this, "成功生成装车单", Color.GREEN);
 		
 		try {
+			 branchController = ControllerFactory.getBranchController();
 			return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return null;
 		}
 	}

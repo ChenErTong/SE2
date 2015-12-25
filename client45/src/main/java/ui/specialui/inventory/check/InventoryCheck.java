@@ -71,18 +71,20 @@ public class InventoryCheck extends MyJPanel{
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
+			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
 		if((formerDate.getText().equals(""))||(latterDate.getText().equals(""))) return false;
 		
 		InventoryViewVO inventoryView = null;
 		try {
+			inventoryController = ControllerFactory.getInventoryController();
 			inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
-		} catch (RemoteException e) {
-			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
+		} catch (RemoteException | MalformedURLException | NotBoundException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;
 		}
+		System.out.println(inventoryView);
 		if(inventoryView == null) return false;
 		
 		String importNum = "";
