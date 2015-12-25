@@ -312,7 +312,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 						new MyNotification(this,"空表无法导出！！",Color.RED);
 						return;
 					}
-					recordController.exportBussinessConditionToExcel(vo);
+					recordController.exportBussinessConditionToExcel(vo,path);
 					new MyNotification(this,"成本收益表导出成功！",Color.GREEN);
 				} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 						new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();

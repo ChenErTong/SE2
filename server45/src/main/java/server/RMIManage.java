@@ -36,12 +36,14 @@ public class RMIManage {
 	private InetAddress addr;
 	private String hostAddr;
 	private String hostName;
+	private boolean isOpen;
 
 	public RMIManage() {
 		try {
 			addr = InetAddress.getLocalHost();
 			hostAddr = addr.getHostAddress();
 			hostName = addr.getHostName();
+			isOpen=false;
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -49,6 +51,7 @@ public class RMIManage {
 	
 	public void startServer() {
 		new Server().start();
+		isOpen=true;
 	}
 
 	private class Server extends Thread{
@@ -58,11 +61,11 @@ public class RMIManage {
 				// 本地主机上的远程对象注册表Registry的实例，并指定端口为port
 				// 这一步必不可少（Java默认端口是1099），必不可缺的一步，缺少注册表创建，则无法绑定对象到远程注册表上
 				reg = LocateRegistry.createRegistry(RMIConfig.PORT);
-//				addr = InetAddress.getLocalHost();
-//				hostAddr = addr.getHostAddress();
-//				hostName = addr.getHostName();
-				String prefix=RMIConfig.PREFIX;
-//				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
+				addr = InetAddress.getLocalHost();
+				hostAddr = addr.getHostAddress();
+				hostName = addr.getHostName();
+//				String prefix=RMIConfig.PREFIX;
+				String prefix = "rmi://" + hostAddr + ":" + RMIConfig.PORT + "/";
 				System.out.println(prefix);
 				//注册Data类
 				Naming.bind(prefix+AccountData.NAME, DataFactory.createDataService(AccountData.NAME));
@@ -90,6 +93,8 @@ public class RMIManage {
 				e.printStackTrace();
 			} catch (AlreadyBoundException e) {
 				e.printStackTrace();
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
 			}
 		}
 	} 
@@ -100,6 +105,7 @@ public class RMIManage {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		isOpen=false;
 	}
 
 	public String getHostAddr() {
@@ -111,19 +117,11 @@ public class RMIManage {
 	}
 
 	public static void main(String[] args) {
-		// InetAddress addr;
-		// String hostAddr = null;
-		// String hostName = null;
-		// try {
-		// addr = InetAddress.getLocalHost();
-		// hostAddr = addr.getHostAddress();
-		// hostName = addr.getHostName();
-		// } catch (UnknownHostException e) {
-		// e.printStackTrace();
-		// }
-		// System.out.println(hostAddr);
-		// System.out.println(hostName);
 		RMIManage rmiManage = new RMIManage();
 		rmiManage.startServer();
+	}
+
+	public boolean isOpen() {
+		return isOpen;
 	}
 }

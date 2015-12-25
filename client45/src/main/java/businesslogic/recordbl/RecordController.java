@@ -59,8 +59,8 @@ public class RecordController implements RecordBLService {
 	/**
 	 * @see RecordBLService#exportBussinessConditionToExcel(BussinessConditionVO)
 	 */
-	public void exportBussinessConditionToExcel(BussinessConditionVO vo) {
-		RecordBL.exportBussinessConditionToExcel(vo);
+	public void exportBussinessConditionToExcel(BussinessConditionVO vo,String fileDirectoryPath) {
+		RecordBL.exportBussinessConditionToExcel(vo,fileDirectoryPath);
 	}
 
 }
