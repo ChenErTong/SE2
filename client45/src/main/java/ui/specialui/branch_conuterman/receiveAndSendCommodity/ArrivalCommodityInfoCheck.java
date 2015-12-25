@@ -147,6 +147,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 			for (String orderID : branchController.getAllOrderNumber()) {
 				orders.addRow(new String[]{orderID});
 			}
+			orders.repaint();
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
