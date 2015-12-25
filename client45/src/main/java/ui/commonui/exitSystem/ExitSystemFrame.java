@@ -1,6 +1,8 @@
 package ui.commonui.exitSystem;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
@@ -11,7 +13,6 @@ import ui.image.CommonImage;
 import ui.myui.MyButton;
 import ui.myui.MyJFrame;
 import ui.myui.MyJLabel;
-
 import com.sun.awt.AWTUtilities;
 
 @SuppressWarnings("restriction")
@@ -26,7 +27,17 @@ public class ExitSystemFrame extends JDialog{
 	 */
 	public ExitSystemFrame(MyJFrame frame, double x, double y, boolean kind){
 		this.setSize(256, 144);
-		this.setLocation((int)(x - this.getWidth() / 2), (int)(y - this.getHeight() / 2));
+		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+		int X = (int)(x - this.getWidth() / 2);
+		int Y = (int)(y - this.getHeight() / 2);
+		int W = (int)screensize.getWidth();
+		int H = (int)screensize.getHeight();
+		if(X < 0 || Y < 0 || X > W - this.getWidth() || Y > H - this.getHeight()){
+			this.setLocation((W - this.getWidth()) / 2, (H - this.getHeight()) / 2);
+		}else{
+			this.setLocation((int)(x - this.getWidth() / 2), (int)(y - this.getHeight() / 2));
+		}
+		
 		this.setLayout(null);
 		this.setUndecorated(true);
 		//设置圆角
