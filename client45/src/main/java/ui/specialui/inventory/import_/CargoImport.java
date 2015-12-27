@@ -50,13 +50,13 @@ public class CargoImport extends MyJPanel {
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
 		
-		commodities = new MyJTable(new String[]{"订单编号", "货物种类"}, false);
+		commodities = new MyJTable(new String[]{"订单编号", "货物种类"}, false, this);
 		//设置为只可单选
 		commodities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(new MyJScrollPane(150, 150, 300, 370, commodities));
 		this.add(new MyJLabel(260, 110, 80, 19, "入库货物", 18, true));
 		
-		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "货物种类", "入库日期", "目的地", "仓库存放位置"}, false);
+		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "货物种类", "入库日期", "目的地", "仓库存放位置"}, false, this);
 		this.add(new MyJScrollPane(550, 150, 580, 370, importList));
 		this.add(new MyJLabel(790, 110, 100, 19, "入库单列表", 18, true));
 		

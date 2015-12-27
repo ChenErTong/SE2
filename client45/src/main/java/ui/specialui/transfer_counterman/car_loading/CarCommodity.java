@@ -36,7 +36,7 @@ public class CarCommodity extends MyJPanel {
 		this.add(new MyJLabel(544, 30, 192, 32, "汽车装运管理", 30, true));
 		
 		//选中的订单的列表
-		orderSelected = new MyJTable(new String[]{"选中订单"}, false);
+		orderSelected = new MyJTable(new String[]{"选中订单"}, false, this);
 		orderSelected.addMouseListener(new MouseAdapter() {
 			public void mouseMoved(MouseEvent e) {  
 				int row = orderSelected.rowAtPoint(e.getPoint());
@@ -55,7 +55,7 @@ public class CarCommodity extends MyJPanel {
 		this.add(new MyJScrollPane(690, 150, 340, 370, orderSelected));		
 		
 		//所有的订单的列表
-		orderList = new MyJTable(new String[]{"所有订单"}, false);
+		orderList = new MyJTable(new String[]{"所有订单"}, false, this);
 		orderList.addMouseListener(new MouseAdapter() {
 			public void mouseMoved(MouseEvent e) {  
 				int row = orderList.rowAtPoint(e.getPoint());

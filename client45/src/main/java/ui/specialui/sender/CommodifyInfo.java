@@ -32,7 +32,7 @@ import ui.myui.MyTranslucentPanel;
 		this.add(new MyJLabel(250,10,170,40,"订单信息",18,true));
 		
 		String[] headers = {"订单号","寄件人","收件人","费用","预计到达时间"};
-		table = new MyJTable(headers,false);
+		table = new MyJTable(headers,false, this);
 		
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);

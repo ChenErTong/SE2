@@ -51,7 +51,7 @@ public class VehicleLoading extends MyJPanel {
 		this.add(loadingInfo);
 
 		String[] orderId = new String[]{"订单编号"};
-		ordersID = new MyJTable(orderId, false);
+		ordersID = new MyJTable(orderId, false, this);
 		ordersID.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				//双击取消订单

@@ -49,7 +49,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		
 		this.add(new MyJLabel(544, 30, 192, 32, "库存分区调整", 30, true));
 		
-		importList = new MyJTable(new String[]{"订单编号", "货物种类", "货物状态", "仓库存放位置"}, false);
+		importList = new MyJTable(new String[]{"订单编号", "货物种类", "货物状态", "仓库存放位置"}, false, this);
 		importList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(new MyJScrollPane(390, 150, 480, 370, importList));
 		this.add(new MyJLabel(590, 110, 100, 19, "入库单列表", 18, true));

@@ -48,7 +48,7 @@ public class Stocking extends MyJPanel {
 		formerPoint = new MyJLabel(495, 128, 180, 19, null, 18, true);
 		this.add(formerPoint);
 		inventoryCondition = new MyJTable(new String[] { "订单编号", "货物种类",
-				"仓库存放位置" }, false);
+				"仓库存放位置" }, false, this);
 		this.add(new MyJScrollPane(385, 150, 510, 410, inventoryCondition));
 
 		this.refreshCondition(frame);

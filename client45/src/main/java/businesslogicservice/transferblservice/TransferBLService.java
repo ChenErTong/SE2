@@ -92,28 +92,6 @@ public interface TransferBLService extends BLService {
 			String destination, String courierName, ArrayList<String> orders,
 			String date, String id) throws RemoteException;
 
-//	/**
-//	 * 提交单据给总经理进行审批
-//	 * 
-//	 * @return 处理结果
-//	 * @param receipt
-//	 *            转运中转单据
-//	 * @author czw
-//	 * @version Oct 22,2015
-//	 */
-//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
-//
-//	/**
-//	 * 保存单据
-//	 * 
-//	 * @return 处理结果
-//	 * @param receipt
-//	 *            转运中转单据
-//	 * @author czw
-//	 * @version Oct 22,2015
-//	 */
-//	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
-
 	/**
 	 * 生成中转中心到达单 申请入库
 	 * 
