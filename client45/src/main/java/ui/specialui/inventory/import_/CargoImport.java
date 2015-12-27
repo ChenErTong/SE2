@@ -165,7 +165,7 @@ public class CargoImport extends MyJPanel {
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
-				posInfo = Integer.toString(posVO.area) + "区" + Integer.toString(posVO.row) + "排" + Integer.toString(posVO.frame) + "架" + Integer.toString(posVO.position) + "位";
+				posInfo = Integer.toString(posVO.area + 1) + "区" + Integer.toString(posVO.row + 1) + "排" + Integer.toString(posVO.frame + 1) + "架" + Integer.toString(posVO.position + 1) + "位";
 				position.addItem(posInfo);	
 			}
 		}

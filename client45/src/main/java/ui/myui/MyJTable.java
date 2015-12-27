@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -59,6 +58,11 @@ public class MyJTable extends JTable {
 		head.setResizingAllowed(true);
 		head.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
+				panel.repaint();
+			}
+		});
+		head.addMouseListener(new MouseAdapter() {
+			public void mouseExited(MouseEvent e) {
 				panel.repaint();
 			}
 		});
