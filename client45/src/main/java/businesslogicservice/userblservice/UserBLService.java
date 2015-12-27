@@ -79,6 +79,12 @@ public interface UserBLService extends BLService {
 
 	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException;
 	/**
+	 * 获得account的userID
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<String> getUserIDCanBeUsedByAccounts() throws RemoteException;
+	/**
 	 * 是否可以进行撤销操作
 	 * 
 	 * @return boolean型，返回true，表示可以进行撤销操作，此时撤销按钮应设为可以按下

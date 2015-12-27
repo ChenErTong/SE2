@@ -95,6 +95,15 @@ public class Account implements CommonBusinessLogic<AccountPO>{
 	}
 
 	public AccountVO find(String id) throws RemoteException {
+		if(id.length()==9){
+			ArrayList<AccountPO> pos = accountData.find();
+			for (AccountPO accountPO : pos) {
+				if (accountPO.getUserID().equals(id)) {
+					id = accountPO.getID();
+					break;
+				}
+			}
+		}
 		AccountPO po = accountData.find(id);
 		return AccountTrans.convertPOToVO(po);
 	}

@@ -1,6 +1,7 @@
 package businesslogic.accountbl;
 
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import command.CommandAdd;
 import command.CommandController;
 import command.CommandDelete;
 import command.CommandModify;
+import config.RMIConfig;
+import dataservice.userdataservice.UserDataService;
 import po.accountpo.AccountPO;
 import state.ResultMessage;
 import vo.accountvo.AccountVO;
@@ -23,11 +26,13 @@ import vo.accountvo.AccountVO;
  */
 public class AccountController implements AccountBLService {
 	private Account AccountBL;
+	private UserDataService userData;
 	private CommandController<AccountPO> commandController;
 
 	public AccountController() throws MalformedURLException, RemoteException, NotBoundException {
 		AccountBL = new Account();
 		commandController = new CommandController<AccountPO>("account");
+		userData = (UserDataService) Naming.lookup(RMIConfig.PREFIX + UserDataService.NAME);
 	}
 
 	/**
@@ -56,6 +61,7 @@ public class AccountController implements AccountBLService {
 	 */
 	public ResultMessage addAccount(AccountVO vo) throws RemoteException {
 		LogController.getInstance().addLog("添加公司职员");
+		userData.find(vo.userID).setAllocated(true);
 		AccountPO po = AccountTrans.convertVOtoPO(vo);
 		Command<AccountPO> addCommand=new CommandAdd<AccountPO>(Account.BLNAME, po);
 		commandController.addCommand(addCommand);

@@ -117,6 +117,10 @@ public class UserController implements UserBLService {
 		return userBL.showUser(userIdentity);
 	}
 
+	public ArrayList<String> getUserIDCanBeUsedByAccounts() throws RemoteException{
+		return userBL.getUserIDCanBeUsedByAccounts();
+	}
+	
 	@Override
 	public boolean canUndo() {
 		return commandController.canUndo();
