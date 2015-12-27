@@ -82,7 +82,7 @@ public class CargoExport extends MyJPanel {
 		ArrayList<InventoryPositionVO> commodities = null;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 6));
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
@@ -103,7 +103,7 @@ public class CargoExport extends MyJPanel {
 		String position = commodityInfo[2];	
 		InventoryExportReceiptVO exportReceipt;
 		try {
-			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 4), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
+			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 6), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
 //			String id = inventoryController.getExportID();
 			//将数据加入出库单列表
 			exportList.addRow(new String[]{exportReceipt.ID, commodityInfo[0], commodityInfo[1], GetDate.getDate(), (String) transport.getSelectedItem()});

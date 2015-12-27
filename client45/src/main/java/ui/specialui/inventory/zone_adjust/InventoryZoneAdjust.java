@@ -84,7 +84,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 6));
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
@@ -106,7 +106,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		ArrayList<InventoryPositionVO> commoditiesExisted;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			commoditiesExisted = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+			commoditiesExisted = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 6));
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
@@ -140,7 +140,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		InventoryPositionVO afpos = posVOs.get(rowOfPos);
 		String afpos_string = position.getItemAt(rowOfPos);
 		try {
-			inventoryController.adjust(frame.getID().substring(0, 4), posBefore[0], posBefore[1], posBefore[2], posBefore[3], afpos.area, afpos.row, afpos.frame, afpos.position);
+			inventoryController.adjust(frame.getID().substring(0, 6), posBefore[0], posBefore[1], posBefore[2], posBefore[3], afpos.area, afpos.row, afpos.frame, afpos.position);
 		} catch (RemoteException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return 2;

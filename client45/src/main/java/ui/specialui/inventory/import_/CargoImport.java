@@ -76,7 +76,7 @@ public class CargoImport extends MyJPanel {
 					//库存报警
 					try {
 						inventoryController = ControllerFactory.getInventoryController();
-						double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 4));
+						double alarmRate = inventoryController.inventoryAlarmRate(frame.getID().substring(0, 6));
 						if(alarmRate < 0.9){
 							new MyNotification(frame, "当前仓库存货量达" + Double.toString(alarmRate), Color.GREEN);
 						}else{
@@ -133,7 +133,7 @@ public class CargoImport extends MyJPanel {
 		InventoryImportReceiptVO importReceipt;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 4), commodity, pos.area, pos.row, pos.frame, pos.position);
+			importReceipt = inventoryController.addCommodities(frame.getID().substring(0, 6), commodity, pos.area, pos.row, pos.frame, pos.position);
 		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -2;
@@ -156,7 +156,7 @@ public class CargoImport extends MyJPanel {
 		
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 4));
+			posVOs = inventoryController.getEmptyPositionsInList(frame.getID().substring(0, 6));
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
