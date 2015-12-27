@@ -57,6 +57,7 @@ public class InventoryCheck extends MyJPanel{
 				if(!InventoryCheck.this.searchWithinGap(frame)){
 					new MyNotification(frame, "请正确输入时间", Color.RED);
 				}
+				InventoryCheck.this.repaint();
 			}
 		});
 		this.add(search);

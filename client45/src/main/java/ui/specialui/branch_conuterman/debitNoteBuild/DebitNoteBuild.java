@@ -58,6 +58,7 @@ public class DebitNoteBuild extends MyJPanel {
 				if (!DebitNoteBuild.this.searchCourier(courierId.getText())) {
 					new MyNotification(frame, "不存在该快递员", Color.RED);
 				}
+				DebitNoteBuild.this.repaint();
 			}
 		});
 		this.add(searchCourier);
@@ -88,7 +89,6 @@ public class DebitNoteBuild extends MyJPanel {
 
 	/**
 	 * 查询快递员
-	 * 
 	 * @param courierId
 	 * @return
 	 */
@@ -111,9 +111,10 @@ public class DebitNoteBuild extends MyJPanel {
 		}
 		if (account == null)
 			return false;
-		courierBill.setText("快递员编号：" + courierId);
+		courierBill.setText("\n\n");
+		courierBill.append("快递员编号：" + courierId + "\n");
 		if (account.ordersID.size() == 0) {
-			courierBill.setText("该快递员当日未收款");
+			courierBill.append("该快递员当日未收款   ");
 		} else {
 			OrderBLService orderController;
 			try {
@@ -143,7 +144,6 @@ public class DebitNoteBuild extends MyJPanel {
 
 	/**
 	 * 建立收款单
-	 * 
 	 * @return
 	 */
 	public int produceDebitNote() {
@@ -180,8 +180,6 @@ public class DebitNoteBuild extends MyJPanel {
 			debitBillVO = new DebitBillVO(controller.getExpenseID(),
 				ReceiptType.DEBIT, courierID, money, orderID, date, bankId);
 			controller.addDebitBill(debitBillVO);
-//			controller.save(debitBillVO);
-//			controller.submit(debitBillVO);
 			return 0;
 		} catch (RemoteException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
