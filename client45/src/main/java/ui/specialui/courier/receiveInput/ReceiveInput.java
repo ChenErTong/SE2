@@ -177,9 +177,7 @@ public class ReceiveInput extends MyJPanel{
 		
 		AccountVO account;
 		try {
-			System.out.println(frame_Courier.getID());
 			account = accountController.find(frame_Courier.getID());
-			System.out.println(account);
 			account.ordersID.add(order.ID);
 			accountController.updateAccount(account);
 		} catch (RemoteException e) {

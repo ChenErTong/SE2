@@ -43,30 +43,16 @@ public class TransferReceiveManage extends MyJPanel{
 	public int produceArrivalList(Frame_Transfer frame) {
 		String[] data = arrivalCommodity.getData();
 		if(data == null) return 1;
-		//TODO
-		//到达单生成步骤
+
 		TransferBLService transferController;
 		try {
 			transferController = ControllerFactory.getTransferController();
+			transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), data[0]);
 		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
 			return -1;
 		}
-		/*ArrayList<String> order = new ArrayList<String>();
-		order.add(data[0]);*/
-		/**
-		 * 我把这里的接口改成单个order了
-		 * @author Ann
-		 */
-		try {
-			TransferArrivalListVO arrivalList = transferController.receiptList(frame.getID().substring(0, 4), data[1], data[2], CommodityState.getType(data[6]), data[0]);
-//			transferController.save(arrivalList);
-//			transferController.submit(arrivalList);
-		} catch (RemoteException e) {
-			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);
-			return -1;
-		}
-		
+
 		return 0;
 	}
 

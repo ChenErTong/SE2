@@ -8,6 +8,7 @@ import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import state.CommodityState;
 import ui.image.TransferImage;
@@ -150,17 +151,21 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		
 		orders.clear();
 		
+		ArrayList<String> orderIDs = null;
 		try {
 			branchController = ControllerFactory.getBranchController();
-			System.out.println(branchController.getAllOrderNumber().size());
-			for (String orderID : branchController.getAllOrderNumber()) {
-				orders.addRow(new String[]{orderID});
-			}
-			orders.repaint();
+			orderIDs = branchController.getAllExportingOrders();
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
+		if((orderIDs == null) || (orderIDs.size() == 0)){
+			return;
+		}
+		for (String orderID : orderIDs) {
+			orders.addRow(new String[]{orderID});
+		}
+		orders.repaint();
 	}
 	
 	public BranchArrivalListVO getArrivalList(){
