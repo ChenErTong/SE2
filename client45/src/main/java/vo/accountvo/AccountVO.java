@@ -26,9 +26,11 @@ public class AccountVO extends ValueObject{
 	public String WorkTime;
 	/**每日完成的订单编号**/
 	public ArrayList<String> ordersID;
+	
+	public String userID;
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
-			String workTime,String branchID) {
+			String workTime,String branchID,String userID) {
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;
@@ -38,7 +40,8 @@ public class AccountVO extends ValueObject{
 		this.Salary = salary;
 		this.WorkTime = workTime;
 		this.branchID = branchID;
-		ordersID = new ArrayList<String>();	
+		this.ordersID = new ArrayList<String>();	
+		this.userID=userID;
 	}
 	@Override
 	public String toString(){

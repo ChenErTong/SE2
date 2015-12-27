@@ -37,7 +37,8 @@ public class AccountTrans {
 		BigDecimal salary = po.getSalary();
 		String workTime = po.getWorkTime();
 		String branchID = po.getOrganizationID();
-		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, branchID);
+		String userID = po.getUserID();
+		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, branchID,userID);
 		return vo;
 	}
 
@@ -54,7 +55,8 @@ public class AccountTrans {
 			BigDecimal salary = vo.Salary;
 			String workTime = vo.WorkTime;
 			String branchID = vo.branchID;
-			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID);
+			String userID = vo.userID;
+			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID,userID);
 		}
 	}
 

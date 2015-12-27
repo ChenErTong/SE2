@@ -123,7 +123,7 @@ public class Receipt {
 		String order = transferArrivalReceipt.getOrders();
 		String destination = transferArrivalReceipt.getDestination();
 		CommodityState state = transferArrivalReceipt.getState();
-		orderInfo.changeOrderState(order, "货物已到达" + destination + "中转中心",state);
+		orderInfo.changeOrderStateToTBE(order, "货物已到达" + destination + "中转中心",state);
 	}
 
 	private void approveTransferOrder(ReceiptPO po) throws RemoteException {
@@ -132,7 +132,7 @@ public class Receipt {
 		ArrayList<String> orders = transferOrderReceipt.getOrders();
 		String departure = transferOrderReceipt.getDeparture();
 		String destination = transferOrderReceipt.getDestination();
-		orderInfo.changeOrderState(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
+		orderInfo.changeOrderStateToExporting(orders, "货物已离开" + departure + "中转中心" + "送往" + destination + "中转中心");
 	}
 
 	private void approveBranchLoading(ReceiptPO po) throws RemoteException {
@@ -140,7 +140,7 @@ public class Receipt {
 		LoadingListPO loadingReceipt = (LoadingListPO) po;
 		ArrayList<String> orders = loadingReceipt.getOrders();
 		String destination = loadingReceipt.getDistination();
-		orderInfo.changeOrderState(orders, "货物已离开" + destination + "营业厅");
+		orderInfo.changeOrderStateToExporting(orders, "货物已离开" + destination + "营业厅");
 	}
 
 	private void approveBranchDelivery(ReceiptPO po) throws RemoteException {
@@ -148,7 +148,7 @@ public class Receipt {
 		DeliveryListPO deliveryReceipt = (DeliveryListPO) po;
 		String order = deliveryReceipt.getOrders();
 		String message = "订单正在被派件，派件员是"+deliveryReceipt.getCourierName();
-		orderInfo.changeOrderState(order, message);
+		orderInfo.changeOrderStateToExporting(order, message);
 	}
 
 	private void approveBranchArrial(ReceiptPO po) throws RemoteException {
@@ -157,7 +157,7 @@ public class Receipt {
 		String orderID = branchArrialReceipt.getOrders();
 		String departure = branchArrialReceipt.getDeparture();
 		CommodityState state = branchArrialReceipt.getState();
-		orderInfo.changeOrderState(orderID, "货物已到达" + departure + "营业厅", state);
+		orderInfo.changeOrderStateToTBE(orderID, "货物已到达" + departure + "营业厅", state);
 	}
 
 	private void approveInventoryExport(ReceiptPO po) throws RemoteException {
