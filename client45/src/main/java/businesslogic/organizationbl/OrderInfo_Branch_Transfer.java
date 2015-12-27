@@ -29,4 +29,6 @@ public interface OrderInfo_Branch_Transfer{
 	 *             远程异常
 	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException;
+	
+	public void changeOrderStateToAPPROVING(String orderID) throws RemoteException;
 }

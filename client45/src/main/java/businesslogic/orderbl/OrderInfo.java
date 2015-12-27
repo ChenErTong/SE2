@@ -160,4 +160,16 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	public void changeOrderStateToExporting(String order, String message) throws RemoteException {
 		this.changeOrderState(order, message, OrderState.EXPORTING);
 	}
+
+	@Override
+	public void changeOrderStateToAPPROVING(String orderID) throws RemoteException {
+		OrderPO orderPO = orderData.find(orderID);
+		if (orderPO == null) {
+			System.out.println("print in package businesslogic.orderbl;");
+			System.out.println("package businesslogic.orderbl;");
+		} else {
+			orderPO.setOrderstate(OrderState.MANAGER_APPROVING);
+			orderData.modify(orderPO);
+		}
+	}
 }

@@ -101,6 +101,7 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		String orderID = order.ID;
 		BranchArrivalListVO vo = new BranchArrivalListVO(transferListID, ReceiptType.BRANCH_ARRIVAL, transferListID,
 				departure, state, orderID);
+		orderInfo.changeOrderStateToAPPROVING(orderID);
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -118,6 +119,7 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	 */
 	public DeliveryListVO getDeliveryList(String order, String courierName) throws RemoteException {
 		String ID = receiptInfo.getID();
+		orderInfo.changeOrderStateToAPPROVING(order);
 		DeliveryListVO vo = new DeliveryListVO(ID, ReceiptType.BRANCH_DELIVER, order, courierName);
 		return vo;
 	}
@@ -177,6 +179,9 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		ID = branchID + dateInID + ID;
 		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID, facilityID,
 				courierName, courierName, orders, money);
+		for (String order : orders) {
+			orderInfo.changeOrderStateToAPPROVING(order);
+		}
 		receiptInfo.add(vo);
 		return vo;
 	}
