@@ -1,6 +1,7 @@
 package ui.myui;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
@@ -9,7 +10,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 
 /**
  * 表格类
@@ -40,7 +40,13 @@ public class MyJTable extends JTable {
 		this.setBackground(new Color(0, 0, 0, 0.3f));
 		this.setForeground(Color.WHITE);
 		this.setFont(new MyFont(14));
-
+		
+		this.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				panel.repaint();
+			}
+		});
+		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		this.setDefaultRenderer(Object.class, tcr);

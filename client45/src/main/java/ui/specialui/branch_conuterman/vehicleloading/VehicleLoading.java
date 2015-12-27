@@ -71,8 +71,6 @@ public class VehicleLoading extends MyJPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(VehicleLoading.this.addOrderID(orderID.getText())){
 					orderID.setText(null);
-				}else{
-					new MyNotification(frame, "请输入正确的订单号", Color.RED);
 				}
 			}
 		});
@@ -108,9 +106,20 @@ public class VehicleLoading extends MyJPanel {
 	 * @param text
 	 */
 	private boolean addOrderID(String text) {
-		if(text.length() != 10) return false;
+		if(text.length() != 10){
+			new MyNotification(this, "请输入正确的订单号", Color.RED);
+			return false;
+		}
 		
 		String[] data = new String[]{text};
+		
+		for (String[] datas : ordersID.getData()) {
+			if(data[0].equals(datas[0])){
+				new MyNotification(this, "该订单已存在于列表", Color.RED);
+				return false;
+			}
+		}
+		
 		ordersID.addRow(data);
 		this.repaint();
 		return true;
