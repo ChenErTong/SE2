@@ -79,7 +79,7 @@ public interface UserBLService extends BLService {
 
 	public ArrayList<UserVO> showUser(UserIdentity userIdentity) throws RemoteException;
 	/**
-	 * 获得account的userID
+	 * 获得account可用的userID列表
 	 * @return
 	 * @throws RemoteException
 	 */
