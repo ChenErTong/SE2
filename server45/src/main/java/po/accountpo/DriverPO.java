@@ -11,7 +11,7 @@ public class DriverPO extends AccountPO{
 	private String carID;
 	public DriverPO(String ID, String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
 			String workTime,String carID,String organizationID) {
-		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime,organizationID);
+		super(ID, duty, name, birthDay, IDCard, phone, salary, workTime,organizationID,null);
 		this.carID = carID;
 	}
 	public String getCarID() {
