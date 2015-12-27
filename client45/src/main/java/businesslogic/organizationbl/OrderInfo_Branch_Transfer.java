@@ -3,8 +3,8 @@ package businesslogic.organizationbl;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import po.OrderPO;
 import vo.CommodityVO;
-import vo.OrderVO;
 
 /**
  * 
@@ -15,11 +15,11 @@ public interface OrderInfo_Branch_Transfer{
 	/**
 	 * 获取所有的订单
 	 * 
-	 * @return ArrayList<OrderVO>型，所有订单列表
+	 * @return ArrayList<OrderPO>型，所有订单列表
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public ArrayList<OrderVO> getAllOrders() throws RemoteException;
+	public ArrayList<OrderPO> getAllOrders() throws RemoteException;
 
 	/**
 	 * 获取所有的订单商品

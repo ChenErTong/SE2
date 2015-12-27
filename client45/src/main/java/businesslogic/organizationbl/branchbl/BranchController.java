@@ -103,4 +103,14 @@ public class BranchController implements BranchBLService {
 		LogController.getInstance().addLog("生成营业厅到达单");
 		return BranchBL.getBranchArrivalList(departure, state, orders);
 	}
+
+	@Override
+	public ArrayList<String> getAllExportingOrders() throws RemoteException {
+		return BranchBL.getAllExportingOrders();
+	}
+
+	@Override
+	public ArrayList<String> getAllToBeExportedOrders() throws RemoteException {
+		return BranchBL.getAllToBeExportedOrders();
+	}
 }

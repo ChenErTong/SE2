@@ -43,7 +43,6 @@ public interface BranchBLService extends BLService{
 	 * @param order 到达的订单对象
 	 * @return
 	 */
-//	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, ArrayList<OrderVO> orders);
 	public BranchArrivalListVO getBranchArrivalList(String departure, CommodityState state, OrderVO orders) throws RemoteException;
 	/**
 	 * 鐢熸垚钀ヤ笟鍘呮淳浠跺崟
@@ -55,25 +54,6 @@ public interface BranchBLService extends BLService{
 	 */
 	public DeliveryListVO getDeliveryList(String order, String courierName) throws RemoteException;
 	
-//	/**
-//	 * 鎻愪氦鍗曟嵁缁欐�荤粡鐞嗚繘琛屽鎵�
-//	 * @return 澶勭悊缁撴灉
-//	 * @param receipt 钀ヤ笟鍘呭崟鎹�
-//	 * @author czw 
-//	 * @version Oct 22,2015
-//	 * @throws RemoteException 
-//	 */
-//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException;
-//	
-//	/**
-//	 * 淇濆瓨鍗曟嵁
-//	 * @return 澶勭悊缁撴灉
-//	 * @param receipt 钀ヤ笟鍘呭崟鎹�
-//	 * @author czw 
-//	 * @version Oct 22,2015
-//	 * @throws RemoteException 
-//	 */
-//	public ResultMessage save(ReceiptVO receipt) throws RemoteException;
 	
 	/**
 	 * @return 瑁呰溅鍗�
@@ -86,4 +66,18 @@ public interface BranchBLService extends BLService{
 	 * @version Oct 23,2015
 	 */
 	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, BigDecimal money) throws RemoteException;
+	/**
+	 * 获得所有的正在运输中的订单列表
+	 * 生成营业厅和中转中心到达单、收件确认单的时候用到
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<String> getAllExportingOrders() throws RemoteException;
+	/**
+	 * 获得所有不在运送的订单列表
+	 * 生成入库单、转运单、派件单的时候用到
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<String> getAllToBeExportedOrders() throws RemoteException;
 }

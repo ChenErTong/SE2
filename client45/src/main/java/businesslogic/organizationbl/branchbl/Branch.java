@@ -11,13 +11,16 @@ import java.util.Date;
 
 import businesslogic.CommonBusinessLogic;
 import businesslogic.orderbl.OrderInfo;
+import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.OrderInfo_Branch_Transfer;
 import businesslogic.receiptbl.ReceiptInfo;
 import config.RMIConfig;
 import dataservice.branchdataservice.BranchDataService;
 import po.BranchPO;
+import po.OrderPO;
 import state.CommodityState;
 import state.ConfirmState;
+import state.OrderState;
 import state.ReceiptType;
 import state.ResultMessage;
 import util.CityTrans;
@@ -64,22 +67,6 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	 */
 	public ArrayList<CommodityVO> getAllCommodities() throws RemoteException {
 		return orderInfo.getAllCommodities();
-	}
-
-	/**
-	 * 获取所有的订单号
-	 * 
-	 * @return ArrayList<String>型，所有订单的编号
-	 * @throws RemoteException
-	 *             远程异常
-	 */
-	public ArrayList<String> getAllOrderNumber() throws RemoteException {
-		ArrayList<OrderVO> orderVOs = getAllOrders();
-		ArrayList<String> orderNumbers = new ArrayList<>();
-		for (OrderVO orderVO : orderVOs) {
-			orderNumbers.add(orderVO.ID);
-		}
-		return orderNumbers;
 	}
 
 	/**
@@ -194,7 +181,7 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	private ArrayList<OrderVO> getAllOrders() throws RemoteException {
+	private ArrayList<OrderPO> getAllOrders() throws RemoteException {
 		return orderInfo.getAllOrders();
 	}
 	
@@ -223,6 +210,22 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 		return BranchTrans.convertPOstoVOs(branchPOs);
 	}
 
+	/**
+	 * 获取所有的订单号
+	 * 
+	 * @return ArrayList<String>型，所有订单的编号
+	 * @throws RemoteException
+	 *             远程异常
+	 */
+	public ArrayList<String> getAllOrderNumber() throws RemoteException {
+		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(getAllOrders());
+		ArrayList<String> orderNumbers = new ArrayList<>();
+		for (OrderVO orderVO : orderVOs) {
+			orderNumbers.add(orderVO.ID);
+		}
+		return orderNumbers;
+	}
+
 	public ArrayList<String> getAllBranchNumbers() throws RemoteException {
 		ArrayList<BranchPO> pos = branchData.find();
 		ArrayList<String> branchNumbers = new ArrayList<>();
@@ -230,6 +233,26 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 			branchNumbers.add(branchPO.getOrganizationID());
 		}
 		return branchNumbers;
+	}
+
+	public ArrayList<String> getAllExportingOrders() throws RemoteException {
+		ArrayList<OrderPO> orderPOs = getAllOrders();
+		ArrayList<String> orderNumbers = new ArrayList<>();
+		for (OrderPO orderPO : orderPOs) {
+			if(orderPO.getOrderstate()==OrderState.EXPORTING)
+				orderNumbers.add(orderPO.getID());
+		}
+		return orderNumbers;
+	}
+
+	public ArrayList<String> getAllToBeExportedOrders() throws RemoteException {
+		ArrayList<OrderPO> orderPOs = getAllOrders();
+		ArrayList<String> orderNumbers = new ArrayList<>();
+		for (OrderPO orderPO : orderPOs) {
+			if(orderPO.getOrderstate()==OrderState.TO_BE_EXPORTED)
+				orderNumbers.add(orderPO.getID());
+		}
+		return orderNumbers;
 	}
 
 }

@@ -13,7 +13,6 @@ import po.OrderPO;
 import state.CommodityState;
 import state.OrderState;
 import vo.CommodityVO;
-import vo.OrderVO;
 
 /**
  * 
@@ -57,10 +56,9 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	/**
 	 * @see OrderInfo_Branch_Transfer#getAllOrders()
 	 */
-	public ArrayList<OrderVO> getAllOrders() throws RemoteException {
+	public ArrayList<OrderPO> getAllOrders() throws RemoteException {
 		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
-		return orderVOs;
+		return orderPOs;
 	}
 
 	/**
