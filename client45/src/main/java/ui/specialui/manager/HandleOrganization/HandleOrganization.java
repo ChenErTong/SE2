@@ -2,6 +2,8 @@ package ui.specialui.manager.HandleOrganization;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -14,20 +16,19 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import businesslogic.ControllerFactory;
-import businesslogicservice.organizationblservice.OrganizationBLService;
 import state.OrganizationType;
 import state.ResultMessage;
 import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
-
-import ui.myui.MyFont;
 import ui.myui.MyButton;
+import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
+import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 import ui.specialui.manager.FrameManager;
 import vo.BranchVO;
 import vo.FacilityVO;
@@ -35,6 +36,8 @@ import vo.InventoryVO;
 import vo.OrganizationVO;
 import vo.TransferVO;
 import vo.accountvo.AccountVO;
+import businesslogic.ControllerFactory;
+import businesslogicservice.organizationblservice.OrganizationBLService;
 /**
  * 负责实现机构管理中Panel的转换和逻辑层的调用
  * @author zsq
@@ -466,51 +469,23 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 	private void initTable(){
 		//库存表格
 		String[] headers = {"库存/转运信息"};
-		MyJTable table_1 = new MyJTable(headers,false);
-		table_1.setBackground(new Color(40, 42, 66));
-		table_1.setForeground(Color.WHITE);
-		table_1.setFont(new MyFont(14));
-	
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table_1.setDefaultRenderer(Object.class, tcr);
-		  	
-		JScrollPane jsp=new JScrollPane(table_1);
-		JTableHeader head = table_1.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-			
-		jsp.setBounds(100, 280, 410, 125);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
+		MyJTable table_1 = new MyJTable(headers,false, this);
+		MyJScrollPane jsp=new MyJScrollPane(100, 280, 410, 125, table_1);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				HandleOrganization.this.repaint();
+			}
+		});
 		organizationDetails.add(jsp);
 		//员工表格
 		String[] headers_2 = {"员工信息"};
-		MyJTable table_2 = new MyJTable(headers_2,false);
-		table_2.setBackground(new Color(40, 42, 66));
-		table_2.setForeground(Color.WHITE);
-		table_2.setFont(new MyFont(14));
-	
-		DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr_2.setHorizontalAlignment(JLabel.CENTER);
-		table_2.setDefaultRenderer(Object.class, tcr_2);
-		  	
-		JScrollPane jsp_2=new JScrollPane(table_2);
-		JTableHeader head_2 = table_2.getTableHeader();
-		head_2.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head_2.setFont(new MyFont(14));
-		head_2.setForeground(Color.BLACK);
-		head_2.setResizingAllowed(false);
-			
-		jsp_2.setBounds(100, 415, 410, 125);
-		jsp_2.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp_2.setOpaque(false);
-		jsp_2.setBorder(BorderFactory.createEmptyBorder());
-		jsp_2.setVisible(true);
+		MyJTable table_2 = new MyJTable(headers_2,false, this);
+		MyJScrollPane jsp_2=new MyJScrollPane(100, 415, 410, 125, table_2);
+		jsp_2.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				HandleOrganization.this.repaint();
+			}
+		});
 		organizationDetails.add(jsp_2);
 	
 		DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();

@@ -1,6 +1,8 @@
 package ui.specialui.manager.ViewLogMsg;
 
 import java.awt.Color;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,6 +19,7 @@ import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
 import ui.myui.MyFont;
 import ui.myui.MyJLabel;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
@@ -110,37 +113,13 @@ public class LogPanel extends MyTranslucentPanel{
 	 */
 	private void initTable(){
 		String[] headers = {"操作人","操作时间","操作记录"};
-		table = new MyJTable(headers,false);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-
-		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
-		firsetColumn.setPreferredWidth(100);
-		firsetColumn.setMaxWidth(100);
-		firsetColumn.setMinWidth(100);
-		
-		TableColumn secondColumn = table.getColumnModel().getColumn(1);
-		secondColumn.setPreferredWidth(100);
-		secondColumn.setMaxWidth(100);
-		secondColumn.setMinWidth(100);
-		
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-			  	
-		JScrollPane jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-				
-		jsp.setBounds(15, 50, 590, 530-50);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
+		table = new MyJTable(headers,false,this);
+		MyJScrollPane jsp=new MyJScrollPane(15, 50, 590, 530-50, table);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				LogPanel.this.repaint();
+			}
+		});
 		this.add(jsp);
 	}
 	

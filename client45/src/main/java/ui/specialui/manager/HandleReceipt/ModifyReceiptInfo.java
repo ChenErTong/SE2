@@ -73,7 +73,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	
 	private void paybillTable(PaymentBillVO receipt) {
 		String[] headers = {"付款人","付款金额","付款账号","付款条目","付款备注","付款日期"};
-		table = new MyJTable(headers, true);
+		table = new MyJTable(headers, true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		Object[] rowData = {receipt.payerName,receipt.money,receipt.bankAccountID,receipt.items.value,receipt.remarks,receipt.date};
@@ -82,7 +82,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void exportTable(InventoryExportReceiptVO receipt) {/*ReceiptType type, String destination, String depture, ExpressType expressType,
 			String transferID, String commoditiesID, int a, int b, int c, int d*/
 		String [] headers = {"单据类型","转运ID","商品货物信息","区","排","架","位"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		Object[] rowData = {receipt.type,receipt.transferID,receipt.commodityVO.commodityState+"|"+receipt.commodityVO.commodityType+"|"+receipt.commodityVO.weight+"|"+receipt.commodityVO.volumn,receipt.area,receipt.row,receipt.frame,receipt.position};
@@ -92,7 +92,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void transOrderTable(TransferOrderVO receipt) {
 		// String facilityID, ReceiptType type,String departure, String destination, String courierName ArrayList<String> orders
 		String [] headers = {"单据类型","中转车次编号","出发地","到达地","监装员","托运订单编号"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.facilityID,receipt.departure,receipt.destination,receipt.courierName,receipt.orders};
@@ -102,7 +102,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void importTable(InventoryImportReceiptVO receipt) {
 		//  ReceiptType type, String depture, String destination,String commoditiesID, int a, int b, int c, int d)
 		String[] headers = {"单据类型","转运ID","商品货物信息","区","排","架","位"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 	
 		Object[] rowData = {receipt.type,receipt.commodityVO.commodityState+"|"+receipt.commodityVO.commodityType+"|"+receipt.commodityVO.weight+"|"+receipt.commodityVO.volumn,receipt.area,receipt.row,receipt.frame,receipt.position};
@@ -111,7 +111,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void transferArrivalTable(TransferArrivalListVO receipt) {
 		// ReceiptType type,String transferCenterID, String destination, String departure,CommodityState state, ArrayList<String> orders
 		String[] headers = {"单据类型","中转中心编号","出发地","目的地","货物到达状态","订单订单号"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		DefaultTableModel tableModel =(DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.transferCenterID,receipt.destination,receipt.departure,receipt.state,receipt.order};
 		tableModel.addRow(rowData);
@@ -119,7 +119,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void deliveryList(DeliveryListVO receipt) {
 		//  ReceiptType type,ArrayList<String> orders, String courierName
 		String[] headers = {"单据类型","订单号","装车员"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.type,receipt.order,receipt.courierName};
 		tableModel.addRow(rowData);
@@ -127,7 +127,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	}
 	private void debitBillTable(DebitBillVO receipt) {
 		String[] headers = {"单据类型","收款日期","收款金额","收款快递员","对应订单条形码"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		Object[] rowData = {receipt.type,receipt.date,receipt.money,receipt.courierID,receipt.orderNumbers};
@@ -137,7 +137,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void branchArrivalTable(BranchArrivalListVO receipt) {
 		// ReceiptType type, String transferListID, String departure,		CommodityState state, ArrayList<String> orders
 		String[] headers = {"单据类型","中转单编号","出发地","货物到达状态","订单订单号"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[]rowData = {receipt.transferListID,receipt.departure,receipt.state,receipt.orderID};
@@ -146,7 +146,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void loadingListTable(LoadingListVO receipt) {
 		// ReceiptType type, String branchID, String transferNumber,	String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, double money
 		String[] headers = {"单据种类","营业厅编号","装运编号","目的地","车辆代号","监装员","押运员","订单序列","运费"};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[]rowData = {receipt.type.value,receipt.branchID,receipt.transferNumber,receipt.distination,receipt.carID,receipt.monitorName,receipt.courierName,receipt.orders,receipt.money};
@@ -155,7 +155,7 @@ public class ModifyReceiptInfo extends MyTranslucentPanel {
 	private void orderTable(OrderVO receipt) {
 		// String id, ReceiptType type, ArrayList<String> orders
 		String[] headers = {};
-		table = new MyJTable(headers,true);
+		table = new MyJTable(headers,true,this);
 		
 		DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
 		Object[] rowData = {receipt.senderName,receipt.senderAddress,receipt.senderTel,receipt.senderCo,receipt.sendTime,receipt.recipientName,
