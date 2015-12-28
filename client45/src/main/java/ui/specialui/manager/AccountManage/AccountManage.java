@@ -208,7 +208,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					AccountController controller = ControllerFactory.getAccountController();
 					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
-						System.out.println("AddSucceed!");
+					//	System.out.println("AddSucceed!");
 						this.showAll();
 						addAccount.refresh();
 						new MyNotification(this,"新员工添加成功！",Color.GREEN);

@@ -19,6 +19,7 @@ import ui.myui.MyTranslucentPanel;
 public class AddAccount extends MyTranslucentPanel{
 	private MyJTextField[] fields ;
 	private MyJComboBox branchID;
+	private MyJComboBox userID;
 
 	public AddAccount() {
 		super(680,70,550,240);
@@ -34,6 +35,8 @@ public class AddAccount extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,130,90,30,"联系方式",16,true));
 		this.add(new MyJLabel(40,170,90,30,"任职时间",16,true));
 		this.add(new MyJLabel(290,170,100,30,"营业厅编号",16,true));
+		this.add(new MyJLabel(40,210,100,30,"对应员工编号",16,true));
+		
 		fields = new MyJTextField[7];
 		fields[0] = new MyJTextField(130,50,120,30);
 		fields[0].addActionListener(new ActionListener(){
@@ -135,9 +138,21 @@ public class AddAccount extends MyTranslucentPanel{
 			this.add(branchID);
 		
 		} catch (RemoteException | MalformedURLException | NotBoundException e1) {
-			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
-			e1.printStackTrace();
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		}
+		
+		ArrayList<String> userid = new ArrayList<String>();
+		int size = userid.size();
+		String[] userIDs = new String[size];
+		for(int i=0;i<size;i++){
+			userIDs[i] = userid.get(i);
+		}
+		userID = new MyJComboBox(390,210,110,30,userIDs);
+		this.add(userID);
+		
+		
+		
 	}
 
 	public void setUneditable() {
@@ -145,10 +160,11 @@ public class AddAccount extends MyTranslucentPanel{
 			field.setEditable(false);
 		}
 		branchID.setEditable(false);
+		userID.setEditable(false);
 	}
 	
 	public String[] getData(){
-		String [] data = new String[8];
+		String [] data = new String[9];
 		for(int i=0;i<7;i++){
 			data[i] = fields[i].getText();
 			if(data[i]==null){
@@ -159,6 +175,10 @@ public class AddAccount extends MyTranslucentPanel{
 		if(data[7]==null){
 			return null;
 		}
+		data[8] = (String)userID.getSelectedItem();
+		if(data[8]==null){
+			return null;
+		}
 		return data;
 	}
 	
@@ -167,6 +187,7 @@ public class AddAccount extends MyTranslucentPanel{
 			fields[i].setText(data[i]);
 		}
 		branchID.setSelectedItem(data[7]);
+		userID.setSelectedItem(data[8]);
 	}
 	
 	public void refresh(){
@@ -174,6 +195,7 @@ public class AddAccount extends MyTranslucentPanel{
 		for(int i=0;i<7;i++){
 			fields[i].setText(null);
 		}
+		userID.setSelectedItem(null);
 	}
 	private static final long serialVersionUID = 1L;
 }
