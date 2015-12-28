@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import businesslogic.ControllerFactory;
 import businesslogic.organizationbl.OrganizationController;
+import businesslogic.userbl.UserController;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJTextField;
@@ -36,7 +37,7 @@ public class ViewAccount extends MyTranslucentPanel{
 		this.add(new MyJLabel(290,130,90,30,"联系方式",16,true));
 		this.add(new MyJLabel(40,170,90,30,"任职时间",16,true));
 		this.add(new MyJLabel(290,170,100,30,"营业厅编号",16,true));
-		this.add(new MyJLabel(40,210,00,30,"对应用户编号",16,true));
+		this.add(new MyJLabel(40,210,120,30,"对应用户编号",16,true));
 		
 		fields = new MyJTextField[7];
 		fields[0] = new MyJTextField(130,50,120,30);
@@ -73,14 +74,22 @@ public class ViewAccount extends MyTranslucentPanel{
 			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 			e.printStackTrace();
 		}
-		ArrayList<String> userid = new ArrayList<String>();
-		int size = userid.size();
-		String[] userIDs = new String[size];
-		for(int i=0;i<size;i++){
-			userIDs[i] = userid.get(i);
+		try {
+			UserController controller = ControllerFactory.getUserController();
+		
+			ArrayList<String> userid = controller.getUserIDCanBeUsedByAccounts();
+			int size = userid.size();
+			String[] userIDs = new String[size];
+			for(int i=0;i<size;i++){
+				userIDs[i] = userid.get(i);
+			}
+			userID = new MyJComboBox(160,210,110,30,userIDs);
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
+			return;
 		}
-		userID = new MyJComboBox(390,210,110,30,userIDs);
 		this.add(userID);
+		
 		
 		
 		

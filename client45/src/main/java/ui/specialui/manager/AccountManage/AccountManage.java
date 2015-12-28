@@ -141,6 +141,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 					tableModel.addRow(rowData);
 					accountPool.add(accountVO.get(i));
 				}
+				this.repaint();
 			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);
 				ControllerFactory.init();
@@ -206,7 +207,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}else{
 				try {
 					AccountController controller = ControllerFactory.getAccountController();
-					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
+					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8]));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 					//	System.out.println("AddSucceed!");
 						this.showAll();
@@ -321,7 +322,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		String[] data = modifyAccount.getData();
 		try {
 			AccountController controller = ControllerFactory.getAccountController();
-			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7]));
+			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8]));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();
@@ -353,6 +354,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		data[5] = accountPool.get(table.getSelectedRow()).Phone;
 		data[6] = accountPool.get(table.getSelectedRow()).WorkTime;
 		data[7] = accountPool.get(table.getSelectedRow()).branchID;
+		data[8] = accountPool.get(table.getSelectedRow()).userID;
 		return data;
 	}
 }
