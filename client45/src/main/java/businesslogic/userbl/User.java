@@ -140,4 +140,15 @@ public class User implements CommonBusinessLogic<UserPO>{
 		return vos;
 	}
 	
+	public ArrayList<String> getUserIDCanBeUsedByAccounts() throws RemoteException{
+		ArrayList<UserPO> pos = userData.find();
+		ArrayList<String> IDs = new ArrayList<>();
+		for (UserPO userPO : pos) {
+			if (userPO.getIden()==UserIdentity.COURIER&&(!userPO.isAllocated())) {
+				IDs.add(userPO.getID());
+			}
+		}
+		return IDs;
+	}
+	
 }

@@ -206,16 +206,16 @@ public class InitDatas {
 		for (int i = 0; i < 15; i++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "010100"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "010100",null));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "021200"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "021200",null));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "020300"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "020300",null));
 			ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "025400"));
+					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "025400",null));
 		}
 	}
 
@@ -236,12 +236,12 @@ public class InitDatas {
 		for (int j = 0; j < 5; j++) {
 			String ID = accountController.getID();
 			accountController.addAccount(new AccountVO(ID, "营业厅业务员", "员工" + ID, GetDate.getDate(), "123456", "123456",
-					new BigDecimal(3000), "0", branchID));
+					new BigDecimal(3000), "0", branchID,null));
 		}
 		for (int j = 0; j < 5; j++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
-					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal(1000), "0", branchID));
+					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal(1000), "0", branchID,null));
 		}
 	}
 }

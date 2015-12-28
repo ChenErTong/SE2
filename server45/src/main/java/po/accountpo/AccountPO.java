@@ -35,8 +35,10 @@ public class AccountPO extends PersistentObject{
 	/**每日完成的订单编号**/
 	private ArrayList<String> ordersID;
 	
+	private String userID;
+	
 	public AccountPO(String ID,String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
-			String workTime,String organizationID) {
+			String workTime,String organizationID,String userID) {
 		super(ID);
 		this.Duty = duty;
 		this.Name = name;
@@ -47,8 +49,13 @@ public class AccountPO extends PersistentObject{
 		this.WorkTime = workTime;
 		this.organizationID=organizationID;
 		this.ordersID = new ArrayList<String>();
+		this.userID=userID;
 	}
 
+
+	public String getUserID() {
+		return userID;
+	}
 
 	public String getDuty() {
 		return Duty;

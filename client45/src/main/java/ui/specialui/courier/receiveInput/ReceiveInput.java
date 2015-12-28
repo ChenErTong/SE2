@@ -155,7 +155,7 @@ public class ReceiveInput extends MyJPanel{
 		}
 		orderInfo.append("快递类型：" + order.express.value + "\t包装方式：" + order.packType.value + "\n");
 		orderInfo.append("寄件日期：" + order.sendTime + "\t运费：" + order.money);
-		
+		this.repaint();
 	}
 	
 	public int produceReceiveList(Frame_Courier frame_Courier){
@@ -177,9 +177,7 @@ public class ReceiveInput extends MyJPanel{
 		
 		AccountVO account;
 		try {
-			
 			account = accountController.find(frame_Courier.getID());
-			System.out.println(account);
 			account.ordersID.add(order.ID);
 			accountController.updateAccount(account);
 		} catch (RemoteException e) {

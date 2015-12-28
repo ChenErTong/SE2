@@ -100,6 +100,9 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_PLANE, departure, destination,
 				courierName, orders);
 		vo.date = date;
+		for (String order : orders) {
+			orderInfo.changeOrderStateToAPPROVING(order);
+		}
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -136,6 +139,9 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_TRUCK, departure, destination,
 				courierName, orders);
 		vo.date = date;
+		for (String order : orders) {
+			orderInfo.changeOrderStateToAPPROVING(order);
+		}
 		receiptInfo.add(vo);
 		return vo;
 	}
@@ -172,36 +178,14 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		TransferOrderVO vo = new TransferOrderVO(ID, facilityID, ReceiptType.TRANS_TRAIN, departure, destination,
 				courierName, orders);
 		vo.date = date;
+		for (String order : orders) {
+			orderInfo.changeOrderStateToAPPROVING(order);
+		}
 		receiptInfo.add(vo);
 		return vo;
 	}
 
-//	/**
-//	 * 提交单据
-//	 * 
-//	 * @param receipt
-//	 *            ReceiptVO型，单据
-//	 * @return ResultMessage型，是否成功
-//	 * @throws RemoteException
-//	 *             远程异常
-//	 */
-//	public ResultMessage submit(ReceiptVO receipt) throws RemoteException {
-//		receipt.receiptState = ReceiptState.APPROVALING;
-//		return receiptInfo.modify(receipt);
-//	}
-//
-//	/**
-//	 * 保存草稿状态
-//	 * 
-//	 * @param receiptReceiptVO型，单据
-//	 * @return ResultMessage型，是否成功
-//	 * @throws RemoteException
-//	 *             远程异常
-//	 */
-//	public ResultMessage save(ReceiptVO receipt) throws RemoteException {
-//		receipt.receiptState = ReceiptState.DRAFT;
-//		return receiptInfo.add(receipt);
-//	}
+
 
 	/**
 	 * 生成中转中心到达单
@@ -228,6 +212,7 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 		ID = transferID + dateInID + ID;
 		TransferArrivalListVO vo = new TransferArrivalListVO(transferID, ReceiptType.TRANS_ARRIVAL, departure,
 				destination, destination, state, order);
+		orderInfo.changeOrderStateToAPPROVING(order);
 		receiptInfo.add(vo);
 		return vo;
 	}

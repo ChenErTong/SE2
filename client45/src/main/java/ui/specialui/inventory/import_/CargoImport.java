@@ -25,6 +25,7 @@ import vo.InventoryPositionVO;
 import vo.OrderVO;
 import vo.receiptvo.InventoryImportReceiptVO;
 import businesslogic.ControllerFactory;
+import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.inventoryblservice.InventoryBLService;
 import businesslogicservice.orderblservice.OrderBLService;
 
@@ -32,7 +33,7 @@ public class CargoImport extends MyJPanel {
 	private static final long serialVersionUID = 1L;
 
 	private MyJComboBox position;
-	private MyJTable commodities;
+	private MyJTable commodityList;
 	private MyJTable importList;
 	private InventoryBLService inventoryController;
 	//仓库空余位置
@@ -50,10 +51,10 @@ public class CargoImport extends MyJPanel {
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "入库", 30, true));
 		
-		commodities = new MyJTable(new String[]{"订单编号", "货物种类"}, false, this);
+		commodityList = new MyJTable(new String[]{"订单编号", "货物种类"}, false, this);
 		//设置为只可单选
-		commodities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(new MyJScrollPane(150, 150, 300, 370, commodities));
+		commodityList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.add(new MyJScrollPane(150, 150, 300, 370, commodityList));
 		this.add(new MyJLabel(260, 110, 80, 19, "入库货物", 18, true));
 		
 		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "货物种类", "入库日期", "目的地", "仓库存放位置"}, false, this);
@@ -100,12 +101,12 @@ public class CargoImport extends MyJPanel {
 	 * @return
 	 */
 	private int produceImportList(Frame_Inventory frame){
-		int rowOfOrder = commodities.getSelectedRow();
+		int rowOfOrder = commodityList.getSelectedRow();
 		if(rowOfOrder == -1) return -1;
 		
 		int rowOfPos = position.getSelectedIndex();
 		//根据选中的订单信息生成入库单
-		String[] commodityInfo = commodities.getData(rowOfOrder);
+		String[] commodityInfo = commodityList.getData(rowOfOrder);
 		String orderID = commodityInfo[0];
 		String commodityType = commodityInfo[1];
 		OrderBLService orderController;
@@ -142,7 +143,7 @@ public class CargoImport extends MyJPanel {
 		//将入库单添加到入库单列表
 		importList.addRow(new String[]{importReceipt.ID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
 		//将货物从货物列表移除
-		commodities.removeRow();
+		commodityList.removeRow();
 		
 		return rowOfPos;
 	}
@@ -164,19 +165,27 @@ public class CargoImport extends MyJPanel {
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
-				posInfo = Integer.toString(posVO.area) + "区" + Integer.toString(posVO.row) + "排" + Integer.toString(posVO.frame) + "架" + Integer.toString(posVO.position) + "位";
+				posInfo = Integer.toString(posVO.area + 1) + "区" + Integer.toString(posVO.row + 1) + "排" + Integer.toString(posVO.frame + 1) + "架" + Integer.toString(posVO.position + 1) + "位";
 				position.addItem(posInfo);	
 			}
 		}
 	}
 	
 	private void setCommodities(Frame_Inventory frame){
+		ArrayList<String> commodities = null;
 		try {
-			inventoryController = ControllerFactory.getInventoryController();
-			inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 6));
+			BranchBLService branchController = ControllerFactory.getBranchController();
+			commodities = branchController.getAllToBeExportedOrders();
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
+		if((commodities == null)||(commodities.size() == 0)){
+			return;
+		}
+		for (String commodity : commodities) {
+			commodityList.addRow(new String[]{commodity});
+		}
+		this.repaint();
 	}
 }

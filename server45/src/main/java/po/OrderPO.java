@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import po.receiptpo.ReceiptPO;
 import state.ExpressType;
+import state.OrderState;
 import state.PackageType;
 import state.ReceiptState;
 import state.ReceiptType;
@@ -30,6 +31,7 @@ public class OrderPO extends ReceiptPO {
 
 	// 订单号
 //	private String orderIdString;
+	private OrderState orderstate;
 	// 寄件人姓名、寄件人住址、
 	// 寄件人电话、寄件人单位
 	private String senderName;
@@ -56,8 +58,6 @@ public class OrderPO extends ReceiptPO {
 	private PackageType packType;
 	// 快递类型
 	private ExpressType express;
-
-	
 
 	public OrderPO(String orderIdString, ReceiptType type,String senderName, String senderAddress, String senderTel,
 			String senderCo, String recipientName, String recipientAddress, String recipientTel, String recipientCo,
@@ -200,6 +200,14 @@ public class OrderPO extends ReceiptPO {
 
 	public ExpressType getExpress() {
 		return express;
+	}
+
+	public OrderState getOrderstate() {
+		return orderstate;
+	}
+
+	public void setOrderstate(OrderState orderstate) {
+		this.orderstate = orderstate;
 	}
 
 }

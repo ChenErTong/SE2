@@ -25,6 +25,8 @@ public class UserPO extends PersistentObject{
 	private UserAuthority  authority;
 	/**地址*/
 	private String address;
+	
+	private boolean isAllocated;
 	public UserPO(String id, String userName, String password, UserIdentity iden, String phoneNumber, UserAuthority authority,
 			String address) {
 		super(id);
@@ -35,6 +37,15 @@ public class UserPO extends PersistentObject{
 		this.authority = authority;
 		this.address = address;
 	}
+	
+	public boolean isAllocated() {
+		return isAllocated;
+	}
+
+	public void setAllocated(boolean isAllocated) {
+		this.isAllocated = isAllocated;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

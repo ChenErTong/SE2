@@ -11,8 +11,8 @@ import dataservice.orderdataservice.OrderDataService;
 import po.CommodityPO;
 import po.OrderPO;
 import state.CommodityState;
+import state.OrderState;
 import vo.CommodityVO;
-import vo.OrderVO;
 
 /**
  * 
@@ -31,9 +31,10 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	/**
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(ArrayList, String)
 	 */
-	public void changeOrderState(ArrayList<String> orderIDs, String message) throws RemoteException {
+	public void changeOrderState(ArrayList<String> orderIDs, String message,OrderState orderstate) throws RemoteException {
 		for (String orderID : orderIDs) {
 			OrderPO orderPO = orderData.find(orderID);
+			orderPO.setOrderstate(orderstate);
 			addHitoryMessage(orderPO, message);
 		}
 	}
@@ -42,10 +43,11 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(ArrayList, String,
 	 *      CommodityState)
 	 */
-	public void changeOrderState(ArrayList<String> orderIDs, String message, CommodityState commodityState)
+	public void changeOrderState(ArrayList<String> orderIDs, String message, CommodityState commodityState,OrderState orderstate)
 			throws RemoteException {
 		for (String orderID : orderIDs) {
 			OrderPO orderPO = orderData.find(orderID);
+			orderPO.setOrderstate(orderstate);
 			addHitoryMessage(orderPO, message);
 			updateCommodityState(orderPO, commodityState);
 		}
@@ -54,10 +56,9 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	/**
 	 * @see OrderInfo_Branch_Transfer#getAllOrders()
 	 */
-	public ArrayList<OrderVO> getAllOrders() throws RemoteException {
+	public ArrayList<OrderPO> getAllOrders() throws RemoteException {
 		ArrayList<OrderPO> orderPOs = orderData.find();
-		ArrayList<OrderVO> orderVOs = OrderTrans.convertOrderPOstoVOs(orderPOs);
-		return orderVOs;
+		return orderPOs;
 	}
 
 	/**
@@ -83,13 +84,14 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	/**
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(String, String)
 	 */
-	public boolean changeOrderState(String order, String message) throws RemoteException {
+	public boolean changeOrderState(String order, String message,OrderState orderstate) throws RemoteException {
 		OrderPO orderPO = orderData.find(order);
 		if (orderPO == null) {
 			System.out.println("print in package businesslogic.orderbl;");
 			System.out.println("package businesslogic.orderbl;");
 			return false;
 		} else {
+			orderPO.setOrderstate(orderstate);
 			addHitoryMessage(orderPO, message);
 			return true;
 		}
@@ -99,8 +101,9 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 	 * @see OrderInfo_Branch_Transfer#changeOrderState(String, String,
 	 *      CommodityState)
 	 */
-	public void changeOrderState(String order, String message, CommodityState commodityState) throws RemoteException {
+	public void changeOrderState(String order, String message, CommodityState commodityState,OrderState orderstate) throws RemoteException {
 		OrderPO orderPO = orderData.find(order);
+		orderPO.setOrderstate(orderstate);
 		addHitoryMessage(orderPO, message);
 		updateCommodityState(orderPO, commodityState);
 	}
@@ -139,5 +142,32 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 		historyMessage.add(message);
 		order.setMidAddres(historyMessage);
 		orderData.modify(order);
+	}
+
+	@Override
+	public void changeOrderStateToExporting(ArrayList<String> orders, String string) throws RemoteException {
+		this.changeOrderState(orders, string, OrderState.EXPORTING);
+	}
+
+	@Override
+	public void changeOrderStateToTBE(String order, String string, CommodityState state) throws RemoteException {
+		this.changeOrderState(order, string, state, OrderState.TO_BE_EXPORTED);
+	}
+
+	@Override
+	public void changeOrderStateToExporting(String order, String message) throws RemoteException {
+		this.changeOrderState(order, message, OrderState.EXPORTING);
+	}
+
+	@Override
+	public void changeOrderStateToAPPROVING(String orderID) throws RemoteException {
+		OrderPO orderPO = orderData.find(orderID);
+		if (orderPO == null) {
+			System.out.println("print in package businesslogic.orderbl;");
+			System.out.println("package businesslogic.orderbl;");
+		} else {
+			orderPO.setOrderstate(OrderState.MANAGER_APPROVING);
+			orderData.modify(orderPO);
+		}
 	}
 }

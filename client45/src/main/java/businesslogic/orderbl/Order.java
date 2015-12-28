@@ -13,6 +13,7 @@ import dataservice.orderdataservice.OrderDataService;
 import po.OrderPO;
 import state.ConfirmState;
 import state.ExpressType;
+import state.OrderState;
 import state.ResultMessage;
 import vo.CommodityVO;
 import vo.OrderVO;
@@ -41,6 +42,7 @@ public class Order {
 
 	public ResultMessage addOrder(OrderVO order) throws RemoteException {
 		OrderPO po = OrderTrans.convertVOtoPO(order);
+		po.setOrderstate(OrderState.TO_BE_EXPORTED);
 		return orderData.add(po);
 	}
 

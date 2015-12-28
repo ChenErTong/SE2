@@ -102,4 +102,5 @@ public interface OrderBLService extends BLService {
 	 */
 	public String getArrivalDate(String senderAddress, String receiverAddress, ExpressType expressType,
 			String beginDate) throws RemoteException;
+	
 }
