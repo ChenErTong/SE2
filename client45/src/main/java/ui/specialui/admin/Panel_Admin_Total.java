@@ -227,7 +227,9 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
 			}else{
-				String[] data = this.setUserDetails();
+				
+				String[] data = new String[9];
+				this.setUserDetails(data);
 				userDetails.setData(data);
 				userDetails.setEnabled(true);
 			}
@@ -258,7 +260,8 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedColumnCount()==0){
 				new MyNotification(this,"请先选择要查看的用户！",Color.RED);
 			}else{
-				String [] data = this.setUserDetails();
+				String [] data = new String[9];
+						this.setUserDetails(data);
 				userDetails.setData(data);
 				userDetails.setUneditable();
 			}
@@ -301,7 +304,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 					}
 					for(int i = 0; i < userVO.size(); i++){
 						Object[] rowData = {userVO.get(i).id,userVO.get(i).userName,userVO.get(i).password,
-							userVO.get(i).iden,userVO.get(i).authority,userVO.get(i).phoneNumber,userVO.get(i).address};
+							userVO.get(i).iden.value,userVO.get(i).authority.value,userVO.get(i).phoneNumber,userVO.get(i).address};
 						tableModel.addRow(rowData);
 						userPool.add(userVO.get(i));
 						System.out.println("SearchSucceed!");
@@ -455,19 +458,19 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 	/**
 	 * 设置用户详细信息面板,在查看用户信息和修改用户信息时调用
 	 */
-	private String[]  setUserDetails(){
+	private void  setUserDetails(String[] data){
 		userID = userPool.get(table.getSelectedRow()).id;
-		String[] data = new String[9];
+		
 		data[0] = userPool.get(table.getSelectedRow()).id;
 		data[1] = userPool.get(table.getSelectedRow()).password;
 		data[2] = userPool.get(table.getSelectedRow()).userName;
 		data[3] = userPool.get(table.getSelectedRow()).phoneNumber;
-		data[4] = userPool.get(table.getSelectedRow()).iden+"";
+		data[4] = userPool.get(table.getSelectedRow()).iden.value;
 		data[5] = userPool.get(table.getSelectedRow()).authority.value;
 		data[6] = userPool.get(table.getSelectedRow()).address.substring(0,3);
 		data[7] = userPool.get(table.getSelectedRow()).address.substring(3,6);
 		data[8] = userPool.get(table.getSelectedRow()).address.substring(6);
-		return data;
+	
 	}
 	/**
 	 * 身份和权限是否匹配
