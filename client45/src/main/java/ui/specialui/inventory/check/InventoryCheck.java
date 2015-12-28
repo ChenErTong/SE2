@@ -46,9 +46,9 @@ public class InventoryCheck extends MyJPanel{
 		latterDate.setText(GetDate.getDate());
 		this.add(latterDate);
 		
-		inventoryInfo = new MyJTable(new String[]{"入库总数", "出库总数", "库存数量"}, false);
+		inventoryInfo = new MyJTable(new String[]{"入库总数", "出库总数", "库存数量"}, false, this);
 		this.add(new MyJScrollPane(415, 170, 450, 45, inventoryInfo));
-		commodityInfo = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
+		commodityInfo = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false, this);
 		this.add(new MyJScrollPane(415, 215, 450, 450, commodityInfo));
 		
 		MyButton search = new MyButton(795, 96, 35, 35, LoginImage.getBUTTON_LOGISTIC());
@@ -57,6 +57,7 @@ public class InventoryCheck extends MyJPanel{
 				if(!InventoryCheck.this.searchWithinGap(frame)){
 					new MyNotification(frame, "请正确输入时间", Color.RED);
 				}
+				InventoryCheck.this.repaint();
 			}
 		});
 		this.add(search);
@@ -79,7 +80,7 @@ public class InventoryCheck extends MyJPanel{
 		InventoryViewVO inventoryView = null;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 4), formerDate.getText(), latterDate.getText());
+			inventoryView = inventoryController.viewInventory(frame.getID().substring(0, 6), formerDate.getText(), latterDate.getText());
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return true;

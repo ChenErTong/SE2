@@ -1,20 +1,18 @@
 package ui.specialui.admin;
 
-import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
+
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
+
 import ui.image.LoginImage;
-import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
 
@@ -57,44 +55,57 @@ public class UserInfo extends MyTranslucentPanel{
 	}
 	
 	private void initTable(){
-		String[] headers = {"用户编号", "用户姓名", "用户密码", "用户类别", "用户权限","联系方式","家庭地址"};
-		table = new MyJTable(headers,false);
-		table.setBackground(new Color(40, 42, 66));
-		table.setForeground(Color.WHITE);
-		table.setFont(new MyFont(14));
-
-		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
-		firsetColumn.setPreferredWidth(80);
-		firsetColumn.setMaxWidth(80);
-		firsetColumn.setMinWidth(80);
+		table = new MyJTable(new String[]{"用户编号", "用户姓名", "用户密码", "用户类别", "用户权限","联系方式","家庭地址"},false, this);
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				UserInfo.this.repaint();
+			}
+		});
 		
-		TableColumn secondColumn = table.getColumnModel().getColumn(1);
-		secondColumn.setPreferredWidth(80);
-		secondColumn.setMaxWidth(80);
-		secondColumn.setMinWidth(80);
-		
-		TableColumn thirdColumn = table.getColumnModel().getColumn(2);
-		thirdColumn.setPreferredWidth(80);
-		thirdColumn.setMinWidth(80);
-		thirdColumn.setMaxWidth(80);
-		
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table.setDefaultRenderer(Object.class, tcr);
-		
-		jsp=new JScrollPane(table);
-		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-		head.setFont(new MyFont(14));
-		head.setForeground(Color.BLACK);
-		head.setResizingAllowed(false);
-				
-		jsp.setBounds(15, 50, 590, 495);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
+		jsp = new MyJScrollPane(15, 50, 590, 495, table);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				UserInfo.this.repaint();
+			}
+		});
 		this.add(jsp);
+		
+//		table.setBackground(new Color(40, 42, 66));
+//		table.setForeground(Color.WHITE);
+//		table.setFont(new MyFont(14));
+//
+//		TableColumn firsetColumn = table.getColumnModel().getColumn(0);
+//		firsetColumn.setPreferredWidth(80);
+//		firsetColumn.setMaxWidth(80);
+//		firsetColumn.setMinWidth(80);
+//		
+//		TableColumn secondColumn = table.getColumnModel().getColumn(1);
+//		secondColumn.setPreferredWidth(80);
+//		secondColumn.setMaxWidth(80);
+//		secondColumn.setMinWidth(80);
+//		
+//		TableColumn thirdColumn = table.getColumnModel().getColumn(2);
+//		thirdColumn.setPreferredWidth(80);
+//		thirdColumn.setMinWidth(80);
+//		thirdColumn.setMaxWidth(80);
+//		
+//		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+//		tcr.setHorizontalAlignment(JLabel.CENTER);
+//		table.setDefaultRenderer(Object.class, tcr);
+//		
+//		jsp=new JScrollPane(table);
+//		JTableHeader head = table.getTableHeader();
+//		head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
+//		head.setFont(new MyFont(14));
+//		head.setForeground(Color.BLACK);
+//		head.setResizingAllowed(false);
+//				
+//		jsp.setBounds(15, 50, 590, 495);
+//		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
+//		jsp.setOpaque(false);
+//		jsp.setBorder(BorderFactory.createEmptyBorder());
+//		jsp.setVisible(true);
+//		this.add(jsp);
 	}
 	
 	public void setData(String data) {

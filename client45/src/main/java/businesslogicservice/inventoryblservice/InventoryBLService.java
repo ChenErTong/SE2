@@ -77,12 +77,6 @@ public interface InventoryBLService {
 	public InventoryExportReceiptVO minusCommodities(String transferID, int area, int row, int frame, int position)
 			throws RemoteException;
 
-	/** 选择并添加相应的数据（订单托运编号、出库日期、目的地、装运形式、中转单编号）到出库单中生成出库单PO **/
-//	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
-
-	/** 单据被提交发送给经理进行审 **/
-//	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException;
-
 	/* 调整 */
 	/**
 	 * 得到该调整单的编号

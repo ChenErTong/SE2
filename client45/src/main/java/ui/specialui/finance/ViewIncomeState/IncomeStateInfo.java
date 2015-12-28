@@ -28,11 +28,13 @@ import ui.myui.MyFileChooser;
 import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
 import ui.specialui.finance.Frame_Finance;
+import ui.specialui.finance.ViewLogMsg.LogPanel;
 import vo.BussinessConditionVO;
 /**
  * 查看、导出成本收益表的Panel
@@ -117,41 +119,15 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	
 	private void initTable(){
 		//the table
-				String[] headers = {"序号","科目分类","科目名称","金额"};
-				table = new MyJTable(headers, false);
-				table.setBackground(new Color(40, 42, 66));
-				table.setForeground(Color.WHITE);
-				table.setFont(new MyFont(14));
-				table.getTableHeader().setResizingAllowed(false);
-					
-				table.getColumnModel().getColumn(0).setPreferredWidth(180);
-				table.getColumnModel().getColumn(0).setMaxWidth(180);
-				table.getColumnModel().getColumn(0).setMinWidth(180);
-					
-				table.getColumnModel().getColumn(1).setPreferredWidth(380);
-				table.getColumnModel().getColumn(1).setMaxWidth(380);
-				table.getColumnModel().getColumn(1).setMinWidth(380);
-					
-				table.getColumnModel().getColumn(2).setPreferredWidth(380);
-				table.getColumnModel().getColumn(2).setMaxWidth(380);
-				table.getColumnModel().getColumn(2).setMinWidth(380);
-				DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-				tcr.setHorizontalAlignment(JLabel.CENTER);
-				table.setDefaultRenderer(Object.class, tcr);
-											  	
-				jsp=new JScrollPane(table);
-				JTableHeader head = table.getTableHeader();
-				head.setBackground(new Color(0.1f, 0.19f, 0.54f, 0.2f));
-				head.setFont(new MyFont(14));
-				head.setForeground(Color.BLACK);
-				head.setResizingAllowed(false);
-										
-				jsp.setBounds(20, 118, 1085, 450);
-				jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-				jsp.setOpaque(false);
-				jsp.setBorder(BorderFactory.createEmptyBorder());
-				jsp.setVisible(true);
-				this.add(jsp);
+		String[] headers = {"序号","科目分类","科目名称","金额"};
+		table = new MyJTable(headers, false, this);
+		jsp=new MyJScrollPane(20, 118, 1085, 450, table);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				IncomeStateInfo.this.repaint();
+			}
+		});
+		this.add(jsp);
 	}
 
 	/**

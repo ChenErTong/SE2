@@ -114,7 +114,7 @@ public class IncomeStateInfo extends  MyTranslucentPanel implements ActionListen
 	private void initTable(){
 		//the table
 				String[] headers = {"序号","科目分类","科目名称","金额"};
-				table = new MyJTable(headers, false);
+				table = new MyJTable(headers, false,this);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
 				table.setFont(new MyFont(14));

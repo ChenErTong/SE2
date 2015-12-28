@@ -3,6 +3,8 @@ package ui.specialui.finance.OpenningStock;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -22,9 +24,11 @@ import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
+import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.finance.Frame_Finance;
+import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 import vo.OpeningStockVO;
 /**
  * 显示公司期初建账信息列表的Panel
@@ -56,89 +60,58 @@ public class OpenningStockManage extends MyJPanel implements ActionListener{
 	
 	private void initTable(){
 		String[] headers = {"机构编号", "成立日期","机构类型","机构人数","机构地址","机构人员信息","仓库/转运工具信息"};
-		transferTable= new MyJTable(headers,false);
-		transferTable.setBackground(new Color(40, 42, 66));
-		transferTable.setForeground(Color.WHITE);
-		transferTable.setFont(new MyFont(14));
-		
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		transferTable.setDefaultRenderer(Object.class, tcr);
-
+		transferTable= new MyJTable(headers,false, this);
 		
 		String[] headers2 = {"人员编号", " 日期","姓名","职务权限","工作时间"};
-		employTable = new MyJTable(headers2,false);
-		employTable.setBackground(new Color(40, 42, 66));
-		employTable.setForeground(Color.WHITE);
-		employTable.setFont(new MyFont(14));
-		
-		DefaultTableCellRenderer tcr1 = new DefaultTableCellRenderer();
-		tcr1.setHorizontalAlignment(JLabel.CENTER);
-		employTable.setDefaultRenderer(Object.class, tcr1);
+		employTable = new MyJTable(headers2,false,this);
 		
 		String[] headers3 = {"车辆编号", "日期","车辆购入日期","车牌号","运输历史"};
-		facilityTable = new MyJTable(headers3,false);
-		facilityTable.setBackground(new Color(40, 42, 66));
-		facilityTable.setForeground(Color.WHITE);
-		facilityTable.setFont(new MyFont(14));
-		
-		DefaultTableCellRenderer tcr2 = new DefaultTableCellRenderer();
-		tcr2.setHorizontalAlignment(JLabel.CENTER);
-		facilityTable.setDefaultRenderer(Object.class, tcr2);
+		facilityTable = new MyJTable(headers3,false,this);
 		
 		String[] headers4 = {"库存编号","区","排","架","位"};
-		inventoryTable = new MyJTable(headers4,false);
-		inventoryTable.setBackground(new Color(40, 42, 66));
-		inventoryTable.setForeground(Color.WHITE);
-		inventoryTable.setFont(new MyFont(14));
-		
-		DefaultTableCellRenderer tcr3 = new DefaultTableCellRenderer();
-		tcr3.setHorizontalAlignment(JLabel.CENTER);
-		inventoryTable.setDefaultRenderer(Object.class, tcr3);
+		inventoryTable = new MyJTable(headers4,false,this);
 		
 		String[] headers5 = {"账户编号","日期", "账户名称", "账户金额"};
-		bankAccountTable = new MyJTable(headers5,false);
-		bankAccountTable.setBackground(new Color(40, 42, 66));
-		bankAccountTable.setForeground(Color.WHITE);
-		bankAccountTable.setFont(new MyFont(14));
+		bankAccountTable = new MyJTable(headers5,false,this);
 		
-		DefaultTableCellRenderer tcr4 = new DefaultTableCellRenderer();
-		tcr4.setHorizontalAlignment(JLabel.CENTER);
-		bankAccountTable.setDefaultRenderer(Object.class, tcr4);
-		
-		JScrollPane jsp = new JScrollPane(transferTable);
-		jsp.setBounds(185/2, 90-30, 1085,  512/5+16);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setVisible(true);
+		MyJScrollPane jsp = new MyJScrollPane(185/2, 90-30, 1085,  512/5+16, transferTable);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				OpenningStockManage.this.repaint();
+			}
+		});
 		this.add(jsp);
 		
-		JScrollPane jsp2 = new JScrollPane(employTable);
-		jsp2.setBounds(185/2, 90+ (512/5)*1 + 10+16-30, 1085, 512/5+16 );
-		jsp2.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp2.setOpaque(false);
-		jsp2.setVisible(true);
+		MyJScrollPane jsp2 = new MyJScrollPane(185/2, 90+ (512/5)*1 + 10+16-30, 1085, 512/5+16, employTable);
+		jsp2.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				OpenningStockManage.this.repaint();
+			}
+		});
 		this.add(jsp2);
 		
-		JScrollPane jsp3 = new JScrollPane(facilityTable);
-		jsp3.setBounds(185/2, 90 + (512/5)*2 + 20+16*2-30, 1085, 512/5+16 );
-		jsp3.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp3.setOpaque(false);
-		jsp3.setVisible(true);
+		MyJScrollPane jsp3 = new MyJScrollPane(185/2, 90 + (512/5)*2 + 20+16*2-30, 1085, 512/5+16, facilityTable);
+		jsp3.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				OpenningStockManage.this.repaint();
+			}
+		});
 		this.add(jsp3);
 		
-		JScrollPane jsp4 = new JScrollPane(inventoryTable);
-		jsp4.setBounds(185/2, 90 + (512/5)*3 + 30 +16*3-30,1085, 512/5+16);
-		jsp4.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp4.setOpaque(false);
-		jsp4.setVisible(true);
+		MyJScrollPane jsp4 = new MyJScrollPane(185/2, 90 + (512/5)*3 + 30 +16*3-30,1085, 512/5+16, inventoryTable);
+		jsp4.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				OpenningStockManage.this.repaint();
+			}
+		});
 		this.add(jsp4);
 		
-		JScrollPane jsp5 = new JScrollPane(bankAccountTable);
-		jsp5.setBounds(185/2, 90+(512/5)*4+40+16*3+10-30, 1085, 512/5+16);
-		jsp5.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp5.setOpaque(false);
-		jsp5.setVisible(true);
+		MyJScrollPane jsp5 = new MyJScrollPane(185/2, 90+(512/5)*4+40+16*3+10-30, 1085, 512/5+16, bankAccountTable);
+		jsp5.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				OpenningStockManage.this.repaint();
+			}
+		});
 		this.add(jsp5);
 	}
 	

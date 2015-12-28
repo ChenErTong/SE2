@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.myui.MyJFrame;
 import vo.OrderVO;
@@ -33,7 +34,8 @@ public class Frame_Sender extends MyJFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("return")){
-			this.logout();
+			new Frame_Login(ID);
+			this.dispose();
 		}
 	}
 }

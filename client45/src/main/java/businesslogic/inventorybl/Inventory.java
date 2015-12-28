@@ -364,7 +364,6 @@ public class Inventory {
 	 */
 	public ArrayList<InventoryPositionVO> getEmptyPositionsInList(String transferID) throws RemoteException {
 		InventoryPO inventory = this.findInventoryByTransferID(transferID);
-		
 		// 如果中转中心没有仓库，返回空列表
 		if (inventory == null) {
 			return new ArrayList<>();
@@ -465,6 +464,7 @@ public class Inventory {
 		if (transferPO == null) {
 			return null;
 		}
+		System.out.println(transferPO.getInventories().size());
 		return transferPO.getInventories().get(0);
 	}
 }

@@ -101,7 +101,7 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		commodityWeightField.setOnlyDouble();
 		this.add(commodityWeightField);
 		
-		commodityList = new MyJTable(new String[]{"种类", "体积", "重量"}, false);
+		commodityList = new MyJTable(new String[]{"种类", "体积", "重量"}, false, this);
 		MyJScrollPane jsp = new MyJScrollPane(50, 340, 460, 135, commodityList);
 		this.add(jsp);
 		

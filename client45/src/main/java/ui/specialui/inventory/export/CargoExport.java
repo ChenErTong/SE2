@@ -45,13 +45,13 @@ public class CargoExport extends MyJPanel {
 		
 		this.add(new MyJLabel(608, 30, 64, 32, "出库", 30, true));
 		
-		commodities = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false);
+		commodities = new MyJTable(new String[]{"订单编号", "货物种类", "仓库存放位置"}, false, this);
 		//设置为只可单选
 		commodities.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.add(new MyJScrollPane(150, 150, 330, 370, commodities));
 		this.add(new MyJLabel(279, 110, 80, 19, "出库货物", 18, true));
 		
-		exportList = new MyJTable(new String[]{"中转单编号", "订单编号", "货物种类", "出库日期", "物流方式"}, false);
+		exportList = new MyJTable(new String[]{"中转单编号", "订单编号", "货物种类", "出库日期", "物流方式"}, false, this);
 		this.add(new MyJScrollPane(580, 150, 550, 370, exportList));
 		this.add(new MyJLabel(805, 110, 100, 19, "出库单列表", 18, true));
 		
@@ -82,7 +82,7 @@ public class CargoExport extends MyJPanel {
 		ArrayList<InventoryPositionVO> commodities = null;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
-			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 4));
+			commodities = inventoryController.getCommoditiesInInventory(frame.getID().substring(0, 6));
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
@@ -103,15 +103,12 @@ public class CargoExport extends MyJPanel {
 		String position = commodityInfo[2];	
 		InventoryExportReceiptVO exportReceipt;
 		try {
-			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 4), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
+			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 6), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
 //			String id = inventoryController.getExportID();
 			//将数据加入出库单列表
 			exportList.addRow(new String[]{exportReceipt.ID, commodityInfo[0], commodityInfo[1], GetDate.getDate(), (String) transport.getSelectedItem()});
 			//将货物从仓库列表中移除
 			commodities.removeRow();
-			//存储数据
-//			inventoryController.saveExport(exportReceipt);
-//			inventoryController.submitExport(exportReceipt);
 			return 0;
 		} catch (RemoteException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);

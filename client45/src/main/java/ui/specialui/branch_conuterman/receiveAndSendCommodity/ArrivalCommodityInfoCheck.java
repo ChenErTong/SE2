@@ -3,6 +3,8 @@ package ui.specialui.branch_conuterman.receiveAndSendCommodity;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -52,7 +54,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		
 		this.add(new MyJLabel(550, 30, 210, 45, "接收派件货物", 30, true));
 		
-		orders = new MyJTable(new String[]{"送达订单编号"}, false);
+		orders = new MyJTable(new String[]{"送达订单编号"}, false, this);
 		orders.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				//双击显示订单详细信息
@@ -65,7 +67,13 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 			}
 		});
 		this.setOrderList();
-		this.add(new MyJScrollPane(250, 150, 340, 370, orders));
+		MyJScrollPane jsp = new MyJScrollPane(250, 150, 340, 370, orders);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				ArrivalCommodityInfoCheck.this.repaint();
+			}
+		});
+		this.add(jsp);
 
 		orderInfo = new MyEmptyTextArea(690, 150, 340, 370);
 		this.add(orderInfo);
@@ -144,6 +152,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 		
 		try {
 			branchController = ControllerFactory.getBranchController();
+			System.out.println(branchController.getAllOrderNumber().size());
 			for (String orderID : branchController.getAllOrderNumber()) {
 				orders.addRow(new String[]{orderID});
 			}

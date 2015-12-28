@@ -141,7 +141,7 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 	private void initTable(){
 		//the table
 				String[] headers = {"单据编号","单据种类","单据内容","单据金额"};
-				table = new MyJTable(headers, false);
+				table = new MyJTable(headers, false,this);
 				table.setBackground(new Color(40, 42, 66));
 				table.setForeground(Color.WHITE);
 				table.setFont(new MyFont(14));

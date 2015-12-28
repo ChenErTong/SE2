@@ -66,7 +66,7 @@ public class ArrivalCommodityInfo extends MyTranslucentPanel {
 		
 		this.add(new MyJLabel(31, 222, 114, 19, "中转中心编号", 18, true));
 		fields[3] = new MyJTextField(160, 220, 130, 30);
-		fields[3].setOnlyInteger(3);
+		fields[3].setOnlyInteger(4);
 		fields[3].addActionListener(new ActionListener(){
 
 			@Override

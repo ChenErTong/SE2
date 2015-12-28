@@ -45,10 +45,10 @@ public class Stocking extends MyJPanel {
 		this.add(new MyJLabel(576, 30, 128, 32, "库存盘点", 30, true));
 
 		this.add(new MyJLabel(385, 128, 105, 19, "前一截止点:", 18, true));
-		formerPoint = new MyJLabel(495, 128, 110, 19, null, 18, true);
+		formerPoint = new MyJLabel(495, 128, 180, 19, null, 18, true);
 		this.add(formerPoint);
 		inventoryCondition = new MyJTable(new String[] { "订单编号", "货物种类",
-				"仓库存放位置" }, false);
+				"仓库存放位置" }, false, this);
 		this.add(new MyJScrollPane(385, 150, 510, 410, inventoryCondition));
 
 		this.refreshCondition(frame);
@@ -97,19 +97,18 @@ public class Stocking extends MyJPanel {
 
 	// 刷新库存信息
 	private boolean refreshCondition(Frame_Inventory frame) {
-	//	if (inventoryController == null) return false;
+		if (inventoryController == null) return false;
 		
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
 			inventoryCheck = inventoryController.checkRecord(frame.getID()
-					.substring(0, 4), GetDate.getDate());
+					.substring(0, 6), GetDate.getDate());
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
 			return false;
 		}
 
-		String point = inventoryCheck.date + inventoryCheck.lotNum;
-		formerPoint.setText(point);
+		formerPoint.setText(inventoryCheck.lotNum.substring(5));
 		ArrayList<InventoryPositionVO> commodities = inventoryCheck.commos;
 		if (commodities != null) {
 			for (InventoryPositionVO commodity : commodities) {

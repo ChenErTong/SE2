@@ -1,6 +1,9 @@
 package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -31,6 +34,8 @@ public class OrderInput extends MyJPanel {
 	private CommodityInfoInput commodities;
 	//逻辑接口
 	private OrderBLService controller;
+	
+	private MyNotification notifacation;
 	
 	public OrderInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);
@@ -146,6 +151,15 @@ public class OrderInput extends MyJPanel {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return -1;
 		}
+		
+		n = new MyNotification(this, "订单号\n" + id, Color.GREEN);
+		try {
+			Thread.sleep(3000);
+			n.dispose();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 
