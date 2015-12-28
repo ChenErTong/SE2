@@ -1,26 +1,22 @@
 package ui.specialui.finance.SettlementManage;
 
-import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyComboBox;
-import ui.myui.MyFont;
+
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 
 /**
  * 按照日期搜索收款单
@@ -73,6 +69,11 @@ public class SearchPayReceipt extends MyTranslucentPanel{
 		//the table
 		String[] headers = {"付款单编号","付款人","付款金额","付款账号","付款条目","付款备注","付款日期"};
 		table = new MyJTable(headers, false, this);
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				SearchPayReceipt.this.repaint();
+			}
+		});
 		jsp=new MyJScrollPane(15, 50, 590, 180, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

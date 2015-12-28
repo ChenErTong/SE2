@@ -1,26 +1,21 @@
 package ui.specialui.manager.AdjustBase;
 
-import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 
 /**
  * 进行搜索成本常量的Panel
@@ -68,6 +63,11 @@ public class SearchBaseInfo extends MyTranslucentPanel{
 		//the table
 		String[] headers = {"出发城市","到达城市","城市距离","运输单价"};
 		table = new MyJTable(headers, false, this);
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				SearchBaseInfo.this.repaint();
+			}
+		});
 		jsp=new MyJScrollPane(15, 50, 590, 495-27, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

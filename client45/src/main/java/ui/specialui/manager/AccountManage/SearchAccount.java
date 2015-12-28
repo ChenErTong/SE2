@@ -1,22 +1,21 @@
 package ui.specialui.manager.AccountManage;
-import java.awt.Color;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.JTableHeader;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
+
 
 public class SearchAccount extends MyTranslucentPanel{
 
@@ -50,7 +49,12 @@ public class SearchAccount extends MyTranslucentPanel{
 	private void initTable(){
 		//the table
 		String[] headers = {"编号", "姓名", "职务", "出生日期", "身份证号","任职时间","薪水","联系方式","车辆编号","订单编号"};
-		table = new MyJTable(headers, false, this);		  	
+		table = new MyJTable(headers, false, this);		
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				SearchAccount.this.repaint();
+			}
+		});
 		jsp=new MyJScrollPane(15, 45, 580, 190, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

@@ -9,12 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 import state.OrganizationType;
 import state.ResultMessage;
@@ -22,13 +17,13 @@ import ui.image.CommonImage;
 import ui.image.ManagerImage;
 import ui.image.FinanceImage.BankAccountImage;
 import ui.myui.MyButton;
-import ui.myui.MyFont;
+
 import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
+
 import ui.specialui.manager.FrameManager;
 import vo.BranchVO;
 import vo.FacilityVO;

@@ -63,6 +63,7 @@ public class Frame_Finance  extends MyJFrame implements ActionListener{
 	private MyButton ViewIncomeStatement;
 	private MyButton viewLog;
 	
+	@SuppressWarnings("unused")
 	private DebitAndPayBillShowController showController;
 	
 	public Frame_Finance(String userID){

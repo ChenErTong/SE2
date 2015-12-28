@@ -1,30 +1,24 @@
 package ui.specialui.finance.BankAccountManage;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 import vo.BankAccountVO;
 
 /**
@@ -80,6 +74,11 @@ private void initComponent(BankAccountManage manage) {
 		//the table
 		String[] headers = {"账户编号","账户名称","账户余额"};
 		table = new MyJTable(headers, false, this);  	
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				SearchBankAccount.this.repaint();
+			}
+		});
 		jsp=new MyJScrollPane(10, 76, 530, 444, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

@@ -29,11 +29,11 @@ public class mainForUITest2 {
 		}
 		
 		String userID = "000000105";
-	new Frame_Login(userID);
+	//new Frame_Login(userID);
 //	new Frame_Inventory(userID);
 //	new Frame_Transfer(userID);
 	//new Frame_Courier(userID);
-//	new Frame_Branch(userID);
+new Frame_Branch(userID);
 //	new Frame_Finance(userID);
 //		new Frame_Admin(userID);
 	}

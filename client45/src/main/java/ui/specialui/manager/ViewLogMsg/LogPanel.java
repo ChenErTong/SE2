@@ -1,23 +1,19 @@
 package ui.specialui.manager.ViewLogMsg;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
 import ui.myui.MyEmptyTextArea;
-import ui.myui.MyFont;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
@@ -113,6 +109,11 @@ public class LogPanel extends MyTranslucentPanel{
 	 */
 	private void initTable(){
 		String[] headers = {"操作人","操作时间","操作记录"};
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				LogPanel.this.repaint();
+			}
+		});
 		table = new MyJTable(headers,false,this);
 		MyJScrollPane jsp=new MyJScrollPane(15, 50, 590, 530-50, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {

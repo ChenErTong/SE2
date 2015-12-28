@@ -3,6 +3,8 @@ package ui.specialui.finance.ViewBusinessPerformance;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
@@ -12,21 +14,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 import businesslogic.ControllerFactory;
 import businesslogicservice.recordblservice.RecordBLService;
 import ui.image.LoginImage;
 import ui.image.FinanceImage.FinanceImage;
 import ui.myui.MyFileChooser;
-import ui.myui.MyFont;
 import ui.myui.MyButton;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
@@ -34,8 +32,8 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.myui.MyTranslucentPanel;
+
 import ui.specialui.finance.Frame_Finance;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
 import vo.BussinessProcessVO;
 import vo.receiptvo.DebitAndPayBillVO;
 import vo.receiptvo.DebitBillVO;
@@ -151,6 +149,11 @@ public class BusinessPerformanceInfo extends  MyTranslucentPanel implements Acti
 		//the table
 		String[] headers = {"单据编号","单据种类","单据内容","单据金额"};
 		table = new MyJTable(headers, false, this);
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				BusinessPerformanceInfo.this.repaint();
+			}
+		});
 		jsp=new MyJScrollPane(20, 118, 1085, 450, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

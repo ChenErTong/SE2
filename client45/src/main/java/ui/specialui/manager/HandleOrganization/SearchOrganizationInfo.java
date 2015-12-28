@@ -1,26 +1,21 @@
 package ui.specialui.manager.HandleOrganization;
 
-import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 
 import ui.image.LoginImage;
 import ui.myui.MyButton;
-import ui.myui.MyFont;
 import ui.myui.MyJComboBox;
 import ui.myui.MyJLabel;
 import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
+
 /**
  * 搜索机构信息并显示列表
  * @author zsq
@@ -60,6 +55,11 @@ public class SearchOrganizationInfo extends MyTranslucentPanel{
 		//the table
 				String[] headers = {"编号","类型","日期","仓库/转运工具信息","员工信息","地址"};
 				table = new MyJTable(headers,false,this);
+				table.addMouseListener(new MouseAdapter() {
+					public void mousePressed(MouseEvent e) {
+						SearchOrganizationInfo.this.repaint();
+					}
+				});
 				jsp=new MyJScrollPane(15, 50, 590, 495, table);
 				jsp.addMouseWheelListener(new MouseWheelListener() {
 					public void mouseWheelMoved(MouseWheelEvent e) {

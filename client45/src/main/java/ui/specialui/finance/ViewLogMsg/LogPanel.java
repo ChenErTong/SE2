@@ -1,6 +1,8 @@
 package ui.specialui.finance.ViewLogMsg;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.text.SimpleDateFormat;
@@ -17,6 +19,7 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
+
 /**
  * 查看、显示系统log日志的Panel
  * @author zsq
@@ -110,6 +113,11 @@ public class LogPanel extends MyTranslucentPanel{
 	private void initTable(){
 		String[] headers = {"操作人","操作时间","操作记录"};
 		table = new MyJTable(headers,false, this);
+		table.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				LogPanel.this.repaint();
+			}
+		});
 		MyJScrollPane jsp = new MyJScrollPane(15, 50, 590, 530, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {

@@ -1,5 +1,7 @@
 package ui.specialui.manager.AdjustSalaryPolicy;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
@@ -14,7 +16,7 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyTranslucentPanel;
-import ui.specialui.finance.ViewIncomeState.IncomeStateInfo;
+
 /**
  * 查询薪水策略
  * @author zsq
@@ -70,6 +72,11 @@ public class SearchPolicyInfo  extends MyTranslucentPanel{
 		//the table
 				String[] headers = {"员工类别","策略类别","策略规则"};
 				table = new MyJTable(headers,false, this);
+				table.addMouseListener(new MouseAdapter() {
+					public void mousePressed(MouseEvent e) {
+						SearchPolicyInfo.this.repaint();
+					}
+				});
 				jsp=new MyJScrollPane(15, 50, 590, 495-27, table);
 				jsp.addMouseWheelListener(new MouseWheelListener() {
 					public void mouseWheelMoved(MouseWheelEvent e) {

@@ -59,6 +59,7 @@ public class FrameManager extends MyJFrame implements ActionListener{
 	private MyButton ViewIncomeStatement;
 	private MyButton viewLog;
 	
+	@SuppressWarnings("unused")
 	private AccountBLService controller ;
 	
 	public FrameManager(String userID){

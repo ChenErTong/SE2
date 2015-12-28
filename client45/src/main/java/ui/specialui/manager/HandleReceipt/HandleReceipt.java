@@ -31,7 +31,7 @@ import ui.myui.MyJPanel;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.manager.FrameManager;
-import vo.CommodityVO;
+
 import vo.ValueObject;
 import vo.receiptvo.DebitBillVO;
 import vo.receiptvo.InventoryExportReceiptVO;
