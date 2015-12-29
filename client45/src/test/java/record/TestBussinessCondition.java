@@ -1,7 +1,7 @@
 package record;
 
 
-/**
+/*
 import static org.junit.Assert.*
 ;
 
@@ -23,4 +23,4 @@ public class TestBussinessCondition {
 		assertEquals(new BussinessConditionVO( "20151003",5000, 3000, 2000).getTotalIncome(),bcl.BussinessCondition("20151003").getTotalIncome(),0.01);
 	}
 }
-**/
+*/

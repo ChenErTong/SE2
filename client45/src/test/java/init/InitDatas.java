@@ -133,13 +133,13 @@ public class InitDatas {
 			System.out.println(transferID);
 			organizationController.addTransfer(new TransferVO(transferID, "江苏省南京市雨花台区软件大道", OrganizationType.TRANSFER));
 			addUserInTransfer(userController, transferID);
-			initAccountInTransfer(accountController);
+//			initAccountInTransfer(accountController);
 			for (int i = 0; i < 3; i++) {
 				String branchID = organizationController.getBranchID("北京市");
 				System.out.println(branchID);
 				organizationController
 						.addBranch(new BranchVO(branchID, "北京市北京市朝阳区新源南路" + (i + 17) + "号", OrganizationType.BRANCH));
-				initAccountInBranch(accountController, branchID);
+//				initAccountInBranch(accountController, branchID);
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(1);
@@ -148,7 +148,7 @@ public class InitDatas {
 				String branchID = organizationController.getBranchID("上海市");
 				organizationController.addBranch(new BranchVO(branchID, "上海市上海市普陀区桃浦路" + ((i + 190) * 10 + i + 1) + "号",
 						OrganizationType.BRANCH));
-				initAccountInBranch(accountController, branchID);
+//				initAccountInBranch(accountController, branchID);
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(2);
@@ -157,7 +157,7 @@ public class InitDatas {
 				String branchID = organizationController.getBranchID("广州市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "广东省广州市越秀区中山二路" + (i + 37) + "号", OrganizationType.BRANCH));
-				initAccountInBranch(accountController, branchID);
+//				initAccountInBranch(accountController, branchID);
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(3);
@@ -166,7 +166,7 @@ public class InitDatas {
 				String branchID = organizationController.getBranchID("南京市");
 				organizationController
 						.addBranch(new BranchVO(branchID, "江苏省南京市秦淮区大明路" + (160 + i) + "号", OrganizationType.BRANCH));
-				initAccountInBranch(accountController, branchID);
+//				initAccountInBranch(accountController, branchID);
 				initDriverAndCar(facilityController, driverController, branchID);
 				addUserInBranch(userController, branchID);
 				System.out.println(4);

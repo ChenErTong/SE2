@@ -20,7 +20,7 @@ import vo.receiptvo.PaymentBillVO;
 
 public class TestCondition {
 
-	@Test
+//	@Test
 	public void testCondition() {
 
 		RecordController controller = null;
