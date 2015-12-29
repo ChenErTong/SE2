@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
 import state.CommodityState;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -12,7 +11,6 @@ import ui.myui.MyJLabel;
 import ui.myui.MyJPanel;
 import ui.myui.MyNotification;
 import ui.specialui.transfer_counterman.Frame_Transfer;
-import vo.receiptvo.orderreceiptvo.TransferArrivalListVO;
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
 /**

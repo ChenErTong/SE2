@@ -2,8 +2,6 @@ package ui.specialui.inventory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.InventoryImage;
 import ui.myui.MyButton;

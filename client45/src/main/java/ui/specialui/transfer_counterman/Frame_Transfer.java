@@ -7,10 +7,8 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.transferblservice.TransferBLService;
-import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -24,7 +22,7 @@ import ui.specialui.transfer_counterman.plane_loading.PlaneLoading;
 import ui.specialui.transfer_counterman.train_loading.TrainCommodity;
 import ui.specialui.transfer_counterman.train_loading.TrainLoading;
 import ui.specialui.transfer_counterman.transfer_receive.TransferReceiveManage;
-import vo.receiptvo.orderreceiptvo.TransferOrderVO;
+
 /**
  * 中转中心业务员界面
  * @author czw
@@ -235,12 +233,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder;
 		try {
 			transferController = ControllerFactory.getTransferController();
-			transferOrder = transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
-//			transferController.save(transferOrder);
-//			transferController.submit(transferOrder);	
+			transferController.truckTransfer(this.getID().substring(0, 4), loadingInfo[1], loadingInfo[2], loadingInfo[3], loadingInfo[5], orders, loadingInfo[4], loadingInfo[0]);
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
@@ -271,12 +266,9 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder;
 		try {
 			transferController = ControllerFactory.getTransferController();
-			transferOrder = transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
-//			transferController.save(transferOrder);
-//			transferController.submit(transferOrder);
+			transferController.planeTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return false;
@@ -307,12 +299,10 @@ public class Frame_Transfer extends MyJFrame implements ActionListener{
 		for (String orderId : ordersId) {
 			orders.add(orderId);
 		}
-		TransferOrderVO transferOrder;
+
 		try {
 			transferController = ControllerFactory.getTransferController();
-			transferOrder = transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
-//			transferController.save(transferOrder);
-//			transferController.submit(transferOrder);
+			transferController.trainTransfer(this.getID().substring(0, 4), loadingInfo[1] + loadingInfo[2], loadingInfo[3], loadingInfo[4], loadingInfo[6], orders, loadingInfo[5], loadingInfo[0]);
 			}
 		catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
