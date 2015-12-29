@@ -203,5 +203,6 @@ public class ReceiveInput extends MyJPanel{
 		orderInfo.setText(null);
 		receiveDate.setText(GetDate.getTime());
 		order = null;
+		this.repaint();
 	}
 }
