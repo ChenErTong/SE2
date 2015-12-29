@@ -110,11 +110,13 @@ public class VehicleLoading extends MyJPanel {
 		}
 		
 		String[] data = new String[]{text};
-		
-		for (String[] datas : ordersID.getData()) {
-			if(data[0].equals(datas[0])){
-				new MyNotification(this, "该订单已存在于列表", Color.RED);
-				return false;
+
+		if(ordersID.getData() != null){
+			for (String[] datas : ordersID.getData()) {
+				if(data[0].equals(datas[0])){
+					new MyNotification(this, "该订单已存在于列表", Color.RED);
+					return false;
+				}
 			}
 		}
 		
