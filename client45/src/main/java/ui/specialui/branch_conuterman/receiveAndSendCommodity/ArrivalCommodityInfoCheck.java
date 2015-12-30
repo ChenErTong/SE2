@@ -21,6 +21,7 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
+import util.GetDate;
 import vo.CommodityVO;
 import vo.OrderVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;
@@ -136,6 +137,7 @@ public class ArrivalCommodityInfoCheck extends MyJPanel {
 			branchController = ControllerFactory.getBranchController();
 			arrivalList = branchController.getBranchArrivalList(order.senderAddress, CommodityState.getType((String)commodityState.getSelectedItem()), order);
 			row = -1;
+			
 			return 0;
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();

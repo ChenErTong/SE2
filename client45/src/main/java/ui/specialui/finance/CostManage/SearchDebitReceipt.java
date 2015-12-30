@@ -57,7 +57,7 @@ public class SearchDebitReceipt extends MyTranslucentPanel{
 		chooseBranch = new MyJLabel(10,10,60,30,"请选择：",14,true);
 		this.add(chooseBranch);
 	
-		String[] branches = {"南京","上海","杭州","广州"};
+		String[] branches = {"南京","上海","北京","广州"};
 		branchList = new MyJComboBox(160-90,10,90,30,branches);
 		this.add(branchList);
 		 
