@@ -158,14 +158,14 @@ public class Branch implements CommonBusinessLogic<BranchPO>{
 	 * @throws RemoteException
 	 *             远程异常
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String facilityNumber, String courierName,
 			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 		String ID = receiptInfo.getBranchTruckID();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		String dateInID = df.format(new Date());
 		ID = branchID + dateInID + ID;
-		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, destination, branchID, facilityID,
-				courierName, courierName, orders, money);
+		LoadingListVO vo = new LoadingListVO(ID, ReceiptType.BRANCH_TRUCK, branchID, facilityNumber, destination, facilityID,
+				 courierName, orders, money);
 		for (String order : orders) {
 			orderInfo.changeOrderStateToAPPROVING(order);
 		}

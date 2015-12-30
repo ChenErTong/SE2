@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -45,7 +48,6 @@ public class MyJTable extends JTable {
 				panel.repaint();
 			}
 		});
-		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		this.setDefaultRenderer(Object.class, tcr);
@@ -62,6 +64,10 @@ public class MyJTable extends JTable {
 			}
 		});
 		head.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				panel.repaint();
+			}
+			
 			public void mouseExited(MouseEvent e) {
 				panel.repaint();
 			}

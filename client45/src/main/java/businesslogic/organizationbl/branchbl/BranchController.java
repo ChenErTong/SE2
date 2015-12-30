@@ -88,10 +88,10 @@ public class BranchController implements BranchBLService {
 	 * @see BranchBLService#truckDeliver(String, String, String, String,
 	 *      ArrayList, BigDecimal)
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName,
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String facilityNumber, String courierName,
 			ArrayList<String> orders, BigDecimal money) throws RemoteException {
 		LogController.getInstance().addLog("生成营业厅装车单");
-		return BranchBL.truckDeliver(branchID, destination, facilityID, courierName, orders, money);
+		return BranchBL.truckDeliver(branchID, destination, facilityID, facilityNumber, courierName, orders, money);
 	}
 
 	/**
