@@ -21,6 +21,11 @@ public class InventoryImportReceiptVO extends ReceiptVO{
 		this.position = position;
 		this.transferID = transferID;
 	}
+	@Override
+	public String toString() {
+		return "InventoryImportReceiptVO [commodityVO=" + commodityVO + ", area=" + area + ", row=" + row + ", frame="
+				+ frame + ", position=" + position + ", transferID=" + transferID + "]";
+	}
 
 	
 	

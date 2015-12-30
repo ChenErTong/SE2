@@ -23,6 +23,7 @@ public class InventoryImportReceiptPO extends ReceiptPO {
 		this.row = row;
 		this.frame = frame;
 		this.position = position;
+		this.commodityPO=commodityPO;
 		this.transferID = transferID;
 	}
 	public int getArea() {

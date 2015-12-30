@@ -191,6 +191,7 @@ public class ReceiptConductor {
 	}
 
 	private String writeInstock(InventoryImportReceiptVO receipt) {
+		System.out.println(receipt.toString());
 		String ID = receipt.ID;
 		
 		String text = "";

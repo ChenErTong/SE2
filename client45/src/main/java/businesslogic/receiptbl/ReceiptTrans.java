@@ -306,7 +306,9 @@ public class ReceiptTrans {
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
 		CommodityPO commodity = po.getCommodityPO();
+		System.out.println(commodity);
 		CommodityVO commodityVO = OrderTrans.convertPOtoVO(commodity);
+		System.out.println(commodityVO);
 		int area = po.getArea();
 		int row =po.getRow();
 		int frame = po.getFrame();
