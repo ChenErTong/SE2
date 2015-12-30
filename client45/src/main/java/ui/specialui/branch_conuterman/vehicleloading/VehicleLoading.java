@@ -10,7 +10,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import ui.image.BranchImage;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -21,7 +20,6 @@ import ui.myui.MyJTable;
 import ui.myui.MyJTextField;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
-import ui.specialui.branch_conuterman.receiveAndSendCommodity.ArrivalCommodityInfoCheck;
 import vo.OrderVO;
 import vo.receiptvo.orderreceiptvo.LoadingListVO;
 import businesslogic.ControllerFactory;

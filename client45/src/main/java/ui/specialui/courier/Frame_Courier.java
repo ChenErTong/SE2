@@ -3,8 +3,6 @@ package ui.specialui.courier;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import ui.commonui.login.Frame_Login;
 import ui.image.CommonImage;
 import ui.image.CourierImage;
 import ui.myui.MyButton;

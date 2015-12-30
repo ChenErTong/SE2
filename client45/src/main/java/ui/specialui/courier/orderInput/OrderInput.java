@@ -1,9 +1,6 @@
 package ui.specialui.courier.orderInput;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
@@ -34,8 +31,6 @@ public class OrderInput extends MyJPanel {
 	private CommodityInfoInput commodities;
 	//逻辑接口
 	private OrderBLService controller;
-	
-	private MyNotification notifacation;
 	
 	public OrderInput(Frame_Courier frame) {
 		super(0, 0, 1280, 720);

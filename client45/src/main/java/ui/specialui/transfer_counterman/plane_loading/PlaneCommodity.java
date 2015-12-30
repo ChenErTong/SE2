@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import businesslogic.ControllerFactory;
 import businesslogicservice.branchblservice.BranchBLService;
 import businesslogicservice.orderblservice.OrderBLService;
@@ -20,7 +19,6 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.transfer_counterman.Frame_Transfer;
-import ui.specialui.transfer_counterman.car_loading.CarCommodity;
 import vo.CommodityVO;
 import vo.OrderVO;
 

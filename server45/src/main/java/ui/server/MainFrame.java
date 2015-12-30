@@ -5,7 +5,6 @@ import ui.ServerPanel;
 import ui.CommonImage;
 
 public class MainFrame extends ServerFrame{
-
 	private static final long serialVersionUID = 1L;
 
 	private ServerPanel StartPanel;
@@ -16,8 +15,5 @@ public class MainFrame extends ServerFrame{
 		this.add(StartPanel);
 		this.setBackground(CommonImage.BACKGROUND);
 		this.repaint();
-	}
-	public static void main(String args[]){
-		new  MainFrame();
 	}
 }
