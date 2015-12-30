@@ -58,8 +58,7 @@ public class StartPanel extends ServerPanel implements ActionListener{
 				startBtn.setEnabled(false);
 				stopBtn.setEnabled(true);
 				stopBtn.setImage(0, CommonImage.getCLOSE());
-				server.startServer();
-				serverInfoPanel.setStarted(true);
+				server.startServer(serverInfoPanel);
 			}
 		} else if (e.getSource() == stopBtn) {
 			if (server.isOpen()) {
