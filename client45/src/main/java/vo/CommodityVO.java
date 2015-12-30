@@ -32,12 +32,4 @@ public class CommodityVO extends ValueObject{
 		return " commodityType=" + commodityType + ", weight=" + weight + ", volumn=" + volumn + ", commodityState="
 				+ commodityState;
 	}
-	
-	/**
-	 * 为每个货物加上订单id属性
-	 * @param id
-	 */
-	public void setOrderID(String id){
-		this.ID = id;
-	}
 }

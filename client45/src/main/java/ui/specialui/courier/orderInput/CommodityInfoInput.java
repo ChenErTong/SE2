@@ -160,14 +160,14 @@ public class CommodityInfoInput extends MyTranslucentPanel{
 		return choseCompareWeight.isSelected();
 	}
 
-	public ArrayList<CommodityVO> getCommodityList() {
+	public ArrayList<CommodityVO> getCommodityList(String id) {
 		String[][] data = commodityList.getData();
 		if(data.length == 0){
 			return null;
 		}
 		ArrayList<CommodityVO> commodities = new ArrayList<CommodityVO>();
 		for(int i = 0; i < data.length; i++){
-			commodities.add(new CommodityVO(data[i][0], new BigDecimal(data[i][1]), new BigDecimal(data[i][2]), CommodityState.Complete));
+			commodities.add(new CommodityVO(data[i][0], new BigDecimal(data[i][1]), new BigDecimal(data[i][2]), CommodityState.Complete, false, id));
 		}
 		return commodities;
 	}
