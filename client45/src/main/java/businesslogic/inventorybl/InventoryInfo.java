@@ -73,6 +73,7 @@ public class InventoryInfo
 		// 修改库存
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
 		commos[area][row][frame][position] = commodityPO;
+		System.out.println(commodityPO);
 		inventoryPO.setCommos(commos);
 		String orderID = commodityPO.getOrderID();
 		orderInfo.changeCommodityStateInOrder(orderID, true);
