@@ -109,12 +109,12 @@ public class LogPanel extends MyTranslucentPanel{
 	 */
 	private void initTable(){
 		String[] headers = {"操作人","操作时间","操作记录"};
+		table = new MyJTable(headers,false,this);
 		table.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				LogPanel.this.repaint();
 			}
 		});
-		table = new MyJTable(headers,false,this);
 		MyJScrollPane jsp=new MyJScrollPane(15, 50, 590, 530-50, table);
 		jsp.addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent e) {
