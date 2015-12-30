@@ -274,7 +274,6 @@ public class HandleReceipt extends MyJPanel implements ActionListener {
 							| NotBoundException e) {
 						new MyNotification(this, "网络连接异常，请检查网络设置！", Color.RED);
 						ControllerFactory.init();
-						ControllerFactory.init();
 						return;
 					}
 				}

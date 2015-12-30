@@ -72,7 +72,7 @@ public class ReceiptConductor {
 			text = text + line;
 		}
 		text = text + "\n";
-		text = text+"账目信息"+"\n";
+		text = text+"账目信息: "+"\n";
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
@@ -87,6 +87,7 @@ public class ReceiptConductor {
 		}
 		text = text +"订单条形码号: "+"\n";
 		for(int i=0;i<receipt.orderNumbers.size();i++){
+			text = text+blank;
 			text = text+": "+receipt.orderNumbers.get(i)+"\n";
 		}
 		
@@ -132,7 +133,7 @@ public class ReceiptConductor {
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text+"单据条目: "+receipt.items+"\n";
+		text = text+"单据条目: "+receipt.items.value+"\n";
 		return text;
 	}
 
@@ -220,24 +221,23 @@ public class ReceiptConductor {
 		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
-		text = text +"出库区号： "+ (receipt.area + 1) +"区\n";
+		text = text +"入库区号： "+ (receipt.area + 1) +"区\n";
 			
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text + "出库排号： " + (receipt.row + 1) + "排\n";
+		text = text + "入库排号： " + (receipt.row + 1) + "排\n";
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text+"出库架号： "+ (receipt.frame + 1) +"架\n";
+		text = text+"入库架号： "+ (receipt.frame + 1) +"架\n";
 		for(int i = 0;i < 2;i++){
 			text = text+blank4;
 		}
-		text = text+"出库位号： "+ (receipt.position + 1) +"位\n";
+		text = text+"入库位号： "+ (receipt.position + 1) +"位\n";
 		for(int i = 0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text+""+receipt.position+"\n";
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
@@ -611,12 +611,12 @@ String ID = receipt.ID;
 			text = text+blank4;
 		}
 		for(int i=0;i<receipt.orders.size();i++){
-			text = text+ (i + 1) + ": "+receipt.orders.get(i)+"\n";
+			text = text + ": "+receipt.orders.get(i)+"\n";
 		}
 		for(int i=0;i<2;i++){
 			text = text+blank4;
 		}
-		text = text +"运费： "+receipt.money+"\n";
+		text = text +"运费： "+receipt.money+"元"+"\n";
 		
 		return text;
 	}
