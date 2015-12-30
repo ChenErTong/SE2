@@ -71,6 +71,8 @@ public class InventoryInfo
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
 		commos[area][row][frame][position] = commodityPO;
 		inventoryPO.setCommos(commos);
+		String orderID = commodityPO.getOrderID();
+//		OrderInfo orderInfo = new OrderInfo();
 		inventoryData.modify(inventoryPO);
 	}
 	
