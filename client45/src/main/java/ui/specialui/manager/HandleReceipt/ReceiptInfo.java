@@ -27,9 +27,6 @@ public class ReceiptInfo extends MyTranslucentPanel{
 	}
 	
 	public MyEmptyTextArea getTa(){
-		ta = new MyEmptyTextArea(10,60,530,460);
-		ta.setEditable(true);
-		this.add(ta);
 		return ta;
 	}
 		

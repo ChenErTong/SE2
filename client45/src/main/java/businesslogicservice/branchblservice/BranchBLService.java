@@ -65,7 +65,7 @@ public interface BranchBLService extends BLService{
 	 * @author czw 
 	 * @version Oct 23,2015
 	 */
-	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String courierName, ArrayList<String> orders, BigDecimal money) throws RemoteException;
+	public LoadingListVO truckDeliver(String branchID, String destination, String facilityID, String facilityNumber, String minitorName, ArrayList<String> orders, BigDecimal money) throws RemoteException;
 	/**
 	 * 获得所有的正在运输中的订单列表
 	 * 生成营业厅和中转中心到达单、收件确认单的时候用到

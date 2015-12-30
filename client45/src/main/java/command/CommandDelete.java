@@ -8,10 +8,6 @@ import po.PersistentObject;
 import state.ResultMessage;
 @SuppressWarnings("unchecked")
 public class CommandDelete<PO extends PersistentObject> extends Command<PO> {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public CommandDelete(String BLName, PO po) {

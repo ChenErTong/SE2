@@ -17,12 +17,12 @@ public class LoadingInfo extends MyTranslucentPanel {
 	private MyJTextField loadingData;
 	private MyJTextField branchId;
 	
-	public LoadingInfo() {
+	public LoadingInfo(String branchid) {
 		super(250, 150, 340, 370);
-		this.initComponent();
+		this.initComponent(branchid);
 	}
 
-	private void initComponent() {
+	private void initComponent(String branchid) {
 		this.add(new MyJLabel(78, 42, 60, 25, "目的地", 18, true));
 		destination = new MyJTextField(150, 40, 130, 30);
 		destination.addActionListener(new ActionListener(){
@@ -84,13 +84,14 @@ public class LoadingInfo extends MyTranslucentPanel {
 		
 		this.add(new MyJLabel(60, 242, 80, 25, "装车日期", 18, true));
 		loadingData = new MyJTextField(150, 240, 130, 30);
-		loadingData.setText(GetDate.getDate());
 		loadingData.setForDate();
+		loadingData.setText(GetDate.getDate());
 		this.add(loadingData);
 		
 		this.add(new MyJLabel(42, 292, 100, 25, "营业厅编号", 18, true));
 		branchId = new MyJTextField(150, 290, 130, 30);
 		branchId.setOnlyInteger(6);
+		branchId.setText(branchid);
 		this.add(branchId);
 	}
 	

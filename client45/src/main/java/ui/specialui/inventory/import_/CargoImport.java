@@ -3,6 +3,8 @@ package ui.specialui.inventory.import_;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -54,7 +56,14 @@ public class CargoImport extends MyJPanel {
 		commodityList = new MyJTable(new String[]{"订单编号", "货物种类"}, false, this);
 		//设置为只可单选
 		commodityList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.add(new MyJScrollPane(150, 150, 300, 370, commodityList));
+		MyJScrollPane jsp = new MyJScrollPane(150, 150, 300, 370, commodityList);
+		jsp.addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				CargoImport.this.repaint();
+			}
+		});
+		this.add(jsp);
+		
 		this.add(new MyJLabel(260, 110, 80, 19, "入库货物", 18, true));
 		
 		importList = new MyJTable(new String[]{"入库单编号", "订单编号", "货物种类", "入库日期", "目的地", "仓库存放位置"}, false, this);
@@ -144,6 +153,7 @@ public class CargoImport extends MyJPanel {
 		importList.addRow(new String[]{importReceipt.ID, orderID, commodityType, GetDate.getDate(), order.recipientAddress, (String) position.getSelectedItem()});
 		//将货物从货物列表移除
 		commodityList.removeRow();
+		this.repaint();
 		
 		return rowOfPos;
 	}
@@ -172,19 +182,36 @@ public class CargoImport extends MyJPanel {
 	}
 	
 	private void setCommodities(Frame_Inventory frame){
-		ArrayList<String> commodities = null;
+		ArrayList<String> ordersID = null;
 		try {
 			BranchBLService branchController = ControllerFactory.getBranchController();
-			commodities = branchController.getAllToBeExportedOrders();
+			ordersID = branchController.getAllToBeExportedOrders();
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return;
 		}
-		if((commodities == null)||(commodities.size() == 0)){
+		if((ordersID == null)||(ordersID.size() == 0)){
 			return;
 		}
-		for (String commodity : commodities) {
-			commodityList.addRow(new String[]{commodity});
+		
+		OrderBLService orderController = null;
+		try {
+			orderController = ControllerFactory.getOrderController();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
+			return;
+		}
+		for (String orderID: ordersID) {
+			OrderVO order = null;
+			try {
+				order = orderController.inquireOrder(orderID);
+			} catch (RemoteException e) {
+				new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
+				return;
+			}
+			for(CommodityVO commodity : order.commodities){
+				commodityList.addRow(new String[]{orderID, commodity.commodityType});
+			}
 		}
 		this.repaint();
 	}

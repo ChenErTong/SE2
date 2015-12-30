@@ -109,6 +109,7 @@ public class InitDatas {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void initOrganization() {
 		try {
 			OrganizationController organizationController = ControllerFactory.getOrganizationController();
@@ -202,6 +203,7 @@ public class InitDatas {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void initAccountInTransfer(AccountController accountController) throws RemoteException {
 		for (int i = 0; i < 15; i++) {
 			String ID = accountController.getID();
@@ -231,6 +233,7 @@ public class InitDatas {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void initAccountInBranch(AccountController accountController, String branchID)
 			throws RemoteException {
 		for (int j = 0; j < 5; j++) {

@@ -23,7 +23,7 @@ public class LoadingListUI extends MyJPanel {
 		infoArea.setText("营业厅编号：" + loadingList.branchID + "\n");
 		infoArea.append("目的地：" + loadingList.distination + "\n");
 		infoArea.append("车辆编号：" + loadingList.carID + "\n");
-		infoArea.append("押运员：" + loadingList.courierName + "\n");
+		infoArea.append("押运员：" + loadingList.monitorName + "\n");
 		infoArea.append("订单编号：\n");
 		for(String orderID: loadingList.orders){
 			infoArea.append(orderID + "\n");
