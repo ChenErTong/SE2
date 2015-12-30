@@ -170,4 +170,14 @@ public class OrderInfo implements OrderInfo_Branch_Transfer,OrderInfo_Receipt {
 			orderData.modify(orderPO);
 		}
 	}
+	
+	public void changeCommodityStateInOrder(String orderID,boolean inStock) throws RemoteException{
+		OrderPO orderPO = orderData.find(orderID);
+		ArrayList<CommodityPO> commos = orderPO.getCommodityPO();
+		for (CommodityPO commodityPO : commos) {
+			commodityPO.setInStock(inStock);
+		}
+		orderPO.setCommodityPO(commos);
+		orderData.modify(orderPO);
+	}
 }

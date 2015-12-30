@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
+import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
@@ -25,10 +26,12 @@ public class InventoryInfo
 		implements InventoryInfo_OpeningStock, InventoryInfo_Branch_Transfer, InventoryInfo_Transfer,InventoryInfo_Receipt {
 	Inventory inventory;
 	InventoryDataService inventoryData;
+	OrderInfo orderInfo;
 
 	public InventoryInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		inventory = new Inventory();
 		inventoryData = inventory.getData();
+		orderInfo = new OrderInfo();
 	}
 
 	/**
@@ -72,7 +75,7 @@ public class InventoryInfo
 		commos[area][row][frame][position] = commodityPO;
 		inventoryPO.setCommos(commos);
 		String orderID = commodityPO.getOrderID();
-//		OrderInfo orderInfo = new OrderInfo();
+		orderInfo.changeCommodityStateInOrder(orderID, true);
 		inventoryData.modify(inventoryPO);
 	}
 	
@@ -82,7 +85,10 @@ public class InventoryInfo
 		InventoryPO inventoryPO = inventory.findInventoryByTransferID(transferID);
 		// 修改库存
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		CommodityPO commodityPO = commos[area][row][frame][position];
 		commos[area][row][frame][position] = null;
+		String orderID = commodityPO.getOrderID();
+		orderInfo.changeCommodityStateInOrder(orderID, false);
 		inventoryPO.setCommos(commos);
 		inventoryData.modify(inventoryPO);
 	}
