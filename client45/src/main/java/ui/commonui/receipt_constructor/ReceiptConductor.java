@@ -163,21 +163,21 @@ public class ReceiptConductor {
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text +"出库区号： "+receipt.area+"区\n";
+		text = text +"出库区号： "+(receipt.area + 1)+"区\n";
 	
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text + "出库排号:" +receipt.row+ "排\n";
+		text = text + "出库排号： " +(receipt.row + 1)+ "排\n";
 		for(int i=0;i<2;i++){
 			text = text + blank4;
 		}
-		text = text+"出库架号："+receipt.frame+"架\n";
+		text = text+"出库架号： "+(receipt.frame + 1)+"架\n";
 		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
 		
-		text = text+"出库位号："+receipt.position+"位\n";
+		text = text+"出库位号： "+(receipt.position + 1)+"位\n";
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
@@ -220,20 +220,20 @@ public class ReceiptConductor {
 		for(int i=0;i<2;i++){
 			text = text +blank4;
 		}
-		text = text +"出库区号： "+receipt.area+"区\n";
+		text = text +"出库区号： "+ (receipt.area + 1) +"区\n";
 			
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text + "出库排号:" +receipt.row+ "排\n";
+		text = text + "出库排号： " + (receipt.row + 1) + "排\n";
 		for(int i = 0; i < 2; i++){
 			text = text + blank4;
 		}
-		text = text+"出库架号："+receipt.frame+"架\n";
+		text = text+"出库架号： "+ (receipt.frame + 1) +"架\n";
 		for(int i = 0;i < 2;i++){
 			text = text+blank4;
 		}
-		text = text+"出库位号："+receipt.position+"位\n";
+		text = text+"出库位号： "+ (receipt.position + 1) +"位\n";
 		for(int i = 0;i<2;i++){
 			text = text + blank4;
 		}

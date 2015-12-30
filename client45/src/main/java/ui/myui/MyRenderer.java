@@ -13,7 +13,7 @@ public class MyRenderer extends JLabel implements ListCellRenderer {
 	public MyRenderer(){
 		this.setOpaque(true);
 		this.setFont(new MyFont(15, true));
-		this.setForeground(Color.WHITE);
+		this.setForeground(new Color(0, 0, 0, 0.6f));
 	}
 	
 	public Component getListCellRendererComponent(JList list, Object value,
