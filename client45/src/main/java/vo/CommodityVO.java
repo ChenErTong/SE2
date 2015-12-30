@@ -8,14 +8,17 @@ public class CommodityVO extends ValueObject{
 	public String commodityType;
 	public BigDecimal weight;
 	public BigDecimal volumn;
-	
+	public boolean inStock;
 	public CommodityState commodityState;
+	public String orderID;
 	
-	public CommodityVO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState) {
+	public CommodityVO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState,boolean inStock,String orderID) {
 		this.commodityType = commodityType;
 		this.weight = weight;
 		this.volumn = volumn;
 		this.commodityState = commodityState;
+		this.inStock=inStock;
+		this.orderID=orderID;
 	}
 	/**
 	 * 进行重量矫正

@@ -58,7 +58,9 @@ public class OrderTrans {
 			BigDecimal weight = po.getWeight();
 			BigDecimal volumn = po.getVolumn();
 			CommodityState commodityState = po.getCommodityState();
-			CommodityVO vo = new CommodityVO(commodityType, weight, volumn, commodityState);
+			boolean inStock=po.isInStock();
+			String orderID = po.getOrderID();
+			CommodityVO vo = new CommodityVO(commodityType, weight, volumn, commodityState,inStock,orderID);
 			vo.ID = ID;
 			return vo;
 		}
@@ -73,7 +75,9 @@ public class OrderTrans {
 			BigDecimal weight = vo.weight;
 			BigDecimal volumn = vo.volumn;
 			CommodityState commodityState = vo.commodityState;
-			CommodityPO po = new CommodityPO(commodityType, weight, volumn, commodityState);
+			boolean inStock=vo.inStock;
+			String orderID = vo.orderID;
+			CommodityPO po = new CommodityPO(commodityType, weight, volumn, commodityState,inStock,orderID);
 			po.setID(ID);
 			return po;
 		}
