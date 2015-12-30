@@ -204,7 +204,8 @@ public class ReceiptInfo implements ReceiptInfo_Inventory, ReceiptInfo_Branch_Tr
 	 * @return boolean型，判断结果
 	 */
 	private boolean inDate(ReceiptPO po, String beginDate, String endDate) {
-		if (po.getDate().compareTo(beginDate) >= 0 && po.getDate().compareTo(endDate) <= 0)
+		String date=po.getDate().split(" ")[0];
+		if (date.compareTo(beginDate) >= 0 && date.compareTo(endDate) <= 0)
 			return true;
 		return false;
 	}
