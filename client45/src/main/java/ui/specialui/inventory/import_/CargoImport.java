@@ -210,7 +210,9 @@ public class CargoImport extends MyJPanel {
 				return;
 			}
 			for(CommodityVO commodity : order.commodities){
-				commodityList.addRow(new String[]{orderID, commodity.commodityType});
+				if(!commodity.inStock){
+					commodityList.addRow(new String[]{orderID, commodity.commodityType});
+				}
 			}
 		}
 		this.repaint();
