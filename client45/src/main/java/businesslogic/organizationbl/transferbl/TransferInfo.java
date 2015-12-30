@@ -81,5 +81,8 @@ public class TransferInfo implements TransferInfo_OpeningStock, TransferInfo_Inv
 		transfer.setAccounts(accounts);
 		return transferData.modify(transfer)==null?ResultMessage.FAIL:ResultMessage.SUCCESS;
 	}
+	public TransferPO modify(TransferPO transferPO) throws RemoteException {
+		return transferData.modify(transferPO);
+	}
 
 }

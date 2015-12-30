@@ -10,10 +10,12 @@ import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import businesslogic.receiptbl.InventoryInfo_Receipt;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
+import po.TransferPO;
 import vo.CommodityVO;
 import vo.InventoryVO;
 
@@ -27,11 +29,13 @@ public class InventoryInfo
 	Inventory inventory;
 	InventoryDataService inventoryData;
 	OrderInfo orderInfo;
+	TransferInfo transferInfo;
 
 	public InventoryInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		inventory = new Inventory();
 		inventoryData = inventory.getData();
 		orderInfo = new OrderInfo();
+		transferInfo=new TransferInfo();
 	}
 
 	/**
@@ -73,11 +77,10 @@ public class InventoryInfo
 		// 修改库存
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
 		commos[area][row][frame][position] = commodityPO;
-		System.out.println(commodityPO);
 		inventoryPO.setCommos(commos);
 		String orderID = commodityPO.getOrderID();
 		orderInfo.changeCommodityStateInOrder(orderID, true);
-		inventoryData.modify(inventoryPO);
+		updateTransferInventory(transferID, inventoryPO);
 	}
 	
 	public void inventoryExport(String transferID, int area, int row, int frame, int position)
@@ -92,6 +95,15 @@ public class InventoryInfo
 		orderInfo.changeCommodityStateInOrder(orderID, false);
 		inventoryPO.setCommos(commos);
 		inventoryData.modify(inventoryPO);
+		updateTransferInventory(transferID, inventoryPO);
+	}
+
+	private void updateTransferInventory(String transferID, InventoryPO inventoryPO) throws RemoteException {
+		TransferPO transferPO = transferInfo.getTransfer(transferID);
+		ArrayList<InventoryPO> inventories = new ArrayList<>();
+		inventories.add(inventoryPO);
+		transferPO.setInventories(inventories);
+		transferInfo.modify(transferPO);
 	}
 
 }
