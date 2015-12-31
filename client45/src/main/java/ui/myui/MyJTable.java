@@ -46,7 +46,6 @@ public class MyJTable extends JTable {
 				panel.repaint();
 			}
 		});
-		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
 		this.setDefaultRenderer(Object.class, tcr);
@@ -63,6 +62,10 @@ public class MyJTable extends JTable {
 			}
 		});
 		head.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				panel.repaint();
+			}
+			
 			public void mouseExited(MouseEvent e) {
 				panel.repaint();
 			}

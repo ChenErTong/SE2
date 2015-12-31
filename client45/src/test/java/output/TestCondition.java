@@ -5,9 +5,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import org.junit.Test;
-
 import businesslogic.ControllerFactory;
 import businesslogic.fundbl.DebitAndPayBillController;
 import businesslogic.recordbl.RecordController;
@@ -20,7 +17,7 @@ import vo.receiptvo.PaymentBillVO;
 
 public class TestCondition {
 
-	@Test
+//	@Test
 	public void testCondition() {
 
 		RecordController controller = null;

@@ -191,6 +191,7 @@ public class ReceiptConductor {
 	}
 
 	private String writeInstock(InventoryImportReceiptVO receipt) {
+		System.out.println(receipt.toString());
 		String ID = receipt.ID;
 		
 		String text = "";
@@ -605,13 +606,12 @@ String ID = receipt.ID;
 		for(int i=0;i<2;i++){
 			text = text+blank4;
 		}
-		text = text+"押运员: "+receipt.courierName+"\n";
-		for(int i=0;i<2;i++){
-			text = text + blank4;
-		}
 		text = text +"订单条形码号： "+"\n";
+		for(int i=0;i<2;i++){
+			text = text+blank4;
+		}
 		for(int i=0;i<receipt.orders.size();i++){
-			text = text+": "+receipt.orders.get(i)+"\n";
+			text = text+ (i + 1) + ": "+receipt.orders.get(i)+"\n";
 		}
 		for(int i=0;i<2;i++){
 			text = text+blank4;

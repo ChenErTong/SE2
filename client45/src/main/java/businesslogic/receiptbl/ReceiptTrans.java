@@ -156,9 +156,8 @@ public class ReceiptTrans {
 		String carID = po.getCarID();
 		String monitorName = po.getMonitorName();
 		ArrayList<String> orders = po.getOrders();
-		String courierName = po.getCourierName();
 		BigDecimal money = po.getMoney();
-		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
+		return new LoadingListVO(id, type, branchID, transferNumber, distination, carID, monitorName, orders, money);
 	}
 	public static ReceiptPO convertSpecialVOtoPO(LoadingListVO vo){
 		String ID = vo.ID;
@@ -169,9 +168,8 @@ public class ReceiptTrans {
 		String carID = vo.carID;
 		String monitorName = vo.monitorName;
 		ArrayList<String> orders = vo.orders;
-		String courierName = vo.courierName;
 		BigDecimal money =vo.money;
-		return new LoadingListPO(ID, type, branchID, transferNumber, distination, carID, monitorName, courierName, orders, money);
+		return new LoadingListPO(ID, type, branchID, transferNumber, distination, carID, monitorName, orders, money);
 	}
 	public static ReceiptVO convertSpecialPOtoVO(TransferArrivalListPO po){
 		String id = po.getID();
@@ -308,7 +306,9 @@ public class ReceiptTrans {
 		String id = po.getID();
 		ReceiptType type = po.getReceiptType();
 		CommodityPO commodity = po.getCommodityPO();
+		System.out.println(commodity);
 		CommodityVO commodityVO = OrderTrans.convertPOtoVO(commodity);
+		System.out.println(commodityVO);
 		int area = po.getArea();
 		int row =po.getRow();
 		int frame = po.getFrame();

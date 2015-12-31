@@ -227,7 +227,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			if(table.getSelectedRowCount() == 0){
 				new MyNotification(this,"请先选择要修改的用户！",Color.RED);
 			}else{
-				
 				String[] data = new String[9];
 				this.setUserDetails(data);
 				userDetails.setData(data);
@@ -240,7 +239,6 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 			}else{
 				new MyNotification(this,"正在删除用户！",Color.GREEN);
 				this.deleteUser();
-			
 			}
 		}else if(e.getActionCommand().equals("ViewUserInfo")){
 			this.remove(userDetails);
@@ -355,6 +353,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				return;
 			}
 		}
+		this.repaint();
 	}
 	
 	
@@ -389,7 +388,7 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 				new MyNotification(this,"网络连接异常，请检查网络设置！",Color.RED);ControllerFactory.init();
 			return;
 		}
-		
+		this.repaint();
 	}
 	
 	/**
@@ -511,7 +510,4 @@ public class Panel_Admin_Total extends MyJPanel implements ActionListener{
 		}
 		return null;
 	}
-	
 }
-
-	

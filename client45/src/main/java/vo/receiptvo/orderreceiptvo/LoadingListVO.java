@@ -17,18 +17,16 @@ public class LoadingListVO extends OrderReceiptVO{
 	public String distination;
 	public String carID;
 	public String monitorName;
-	public String courierName;
 	public BigDecimal money;
 	
 	public LoadingListVO(String id, ReceiptType type, String branchID, String transferNumber,
-			String distination, String carID, String monitorName, String courierName, ArrayList<String> orders, BigDecimal money) {
+			String distination, String carID, String monitorName, ArrayList<String> orders, BigDecimal money) {
 		super(id, type, orders);
 		this.branchID = branchID;
 		this.transferNumber = transferNumber;
 		this.distination = distination;
 		this.carID = carID;
 		this.monitorName = monitorName;
-		this.courierName = courierName;
 		this.money = money;
 	}
 	

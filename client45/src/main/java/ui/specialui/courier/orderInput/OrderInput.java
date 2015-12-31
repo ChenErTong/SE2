@@ -140,6 +140,7 @@ public class OrderInput extends MyJPanel {
 				PackageType.getType(commodityInfo[1]),
 				ExpressType.getType(commodityInfo[2]));
 		try {
+			controller = null;
 			controller = ControllerFactory.getOrderController();
 			controller.addOrder(order);
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {

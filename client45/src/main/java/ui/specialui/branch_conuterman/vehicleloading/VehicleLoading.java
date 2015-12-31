@@ -45,7 +45,7 @@ public class VehicleLoading extends MyJPanel {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 		}
 		
-		loadingInfo = new LoadingInfo();
+		loadingInfo = new LoadingInfo(frame.getID().substring(0, 6));
 		this.add(loadingInfo);
 
 		String[] orderId = new String[]{"订单编号"};
@@ -110,11 +110,13 @@ public class VehicleLoading extends MyJPanel {
 		}
 		
 		String[] data = new String[]{text};
-		
-		for (String[] datas : ordersID.getData()) {
-			if(data[0].equals(datas[0])){
-				new MyNotification(this, "该订单已存在于列表", Color.RED);
-				return false;
+
+		if(ordersID.getData() != null){
+			for (String[] datas : ordersID.getData()) {
+				if(data[0].equals(datas[0])){
+					new MyNotification(this, "该订单已存在于列表", Color.RED);
+					return false;
+				}
 			}
 		}
 		
@@ -132,7 +134,7 @@ public class VehicleLoading extends MyJPanel {
 	private BigDecimal calculateCost(){
 		BigDecimal cost = new BigDecimal(0);
 		String[][] data = ordersID.getData();
-		if(ordersID == null) return new BigDecimal(0);
+		if(data == null) return new BigDecimal(0);
 		OrderBLService order_info;
 		try {
 			order_info = ControllerFactory.getOrderController();
@@ -182,7 +184,7 @@ public class VehicleLoading extends MyJPanel {
 		
 		try {
 			 branchController = ControllerFactory.getBranchController();
-			return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[1], ordernum, cost);
+			return branchController.truckDeliver(loadingInfo[5], loadingInfo[0], loadingInfo[2], loadingInfo[3], loadingInfo[1], ordernum, cost);
 		} catch (RemoteException | MalformedURLException | NotBoundException e) {
 			new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();
 			return null;
