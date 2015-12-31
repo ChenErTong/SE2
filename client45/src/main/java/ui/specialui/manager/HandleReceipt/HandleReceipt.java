@@ -315,8 +315,10 @@ public class HandleReceipt extends MyJPanel implements ActionListener {
 			}
 			if (count == 0) {
 				new MyNotification(this, "请选择一条要修改的单据！", Color.RED);
+				return;
 			} else if (count > 1) {
 				new MyNotification(this, "请只选择一条要修改的单据！", Color.RED);
+				return;
 			}
 			if (!table.getValueAt(index, 3).equals("未审批")) {
 				new MyNotification(this, "状态为未审批的单据才能进行修改！", Color.RED);

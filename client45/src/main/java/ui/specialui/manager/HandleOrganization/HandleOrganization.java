@@ -116,7 +116,7 @@ public class HandleOrganization extends MyJPanel implements ActionListener{
 		backout.addActionListener(this);
 		this.add(backout);
 		
-		redo = new MyButton(1223-35,610,35,35,CommonImage.getBUTTON_REDO());
+		redo = new MyButton(1223-35,632,35,35,CommonImage.getBUTTON_REDO());
 		redo.setActionCommand("redo");
 		redo.addActionListener(this);
 		this.add(redo);

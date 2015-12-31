@@ -34,7 +34,7 @@ public class LogisticInfo extends MyTranslucentPanel{
 		this.add(title);
 		
 		//the table
-		String[] headers = {"日期","物流信息"};
+		String[] headers = {"物流轨迹"};
 		table = new MyJTable(headers, false, this);
 		table.setBackground(new Color(40, 42, 66));
 		table.setForeground(Color.WHITE);
