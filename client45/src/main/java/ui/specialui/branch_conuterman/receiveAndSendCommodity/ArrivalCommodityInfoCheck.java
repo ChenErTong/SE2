@@ -9,7 +9,6 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
 import state.CommodityState;
 import ui.image.TransferImage;
 import ui.myui.MyButton;
@@ -21,7 +20,6 @@ import ui.myui.MyJScrollPane;
 import ui.myui.MyJTable;
 import ui.myui.MyNotification;
 import ui.specialui.branch_conuterman.Frame_Branch;
-import util.GetDate;
 import vo.CommodityVO;
 import vo.OrderVO;
 import vo.receiptvo.orderreceiptvo.BranchArrivalListVO;

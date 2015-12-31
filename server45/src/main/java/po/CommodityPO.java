@@ -12,13 +12,17 @@ public class CommodityPO  extends PersistentObject{
 	private String commodityType;
 	private BigDecimal weight;
 	private BigDecimal volumn;
+	private boolean inStock;
+	private String orderID;
 	private CommodityState commodityState;
 	
-	public CommodityPO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState) {
+	public CommodityPO(String commodityType, BigDecimal weight, BigDecimal volumn, CommodityState commodityState,boolean inStock,String orderID) {
 		this.commodityType = commodityType;
 		this.weight = weight;
 		this.volumn = volumn;
 		this.commodityState = commodityState;
+		this.inStock=inStock;
+		this.orderID=orderID;
 	}
 
 	public String getCommodityType() {
@@ -51,6 +55,22 @@ public class CommodityPO  extends PersistentObject{
 
 	public void setCommodityState(CommodityState commodityState) {
 		this.commodityState = commodityState;
+	}
+
+	public boolean isInStock() {
+		return inStock;
+	}
+
+	public void setInStock(boolean inStock) {
+		this.inStock = inStock;
+	}
+
+	public String getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	
 	

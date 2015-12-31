@@ -76,17 +76,7 @@ public class OrderInput extends MyJPanel {
 		if ((commodityInfo = commodities.getCommodityInfo()) == null) {
 			return 3;
 		}
-		ArrayList<CommodityVO> commodityList;
-		if ((commodityList = commodities.getCommodityList()) == null) {
-			return 4;
-		}
-		// 如果选择比较重量则矫正重量
-		if (commodities.isCompareWight()) {
-			for (CommodityVO commodityVO : commodityList) {
-				commodityVO.correctWeight();
-			}
-		}
-
+		
 		String id;
 		try {
 			controller = ControllerFactory.getOrderController();
@@ -96,10 +86,20 @@ public class OrderInput extends MyJPanel {
 			return -1;
 		}
 		
+		ArrayList<CommodityVO> commodityList;
+		if ((commodityList = commodities.getCommodityList(id)) == null) {
+			return 4;
+		}
+		// 如果选择比较重量则矫正重量
+		if (commodities.isCompareWight()) {
+			for (CommodityVO commodityVO : commodityList) {
+				commodityVO.correctWeight();
+			}
+		}
+		
 		CommodityVO[] commodities = new CommodityVO[commodityList.size()];
 		for(int i = 0; i < commodities.length; ++i){
 			commodities[i] = commodityList.get(i);
-			commodities[i].setOrderID(id);
 		}
 		
 		BigDecimal cost = null;

@@ -6,13 +6,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import businesslogic.openingstockbl.InventoryInfo_OpeningStock;
+import businesslogic.orderbl.OrderInfo;
 import businesslogic.orderbl.OrderTrans;
 import businesslogic.organizationbl.InventoryInfo_Branch_Transfer;
 import businesslogic.organizationbl.transferbl.InventoryInfo_Transfer;
+import businesslogic.organizationbl.transferbl.TransferInfo;
 import businesslogic.receiptbl.InventoryInfo_Receipt;
 import dataservice.inventorydataservice.InventoryDataService;
 import po.CommodityPO;
 import po.InventoryPO;
+import po.TransferPO;
 import vo.CommodityVO;
 import vo.InventoryVO;
 
@@ -25,10 +28,14 @@ public class InventoryInfo
 		implements InventoryInfo_OpeningStock, InventoryInfo_Branch_Transfer, InventoryInfo_Transfer,InventoryInfo_Receipt {
 	Inventory inventory;
 	InventoryDataService inventoryData;
+	OrderInfo orderInfo;
+	TransferInfo transferInfo;
 
 	public InventoryInfo() throws MalformedURLException, RemoteException, NotBoundException {
 		inventory = new Inventory();
 		inventoryData = inventory.getData();
+		orderInfo = new OrderInfo();
+		transferInfo=new TransferInfo();
 	}
 
 	/**
@@ -71,7 +78,9 @@ public class InventoryInfo
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
 		commos[area][row][frame][position] = commodityPO;
 		inventoryPO.setCommos(commos);
-		inventoryData.modify(inventoryPO);
+		String orderID = commodityPO.getOrderID();
+		orderInfo.changeCommodityStateInOrder(orderID, true);
+		updateTransferInventory(transferID, inventoryPO);
 	}
 	
 	public void inventoryExport(String transferID, int area, int row, int frame, int position)
@@ -80,9 +89,21 @@ public class InventoryInfo
 		InventoryPO inventoryPO = inventory.findInventoryByTransferID(transferID);
 		// 修改库存
 		CommodityPO[][][][] commos = inventoryPO.getCommos();
+		CommodityPO commodityPO = commos[area][row][frame][position];
 		commos[area][row][frame][position] = null;
+		String orderID = commodityPO.getOrderID();
+		orderInfo.changeCommodityStateInOrder(orderID, false);
 		inventoryPO.setCommos(commos);
 		inventoryData.modify(inventoryPO);
+		updateTransferInventory(transferID, inventoryPO);
+	}
+
+	private void updateTransferInventory(String transferID, InventoryPO inventoryPO) throws RemoteException {
+		TransferPO transferPO = transferInfo.getTransfer(transferID);
+		ArrayList<InventoryPO> inventories = new ArrayList<>();
+		inventories.add(inventoryPO);
+		transferPO.setInventories(inventories);
+		transferInfo.modify(transferPO);
 	}
 
 }

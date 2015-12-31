@@ -44,7 +44,6 @@ public class Transfer implements CommonBusinessLogic<TransferPO> {
 	public Transfer() throws MalformedURLException, RemoteException, NotBoundException {
 		orderInfo = new OrderInfo();
 		receiptInfo = new ReceiptInfo();
-		
 		transferData = (TransferDataService) Naming.lookup(RMIConfig.PREFIX + TransferDataService.NAME);
 		inventoryInfo = new InventoryInfo();
 	}

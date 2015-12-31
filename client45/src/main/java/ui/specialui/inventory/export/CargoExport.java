@@ -89,8 +89,8 @@ public class CargoExport extends MyJPanel {
 		}
 		if(commodities != null){
 			for (InventoryPositionVO commodity : commodities) {
-				String position = Integer.toString(commodity.area) + "区" + Integer.toString(commodity.row) + "排" + Integer.toString(commodity.frame) + "架" + Integer.toString(commodity.position) + "位";
-				this.commodities.addRow(new String[]{commodity.commodity.ID, commodity.commodity.commodityType, position});
+				String position = Integer.toString(commodity.area + 1) + "区" + Integer.toString(commodity.row + 1) + "排" + Integer.toString(commodity.frame + 1) + "架" + Integer.toString(commodity.position + 1) + "位";
+				this.commodities.addRow(new String[]{commodity.commodity.orderID, commodity.commodity.commodityType, position});
 			}
 		}
 	}

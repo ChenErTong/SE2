@@ -81,7 +81,7 @@ public class TimeAndCostManager extends MyJPanel{
 			return 3;
 		}
 		ArrayList<CommodityVO> commodityList;
-		if ((commodityList = commodities.getCommodityList()) == null) {
+		if ((commodityList = commodities.getCommodityList(null)) == null) {
 			return 4;
 		}
 		// 如果选择比较重量则矫正重量

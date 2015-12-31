@@ -43,8 +43,9 @@ public class InitDatas {
 		try {
 			OrderController orderController = ControllerFactory.getOrderController();
 			for (int i = 0; i < 20; i++) {
-				CommodityVO com[] = {new CommodityVO("123", new BigDecimal("0.156"), new BigDecimal("0.156"), CommodityState.Complete)};
-				orderController.addOrder(com,new OrderVO(orderController.getOrderId(), "123", "123", "123", "123", "123",
+				String orderID = orderController.getOrderId();
+				CommodityVO com[] = {new CommodityVO("123", new BigDecimal("0.156"), new BigDecimal("0.156"), CommodityState.Complete,false,orderID)};
+				orderController.addOrder(com,new OrderVO(orderID, "123", "123", "123", "123", "123",
 						"123", "123", "123", new ArrayList<>(), GetDate.getDate(), GetDate.getDate(),
 						new BigDecimal(18), PackageType.Metal, ExpressType.Car));
 			}
