@@ -39,6 +39,7 @@ public class MyJTable extends JTable {
 		this.setBackground(new Color(0, 0, 0, 0.3f));
 		this.setForeground(Color.WHITE);
 		this.setFont(new MyFont(14));
+
 		
 		this.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
