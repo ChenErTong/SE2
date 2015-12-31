@@ -24,7 +24,7 @@ public class MyComboBox extends JComboBox<String>{
 		this.setBounds(x, y, width, height);
 		for(int i = 0; i < str.length; i++)
 			this.addItem(str[i]);
-		Color foreColor = Color.WHITE;
+		Color foreColor = new Color(0, 0, 0, 0.6f);
 		Color backColor = MyColor.getColor();
 		
 		this.setBackground(backColor);
