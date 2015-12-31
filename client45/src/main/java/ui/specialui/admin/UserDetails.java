@@ -119,7 +119,7 @@ public class UserDetails extends MyTranslucentPanel{
 		this.add(new MyJLabel(300,210,25,30,"市",18,true));
 		
 		
-		String [] identity = {"总经理","快递员","库存管理员","中转业务员","营业厅业务员","财务人员","管理员"};
+		String [] identity = {"总经理","快递员","库存管理人员","中转中心业务员","营业厅业务员","财务人员","管理员"};
 		userIdentityBox = new MyJComboBox(100,140,150,30,identity);
 		this.add(userIdentityBox);
 		
@@ -155,11 +155,11 @@ public class UserDetails extends MyTranslucentPanel{
 			myJTextField.setEditable(false);
 		}
 		passwordField.setEditable(false);
-		branchID.setEditable(false);
-		userIdentityBox.setEditable(false);
-		userAuthorityBox.setEditable(false);
-		provincesBox.setEditable(false);
-		citiesBox.setEditable(false);
+		branchID.setEnabled(false);
+		userIdentityBox.setEnabled(false);;
+		userAuthorityBox.setEnabled(false);
+		provincesBox.setEnabled(false);
+		citiesBox.setEnabled(false);
 		address.setEditable(false);
 		
 	}

@@ -86,9 +86,11 @@ public class Panel_Sender_Total extends MyJPanel implements ActionListener{
 						}else{
 							Object[] rowData ={orderVO.ID,orderVO.senderName,orderVO.recipientName,orderVO.money,orderVO.recipientTime};
 							tableModel_1.addRow(rowData);
+							System.out.println(orderVO.midAddres.size());
 							for(int i=0;i<orderVO.midAddres.size();i++){
+								
 								Object[] rowData2 = {orderVO.midAddres.get(i)};
-								tableModel_1.addRow(rowData2);
+								tableModel_2.addRow(rowData2);
 							}
 							orderPool.add(orderVO);
 						}
