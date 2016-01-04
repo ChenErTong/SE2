@@ -102,8 +102,8 @@ public class InventoryCheck extends MyJPanel{
 		if(inventoryView.commodityInInventory != null){
 			commodityNum = Integer.toString(inventoryView.commodityInInventory.size());
 			for (InventoryPositionVO commodity : inventoryView.commodityInInventory) {
-				String position = Integer.toString(commodity.area) + "区" + Integer.toString(commodity.row) + "排" + Integer.toString(commodity.frame) + "架" + Integer.toString(commodity.position) + "位";
-				commodityInfo.addRow(new String[]{commodity.commodity.ID, commodity.commodity.commodityType, position});
+				String position = Integer.toString(commodity.area + 1) + "区" + Integer.toString(commodity.row + 1) + "排" + Integer.toString(commodity.frame + 1) + "架" + Integer.toString(commodity.position + 1) + "位";
+				commodityInfo.addRow(new String[]{commodity.commodity.orderID, commodity.commodity.commodityType, position});
 			}
 		}
 		inventoryInfo.addRow(new String[]{importNum, exportNum, commodityNum});
