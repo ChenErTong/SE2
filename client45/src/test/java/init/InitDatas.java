@@ -28,7 +28,6 @@ import vo.FacilityVO;
 import vo.OrderVO;
 import vo.TransferVO;
 import vo.UserVO;
-import vo.accountvo.AccountVO;
 import vo.accountvo.DriverVO;
 
 public class InitDatas {
@@ -204,8 +203,7 @@ public class InitDatas {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	private static void initAccountInTransfer(AccountController accountController) throws RemoteException {
+	/*private static void initAccountInTransfer(AccountController accountController) throws RemoteException {
 		for (int i = 0; i < 15; i++) {
 			String ID = accountController.getID();
 			accountController.addAccount(
@@ -220,7 +218,7 @@ public class InitDatas {
 			accountController.addAccount(
 					new AccountVO(ID, "中转中心业务员", "业务员" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal("4500"), "0", "025400",null));
 		}
-	}
+	}*/
 
 	private static void initDriverAndCar(FacilityController facilityController, DriverController driverController,
 			String branchID) throws RemoteException {
@@ -234,8 +232,7 @@ public class InitDatas {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	private static void initAccountInBranch(AccountController accountController, String branchID)
+	/*private static void initAccountInBranch(AccountController accountController, String branchID)
 			throws RemoteException {
 		for (int j = 0; j < 5; j++) {
 			String ID = accountController.getID();
@@ -247,5 +244,5 @@ public class InitDatas {
 			accountController.addAccount(
 					new AccountVO(ID, "快递员", "员工" + ID, GetDate.getDate(), "123456", "123456", new BigDecimal(1000), "0", branchID,null));
 		}
-	}
+	}*/
 }

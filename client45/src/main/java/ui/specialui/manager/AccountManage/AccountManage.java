@@ -207,7 +207,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 			}else{
 				try {
 					AccountController controller = ControllerFactory.getAccountController();
-					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8]));
+					ResultMessage rsg = controller.addAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8],new ArrayList<>()));
 					if(rsg.equals(ResultMessage.SUCCESS)){
 					//	System.out.println("AddSucceed!");
 						this.showAll();
@@ -322,7 +322,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 		String[] data = modifyAccount.getData();
 		try {
 			AccountController controller = ControllerFactory.getAccountController();
-			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8]));
+			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8],new ArrayList<>()));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();

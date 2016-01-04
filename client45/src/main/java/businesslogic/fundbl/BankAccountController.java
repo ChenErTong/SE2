@@ -120,19 +120,7 @@ public class BankAccountController implements BankAccountBLService {
 		return null;
 	}
 
-//	/**
-//	 * @see BankAccountBLService#subtractMoneyInBankAccount(String, BigDecimal)
-//	 */
-//	public ResultMessage subtractMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
-//		return BankAccountBL.subtractMoneyInBankAccount(accountID, money);
-//	}
-//
-//	/**
-//	 * @see BankAccountBLService#addMoneyInBankAccount(String, BigDecimal)
-//	 */
-//	public ResultMessage addMoneyInBankAccount(String accountID, BigDecimal money) throws RemoteException {
-//		return BankAccountBL.addMoneyInBankAccount(accountID, money);
-//	}
+
 
 	/**
 	 * 判断当前用户的权限是否可以进行高级操作

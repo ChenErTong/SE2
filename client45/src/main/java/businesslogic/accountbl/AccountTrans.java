@@ -38,7 +38,8 @@ public class AccountTrans {
 		String workTime = po.getWorkTime();
 		String branchID = po.getOrganizationID();
 		String userID = po.getUserID();
-		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, branchID,userID);
+		ArrayList<String> ordersID = po.getOrdersID();
+		AccountVO vo = new AccountVO(ID, duty, name, birthday, IDCard, phone, salary, workTime, branchID,userID,ordersID);
 		return vo;
 	}
 
@@ -56,7 +57,8 @@ public class AccountTrans {
 			String workTime = vo.WorkTime;
 			String branchID = vo.branchID;
 			String userID = vo.userID;
-			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID,userID);
+			ArrayList<String> ordersID = vo.ordersID;
+			return new AccountPO(ID, duty, name, birthDay, IDCard, phone, salary, workTime,branchID,userID,ordersID);
 		}
 	}
 

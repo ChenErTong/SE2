@@ -34,9 +34,9 @@ import vo.accountvo.AccountVO;
  */
 public class OrganizationController implements OrganizationBLService {
 
-	Branch branchBL;
-	Transfer transferBL;
-	Organization organization;
+	private Branch branchBL;
+	private Transfer transferBL;
+	private Organization organization;
 	private CommandController<BranchPO> branchCommandController;
 	private CommandController<TransferPO> transferCommandController;
 	private OrganizationCommandDoubleStack doubleStack;

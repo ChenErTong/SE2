@@ -30,7 +30,7 @@ public class AccountVO extends ValueObject{
 	public String userID;
 
 	public AccountVO(String ID, String duty, String name, String birthDay, String IDCard, String phone, BigDecimal salary,
-			String workTime,String branchID,String userID) {
+			String workTime,String branchID,String userID,ArrayList<String> ordersID) {
 		this.ID = ID;
 		this.Duty = duty;
 		this.Name = name;
@@ -40,7 +40,7 @@ public class AccountVO extends ValueObject{
 		this.Salary = salary;
 		this.WorkTime = workTime;
 		this.branchID = branchID;
-		this.ordersID = new ArrayList<String>();	
+		this.ordersID = ordersID;	
 		this.userID=userID;
 	}
 	@Override
