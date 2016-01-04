@@ -132,7 +132,7 @@ public class DebitNoteBuild extends MyJPanel {
 					order = orderController.inquireOrder(account.ordersID
 							.get(i));
 					courierBill.append("\n订单编号：" + order.ID + "\t费用："
-							+ order.money + "\t收款日期：" + order.recipientTime);
+							+ order.money + "\t收款日期：" + order.recipientTime.substring(0, 10));
 				}
 			} catch (RemoteException e) {
 				new MyNotification(this, "网络已断开，请连接后重试", Color.RED);ControllerFactory.init();

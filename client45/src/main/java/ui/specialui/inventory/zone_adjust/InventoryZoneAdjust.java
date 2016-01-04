@@ -92,7 +92,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		if(posVOs != null){
 			String posInfo = null;
 			for (InventoryPositionVO posVO : posVOs) {
-				posInfo = Integer.toString(posVO.area) + "区" + Integer.toString(posVO.row) + "排" + Integer.toString(posVO.frame) + "架" + Integer.toString(posVO.position) + "位";
+				posInfo = Integer.toString(posVO.area + 1) + "区" + Integer.toString(posVO.row + 1) + "排" + Integer.toString(posVO.frame + 1) + "架" + Integer.toString(posVO.position + 1) + "位";
 				position.addItem(posInfo);	
 			}
 		}
@@ -102,7 +102,6 @@ public class InventoryZoneAdjust extends MyJPanel {
 	 * 设置仓库中货物列表
 	 */
 	private void setImportList(Frame_Inventory frame){
-		//if(inventoryController == null) return;
 		ArrayList<InventoryPositionVO> commoditiesExisted;
 		try {
 			inventoryController = ControllerFactory.getInventoryController();
@@ -114,8 +113,8 @@ public class InventoryZoneAdjust extends MyJPanel {
 		if(commoditiesExisted != null){
 			String pos = null;
 			for (InventoryPositionVO inventoryPositionVO : commoditiesExisted) {
-				pos = Integer.toString(inventoryPositionVO.area) + "区" + Integer.toString(inventoryPositionVO.row) + "排" + Integer.toString(inventoryPositionVO.frame) + "架" + Integer.toString(inventoryPositionVO.position) + "位";
-				importList.addRow(new String[]{inventoryPositionVO.commodity.ID, inventoryPositionVO.commodity.commodityType, inventoryPositionVO.commodity.commodityState.value, pos});
+				pos = Integer.toString(inventoryPositionVO.area + 1) + "区" + Integer.toString(inventoryPositionVO.row + 1) + "排" + Integer.toString(inventoryPositionVO.frame + 1) + "架" + Integer.toString(inventoryPositionVO.position + 1) + "位";
+				importList.addRow(new String[]{inventoryPositionVO.commodity.orderID, inventoryPositionVO.commodity.commodityType, inventoryPositionVO.commodity.commodityState.value, pos});
 			}
 		}
 	}
@@ -161,7 +160,7 @@ public class InventoryZoneAdjust extends MyJPanel {
 		//调整货物列表中的项
 		importList.removeRow();
 		importList.addRow(new String[]{commodity[0], commodity[1], commodity[2], afpos_string});
-
+		this.repaint();
 		return 0;
 	}
 }
