@@ -104,11 +104,11 @@ public class CargoExport extends MyJPanel {
 		InventoryExportReceiptVO exportReceipt;
 		try {
 			exportReceipt = inventoryController.minusCommodities(frame.getID().substring(0, 6), position.charAt(0) - '0', position.charAt(2) - '0', position.charAt(4) - '0', position.charAt(6) - '0');
-//			String id = inventoryController.getExportID();
 			//将数据加入出库单列表
 			exportList.addRow(new String[]{exportReceipt.ID, commodityInfo[0], commodityInfo[1], GetDate.getDate(), (String) transport.getSelectedItem()});
 			//将货物从仓库列表中移除
 			commodities.removeRow();
+			this.repaint();
 			return 0;
 		} catch (RemoteException e) {
 			new MyNotification(frame, "网络已断开，请连接后重试", Color.RED);
