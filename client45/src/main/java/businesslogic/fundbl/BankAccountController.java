@@ -129,6 +129,7 @@ public class BankAccountController implements BankAccountBLService {
 	 */
 	private boolean isCorrectAuthority() {
 		UserAuthority authority = UserInfomation.getInstance().getAuthority();
+		System.out.println(authority);
 		return authority == UserAuthority.ADVANCE_FINANCE;
 	}
 	@Override
