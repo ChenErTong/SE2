@@ -98,6 +98,9 @@ public class InventoryCheck extends MyJPanel{
 			exportNum = Integer.toString(inventoryView.exportReceipts.size());
 		}
 		
+		commodityInfo.clear();
+		inventoryInfo.clear();
+		
 		String commodityNum = "";
 		if(inventoryView.commodityInInventory != null){
 			commodityNum = Integer.toString(inventoryView.commodityInInventory.size());
