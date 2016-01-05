@@ -318,11 +318,12 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	}
 	
 	private void modifyAccount() {
+		accountID = accountPool.get(table.getSelectedRow()).ID;
 		table = userInfo.getTable();
 		String[] data = modifyAccount.getData();
 		try {
 			AccountController controller = ControllerFactory.getAccountController();
-			ResultMessage rsg = controller.updateAccount(new AccountVO(controller.getID(),data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8],new ArrayList<>()));
+			ResultMessage rsg = controller.updateAccount(new AccountVO(accountID,data[1],data[0],data[2],data[3],data[5],new BigDecimal(data[4]),data[6],data[7],data[8],new ArrayList<>()));
 			if(rsg.equals(ResultMessage.SUCCESS)){
 				System.out.println("ModifySucceed!");
 				this.showAll();
