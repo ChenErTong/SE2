@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 
+import ui.server.ServerInfoPanel;
 import config.RMIConfig;
 import data.DataFactory;
 import data.accountdata.AccountData;
@@ -49,12 +50,18 @@ public class RMIManage {
 		}
 	}
 	
-	public void startServer() {
-		new Server().start();
+	public void startServer(ServerInfoPanel serverInfoPanel) {
+		new Server(serverInfoPanel).start();
 		isOpen=true;
 	}
 
 	private class Server extends Thread{
+		private ServerInfoPanel serverInfoPanel;
+		
+		public Server(ServerInfoPanel serverInfoPanel) {
+			this.serverInfoPanel = serverInfoPanel;
+		}
+
 		@Override
 		public void run() {
 			try {
@@ -87,6 +94,7 @@ public class RMIManage {
 				Naming.bind(prefix+DriverData.NAME, DataFactory.createDataService(DriverData.NAME));
 				Naming.bind(prefix+LogData.NAME, DataFactory.createDataService(LogData.NAME));
 				System.out.println("注册完成！");
+				serverInfoPanel.setStarted(true);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			} catch (MalformedURLException e) {
@@ -117,11 +125,6 @@ public class RMIManage {
 
 	public String getHostName() {
 		return hostName;
-	}
-
-	public static void main(String[] args) {
-		RMIManage rmiManage = new RMIManage();
-		rmiManage.startServer();
 	}
 
 	public boolean isOpen() {
