@@ -344,7 +344,7 @@ public class AccountManage extends MyJPanel implements ActionListener{
 	 */
 	private String[] setAccountData(){
 		accountID = accountPool.get(table.getSelectedRow()).ID;
-		String[] data = new String[8];
+		String[] data = new String[9];
 		
 		data[0] = accountPool.get(table.getSelectedRow()).Name;
 		data[1] = accountPool.get(table.getSelectedRow()).Duty;
