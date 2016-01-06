@@ -35,7 +35,7 @@ import vo.receiptvo.InventoryImportReceiptVO;
 public class Inventory {
 	private InventoryDataService inventoryData;
 	private ReceiptInfo_Inventory receiptInfo;
-	private TransferInfo_Inventory transferInfo;
+	private TransferInfo transferInfo;
 
 	public Inventory() throws MalformedURLException, RemoteException, NotBoundException {
 		receiptInfo = new ReceiptInfo();
@@ -185,6 +185,7 @@ public class Inventory {
 		commos[exArea][exRow][exFrame][exPosition] = null;
 		inventory.setCommos(commos);
 		inventoryData.modify(inventory);
+		updateTransferInventory(transferID, inventory);
 	}
 
 	/**
@@ -208,9 +209,6 @@ public class Inventory {
 				ReceiptType.INSTOCK);
 		ArrayList<InventoryExportReceiptVO> exportReceipts = receiptInfo.showInDateByType(beginDate, endDate,
 				ReceiptType.OUTSTOCK);
-		/*if((importReceipts.size() == 0)&&(exportReceipts.size() == 0)){
-			return null;
-		}*/
 		// 获得仓库中商品位置
 		ArrayList<InventoryPositionVO> commoditiesInInventory = this.getCommoditiesInInventory(transferID);
 		// 新建库存查看VO
@@ -239,61 +237,7 @@ public class Inventory {
 		return checkVO;
 	}
 
-	/**
-	 * 保存入库单为草稿
-	 * 
-	 * @param importReceipt
-	 *            InventoryImportReceiptVO型，入库单
-	 * @return ResultMessage型，保存结果
-	 * @throws RemoteException
-	 *             远程异常
-	 *//*
-	public ResultMessage saveImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		importReceipt.receiptState = ReceiptState.DRAFT;
-		return receiptInfo.add(importReceipt);
-	}
 
-	*//**
-	 * 保存出库单为草稿
-	 * 
-	 * @param exportReceipt
-	 *            InventoryExportReceiptVO型，出库单
-	 * @return ResultMessage型，保存结果
-	 * @throws RemoteException
-	 *             远程异常
-	 *//*
-	public ResultMessage saveExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		exportReceipt.receiptState = ReceiptState.DRAFT;
-		return receiptInfo.add(exportReceipt);
-	}
-
-	*//**
-	 * 提交入库单
-	 * 
-	 * @param exportReceipt
-	 *            InventoryImportReceiptVO型，入库单
-	 * @return ResultMessage型，提交结果
-	 * @throws RemoteException
-	 *             远程异常
-	 *//*
-	public ResultMessage submitImport(InventoryImportReceiptVO importReceipt) throws RemoteException {
-		importReceipt.receiptState = ReceiptState.APPROVALING;
-		return receiptInfo.modify(importReceipt);
-	}
-
-	*//**
-	 * 提交出库单
-	 * 
-	 * @param exportReceipt
-	 *            InventoryImportReceiptVO型，出库单
-	 * @return ResultMessage型，提交结果
-	 * @throws RemoteException
-	 *             远程异常
-	 *//*
-	public ResultMessage submitExport(InventoryExportReceiptVO exportReceipt) throws RemoteException {
-		exportReceipt.receiptState = ReceiptState.APPROVALING;
-		return receiptInfo.modify(exportReceipt);
-	}*/
 
 	/**
 	 * 获得仓库中的所有商品
@@ -466,5 +410,13 @@ public class Inventory {
 		}
 		System.out.println(transferPO.getInventories().size());
 		return transferPO.getInventories().get(0);
+	}
+	
+	private void updateTransferInventory(String transferID, InventoryPO inventoryPO) throws RemoteException {
+		TransferPO transferPO = transferInfo.getTransfer(transferID);
+		ArrayList<InventoryPO> inventories = new ArrayList<>();
+		inventories.add(inventoryPO);
+		transferPO.setInventories(inventories);
+		transferInfo.modify(transferPO);
 	}
 }

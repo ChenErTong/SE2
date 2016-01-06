@@ -112,13 +112,13 @@ public class Stocking extends MyJPanel {
 		ArrayList<InventoryPositionVO> commodities = inventoryCheck.commos;
 		if (commodities != null) {
 			for (InventoryPositionVO commodity : commodities) {
-				String position = Integer.toString(commodity.area) + "区"
-						+ Integer.toString(commodity.row) + "排"
-						+ Integer.toString(commodity.frame) + "架"
-						+ Integer.toString(commodity.position) + "位";
+				String position = Integer.toString(commodity.area + 1) + "区"
+						+ Integer.toString(commodity.row + 1) + "排"
+						+ Integer.toString(commodity.frame + 1) + "架"
+						+ Integer.toString(commodity.position + 1) + "位";
 				inventoryCondition.addRow(new String[] {
-						commodity.commodity.ID,
-						commodity.commodity.commodityType, position });
+						commodity.commodity.orderID,
+						commodity.commodity.commodityType, position});
 			}
 		}
 		return true;
